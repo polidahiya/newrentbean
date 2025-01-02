@@ -1,14 +1,11 @@
 import React from "react";
 import { categorylist } from "@/app/commondata";
-import { AppContextfn } from "@/app/Context";
 
-function Selectcategory() {
-  const { addproduct, setaddproduct } = AppContextfn();
-
+function Selectcategory({ data, setdata }) {
   const handlecategorychange = (e) => {
     const value = e.target.value;
-    setaddproduct({
-      ...addproduct,
+    setdata({
+      ...data,
       category: value,
       subcat: categorylist[value]?.subcat[0]?.name,
     });
@@ -16,8 +13,8 @@ function Selectcategory() {
 
   const handlesubcategorychange = (e) => {
     const value = e.target.value;
-    setaddproduct({
-      ...addproduct,
+    setdata({
+      ...data,
       subcat: value,
     });
   };
@@ -28,27 +25,29 @@ function Selectcategory() {
         <label className="flex-1 text-[20px] font-bold ">Category :</label>
         <select
           className="flex-1 p-2 border border-slate-300 outline-none rounded-md"
-          value={addproduct?.category}
+          value={data?.category}
           onChange={handlecategorychange}
         >
           {Object.keys(categorylist).map((item, i) => (
             <option key={i} value={item}>
-              {item}
+              {item.replace(/-/g, " ")}
             </option>
           ))}
         </select>
       </div>
-      {categorylist[addproduct?.category]?.subcat.length != 0 && (
+      {categorylist[data?.category]?.subcat.length != 0 && (
         <div className="w-full flex gap-5 items-center">
-          <label className="flex-1 text-[20px] font-bold ">Sub-Category :</label>
+          <label className="flex-1 text-[20px] font-bold ">
+            Sub-Category :
+          </label>
           <select
             className="flex-1 p-2 border border-slate-300 outline-none rounded-md"
-            value={addproduct?.subcat}
+            value={data?.subcat}
             onChange={handlesubcategorychange}
           >
-            {categorylist[addproduct?.category]?.subcat?.map((item, i) => (
+            {categorylist[data?.category]?.subcat?.map((item, i) => (
               <option key={i} value={item?.name}>
-                {item?.name}
+                {item?.name.replace(/-/g, " ")}
               </option>
             ))}
           </select>

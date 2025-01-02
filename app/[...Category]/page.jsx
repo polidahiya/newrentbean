@@ -261,17 +261,3 @@ export const generateMetadata = async ({ params, searchParams }) => {
 };
 
 export default page;
-
-// name
-// category
-// subcat
-// sku
-// image
-// quatity
-// available
-// trash
-// description
-// location:{
-//   rentprice
-// }
-// seo

@@ -21,14 +21,17 @@ export const categorylist = {
     image: "/logo&ui/categories/fitnessandgym2.svg",
     subcat: [
       {
-        image: "/categoriesimages/subcats/sofasets.jpg",
+        image: "/logo&ui/categories/subcategories/Treadmills.jpg",
         name: "Cardio-Machines",
       },
       {
-        image: "/categoriesimages/subcats/sofacumbed.jpg",
+        image: "/logo&ui/categories/subcategories/cycles.webp",
         name: "Outdoor-Fitness",
       },
-      { image: "/categoriesimages/subcats/wingchair.jpg", name: "Body-Care" },
+      {
+        image: "/logo&ui/categories/subcategories/homegym.jpg",
+        name: "Body-Care",
+      },
     ],
   },
   Electronics: {
@@ -36,20 +39,23 @@ export const categorylist = {
     image: "/logo&ui/categories/electronics.svg",
     subcat: [
       {
-        image: "/categoriesimages/subcats/kingbed.jpg",
+        image: "/logo&ui/categories/subcategories/games.jpg",
         name: "Gaming",
       },
       {
-        image: "/categoriesimages/subcats/queenbed.jpg",
+        image: "/logo&ui/categories/subcategories/laptop.jpeg",
         name: "Laptops",
       },
       {
-        image: "/categoriesimages/subcats/singlebed.jpg",
+        image: "/logo&ui/categories/subcategories/phone.jpg",
         name: "Mobile-&-Accessories",
       },
-      { image: "/categoriesimages/subcats/kidsbed.jpg", name: "Entertainment" },
       {
-        image: "/categoriesimages/subcats/wardrobe.jpg",
+        image: "/logo&ui/categories/subcategories/projector.jpeg",
+        name: "Entertainment",
+      },
+      {
+        image: "/logo&ui/categories/subcategories/washingmachine.webp",
         name: "Home-Appliances",
       },
     ],
@@ -59,27 +65,27 @@ export const categorylist = {
     image: "/logo&ui/categories/furniture.svg",
     subcat: [
       {
-        image: "/categoriesimages/subcats/2-SeaterDiningSet.jpg",
+        image: "/logo&ui/categories/subcategories/Bed.png",
         name: "Beds",
       },
       {
-        image: "/categoriesimages/subcats/4-SeaterDiningSet.jpg",
+        image: "/logo&ui/categories/subcategories/studytable.webp",
         name: "Study-Tables",
       },
       {
-        image: "/categoriesimages/subcats/4-SeaterDiningSet.jpg",
+        image: "/logo&ui/categories/subcategories/dining.jpg",
         name: "Dining",
       },
       {
-        image: "/categoriesimages/subcats/6-SeaterDiningSet.jpg",
+        image: "/logo&ui/categories/subcategories/bookshelf.jpg",
         name: "Bookshelves",
       },
       {
-        image: "/categoriesimages/subcats/6-SeaterDiningSet.jpg",
+        image: "/logo&ui/categories/subcategories/sofa.png",
         name: "Sofas",
       },
       {
-        image: "/categoriesimages/subcats/6-SeaterDiningSet.jpg",
+        image: "/logo&ui/categories/subcategories/centretable.webp",
         name: "Center-Tables",
       },
     ],
@@ -89,11 +95,11 @@ export const categorylist = {
     image: "/logo&ui/categories/eventandparties.svg",
     subcat: [
       {
-        image: "/categoriesimages/subcats/CoffeeTables.jpg",
+        image: "/logo&ui/categories/subcategories/hookah.jpeg",
         name: "Party-Essentials",
       },
       {
-        image: "/categoriesimages/subcats/EndTables.jpg",
+        image: "/logo&ui/categories/subcategories/sleepbag.jpg",
         name: "Outdoor-Essentials",
       },
     ],
@@ -102,7 +108,10 @@ export const categorylist = {
     name: "Baby Products",
     image: "/logo&ui/categories/campinggear.svg",
     subcat: [
-      { image: "/categoriesimages/subcats/ShoeRack.jpg", name: "Travel-Gear" },
+      {
+        image: "/logo&ui/categories/subcategories/babycarrier.jpg",
+        name: "Travel-Gear",
+      },
     ],
   },
 };
@@ -210,42 +219,6 @@ export const orderstages = [
 ];
 
 // list of cities
-export const cities = [
-  "Delhi",
-  "Gurgaon",
-  "Jaipur",
-  "Lucknow",
-  "Chandigarh",
-  "Amritsar",
-  "Agra",
-  "Varanasi",
-  "Mumbai",
-  "Pune",
-  "Ahmedabad",
-  "Surat",
-  "Nagpur",
-  "Goa",
-  "Bengaluru",
-  "Chennai",
-  "Hyderabad",
-  "Kochi",
-  "Thiruvananthapuram",
-  "Coimbatore",
-  "Mysore",
-  "Kolkata",
-  "Bhubaneswar",
-  "Patna",
-  "Ranchi",
-  "Guwahati",
-  "Bhopal",
-  "Indore",
-  "Raipur",
-  "Gwalior",
-  "Shillong",
-  "Imphal",
-  "Gangtok",
-  "Aizawl",
-  "Agartala",
-];
+export const cities = ["Delhi", "Noida", "Gurgaon", "Ghaziabad", "Faridabad"];
 
 export const CACHE_TIME = 60 * 60 * 1000; // 24 hours

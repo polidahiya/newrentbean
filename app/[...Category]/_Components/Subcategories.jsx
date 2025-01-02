@@ -25,8 +25,8 @@ function Subcategories({ category, subcat }) {
                   quality={50}
                   alt={itemsubcat.name}
                   priority={true}
-                  className={`w-full aspect-[4/3] object-cover object-center rounded-[10px]  p-[2px] ${
-                    subcat == itemsubcat.name ? "bg-theme" : "bg-slate-300"
+                  className={`w-full aspect-square object-contain object-center rounded-[10px]  p-[2px] ${
+                    subcat == itemsubcat.name ? "bg-theme" : "bg-white"
                   }`}
                 ></Image>
                 <div
