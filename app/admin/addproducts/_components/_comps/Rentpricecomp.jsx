@@ -4,17 +4,44 @@ import Standardinputfield from "./Standardinputfield";
 import Dropdownmenu from "./Dropdownmenu";
 import { MdAddToPhotos } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
+import { AppContextfn } from "@/app/Context";
 
 function Rentpricecomp({ data, setdata }) {
+  const { setmessagefn } = AppContextfn();
+
   const handleaddtenure = (key) => {
     const updatedvalue = { ...data };
-    updatedvalue.prices[key].push({ time: "0", type: "day", price: "100" });
+    updatedvalue.prices[key].push({ time: "", type: "day", price: "" });
     setdata({ ...data, updatedvalue });
   };
 
   const handledeletetenure = (key, index) => {
     const updatedvalue = { ...data };
     updatedvalue.prices[key].splice(index, 1);
+    setdata({ ...data, updatedvalue });
+  };
+
+  const handleaddcity = (value) => {
+    if (value in data.prices) {
+      setmessagefn("City already exists");
+      return;
+    }
+    setdata((prevData) => ({
+      ...prevData,
+      prices: {
+        ...prevData.prices,
+        [value]: [
+          { time: "", type: "day", price: "" },
+          { time: "", type: "day", price: "" },
+          { time: "", type: "day", price: "" },
+        ],
+      },
+    }));
+  };
+
+  const handledeletecity = (key) => {
+    const updatedvalue = { ...data };
+    delete updatedvalue.prices[key];
     setdata({ ...data, updatedvalue });
   };
 
@@ -108,8 +135,28 @@ function Rentpricecomp({ data, setdata }) {
             >
               <MdAddToPhotos className="inline" /> Add more
             </button>
+            {key != "Default" && (
+              <button
+                type="button"
+                className="border border-gray-300 px-5 py-2 text-red-500 rounded-md text-sm mt-2 ml-2"
+                onClick={() => {
+                  handledeletecity(key);
+                }}
+              >
+                <AiFillDelete className="inline" /> Delete City
+              </button>
+            )}
           </div>
         ))}
+      </div>
+      {/* add a city */}
+      <div className="mt-5">
+        <Dropdownmenu
+          title={"Add a city"}
+          state={""}
+          onchange={handleaddcity}
+          options={["", ...cities]}
+        />
       </div>
     </div>
   );

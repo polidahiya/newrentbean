@@ -140,7 +140,9 @@ function Addandupdateproduct({
         setdeletedimages={setdeletedimages}
       />
       {/* rent price */}
-      <Rentpricecomp data={data} setdata={setdata} />
+      {(data?.availablefor == "Rent" || data?.availablefor == "Both") && (
+        <Rentpricecomp data={data} setdata={setdata} />
+      )}
 
       {/* buy price */}
       {(data?.availablefor == "Buy" || data?.availablefor == "Both") && (

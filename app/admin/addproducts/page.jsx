@@ -17,14 +17,9 @@ function Page() {
     securitydeposit: "1000",
     prices: {
       Default: [
-        { time: "0", type: "day", price: "100" },
-        { time: "0", type: "day", price: "100" },
-        { time: "0", type: "day", price: "100" },
-      ],
-      Delhi: [
-        { time: "0", type: "day", price: "100" },
-        { time: "0", type: "day", price: "100" },
-        { time: "0", type: "day", price: "100" },
+        { time: "", type: "day", price: "" },
+        { time: "", type: "day", price: "" },
+        { time: "", type: "day", price: "" },
       ],
     },
     buyprice: "",
