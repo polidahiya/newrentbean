@@ -24,7 +24,7 @@ export async function GET() {
       <?xml version="1.0" encoding="UTF-8" ?>
       <rss version="2.0">
         <channel>
-          <title>Adorefurnix - Get Solid Wood Furniture at best price</title>
+          <title>Rentbean - Get Solid Wood Furniture at best price</title>
           <link>${domain}</link>
           <description>Discover the best solid wood furniture in India. Shop Sheesham wood furniture, dining tables, sofas, and more online at affordable prices.</description>
           <language>en-us</language>

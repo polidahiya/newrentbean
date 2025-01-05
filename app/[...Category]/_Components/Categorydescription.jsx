@@ -82,7 +82,7 @@ function Livingroomdesc({ location }) {
         Revamp your living space with an exquisite range of{" "}
         <strong>living room furniture in {location}</strong>, designed to suit
         every budget and style preference. Whether you&rsquo;re looking for
-        premium, luxurious pieces or budget-friendly furniture, Adorefurnix
+        premium, luxurious pieces or budget-friendly furniture, Rentbean
         offers endless choices to elevate your living room.
       </p>
       <p>
@@ -91,7 +91,7 @@ function Livingroomdesc({ location }) {
         furniture that adds charm and utility to your living room. Find trendy{" "}
         <strong>ottomans</strong> and versatile{" "}
         <strong>wooden furniture chairs</strong>. Explore the finest selections
-        from Adorefurnix to transform your living space.
+        from Rentbean to transform your living space.
       </p>
 
       <h2>Why Choose Living Room Furniture in {location}?</h2>
@@ -101,7 +101,7 @@ function Livingroomdesc({ location }) {
           <strong>cheap living room furniture in {location}</strong> or high-end
           luxury options, you&rsquo;ll find everything from{" "}
           <strong>folding sofa beds</strong> to{" "}
-          <strong>stylish wing chair sets</strong> at Adorefurnix.
+          <strong>stylish wing chair sets</strong> at Rentbean.
         </li>
         <li>
           <strong>Durability Meets Design:</strong> Choose{" "}
@@ -111,14 +111,14 @@ function Livingroomdesc({ location }) {
           aesthetics.
         </li>
         <li>
-          <strong>Customization Options:</strong> Adorefurnix offers{" "}
+          <strong>Customization Options:</strong> Rentbean offers{" "}
           <strong>customized living room furniture</strong>, ensuring every
           piece complements your unique style.
         </li>
         <li>
           <strong>Convenient Shopping:</strong> Explore{" "}
           <strong>living room furniture in {location} online</strong> or visit
-          Adorefurnix for an extensive range of products.
+          Rentbean for an extensive range of products.
         </li>
       </ul>
 
@@ -177,7 +177,7 @@ function Livingroomdesc({ location }) {
       <p>
         Upgrade your home with the finest{" "}
         <strong>living room furniture in {location}</strong>. Create a space
-        that&rsquo;s cozy, functional, and undeniably stylish with Adorefurnix!
+        that&rsquo;s cozy, functional, and undeniably stylish with Rentbean!
       </p>
     </div>
   );
@@ -189,11 +189,11 @@ function Bedroomdesc({ location }) {
         <header>
           <h1>
             Bedroom Furniture in {location} - Affordable & Luxury Options at
-            Adorefurnix
+            Rentbean
           </h1>
           <p>
             Discover a wide range of{" "}
-            <strong>bedroom furniture in {location}</strong> at Adorefurnix.
+            <strong>bedroom furniture in {location}</strong> at Rentbean.
             Whether you&apos;re looking for affordable options or luxurious
             designs, our collection includes everything you need to transform
             your bedroom—from <strong>beds</strong> and{" "}
@@ -245,7 +245,7 @@ function Bedroomdesc({ location }) {
               1. Where can I find affordable bedroom furniture in {location}?
             </h3>
             <p>
-              At Adorefurnix, we provide a wide range of{" "}
+              At Rentbean, we provide a wide range of{" "}
               <strong>affordable bedroom furniture</strong> to suit every style
               and budget, from modern to classic designs.
             </p>
@@ -287,9 +287,9 @@ function Bedroomdesc({ location }) {
               any space.
             </p>
 
-            <h3>7. Are there luxury bedroom sets available at Adorefurnix?</h3>
+            <h3>7. Are there luxury bedroom sets available at Rentbean?</h3>
             <p>
-              Yes, Adorefurnix offers <strong>luxury bedroom sets</strong> with
+              Yes, Rentbean offers <strong>luxury bedroom sets</strong> with
               complete matching pieces, including wardrobes, bedside tables, and
               dressing tables, for a stylish and cohesive look.
             </p>
@@ -297,10 +297,10 @@ function Bedroomdesc({ location }) {
         </section>
 
         <section>
-          <h2>Shop Online or Visit Adorefurnix</h2>
+          <h2>Shop Online or Visit Rentbean</h2>
           <p>
             You can shop <strong>bedroom furniture online</strong> at
-            Adorefurnix or visit our store in {location} for a personalized
+            Rentbean or visit our store in {location} for a personalized
             shopping experience. We cater to all your needs, whether you&apos;re
             furnishing a master bedroom, kids&apos; room, or guest room.
           </p>
@@ -308,7 +308,7 @@ function Bedroomdesc({ location }) {
       </main>
 
       <p>
-        Visit Adorefurnix, your trusted destination for high-quality bedroom
+        Visit Rentbean, your trusted destination for high-quality bedroom
         furniture in {location}. Explore our extensive collection, and let us
         help you create the bedroom of your dreams.
       </p>
@@ -321,7 +321,7 @@ function Diningdesc({ location }) {
       <h1>Dining Tables in {location} - Stylish & Affordable Options</h1>
       <p>
         Discover the perfect <strong>dining tables in {location}</strong> at
-        Adorefurnix. Whether you need a cozy 2-seater or a grand 6-seater for
+        Rentbean. Whether you need a cozy 2-seater or a grand 6-seater for
         your dining area, we offer a wide range of{" "}
         <strong>dining table sets</strong> that cater to various needs, from
         intimate gatherings to large family meals. Our collection ensures that
@@ -345,7 +345,7 @@ function Diningdesc({ location }) {
       <p>
         Whether you are redecorating your dining room, furnishing a new home, or
         looking for an upgrade, our dining tables collection in {location}{" "}
-        guarantees you’ll find the ideal piece. Shop at Adorefurnix for
+        guarantees you’ll find the ideal piece. Shop at Rentbean for
         top-quality furniture, reasonable prices, and stylish designs that
         elevate your home’s decor.
       </p>
@@ -401,10 +401,10 @@ function Tablesdesc({ location }) {
     <div>
       <h1>
         Furniture Tables and More in {location} - Affordable & Stylish Options
-        at Adorefurnix
+        at Rentbean
       </h1>
       <p>
-        Welcome to Adorefurnix, your ultimate destination for{" "}
+        Welcome to Rentbean, your ultimate destination for{" "}
         <strong>furniture tables in {location}</strong>. Explore our curated
         collection designed to elevate your living spaces. From modern{" "}
         <strong>coffee tables</strong> to stylish study and office tables, our
@@ -436,7 +436,7 @@ function Tablesdesc({ location }) {
         collection offers versatile and stylish options.
       </p>
       <p>
-        At Adorefurnix, we pride ourselves on offering a diverse range of{" "}
+        At Rentbean, we pride ourselves on offering a diverse range of{" "}
         <strong>furniture tables</strong> to meet the unique tastes of our
         customers in {location}. Browse through our latest collection and find
         the perfect piece to complement your home.
@@ -495,7 +495,7 @@ function Tablesdesc({ location }) {
           <p>
             You can find stylish and affordable{" "}
             <strong>nesting tables in {location}</strong> in sets of 2, 3, or 4
-            through our Adorefurnix collection. They are perfect for small
+            through our Rentbean collection. They are perfect for small
             spaces and multifunctional use.
           </p>
         </div>
@@ -851,7 +851,7 @@ function Officefurnituredesc({ location }) {
           including a wide selection of ergonomic office chairs, desks, sofas,
           and study tables. Whether you are looking for{" "}
           <strong>affordable</strong>, <strong>luxury</strong>, or{" "}
-          <strong>wholesale options</strong>, Adorefurnix has everything to meet
+          <strong>wholesale options</strong>, Rentbean has everything to meet
           your office furnishing needs. Explore products sourced from the
           renowned office furniture market in Kirti Nagar and beyond, ensuring{" "}
           <strong>quality</strong> and <strong>durability</strong>.
@@ -865,7 +865,7 @@ function Officefurnituredesc({ location }) {
         <p>
           Looking for <strong>stylish</strong> and{" "}
           <strong>comfortable office furniture</strong> in{" "}
-          <strong>{location}</strong>? Adorefurnix offers a vast range of
+          <strong>{location}</strong>? Rentbean offers a vast range of
           options including <strong>executive desks</strong>,{" "}
           <strong>ergonomic office chairs</strong>, and luxurious{" "}
           <strong>office sofas</strong>. Whether you&apos;re furnishing a{" "}
@@ -886,7 +886,7 @@ function Officefurnituredesc({ location }) {
           <strong>classic wooden furniture</strong> to{" "}
           <strong>modern minimalist styles</strong>. Whether you need furniture
           for a small office or a large corporate space, the market offers
-          something for every taste and <strong>budget</strong>. At Adorefurnix,
+          something for every taste and <strong>budget</strong>. At Rentbean,
           we bring you the best selections from Kirti Nagar’s offerings, with
           competitive prices to make your office furnishings both{" "}
           <strong>affordable</strong> and <strong>stylish</strong>.
@@ -898,7 +898,7 @@ function Officefurnituredesc({ location }) {
         <p>
           Explore our wide range of office furniture in{" "}
           <strong>{location}</strong> at unbeatable prices. From budget-friendly
-          study tables under ₹500 to luxurious office sofa sets, Adorefurnix
+          study tables under ₹500 to luxurious office sofa sets, Rentbean
           offers solutions for every <strong>budget</strong>. Our detailed
           pricing information for office desks, chairs, and storage units will
           help you make informed purchasing decisions that suit your office
@@ -917,7 +917,7 @@ function Officefurnituredesc({ location }) {
           prioritize <strong>comfort</strong> and <strong>functionality</strong>
           , you’ll find options for both <strong>home offices</strong> and{" "}
           <strong>study rooms</strong>. Whether you need a compact desk for a
-          small space or a larger workstation, Adorefurnix has everything to
+          small space or a larger workstation, Rentbean has everything to
           make your workspace <strong>efficient</strong> and{" "}
           <strong>stylish</strong>. We also offer affordable study tables under
           ₹500 to meet every budget.
@@ -935,17 +935,17 @@ function Officefurnituredesc({ location }) {
           traditional styles, our office sofas are designed to fit both small
           and large office spaces. Whether you’re looking for a sofa set for a{" "}
           <strong>reception area</strong> or a cozy seating arrangement for your
-          cabin, Adorefurnix offers a wide selection at competitive prices.
+          cabin, Rentbean offers a wide selection at competitive prices.
         </p>
       </section>
 
       <section>
         <h2>
-          Why Choose Adorefurnix for Office Furniture in{" "}
+          Why Choose Rentbean for Office Furniture in{" "}
           <strong>{location}</strong>?
         </h2>
         <p>
-          Adorefurnix offers a wide selection of office furniture including{" "}
+          Rentbean offers a wide selection of office furniture including{" "}
           <strong>ergonomic chairs</strong>, <strong>desks</strong>,{" "}
           <strong>sofas</strong>, and <strong>storage units</strong>. We cater
           to all budgets, providing both <strong>affordable</strong> options and{" "}
@@ -978,10 +978,10 @@ function Officefurnituredesc({ location }) {
       </section>
 
       <section>
-        <h2>Get in Touch with Adorefurnix</h2>
+        <h2>Get in Touch with Rentbean</h2>
         <p>
           Looking for the best office furniture in <strong>{location}</strong>?
-          Contact Adorefurnix today to explore our{" "}
+          Contact Rentbean today to explore our{" "}
           <strong>premium quality</strong> office furniture, including ergonomic
           desks, office sofas, and study tables. Our team is ready to help you
           find the perfect office setup, whether you&apos;re located in Kirti
@@ -1028,7 +1028,7 @@ function Officefurnituredesc({ location }) {
             The best places to find office furniture near you in{" "}
             <strong>{location}</strong> include local markets like Kirti Nagar,
             known for its wide selection of furniture. Additionally, online
-            stores such as Adorefurnix offer convenient delivery options across{" "}
+            stores such as Rentbean offer convenient delivery options across{" "}
             <strong>{location}</strong>.
           </p>
         </div>

@@ -9,7 +9,7 @@ let collections;
 async function connectToDatabase() {
   if (!db) {
     await client.connect();
-    db = client.db("Adorefurnix");
+    db = client.db("Rentbean");
 
     collections = {
       blogscollection: db.collection("blogs"),

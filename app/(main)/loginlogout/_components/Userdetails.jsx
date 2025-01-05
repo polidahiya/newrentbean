@@ -134,14 +134,13 @@ function Userdetails() {
       {/* login or signup button */}
       <center>
         <button
-          className="relative group flex items-center justify-center gap-[10px] px-[100px] py-[5px] text-white rounded-full mt-[20px]  overflow-hidden"
+          className="relative group flex items-center justify-center gap-[10px] px-[100px] bg-theme py-[5px] text-white rounded-full mt-[20px]  overflow-hidden"
           onClick={authenticateuser}
         >
           {loading && (
             <div className="h-[20px] aspect-square rounded-full  border-r-2 border-l-2 border-white animate-spin z-10"></div>
           )}
           <span className="z-10">{signupform ? "Signup" : "Login"}</span>
-          <div className="absolute top-0 left-0 w-[200%] h-full bg-bg1 group-hover:translate-x-[-50%] duration-200"></div>
         </button>
       </center>
       <div className="relative">

@@ -23,7 +23,7 @@ function Allproducts({ products }) {
             key={i + new Date().getMilliseconds() + Math.random()} // More stable key
             index={i}
             id={item._id}
-            image={item.colorpalets[0]?.images[0]}
+            image={item?.images[0]}
             {...item}
           />
         ))}

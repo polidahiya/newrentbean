@@ -46,11 +46,11 @@ async function Productpage({ category, subcat, productid, color }) {
     name: filteredProduct.name,
     image: filteredProduct.colorpalets[filteredProduct?.color]?.images[0],
     description:
-      filteredProduct.desc[0] || "Solid wood furniture - @Adorefurnix",
+      filteredProduct.desc[0] || "Solid wood furniture - @Rentbean",
     sku: filteredProduct?._id,
     brand: {
       "@type": "Brand",
-      name: "Adorefurnix",
+      name: "Rentbean",
     },
     offers: {
       "@type": "Offer",

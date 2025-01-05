@@ -1,7 +1,7 @@
 import React from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { BiSolidImageAdd } from "react-icons/bi";
-import { MdDeleteOutline } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 import { AppContextfn } from "@/app/Context";
 
 function Addimagescomp({ data, setstate, setdeletedimages }) {
@@ -108,7 +108,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
                 onClick={() => handleDeleteImage(imgIndex)}
                 className="h-full aspect-square text-red-500 border rounded-md"
               >
-                <MdDeleteOutline className="inline-block" />
+                <AiFillDelete className="inline-block" />
               </button>
             </div>
           </div>

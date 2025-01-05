@@ -8,17 +8,17 @@ const About = () => {
       <header className="relative py-6">
         <div className="container mx-auto text-center">
           <h1 className="aboutusheading font-black text-[10vw] lg:text-[9vw] font-recline">
-            Adorefurnix.com
+            Rentbean.in
           </h1>
         </div>
       </header>
       <main className="flex-1 container mx-auto px-4 py-8">
         <section className="bg-white shadow-md rounded-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4">
-            Welcome to Adorefurnix
+            Welcome to Rentbean
           </h2>
           <p className="mb-4">
-            At Adorefurnix, we are passionate about bringing the beauty and
+            At Rentbean, we are passionate about bringing the beauty and
             warmth of wooden furniture and home decor to your space. Our
             collection features handcrafted pieces made from high-quality,
             sustainably sourced wood, designed to add elegance and functionality
@@ -87,7 +87,7 @@ const About = () => {
       <footer className="bg-gray-900 text-white py-4">
         <div className="container mx-auto text-center">
           <p>
-            &copy; {new Date().getFullYear()} Adorefurnix. All rights reserved.
+            &copy; {new Date().getFullYear()} Rentbean. All rights reserved.
           </p>
         </div>
       </footer>

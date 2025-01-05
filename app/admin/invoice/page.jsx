@@ -8,7 +8,7 @@ const InvoiceComponent = () => {
     invoiceNumber: generateInvoiceNumber(),
     date: formatDate(),
     seller: {
-      name: "Adorefurnix",
+      name: "Rentbean",
       address: address,
       gstin: "06EFNPS9216E1Z2",
       state: "Haryana",

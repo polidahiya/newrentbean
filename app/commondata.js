@@ -1,4 +1,4 @@
-export const mail = "adorefurnix@gmail.com";
+export const mail = "Rentbean@gmail.com";
 export const mobile = "+91 95822 14574";
 export const address = "Plot no. 1081 sector 3A, Gurgaon Haryana 122001";
 
@@ -9,10 +9,10 @@ export const payulink = "https://secure.payu.in/_payment"; //live
 export const domain = "https://rentbean.in";
 
 export const sociallinks = {
-  insta: "https://www.instagram.com/adorefurnix?igsh=emc0cmUwcHVsdXR2",
+  insta: "https://www.instagram.com/Rentbean?igsh=emc0cmUwcHVsdXR2",
   facebook: "https://www.facebook.com/share/VN5R1yTY3ZHarwW9/?mibextid=qi2Omg",
-  twitter: "https://x.com/Adorefurnix?t=VQWPT4ltjY2cAcHw40xLmw&s=09",
-  pinterest: "https://in.pinterest.com/adorefurnix/",
+  twitter: "https://x.com/Rentbean?t=VQWPT4ltjY2cAcHw40xLmw&s=09",
+  pinterest: "https://in.pinterest.com/Rentbean/",
 };
 
 export const categorylist = {

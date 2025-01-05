@@ -1,5 +1,5 @@
 "use server";
-import { Adminverification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { getcollection } from "@/app/Mongodb";
 
 export const getadminorders = async (
@@ -11,10 +11,10 @@ export const getadminorders = async (
 ) => {
   try {
     const { orderscollection, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
+    const res = await Verification();
 
     // Check if user is authenticated
-    if (!tokenres) {
+    if (!res?.verified) {
       return { status: 401, message: "Please login first" };
     }
 
@@ -61,9 +61,9 @@ export const getadminorders = async (
 export const changestatus = async (documentId, status) => {
   try {
     const { orderscollection, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
+    const res = await Verification();
 
-    if (!tokenres) {
+    if (!res?.verified) {
       return { status: 400, message: "Please login first" };
     }
 
@@ -87,9 +87,9 @@ export const changestatus = async (documentId, status) => {
 export const changeproductstatus = async (orderId, productIndex, newStatus) => {
   try {
     const { orderscollection, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
+    const res = await Verification();
 
-    if (!tokenres) {
+    if (!res?.verified) {
       return { status: 400, message: "Please login first" };
     }
 
@@ -127,9 +127,9 @@ export const changeproductstatus = async (orderId, productIndex, newStatus) => {
 export const deleteorder = async (documentId) => {
   try {
     const { orderscollection, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
+    const res = await Verification();
 
-    if (!tokenres) {
+    if (!res?.verified) {
       return { status: 400, message: "Please login first" };
     }
     const filter = { _id: new ObjectId(documentId) };
@@ -151,9 +151,9 @@ export const deleteorder = async (documentId) => {
 export const updatenote = async (documentId, note) => {
   try {
     const { orderscollection, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
+    const res = await Verification();
 
-    if (!tokenres) {
+    if (!res?.verified) {
       return { message: "Please login first" };
     }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { MdDeleteOutline } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 import { MdAddToPhotos } from "react-icons/md";
 
 function Multiplevaluesfield({
@@ -53,7 +53,7 @@ function Multiplevaluesfield({
               className="px-4 py-2 text-red-500 border  rounded-md "
               onClick={() => handleDelete(index)}
             >
-              <MdDeleteOutline className="h-full w-full" />
+              <AiFillDelete className="h-full w-full" />
             </button>
           </div>
         ))}

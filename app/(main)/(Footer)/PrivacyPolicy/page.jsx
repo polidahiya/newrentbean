@@ -16,7 +16,7 @@ function page() {
 
               <div className="entry-content" itemprop="text">
                 <p>
-                  <strong>Adorefurnix</strong> is a proprietorship owned by{" "}
+                  <strong>Rentbean</strong> is a proprietorship owned by{" "}
                   <strong>Vishal</strong>. We use the highest security standards
                   to ensure our customers&apos; secure online transactions. As the data
                   controller, we are responsible for securing your data and are
@@ -28,7 +28,7 @@ function page() {
                   Respecting Your Privacy
                 </h3>
                 <p>
-                  Adorefurnix is committed to respecting your privacy. Therefore,
+                  Rentbean is committed to respecting your privacy. Therefore,
                   we set the highest ethical standards to protect your sensitive
                   information.
                 </p>
@@ -85,7 +85,7 @@ function page() {
                 </h3>
                 <p>
                   When you access the website or fill in your details to buy the
-                  products or services offered at the website, Adorefurnix will
+                  products or services offered at the website, Rentbean will
                   accept it as your consent to the privacy policy. For users
                   who are not comfortable with the clauses and conditions to
                   share their personally identifiable information, it is

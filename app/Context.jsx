@@ -23,6 +23,13 @@ export function Appwrapper({ children }) {
     show: false,
     effect: false,
   });
+  const showdialoginitialvalues = {
+    show: false,
+    title: "",
+    continue: null,
+    type: true,
+  };
+  const [showdialog, setshowdialog] = useState(showdialoginitialvalues);
 
   // funtions
   const setmessagefn = (message) => {
@@ -64,6 +71,9 @@ export function Appwrapper({ children }) {
         setmessagefn,
         instantlogin,
         setinstantlogin,
+        showdialog,
+        setshowdialog,
+        showdialoginitialvalues,
       }}
     >
       {children}

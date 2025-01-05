@@ -11,10 +11,15 @@ import Allproducts from "./_components/Homepage/Allproducts";
 import Citiesdescription from "./_components/Homepage/Citiesdescription";
 import Herosection from "./_components/Homepage/Herosection";
 import Navbar from "./_components/Navbar/Navbar";
+import Link from "next/link";
 
 export default async function Home({ searchParams, params }) {
-  const token = cookies()?.get("token")?.value;
-  const userdata = cookies()?.get("userdata")?.value;
+  const allcookies = await cookies();
+  const token = allcookies.get("token")?.value;
+  const userdata = allcookies.get("userdata")?.value;
+
+  let parseduserdata;
+  if (userdata) parseduserdata = JSON.parse(userdata);
 
   const products = await Cachedproducts();
   const productsname = products?.map((item) => item?.name);
@@ -29,8 +34,8 @@ export default async function Home({ searchParams, params }) {
       <div className="flex flex-col gap-16 lg:gap-20">
         <Herosection location={"delhi"} />
         <Categories />
-        <Newarrival products={products} />
-        <Bestselling products={products} />
+        {/* <Newarrival products={products} /> */}
+        {/* <Bestselling products={products} /> */}
         <Allproducts products={products.sort(() => Math.random() - 0.5)} />
         <Blogscomp />
         <div>
@@ -41,7 +46,17 @@ export default async function Home({ searchParams, params }) {
         </div>
         <Citiesdescription city={searchParams?.location} />
         <Footer />
+        {/* dashboardlink */}
+        {parseduserdata?.usertype == "admin" && <Dashboardlink />}
       </div>
     </>
   );
 }
+
+const Dashboardlink = () => {
+  return (
+    <div className="w-full max-w-80 h-10 flex flex-col items-center justify-center fixed bottom-0 left-1/2 -translate-x-1/2 bg-white text-theme underline rounded-t-full border shadow-inner">
+      <Link href={"/admin"}>DashBoard</Link>
+    </div>
+  );
+};

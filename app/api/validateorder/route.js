@@ -192,7 +192,7 @@ const sendconfirmationmail = async (orderdetails, amount) => {
                                   <body>
                                     <div class="email-container">
                                       <div class="header">
-                                        <img src="${domain}/logo&ui/3dlogo.png" alt="Adorefurnix Logo" />
+                                        <img src="${domain}/logo&ui/3dlogo.png" alt="Rentbean Logo" />
                                       </div>
                                 
                                       <div class="content">
@@ -286,7 +286,7 @@ const sendconfirmationmail = async (orderdetails, amount) => {
                                           </a>
                                         </div>
                                         <p>Have any questions? <a href="${domain}/Contact">Contact us</a></p>
-                                        <p>© 2024 Adorefurnix.com. All rights reserved.</p>
+                                        <p>© 2024 Rentbean.in. All rights reserved.</p>
                                       </div>
                                     </div>
                                   </body>
@@ -407,7 +407,7 @@ const sendconfirmationmail = async (orderdetails, amount) => {
                                   <body>
                                     <div class="email-container">
                                       <div class="header">
-                                        <img src="${domain}/logo&ui/3dlogo.png" alt="Adorefurnix Logo" />
+                                        <img src="${domain}/logo&ui/3dlogo.png" alt="Rentbean Logo" />
                                       </div>
                                 
                                       <div class="content">
@@ -495,7 +495,7 @@ const sendconfirmationmail = async (orderdetails, amount) => {
                                           </a>
                                         </div>
                                         <p>Have any questions? <a href="${domain}/Contact">Contact us</a></p>
-                                        <p>© 2024 Adorefurnix.com. All rights reserved.</p>
+                                        <p>© 2024 Rentbean.in. All rights reserved.</p>
                                       </div>
                                     </div>
                                   </body>

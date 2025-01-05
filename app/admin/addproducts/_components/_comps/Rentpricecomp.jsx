@@ -10,15 +10,15 @@ function Rentpricecomp({ data, setdata }) {
   const { setmessagefn } = AppContextfn();
 
   const handleaddtenure = (key) => {
-    const updatedvalue = { ...data };
+    const updatedvalue = data;
     updatedvalue.prices[key].push({ time: "", type: "day", price: "" });
-    setdata({ ...data, updatedvalue });
+    setdata({ ...data, ...updatedvalue });
   };
 
   const handledeletetenure = (key, index) => {
-    const updatedvalue = { ...data };
+    const updatedvalue = data;
     updatedvalue.prices[key].splice(index, 1);
-    setdata({ ...data, updatedvalue });
+    setdata({ ...data, ...updatedvalue });
   };
 
   const handleaddcity = (value) => {
@@ -40,9 +40,9 @@ function Rentpricecomp({ data, setdata }) {
   };
 
   const handledeletecity = (key) => {
-    const updatedvalue = { ...data };
+    const updatedvalue = data;
     delete updatedvalue.prices[key];
-    setdata({ ...data, updatedvalue });
+    setdata({ ...data, ...updatedvalue });
   };
 
   return (
@@ -50,11 +50,11 @@ function Rentpricecomp({ data, setdata }) {
       <h2 className="p-5 font-bold text-center">Rent price</h2>
       <div className="mt-5">
         {Object.entries(data.prices).map(([key, value], i) => (
-          <div key={i} className=" mt-5">
+          <div key={i} className="mt-5 ">
             <div className="font-semibold text-xl">location : {key}</div>
-            <div className="space-y-3 mt-2">
+            <div className="space-y-3 mt-2 overflow-y-scroll">
               {value.map((item, j) => (
-                <div key={j} className="flex gap-2 items-end">
+                <div key={j} className="flex gap-2 items-end min-w-[450px]">
                   <Standardinputfield
                     titlename="Time"
                     type="number"
@@ -62,16 +62,16 @@ function Rentpricecomp({ data, setdata }) {
                     value={item.time}
                     onchange={(e) =>
                       setdata((pre) => {
-                        const updatedvalue = { ...pre };
+                        const updatedvalue = pre;
                         updatedvalue.prices[key][j].time = e.target.value;
-                        return { ...pre, updatedvalue };
+                        return { ...pre, ...updatedvalue };
                       })
                     }
                     clear={() =>
                       setdata((pre) => {
-                        const updatedvalue = { ...pre };
+                        const updatedvalue = pre;
                         updatedvalue.prices[key][j].time = "";
-                        return { ...pre, updatedvalue };
+                        return { ...pre, ...updatedvalue };
                       })
                     }
                   />
@@ -80,9 +80,9 @@ function Rentpricecomp({ data, setdata }) {
                     state={item.type}
                     onchange={(value) =>
                       setdata((pre) => {
-                        const updatedvalue = { ...pre };
+                        const updatedvalue = pre;
                         updatedvalue.prices[key][j].type = value;
-                        return { ...pre, updatedvalue };
+                        return { ...pre, ...updatedvalue };
                       })
                     }
                     options={[
@@ -103,16 +103,16 @@ function Rentpricecomp({ data, setdata }) {
                     value={item.price}
                     onchange={(e) =>
                       setdata((pre) => {
-                        const updatedvalue = { ...pre };
+                        const updatedvalue = pre;
                         updatedvalue.prices[key][j].price = e.target.value;
-                        return { ...pre, updatedvalue };
+                        return { ...pre, ...updatedvalue };
                       })
                     }
                     clear={() =>
                       setdata((pre) => {
-                        const updatedvalue = { ...pre };
+                        const updatedvalue = pre;
                         updatedvalue.prices[key][j].price = "";
-                        return { ...pre, updatedvalue };
+                        return { ...pre, ...updatedvalue };
                       })
                     }
                   />

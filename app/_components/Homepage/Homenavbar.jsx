@@ -27,7 +27,7 @@ export default function Homenavbar({ userdata, token }) {
       <Image
         className="h-[30px] w-auto md:h-[40px] "
         src="/logo&ui/3dlogo.png"
-        alt="adorefurnix logo"
+        alt="Rentbean logo"
         height={50}
         width={200}
         

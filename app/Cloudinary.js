@@ -6,7 +6,7 @@ cloudinary.config({
 });
 
 // Helper function to upload a single image
-export const uploadImage = (buffer, folder = "Adorefurnix") => {
+export const uploadImage = (buffer, folder = "Rentbean") => {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       { folder: folder, secure: true },
@@ -23,7 +23,7 @@ export const uploadImage = (buffer, folder = "Adorefurnix") => {
 };
 
 // delete image from url
-export const Deleteiamgefromurl = (url, folder = "Adorefurnix") => {
+export const Deleteiamgefromurl = (url, folder = "Rentbean") => {
   const parts = url.split("/");
   const fileName = parts[parts.length - 1];
   const publicId = fileName.split(".")[0];

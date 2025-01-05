@@ -11,7 +11,7 @@ const page = () => {
       >
         <header className="entry-header mb-6">
           <h1 className="entry-title text-3xl font-bold mb-4" itemProp="headline">
-            Terms & Conditions – Adorefurnix
+            Terms & Conditions – Rentbean
           </h1>
         </header>
 
@@ -25,13 +25,13 @@ const page = () => {
           </p>
 
           <p className="mb-4">
-            Note: In these Terms, references to ‘you’, ‘your’, ‘user’ shall mean the end user accessing the website, and ‘we’, ‘us’, ‘our’, ‘Company’ shall mean Adorefurnix.
+            Note: In these Terms, references to ‘you’, ‘your’, ‘user’ shall mean the end user accessing the website, and ‘we’, ‘us’, ‘our’, ‘Company’ shall mean Rentbean.
           </p>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-2">General</h2>
             <p className="mb-4">
-              The website Adorefurnix.com is an e-commerce portal owned and operated by the Company. Use of the website is subject to your acceptance without any modifications to all the terms and conditions made by the Company, at its sole discretion and stated on the website.
+              The website Rentbean.in is an e-commerce portal owned and operated by the Company. Use of the website is subject to your acceptance without any modifications to all the terms and conditions made by the Company, at its sole discretion and stated on the website.
             </p>
             <p className=" font-semibold mb-4">
               User will agree to the terms and privacy policy of the Company by:
@@ -78,7 +78,7 @@ const page = () => {
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Newsletters and Communication</h2>
             <p className="mb-4">
-              You agree to receive communication and newsletters via SMS and emails from Adorefurnix. To unsubscribe, kindly follow the procedure set forth on the website.
+              You agree to receive communication and newsletters via SMS and emails from Rentbean. To unsubscribe, kindly follow the procedure set forth on the website.
             </p>
           </section>
 
@@ -108,7 +108,7 @@ const page = () => {
               What is the estimated time for delivery?
             </h2>
             <p className="mb-4">
-              Adorefurnix aims to dispatch your products within 2-5 days; however, in exceptional situations such as transport strikes, riots, or natural calamities, delivery times may exceed the promised timeline. In such cases, updates will be provided, and your products will be prioritized for delivery as soon as possible. Your cooperation in such situations is appreciated.
+              Rentbean aims to dispatch your products within 2-5 days; however, in exceptional situations such as transport strikes, riots, or natural calamities, delivery times may exceed the promised timeline. In such cases, updates will be provided, and your products will be prioritized for delivery as soon as possible. Your cooperation in such situations is appreciated.
             </p>
             <p className="mb-4">
               Custom products manufactured from scratch may have extended delivery times.
@@ -145,7 +145,7 @@ const page = () => {
               <li className="mb-2">Hardwood products may expand in summer. This is normal and will return to form after the season.</li>
             </ol>
             <p className="mb-4">
-              After delivery and inspection, Adorefurnix is not liable for damages due to mishandling. Self-damaged issues reported post-delivery will not be covered by the company.
+              After delivery and inspection, Rentbean is not liable for damages due to mishandling. Self-damaged issues reported post-delivery will not be covered by the company.
             </p>
           </section>
 
@@ -154,7 +154,7 @@ const page = () => {
               Will the product be exactly as shown on the Website?
             </h2>
             <p className="mb-4">
-              Adorefurnix strives to match products to website descriptions, but natural material variations may occur. The final product might not match the exact appearance or finish shown.
+              Rentbean strives to match products to website descriptions, but natural material variations may occur. The final product might not match the exact appearance or finish shown.
             </p>
           </section>
 

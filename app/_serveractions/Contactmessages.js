@@ -1,5 +1,5 @@
 "use server";
-import { Adminverification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { getcollection } from "../Mongodb";
 
 export async function Sendmessage(data) {
@@ -28,8 +28,8 @@ export async function Sendmessage(data) {
 export async function Getmessage(type) {
   try {
     const { contactmessages } = await getcollection();
-    const tokenres = await Adminverification();
-    if (!tokenres) return { status: 400, message: "Invalid user" };
+    const tokenres = await Verification("Contact-Message");
+    if (!tokenres?.verified) return { status: 400, message: "Invalid user" };
 
     let messages;
     switch (type) {
@@ -56,8 +56,8 @@ export async function Getmessage(type) {
 export const changestatus = async (documentId, viewed) => {
   try {
     const { contactmessages, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
-    if (!tokenres) return { status: 400, message: "Invalid user" };
+    const tokenres = await Verification("Contact-Message");
+    if (!tokenres?.verified) return { status: 400, message: "Invalid user" };
 
     const filter = { _id: new ObjectId(documentId) };
 
@@ -74,8 +74,8 @@ export const changestatus = async (documentId, viewed) => {
 export const deletemessage = async (documentId) => {
   try {
     const { contactmessages, ObjectId } = await getcollection();
-    const tokenres = await Adminverification();
-    if (!tokenres) return { status: 400, message: "Invalid user" };
+    const tokenres = await Verification("Contact-Message");
+    if (!tokenres?.verified) return { status: 400, message: "Invalid user" };
 
     const filter = { _id: new ObjectId(documentId) };
 

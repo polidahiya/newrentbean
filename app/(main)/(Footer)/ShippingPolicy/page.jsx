@@ -11,12 +11,12 @@ const ShippingPolicy = () => {
             <article className="prose lg:prose-xl mx-auto">
               <header className="mb-6">
                 <h1 className="text-3xl font-bold mb-4">
-                  Shipping Policy - Adorefurnix
+                  Shipping Policy - Rentbean
                 </h1>
               </header>
               <div className="entry-content">
                 <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                  Adorefurnix is committed to delivering the customer&apos;s order
+                  Rentbean is committed to delivering the customer&apos;s order
                   accurately, in good condition, and always on time as promised
                   by the website.
                 </p>

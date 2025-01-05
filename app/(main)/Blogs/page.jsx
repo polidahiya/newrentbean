@@ -46,7 +46,7 @@ async function page() {
                   Last updated: {blog?.date}
                 </p>
                 <p className="absolute top-3 right-3 font-black bg-theme bg-clip-text text-transparent w-fit">
-                  AdoreFurnix
+                  Rentbean
                 </p>
               </div>
             </Link>

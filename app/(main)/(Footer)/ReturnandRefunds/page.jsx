@@ -10,12 +10,12 @@ const page = () => {
             <article className="prose lg:prose-xl mx-auto">
               <header className="mb-6">
                 <h1 className="text-3xl font-bold mb-4">
-                  Return and Refunds {"–"} Adorefurnix
+                  Return and Refunds {"–"} Rentbean
                 </h1>
               </header>
               <div className="entry-content">
                 <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                  How to cancel an order placed on Adorefurnix?
+                  How to cancel an order placed on Rentbean?
                 </p>
                 <ul className="list-disc list-inside mb-6 pl-5 space-y-2 text-gray-700">
                   <li>
@@ -53,7 +53,7 @@ const page = () => {
                   Return & Refund:
                 </p>
                 <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                  At Adorefurnix, we take great care in delivering high-quality
+                  At Rentbean, we take great care in delivering high-quality
                   furniture to our valued customers. Our goal is to ensure your
                   complete satisfaction with your purchase.
                 </p>

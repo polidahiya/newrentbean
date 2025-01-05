@@ -5,17 +5,18 @@ import bcrypt from "bcrypt";
 import { logintime } from "@/app/commondata";
 import { getcollection } from "@/app/Mongodb";
 
-const generateToken = (data, userdata) => {
-  const token = jwt.sign(data, process.env.jwt_secret, {
+const generateToken = async (userdata) => {
+  const token = jwt.sign(userdata, process.env.jwt_secret, {
     expiresIn: logintime,
   });
 
-  cookies().set("token", token, {
+  const cookieStore = await cookies();
+  cookieStore.set("token", token, {
     maxAge: logintime,
     httpOnly: true,
     secure: true,
   });
-  cookies().set("userdata", JSON.stringify(userdata), {
+  cookieStore.set("userdata", JSON.stringify(userdata), {
     maxAge: logintime,
   });
 };
@@ -44,15 +45,11 @@ export const login = async (userdata) => {
       return { status: 400, message: "Wrong password" };
     }
 
-    generateToken(
-      { email: userdata.email },
-      {
-        username: user.username,
-        email: user.email,
-        phonenum: user.phonenum,
-        address: user.address,
-      }
-    );
+    await generateToken({
+      username: user?.name,
+      email: user?.email,
+      usertype: user?.usertype,
+    });
 
     return { status: 200, message: "Login successful" };
   } catch (error) {
@@ -71,21 +68,19 @@ export const signup = async (userdata) => {
 
     // Hash password
     userdata.password = await bcrypt.hash(userdata.password, 12);
+    userdata.usertype = "user";
 
     const insertedUser = await userscollection.insertOne(userdata);
+
     if (!insertedUser) {
       return { status: 500, message: "Failed to create user" };
     }
 
-    generateToken(
-      { email: userdata.email },
-      {
-        username: userdata.username,
-        email: userdata.email,
-        phonenum: userdata.phonenum,
-        address: userdata.address,
-      }
-    );
+    await generateToken({
+      username: userdata.name,
+      email: userdata.email,
+      usertype: userdata.usertype,
+    });
 
     return { status: 200, message: "Signup successful" };
   } catch (error) {
@@ -96,14 +91,14 @@ export const signup = async (userdata) => {
 
 export const logout = async () => {
   try {
-    const cookieStore = cookies();
-    cookieStore?.delete("token");
-    cookieStore?.delete("next-auth.csrf-token");
-    cookieStore?.delete("userdata");
-    cookieStore?.delete("cart");
+    const cookieStore = await cookies();
+    ["token", "next-auth.csrf-token", "userdata", "cart"].forEach((name) =>
+      cookieStore.delete(name)
+    );
+
     return { status: 200, message: "Logout successfully" };
   } catch (error) {
-    console.error(error);
+    console.error("Logout Error:", error);
     return { status: 500, message: "Server error" };
   }
 };

@@ -30,7 +30,7 @@ function Page() {
   };
   const [data, setdata] = useState(initialState);
   const [deletedimages, setdeletedimages] = useState([]);
-  const [showeditform, setshoweditform] = useState(true);
+  const [showeditform, setshoweditform] = useState(false);
   const resetState = () => {
     setdata(initialState);
   };
@@ -46,6 +46,7 @@ function Page() {
               resetState={resetState}
               deletedimages={deletedimages}
               setdeletedimages={setdeletedimages}
+              setshoweditform={setshoweditform}
             />
           </div>
           <button
@@ -57,7 +58,11 @@ function Page() {
         </div>
       )}
 
-      {/* <Showproducts setdata={setdata} setdeletedimages={setdeletedimages} /> */}
+      <Showproducts
+        setdata={setdata}
+        setdeletedimages={setdeletedimages}
+        setshoweditform={setshoweditform}
+      />
     </div>
   );
 }

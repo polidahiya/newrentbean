@@ -103,7 +103,7 @@ export const Sendpassresetmail = async (email) => {
           <div class="header">
             <img
               src="${domain}/logo&ui/3dlogo.png"
-              alt="Adorefurnix Logo"
+              alt="Rentbean Logo"
             />
           </div>
   
@@ -146,7 +146,7 @@ export const Sendpassresetmail = async (email) => {
               Have any questions?
               <a href="${domain}/Contact">Contact us</a>
             </p>
-            <p>© 2024 Adorefurnix.com. All rights reserved.</p>
+            <p>© 2024 Rentbean.in. All rights reserved.</p>
           </div>
         </div>
       </body>

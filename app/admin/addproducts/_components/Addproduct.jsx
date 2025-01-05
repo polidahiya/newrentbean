@@ -17,36 +17,10 @@ function Addandupdateproduct({
   resetState,
   deletedimages,
   setdeletedimages,
+  setshoweditform,
 }) {
   const { setmessagefn } = AppContextfn();
   const [loading, setloading] = useState(false);
-
-  // const uploadproductfn = async () => {
-  //   if (uploadloading) {
-  //     return;
-  //   }
-  //   setuploadloading(true);
-
-  //   const formData = new FormData();
-  //   addproduct.colorpalets.forEach((item, i) => {
-  //     item.images.forEach((image, j) => {
-  //       if (image instanceof File) {
-  //         const imagename = "image" + i + j;
-  //         formData.append(imagename, image);
-  //         item.images[j] = imagename;
-  //       }
-  //     });
-  //   });
-
-  //   const res = await Addproduct(addproduct, formData, deletedimages);
-
-  //   if (res?.status == 200) {
-  //     resetfields();
-  //     setupdateproduct(false);
-  //   }
-  //   setmessagefn(res?.message);
-  //   setuploadloading(false);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,15 +28,13 @@ function Addandupdateproduct({
 
     const formData = new FormData();
 
-    // images
-    data?.variants?.forEach((variant, i) => {
-      variant.images.forEach((image, j) => {
-        if (image instanceof File) {
-          const imagename = "image" + i + j;
-          formData.append(imagename, image);
-          data.variants[i].images[j] = imagename;
-        }
-      });
+    // Process images
+    data.images.forEach((image, i) => {
+      if (image instanceof File) {
+        const imagename = "image-" + i;
+        formData.append(imagename, image);
+        data.images[i] = imagename;
+      }
     });
 
     try {
@@ -71,6 +43,7 @@ function Addandupdateproduct({
       resetState();
       setloading(false);
       setdeletedimages([]);
+      setshoweditform(false);
     } catch (error) {
       resetState();
       setloading(false);
@@ -79,20 +52,40 @@ function Addandupdateproduct({
     }
   };
 
+  const handleClearField = (field) =>
+    setdata((prev) => ({
+      ...prev,
+      [field]: "",
+    }));
+
+  const handleChange = (field, value) =>
+    setdata((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+  const handleDropdownChange = (value) =>
+    setdata((prev) => ({ ...prev, availablefor: value }));
+
+  const handleToggle = (field, value) =>
+    setdata((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
   return (
-    <form onSubmit={handleSubmit} className="p-6 bg-white space-y-6 ">
+    <form onSubmit={handleSubmit} className="p-2 md:p-6 bg-white space-y-6">
       <p className="text-center font-bold font-serif text-2xl my-5">
         Add Product
       </p>
+
       <Selectcategory data={data} setdata={setdata} />
 
-      {/* available for */}
+      {/* Available for */}
       <Dropdownmenu
-        title={"Available for"}
+        title="Available for"
         state={data.availablefor}
-        onchange={(value) =>
-          setdata((pre) => ({ ...pre, availablefor: value }))
-        }
+        onchange={handleDropdownChange}
         options={["Rent", "Buy", "Both"]}
       />
 
@@ -100,159 +93,139 @@ function Addandupdateproduct({
       <Standardinputfield
         titlename="Product Name"
         value={data.name}
-        onchange={(e) => setdata((pre) => ({ ...pre, name: e.target.value }))}
-        clear={() => setdata((pre) => ({ ...pre, name: "" }))}
+        onchange={(e) => handleChange("name", e.target.value)}
+        clear={() => handleClearField("name")}
       />
 
-      {/* sku id */}
+      {/* SKU ID */}
       <Standardinputfield
         titlename="SKU ID"
         value={data.sku}
-        onchange={(e) => setdata((pre) => ({ ...pre, sku: e.target.value }))}
-        clear={() => setdata((pre) => ({ ...pre, sku: "" }))}
+        onchange={(e) => handleChange("sku", e.target.value)}
+        clear={() => handleClearField("sku")}
       />
 
-      {/* max quantity */}
+      {/* Max Quantity */}
       <Standardinputfield
         titlename="Max Quantity"
         type="number"
-        isRequired={true}
+        isRequired
         value={data.maxquantity}
-        onchange={(e) =>
-          setdata((pre) => ({ ...pre, maxquantity: e.target.value }))
-        }
-        clear={() => setdata((pre) => ({ ...pre, maxquantity: "" }))}
+        onchange={(e) => handleChange("maxquantity", e.target.value)}
+        clear={() => handleClearField("maxquantity")}
       />
-      {/* security deposit*/}
+
+      {/* Security Deposit */}
       <Standardinputfield
-        titlename="Security deposit"
+        titlename="Security Deposit"
         type="number"
-        isRequired={true}
+        isRequired
         value={data.securitydeposit}
-        onchange={(e) =>
-          setdata((pre) => ({ ...pre, securitydeposit: e.target.value }))
-        }
-        clear={() => setdata((pre) => ({ ...pre, securitydeposit: "" }))}
+        onchange={(e) => handleChange("securitydeposit", e.target.value)}
+        clear={() => handleClearField("securitydeposit")}
       />
+
       <Addimagescomp
         data={data}
         setstate={setdata}
         setdeletedimages={setdeletedimages}
       />
-      {/* rent price */}
-      {(data?.availablefor == "Rent" || data?.availablefor == "Both") && (
+
+      {/* Rent Price */}
+      {(data.availablefor === "Rent" || data.availablefor === "Both") && (
         <Rentpricecomp data={data} setdata={setdata} />
       )}
 
-      {/* buy price */}
-      {(data?.availablefor == "Buy" || data?.availablefor == "Both") && (
+      {/* Buy Price */}
+      {(data.availablefor === "Buy" || data.availablefor === "Both") && (
         <Standardinputfield
           titlename="Buy Price"
           type="number"
-          isRequired={true}
+          isRequired
           value={data.buyprice}
-          onchange={(e) =>
-            setdata((pre) => ({ ...pre, buyprice: e.target.value }))
-          }
-          clear={() => setdata((pre) => ({ ...pre, buyprice: "" }))}
+          onchange={(e) => handleChange("buyprice", e.target.value)}
+          clear={() => handleClearField("buyprice")}
         />
       )}
 
-      {/* description */}
+      {/* Description */}
       <Multiplevaluesfield
         state={data.desc}
         statename="desc"
         setState={setdata}
-        placeholder={""}
-        title={"Descriptions"}
+        placeholder=""
+        title="Descriptions"
       />
 
-      {/* seotitle */}
+      {/* SEO Fields */}
       <Standardinputfield
         titlename="SeoTitle"
-        isRequired={true}
+        isRequired
         value={data.seotitle}
-        onchange={(e) =>
-          setdata((pre) => ({ ...pre, seotitle: e.target.value }))
-        }
-        clear={() => setdata((pre) => ({ ...pre, seotitle: "" }))}
+        onchange={(e) => handleChange("seotitle", e.target.value)}
+        clear={() => handleClearField("seotitle")}
       />
-
-      {/* seodescription */}
       <Standardinputfield
         titlename="SeoDescription"
-        isRequired={true}
+        isRequired
         value={data.seodescription}
-        onchange={(e) =>
-          setdata((pre) => ({ ...pre, seodescription: e.target.value }))
-        }
-        clear={() => setdata((pre) => ({ ...pre, seodescription: "" }))}
+        onchange={(e) => handleChange("seodescription", e.target.value)}
+        clear={() => handleClearField("seodescription")}
       />
-
-      {/* seokeywords */}
       <Standardinputfield
         titlename="SeoKeywords"
-        isRequired={true}
+        isRequired
         value={data.seokeywords}
-        onchange={(e) =>
-          setdata((pre) => ({ ...pre, seokeywords: e.target.value }))
-        }
-        clear={() => setdata((pre) => ({ ...pre, seokeywords: "" }))}
+        onchange={(e) => handleChange("seokeywords", e.target.value)}
+        clear={() => handleClearField("seokeywords")}
       />
 
-      {/* available */}
+      {/* Availability */}
       <Togglebuttons
         titlename="Available?"
         value={data.available}
-        positive={() => setdata((prev) => ({ ...prev, available: true }))}
-        negative={() => setdata((prev) => ({ ...prev, available: false }))}
+        positive={() => handleToggle("available", true)}
+        negative={() => handleToggle("available", false)}
         positiveText="Yes"
         negativeText="No"
       />
 
-      {/* trash */}
+      {/* Trash */}
       <Togglebuttons
-        titlename="Move to trash?"
+        titlename="Move to Trash?"
         value={data.trash}
-        positive={() => setdata((prev) => ({ ...prev, trash: true }))}
-        negative={() => setdata((prev) => ({ ...prev, trash: false }))}
+        positive={() => handleToggle("trash", true)}
+        negative={() => handleToggle("trash", false)}
         positiveText="Yes"
         negativeText="No"
       />
 
-      {/* add or update product button */}
+      {/* Buttons */}
       <div className="flex items-center justify-center gap-5">
         <button
           type="submit"
-          className="flex items-center justify-center gap-2  px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
         >
           {loading && (
-            <span
-              className={`block h-5 aspect-square border-t-2 border-b-2 border-white rounded-full animate-spin`}
-            ></span>
+            <span className="block h-5 aspect-square border-t-2 border-b-2 border-white rounded-full animate-spin"></span>
           )}
           {data._id ? "Update Product" : "Add Product"}
         </button>
         {data._id && (
           <button
-            className="flex items-center justify-center gap-2  px-4 py-2  border  rounded-md"
+            className="flex items-center justify-center gap-2 px-4 py-2 border rounded-md"
             type="button"
             onClick={() => {
               resetState();
               setdeletedimages([]);
+              setshoweditform(false);
             }}
           >
-            Cancle Update
+            Cancel Update
           </button>
         )}
       </div>
     </form>
-  );
-}
-
-function Loadingcomp() {
-  return (
-    <div className="uploadloader h-[20px] aspect-square rounded-full border-t-2 border-b-2 border-solid border-white"></div>
   );
 }
 

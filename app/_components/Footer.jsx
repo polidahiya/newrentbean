@@ -91,7 +91,7 @@ function Footer() {
       <section className="flex items-center justify-between flex-col-reverse lg:flex-row">
         <p className=" text-[12px] flex-1 mt-[10px] lg:mt-0">
           &copy; {new Date().getFullYear()}{" "}
-          <strong className="font-bold">Adorefurnix.com</strong>. All rights
+          <strong className="font-bold">Rentbean.com</strong>. All rights
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-[20px] text-[12px]">

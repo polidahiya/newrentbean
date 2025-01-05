@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import Footer from "../_components/Footer";
 
 export const metadata = {
-  title: "Adorefurnix",
+  title: "Rentbean",
   description: "Get solid wood furniture in Delhi and NCR",
 };
 

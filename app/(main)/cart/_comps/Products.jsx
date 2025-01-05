@@ -70,7 +70,7 @@ export default function Products({ item, i }) {
           <p className="font-bold text-gray-500">
             By:{" "}
             <span className="bg-theme bg-clip-text text-transparent">
-              AdoreFurnix
+              Rentbean
             </span>
           </p>
           <p className="font-bold flex gap-[10px] items-baseline mt-[10px]">

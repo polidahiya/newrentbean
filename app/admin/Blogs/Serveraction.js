@@ -14,7 +14,7 @@ export const Addblogaction = async (formdata, editmode, deletedimages) => {
 
     if (editmode.mode) {
       deletedimages.forEach((image) =>
-        Deleteiamgefromurl(image, "Adorefurnix/blog")
+        Deleteiamgefromurl(image, "Rentbean/blog")
       );
     }
 
@@ -29,7 +29,7 @@ export const Addblogaction = async (formdata, editmode, deletedimages) => {
         if (item instanceof File) {
           const arrayBuffer = await item.arrayBuffer();
           const buffer = Buffer.from(arrayBuffer);
-          const res = await uploadImage(buffer, "Adorefurnix/blog");
+          const res = await uploadImage(buffer, "Rentbean/blog");
           formDataArray.push({
             index: parseInt(index),
             data: { type: "image", content: res.url },
@@ -82,7 +82,7 @@ export const Deleteblog = async (blog) => {
     // delete images
     blog?.blogdata.forEach((blog) => {
       if (blog?.type == "image")
-        Deleteiamgefromurl(blog?.content, "Adorefurnix/blog");
+        Deleteiamgefromurl(blog?.content, "Rentbean/blog");
     });
 
     await blogscollection.findOneAndDelete({

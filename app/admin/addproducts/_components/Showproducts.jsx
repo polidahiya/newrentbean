@@ -6,18 +6,19 @@ import { Deleteproduct } from "../Serveraction";
 import { AppContextfn } from "@/app/Context";
 import Componentloading from "@/app/_components/Componentloading";
 import Productcard from "@/app/_components/Productcard";
-import { MdUpload } from "react-icons/md";
 import { IoSearchOutline } from "react-icons/io5";
+import { FaEdit } from "react-icons/fa";
+import { IoIosCopy } from "react-icons/io";
 
-function Showproducts() {
-  const { setaddproduct, setupdateproduct, setdeletedimages, setmessagefn } =
-    AppContextfn();
+function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
+  const { setmessagefn, setshowdialog } = AppContextfn();
 
   const [categorystate, setcategorystate] = useState({
-    category: "Living Room",
-    subcat: "Sofa sets",
+    category: "Fitness-&-Gym",
+    subcat: "Cardio-Machines",
     id: "",
   });
+
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(false);
 
@@ -49,14 +50,8 @@ function Showproducts() {
     setloading(false);
   };
 
-  if (loading) return <Componentloading />;
-
   return (
     <div className="px-5">
-      <hr />
-      <h2 className="text-center mt-[30px] text-[20px] font-bold">
-        Show Products
-      </h2>
       {/* search id way */}
       <div className="flex items-center h-10 border border-slate-300 rounded-[5px] p-1 mt-5">
         <input
@@ -68,12 +63,12 @@ function Showproducts() {
             setcategorystate((pre) => ({ ...pre, id: e.target.value }))
           }
           onKeyDown={(e) => {
-            if (e.key == "Enter") showproducts(true);
+            if (e.key == "Enter") showproducts("id");
           }}
         />
         <button
           className="flex items-center gap-2 px-5 h-full bg-theme text-white border border-slate-300 rounded-[5px] ml-auto"
-          onClick={() => showproducts(true)}
+          onClick={() => showproducts("id")}
         >
           <IoSearchOutline />
           <span className="hidden md:inline-block">Search</span>
@@ -117,56 +112,91 @@ function Showproducts() {
       <center>
         <button
           className="bg-slate-300 rounded-md p-[5px] px-5 my-5"
-          onClick={() => showproducts(false)}
+          onClick={() => showproducts("category")}
         >
           Show Products
         </button>
       </center>
+
       {/* products */}
-      <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px] p-3 md:p-8">
-        {products.map((item, i) => {
-          return (
-            <div
-              key={i + new Date().getMilliseconds() + Math.random()} // More stable key
-              className="relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md rounded-[10px]  bg-white"
-            >
-              <Productcard
-                index={i}
-                id={item._id}
-                image={item.colorpalets[0]?.images[0]}
-                {...item}
-              />
-              {/* delete product button */}
-              <button
-                className="absolute top-3 right-3 aspect-square w-7 bg-red-600 text-white rounded-full"
-                onClick={async () => {
-                  const res = await Deleteproduct(item.colorpalets, item._id);
-                  setproducts(
-                    products.filter((product) => item._id !== product._id)
-                  );
-                  if (res?.message) {
-                    setmessagefn(res.message);
-                  }
-                }}
+      {!loading ? (
+        <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px] p-3 md:p-8">
+          {products.map((item, i) => {
+            return (
+              <div
+                key={i}
+                className="relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md bg-white"
               >
-                X
-              </button>
-              {/* update product button */}
-              <button
-                className="absolute top-[50px] right-3 flex items-center gap-1 bg-green-600 p-[5px] px-5 rounded-full text-white"
-                onClick={() => {
-                  setaddproduct(item);
-                  setdeletedimages([]);
-                  setupdateproduct(true);
-                  window.scrollTo(0, 0);
-                }}
-              >
-                <MdUpload /> Update
-              </button>
-            </div>
-          );
-        })}
-      </div>
+                <Productcard
+                  index={i}
+                  id={item._id}
+                  image={item.images[0]}
+                  {...item}
+                />
+                <div className="absolute top-0 right-0 flex flex-col w-12 gap-2 p-1">
+                  {/* delete product button */}
+                  <button
+                    className="w-full aspect-square bg-red-600 text-white rounded-full"
+                    onClick={async () => {
+                      setshowdialog({
+                        show: true,
+                        title: "Delete?",
+                        continue: async () => {
+                          const res = await Deleteproduct(
+                            item.colorpalets,
+                            item._id
+                          );
+                          if (res.status == 200)
+                            setproducts(
+                              products.filter(
+                                (product) => item._id !== product._id
+                              )
+                            );
+
+                          setmessagefn(res?.message);
+                        },
+                        type: false,
+                      });
+                    }}
+                  >
+                    X
+                  </button>
+
+                  {/* update product button */}
+                  <button
+                    className="w-full aspect-square flex items-center justify-center bg-green-600 rounded-full text-white"
+                    onClick={() => {
+                      setdata(item);
+                      setdeletedimages([]);
+                      setshoweditform(true);
+                    }}
+                  >
+                    <FaEdit className="inline-block" />
+                  </button>
+
+                  {/* copy product */}
+                  <button
+                    className="w-full aspect-square flex items-center justify-center bg-blue-500 rounded-full text-white"
+                    onClick={() => {
+                      setdata(() => {
+                        const updateddata = item;
+                        delete updateddata._id;
+                        return updateddata;
+                      });
+                      setdeletedimages([]);
+                      setshoweditform(true);
+                    }}
+                  >
+                    <IoIosCopy className="inline-block" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <Componentloading />
+      )}
     </div>
   );
 }

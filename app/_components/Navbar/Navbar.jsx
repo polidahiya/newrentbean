@@ -54,12 +54,12 @@ function Navbar({ params, productsname, token, userdata }) {
           {/* logo */}
           <Link
             href="/"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[30px] md:h-full md:static md:flex  md:translate-x-0 md:translate-y-0  md:w-fit "
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[30px] md:h-full md:static md:flex  md:translate-x-0 md:translate-y-0  md:w-fit p-1"
           >
             <Image
               className="w-auto h-full"
               src="/logo&ui/3dlogo.png"
-              alt="adorefurnix logo"
+              alt="Rentbean logo"
               height={50}
               width={200}
             ></Image>
@@ -78,7 +78,6 @@ function Navbar({ params, productsname, token, userdata }) {
         <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
           {/* cart */}
           <Cartlink />
-
           {/* loged in user menu */}
           <Logedinusermenu userdata={userdata} token={token} />
         </div>

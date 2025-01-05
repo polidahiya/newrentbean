@@ -200,10 +200,10 @@ export const generateMetadata = async ({ params, searchParams }) => {
         filteredProduct?.colorpalets?.[colorIndex]?.images?.[0] || null;
 
       return {
-        title: `${filteredProduct?.name} | Adorefurnix`,
+        title: `${filteredProduct?.name} | Rentbean`,
         description:
           filteredProduct?.desc?.[0] ||
-          "Check out this amazing product at Adorefurnix!",
+          "Check out this amazing product at Rentbean!",
         keywords: filteredProduct?.keywords || "",
         openGraph: {
           images: ogImage,
@@ -251,9 +251,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
 
   // Default fallback metadata
   return {
-    title: "Adorefurnix | Best Furniture & Home Decor Online",
+    title: "Rentbean | Best Furniture & Home Decor Online",
     description:
-      "Discover the best furniture and home decor at Adorefurnix. Shop now for exclusive deals!",
+      "Discover the best furniture and home decor at Rentbean. Shop now for exclusive deals!",
     openGraph: {
       images: `${domain}/minlogo.png`,
     },

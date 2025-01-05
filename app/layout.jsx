@@ -9,14 +9,14 @@ import Link from "next/link";
 import Googleanayltics from "./_components/Googleanayltics";
 import { cities } from "./commondata";
 import React from "react";
+import Confirmdialogbox from "./_components/Confirmdialogbox";
 
 export const metadata = {
-  title:
-    "Adorefurnix - Best Solid Wood Furniture in India",
+  title: "Rentbean - Best Solid Wood Furniture in India",
   description:
     "Discover the best solid wood furniture in India. Shop Sheesham wood furniture, dining tables, sofas, and more online at affordable prices.",
   keywords:
-    "Wholesale solid wood furniture, Solid wood furniture online, Best solid wood furniture, Solid wood furniture near me, Solid wood furniture price, Cheap solid wood furniture, Sheesham wood furniture, Furniture market near me, Kirti Nagar furniture market, Bedroom furniture, Dining table, Sofa set, Adorefurnix furniture",
+    "Wholesale solid wood furniture, Solid wood furniture online, Best solid wood furniture, Solid wood furniture near me, Solid wood furniture price, Cheap solid wood furniture, Sheesham wood furniture, Furniture market near me, Kirti Nagar furniture market, Bedroom furniture, Dining table, Sofa set, Rentbean furniture",
   openGraph: {
     images: `${domain}/minlogo.png`,
   },
@@ -45,12 +45,11 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "AdoreFurnix",
-              url: "https://adorefurnix.com",
+              name: "Rentbean",
+              url: "https://Rentbean.in",
               potentialAction: {
                 "@type": "SearchAction",
-                target:
-                  "https://adorefurnix.com/Search?query={search_term_string}",
+                target: "https://Rentbean.in/Search?query={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),
@@ -60,6 +59,7 @@ export default function RootLayout({ children }) {
       <Appwrapper>
         <body className="antialiased">
           <Message />
+          <Confirmdialogbox />
           <div>{children}</div>
           {/* <Logininstant /> */}
           <div className="fixed bottom-5 right-5 md:bottom-10 md:right-10 flex flex-col items-end gap-2 z-30">
@@ -189,7 +189,7 @@ const Seopara = () => (
       <p>
         Whether shopping online or visiting physical stores, finding&nbsp;
         <strong>quality furniture near me</strong> is a priority for many.
-        Reputable stores like <strong>Adorefurnix</strong> ,{" "}
+        Reputable stores like <strong>Rentbean</strong> ,{" "}
         <strong>Pepperfry</strong> and markets such as&nbsp;
         <strong>Kirti Nagar</strong> are popular for their diverse range
         of&nbsp;
@@ -207,15 +207,15 @@ const Seopara = () => (
     </section>
 
     <section>
-      <h2>Adorefurnix Furniture - Your Go-To Furniture Website</h2>
+      <h2>Rentbean Furniture - Your Go-To Furniture Website</h2>
       <p>
-        <strong>Adorefurnix</strong> is a leading online furniture store that
+        <strong>Rentbean</strong> is a leading online furniture store that
         offers a wide range of&nbsp;
         <strong>solid wood furniture</strong>, including&nbsp;
         <strong>bedroom furniture</strong>,&nbsp;
         <strong>dining tables</strong>,&nbsp;
         <strong>sofa sets</strong>, and more. Whether you&apos;re looking for
-        modern designs or traditional options, <strong>Adorefurnix</strong> has
+        modern designs or traditional options, <strong>Rentbean</strong> has
         something to suit every taste and budget.
       </p>
     </section>
@@ -223,7 +223,7 @@ const Seopara = () => (
     <p>
       For more information, visit the&nbsp;
       <strong>best furniture website</strong>
-      &nbsp;at <a href="https://adorefurnix.com">Adorefurnix</a>.
+      &nbsp;at <a href="https://Rentbean.in">Rentbean</a>.
     </p>
   </div>
 );
