@@ -55,14 +55,14 @@ async function page({ params, searchParams }) {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row p-[10px] gap-[10px]">
-        <Secondnav
+      <div className="p-2 md:px-10">
+        {/* <Secondnav
           category={category}
           subcat={subcat}
           searchParams={searchParams}
           lengthofproducts={lengthofproducts}
-        />
-        <div className="w-full lg:w-[calc(100%-250px)]">
+        /> */}
+        <div className="w-full">
           <Subcategories category={category} subcat={subcat} />
           <Appliedfilters
             category={category}
@@ -86,19 +86,17 @@ async function page({ params, searchParams }) {
 }
 
 const ProductGrid = ({ products }) => (
-  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px]">
-    {products.map((item, i) =>
-      item.colorpalets.map((_, j) => (
-        <Productcard
-          key={i + new Date().getMilliseconds() + Math.random()} // More stable key
-          index={i}
-          id={item._id}
-          link={`/${item?.category}/${item?.subcat}/${item._id}?color=${j}`}
-          image={item.colorpalets[j]?.images[0]}
-          {...item}
-        />
-      ))
-    )}
+  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(230px,1fr))] place-items-center gap-[10px] md:gap-[20px]">
+    {products.map((item, i) => (
+      <Productcard
+        key={i + new Date().getMilliseconds() + Math.random()} // More stable key
+        index={i}
+        id={item._id}
+        link={`/${item?.category}/${item?.subcat}/${item._id}`}
+        image={item?.images[0]}
+        {...item}
+      />
+    ))}
   </div>
 );
 

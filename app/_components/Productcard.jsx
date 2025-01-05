@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiClock } from "react-icons/fi";
+import { AppContextfn } from "../Context";
 
 function Productcard({
   index,
@@ -10,12 +11,15 @@ function Productcard({
   category,
   subcat,
   name,
-  price,
+  prices,
+  buyprice,
+  availablefor,
   available,
+  sku,
   image,
-  keywords,
   link,
 }) {
+  const { isrentalstore, location } = AppContextfn();
   const [showproduct, setshowproduct] = useState(false);
   const [loading, setloading] = useState({
     effect: true,
@@ -40,10 +44,15 @@ function Productcard({
     setImgSrc(fallbackImage);
   };
 
+  const locationrentprices =
+    location in prices ? prices[location?.location] : prices?.Default;
+  const lastprice = locationrentprices[locationrentprices.length - 1];
+  const rentprice = Math.floor(lastprice.price / lastprice.time);
+
   return (
     <Link
       href={link ? link : `/${category}/${subcat}/${id}`}
-      className={`group relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md  bg-white duration-300 ${
+      className={`group relative w-full shadow-md  bg-white duration-300 rounded-2xl overflow-hidden ${
         showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"
       }`}
     >
@@ -82,28 +91,25 @@ function Productcard({
             </div>
           )}
         </div>
-        {/* best selling tag */}
-        {keywords?.toLowerCase().includes("best seller") && (
-          <Image
-            className="absolute top-0 right-0 w-12 md:w-16 aspect-square object-contain"
-            src="/images/bestsellertag.png"
-            alt="best selling tag Image"
-            height={100}
-            width={100}
-            loading="lazy"
-          />
-        )}
       </div>
 
-      <div className="p-[5px] md:p-[10px]">
-        <h3 className="py-[5px] md:py-[10px] text-[12px] md:text-[16px] font-semibold text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">
+      <div className="relative p-[10px]">
+        <h3 className="py-[5px] md:py-[10px] text-xs md:text-base text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">
           {name}
         </h3>
-        <div className="mt-[10px] flex flex-wrap items-center gap-[5px] md:gap-[10px]">
-          <span className="font-bold text-[16px] md:text-[20px]">
-            ₹{parseInt(price, 10).toLocaleString("en-IN")}
-          </span>
+        <div className="flex items-center justify-center">
+          <div className="bg-theme text-white w-10/12 max-w-full flex items-center justify-center py-1 rounded-xl">
+            {isrentalstore ? (
+              <>
+                <span>Rent </span> : ₹{" "}
+                {parseInt(rentprice, 10).toLocaleString("en-IN")}
+              </>
+            ) : (
+              <>₹{parseInt(buyprice, 10).toLocaleString("en-IN")}</>
+            )}
+          </div>
         </div>
+        <div className="absolute w-24 h-[2px] bottom-1 left-1/2 -translate-x-1/2 bg-theme rounded-full"></div>
       </div>
     </Link>
   );

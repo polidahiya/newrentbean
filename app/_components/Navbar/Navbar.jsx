@@ -12,14 +12,22 @@ import Searchbox from "../Searchbox";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import { FaOpencart } from "react-icons/fa6";
+import { MdLocationPin } from "react-icons/md";
 
 function Navbar({ params, productsname, token, userdata }) {
   const router = useRouter();
   const slug = params?.Category;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
 
-  const { showsearch, setshowsearch, showcat, setshowcat, searchinputref } =
-    AppContextfn();
+  const {
+    showsearch,
+    setshowsearch,
+    showcat,
+    setshowcat,
+    searchinputref,
+    location,
+    setlocation,
+  } = AppContextfn();
 
   useEffect(() => {
     const hidemenu2 = () => {
@@ -64,6 +72,13 @@ function Navbar({ params, productsname, token, userdata }) {
               width={200}
             ></Image>
           </Link>
+          <button
+            className="h-full px-5 border rounded-md flex items-center justify-center gap-1"
+            onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
+          >
+            <MdLocationPin className="inline-block" />{" "}
+            <span>{location.location}</span>
+          </button>
         </div>
         {/* searchbar */}
         <div

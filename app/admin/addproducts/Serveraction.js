@@ -52,7 +52,7 @@ export const Addproduct = async (addproduct, formData, deletedimages) => {
   }
 };
 
-export const Deleteproduct = async (colorpalets, id) => {
+export const Deleteproduct = async (images, id) => {
   const { Productscollection, ObjectId } = await getcollection();
   const res = await Verification("Add-Product");
 
@@ -61,11 +61,8 @@ export const Deleteproduct = async (colorpalets, id) => {
   }
   //
   try {
-    for (const item of colorpalets) {
-      for (let j = 0; j < item.images.length; j++) {
-        const url = item.images[j];
-        Deleteiamgefromurl(url);
-      }
+    for (let i = 0; i < images.length; i++) {
+      Deleteiamgefromurl(images[i]);
     }
 
     // delete form mongodb

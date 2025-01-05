@@ -30,11 +30,7 @@ function Rentpricecomp({ data, setdata }) {
       ...prevData,
       prices: {
         ...prevData.prices,
-        [value]: [
-          { time: "", type: "day", price: "" },
-          { time: "", type: "day", price: "" },
-          { time: "", type: "day", price: "" },
-        ],
+        [value]: prevData.prices.Default,
       },
     }));
   };

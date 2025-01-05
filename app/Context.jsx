@@ -30,6 +30,8 @@ export function Appwrapper({ children }) {
     type: true,
   };
   const [showdialog, setshowdialog] = useState(showdialoginitialvalues);
+  const [isrentalstore, setisrentalstore] = useState(true);
+  const [location, setlocation] = useState({ show: false, location: "Delhi" });
 
   // funtions
   const setmessagefn = (message) => {
@@ -74,6 +76,10 @@ export function Appwrapper({ children }) {
         showdialog,
         setshowdialog,
         showdialoginitialvalues,
+        isrentalstore,
+        setisrentalstore,
+        location,
+        setlocation,
       }}
     >
       {children}

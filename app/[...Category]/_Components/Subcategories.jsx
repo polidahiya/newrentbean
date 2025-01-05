@@ -34,7 +34,7 @@ function Subcategories({ category, subcat }) {
                     subcat == itemsubcat.name && "font-semibold"
                   }`}
                 >
-                  {itemsubcat.name}
+                  {itemsubcat.name.replace(/-/g, " ")}
                 </div>
               </Link>
             );

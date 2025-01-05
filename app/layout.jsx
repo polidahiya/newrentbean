@@ -10,6 +10,7 @@ import Googleanayltics from "./_components/Googleanayltics";
 import { cities } from "./commondata";
 import React from "react";
 import Confirmdialogbox from "./_components/Confirmdialogbox";
+import Location from "./_components/Location";
 
 export const metadata = {
   title: "Rentbean - Best Solid Wood Furniture in India",
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
         <body className="antialiased">
           <Message />
           <Confirmdialogbox />
+          <Location />
           <div>{children}</div>
           {/* <Logininstant /> */}
           <div className="fixed bottom-5 right-5 md:bottom-10 md:right-10 flex flex-col items-end gap-2 z-30">

@@ -143,7 +143,7 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
                         title: "Delete?",
                         continue: async () => {
                           const res = await Deleteproduct(
-                            item.colorpalets,
+                            item.images,
                             item._id
                           );
                           if (res.status == 200)

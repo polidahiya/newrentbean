@@ -18,8 +18,8 @@ function Page() {
     prices: {
       Default: [
         { time: "", type: "day", price: "" },
-        { time: "", type: "day", price: "" },
-        { time: "", type: "day", price: "" },
+        { time: "", type: "days", price: "" },
+        { time: "", type: "days", price: "" },
       ],
     },
     buyprice: "",
