@@ -45,7 +45,7 @@ function Productcard({
   };
 
   const locationrentprices =
-    location in prices ? prices[location?.location] : prices?.Default;
+    location?.location in prices ? prices[location?.location] : prices?.Default;
   const lastprice = locationrentprices[locationrentprices.length - 1];
   const rentprice = Math.floor(lastprice.price / lastprice.time);
 

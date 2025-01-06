@@ -32,7 +32,7 @@ function Similarproducts({ allproducts, category, subcat, productid }) {
                   <Productcard
                     index={i}
                     id={item._id}
-                    image={item.colorpalets[0].images[0]}
+                    image={item?.images[0]}
                     {...item}
                   />
                 </div>

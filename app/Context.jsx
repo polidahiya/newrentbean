@@ -41,13 +41,24 @@ export function Appwrapper({ children }) {
     ]);
   };
 
+  // get cookies cart
   useEffect(() => {
-    const cookieCart = Cookies.get("cart");
+    const cookieCart = Cookies.get("rentbeancart");
     if (cookieCart) {
       const parsedCart = JSON.parse(cookieCart);
       setcart(parsedCart);
     }
   }, []);
+
+  //  update cookies when cart change
+  useEffect(() => {
+    if (cart && Object.keys(cart).length > 0) {
+      Cookies.set("rentbeancart", JSON.stringify(cart));
+    } else {
+      // Remove the cookie if the cart is empty
+      Cookies.remove("rentbeancart");
+    }
+  }, [cart]);
 
   return (
     <AppContext.Provider

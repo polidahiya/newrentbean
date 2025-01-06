@@ -26,7 +26,6 @@ async function page({ params, searchParams }) {
         category={category}
         subcat={subcat}
         productid={productid}
-        color={searchParams?.color || 0}
       />
     );
 
@@ -193,7 +192,6 @@ export const generateMetadata = async ({ params, searchParams }) => {
     const filteredProduct = allProducts.find((item) => item._id === productid);
 
     if (filteredProduct) {
-      const colorIndex = searchParams?.color || 0;
       const ogImage =
         filteredProduct?.colorpalets?.[colorIndex]?.images?.[0] || null;
 

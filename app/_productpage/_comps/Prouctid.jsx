@@ -4,15 +4,15 @@ import { MdContentCopy } from "react-icons/md";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
 import { AppContextfn } from "@/app/Context";
 
-function Prouctid({ pid }) {
+function Prouctid({ sku }) {
   const { setmessagefn } = AppContextfn();
   return (
-    <p className="font-semibold my-3">
-      SKU : <span className="">{pid}</span>
+    <p className="font-semibold my-3 text-center">
+      SKU : <span className="">{sku}</span>
       <MdContentCopy
-        className="inline-block ml-2 text-theme lg:text-inherit lg:hover:text-theme cursor-pointer"
+        className="inline-block ml-2 text-theme cursor-pointer"
         onClick={() => {
-          copytoclipboard(pid, () => {
+          copytoclipboard(sku, () => {
             setmessagefn("Copied to clipboard");
           });
         }}

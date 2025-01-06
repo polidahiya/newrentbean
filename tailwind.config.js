@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       colors: {
         theme: "#d68e43",
-        bg1: "#f1f3f6",
+        bg1: "#f7f7fa",
       },
       fontFamily: {
         recline: "Recline",

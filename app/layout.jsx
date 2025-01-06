@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <Appwrapper>
-        <body className="antialiased">
+        <body className="antialiased max-w-[1500px] mx-auto">
           <Message />
           <Confirmdialogbox />
           <Location />

@@ -1,94 +1,88 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AppContextfn } from "@/app/Context";
-import { FaCartShopping } from "react-icons/fa6";
-import { BsLightningChargeFill } from "react-icons/bs";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import { event } from "nextjs-google-analytics";
 
-export function Addtocartbuttons({ filteredproducts, color }) {
+export function Addtocartbuttons({ filteredproducts, cartproductid }) {
   const router = useRouter();
-  const { cart, setcart, quantity, setmessagefn } = AppContextfn();
-  const [availableincart, setavailableincart] = useState(false);
+  const { cart, setcart, setmessagefn } = AppContextfn();
+  const MAX_QUANTITY = filteredproducts?.maxquantity; // Define the maximum quantity
 
-  useEffect(() => {
-    const itemKey = `${filteredproducts._id},${color}`;
-    setavailableincart(!!cart[itemKey]);
-  }, [cart, filteredproducts._id, color]);
-
-  const updateCart = () => {
-    const editedproduct = { ...filteredproducts };
-    delete editedproduct?.desc;
-    delete editedproduct?.available;
-    delete editedproduct?.keywords;
-
-    const itemKey = `${filteredproducts._id},${color}`;
-    const cartdata = {
-      ...cart,
-      [itemKey]: {
-        ...editedproduct,
-        selectedcolor: color,
-        quantity: quantity,
-      },
-    };
-
-    Cookies.set("cart", JSON.stringify(cartdata), { expires: 7 });
-    setcart(cartdata);
+  const handleIncrement = () => {
+    if (cart[cartproductid]?.quantity < MAX_QUANTITY)
+      setcart((pre) => {
+        const updatedcart = { ...pre };
+        updatedcart[cartproductid] = {
+          ...updatedcart[cartproductid],
+          quantity: updatedcart[cartproductid].quantity + 1,
+        };
+        return updatedcart;
+      });
   };
-
-  const Addtocart = () => {
-    if (!filteredproducts.available) {
-      setmessagefn("Product is not available");
-      return;
-    }
-
-    if (availableincart) {
-      router.push("/cart");
-      return;
-    }
-
-    updateCart();
-    setmessagefn("Added to Cart");
+  const handleDecrement = () => {
+    if (cart[cartproductid]?.quantity > 1)
+      setcart((pre) => {
+        const updatedcart = { ...pre };
+        updatedcart[cartproductid] = {
+          ...updatedcart[cartproductid],
+          quantity: updatedcart[cartproductid].quantity - 1,
+        };
+        return updatedcart;
+      });
+  };
+  // add to cart button
+  const handleAddToCart = () => {
+    setcart((pre) => {
+      const updatedcart = { ...pre };
+      updatedcart[cartproductid] = {
+        ...updatedcart[cartproductid],
+        added: true,
+      };
+      return updatedcart;
+    });
+    setmessagefn("Added to cart");
     event("button_click", {
       category: "User Interaction",
       label: "Product added to cart",
       value: 1,
     });
-  };
-
-  const Buynow = () => {
-    if (!filteredproducts.available) {
-      setmessagefn("Product is not available");
-      return;
-    }
-
-    if (!availableincart) {
-      updateCart();
-    }
-    event("button_click", {
-      category: "User Interaction",
-      label: "Product added to cart",
-      value: 1,
-    });
-    router.push("/cart");
   };
 
   return (
-    <div className="sticky bottom-0 top-[130px] flex gap-[10px] mt-[20px] bg-white">
+    <div className="flex gap-4 h-12 mt-5">
+      <div className="flex items-stretch h-full w-fit rounded-full shadow-[5px_5px_7px_rgba(0,0,0,0.123)_inset,-5px_-5px_7px_rgba(255,255,255)_inset]">
+        {/* Decrement Button */}
+        <button
+          onClick={handleDecrement}
+          disabled={cart[cartproductid]?.quantity <= 1}
+          className={`flex items-center justify-center h-full aspect-square text-xl ${
+            cart[cartproductid]?.quantity <= 1 && "opacity-50"
+          }`}
+        >
+          -
+        </button>
+        {/* display quantity */}
+        <p className="flex items-center justify-center h-full w-5">
+          {cart[cartproductid]?.quantity}
+        </p>
+        {/* Increment Button */}
+        <button
+          onClick={handleIncrement}
+          disabled={cart[cartproductid]?.quantity >= MAX_QUANTITY}
+          className={`flex items-center justify-center h-full aspect-square text-xl ${
+            cart[cartproductid]?.quantity >= MAX_QUANTITY && "opacity-50"
+          }`}
+        >
+          +
+        </button>
+      </div>
+      {/* add to cart button */}
       <button
-        className="flex items-center justify-center gap-[10px] w-full h-[40px] bg-[#ff9f00] text-white"
-        onClick={Addtocart}
+        className="w-full h-full text-theme border border-theme text-sm rounded-full"
+        onClick={handleAddToCart}
       >
-        <FaCartShopping className="text-[20px]" />
-        <span>{availableincart ? "Go" : "Add"} to Cart</span>
-      </button>
-      <button
-        className="flex items-center justify-center gap-[10px] w-full h-[40px] bg-[#fb641b] text-white"
-        onClick={Buynow}
-      >
-        <BsLightningChargeFill className="text-[20px]" />
-        <span>Buy Now</span>
+        {cart[cartproductid]?.added ? "VIEW CART" : "ADD TO CART"}
       </button>
     </div>
   );

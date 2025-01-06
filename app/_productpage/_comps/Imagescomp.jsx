@@ -1,21 +1,22 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Heart from "@/app/_svgs/Heart";
+import { IoMdHeartEmpty } from "react-icons/io";
 import { likeproduct, isliked } from "@/app/_serveractions/Likedproducts";
 import { AppContextfn } from "@/app/Context";
-import Linksvg from "@/app/_svgs/Linksvg";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
 import Link from "next/link";
+import { IoLinkOutline } from "react-icons/io5";
 
 const fallbackImage = "/default-fallback-image.png";
 
-function ImagesComp({ filteredproducts, color, token }) {
+function ImagesComp({ filteredproducts, token }) {
   const { setmessagefn } = AppContextfn();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const imagesScrollRef = useRef();
   const [isLiked, setIsLiked] = useState(false);
 
+  // check liked
   useEffect(() => {
     const checkLikedStatus = async () => {
       if (token) {
@@ -52,10 +53,29 @@ function ImagesComp({ filteredproducts, color, token }) {
     }
   };
 
-  const images = filteredproducts?.colorpalets[color]?.images;
+  const images = filteredproducts?.images;
+
+  // move using arrow buttons
+  useEffect(() => {
+    const handleArrowKeyScroll = (e) => {
+      if (!imagesScrollRef.current) return;
+
+      const scrollAmount = imagesScrollRef.current.clientWidth;
+      if (e.key === "ArrowRight") {
+        imagesScrollRef.current.scrollLeft += scrollAmount;
+      } else if (e.key === "ArrowLeft") {
+        imagesScrollRef.current.scrollLeft -= scrollAmount;
+      }
+    };
+
+    window.addEventListener("keydown", handleArrowKeyScroll);
+    return () => {
+      window.removeEventListener("keydown", handleArrowKeyScroll);
+    };
+  }, []);
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row lg:items-center gap-2 ">
+    <div className="flex flex-col-reverse lg:flex-row lg:items-center gap-2 lg:h-80 ">
       {/* mini images */}
       <div
         className={`flex  lg:w-[70px] lg:h-full lg:flex-col flex-wrap lg:flex-nowrap gap-[10px] lg:max-h-[400px] ${
@@ -78,9 +98,9 @@ function ImagesComp({ filteredproducts, color, token }) {
         ))}
       </div>
       {/* main */}
-      <div className="relative aspect-[4/3] w-full max-h-[400px] lg:max-h-full">
+      <div className="relative  overflow-hidden w-full  h-full lg:max-h-full">
         <div
-          className="h-full w-full flex overflow-x-scroll snap-x snap-mandatory scroll-smooth"
+          className="h-full w-full flex items-stretch overflow-x-scroll snap-x snap-mandatory scroll-smooth"
           onScroll={handleImageScroll}
           ref={imagesScrollRef}
         >
@@ -91,32 +111,28 @@ function ImagesComp({ filteredproducts, color, token }) {
               name={filteredproducts.name}
               pid={filteredproducts?._id}
               index={index}
-              color={color}
             />
           ))}
         </div>
+        {/* buttons */}
         <div className="absolute right-[10px] top-[10px] flex gap-2">
           {/* like  */}
           <button
-            className=" bg-white rounded-full p-[3px] border border-slate-300"
+            className="text-2xl bg-white rounded-full border p-1"
             title="Add to favourites"
             onClick={handleLikeToggle}
           >
-            <Heart
-              styles={`h-[25px] w-[25px] translate-y-[1px] ${
-                isLiked
-                  ? "fill-red-500 stroke-none"
-                  : "fill-white stroke-[5px] stroke-red-600"
-              }`}
+            <IoMdHeartEmpty
+              className={`text-red-500 ${isLiked ? " fill-red-500 " : ""}`}
             />
           </button>
           {/* link */}
           <button
-            className=" rounded-full bg-white p-[3px] border border-slate-300"
+            className="text-2xl rounded-full bg-white border p-1"
             title="Copy Link"
             onClick={handleSharePage}
           >
-            <Linksvg styles="h-[25px] aspect-square fill-none stroke-slate-500" />
+            <IoLinkOutline />
           </button>
         </div>
 
@@ -144,7 +160,7 @@ function ImagesComp({ filteredproducts, color, token }) {
   );
 }
 
-const MainImage = ({ image, name, pid, index, color }) => {
+const MainImage = ({ image, name, pid, index }) => {
   const [loading, setloading] = useState({
     effect: true,
     show: true,
@@ -153,17 +169,16 @@ const MainImage = ({ image, name, pid, index, color }) => {
 
   return (
     <Link
-      href={`/Fullimage?pid=${pid}&color=${color}&index=${index}`}
-      className="relative min-w-[100%] h-full cursor-zoom-in"
+      href={`/Fullimage?pid=${pid}&index=${index}`}
+      className="relative block aspect-square min-w-[100%] h-full w-full cursor-zoom-in p-px snap-start snap-always overflow-hidden"
     >
       <Image
-        className="min-w-[100%] h-full snap-start snap-always object-contain"
+        className="min-w-full w-full h-full object-contain"
         src={hasError ? fallbackImage : image}
         alt={name}
-        height={400}
+        height={754}
         width={754}
         loading="lazy"
-        
         onLoad={() => {
           setloading((pre) => ({ ...pre, effect: false }));
           setTimeout(() => {
@@ -175,7 +190,7 @@ const MainImage = ({ image, name, pid, index, color }) => {
       {/* loading */}
       {loading.show && (
         <div
-          className={`imgloader absolute inset-0 bg-bg1 ${
+          className={`imgloader absolute top-0 left-0  h-full w-full bg-bg1 ${
             !loading.effect && "opacity-0"
           } duration-500`}
         ></div>
@@ -193,7 +208,7 @@ const MiniImage = ({ image, alt, onClick, isActive }) => {
 
   return (
     <div
-      className={`relative w-[70px] lg:w-full aspect-square cursor-pointer ${
+      className={`relative w-[70px] lg:w-full aspect-square cursor-pointer overflow-hidden ${
         isActive
           ? "border-[2px] border-cyan-500"
           : "border-[2px] border-slate-300"
@@ -201,14 +216,13 @@ const MiniImage = ({ image, alt, onClick, isActive }) => {
       onClick={onClick}
     >
       <Image
-        className={`h-full w-full aspect-square object-contain bg-white`}
+        className={`h-full w-full aspect-square object-cover bg-white`}
         src={hasError ? fallbackImage : image}
         alt={alt}
         height={100}
         width={100}
         quality={50}
         loading="lazy"
-        
         onLoad={() => {
           setloading((pre) => ({ ...pre, effect: false }));
           setTimeout(() => {
