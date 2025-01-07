@@ -20,33 +20,35 @@ function Details({ filteredProduct }) {
           quantity: 1,
           sku: cartproductid,
           price: filteredProduct?.prices,
+          securitydeposit: filteredProduct?.securitydeposit,
           tenurerange: 0,
           buyprice: filteredProduct?.buyprice,
           name: filteredProduct?.name,
           image: filteredProduct?.images[0],
+          maxquantity: filteredProduct?.maxquantity,
           isrentalstore,
         },
       }));
-  }, []);
+  }, [isrentalstore]);
 
   return (
-    <section className="flex-1 p-5 bg-bg1 rounded-3xl shadow-lg ">
+    <section className="flex-1 w-full lg:min-w-[400px] p-5 bg-bg1 rounded-3xl shadow-lg ">
       <h1 className="text-xl md:text-3xl font-recline tracking-wider text-center">
         {filteredProduct?.name}
       </h1>
       <Prouctid sku={filteredProduct?.sku} />
 
-      {!isrentalstore && (
-        <PriceDisplay
-          filteredProduct={filteredProduct}
-          cartproductid={cartproductid}
-        />
-      )}
-
       <Description description={filteredProduct?.desc} />
       {isrentalstore && (
         <Tenure
           prices={filteredProduct?.prices}
+          cartproductid={cartproductid}
+        />
+      )}
+
+      {!isrentalstore && (
+        <PriceDisplay
+          filteredProduct={filteredProduct}
           cartproductid={cartproductid}
         />
       )}
@@ -65,15 +67,13 @@ function Details({ filteredProduct }) {
 
 const PriceDisplay = ({ filteredProduct }) => {
   return (
-    <div className="font-bold mt-[10px]">
-      <span
-        className="text-[30px]"
-        itemProp="offers"
-        itemScope
-        itemType="http://schema.org/Offer"
-      >
-        ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
-      </span>
+    <div
+      className="font-bold mt-10 text-2xl font-recline text-center"
+      itemProp="offers"
+      itemScope
+      itemType="http://schema.org/Offer"
+    >
+      Price: ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
     </div>
   );
 };

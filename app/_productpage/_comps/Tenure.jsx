@@ -2,13 +2,13 @@ import React from "react";
 import { AppContextfn } from "@/app/Context";
 
 function Tenure({ prices, cartproductid }) {
-  const { cart, setcart, isrentalstore, location } = AppContextfn();
+  const { cart, setcart, location } = AppContextfn();
 
-  console.log(prices);
   const locationrentprices =
     location?.location in prices ? prices[location?.location] : prices?.Default;
-  const lastprice = locationrentprices[locationrentprices.length - 1];
-  const rentprice = Math.floor(lastprice.price / lastprice.time);
+  const tenure = locationrentprices[cart[cartproductid]?.tenurerange];
+  const instancerent = Math.floor(tenure?.price / tenure?.time);
+  const securitydeposit = cart[cartproductid]?.securitydeposit;
 
   return (
     <div className="mt-5">
@@ -38,17 +38,18 @@ function Tenure({ prices, cartproductid }) {
       </div>
       <div className="flex w-full py-3 mt-5 rounded-2xl shadow-[5px_5px_7px_rgba(0,0,0,0.123)_inset,-5px_-5px_7px_rgba(255,255,255)_inset]">
         <div className="flex-1 text-center flex flex-col items-center justify-center">
-          <p>₹2800</p>
+          <p>₹{parseInt(instancerent, 10).toLocaleString("en-IN")}</p>
           <p className="text-[10px]"> Monthly Rent</p>
         </div>
         <div className="min-h-8 w-px bg-slate-300" />
         <div className="flex-1 text-center flex flex-col items-center justify-center">
-          <p>₹2800</p>
-          <p className="text-[10px]"> Total rent</p>
+          <p>₹{parseInt(tenure?.price, 10).toLocaleString("en-IN")}</p>
+          <p className="text-[10px]"> Total Rent</p>
         </div>
         <div className="min-h-8 w-px bg-slate-300" />
         <div className="flex-1 text-center flex flex-col items-center justify-center">
-          <p>₹2000</p> <p className="text-[10px]">Security Deposit (*Refundable)</p>
+          <p>₹{parseInt(securitydeposit, 10).toLocaleString("en-IN")}</p>{" "}
+          <p className="text-[10px]">Security Deposit (*Refundable)</p>
         </div>
       </div>
     </div>

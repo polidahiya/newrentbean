@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
           <Location />
           <div>{children}</div>
           {/* <Logininstant /> */}
-          <div className="fixed bottom-5 right-5 md:bottom-10 md:right-10 flex flex-col items-end gap-2 z-30">
+          <div className="fixed bottom-16 right-5 md:bottom-10 md:right-10 flex flex-col items-end gap-2 z-30">
             <Gotopbutton />
             <Helpbutton />
           </div>

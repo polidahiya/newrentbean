@@ -3,11 +3,9 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navcategories from "./Navcategories";
-import Animatingmobilenemubutton from "./_comps/Animatingmobilenemubutton";
 import Logedinusermenu from "./_comps/Logedinusermenu";
 import { FaCartShopping } from "react-icons/fa6";
 import { AppContextfn } from "@/app/Context";
-import { FiSearch } from "react-icons/fi";
 import Searchbox from "../Searchbox";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
@@ -25,7 +23,6 @@ function Navbar({ params, productsname, token, userdata }) {
     setshowsearch,
     showcat,
     setshowcat,
-    searchinputref,
     location,
     setlocation,
     isrentalstore,
@@ -45,29 +42,12 @@ function Navbar({ params, productsname, token, userdata }) {
   }, []);
 
   return (
-    <nav className="sticky bg-white top-0 left-0 w-full border-slate-300 lg:px-[40px] z-40">
+    <nav className="sticky bg-white top-0 left-0 w-full border-slate-300 px-2 md:px-10 z-40">
       <div className="relative peer flex h-14 items-center justify-between py-2">
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
-          <Animatingmobilenemubutton setshowsearch={setshowsearch} />
-          {/* search button */}
-          <button
-            className="h-full aspect-square  flex items-center justify-center md:hidden "
-            onClick={() => {
-              history.pushState(null, "", "");
-              setshowsearch(true);
-              setTimeout(() => {
-                searchinputref.current.focus();
-              }, 100);
-            }}
-          >
-            <FiSearch className="h-full text-[25px] aspect-square " />
-          </button>
           {/* logo */}
-          <Link
-            href="/"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[30px] md:h-full md:static md:flex  md:translate-x-0 md:translate-y-0  md:w-fit p-1"
-          >
+          <Link className="h-full md:w-fit p-1" href="/">
             <Image
               className="w-auto h-full"
               src="/logo&ui/3dlogo.png"
@@ -76,8 +56,9 @@ function Navbar({ params, productsname, token, userdata }) {
               width={200}
             ></Image>
           </Link>
+          {/* location */}
           <button
-            className="h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme"
+            className="hidden md:flex h-8 px-5 border rounded-full items-center justify-center gap-1 text-theme"
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
           >
             <MdLocationPin className="inline-block" />{" "}
@@ -86,7 +67,7 @@ function Navbar({ params, productsname, token, userdata }) {
         </div>
         {/* searchbar */}
         <div
-          className={`absolute top-[calc(100%+20px)] md:static w-full h-full lg:min-w-[500px] md:block lg:z-20 ${
+          className={`absolute top-[calc(100%+20px)] md:static h-10 w-full md:h-full lg:min-w-[500px] md:block lg:z-20 ${
             showsearch ? "block z-40" : "hidden"
           }`}
         >
@@ -95,13 +76,16 @@ function Navbar({ params, productsname, token, userdata }) {
 
         {/* third comp */}
         <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
+          {/* rent or buy switch */}
           <button
-            className="h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme"
+            className="hidden md:flex h-8 px-5 border rounded-full items-center justify-center gap-1 text-theme"
             onClick={() => setisrentalstore((pre) => !pre)}
           >
             <TbSwitchHorizontal className="inline-block" />{" "}
-            {isrentalstore ? "Rental" : "Buy"} Store
+            {isrentalstore ? "Rent" : "Buy"}
           </button>
+          {/* search button */}
+         
           {/* cart */}
           <Cartlink />
           {/* loged in user menu */}
@@ -133,8 +117,8 @@ function Navbar({ params, productsname, token, userdata }) {
       )}
       {/* border effect */}
       <div
-        className={`absolute top-full left-0 pointer-events-none w-full h-1 shadow-[inset_0_1px_1px_0_rgba(0,0,0,.14),inset_0_2px_1px_-1px_rgba(0,0,0,.12)] duration-300 ${
-          shownavbottom ? "opacity-100" : "opacity-0"
+        className={`absolute top-full left-0 pointer-events-none w-full shadow-[inset_0_1px_1px_0_rgba(0,0,0,.14),inset_0_2px_1px_-1px_rgba(0,0,0,.12)] duration-300 overflow-hidden ${
+          shownavbottom ? "opacity-100 h-1" : "opacity-0 h-0"
         }`}
         style={{
           WebkitMaskImage:
@@ -155,7 +139,7 @@ export const Cartlink = () => {
   );
 
   return (
-    <div className="group relative  h-full aspect-square z-20">
+    <div className="hidden md:block group relative h-full aspect-square z-20">
       <Link
         href="/cart"
         className="h-full w-full flex items-center justify-center"

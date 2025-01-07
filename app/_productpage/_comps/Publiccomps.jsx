@@ -33,6 +33,10 @@ export function Addtocartbuttons({ filteredproducts, cartproductid }) {
   };
   // add to cart button
   const handleAddToCart = () => {
+    if (cart[cartproductid]?.added) {
+      router.push("/cart");
+      return;
+    }
     setcart((pre) => {
       const updatedcart = { ...pre };
       updatedcart[cartproductid] = {

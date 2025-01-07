@@ -12,6 +12,7 @@ import Citiesdescription from "./_components/Homepage/Citiesdescription";
 import Herosection from "./_components/Homepage/Herosection";
 import Navbar from "./_components/Navbar/Navbar";
 import Link from "next/link";
+import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
 
 export default async function Home({ searchParams, params }) {
   const allcookies = await cookies();
@@ -46,9 +47,10 @@ export default async function Home({ searchParams, params }) {
         </div>
         <Citiesdescription city={searchParams?.location} />
         <Footer />
-        {/* dashboardlink */}
-        {parseduserdata?.usertype == "admin" && <Dashboardlink />}
       </div>
+      <Mobilenav />
+      {/* dashboardlink */}
+      {parseduserdata?.usertype == "admin" && <Dashboardlink />}
     </>
   );
 }

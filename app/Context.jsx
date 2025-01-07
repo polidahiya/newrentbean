@@ -18,7 +18,6 @@ export function Appwrapper({ children }) {
   const [redirectloginlink, setredirectloginlink] = useState("/");
   const [toggleorderplacedmenu, settoggleorderplacedmenu] = useState(false);
   const [messagearray, setmessagearray] = useState([]);
-  const pincoderef = useRef();
   const [instantlogin, setinstantlogin] = useState({
     show: false,
     effect: false,
@@ -98,7 +97,6 @@ export function Appwrapper({ children }) {
         toggleusermenu,
         settoggleusermenu,
         searchinputref,
-        pincoderef,
         redirectloginlink,
         setredirectloginlink,
         toggleorderplacedmenu,

@@ -2,6 +2,7 @@ import Navbar from "../_components/Navbar/Navbar";
 import { Cachedproducts } from "../_serveractions/Getcachedata";
 import { cookies } from "next/headers";
 import Footer from "../_components/Footer";
+import Mobilenav from "../_components/Navbar/_comps/Mobilenav";
 
 export const metadata = {
   title: "Rentbean",
@@ -25,7 +26,8 @@ export default async function RootLayout({ children, params }) {
         userdata={userdata}
       />
       {children}
-      <Footer/>
+      <Footer />
+      <Mobilenav />
     </div>
   );
 }

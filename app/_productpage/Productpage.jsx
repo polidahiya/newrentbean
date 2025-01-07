@@ -68,10 +68,8 @@ async function Productpage({ category, subcat, productid }) {
           productName={filteredProduct.name}
         />
         <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 gap-5">
-          <div className="flex-[2] lg:sticky lg:top-[130px]">
-            <Imagescomp filteredproducts={filteredProduct} token={token} />
-          </div>
-          <Details filteredProduct={filteredProduct}/>
+          <Imagescomp filteredproducts={filteredProduct} token={token} />
+          <Details filteredProduct={filteredProduct} />
         </header>
         <ProductCare />
         <Similarproducts

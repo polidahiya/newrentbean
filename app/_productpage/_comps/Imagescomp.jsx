@@ -75,7 +75,7 @@ function ImagesComp({ filteredproducts, token }) {
   }, []);
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row lg:items-center gap-2 lg:h-80 ">
+    <div className="flex flex-[2] lg:sticky lg:top-[130px] flex-col-reverse lg:flex-row lg:items-center gap-2">
       {/* mini images */}
       <div
         className={`flex  lg:w-[70px] lg:h-full lg:flex-col flex-wrap lg:flex-nowrap gap-[10px] lg:max-h-[400px] ${
@@ -98,9 +98,9 @@ function ImagesComp({ filteredproducts, token }) {
         ))}
       </div>
       {/* main */}
-      <div className="relative  overflow-hidden w-full  h-full lg:max-h-full">
+      <div className="relative overflow-hidden  w-full h-full md:h-96">
         <div
-          className="h-full w-full flex items-stretch overflow-x-scroll snap-x snap-mandatory scroll-smooth"
+          className="h-full w-full flex items-center overflow-x-scroll snap-x snap-mandatory scroll-smooth"
           onScroll={handleImageScroll}
           ref={imagesScrollRef}
         >
@@ -170,7 +170,7 @@ const MainImage = ({ image, name, pid, index }) => {
   return (
     <Link
       href={`/Fullimage?pid=${pid}&index=${index}`}
-      className="relative block aspect-square min-w-[100%] h-full w-full cursor-zoom-in p-px snap-start snap-always overflow-hidden"
+      className="relative block min-w-[100%] h-full w-full cursor-zoom-in p-px snap-start snap-always overflow-hidden"
     >
       <Image
         className="min-w-full w-full h-full object-contain"
