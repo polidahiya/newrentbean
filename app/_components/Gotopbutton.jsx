@@ -1,32 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
+import { AppContextfn } from "../Context";
 
 function Gotopbutton() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 1000) {
-        if (!isVisible) setIsVisible(true);
-      } else {
-        if (isVisible) setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isVisible]);
+  const { scrolltop } = AppContextfn();
 
   return (
     <button
       className={`group flex flex-col items-center justify-center gap-1 text-sm 
          bg-theme text-white h-10 w-10 lg:hover:h-16 rounded-full
          overflow-hidden duration-300 ${
-           !isVisible && "opacity-0 pointer-events-none"
+           !scrolltop && "opacity-0 pointer-events-none"
          }`}
       onClick={() => {
         window.scrollTo({

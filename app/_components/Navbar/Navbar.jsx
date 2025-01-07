@@ -30,6 +30,7 @@ function Navbar({ params, productsname, token, userdata }) {
     setlocation,
     isrentalstore,
     setisrentalstore,
+    shownavbottom,
   } = AppContextfn();
 
   useEffect(() => {
@@ -132,7 +133,9 @@ function Navbar({ params, productsname, token, userdata }) {
       )}
       {/* border effect */}
       <div
-        className="absolute top-full left-0 pointer-events-none w-full h-1 shadow-[inset_0_1px_1px_0_rgba(0,0,0,.14),inset_0_2px_1px_-1px_rgba(0,0,0,.12)]"
+        className={`absolute top-full left-0 pointer-events-none w-full h-1 shadow-[inset_0_1px_1px_0_rgba(0,0,0,.14),inset_0_2px_1px_-1px_rgba(0,0,0,.12)] duration-300 ${
+          shownavbottom ? "opacity-100" : "opacity-0"
+        }`}
         style={{
           WebkitMaskImage:
             "-webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent)",

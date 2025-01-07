@@ -32,6 +32,8 @@ export function Appwrapper({ children }) {
   const [showdialog, setshowdialog] = useState(showdialoginitialvalues);
   const [isrentalstore, setisrentalstore] = useState(true);
   const [location, setlocation] = useState({ show: false, location: "Delhi" });
+  const [scrolltop, setscrolltop] = useState(false);
+  const [shownavbottom, setshownavbottom] = useState(false);
 
   // funtions
   const setmessagefn = (message) => {
@@ -59,6 +61,28 @@ export function Appwrapper({ children }) {
       Cookies.remove("rentbeancart");
     }
   }, [cart]);
+
+  // scroll check
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 1000) {
+        if (!scrolltop) setscrolltop(true);
+      } else {
+        if (scrolltop) setscrolltop(false);
+      }
+      if (window.scrollY > 50) {
+        if (!shownavbottom) setshownavbottom(true);
+      } else {
+        if (shownavbottom) setshownavbottom(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolltop, shownavbottom]);
 
   return (
     <AppContext.Provider
@@ -91,6 +115,8 @@ export function Appwrapper({ children }) {
         setisrentalstore,
         location,
         setlocation,
+        scrolltop,
+        shownavbottom,
       }}
     >
       {children}
