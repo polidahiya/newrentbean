@@ -5,33 +5,35 @@ import Link from "next/link";
 import { AiOutlineDelete } from "react-icons/ai";
 import { AppContextfn } from "@/app/Context";
 
-export default function Products({ item, i }) {
-  const { cart, setcart, setmessagefn } = AppContextfn();
-  const fallbackImage = "/default-fallback-image.png";
-  const product = cart[item];
-  const MAX_QUANTITY = product?.maxquantity;
+export default function Products({ cartproductid, item, i }) {
+  const { setcart, setmessagefn } = AppContextfn();
+  const fallbackImage = "/logo&ui/default-fallback-image.png";
+  const MAX_QUANTITY = item?.maxquantity;
 
-  const [imgSrc, setImgSrc] = useState(product?.image);
+  const [imgSrc, setImgSrc] = useState(item?.image);
   const handleImageError = () => setImgSrc(fallbackImage);
 
   const handleIncrement = () => {
-    if (product?.quantity < MAX_QUANTITY)
+    if (item?.quantity < MAX_QUANTITY) {
       setcart((pre) => {
-        const updatedcart = pre;
+        const updatedcart = { ...pre };
         updatedcart[cartproductid] = {
           ...updatedcart[cartproductid],
-          quantity: updatedcart[cartproductid].quantity + 1,
+          quantity: updatedcart[cartproductid]?.quantity + 1,
         };
         return updatedcart;
       });
+    } else {
+      setmessagefn("Maximum quantity reached");
+    }
   };
   const handleDecrement = () => {
-    if (product?.quantity > 1)
+    if (item?.quantity > 1)
       setcart((pre) => {
-        const updatedcart = pre;
+        const updatedcart = { ...pre };
         updatedcart[cartproductid] = {
           ...updatedcart[cartproductid],
-          quantity: updatedcart[cartproductid].quantity - 1,
+          quantity: updatedcart[cartproductid]?.quantity - 1,
         };
         return updatedcart;
       });
@@ -49,26 +51,32 @@ export default function Products({ item, i }) {
     setmessagefn("Removed from cart");
   };
 
+  const finaltenure =
+    item?.location in item?.prices
+      ? item?.prices[item?.location]
+      : item?.prices.Default;
+  const totalprice = finaltenure[item?.selectedtenure]?.price;
+
   return (
-    <div className="flex flex-col gap-[20px] w-full p-[20px]">
+    <div className="flex flex-col gap-5 w-full p-2">
       {i !== 0 && <hr />}
-      <div className="flex flex-col md:flex-row gap-[20px] md:h-[150px]">
+      <div className="flex flex-col md:flex-row gap-[20px] md:h-[200px]">
         <Link
-          href={`/${product.category}/${product.subcat}/${product._id}`}
-          className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square border border-slate-300"
+          href={item?.productlink}
+          className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
         >
           <Image
             src={imgSrc}
-            alt={product.name}
+            alt={item.name}
             height={100}
             width={100}
-            className="h-full w-full aspect-[2/1] md:aspect-square object-contain object-center"
+            className="h-full w-full aspect-[2/1] md:aspect-square object-contain md:object-cover object-center"
             onError={handleImageError}
           />
         </Link>
         <div className="flex flex-col h-full w-full">
           <h2 className="font-bold text-xl font-recline tracking-wider text-ellipsis overflow-hidden ">
-            {product.name}
+            {item.name}
           </h2>
           <p className="font-bold text-gray-500">
             By:{" "}
@@ -76,36 +84,76 @@ export default function Products({ item, i }) {
               Rentbean
             </span>
           </p>
-          <p className="font-bold text-gray-500 font-recline">
-            {product?.isrentalstore ? "On Rent" : "Buy"}
+          <p className="font-bold text-gray-500 font-recline mt-auto">
+            {item?.isrentalstore ? "On Rent" : "For Buy"}
           </p>
-          <p className="font-bold mt-2">
-            ₹{(product.price * product.price).toLocaleString("en-IN")}
-          </p>
+          {item?.isrentalstore ? (
+            <>
+              <p className="text-sm">
+                Rent: ₹{(totalprice * item?.quantity).toLocaleString("en-IN")}
+                {"/-"}
+              </p>
+              <p className="text-sm">
+                Security Deposit : ₹
+                {(item?.securitydeposit * item?.quantity).toLocaleString(
+                  "en-IN"
+                )}
+                {"/-"} <span className="text-sky-500">{"(*Refundable)"}</span>
+              </p>
+              <p className="text-sm">
+                Total : ₹
+                {(
+                  totalprice * item?.quantity +
+                  item?.securitydeposit * item?.quantity
+                ).toLocaleString("en-IN")}
+                {"/-"}{" "}
+                <span className="text-sky-500">
+                  {"(Rent + Security Deposit)"}
+                </span>
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                Price: ₹
+                {(item?.buyprice * item?.quantity).toLocaleString("en-IN")}
+                {"/-"}
+              </p>
+            </>
+          )}
+
           <div className="flex gap-[20px] h-[30px] mt-[20px] md:mt-auto">
             <div className="flex items-center gap-1 h-full">
               <button
-                className="h-full aspect-square rounded-[5px] border border-slate-300"
+                className="h-full aspect-square rounded-md border border-slate-300"
                 onClick={handleDecrement}
               >
                 -
               </button>
-              <span className="h-full flex items-center justify-center px-[20px] border border-slate-300 rounded-[5px]">
-                {product.quantity}
+              <span className="h-full flex items-center justify-center px-[20px] border border-slate-300 rounded-md">
+                {item.quantity}
               </span>
               <button
-                className="h-full aspect-square rounded-[5px] border border-slate-300"
+                className="h-full aspect-square rounded-md border border-slate-300"
                 onClick={handleIncrement}
               >
                 +
               </button>
             </div>
+            {/* change tenure */}
+            {item?.isrentalstore && (
+              <button className="h-full rounded-md px-5 border border-slate-300">
+                {/* {item?.time} {item?.type} */}1 year
+              </button>
+            )}
+
+            {/* removebutton */}
             <button
-              className="h-full border border-slate-300 px-[20px] rounded-full"
+              className="h-full flex items-center gap-1 border border-slate-300 px-[20px] rounded-md"
               onClick={handleRemoveProduct}
             >
+              <AiOutlineDelete className="aspect-square" />
               <span className="hidden md:block">Remove</span>
-              <AiOutlineDelete className="md:hidden aspect-square" />
             </button>
           </div>
         </div>

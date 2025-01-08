@@ -25,11 +25,11 @@ export default function Page({ userdata, token, orderstatus }) {
     setredirectloginlink,
     // setinstantlogin,
   } = AppContextfn();
-
+  const [showtenure, setshowtenure] = useState({ show: false, data: {} });
   const [showpaymentform, setshowpaymentform] = useState(false);
   const [orderid, setorderid] = useState("");
 
-  const cartitems = Object.values(cart).filter((item) => item.added);
+  const cartitems = Object.entries(cart).filter(([key, item]) => item.added);
   const totalQuantity = cartitems.reduce(
     (total, value) => total + value.quantity,
     0
@@ -107,9 +107,9 @@ export default function Page({ userdata, token, orderstatus }) {
     if (orderstatus == "failed") setmessagefn("Order Failed!");
   }, []);
 
-  // if (cartitems.length == 0) {
-  //   return <Emptycart />;
-  // }
+  if (cartitems.length == 0) {
+    return <Emptycart />;
+  }
 
   return (
     <>
@@ -121,6 +121,9 @@ export default function Page({ userdata, token, orderstatus }) {
           setshowpaymentform={setshowpaymentform}
         />
       )}
+      {showtenure?.show && (
+        <Showtenuremenu showtenure={showtenure} setshowtenure={setshowtenure} />
+      )}
       <div className="p-2 md:px-10 bg-bg1">
         <div className="flex items-center justify-center gap-[10px] text-xl md:text-2xl font-bold font-recline py-5">
           Cart
@@ -128,11 +131,12 @@ export default function Page({ userdata, token, orderstatus }) {
         </div>
         {userdata && <Useraddress userdata={userdata} />}
         {/* products */}
-        <div className={` bg-white border  ${userdata && "mt-[10px]"}`}>
-          {Object.keys(cart).map((item, i) => (
+        <div className={`bg-white  ${userdata && "mt-5"}`}>
+          {cartitems.map(([key, item], i) => (
             <Products
               key={i + new Date().getMilliseconds()}
               item={item}
+              cartproductid={key}
               i={i}
             />
           ))}
@@ -172,3 +176,56 @@ export default function Page({ userdata, token, orderstatus }) {
     </>
   );
 }
+
+const Showtenuremenu = ({ showtenure, setshowtenure }) => {
+  return (
+    <div
+      className={`fixed top-0 left-0 h-screen w-full flex items-center justify-center p-5 md:px-28 md:py-10 z-50`}
+    >
+      <div
+        className={`relative h-full w-full  flex flex-col items-center justify-between p-[20px] gap-[20px] bg-white z-10`}
+      >
+        <h2 className="text-xl font-semibold font-recline whitespace-nowrap mt-5 tracking-widest">
+          🌍 Select your location
+        </h2>
+        <div className="w-full flex items-center justify-center flex-wrap gap-5">
+          {showtenure?.map((item, i) => {
+            return (
+              <button
+                key={i}
+                onClick={() =>
+                  setshowtenure(() => ({ show: false, location: item }))
+                }
+                className={`flex items-center justify-center w-32 aspect-[2/1] border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
+                  location.location == item
+                    ? "bg-theme text-white"
+                    : "bg-white text-theme border"
+                }`}
+              >
+                {item}
+              </button>
+            );
+          })}
+        </div>
+        <p className=" w-[90%] text-center text-[8px] md:text-[12px]">
+          We apologize if you couldn&#39;t find your location right now. Our
+          site is always evolving to serve you better. In the meantime, feel
+          free to explore what we have to offer, and remember, you&#39;re always
+          welcome here, no matter where you&#39;re from.
+        </p>
+        {/* close button */}
+
+        <button
+          className="absolute right-0 top-0 h-[50px] aspect-square  bg-white z-10 lg:hover:bg-theme lg:hover:text-white"
+          onClick={() => setshowtenure((pre) => ({ ...pre, show: false }))}
+        >
+          X
+        </button>
+      </div>
+      <button
+        className="absolute top-0 left-0 h-full w-full cursor-auto -z-10 bg-black bg-opacity-30"
+        onClick={() => setshowtenure((pre) => ({ ...pre, show: false }))}
+      ></button>
+    </div>
+  );
+};

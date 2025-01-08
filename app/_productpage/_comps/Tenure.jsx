@@ -1,14 +1,17 @@
 import React from "react";
 import { AppContextfn } from "@/app/Context";
 
-function Tenure({ prices, cartproductid }) {
+function Tenure({ filteredProduct, cartproductid }) {
   const { cart, setcart, location } = AppContextfn();
 
   const locationrentprices =
-    location?.location in prices ? prices[location?.location] : prices?.Default;
-  const tenure = locationrentprices[cart[cartproductid]?.tenurerange];
+    location?.location in filteredProduct?.prices
+      ? filteredProduct?.prices[location?.location]
+      : filteredProduct?.prices?.Default;
+  const selectedtenure = cart[cartproductid]?.selectedtenure;
+  const tenure = locationrentprices[selectedtenure];
   const instancerent = Math.floor(tenure?.price / tenure?.time);
-  const securitydeposit = cart[cartproductid]?.securitydeposit;
+  const securitydeposit = filteredProduct?.securitydeposit;
 
   return (
     <div className="mt-5">
@@ -18,7 +21,7 @@ function Tenure({ prices, cartproductid }) {
           <button
             key={i}
             className={`flex-1 py-3 rounded-full text-sm ${
-              cart[cartproductid]?.tenurerange == i && "text-theme "
+              cart[cartproductid]?.selectedtenure == i && "text-theme "
             } shadow-[5px_5px_7px_rgba(0,0,0,0.123)_inset,-5px_-5px_7px_rgba(255,255,255)_inset]`}
             onClick={() => {
               setcart((prev) => {
@@ -26,7 +29,7 @@ function Tenure({ prices, cartproductid }) {
                   ...prev,
                   [cartproductid]: {
                     ...prev[cartproductid],
-                    tenurerange: i,
+                    selectedtenure: i,
                   },
                 };
               });
@@ -57,50 +60,3 @@ function Tenure({ prices, cartproductid }) {
 }
 
 export default Tenure;
-
-{
-  /* <div className="flex items-center gap-[10px]">
-<span>Choose Tenure</span>{" "}
-<span
-  className="h-[15px] aspect-square border border-cyan-500 text-cyan-500 text-[12px] rounded-full  flex items-center justify-center cursor-pointer"
-  title="Higher the tenure lower the monthly and daily price"
->
-  i
-</span>
-</div>
-<div className="mt-[10px] flex justify-between items-center">
-{typeofprices[product.pricetype - 1].time.map((item, i) => {
-  return (
-    <span
-      className={`w-full grid place-content-center ${
-        productdata.time == i ? "text-theme" : ""
-      }`}
-      key={i}
-    >
-      {item}
-      {typeofprices[product.pricetype - 1].suffix}
-    </span>
-  );
-})}
-</div>
-<center>
-          <input
-            className="w-[80%] mt-[5px]"
-            type="range"
-            value={cart[cartproductid]?.tenurerange}
-            onChange={(e) => {
-              setcart((prev) => {
-                return {
-                  ...prev,
-                  [cartproductid]: {
-                    ...prev[cartproductid],
-                    tenurerange: e.target.value,
-                  },
-                };
-              });
-            }}
-            min={0}
-            max={locationrentprices.length - 1}
-          />
-        </center> */
-}

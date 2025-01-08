@@ -6,30 +6,43 @@ import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
 
 function Details({ filteredProduct }) {
-  const { cart, setcart, isrentalstore } = AppContextfn();
+  const { cart, setcart, isrentalstore, location } = AppContextfn();
   const cartproductid = `${filteredProduct?.sku}-${
     isrentalstore ? "rental" : "buy"
-  }`;
+  }-${location?.location}`;
+
+  console.log(filteredProduct);
 
   useEffect(() => {
-    if (!cart[cartproductid]?.added)
-      setcart((pre) => ({
-        ...pre,
-        [cartproductid]: {
-          added: false,
-          quantity: 1,
-          sku: cartproductid,
-          price: filteredProduct?.prices,
-          securitydeposit: filteredProduct?.securitydeposit,
-          tenurerange: 0,
-          buyprice: filteredProduct?.buyprice,
-          name: filteredProduct?.name,
-          image: filteredProduct?.images[0],
-          maxquantity: filteredProduct?.maxquantity,
-          isrentalstore,
-        },
-      }));
-  }, [isrentalstore]);
+    if (!cart[cartproductid]?.added) {
+      setcart((pre) => {
+        const cartitems = Object.keys(pre).reduce((final, key) => {
+          if (pre[key].added) {
+            final[key] = pre[key];
+          }
+          return final;
+        }, {});
+        return {
+          ...cartitems,
+          [cartproductid]: {
+            added: false,
+            quantity: 1,
+            sku: cartproductid,
+            prices: filteredProduct?.prices,
+            selectedtenure: 0,
+            buyprice: filteredProduct?.buyprice,
+            name: filteredProduct?.name,
+            image: filteredProduct?.images[0],
+            securitydeposit: filteredProduct?.securitydeposit,
+            maxquantity: filteredProduct?.maxquantity,
+            isrentalstore,
+            location: location?.location,
+            productlink: `/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
+          },
+        };
+      });
+    }
+  }, [isrentalstore, location?.location]);
 
   return (
     <section className="flex-1 w-full lg:min-w-[400px] p-5 bg-bg1 rounded-3xl shadow-lg ">
@@ -41,7 +54,7 @@ function Details({ filteredProduct }) {
       <Description description={filteredProduct?.desc} />
       {isrentalstore && (
         <Tenure
-          prices={filteredProduct?.prices}
+          filteredProduct={filteredProduct}
           cartproductid={cartproductid}
         />
       )}

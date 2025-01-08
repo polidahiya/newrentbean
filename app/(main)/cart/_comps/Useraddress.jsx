@@ -4,7 +4,7 @@ import { MdOutlineEditNote } from "react-icons/md";
 function UserAddress({ userdata }) {
 
   return (
-    <div className="bg-white border p-2">
+    <div className="bg-white p-2 pl-5">
       <Link
         href="/updateuserdetails"
         className="h-9 w-full flex items-center justify-between"
