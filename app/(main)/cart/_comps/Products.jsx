@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AiOutlineDelete } from "react-icons/ai";
 import { AppContextfn } from "@/app/Context";
 
-export default function Products({ cartproductid, item, i }) {
+export default function Products({ cartproductid, item, i, setshowtenure }) {
   const { setcart, setmessagefn } = AppContextfn();
   const fallbackImage = "/logo&ui/default-fallback-image.png";
   const MAX_QUANTITY = item?.maxquantity;
@@ -142,8 +142,18 @@ export default function Products({ cartproductid, item, i }) {
             </div>
             {/* change tenure */}
             {item?.isrentalstore && (
-              <button className="h-full rounded-md px-5 border border-slate-300">
-                {/* {item?.time} {item?.type} */}1 year
+              <button
+                className="h-full rounded-md px-5 border border-slate-300"
+                onClick={() => {
+                  setshowtenure({
+                    show: true,
+                    data: finaltenure,
+                    cartproductid: cartproductid,
+                  });
+                }}
+              >
+                {finaltenure[item?.selectedtenure]?.time}{" "}
+                {finaltenure[item?.selectedtenure]?.type}
               </button>
             )}
 
