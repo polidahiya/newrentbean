@@ -4,17 +4,17 @@ import { AppContextfn } from "@/app/Context";
 import React, { useState, useEffect } from "react";
 import Products from "./Products";
 import PaymentPage from "./Payuform";
-import Pricedetails from "./Pricedetails";
 import Emptycart from "./Emptycart";
 import Useraddress from "./Useraddress";
-import { IoShieldCheckmark } from "react-icons/io5";
 import { FaOpencart } from "react-icons/fa6";
-import Link from "next/link";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import Recaptcha from "@/app/_components/_helperfunctions/Recaptcha";
 import { event } from "nextjs-google-analytics";
 import Showtenuremenu from "./Showtenuremenu";
+import Checkout from "./Checkout";
+import Razorpayidcreate from "@/app/_serveractions/Razorpayidcreate";
+import Verifyrazorpay from "@/app/_serveractions/Verifyrazorpay";
 
 export default function Page({ userdata, token, orderstatus }) {
   const router = useRouter();
@@ -29,48 +29,47 @@ export default function Page({ userdata, token, orderstatus }) {
   const [showtenure, setshowtenure] = useState({ show: false, data: {} });
   const [showpaymentform, setshowpaymentform] = useState(false);
   const [orderid, setorderid] = useState("");
+  const [paymentMethod, setpaymentMethod] = useState("online");
 
   const cartitems = Object.entries(cart).filter(([key, item]) => item.added);
-  const totalQuantity = cartitems.reduce(
-    (total, value) => total + value.quantity,
-    0
-  );
+  const totalPrice = cartitems.reduce((total, [key, value]) => {
+    if (value.isrentalstore) {
+      const finaltenure =
+        value?.location in value?.prices
+          ? value?.prices[value?.location]
+          : value?.prices.Default;
+      const securitydeposit = value?.securitydeposit * value.quantity;
+      const totalprice =
+        finaltenure[value?.selectedtenure]?.price * value.quantity;
+      return Number(total) + Number(totalprice) + Number(securitydeposit);
+    } else {
+      const totalprice = value?.buyprice * value?.quantity;
+      return total + totalprice;
+    }
+  }, 0);
 
   // place order fucntion
   const Order = () => {
-    if (!token) {
+    loadRazorpay(userdata);
+    return;
+
+    const usecookie = Cookies.get("userdata");
+    if (!token || !usecookie) {
       setmessagefn("Please Login");
       setredirectloginlink("/cart");
       router.push("/loginlogout");
-
-      // history.pushState(null, "", "");
-      // setinstantlogin((pre) => ({ ...pre, show: true }));
-      // setTimeout(() => {
-      //   setinstantlogin((pre) => ({ ...pre, effect: true }));
-      // }, 350);
-      // return;
-    }
-
-    const usecookie = Cookies.get("userdata");
-    if (!usecookie) {
-      setmessagefn("Please login first!");
       return;
     }
 
     if (
       userdata?.phonenum.trim() === "" ||
       userdata?.address.trim() === "" ||
+      userdata?.email.trim() === "" ||
       userdata?.username.trim() === ""
     ) {
       setmessagefn("Update Your Details");
       setredirectloginlink("/cart");
       router.push("/updateuserdetails");
-      return;
-    }
-
-    if (!JSON.parse(usecookie).pincode) {
-      setmessagefn("Please select your pincode");
-      pincoderef.current.focus();
       return;
     }
 
@@ -94,6 +93,43 @@ export default function Page({ userdata, token, orderstatus }) {
       }
     );
   };
+  // load razor pay
+  const loadRazorpay = async (userdata) => {
+    const res = await Razorpayidcreate(1000, "INR");
+    if (res.status !== 200) {
+      setmessagefn("Payment Failed!");
+      return;
+    }
+    const order = res?.order;
+
+    const options = {
+      key: process.env.Razortpay_Key,
+      amount: totalPrice, // Amount in paise
+      currency: order.currency || "INR",
+      name: "Rentbean",
+      description: "Test Transaction",
+      image: "/logo&ui/minlogo.png",
+      order_id: order.id, // Order ID generated from your backend
+      handler: async (response) => {
+        const res = await Verifyrazorpay(response);
+        console.log("Payment successful", response);
+      },
+      prefill: {
+        name: userdata?.username,
+        email: userdata?.email,
+        contact: userdata?.phonenum,
+      },
+      theme: {
+        color: "#d68e43",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.on("payment.failed", function (response) {
+      console.error("Payment failed", response.error);
+    });
+    paymentObject.open();
+  };
 
   // order success
   useEffect(() => {
@@ -111,6 +147,13 @@ export default function Page({ userdata, token, orderstatus }) {
   if (cartitems.length == 0) {
     return <Emptycart />;
   }
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <>
@@ -143,40 +186,13 @@ export default function Page({ userdata, token, orderstatus }) {
             />
           ))}
         </div>
-        {/* price details */}
-        {/* <Pricedetails
-          cartlength={cartlength}
-          totalprice={totalprice}
-          totaldiscount={totaldiscount}
-        /> */}
-        <div className="flex items-center w-full gap-5 bg-white  p-2 mt-5">
-          <p className="text-[10px] md:text-[12px] text-center w-full">
-            By placing an order, you agree to our{" "}
-            <Link
-              href="/Terms&Conditions"
-              className="text-sky-500 hover:underline"
-            >
-              Terms & Conditions
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="/PrivacyPolicy"
-              className="text-sky-500 hover:underline"
-            >
-              Policies
-            </Link>
-          </p>
-          <button
-            className="flex items-center gap-[10px] px-[20px] py-[5px] border border-slate-300 rounded-[5px] bg-theme  text-white ml-auto whitespace-nowrap"
-            onClick={Order}
-          >
-            <IoShieldCheckmark />
-            Place Order
-          </button>
-        </div>
+        <Checkout
+          paymentMethod={paymentMethod}
+          setpaymentMethod={setpaymentMethod}
+          totalPrice={totalPrice}
+          Order={Order}
+        />
       </div>
     </>
   );
 }
-
-
