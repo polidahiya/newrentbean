@@ -109,14 +109,23 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
           </div>
         )}
       </div>
-      <center>
+      <div className="flex justify-center gap-2 mt-5">
         <button
-          className="bg-slate-300 rounded-md p-[5px] px-5 my-5"
+          className="rounded-md p-[5px] px-5 text-white bg-theme"
           onClick={() => showproducts("category")}
         >
           Show Products
         </button>
-      </center>
+        {/* add new product form */}
+        <button
+          className="border px-5 rounded-md text-white bg-theme"
+          onClick={() => {
+            setshoweditform(true);
+          }}
+        >
+          + Add New
+        </button>
+      </div>
 
       {/* products */}
       {!loading ? (

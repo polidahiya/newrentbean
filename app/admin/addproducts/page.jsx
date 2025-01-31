@@ -35,7 +35,7 @@ function Page() {
     setdata(initialState);
   };
   return (
-    <div className="">
+    <div>
       {showeditform && (
         <div className="fixed h-screen w-full left-0 top-0  flex items-center justify-center bg-black bg-opacity-25 z-30">
           <div className="w-full h-full overflow-y-scroll">
@@ -57,7 +57,6 @@ function Page() {
           </button>
         </div>
       )}
-
       <Showproducts
         setdata={setdata}
         setdeletedimages={setdeletedimages}
