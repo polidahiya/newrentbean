@@ -1,5 +1,5 @@
 "use server";
-import { Userification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { cookies } from "next/headers";
 import { getcollection } from "@/app/Mongodb";
 
@@ -7,7 +7,7 @@ import { getcollection } from "@/app/Mongodb";
 export const Placeorder = async (ordersdata) => {
   try {
     const { orderscollection } =await getcollection();
-    const tokenres = await Userification();
+    const tokenres = await Verification("public");
 
     if (!tokenres) {
       return { status: 500, message: "Please login first" };

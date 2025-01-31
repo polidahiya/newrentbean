@@ -30,9 +30,12 @@ const Verification = async (permission) => {
 
     if (
       decoded?.usertype === "admin" ||
-      decoded?.permission?.includes(permission)
-    )
+      decoded?.permission?.includes(permission) ||
+      permission == "public"
+    ) {
       return { verified: true, email: decoded.email };
+    }
+    return { verified: false };
   } catch (error) {
     return { verified: false };
   }

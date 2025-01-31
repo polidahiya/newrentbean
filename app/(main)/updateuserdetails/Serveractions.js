@@ -1,6 +1,6 @@
 "use server";
 import { cookies } from "next/headers";
-import { Userification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { logintime } from "@/app/commondata";
 import { getcollection } from "@/app/Mongodb";
 
@@ -8,7 +8,7 @@ import { getcollection } from "@/app/Mongodb";
 export async function updateuserdetails(newuserdetails) {
   try {
     const { userscollection } = await getcollection();
-    const tokenres = await Userification();
+    const tokenres = await Verification("public");
     if (!tokenres) {
       return { status: 400, message: "Please login" };
     }

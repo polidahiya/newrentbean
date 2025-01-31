@@ -1,17 +1,16 @@
 "use server";
-import { Userification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { getcollection } from "@/app/Mongodb";
 
 // get orders history
 export const getordershistory = async () => {
   try {
-    const { orderscollection } = await getcollection();
-    const tokenres = await Userification();
-
+    const tokenres = await Verification("public");
     if (!tokenres) {
       return { status: 400, message: "Please login first" };
     }
 
+    const { orderscollection } = await getcollection();
     let result = await orderscollection
       .find({ [`userdata.email`]: tokenres.email, paymentStatus: "success" })
       .sort({ createdAt: -1 })
@@ -30,7 +29,7 @@ export const getordershistory = async () => {
 export const Cancelorder = async (orderid, productindex) => {
   try {
     const { ObjectId, orderscollection } = await getcollection();
-    const tokenres = await Userification();
+    const tokenres = await Verification("public");
 
     if (!tokenres) {
       return { status: 400, message: "Please login first" };

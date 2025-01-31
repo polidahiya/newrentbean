@@ -1,12 +1,12 @@
 "use server";
-import { Userification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { getcollection } from "@/app/Mongodb";
 
 // get liked products for user
 export const getLikedProducts = async () => {
   try {
     const { userscollection } = await getcollection();
-    const tokenres = await Userification();
+    const tokenres = await Verification("public");
 
     if (!tokenres) {
       return { status: 400, message: "Please login first" };
@@ -28,7 +28,7 @@ export const getLikedProducts = async () => {
 export async function isliked(productid) {
   try {
     const { userscollection } = await getcollection();
-    const tokenres = await Userification();
+    const tokenres = await Verification("public");
 
     if (!tokenres) {
       return false;
@@ -50,7 +50,7 @@ export async function isliked(productid) {
 export async function likeproduct(productid, liked) {
   try {
     const { userscollection } = await getcollection();
-    const tokenres = await Userification();
+    const tokenres = await Verification("public");
 
     if (!tokenres) {
       return { status: 400, message: "Please login first" };

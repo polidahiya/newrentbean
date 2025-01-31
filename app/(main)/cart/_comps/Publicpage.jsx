@@ -3,7 +3,6 @@ import { Placeorder } from "@/app/_serveractions/Addorder";
 import { AppContextfn } from "@/app/Context";
 import React, { useState, useEffect } from "react";
 import Products from "./Products";
-import PaymentPage from "./Payuform";
 import Emptycart from "./Emptycart";
 import Useraddress from "./Useraddress";
 import { FaOpencart } from "react-icons/fa6";
@@ -27,8 +26,6 @@ export default function Page({ userdata, token, orderstatus }) {
     // setinstantlogin,
   } = AppContextfn();
   const [showtenure, setshowtenure] = useState({ show: false, data: {} });
-  const [showpaymentform, setshowpaymentform] = useState(false);
-  const [orderid, setorderid] = useState("");
   const [paymentMethod, setpaymentMethod] = useState("online");
 
   const cartitems = Object.entries(cart).filter(([key, item]) => item.added);
@@ -144,10 +141,7 @@ export default function Page({ userdata, token, orderstatus }) {
     if (orderstatus == "failed") setmessagefn("Order Failed!");
   }, []);
 
-  if (cartitems.length == 0) {
-    return <Emptycart />;
-  }
-
+  
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -155,16 +149,12 @@ export default function Page({ userdata, token, orderstatus }) {
     document.body.appendChild(script);
   }, []);
 
+  if (cartitems.length == 0) {
+    return <Emptycart />;
+  }
+
   return (
     <>
-      {showpaymentform && (
-        <PaymentPage
-          orderid={orderid}
-          amount={totalprice - totaldiscount}
-          userdata={userdata}
-          setshowpaymentform={setshowpaymentform}
-        />
-      )}
       {showtenure?.show && (
         <Showtenuremenu showtenure={showtenure} setshowtenure={setshowtenure} />
       )}
