@@ -47,11 +47,13 @@ export default function Page({ userdata, token, orderstatus }) {
 
   // place order fucntion
   const Order = () => {
-    loadRazorpay(userdata);
-    return;
+    // loadRazorpay(userdata);
+    // return;
 
-    const usecookie = Cookies.get("userdata");
-    if (!token || !usecookie) {
+    const usercookie = Cookies.get("userdata");
+    console.log(usercookie);
+    
+    if (!token || !usercookie) {
       setmessagefn("Please Login");
       setredirectloginlink("/cart");
       router.push("/loginlogout");
@@ -70,25 +72,25 @@ export default function Page({ userdata, token, orderstatus }) {
       return;
     }
 
-    Recaptcha(
-      async () => {
-        const res = await Placeorder(cart);
-        if (res?.status == 200) {
-          event("button_click", {
-            category: "User Interaction",
-            label: "Order placed",
-            value: 1,
-          });
-          setorderid(res?.id);
-          setshowpaymentform(true);
-        } else {
-          setmessagefn(res?.message);
-        }
-      },
-      () => {
-        setmessagefn("Something went wrong!");
-      }
-    );
+    // Recaptcha(
+    //   async () => {
+    //     const res = await Placeorder(cart);
+    //     if (res?.status == 200) {
+    //       event("button_click", {
+    //         category: "User Interaction",
+    //         label: "Order placed",
+    //         value: 1,
+    //       });
+    //       setorderid(res?.id);
+    //       setshowpaymentform(true);
+    //     } else {
+    //       setmessagefn(res?.message);
+    //     }
+    //   },
+    //   () => {
+    //     setmessagefn("Something went wrong!");
+    //   }
+    // );
   };
   // load razor pay
   const loadRazorpay = async (userdata) => {
@@ -141,7 +143,6 @@ export default function Page({ userdata, token, orderstatus }) {
     if (orderstatus == "failed") setmessagefn("Order Failed!");
   }, []);
 
-  
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";

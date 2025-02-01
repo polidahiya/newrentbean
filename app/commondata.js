@@ -16,31 +16,27 @@ export const sociallinks = {
 };
 
 export const categorylist = {
-  "Fitness-&-Gym": {
-    name: "Fitness and Gym",
+  "Health-&-Fitness": {
+    name: "Health & Fitness",
     image: "/logo&ui/categories/fitnessandgym2.svg",
     subcat: [
       {
         image: "/logo&ui/categories/subcategories/Treadmills.jpg",
-        name: "Cardio-Machines",
-      },
-      {
-        image: "/logo&ui/categories/subcategories/cycles.webp",
-        name: "Outdoor-Fitness",
+        name: "Fitness-Machines",
       },
       {
         image: "/logo&ui/categories/subcategories/homegym.jpg",
-        name: "Body-Care",
+        name: "Weight-&-Rack",
       },
     ],
   },
-  Electronics: {
-    name: "Electronics",
+  Electronic: {
+    name: "Home & Electronic Appliance",
     image: "/logo&ui/categories/electronics.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/games.jpg",
-        name: "Gaming",
+        image: "/logo&ui/categories/subcategories/projector.jpeg",
+        name: "Entertainment",
       },
       {
         image: "/logo&ui/categories/subcategories/laptop.jpeg",
@@ -49,10 +45,6 @@ export const categorylist = {
       {
         image: "/logo&ui/categories/subcategories/phone.jpg",
         name: "Mobile-&-Accessories",
-      },
-      {
-        image: "/logo&ui/categories/subcategories/projector.jpeg",
-        name: "Entertainment",
       },
       {
         image: "/logo&ui/categories/subcategories/washingmachine.webp",
@@ -90,27 +82,27 @@ export const categorylist = {
       },
     ],
   },
-  "Party-&-Outdoor": {
-    name: "Party & Outdoor",
+  "Event-&-Parties": {
+    name: "Event & Parties",
     image: "/logo&ui/categories/eventandparties.svg",
     subcat: [
       {
         image: "/logo&ui/categories/subcategories/hookah.jpeg",
-        name: "Party-Essentials",
-      },
-      {
-        image: "/logo&ui/categories/subcategories/sleepbag.jpg",
-        name: "Outdoor-Essentials",
+        name: "Party-Items",
       },
     ],
   },
-  "Baby-Products": {
-    name: "Baby Products",
+  Others: {
+    name: "Others",
     image: "/logo&ui/categories/campinggear.svg",
     subcat: [
       {
         image: "/logo&ui/categories/subcategories/babycarrier.jpg",
-        name: "Travel-Gear",
+        name: "Baby-Care",
+      },
+      {
+        image: "/logo&ui/categories/subcategories/babycarrier.jpg",
+        name: "Camping-Gear",
       },
     ],
   },

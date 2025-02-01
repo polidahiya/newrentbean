@@ -14,8 +14,8 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
   const { setmessagefn, setshowdialog } = AppContextfn();
 
   const [categorystate, setcategorystate] = useState({
-    category: "Fitness-&-Gym",
-    subcat: "Cardio-Machines",
+    category: "Health-&-Fitness",
+    subcat: "Treadmill",
     id: "",
   });
 
