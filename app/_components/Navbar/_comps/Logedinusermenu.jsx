@@ -9,6 +9,7 @@ import Updateusersvg from "@/app/_svgs/Updateusersvg";
 import Logoutsvg from "@/app/_svgs/Logoutsvg";
 import { logout } from "@/app/(main)/loginlogout/Serveractions";
 import { useRouter } from "next/navigation";
+import { RiAdminFill } from "react-icons/ri";
 
 function Logedinusermenu({ token, userdata }) {
   const router = useRouter();
@@ -60,12 +61,11 @@ function Logedinusermenu({ token, userdata }) {
       </button>
     );
   }
-
   return (
     <>
       {/* User menu button */}
       <div className="relative  h-full aspect-square z-30">
-        <button className=" h-full aspect-square  p-[5px]" onClick={showmenu}>
+        <button className=" h-full aspect-square  p-1" onClick={showmenu}>
           <Usersvg styles="h-full aspect-square fill-white stroke-white border border-slate-300 rounded-full" />
         </button>
 
@@ -96,39 +96,52 @@ function Logedinusermenu({ token, userdata }) {
               <Link
                 href={`/orderdetails`}
                 replace
-                className="p-[5px] flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
               >
-                <Navorderssvg styles="h-[25px]" />
+                <Navorderssvg styles="w-6 h-6" />
                 Orders Detail
               </Link>
               <hr />
               <Link
                 href={`/likedproducts`}
                 replace
-                className="p-[5px] flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
               >
-                <Heart styles="h-[25px] w-[25px] fill-red-500" />
+                <Heart styles="w-6 h-6 fill-red-500" />
                 Liked Products
               </Link>
               <hr />
               <Link
                 href={`/updateuserdetails`}
                 replace
-                className="p-[5px] flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
               >
-                <Updateusersvg styles="h-[25px]" />
+                <Updateusersvg styles="w-6 h-6" />
                 Update User Details
               </Link>
               <hr />
+              {parsedUserData?.usertype == "admin" && (
+                <>
+                  <Link
+                    href={`/admin`}
+                    replace
+                    className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                  >
+                    <RiAdminFill className="w-6 h-6" />
+                    Admin Dashboard
+                  </Link>
+                  <hr />
+                </>
+              )}
               <div
-                className="p-[5px] flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
                 onClick={async () => {
                   const res = await logout();
                   setmessagefn(res?.message);
                   if (res.status === 200) router.push("/");
                 }}
               >
-                <Logoutsvg styles="h-[25px]" />
+                <Logoutsvg styles="w-6 h-6" />
                 Logout
               </div>
             </div>

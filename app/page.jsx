@@ -11,7 +11,6 @@ import Allproducts from "./_components/Homepage/Allproducts";
 import Citiesdescription from "./_components/Homepage/Citiesdescription";
 import Herosection from "./_components/Homepage/Herosection";
 import Navbar from "./_components/Navbar/Navbar";
-import Link from "next/link";
 import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
 
 export default async function Home({ searchParams, params }) {
@@ -49,16 +48,6 @@ export default async function Home({ searchParams, params }) {
         <Footer />
       </div>
       <Mobilenav />
-      {/* dashboardlink */}
-      {parseduserdata?.usertype == "admin" && <Dashboardlink />}
     </>
   );
 }
-
-const Dashboardlink = () => {
-  return (
-    <div className="w-full max-w-80 h-10 flex flex-col items-center justify-center fixed bottom-0 left-1/2 -translate-x-1/2 bg-white text-theme underline rounded-t-full border shadow-inner">
-      <Link href={"/admin"}>DashBoard</Link>
-    </div>
-  );
-};

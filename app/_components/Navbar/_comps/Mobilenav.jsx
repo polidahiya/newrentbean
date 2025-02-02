@@ -4,7 +4,6 @@ import { FiSearch } from "react-icons/fi";
 import { LuLayoutGrid } from "react-icons/lu";
 import { AppContextfn } from "@/app/Context";
 import { MdLocationPin } from "react-icons/md";
-import { TbSwitchHorizontal } from "react-icons/tb";
 import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
 
@@ -85,11 +84,12 @@ function Mobilenav() {
 
       {/* rent or buy switch */}
       <button
-        className="h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme"
+        className={`h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme
+               ${isrentalstore ? "flex-row-reverse pl-1 pr-5" : "pl-5 pr-1"}`}
         onClick={() => setisrentalstore((pre) => !pre)}
       >
-        <TbSwitchHorizontal className="inline-block" />{" "}
         {isrentalstore ? "Rent" : "Buy"}
+        <span className="block h-5 aspect-square rounded-full bg-theme"></span>
       </button>
     </div>
   );

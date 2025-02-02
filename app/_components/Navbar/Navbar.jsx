@@ -11,7 +11,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import { FaOpencart } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
-import { TbSwitchHorizontal } from "react-icons/tb";
 
 function Navbar({ params, productsname, token, userdata }) {
   const router = useRouter();
@@ -78,11 +77,12 @@ function Navbar({ params, productsname, token, userdata }) {
         <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
           {/* rent or buy switch */}
           <button
-            className="hidden md:flex h-8 px-5 border rounded-full items-center justify-center gap-1 text-theme"
+            className={`hidden relative md:flex h-8  border rounded-full items-center justify-center gap-1 text-theme
+               ${isrentalstore?"flex-row-reverse pl-1 pr-5":"pl-5 pr-1"}`}
             onClick={() => setisrentalstore((pre) => !pre)}
           >
-            <TbSwitchHorizontal className="inline-block" />{" "}
             {isrentalstore ? "Rent" : "Buy"}
+            <span className="block h-5 aspect-square rounded-full bg-theme"></span>
           </button>
           {/* search button */}
          

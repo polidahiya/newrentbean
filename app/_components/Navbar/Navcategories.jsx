@@ -21,7 +21,7 @@ function Navcategories({ category }) {
                   : "lg:group-hover:bg-theme lg:group-hover:text-white "
               }`}
             >
-              {item}
+              {item.replace(/-/g, " ")}
             </Link>
             {/* subcategories */}
             {categorylist[item].subcat.length > 0 && (
@@ -51,7 +51,7 @@ function Navcategories({ category }) {
                           href={`/${item}/${subcat.name}`}
                           className="p-1 lg:hover:bg-theme lg:hover:text-white rounded-full lg:w-52 pl-10 lg:pl-0 lg:text-center text-[14px]"
                         >
-                          {subcat?.name}
+                          {subcat?.name.replace(/-/g, " ")}
                         </Link>
                       );
                     })}
