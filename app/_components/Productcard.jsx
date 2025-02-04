@@ -102,7 +102,7 @@ function Productcard({
             {isrentalstore ? (
               <>
                 <span>Rent </span> : ₹{" "}
-                {parseInt(rentprice, 10).toLocaleString("en-IN")}
+                {parseInt(rentprice, 10).toLocaleString("en-IN")} / {locationrentprices[0]?.type.replace(/s$/, '')}
               </>
             ) : (
               <>₹{parseInt(buyprice, 10).toLocaleString("en-IN")}</>

@@ -1,102 +1,63 @@
-// ShippingPolicy.jsx
 import React from "react";
-import { mail, mobile } from "@/app/commondata";
 
-const ShippingPolicy = () => {
+function page() {
   return (
-    <div id="content" className="container mx-auto p-4">
-      <div className="mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-        <div id="primary" className="p-6">
-          <main id="main">
-            <article className="prose lg:prose-xl mx-auto">
-              <header className="mb-6">
-                <h1 className="text-3xl font-bold mb-4">
-                  Shipping Policy - Rentbean
-                </h1>
-              </header>
-              <div className="entry-content">
-                <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                  Rentbean is committed to delivering the customer&apos;s order
-                  accurately, in good condition, and always on time as promised
-                  by the website.
-                </p>
-                <ol className="list-decimal list-inside mb-6 text-lg leading-relaxed text-gray-700">
-                  <li>
-                    We offer FREE Shipping for all products ordered through our
-                    site, if the customer&apos;s delivery location falls under the
-                    serviceable city/town and the pin code.
-                  </li>
-                  <li>
-                    Each order may be shipped only to a single destination
-                    address specified at the time of payment for that order. If
-                    the customer wishes to ship products to different addresses,
-                    they need to place multiple orders.
-                  </li>
-                  <li>
-                    We make our best efforts to ship each item in the customer&apos;s
-                    order within 15 to 21 working days from the date of order
-                    placement. However, in some cases, it may take longer, up to
-                    30 working days, as we may have to arrange dispatch from
-                    our factory. In the unlikely event that we are not able to
-                    ship any order completely within 30 working days, we shall
-                    cancel the remaining unshipped part of the order and send
-                    an email informing the customer about the same. In such
-                    cases, the payment against the unshipped part of the order
-                    shall be refunded in the same mode and manner that the
-                    customer had made the payment.
-                  </li>
-                  <li>
-                    Our logistics department works on all working days of the
-                    week (Monday to Saturday), excluding public holidays.
-                  </li>
-                  <li>
-                    We strive to ship all items in the order together, but this
-                    may not be possible in some cases due to product
-                    characteristics or availability.
-                  </li>
-                  <li>
-                    If the customer believes that the product is not in good
-                    condition, or if the packaging is tampered with or damaged,
-                    before accepting delivery of the goods, they are requested
-                    to refuse to take delivery of the package and call our
-                    Customer Care or send an email to{" "}
-                    <a href={mail} className="text-blue-600 hover:underline">
-                      {mail}
-                    </a>
-                    , mentioning their order reference number. Our customer
-                    service team shall make our best efforts to ensure that a
-                    replacement delivery is made to them at the earliest.
-                  </li>
-                  <li>
-                    Customers may track the shipping status of their orders on
-                    the {mail} website, by clicking at the Track Order section.
-                  </li>
-                  <li>
-                    All items will be shipped with an invoice mentioning the
-                    price, as per Indian Tax Regulations.
-                  </li>
-                </ol>
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                  Contact Us
-                </h2>
-                <p className="mb-6 text-lg leading-relaxed text-gray-700">
-                  If you have any questions about our shipping policy, feel free
-                  to reach out to our customer service team at{" "}
-                  <a
-                    href={`mailto:${mail}`}
-                    className="text-blue-600 hover:underline"
-                  >
-                    {mail}
-                  </a>{" "}
-                  or contact us at {mobile}.
-                </p>
-              </div>
-            </article>
-          </main>
-        </div>
-      </div>
+    <div className="p-[10px] md:p-[40px]">
+      <h1 className="text-center text-[25px] text-theme font-bold font-recline">Shipping Policy</h1>
+      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+        {" "}
+        1. When and where do you usually deliver?
+      </h2>
+      <p className="text-[14px]  ">
+        We work on all days of the week. We do delivery, installation and
+        pick-up. In case you do not have lift or permission to use lift at your
+        premises, additional labor charges will be charged to carry the products
+        through stairs. We are currently active in Delhi, Noida and Gurgaon.
+        Please note: Installation for AC will incur additional charges, which
+        will be communicated to you before placing the order.
+      </p>
+      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+        2. Do you help us with relocation?
+      </h2>
+      <p className="text-[14px]  ">
+        We help you with relocation free of cost within the city for our rented
+        items only. If you are relocating to another city and we are present
+        there, you can rent similar products in the other city. The relocation
+        service may be availed only once throughout the tenure of the contract.
+        We suggest customers to not relocate the product themselves. If any
+        damages occur while a customer attempts to relocate the products
+        themselves, damage cost would be recovered from the customer.
+      </p>
+      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+        3. What if I am not at home at the time of delivery?
+      </h2>
+      <p className="text-[14px]  ">
+        In case of the customers unavailability, please let us know who will be
+        receiving the products.We would need an acknowledgement email from the
+        customer with the nominees government id proof. We do this to ensure
+        that your order is in safe hands.
+      </p>
+      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+        4. What if my building does not have a lift?
+      </h2>
+      <p className="text-[14px]  ">
+        In case you do not have a lift or permission to use the lift at your
+        premises, extra labor charges will be applicable to carry the products
+        via stairs; amount will depend on the order size and floor level.
+      </p>
+      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+        5. What if my society does not allow vehicles inside?
+      </h2>
+      <p className="text-[14px]  ">
+        Please note that you should ensure the entry of delivery vehicle inside
+        the premises. Most of the times, it is not allowed to park the delivery
+        vehicles on road. Please also ensure that you have completed the
+        required documents and payment work mandatory with the landlord, we have
+        observed that sometimes customers do not have permission to shift into
+        the new house.
+      </p>{" "}
     </div>
   );
-};
+}
 
-export default ShippingPolicy;
+export default page;

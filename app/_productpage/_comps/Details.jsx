@@ -11,8 +11,6 @@ function Details({ filteredProduct }) {
     isrentalstore ? "rental" : "buy"
   }-${location?.location}`;
 
-  console.log(filteredProduct);
-
   useEffect(() => {
     if (!cart[cartproductid]?.added) {
       setcart((pre) => {

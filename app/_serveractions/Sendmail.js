@@ -1,33 +1,30 @@
 "use server";
+
 import nodemailer from "nodemailer";
 
-export default async function sendMail(mailto, subject, text, html) {
+const sendEmail = async (subject, to, html) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
+      host: "smtp-relay.brevo.com",
+      port: 587,
+      secure: false, // Use false for 587 (non-SSL), true for SSL (465)
       auth: {
-        user: process.env.MAIL,
-        pass: process.env.GMAIL_PASSWORD,
+        user: process.env.brevo_user,
+        pass: process.env.brevo_pass,
       },
     });
 
-    // Set up email options
     const mailOptions = {
-      from: process.env.MAIL,
-      to: mailto,
+      from: "Rentbean@rentbean.in",
+      to: to,
       subject: subject,
-      text: text,
       html: html,
     };
 
-    // Send the email
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent:", info.response);
-    return { status: 200, message: "Please check your mail inbox" };
+    await transporter.sendMail(mailOptions);
   } catch (error) {
-    console.error("Error occurred:", error);
-    return { status: 500, message: "Unable to send mail!" };
+    console.error("Error sending email:", error);
   }
-}
+};
+
+export default sendEmail;

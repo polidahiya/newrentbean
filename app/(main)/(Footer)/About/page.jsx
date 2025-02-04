@@ -1,10 +1,8 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-import { sociallinks } from "@/app/commondata";
 
 const About = () => {
   return (
-    <div className="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+    <div className="bg-gray-100 text-gray-800 min-h-screen flex flex-col px-2 md:px-5">
       <header className="relative py-6">
         <div className="container mx-auto text-center">
           <h1 className="aboutusheading font-black text-[10vw] lg:text-[9vw] font-recline">
@@ -12,82 +10,75 @@ const About = () => {
           </h1>
         </div>
       </header>
-      <main className="flex-1 container mx-auto px-4 py-8">
-        <section className="bg-white shadow-md rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4">
-            Welcome to Rentbean
-          </h2>
-          <p className="mb-4">
-            At Rentbean, we are passionate about bringing the beauty and
-            warmth of wooden furniture and home decor to your space. Our
-            collection features handcrafted pieces made from high-quality,
-            sustainably sourced wood, designed to add elegance and functionality
-            to your home.
-          </p>
-          <p className="mb-4">
-            Founded in 2018, we pride ourselves on our commitment to quality
-            craftsmanship and exceptional customer service. Each piece of
-            furniture is carefully designed and crafted by skilled artisans who
-            share our dedication to excellence. Whether you&apos;re looking for
-            a statement piece or a functional addition to your home, we have
-            something to suit every taste and style.
-          </p>
-          <p className="mb-4">
-            We believe that furniture should not only be beautiful but also
-            durable and timeless. That&apos;s why we use only the finest
-            materials and adhere to rigorous quality standards. Our goal is to
-            help you create a home that reflects your personal style and stands
-            the test of time.
-          </p>
-          <h3 className="text-xl font-semibold mt-6 mb-2">Our Mission</h3>
-          <p className="mb-4">
-            Our mission is to provide high-quality, handcrafted wooden furniture
-            and home decor that enhances your living space. We strive to offer
-            exceptional value and create pieces that you&apos;ll cherish for
-            years to come.
-          </p>
-          <h3 className="text-xl font-semibold mt-6 mb-2">Our Vision</h3>
-          <p>
-            We envision a world where every home is adorned with beautiful,
-            sustainable, and thoughtfully designed furniture. Our vision is to
-            lead the industry in both innovation and tradition, setting new
-            standards for quality and style.
-          </p>
-        </section>
-        <section className="text-center mb-8">
-          <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-          <div className="flex justify-center gap-4">
-            <a
-              href={sociallinks.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              <FaFacebook size={24} />
-            </a>
-            <a
-              href={sociallinks.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-600"
-            >
-              <FaTwitter size={24} />
-            </a>
-            <a
-              href={sociallinks.insta}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-pink-600 hover:text-pink-800"
-            >
-              <FaInstagram size={24} />
-            </a>
-          </div>
-        </section>
-      </main>
-      <footer className="bg-gray-900 text-white py-4">
+      <center>
+        <p className="text-center max-w-[900px] italic text-[10px] md:text-[16px]">
+          Welcome to Rentbean.in, your ultimate destination for hassle-free
+          rentals of fitness equipment, electronics, furniture, and more.
+          Founded in 2016, Rentbean.in is dedicated to simplifying your renting
+          experience, making it convenient, affordable, and enjoyable.
+        </p>
+      </center>
+      <div>
+        <h2 className="text-[18px] font-black  mt-[10px] font-recline">
+          Our Story:
+        </h2>
+        <p className="text-[14px] ">
+          Since our inception in 2016, Rentbean.in has been committed to
+          revolutionizing the way people access the items they need without the
+          burden of ownership. Our journey began with a vision to provide a
+          platform where convenience meets affordability, and we continue to
+          uphold this commitment every day.
+        </p>
+        <h2 className="text-[18px] font-black  mt-[10px] font-recline">
+          What We Offer:
+        </h2>
+        <p className="text-[14px] ">
+          Wide Variety: Explore our diverse selection of high-quality products
+          from top brands, carefully curated to cater to your needs.
+        </p>
+        <h2 className="text-[18px] font-black  mt-[10px] font-recline">
+          Convenience:
+        </h2>
+        <p className="text-[14px] ">
+          Rent what you need, when you need it, without the hassles of storage,
+          maintenance, or upfront costs. Enjoy flexible rental options tailored
+          to your schedule and preferences.
+        </p>
+        <h2 className="text-[18px] font-black  mt-[10px] font-recline">
+          Quality Assurance:
+        </h2>
+        <p className="text-[14px] ">
+          All our rental items undergo thorough inspections to ensure they meet
+          our stringent standards of quality and reliability, giving you peace
+          of mind with every rental.
+        </p>
+        <h2 className="text-[18px] font-black  mt-[10px] font-recline">
+          Our Commitment:
+        </h2>
+        <p className="text-[14px] ">
+          At Rentbean.in, we prioritize customer satisfaction above all else.
+          Our dedicated team is here to provide you with exceptional service and
+          support throughout your renting journey. Whether you&#39;re renting
+          for personal use, events, or business purposes, we&#39;re committed to
+          exceeding your expectations at every turn.
+        </p>
+        <h2 className="text-[18px] font-black  mt-[10px] font-recline">
+          Get Started Today:
+        </h2>
+        <p className="text-[14px] ">
+          Join the Rentbean.in community today and experience the freedom of
+          renting. Browse our extensive catalog, select your items, and enjoy
+          the convenience of temporary ownership without the long-term
+          commitment. Let Rentbean.in be your trusted partner in making renting
+          easy and accessible for everyone. Thank you for choosing Rentbean.in
+          for all your rental needs. Here&#39;s to a simpler, more convenient
+          way of living!
+        </p>
+      </div>
+      <footer className="bg-gray-900 text-white py-4 mt-5">
         <div className="container mx-auto text-center">
           <p>
-            &copy; {new Date().getFullYear()} Rentbean. All rights reserved.
+            &copy; {new Date().getFullYear()} Rentbean.in All rights reserved.
           </p>
         </div>
       </footer>

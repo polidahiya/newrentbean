@@ -3,7 +3,7 @@ import Page from "./_comps/Publicpage";
 import { cookies } from "next/headers";
 import Ordersplacednotif from "./_comps/Ordersplacednotif";
 
-function page({ searchParams }) {
+function page() {
   const token = cookies()?.get("token")?.value;
   const userdata = cookies()?.get("userdata")?.value;
   let parseduserdata;
@@ -16,7 +16,6 @@ function page({ searchParams }) {
       <Page
         userdata={parseduserdata}
         token={token}
-        orderstatus={searchParams?.orderstatus}
       />
     </>
   );

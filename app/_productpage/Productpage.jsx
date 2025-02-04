@@ -6,14 +6,13 @@ import { categorylist, domain } from "@/app/commondata";
 import { notFound } from "next/navigation";
 import Promices from "@/app/_components/Homepage/Promices";
 import { cookies } from "next/headers";
-import ProductCare from "./_comps/Productcare";
 import Similarproducts from "./_comps/Similarproducts";
 import { RxChevronRight } from "react-icons/rx";
-import Bestselling from "../_components/Homepage/Bestselling";
-import Newarrival from "../_components/Homepage/Newarrival";
 import FAQSection from "@/app/_components/Faq";
 import { AiOutlineHome } from "react-icons/ai";
 import Details from "./_comps/Details";
+import { mail } from "@/app/commondata";
+import Productdesc from "./_comps/Productdesc";
 
 async function Productpage({ category, subcat, productid }) {
   const token = cookies()?.get("token")?.value;
@@ -29,7 +28,6 @@ async function Productpage({ category, subcat, productid }) {
   }
 
   const filteredProduct = allproducts.find((item) => item._id === productid);
-  console.log(filteredProduct);
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -71,20 +69,79 @@ async function Productpage({ category, subcat, productid }) {
           <Imagescomp filteredproducts={filteredProduct} token={token} />
           <Details filteredProduct={filteredProduct} />
         </header>
-        <ProductCare />
+        <Productdesc description={filteredProduct?.desc} />
         <Similarproducts
           allproducts={allproducts}
           category={category}
           subcat={subcat}
           productid={productid}
         />
-        {/* <div className="mt-10 lg:mt-20">
-          <Bestselling products={allproducts} />
-        </div>
-        <div className="mt-10 lg:mt-20">
-          <Newarrival products={allproducts} />
-        </div> */}
-        <FAQSection />
+
+        <FAQSection
+          faqlist={[
+            {
+              question: "How can I place an order?",
+              answer: [
+                "Browse our website and add desired items to your cart.",
+                "Follow the checkout process to enter shipping and payment details.",
+              ],
+            },
+            {
+              question: "What payment methods do you accept?",
+              answer: [
+                "We accept major cards (Credit/Debit), Credit Card EMI, Debit Cardless EMI, Net Banking, Wallet, UPI, and PayU.",
+                "All transactions are secure and convenient.",
+              ],
+            },
+            {
+              question: "What does the furniture warranty cover?",
+              answer: [
+                "1-year structural warranty.",
+                "5-year warranty against termites and borers.",
+                "Covers manufacturing defects and workmanship issues.",
+                "Ensures protection against termite/borer damage.",
+              ],
+            },
+            {
+              question: "What should I do if I receive a damaged item?",
+              answer: [
+                "Contact customer support within 24 hours of receiving the damaged item.",
+                "Provide photos of the damage for quick assistance.",
+                "We will arrange a replacement or rectification promptly.",
+              ],
+            },
+            {
+              question: "Is assembly/installation service available?",
+              answer: [
+                "Assembly services are not included with our products at this time.",
+              ],
+            },
+            {
+              question: "Can I track my order?",
+              answer: [
+                "Once your order is shipped, you will receive a confirmation email with a tracking link.",
+                "Use the tracking link to check your order’s progress.",
+              ],
+            },
+            {
+              question: "Can I modify or cancel my order after placing it?",
+              answer: [
+                "You can cancel your order within 24 hours of placing it.",
+                "After this period, the order cannot be canceled.",
+                "If the product does not meet specifications, report the issue immediately.",
+                `For more details, contact customer care or email us at <a href="mailto:${mail}" target="_blank" class="text-blue-500 hover:underline">${mail}</a>.`,
+                "Products purchased on discount or during sales cannot be canceled.",
+              ],
+            },
+            {
+              question: "Do you offer bulk or wholesale pricing?",
+              answer: [
+                "Yes, we offer bulk and wholesale pricing for large orders.",
+                "Contact our sales team via the Contact Us page for a personalized quote.",
+              ],
+            },
+          ]}
+        />
         <Promices />
       </article>
       <script

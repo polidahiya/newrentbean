@@ -15,9 +15,9 @@ function page({ searchParams }) {
     >
       <div className="relative bg-white w-[90%] max-w-[750px] rounded-[20px] shadow-lg p-[30px]">
         <Image
-          src="/minlogo.png"
+          src="/logo&ui/minlogo.png"
           alt="logo image"
-          className=" top-[20px] left-[30px] h-[50px] w-[50px] invert"
+          className=" top-[20px] left-[30px] h-[50px] w-[50px]"
           width={156}
           height={60}
           

@@ -12,10 +12,10 @@ import Recaptcha from "@/app/_components/_helperfunctions/Recaptcha";
 import { event } from "nextjs-google-analytics";
 import Showtenuremenu from "./Showtenuremenu";
 import Checkout from "./Checkout";
-import Razorpayidcreate from "@/app/_serveractions/Razorpayidcreate";
-import Verifyrazorpay from "@/app/_serveractions/Verifyrazorpay";
+import Razorpayidcreate from "@/app/_serveractions/_razorpay/Razorpayidcreate";
+import Verifyrazorpay from "@/app/_serveractions/_razorpay/Verifyrazorpay";
 
-export default function Page({ userdata, token, orderstatus }) {
+export default function Page({ userdata, token }) {
   const router = useRouter();
   const {
     cart,
@@ -47,12 +47,8 @@ export default function Page({ userdata, token, orderstatus }) {
 
   // place order fucntion
   const Order = () => {
-    // loadRazorpay(userdata);
-    // return;
-
     const usercookie = Cookies.get("userdata");
-    console.log(usercookie);
-    
+
     if (!token || !usercookie) {
       setmessagefn("Please Login");
       setredirectloginlink("/cart");
@@ -63,7 +59,6 @@ export default function Page({ userdata, token, orderstatus }) {
     if (
       userdata?.phonenum.trim() === "" ||
       userdata?.address.trim() === "" ||
-      userdata?.email.trim() === "" ||
       userdata?.username.trim() === ""
     ) {
       setmessagefn("Update Your Details");
@@ -72,29 +67,34 @@ export default function Page({ userdata, token, orderstatus }) {
       return;
     }
 
-    // Recaptcha(
-    //   async () => {
-    //     const res = await Placeorder(cart);
-    //     if (res?.status == 200) {
-    //       event("button_click", {
-    //         category: "User Interaction",
-    //         label: "Order placed",
-    //         value: 1,
-    //       });
-    //       setorderid(res?.id);
-    //       setshowpaymentform(true);
-    //     } else {
-    //       setmessagefn(res?.message);
-    //     }
-    //   },
-    //   () => {
-    //     setmessagefn("Something went wrong!");
-    //   }
-    // );
+    Recaptcha(
+      async () => {
+        const res = await Placeorder(cartitems,paymentMethod);
+        if (res?.status == 200) {
+          event("button_click", {
+            category: "User Interaction",
+            label: "Order placed",
+            value: 1,
+          });
+
+          if (paymentMethod == "online") {
+            loadRazorpay(userdata, res?.id);
+          } else {
+            setmessagefn(res?.message);
+            ordersuccess();
+          }
+        } else {
+          setmessagefn(res?.message);
+        }
+      },
+      () => {
+        setmessagefn("Something went wrong!");
+      }
+    );
   };
   // load razor pay
-  const loadRazorpay = async (userdata) => {
-    const res = await Razorpayidcreate(1000, "INR");
+  const loadRazorpay = async (userdata, mongoid) => {
+    const res = await Razorpayidcreate(totalPrice, "INR");
     if (res.status !== 200) {
       setmessagefn("Payment Failed!");
       return;
@@ -106,12 +106,15 @@ export default function Page({ userdata, token, orderstatus }) {
       amount: totalPrice, // Amount in paise
       currency: order.currency || "INR",
       name: "Rentbean",
-      description: "Test Transaction",
+      description: "Transaction",
       image: "/logo&ui/minlogo.png",
       order_id: order.id, // Order ID generated from your backend
       handler: async (response) => {
-        const res = await Verifyrazorpay(response);
-        console.log("Payment successful", response);
+        const res = await Verifyrazorpay(response, mongoid);
+        setmessagefn(res?.message);
+        if (res?.status == 200) {
+          ordersuccess();
+        }
       },
       prefill: {
         name: userdata?.username,
@@ -131,17 +134,14 @@ export default function Page({ userdata, token, orderstatus }) {
   };
 
   // order success
-  useEffect(() => {
-    if (orderstatus == "success") {
-      settoggleorderplacedmenu(true);
-      Cookies.set("rentbeancart", JSON.stringify({}), {
-        expires: 7,
-      });
-      setcart({});
-    }
 
-    if (orderstatus == "failed") setmessagefn("Order Failed!");
-  }, []);
+  const ordersuccess = () => {
+    settoggleorderplacedmenu(true);
+    Cookies.set("rentbeancart", JSON.stringify({}), {
+      expires: 7,
+    });
+    setcart({});
+  };
 
   useEffect(() => {
     const script = document.createElement("script");

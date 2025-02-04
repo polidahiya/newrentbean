@@ -3,10 +3,9 @@ import Verification from "@/app/Verifytoken";
 import { cookies } from "next/headers";
 import { getcollection } from "@/app/Mongodb";
 
-
-export const Placeorder = async (ordersdata) => {
+export const Placeorder = async (ordersdata, paymentMethod) => {
   try {
-    const { orderscollection } =await getcollection();
+    const { orderscollection } = await getcollection();
     const tokenres = await Verification("public");
 
     if (!tokenres) {
@@ -16,16 +15,20 @@ export const Placeorder = async (ordersdata) => {
     const userdata = JSON.parse(cookies()?.get("userdata")?.value);
 
     let order = {
-      paymentStatus: "pending",
+      paymentMethod,
       status: 0,
       userdata,
       products: Object.values(ordersdata).map((product) => ({
-        ...product,
+        ...product[1],
         status: 0,
       })),
       note: "",
       createdAt: new Date(),
     };
+    if (paymentMethod == "online") {
+      order.paymentStatus = "pending";
+    } else {
+    }
     const result = await orderscollection.insertOne(order);
 
     if (result.insertedCount != 0) {

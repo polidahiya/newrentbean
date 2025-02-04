@@ -6,9 +6,13 @@ import { logintime } from "@/app/commondata";
 import { getcollection } from "@/app/Mongodb";
 
 const generateToken = async (userdata) => {
-  const token = jwt.sign(userdata, process.env.jwt_secret, {
-    expiresIn: logintime,
-  });
+  const token = jwt.sign(
+    { email: userdata?.email, usertype: userdata?.usertype },
+    process.env.jwt_secret,
+    {
+      expiresIn: logintime,
+    }
+  );
 
   const cookieStore = await cookies();
   cookieStore.set("token", token, {
@@ -46,9 +50,11 @@ export const login = async (userdata) => {
     }
 
     await generateToken({
-      username: user?.name,
+      username: user?.username,
       email: user?.email,
+      phonenum: user?.phonenum,
       usertype: user?.usertype,
+      address: user?.address,
     });
 
     return { status: 200, message: "Login successful" };
@@ -77,9 +83,11 @@ export const signup = async (userdata) => {
     }
 
     await generateToken({
-      username: userdata.name,
+      username: userdata.username,
       email: userdata.email,
+      phonenum: userdata.phonenum,
       usertype: userdata.usertype,
+      address: userdata.address,
     });
 
     return { status: 200, message: "Signup successful" };

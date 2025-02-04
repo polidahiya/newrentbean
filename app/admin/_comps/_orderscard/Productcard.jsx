@@ -7,28 +7,46 @@ import { AppContextfn } from "@/app/Context";
 export default function ProductCard({ product, orderid, productindex }) {
   const [pshowstatus, setpshowstatus] = useState(false);
   const [localStatus, setLocalStatus] = useState(product?.status); // Local state for status
+  console.log(product?.prices[product?.location]);
 
   return (
-    <div className={`relative bg-white shadow-lg rounded-lg p-4 md:max-w-80`}>
+    <div
+      className={`relative bg-white shadow-lg rounded-lg p-4 h-full md:max-w-80`}
+    >
       {localStatus != 0 && <Canceledorrefundedbadge status={localStatus} />}
       <Image
-        className="w-full rounded-t-lg aspect-[4/3] object-cover object-center"
-        src={product?.colorpalets[product?.selectedcolor].images[0]}
+        className="w-full rounded-t-lg aspect-square object-cover object-center"
+        src={product?.image}
         alt="product image"
         width={300}
         height={300}
         loading="lazy"
-        
       />
       <div className="p-4">
         <OrderDetail label="Name" value={product?.name} />
-        <OrderDetail label="Price" value={`Rs ${product?.price}`} />
-        <OrderDetail label="Quantity" value={`${product?.quantity}`} />
-        <OrderDetail label="Discount" value={`${product?.discount} %`} />
-        <OrderDetail label="Dimensions" value={`${product?.Dimensions}`} />
-        <ProductColorDetail
-          color={product?.colorpalets[product?.selectedcolor]}
+        <OrderDetail
+          label="Type"
+          value={product?.isrentalstore ? "For Rent" : "For Sell"}
         />
+        <OrderDetail
+          label="Price"
+          value={`Rs ${
+            (product?.isrentalstore
+              ? product?.prices[product?.location][product?.selectedtenure]
+                  ?.price
+              : product?.buyprice) * product?.quantity
+          }`}
+        />
+        <OrderDetail label="Quantity" value={`${product?.quantity}`} />
+        {product?.isrentalstore && (
+          <OrderDetail
+            label="Security Deposit"
+            value={`${product?.securitydeposit * product?.quantity}`}
+          />
+        )}
+        {product?.isrentalstore && (
+          <OrderDetail label="Location" value={`${product?.location}`} />
+        )}
       </div>
       {/* status button*/}
       <div className="absolute top-[10px] right-[10px] flex items-center gap-[10px] z-10">

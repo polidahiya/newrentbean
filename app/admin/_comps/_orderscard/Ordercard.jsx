@@ -43,11 +43,7 @@ function Ordercard({ item }) {
             ></span>
             {item?.paymentStatus}
           </p>
-          <OrderDetail
-            label="Transection ID (mihpayid)"
-            value={item?.mihpayid}
-          />
-          <OrderDetail label="txnId" value={item?.txnId} />
+          <OrderDetail label="PaymentMethod" value={item?.paymentMethod} />
           <OrderDetail label="User Name" value={item?.userdata?.username} />
           <OrderDetail label="User Email" value={item?.userdata?.email} />
           <OrderDetail
@@ -55,7 +51,6 @@ function Ordercard({ item }) {
             value={item?.userdata?.phonenum}
           />
           <OrderDetail label="User Address" value={item?.userdata?.address} />
-          <OrderDetail label="Pin Code" value={item?.userdata?.pincode} />
           <OrderDetail
             label="Order Date and Time"
             value={formattedDate(item?.createdAt)}

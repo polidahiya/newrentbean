@@ -72,10 +72,12 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
         >
           <IoShieldCheckmark size={20} />
           Place Order
-          <span className="absolute bottom-1 right-2 text-[10px]">
-            <SiRazorpay className="text-[#105ef1] inline-block" /> powered by
-            Razorpay
-          </span>
+          {paymentMethod == "online" && (
+            <span className="absolute bottom-1 right-2 text-[10px]">
+              <SiRazorpay className="text-[#105ef1] inline-block" /> powered by
+              Razorpay
+            </span>
+          )}
         </button>
         <p className="text-[12px] text-gray-600 text-center">
           By placing an order, you agree to our{" "}

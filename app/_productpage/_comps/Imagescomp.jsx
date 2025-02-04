@@ -75,7 +75,7 @@ function ImagesComp({ filteredproducts, token }) {
   }, []);
 
   return (
-    <div className="flex flex-[2] lg:sticky lg:top-[130px] flex-col-reverse lg:flex-row lg:items-center gap-2">
+    <div className="flex w-full lg:flex-[2] lg:sticky lg:top-[130px] flex-col-reverse lg:flex-row lg:items-center gap-2">
       {/* mini images */}
       <div
         className={`flex  lg:w-[70px] lg:h-full lg:flex-col flex-wrap lg:flex-nowrap gap-[10px] lg:max-h-[400px] ${
