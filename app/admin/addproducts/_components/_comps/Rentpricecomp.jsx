@@ -30,7 +30,7 @@ function Rentpricecomp({ data, setdata }) {
       ...prevData,
       prices: {
         ...prevData.prices,
-        [value]: prevData.prices.Default,
+        [value]: prevData.prices.Default.map((item) => ({ ...item })), // Deep copy each item
       },
     }));
   };

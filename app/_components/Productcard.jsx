@@ -49,12 +49,16 @@ function Productcard({
   const lastprice = locationrentprices[locationrentprices.length - 1];
   const rentprice = Math.floor(lastprice.price / lastprice.time);
 
+  console.log(availablefor);
+
   return (
     <Link
       href={link ? link : `/${category}/${subcat}/${id}`}
       className={`group relative w-full shadow-md  bg-white duration-300 rounded-2xl overflow-hidden ${
-        showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"
-      }`}
+        isrentalstore
+          ? availablefor == "Buy" && "hidden"
+          : availablefor == "Rent" && "hidden"
+      } ${showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
     >
       <div className="relative aspect-square w-full overflow-hidden">
         <Image
@@ -102,7 +106,8 @@ function Productcard({
             {isrentalstore ? (
               <>
                 <span>Rent </span> : ₹{" "}
-                {parseInt(rentprice, 10).toLocaleString("en-IN")} / {locationrentprices[0]?.type.replace(/s$/, '')}
+                {parseInt(rentprice, 10).toLocaleString("en-IN")} /{" "}
+                {locationrentprices[0]?.type.replace(/s$/, "")}
               </>
             ) : (
               <>₹{parseInt(buyprice, 10).toLocaleString("en-IN")}</>

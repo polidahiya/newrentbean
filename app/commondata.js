@@ -2,9 +2,6 @@ export const mail = "Rentbeandotin@gmail.com";
 export const mobile = "+91 95822 14574";
 export const address = "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002";
 
-// export const payulink="https://test.payu.in/_payment" //test
-export const payulink = "https://secure.payu.in/_payment"; //live
-
 // export const domain = "http://localhost:3000";
 export const domain = "https://rentbean.in";
 

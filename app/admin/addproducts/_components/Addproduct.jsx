@@ -74,7 +74,10 @@ function Addandupdateproduct({
     }));
 
   return (
-    <form onSubmit={handleSubmit} className="p-2 md:p-6 bg-white space-y-6">
+    <form
+      onSubmit={handleSubmit}
+      className="p-2 pb-20 md:p-6 bg-white space-y-6"
+    >
       <p className="text-center font-bold font-serif text-2xl my-5">
         Add Product
       </p>
