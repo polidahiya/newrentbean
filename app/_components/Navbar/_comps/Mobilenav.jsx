@@ -40,7 +40,7 @@ function Mobilenav() {
   }, []);
 
   return (
-    <div className="h-12 w-full flex items-center justify-around border-t sticky bottom-0 md:hidden bg-white z-20">
+    <div className="h-12 w-full flex items-center justify-around border-t sticky bottom-0 lg:hidden bg-white z-20">
       {/* location */}
       <button
         className="h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme"

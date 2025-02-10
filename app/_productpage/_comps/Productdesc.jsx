@@ -3,7 +3,7 @@ import { CgDetailsMore } from "react-icons/cg";
 
 function Productdesc({ description }) {
   return (
-    <div className="mt-8 p-6 md:p-8 bg-bg1 rounded-xl shadow-md mx-10">
+    <div className="mt-8 p-6 md:p-8 bg-bg1  md:rounded-3xl md:shadow-lg  md:mx-10">
       {/* Heading */}
       <h2 className="flex items-center gap-3 text-2xl font-semibold mb-4 text-gray-800">
         <CgDetailsMore className="text-theme text-3xl" />

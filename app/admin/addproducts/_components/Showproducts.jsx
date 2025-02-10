@@ -10,7 +10,12 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
 import { IoIosCopy } from "react-icons/io";
 
-function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
+function Showproducts({
+  setdata,
+  resetState,
+  setdeletedimages,
+  setshoweditform,
+}) {
   const { setmessagefn, setshowdialog } = AppContextfn();
 
   const [categorystate, setcategorystate] = useState({
@@ -57,7 +62,7 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
         <input
           type="text"
           className="h-full w-full px-5 outline-none"
-          placeholder="Order id"
+          placeholder="Product id"
           value={categorystate?.id}
           onChange={(e) =>
             setcategorystate((pre) => ({ ...pre, id: e.target.value }))
@@ -121,6 +126,7 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
           className="border px-5 rounded-md text-white bg-theme"
           onClick={() => {
             setshoweditform(true);
+            resetState()
           }}
         >
           + Add New
@@ -134,7 +140,7 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
             return (
               <div
                 key={i}
-                className="relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md bg-white"
+                className="relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md bg-white rounded-3xl"
               >
                 <Productcard
                   index={i}
@@ -190,6 +196,7 @@ function Showproducts({ setdata, setdeletedimages, setshoweditform }) {
                       setdata(() => {
                         const updateddata = item;
                         delete updateddata._id;
+                        updateddata.images = [];
                         return updateddata;
                       });
                       setdeletedimages([]);

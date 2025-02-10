@@ -43,6 +43,7 @@ html {
 
 body {
   color: #525252;
+  --theme: #d68e43;
   /* --theme: rgb(0, 153, 255); */
   /* background-image: url(/public/categoriesimages/homedecoreandmore.webp); */
 }
@@ -192,4 +193,60 @@ body {
 
 .grecaptcha-badge {
   transform: translateX(100%);
+}
+
+/* input range */
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 20px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  aspect-ratio: 1;
+  background: white;
+  outline: 1px solid var(--theme);
+  outline-offset: 0px;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transform: translateY(calc(-50% + 1px));
+  transform: translateY(calc(-50% + 1px));
+  -webkit-transition: 0.2s linear, background-color 0s;
+  transition: 0.2s linear, background-color 0s;
+}
+@media screen and (width>450px) {
+  input[type="range"]::-webkit-slider-thumb:hover {
+    outline-offset: 2px;
+    background: var(--theme);
+    -webkit-transform: translateY(calc(-50% + 1px)) scale(1.2);
+    transform: translateY(calc(-50% + 1px)) scale(1.2);
+  }
+}
+@media screen and (width<450px) {
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    aspect-ratio: 1;
+    outline: 1px solid var(--theme);
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition: 0.2s linear, background-color 0s;
+    transition: 0.2s linear, background-color 0s;
+    outline-offset: 2px;
+    background: var(--theme);
+    -webkit-transform: translateY(calc(-50% + 1px)) scale(1.2);
+    transform: translateY(calc(-50% + 1px)) scale(1.2);
+  }
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  background-color: var(--theme);
 }

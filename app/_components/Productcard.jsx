@@ -49,12 +49,10 @@ function Productcard({
   const lastprice = locationrentprices[locationrentprices.length - 1];
   const rentprice = Math.floor(lastprice.price / lastprice.time);
 
-  console.log(availablefor);
-
   return (
     <Link
       href={link ? link : `/${category}/${subcat}/${id}`}
-      className={`group relative w-full shadow-md  bg-white duration-300 rounded-2xl overflow-hidden ${
+      className={`group relative w-full shadow-xl  bg-white duration-300 rounded-3xl overflow-hidden ${
         isrentalstore
           ? availablefor == "Buy" && "hidden"
           : availablefor == "Rent" && "hidden"
@@ -101,8 +99,8 @@ function Productcard({
         <h3 className="py-[5px] md:py-[10px] text-xs md:text-base text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">
           {name}
         </h3>
-        <div className="flex items-center justify-center">
-          <div className="bg-theme text-white w-10/12 max-w-full flex items-center justify-center py-1 rounded-xl">
+        <div className="flex items-center justify-center w-full">
+          <div className="bg-theme text-white text-sm min-w-[90%] px-2 py-2 flex items-center justify-center rounded-full text-nowrap">
             {isrentalstore ? (
               <>
                 <span>Rent </span> : ₹{" "}

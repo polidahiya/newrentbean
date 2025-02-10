@@ -6,7 +6,7 @@ import { event } from "nextjs-google-analytics";
 
 export function Addtocartbuttons({ filteredproducts, cartproductid }) {
   const router = useRouter();
-  const { cart, setcart, setmessagefn } = AppContextfn();
+  const { cart, setcart, setmessagefn, isrentalstore } = AppContextfn();
   const MAX_QUANTITY = filteredproducts?.maxquantity; // Define the maximum quantity
 
   const handleIncrement = () => {
@@ -33,6 +33,20 @@ export function Addtocartbuttons({ filteredproducts, cartproductid }) {
   };
   // add to cart button
   const handleAddToCart = () => {
+    if (!filteredproducts?.available) {
+      setmessagefn("Product is not available");
+      return;
+    }
+
+    const availabilityOptions = isrentalstore
+      ? ["Both", "Rent"]
+      : ["Both", "Buy"];
+
+    if (!availabilityOptions.includes(filteredproducts?.availablefor)) {
+      setmessagefn("Product is not available");
+      return;
+    }
+
     if (cart[cartproductid]?.added) {
       router.push("/cart");
       return;

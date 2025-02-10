@@ -59,6 +59,7 @@ function Page() {
       )}
       <Showproducts
         setdata={setdata}
+        resetState={resetState}
         setdeletedimages={setdeletedimages}
         setshoweditform={setshoweditform}
       />

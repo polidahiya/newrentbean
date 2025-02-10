@@ -5,7 +5,6 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { likeproduct, isliked } from "@/app/_serveractions/Likedproducts";
 import { AppContextfn } from "@/app/Context";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
-import Link from "next/link";
 import { IoLinkOutline } from "react-icons/io5";
 
 const fallbackImage = "/default-fallback-image.png";
@@ -168,10 +167,7 @@ const MainImage = ({ image, name, pid, index }) => {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <Link
-      href={`/Fullimage?pid=${pid}&index=${index}`}
-      className="relative block min-w-[100%] h-full w-full cursor-zoom-in p-px snap-start snap-always overflow-hidden"
-    >
+    <div className="relative  min-w-[100%] h-full w-full p-px snap-start snap-always overflow-hidden">
       <Image
         className="min-w-full w-full h-full object-contain"
         src={hasError ? fallbackImage : image}
@@ -195,7 +191,7 @@ const MainImage = ({ image, name, pid, index }) => {
           } duration-500`}
         ></div>
       )}
-    </Link>
+    </div>
   );
 };
 

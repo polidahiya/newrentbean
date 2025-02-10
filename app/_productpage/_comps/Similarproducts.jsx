@@ -18,16 +18,17 @@ function Similarproducts({ allproducts, category, subcat, productid }) {
   return (
     <>
       {similarproducts.length > 0 && (
-        <div className="bg-[#f7f7fa] px-[10px] md:px-[40px] py-[20px]">
-          <h2 className="flex items-center gap-[10px] text-[22px] font-bold text-center md:text-start w-full">
-            <AiFillProduct /> Similar Products
+        <div className="bg-[#f7f7fa] px-[10px] md:px-[40px] py-5 mt-8  md:rounded-3xl md:shadow-lg md:mx-10">
+          <h2 className="flex items-center gap-3 text-2xl font-semibold mb-4 text-gray-800">
+            <AiFillProduct className="text-theme text-3xl" />
+            <span className="font-recline">Similar Products</span>
           </h2>
           <div className="flex items-stretch gap-[20px]  mt-[20px] max-w-full overflow-x-scroll pb-[20px]">
             {similarproducts.map((item, i) => {
               return (
                 <div
                   key={i}
-                  className="min-w-[250px] md:min-w-[300px] max-w-[350px]  shadow-md  overflow-hidden bg-white"
+                  className="min-w-[250px] md:min-w-[300px] max-w-[350px] overflow-hidden bg-white shadow-lg duration-300 rounded-3xl"
                 >
                   <Productcard
                     index={i}

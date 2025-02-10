@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import Prouctid from "./Prouctid";
 import { Addtocartbuttons } from "./Publiccomps";
 import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
@@ -43,25 +42,27 @@ function Details({ filteredProduct }) {
   }, [isrentalstore, location?.location]);
 
   return (
-    <section className="flex-1 w-full lg:min-w-[400px] p-5 bg-bg1 rounded-3xl shadow-lg ">
-      <h1 className="text-xl md:text-3xl font-recline tracking-wider text-center">
+    <section className="flex-1 w-full lg:min-w-[400px] p-5 bg-bg1 md:rounded-3xl md:shadow-lg ">
+      <h1 className="text-xl md:text-2xl font-recline tracking-wider text-center mt-5">
         {filteredProduct?.name}
       </h1>
-      <Prouctid sku={filteredProduct?.sku} />
 
-      <Description description={filteredProduct?.desc} />
-      {isrentalstore && (
-        <Tenure
-          filteredProduct={filteredProduct}
-          cartproductid={cartproductid}
-        />
-      )}
-
-      {!isrentalstore && (
+      {isrentalstore ? (
+        ["Both", "Rent"].includes(filteredProduct?.availablefor) ? (
+          <Tenure
+            filteredProduct={filteredProduct}
+            cartproductid={cartproductid}
+          />
+        ) : (
+          <Notavailableforstore title="This Product is not available for Rent" />
+        )
+      ) : ["Both", "Buy"].includes(filteredProduct?.availablefor) ? (
         <PriceDisplay
           filteredProduct={filteredProduct}
           cartproductid={cartproductid}
         />
+      ) : (
+        <Notavailableforstore title="This Product is not available for Buy" />
       )}
 
       <Addtocartbuttons
@@ -88,18 +89,6 @@ const PriceDisplay = ({ filteredProduct }) => {
     </div>
   );
 };
-
-const Description = ({ description }) =>
-  description?.length > 0 && (
-    <div className="space-y-2 pl-5">
-      {description.map((item, index) => (
-        <div key={index} className="flex items-start gap-2 text-sm">
-          <span className="h-[10px] aspect-square rounded-full bg-slate-300 mt-2"></span>
-          {item}
-        </div>
-      ))}
-    </div>
-  );
 
 const Deliverytrucksvg = () => {
   return (
@@ -165,6 +154,14 @@ const Deliverytrucksvg = () => {
         </g>
       </g>
     </svg>
+  );
+};
+
+const Notavailableforstore = ({ title }) => {
+  return (
+    <div className="my-10 text-center">
+      <p>{title}</p>
+    </div>
   );
 };
 export default Details;
