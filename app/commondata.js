@@ -19,11 +19,11 @@ export const categorylist = {
     image: "/logo&ui/categories/fitnessandgym2.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Treadmills.jpg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-09-260.jpg",
         name: "Fitness-Machines",
       },
       {
-        image: "/logo&ui/categories/subcategories/homegym.jpg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-10-633.jpg",
         name: "Weight-&-Rack",
       },
     ],
@@ -33,11 +33,11 @@ export const categorylist = {
     image: "/logo&ui/categories/electronics.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/projector.jpeg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-57-12-465.jpg",
         name: "Entertainment",
       },
       {
-        image: "/logo&ui/categories/subcategories/laptop.jpeg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-18-23-267.jpg",
         name: "Laptops",
       },
       {
@@ -45,7 +45,7 @@ export const categorylist = {
         name: "Mobile-&-Accessories",
       },
       {
-        image: "/logo&ui/categories/subcategories/washingmachine.webp",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-28-036.jpg",
         name: "Home-Appliances",
       },
     ],
@@ -55,27 +55,27 @@ export const categorylist = {
     image: "/logo&ui/categories/furniture.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Bed.png",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-09-357.jpg",
         name: "Beds",
       },
       {
-        image: "/logo&ui/categories/subcategories/studytable.webp",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-51-44-151.jpg",
         name: "Study-Tables",
       },
       {
-        image: "/logo&ui/categories/subcategories/dining.jpg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-19-26-646.jpg",
         name: "Dining",
       },
       {
-        image: "/logo&ui/categories/subcategories/bookshelf.jpg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-24-920.jpg",
         name: "Bookshelves",
       },
       {
-        image: "/logo&ui/categories/subcategories/sofa.png",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-03-35-634.jpg",
         name: "Sofas",
       },
       {
-        image: "/logo&ui/categories/subcategories/centretable.webp",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-47-889.jpg",
         name: "Center-Tables",
       },
     ],
@@ -85,7 +85,7 @@ export const categorylist = {
     image: "/logo&ui/categories/eventandparties.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/hookah.jpeg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-07-07-726.jpg",
         name: "Party-Items",
       },
     ],
@@ -95,11 +95,11 @@ export const categorylist = {
     image: "/logo&ui/categories/campinggear.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/babycarrier.jpg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-54-509.jpg",
         name: "Baby-Care",
       },
       {
-        image: "/logo&ui/categories/subcategories/sleepbag.jpg",
+        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-02-30-781.jpg",
         name: "Camping-Gear",
       },
     ],

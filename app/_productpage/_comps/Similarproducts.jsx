@@ -27,6 +27,7 @@ function Similarproducts({ allproducts, category, subcat, productid }) {
             {similarproducts.map((item, i) => {
               return (
                 <Productcard
+                  key={i}
                   index={i}
                   id={item._id}
                   image={item?.images[0]}

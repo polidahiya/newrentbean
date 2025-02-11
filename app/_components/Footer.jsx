@@ -17,7 +17,6 @@ import { FaFacebook } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { RiTwitterXFill } from "react-icons/ri";
 import { FaPinterestP } from "react-icons/fa6";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { sociallinks } from "../commondata";
 import { FaSitemap } from "react-icons/fa";
 import PWAInstallPrompt from "./Pwapromot";
@@ -36,13 +35,11 @@ function Footer() {
     { name: "Terms & Conditions", link: "/Terms&Conditions" },
   ];
   const list2 = [
-    { name: "Living Room", link: "/Living_Room" },
-    { name: "Bedroom", link: "/Bedroom" },
-    { name: "Storage", link: "/Storage" },
-    { name: "Bar Furniture", link: "/Bar_Furniture" },
-    { name: "Office Furniture", link: "/Office_Furniture" },
-    { name: "Home Decor & More", link: "/Home_Decor_&_More" },
-    { name: "More", link: "/#categories" },
+    { name: "Health & Fitness", link: "/Health-&-Fitness" },
+    { name: "Electronic", link: "/Electronic" },
+    { name: "Furniture", link: "/Furniture" },
+    { name: "Event & Parties", link: "/Event-&-Parties" },
+    { name: "Others", link: "/Others" },
   ];
   return (
     <footer className="bg-bg1 px-[30px] md:px-[50px] p-[20px] pt-[30px] lg:pt-[20px] text-[14px]">
@@ -79,9 +76,6 @@ function Footer() {
             {list2.map((item, i) => (
               <div key={i} className="flex items-center gap-[5px]">
                 <Links key={i} name={item.name} link={item.link} />
-                {i == list2.length - 1 && (
-                  <MdOutlineArrowRightAlt className="" />
-                )}
               </div>
             ))}
           </div>
@@ -91,7 +85,7 @@ function Footer() {
       <section className="flex items-center justify-between flex-col-reverse lg:flex-row">
         <p className=" text-[12px] flex-1 mt-[10px] lg:mt-0">
           &copy; {new Date().getFullYear()}{" "}
-          <strong className="font-bold">Rentbean.com</strong>. All rights
+          <strong className="font-bold">Rentbean.in</strong>. All rights
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-[20px] text-[12px]">
