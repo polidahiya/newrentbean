@@ -26,17 +26,13 @@ function Similarproducts({ allproducts, category, subcat, productid }) {
           <div className="flex items-stretch gap-[20px]  mt-[20px] max-w-full overflow-x-scroll pb-[20px]">
             {similarproducts.map((item, i) => {
               return (
-                <div
-                  key={i}
-                  className="min-w-[250px] md:min-w-[300px] max-w-[350px] overflow-hidden bg-white shadow-lg duration-300 rounded-3xl"
-                >
-                  <Productcard
-                    index={i}
-                    id={item._id}
-                    image={item?.images[0]}
-                    {...item}
-                  />
-                </div>
+                <Productcard
+                  index={i}
+                  id={item._id}
+                  image={item?.images[0]}
+                  {...item}
+                  maxwidth={true}
+                />
               );
             })}
             {similarproducts.length == maxproducts && (

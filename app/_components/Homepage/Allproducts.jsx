@@ -1,50 +1,120 @@
 "use client";
-import React, { useState } from "react";
-import Productcard from "../Productcard";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
+import React, { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FaAngleLeft } from "react-icons/fa6";
+import { AppContextfn } from "@/app/Context";
 
 function Allproducts({ products }) {
-  const [shuffledProducts] = useState(products);
-  const [index, setindex] = useState(0);
-
-  const maxlimit = 15;
-
+  let scrollref = useRef(null);
+  let scrollvalue = 400;
+  const handleScroll = (amount) => {
+    if (scrollref.current) {
+      scrollref.current.scrollLeft += amount;
+    }
+  };
   return (
-    <div className="relative px-4 md:px-8 lg:px-16">
-      <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline">
-        lovely Collection
-      </h2>
-      <p className="text-gray-600 mb-6  text-center mt-2 md:mt-4">
-        You will love to take these home.
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 md:gap-6">
-        {shuffledProducts.slice(0 + index * 4, 4 + index * 4).map((item, i) => (
-          <Productcard
-            key={i + new Date().getMilliseconds() + Math.random()} // More stable key
-            index={i}
-            id={item._id}
-            image={item?.images[0]}
-            {...item}
-          />
+    <div className="px-2 py-10 md:p-10 bg-gray-100">
+      <div className="flex justify-between items-end p-2 md:p-0">
+        <div className=" text-[25px] font-recline">
+          You&apos;ll love to
+          <br />
+          <div className="opacity-90 font-recline">
+            {" "}
+            take these home
+            <div className="h-[2px] w-[100px] bg-theme"></div>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={() => handleScroll(-scrollvalue)}
+            className="flex items-center justify-center h-9 w-9 opacity-50 border border-gray-400 rounded-full hover:opacity-70"
+          >
+            <FaAngleLeft />
+          </button>
+          <button
+            onClick={() => handleScroll(scrollvalue)}
+            className="flex items-center justify-center h-9 w-9 opacity-50 border border-gray-400 rounded-full hover:opacity-70 rotate-180"
+          >
+            <FaAngleLeft />
+          </button>
+        </div>
+      </div>
+      {/* all posts */}
+      <div
+        ref={scrollref}
+        className="overflow-x-scroll snap-x scroll-smooth snap-mandatory flex gap-2 mt-8"
+      >
+        {products.map((product, i) => (
+          <Imagecard key={i} product={product} i={i} />
         ))}
       </div>
-      <div className="flex justify-center gap-5  mt-5">
-        <button
-          className={`lg:absolute top-1/2 lg:-translate-y-1/2 rounded-full shadow-lg p-3 text-2xl aspect-square bg-theme text-white left-5 lg:left-10 ${
-            index == 0 && "hidden"
-          }`}
-          onClick={() => setindex((pre) => (pre > 0 ? pre - 1 : pre))}
+    </div>
+  );
+}
+
+function Imagecard({ product, i }) {
+  const { isrentalstore, location } = AppContextfn();
+  const {
+    _id,
+    category,
+    subcat,
+    name,
+    images,
+    prices,
+    buyprice,
+    availablefor,
+  } = product;
+
+  const locationrentprices =
+    location?.location in prices ? prices[location?.location] : prices?.Default;
+  const lastprice = locationrentprices[locationrentprices.length - 1];
+  const rentprice = Math.floor(lastprice.price / lastprice.time);
+
+  return (
+    <div
+      className={`min-w-64 w-full md:max-w-64 p-2 flex flex-col justify-between gap-2 bg-white snap-always ${
+        i % 2 === 0 ? "snap-start" : ""
+      } ${
+        isrentalstore
+          ? availablefor == "Buy" && "hidden"
+          : availablefor == "Rent" && "hidden"
+      }`}
+    >
+      <Link href={`/${category}/${subcat}/${_id}`}>
+        <div className="relative w-full aspect-square overflow-hidden">
+          <Image
+            src={images[0]}
+            alt={name}
+            width={230}
+            height={230}
+            className="absolute h-full w-full object-contain"
+          />
+        </div>
+        <p className="text-center text-sm md:text-base mt-5 truncate">{name}</p>
+      </Link>
+      <div className="flex justify-between items-center w-full px-2 mt-2">
+        <div>
+          <div className="text-xs text-gray-400">
+            {isrentalstore ? "rent" : "price"}
+          </div>
+          <div className="text-sm">
+            {isrentalstore ? (
+              <>
+                {parseInt(rentprice, 10).toLocaleString("en-IN")} /{" "}
+                {locationrentprices[0]?.type.replace(/s$/, "")}
+              </>
+            ) : (
+              <>₹{parseInt(buyprice, 10).toLocaleString("en-IN")}</>
+            )}
+          </div>
+        </div>
+        <Link
+          href={`/${category}`}
+          className="border border-theme text-theme text-sm md:text-base px-3 md:px-5 py-2 flex items-center justify-center lg:hover:bg-theme lg:hover:text-white duration-300"
         >
-          <MdOutlineArrowRightAlt className="rotate-180" />
-        </button>
-        <button
-          className={`lg:absolute top-1/2 lg:-translate-y-1/2 rounded-full shadow-lg p-3 text-2xl aspect-square bg-theme text-white right-5 lg:right-10 ${
-            index == maxlimit && "hidden"
-          }`}
-          onClick={() => setindex((pre) => (pre < maxlimit ? pre + 1 : pre))}
-        >
-          <MdOutlineArrowRightAlt />
-        </button>
+          See more
+        </Link>
       </div>
     </div>
   );

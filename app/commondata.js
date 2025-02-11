@@ -1,6 +1,7 @@
 export const mail = "Rentbeandotin@gmail.com";
 export const mobile = "+91 95822 14574";
-export const address = "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002";
+export const address =
+  "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002";
 
 // export const domain = "http://localhost:3000";
 export const domain = "https://rentbean.in";
@@ -98,7 +99,7 @@ export const categorylist = {
         name: "Baby-Care",
       },
       {
-        image: "/logo&ui/categories/subcategories/babycarrier.jpg",
+        image: "/logo&ui/categories/subcategories/sleepbag.jpg",
         name: "Camping-Gear",
       },
     ],
@@ -148,41 +149,26 @@ export const sortinglist = [
 
 // fixed search options
 export const searchoptions = [
-  "Fitness and Gym",
-  "Treadmill",
-  "Cross Trainer",
-  "Gym Bikes",
-  "Bicycle",
-  "Home gym",
-  "Electronics",
-  "Ps4",
-  "Ps5",
-  "Xbox",
-  "Hoverboard",
-  "Laptop",
-  "Smartphones",
-  "Tv",
-  "AC",
-  "Cooler",
-  "Projector",
-  "Vacuum Cleaner",
-  "Air Fryer",
+  "Health & Fitness",
+  "Fitness Machines",
+  "Weight & Rack",
+  "Electronic",
+  "Entertainment",
+  "Laptops",
+  "Mobile & Accessories",
+  "Home Appliances",
   "Furniture",
-  "Sofa",
-  "Bed",
-  "Study Table",
+  "Beds",
+  "Study Tables",
   "Dining",
-  "Bookshelf",
-  "Center Table",
-  "Hookah",
-  "Dj Light",
-  "Barbeque",
-  "Beer Tower",
-  "Dispenser",
-  "Tent",
-  "Sleeping Bags",
-  "Baby Car Seats",
-  "Baby Carrier",
+  "Bookshelves",
+  "Sofas",
+  "Center Tables",
+  "Event & Parties",
+  "Party Items",
+  "Others",
+  "Baby Care",
+  "Camping Gear",
 ];
 
 export const permanentsearchoptions = [

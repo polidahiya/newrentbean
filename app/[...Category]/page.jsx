@@ -85,7 +85,7 @@ async function page({ params, searchParams }) {
 }
 
 const ProductGrid = ({ products }) => (
-  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(230px,1fr))] place-items-center gap-[10px] md:gap-[20px]">
+  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-[10px] md:gap-[20px]">
     {products.map((item, i) => (
       <Productcard
         key={i + new Date().getMilliseconds() + Math.random()} // More stable key

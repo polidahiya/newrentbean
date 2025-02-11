@@ -6,7 +6,7 @@ import Showproducts from "./_components/Showproducts";
 function Page() {
   const initialState = {
     category: "Health-&-Fitness",
-    subcat: "Treadmill",
+    subcat: "Fitness-Machines",
     name: "",
     available: true,
     trash: false,

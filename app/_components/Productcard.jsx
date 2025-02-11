@@ -18,6 +18,7 @@ function Productcard({
   sku,
   image,
   link,
+  maxwidth = true,
 }) {
   const { isrentalstore, location } = AppContextfn();
   const [showproduct, setshowproduct] = useState(false);
@@ -52,11 +53,12 @@ function Productcard({
   return (
     <Link
       href={link ? link : `/${category}/${subcat}/${id}`}
-      className={`group relative w-full shadow-xl  bg-white duration-300 rounded-3xl overflow-hidden ${
+      className={`group relative w-full shadow-xl min-w-44 md:min-w-60 bg-white duration-300 rounded-3xl overflow-hidden ${
         isrentalstore
           ? availablefor == "Buy" && "hidden"
           : availablefor == "Rent" && "hidden"
-      } ${showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
+      } ${showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"} 
+      ${maxwidth && "max-w-44 md:max-w-60"}`}
     >
       <div className="relative aspect-square w-full overflow-hidden">
         <Image
