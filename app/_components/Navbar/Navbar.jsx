@@ -11,9 +11,11 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import { FaOpencart } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
+import { usePathname } from "next/navigation";
 
 function Navbar({ params, productsname, token, userdata }) {
   const router = useRouter();
+  const path = usePathname();
   const slug = params?.Category;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
 
@@ -57,7 +59,7 @@ function Navbar({ params, productsname, token, userdata }) {
           </Link>
           {/* location */}
           <button
-            className="hidden md:flex h-8 px-5 border rounded-full items-center justify-center gap-1 text-theme"
+            className="hidden lg:flex h-8 px-5 border rounded-full items-center justify-center gap-1 text-theme"
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
           >
             <MdLocationPin className="inline-block" />{" "}
@@ -77,15 +79,15 @@ function Navbar({ params, productsname, token, userdata }) {
         <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
           {/* rent or buy switch */}
           <button
-            className={`hidden relative md:flex h-8  border rounded-full items-center justify-center gap-1 text-theme
-               ${isrentalstore?"flex-row-reverse pl-1 pr-5":"pl-5 pr-1"}`}
+            className={`hidden relative lg:flex h-8  border rounded-full items-center justify-center gap-1 text-theme
+               ${isrentalstore ? "flex-row-reverse pl-1 pr-5" : "pl-5 pr-1"}`}
             onClick={() => setisrentalstore((pre) => !pre)}
           >
             {isrentalstore ? "Rent" : "Buy"}
             <span className="block h-5 aspect-square rounded-full bg-theme"></span>
           </button>
           {/* search button */}
-         
+
           {/* cart */}
           <Cartlink />
           {/* loged in user menu */}
@@ -105,9 +107,9 @@ function Navbar({ params, productsname, token, userdata }) {
       <Navcategories category={category} />
 
       {/* backbutton */}
-      {!showsearch && (
+      {!showsearch && path != "/" && (
         <button
-          className="absolute bottom-0 left-[10px] translate-y-[calc(100%+10px)] h-[40px] aspect-square bg-theme text-white rounded-full text-[20px] grid place-content-center lg:hidden"
+          className="absolute bottom-0 left-[10px] md:left-10 translate-y-[calc(100%+10px)] h-[40px] aspect-square bg-theme text-white rounded-full text-xl grid place-content-center lg:hidden"
           onClick={() => {
             router.back();
           }}

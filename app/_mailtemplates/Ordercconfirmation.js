@@ -1,5 +1,48 @@
 import { sociallinks } from "../commondata";
-function Ordercconfirmation() {
+import FormattedDate from "../_components/_helperfunctions/Formateddate";
+
+function Ordercconfirmation(order) {
+  const { userdata, _id, createdAt, products, paymentMethod } = order;
+  const orderdate = FormattedDate(createdAt);
+
+  const productsdetails = products
+    .map((product) => {
+      const {
+        name,
+        isrentalstore,
+        quantity,
+        prices,
+        buyprice,
+        location,
+        selectedtenure,
+        securitydeposit,
+      } = product;
+      const locationrentprices =
+        location in prices ? prices[location] : prices?.Default;
+      const tenure = locationrentprices[selectedtenure];
+      return `<tr>
+                 <td>${name}</td>
+                 <td> ${isrentalstore ? "Rent" : "Buy"}</td>
+                 <td>${quantity}</td>
+                 <td>${
+                   isrentalstore ? tenure?.time + "" + tenure?.type : "_"
+                 } </td>
+                  <td>${
+                    isrentalstore
+                      ? `₹${parseInt(
+                          securitydeposit * quantity,
+                          10
+                        ).toLocaleString("en-IN")}/-`
+                      : "_"
+                  }</td>
+                 <td>${`₹${parseInt(
+                   (isrentalstore ? tenure?.price : buyprice) * quantity,
+                   10
+                 ).toLocaleString("en-IN")}/-`}</td>
+             </tr>`;
+    })
+    .join("");
+
   return `
  <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +60,7 @@ function Ordercconfirmation() {
         background-color: #f9f9f9;
       }
       .email-container {
-        max-width: 600px;
+        max-width: 800px;
         margin: 20px auto;
         padding: 20px;
         background-color: #fff;
@@ -101,7 +144,7 @@ function Ordercconfirmation() {
       </div>
 
       <h1>Your Order Has Been Successfully Placed! 🎉</h1>
-      <p>Hi [Customer's First Name],</p>
+      <p>Hi ${userdata?.username},</p>
       <p class="thankyou">
         Thank you for choosing Rentbean.in! We’re excited to let you know that
         your order has been successfully placed and is now being processed.
@@ -109,8 +152,8 @@ function Ordercconfirmation() {
       </p>
 
       <h2>Order Summary</h2>
-      <p><strong>Order Number:</strong> [Order Number]</p>
-      <p><strong>Order Date:</strong> [Order Date]</p>
+      <p><strong>Order ID:</strong> ${_id}</p>
+      <p><strong>Order Date:</strong> ${orderdate}</p>
       <h2>Product Details</h2>
       <table>
         <thead>
@@ -118,33 +161,26 @@ function Ordercconfirmation() {
             <th>Product Name</th>
             <th>Type</th>
             <th>Quantity</th>
+            <th>Tenure</th>
+            <th>Security Deposit</th>
             <th>Price</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>[Product 1 Name]</td>
-            <td>[Rent/Sell]</td>
-            <td>[Qty]</td>
-            <td>[Price]</td>
-          </tr>
-          <tr>
-            <td>[Product 2 Name]</td>
-            <td>[Rent/Sell]</td>
-            <td>[Qty]</td>
-            <td>[Price]</td>
-          </tr>
+         ${productsdetails}
         </tbody>
       </table>
 
       <h2>Shipping Address</h2>
       <p>
-        [Customer's Name]<br />
-        [Shipping Address Line 1]<br />
+        ${userdata?.username}<br />
+        ${userdata?.address}<br />
       </p>
 
       <h2>Payment Details</h2>
-      <p><strong>Payment Method:</strong> [Payment Method]</p>
+      <p><strong>Payment Method:</strong> ${
+        paymentMethod == "online" ? "Online" : "Cash on Delivery"
+      }</p>
       <p><strong>Total Amount Paid:</strong> [Total Amount]</p>
 
       <p class="helpnote">
@@ -156,25 +192,33 @@ function Ordercconfirmation() {
 
       <div class="social-links">
         <p class="followline">Follow us on social media:</p>
-        <a href="${sociallinks?.insta}" target="_blank" rel="noopener noreferrer">
+        <a href="${
+          sociallinks?.insta
+        }" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.icons8.com/fluency/48/000000/instagram-new.png"
             alt="Instagram"
           />
         </a>
-        <a href="${sociallinks?.facebook}" target="_blank" rel="noopener noreferrer">
+        <a href="${
+          sociallinks?.facebook
+        }" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.icons8.com/fluency/48/000000/facebook.png"
             alt="Facebook"
           />
         </a>
-        <a href="${sociallinks?.twitter}" target="_blank" rel="noopener noreferrer">
+        <a href="${
+          sociallinks?.twitter
+        }" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.icons8.com/fluency/48/000000/twitter.png"
             alt="Twitter"
           />
         </a>
-        <a href="${sociallinks?.pinterest}" target="_blank" rel="noopener noreferrer">
+        <a href="${
+          sociallinks?.pinterest
+        }" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.icons8.com/fluency/48/000000/pinterest.png"
             alt="Pinterest"

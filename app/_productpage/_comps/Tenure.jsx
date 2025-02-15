@@ -24,6 +24,16 @@ function Tenure({ filteredProduct, cartproductid }) {
     seasons: "Seasonal",
   };
 
+  const inputwidth = {
+    0: "",
+    1: "w-0",
+    2: "w-[50%]",
+    3: "w-[70%]",
+    4: "w-[80%]",
+    5: "w-[90%]",
+    6: "w-[90%]",
+  };
+
   const selecttenure = (value) => {
     setcart((prev) => {
       return {
@@ -55,7 +65,7 @@ function Tenure({ filteredProduct, cartproductid }) {
       </div>
       <div className="flex items-center justify-center">
         <input
-          className="w-10/12 mt-1"
+          className={`mt-1 ${inputwidth[locationrentprices.length]}`}
           type="range"
           value={cart[cartproductid]?.selectedtenure || 0}
           onChange={(e) => selecttenure(e.target.value)}

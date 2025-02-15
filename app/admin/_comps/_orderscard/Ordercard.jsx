@@ -10,6 +10,7 @@ import { AppContextfn } from "@/app/Context";
 import { AiOutlineDelete } from "react-icons/ai";
 import { IoMdArrowDropdown } from "react-icons/io";
 import ProductCard from "./Productcard";
+import FormattedDate from "@/app/_components/_helperfunctions/Formateddate";
 
 function Ordercard({ item }) {
   const { setmessagefn } = AppContextfn();
@@ -53,12 +54,12 @@ function Ordercard({ item }) {
           <OrderDetail label="User Address" value={item?.userdata?.address} />
           <OrderDetail
             label="Order Date and Time"
-            value={formattedDate(item?.createdAt)}
+            value={FormattedDate(item?.createdAt)}
           />
           {item?.delivered_date && (
             <OrderDetail
               label="Delivered Date"
-              value={formattedDate(item?.delivered_date)}
+              value={FormattedDate(item?.delivered_date)}
             />
           )}
           <hr className="my-3 border-gray-300" />
@@ -210,15 +211,6 @@ const Deleteconfirmationmenu = ({
   );
 };
 //
-const formattedDate = (date) => {
-  const now = new Date(date);
-  const hours = now.getHours() % 12 || 12;
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  const ampm = now.getHours() >= 12 ? "PM" : "AM";
-  const day = now.getDate();
-  const month = now.getMonth() + 1;
-  const year = now.getFullYear();
-  return ` ${day}/${month}/${year} - ${hours}:${minutes} ${ampm}`;
-};
+
 
 export default Ordercard;

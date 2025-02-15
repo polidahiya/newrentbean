@@ -53,10 +53,9 @@ function Footer() {
             className="h-[40px] w-auto"
           ></Image>
           <p className="mt-[30px]  mb-[20px] text-justify">
-            Our mission is to provide high-quality, handcrafted wooden furniture
-            and home decor that enhances your living space. We strive to offer
-            exceptional value and create pieces that you&apos;ll cherish for
-            years to come.
+            {
+              "We provide high-quality rentals for furniture, electronics, fitness gear, baby care, and party items. Our goal is to offer flexible, affordable solutions, making premium products accessible without ownership hassles."
+            }
           </p>
           <Socialfollow />
         </div>
