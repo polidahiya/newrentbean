@@ -16,6 +16,8 @@ import Productdesc from "./_comps/Productdesc";
 
 async function Productpage({ category, subcat, productid }) {
   const token = cookies()?.get("token")?.value;
+  const userdata = cookies()?.get("userdata")?.value;
+  const parsedUserData = userdata ? JSON.parse(userdata) : null;
   const allproducts = await Cachedproducts();
 
   // Validate category, subcategory, and product existence
@@ -150,6 +152,15 @@ async function Productpage({ category, subcat, productid }) {
           __html: JSON.stringify(productSchema),
         }}
       />
+      {/* edit button */}
+      {parsedUserData?.usertype == "admin" && (
+        <Link
+          href={`/admin/addproducts?id=${filteredProduct?._id}`}
+          className="fixed bottom-14 lg:bottom-5 left-1/2 -translate-x-1/2 bg-theme text-white px-5 py-1 rounded-full z-10"
+        >
+          Edit
+        </Link>
+      )}
     </>
   );
 }

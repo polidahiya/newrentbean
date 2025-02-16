@@ -1,9 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Addandupdateproduct from "./_components/Addproduct";
 import Showproducts from "./_components/Showproducts";
+import { useSearchParams } from "next/navigation";
+import { AppContextfn } from "@/app/Context";
+import { Getliveproducts } from "./Getliveproducts";
 
 function Page() {
+  const searchParams = useSearchParams();
+  const productid = searchParams.get("id");
+  const { setmessagefn } = AppContextfn();
+
   const initialState = {
     category: "Health-&-Fitness",
     subcat: "Fitness-Machines",
@@ -34,6 +41,24 @@ function Page() {
   const resetState = () => {
     setdata(initialState);
   };
+
+  useEffect(() => {
+    if (productid) {
+      (async () => {
+        const res = await Getliveproducts({ id: productid }, "id");
+
+        if (res?.status == 200) {
+          if (res?.data?.length != 0) {
+            setdata(res?.products[0]);
+            setshoweditform(true);
+          } else {
+            setmessagefn("Product not found");
+          }
+        }
+      })();
+    }
+  }, [productid]);
+
   return (
     <div>
       {showeditform && (

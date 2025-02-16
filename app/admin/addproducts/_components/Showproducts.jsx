@@ -126,10 +126,16 @@ function Showproducts({
           className="border px-5 rounded-md text-white bg-theme"
           onClick={() => {
             setshoweditform(true);
-            resetState()
+            resetState();
           }}
         >
           + Add New
+        </button>
+        <button
+          className="border px-5 rounded-md text-white bg-theme"
+          onClick={() => showproducts("trash")}
+        >
+          Trash Products
         </button>
       </div>
 

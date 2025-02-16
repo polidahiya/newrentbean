@@ -9,6 +9,7 @@ import React from "react";
 import Confirmdialogbox from "./_components/Confirmdialogbox";
 import Location from "./_components/Location";
 import FIxedbuttons from "./_components/FIxedbuttons";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "Rentbean - Best Solid Wood Furniture in India",
@@ -22,7 +23,16 @@ export const metadata = {
   manifest: "/manifest.json",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const allcookies = await cookies();
+  const token = allcookies.get("token");
+  const parseduserdata = allcookies.get("userdata")?.value;
+  const userdata = parseduserdata ? JSON.parse(parseduserdata) : null;
+  const rblocation = allcookies.get("rblocation")?.value;
+  const cookiecart = allcookies.get("rentbeancart")?.value;
+  const parsedCart = cookiecart ? JSON.parse(cookiecart) : {};
+  const storetype = allcookies.get("storetype")?.value;
+
   return (
     <html lang="en">
       <head>
@@ -55,7 +65,13 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <Appwrapper>
+      <Appwrapper
+        token={token}
+        userdata={userdata}
+        rblocation={rblocation}
+        parsedCart={parsedCart}
+        storetype={storetype}
+      >
         <body className="antialiased max-w-[1500px] mx-auto">
           <Message />
           <Confirmdialogbox />

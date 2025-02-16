@@ -5,8 +5,15 @@ import { createContext, useContext, useState, useRef, useEffect } from "react";
 
 const AppContext = createContext({});
 
-export function Appwrapper({ children }) {
-  const [cart, setcart] = useState({});
+export function Appwrapper({
+  children,
+  token,
+  userdata,
+  rblocation,
+  parsedCart,
+  storetype,
+}) {
+  const [cart, setcart] = useState(parsedCart || {});
   const [quantity, setquantity] = useState(1);
   const [showcat, setshowcat] = useState(false);
   const [showsearch, setshowsearch] = useState(false);
@@ -29,8 +36,13 @@ export function Appwrapper({ children }) {
     type: true,
   };
   const [showdialog, setshowdialog] = useState(showdialoginitialvalues);
-  const [isrentalstore, setisrentalstore] = useState(true);
-  const [location, setlocation] = useState({ show: false, location: "Delhi" });
+  const [isrentalstore, setisrentalstore] = useState(
+    storetype == "false" ? false : true
+  );
+  const [location, setlocation] = useState({
+    show: false,
+    location: rblocation || null,
+  });
   const [scrolltop, setscrolltop] = useState(false);
   const [shownavbottom, setshownavbottom] = useState(false);
 
@@ -42,15 +54,6 @@ export function Appwrapper({ children }) {
     ]);
   };
 
-  // get cookies cart
-  useEffect(() => {
-    const cookieCart = Cookies.get("rentbeancart");
-    if (cookieCart) {
-      const parsedCart = JSON.parse(cookieCart);
-      setcart(parsedCart);
-    }
-  }, []);
-
   //  update cookies when cart change
   useEffect(() => {
     if (cart && Object.keys(cart).length > 0) {
@@ -60,6 +63,10 @@ export function Appwrapper({ children }) {
       Cookies.remove("rentbeancart");
     }
   }, [cart]);
+
+  useEffect(() => {
+    Cookies.set("storetype", isrentalstore);
+  }, [isrentalstore]);
 
   // scroll check
   useEffect(() => {
@@ -86,6 +93,9 @@ export function Appwrapper({ children }) {
   return (
     <AppContext.Provider
       value={{
+        token,
+        userdata,
+        rblocation,
         cart,
         setcart,
         quantity,

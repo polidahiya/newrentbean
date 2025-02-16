@@ -4,7 +4,9 @@ import { getcollection } from "@/app/Mongodb";
 
 export const Getliveproducts = async (categorystate, searchmode) => {
   try {
-    const { Productscollection, ObjectId } = await getcollection("Edit-Products");
+    const { Productscollection, ObjectId } = await getcollection(
+      "Edit-Products"
+    );
     const res = await Verification();
     if (!res?.verified) {
       return { status: 400, message: "Invalid user" };
@@ -21,6 +23,12 @@ export const Getliveproducts = async (categorystate, searchmode) => {
     if (searchmode == "id") {
       products = await Productscollection.find({
         _id: new ObjectId(categorystate?.id),
+      }).toArray();
+    }
+
+    if (searchmode == "trash") {
+      products = await Productscollection.find({
+        trash: true,
       }).toArray();
     }
 

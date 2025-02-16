@@ -7,7 +7,9 @@ import { CACHE_TIME } from "../commondata";
 export const Cachedproducts = unstable_cache(
   async () => {
     const { Productscollection } = await getcollection();
-    const productsList = await Productscollection.find().toArray();
+    const productsList = await Productscollection.find({
+      trash: false,
+    }).toArray();
     return productsList.map((item) => ({
       ...item,
       _id: item._id.toString(),
