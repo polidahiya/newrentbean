@@ -3,11 +3,11 @@ export const mobile = "+91 95822 14574";
 export const address =
   "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002";
 
-// export const domain = "http://localhost:3000";
-export const domain = "https://rentbean.in";
+export const domain = "http://localhost:3000";
+// export const domain = "https://rentbean.in";
 
 export const sociallinks = {
-  insta: "https://www.instagram.com/Rentbean?igsh=emc0cmUwcHVsdXR2",
+  insta: "https://www.instagram.com/rentbean.in",
   facebook: "https://www.facebook.com/share/VN5R1yTY3ZHarwW9/?mibextid=qi2Omg",
   twitter: "https://x.com/Rentbean?t=VQWPT4ltjY2cAcHw40xLmw&s=09",
   pinterest: "https://in.pinterest.com/Rentbean/",

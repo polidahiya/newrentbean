@@ -69,7 +69,7 @@ export default function Page({ userdata, token }) {
 
     Recaptcha(
       async () => {
-        const res = await Placeorder(cartitems,paymentMethod);
+        const res = await Placeorder(cartitems, paymentMethod, totalPrice);
         if (res?.status == 200) {
           event("button_click", {
             category: "User Interaction",

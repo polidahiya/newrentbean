@@ -35,15 +35,19 @@ function Ordercard({ item }) {
         <div className="flex flex-col items-start gap-[5px] w-full">
           <OrderDetail label="Order ID" value={item?._id} />
           <OrderDetail label="Order Status" value={orderstages[item?.status]} />
-          <p className="text-sm text-gray-700 flex items-center gap-2">
-            <span className="font-bold">Payment Status :</span>
-            <span
-              className={`h-[15px] aspect-square rounded-full ${
-                item?.paymentStatus == "success" ? "bg-green-500" : "bg-red-500"
-              }`}
-            ></span>
-            {item?.paymentStatus}
-          </p>
+          {item?.paymentMethod == "online" && (
+            <p className="text-sm text-gray-700 flex items-center gap-2">
+              <span className="font-bold">Payment Status :</span>
+              <span
+                className={`h-[15px] aspect-square rounded-full ${
+                  item?.paymentStatus == "success"
+                    ? "bg-green-500"
+                    : "bg-red-500"
+                }`}
+              ></span>
+              {item?.paymentStatus}
+            </p>
+          )}
           <OrderDetail label="PaymentMethod" value={item?.paymentMethod} />
           <OrderDetail label="User Name" value={item?.userdata?.username} />
           <OrderDetail label="User Email" value={item?.userdata?.email} />
@@ -211,6 +215,5 @@ const Deleteconfirmationmenu = ({
   );
 };
 //
-
 
 export default Ordercard;

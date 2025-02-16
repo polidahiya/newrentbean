@@ -7,7 +7,21 @@ import { AppContextfn } from "@/app/Context";
 export default function ProductCard({ product, orderid, productindex }) {
   const [pshowstatus, setpshowstatus] = useState(false);
   const [localStatus, setLocalStatus] = useState(product?.status); // Local state for status
-  console.log(product?.prices[product?.location]);
+
+  const {
+    name,
+    isrentalstore,
+    quantity,
+    prices,
+    buyprice,
+    location,
+    selectedtenure,
+    securitydeposit,
+    image,
+  } = product;
+  const locationrentprices =
+    location in prices ? prices[location] : prices?.Default;
+  const tenure = locationrentprices[selectedtenure];
 
   return (
     <div
@@ -16,36 +30,36 @@ export default function ProductCard({ product, orderid, productindex }) {
       {localStatus != 0 && <Canceledorrefundedbadge status={localStatus} />}
       <Image
         className="w-full rounded-t-lg aspect-square object-cover object-center"
-        src={product?.image}
+        src={image}
         alt="product image"
         width={300}
         height={300}
         loading="lazy"
       />
       <div className="p-4">
-        <OrderDetail label="Name" value={product?.name} />
+        <OrderDetail label="Name" value={name} />
         <OrderDetail
           label="Type"
-          value={product?.isrentalstore ? "For Rent" : "For Sell"}
+          value={isrentalstore ? "For Rent" : "For Sell"}
         />
         <OrderDetail
           label="Price"
-          value={`Rs ${
-            (product?.isrentalstore
-              ? product?.prices[product?.location][product?.selectedtenure]
-                  ?.price
-              : product?.buyprice) * product?.quantity
-          }`}
+          value={`₹${parseInt(
+            (isrentalstore ? tenure?.price : buyprice) * quantity,
+            10
+          ).toLocaleString("en-IN")}/-`}
         />
-        <OrderDetail label="Quantity" value={`${product?.quantity}`} />
-        {product?.isrentalstore && (
+        <OrderDetail label="Quantity" value={`${quantity}`} />
+        {isrentalstore && (
           <OrderDetail
             label="Security Deposit"
-            value={`${product?.securitydeposit * product?.quantity}`}
+            value={`₹${parseInt(securitydeposit * quantity, 10).toLocaleString(
+              "en-IN"
+            )}/-`}
           />
         )}
-        {product?.isrentalstore && (
-          <OrderDetail label="Location" value={`${product?.location}`} />
+        {isrentalstore && (
+          <OrderDetail label="Location" value={`${location}`} />
         )}
       </div>
       {/* status button*/}

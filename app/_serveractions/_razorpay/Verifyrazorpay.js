@@ -1,6 +1,8 @@
 "use server";
 import { getcollection } from "@/app/Mongodb";
 import crypto from "crypto";
+import Ordercconfirmation from "@/app/_mailtemplates/Ordercconfirmation";
+import sendEmail from "../Sendmail";
 
 async function Verifyrazorpay(razorpaydata, mongoid) {
   try {
@@ -19,7 +21,16 @@ async function Verifyrazorpay(razorpaydata, mongoid) {
         { $set: { paymentStatus: "success" } }
       );
       // send mails
-      return { status: 200, message: "Payment verified successfully" };
+      const mailhtml = Ordercconfirmation(orderdata);
+      sendEmail(
+        "Order confirmation",
+        ["rentbeandotin@gmail.com", orderdata?.userdata?.email],
+        mailhtml
+      );
+      return {
+        status: 200,
+        message: "Payment verified successfully",
+      };
     } else {
       return { status: 400, message: "Invalid signature" };
     }

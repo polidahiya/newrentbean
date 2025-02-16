@@ -1,8 +1,9 @@
-import { sociallinks } from "../commondata";
+import { sociallinks, mobile, domain } from "../commondata";
 import FormattedDate from "../_components/_helperfunctions/Formateddate";
 
 function Ordercconfirmation(order) {
-  const { userdata, _id, createdAt, products, paymentMethod } = order;
+  const { userdata, orderNumber, createdAt, products, paymentMethod, totalPrice } =
+    order;
   const orderdate = FormattedDate(createdAt);
 
   const productsdetails = products
@@ -108,7 +109,7 @@ function Ordercconfirmation(order) {
       .followline {
         margin-bottom: 10px;
       }
-      .footer a {
+      a {
         color: #d68e43;
         text-decoration: none;
       }
@@ -138,7 +139,7 @@ function Ordercconfirmation(order) {
       <!-- Banner Image -->
       <div class="banner">
         <img
-          src="http://localhost:3000/banners/banner1-mod.jpg"
+          src="${domain}/banners/banner1-mod.jpg"
           alt="Banner Image"
         />
       </div>
@@ -152,7 +153,7 @@ function Ordercconfirmation(order) {
       </p>
 
       <h2>Order Summary</h2>
-      <p><strong>Order ID:</strong> ${_id}</p>
+      <p><strong>Order ID:</strong> ${orderNumber}</p>
       <p><strong>Order Date:</strong> ${orderdate}</p>
       <h2>Product Details</h2>
       <table>
@@ -181,13 +182,13 @@ function Ordercconfirmation(order) {
       <p><strong>Payment Method:</strong> ${
         paymentMethod == "online" ? "Online" : "Cash on Delivery"
       }</p>
-      <p><strong>Total Amount Paid:</strong> [Total Amount]</p>
+      <p><strong>Total:</strong>
+      ₹${parseInt(totalPrice, 10).toLocaleString("en-IN")}/- </p>
 
       <p class="helpnote">
         If you have any questions or need assistance, feel free to reach out to
         our customer support team at
-        <a href="mailto:[Support Email]">Rentbeandotin@gmail.com</a> or [Support
-        Phone Number].
+        <a href="mailto:Rentbeandotin@gmail.com">Rentbeandotin@gmail.com</a> or ${mobile}.
       </p>
 
       <div class="social-links">
@@ -231,7 +232,7 @@ function Ordercconfirmation(order) {
           Warm regards,<br />
           Rentbean.in<br />
           <a href="https://rentbean.in">Visit site</a><br />
-          [Contact Information]
+          Contact us at <a href="mailto:Rentbeandotin@gmail.com">Rentbeandotin@gmail.com</a> or ${mobile}.
         </p>
       </div>
     </div>
