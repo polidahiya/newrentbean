@@ -15,19 +15,232 @@ import Link from "next/link";
 
 export default function Publicpage({ res }) {
   const { setmessagefn } = AppContextfn();
-  const [ordershistory, setordershistory] = useState(
-    res.result ? res.result : []
-  );
+  // const [ordershistory, setordershistory] = useState(res?.result || []);
+  const [ordershistory, setordershistory] = useState([
+    {
+      _id: "67b347bf386ed07d20d7e24c",
+      orderNumber: "Rb250217-1107",
+      paymentMethod: "online",
+      status: 0,
+      userdata: {
+        username: "Admin",
+        email: "polidahiya830@gmail.com",
+        phonenum: "08700705247",
+        usertype: "admin",
+        address: "this is my address",
+      },
+      products: [
+        {
+          added: true,
+          quantity: 1,
+          sku: "Rbbabycarrier003-rental-Gurgaon",
+          prices: {
+            Default: [
+              {
+                time: "3",
+                type: "days",
+                price: "600",
+              },
+              {
+                time: "7",
+                type: "days",
+                price: "900",
+              },
+              {
+                time: "30",
+                type: "days",
+                price: "1350",
+              },
+            ],
+          },
+          selectedtenure: 0,
+          buyprice: "",
+          name: "Baby carrier age group 4-36 months ",
+          image:
+            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1739038863/Rentbean/yz9rsbyurfdlbiwy5svi.webp",
+          securitydeposit: "1000",
+          maxquantity: "2",
+          isrentalstore: true,
+          location: "Gurgaon",
+          productlink: "/Others/Baby-Care/67a7a092cf64514f3677416d",
+          status: 0,
+        },
+      ],
+      totalPrice: 1600,
+      note: "",
+      createdAt: "2025-02-17T14:29:19.372Z",
+      paymentStatus: "success",
+    },
+    {
+      _id: "67b16dd194efced249447080",
+      orderNumber: "Rb250216-1105",
+      paymentMethod: "cod",
+      status: 0,
+      userdata: {
+        username: "parvesh",
+        email: "polidahiya830@gmail.com",
+        phonenum: "8700705247",
+        usertype: "admin",
+        address: "Near shiv temple,village hayatpur",
+      },
+      products: [
+        {
+          added: true,
+          quantity: 1,
+          sku: "Rbfrisd001-rental-Delhi",
+          prices: {
+            Default: [
+              {
+                time: "3",
+                type: "months",
+                price: "2400",
+              },
+              {
+                time: "6",
+                type: "months",
+                price: "4200",
+              },
+              {
+                time: "12",
+                type: "months",
+                price: "7800",
+              },
+            ],
+          },
+          selectedtenure: 0,
+          buyprice: "",
+          name: "Fridge 190 L Single Door ",
+          image:
+            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1738521339/Rentbean/s1nt2sposgm80fb2qsdt.jpg",
+          securitydeposit: "1000",
+          maxquantity: "1",
+          isrentalstore: true,
+          location: "Delhi",
+          productlink: "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc",
+          status: 0,
+        },
+      ],
+      totalPrice: 3400,
+      note: "",
+      createdAt: "2025-02-16T04:47:13.789Z",
+    },
+    {
+      _id: "67b16d3494efced24944707f",
+      orderNumber: "Rb250216-1104",
+      paymentMethod: "cod",
+      status: 0,
+      userdata: {
+        username: "parvesh",
+        email: "polidahiya830@gmail.com",
+        phonenum: "8700705247",
+        usertype: "admin",
+        address: "Near shiv temple,village hayatpur",
+      },
+      products: [
+        {
+          added: true,
+          quantity: 1,
+          sku: "Rbfrisd001-rental-Delhi",
+          prices: {
+            Default: [
+              {
+                time: "3",
+                type: "months",
+                price: "2400",
+              },
+              {
+                time: "6",
+                type: "months",
+                price: "4200",
+              },
+              {
+                time: "12",
+                type: "months",
+                price: "7800",
+              },
+            ],
+          },
+          selectedtenure: 0,
+          buyprice: "",
+          name: "Fridge 190 L Single Door ",
+          image:
+            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1738521339/Rentbean/s1nt2sposgm80fb2qsdt.jpg",
+          securitydeposit: "1000",
+          maxquantity: "1",
+          isrentalstore: true,
+          location: "Delhi",
+          productlink: "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc",
+          status: 0,
+        },
+      ],
+      totalPrice: 3400,
+      note: "",
+      createdAt: "2025-02-16T04:44:36.728Z",
+    },
+    {
+      _id: "67b16d1094efced24944707e",
+      orderNumber: "Rb250216-1103",
+      paymentMethod: "cod",
+      status: 0,
+      userdata: {
+        username: "parvesh",
+        email: "polidahiya830@gmail.com",
+        phonenum: "8700705247",
+        usertype: "admin",
+        address: "Near shiv temple,village hayatpur",
+      },
+      products: [
+        {
+          added: true,
+          quantity: 1,
+          sku: "Rbfrisd001-rental-Delhi",
+          prices: {
+            Default: [
+              {
+                time: "3",
+                type: "months",
+                price: "2400",
+              },
+              {
+                time: "6",
+                type: "months",
+                price: "4200",
+              },
+              {
+                time: "12",
+                type: "months",
+                price: "7800",
+              },
+            ],
+          },
+          selectedtenure: 0,
+          buyprice: "",
+          name: "Fridge 190 L Single Door ",
+          image:
+            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1738521339/Rentbean/s1nt2sposgm80fb2qsdt.jpg",
+          securitydeposit: "1000",
+          maxquantity: "1",
+          isrentalstore: true,
+          location: "Delhi",
+          productlink: "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc",
+          status: 0,
+        },
+      ],
+      totalPrice: 3400,
+      note: "",
+      createdAt: "2025-02-16T04:44:00.145Z",
+    },
+  ]);
 
-  useEffect(() => {
-    (async () => {
-      const res = await getordershistory();
-      if (res?.result) {
-        setordershistory(res?.result);
-      }
-      if (res?.message) setmessagefn(res?.message);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await getordershistory();
+  //     if (res?.result) {
+  //       setordershistory(res?.result);
+  //     }
+  //     if (res?.message) setmessagefn(res?.message);
+  //   })();
+  // }, []);
 
   if (ordershistory.length == 0)
     return (
@@ -75,7 +288,7 @@ const Historyproductcard = ({ item, product, index }) => {
     show: false,
     effect: false,
   });
-  const [canceltag, setcanceltag] = useState(product.status);
+  const [canceltag, setcanceltag] = useState(product?.status);
 
   const toggleMoreOptions = () => {
     setmoreoptions((prev) => ({ ...prev, show: !prev.show }));
@@ -101,17 +314,13 @@ const Historyproductcard = ({ item, product, index }) => {
       ${canceltag == 2 && "bg-yellow-100"}`}
     >
       <Productcard
+        key={index} // More stable key
         index={index}
-        id={product._id}
-        category={product.category}
-        subcat={product.subcat}
-        name={product.name}
-        price={product.price}
-        discount={product.discount}
+        id={product?._id}
+        link={`/${product?.category}/${product?.subcat}/${product?._id}`}
+        image={product?.image}
+        {...product}
         available={true}
-        colorpalets={product.colorpalets}
-        image={product.colorpalets[product?.selectedcolor].images[0]}
-        rating={product.rating}
       />
       {/* options */}
       {canceltag == 0 && item.status < 3 && (

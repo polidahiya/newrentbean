@@ -7,14 +7,16 @@ async function page() {
   let token = cookies().get("token");
   if (!token) redirect("/loginlogout");
 
-  const res = await getordershistory();
+  // const res = await getordershistory();
 
   return (
     <div>
       <h2 className="text-center font-bold text-[25px] md:text-[30px]  font-recline mt-[20px]">
         Orders Details
       </h2>
-      <Publicpage res={res} />
+      <Publicpage
+      // res={res}
+      />
     </div>
   );
 }

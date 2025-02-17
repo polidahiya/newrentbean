@@ -1,7 +1,7 @@
 import React from "react";
 import Componentloading from "../_components/Componentloading";
 
-function loadin() {
+function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Componentloading />
@@ -9,4 +9,4 @@ function loadin() {
   );
 }
 
-export default loadin;
+export default Loading;

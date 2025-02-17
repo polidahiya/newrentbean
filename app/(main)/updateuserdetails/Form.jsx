@@ -53,12 +53,11 @@ function Form({ userdata }) {
   return (
     <div className="blackshadow1 w-full md:w-[700px] bg-white p-[30px] rounded-[20px]">
       <Image
-        src="/minlogo.png"
+        src="/logo&ui/minlogo.png"
         alt="Rentbean logo image"
         className=" top-[20px] left-[30px] h-[50px] w-[50px]"
         width={156}
         height={60}
-        
       ></Image>
       <div className="flex items-center justify-center gap-[10px] text-[25px] font-semibold  font-recline ">
         <Updateusersvg styles="h-[30px] translate-y-[-3px]" />

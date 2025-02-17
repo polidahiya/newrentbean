@@ -12,7 +12,10 @@ export const getordershistory = async () => {
 
     const { orderscollection } = await getcollection();
     let result = await orderscollection
-      .find({ [`userdata.email`]: tokenres.email, paymentStatus: "success" })
+      .find({
+        [`userdata.email`]: tokenres.email,
+        $or: [{ paymentStatus: "success" }, { paymentMethod: "cod" }],
+      })
       .sort({ createdAt: -1 })
       .toArray();
 

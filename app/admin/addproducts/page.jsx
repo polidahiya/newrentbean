@@ -5,11 +5,13 @@ import Showproducts from "./_components/Showproducts";
 import { useSearchParams } from "next/navigation";
 import { AppContextfn } from "@/app/Context";
 import { Getliveproducts } from "./Getliveproducts";
+import Componentloading from "@/app/_components/Componentloading";
 
 function Page() {
   const searchParams = useSearchParams();
   const productid = searchParams.get("id");
   const { setmessagefn } = AppContextfn();
+  const [loading, setloading] = useState(false);
 
   const initialState = {
     category: "Health-&-Fitness",
@@ -44,8 +46,10 @@ function Page() {
 
   useEffect(() => {
     if (productid) {
+      setloading(true);
       (async () => {
         const res = await Getliveproducts({ id: productid }, "id");
+        setloading(false);
 
         if (res?.status == 200) {
           if (res?.data?.length != 0) {
@@ -88,6 +92,7 @@ function Page() {
         setdeletedimages={setdeletedimages}
         setshoweditform={setshoweditform}
       />
+      {loading && <Componentloading />}
     </div>
   );
 }

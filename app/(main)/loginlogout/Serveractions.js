@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import { logintime } from "@/app/commondata";
 import { getcollection } from "@/app/Mongodb";
 
-const generateToken = async (userdata) => {
+export const generateToken = async (userdata) => {
   const token = jwt.sign(
     { email: userdata?.email, usertype: userdata?.usertype },
     process.env.jwt_secret,

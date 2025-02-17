@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { logintime } from "@/app/commondata";
 import { getcollection } from "@/app/Mongodb";
+import { generateToken } from "@/app/(main)/loginlogout/Serveractions";
 
 export const authOptions = {
   providers: [
@@ -11,49 +11,42 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ profile, user }) {
-      const { userscollection } = await getcollection();
-      const mail = profile.email ? profile?.email : user?.email;
-      const existingUser = await userscollection.findOne({
-        email: mail,
-      });
+    async signIn({ profile }) {
+      try {
+        const email = profile.email;
 
-      if (!existingUser) {
-        await userscollection.insertOne({
-          username: profile?.name || "",
-          email: mail,
-          phonenum: "",
-          address: "",
-        });
+        const { userscollection } = await getcollection();
+        let user = await userscollection.findOne({ email });
+
+        if (user) {
+          // login
+          await generateToken({
+            username: user?.username,
+            email: user?.email,
+            phonenum: user?.phonenum,
+            usertype: user?.usertype,
+            address: user?.address,
+          });
+        } else {
+          // signup
+          const userdata = {
+            username: profile.name || "",
+            email,
+            phonenum: "",
+            address: "",
+            usertype: "user",
+          };
+          await userscollection.insertOne(userdata);
+          await generateToken(userdata);
+        }
+        return true;
+      } catch (error) {
+        console.error("Google SignIn Error:", error);
+        return false;
       }
-
-      return true;
     },
-
-    async jwt({ token, user, account, profile }) {
-      // Add custom data to the token
-      const { userscollection } = await getcollection();
-
-      if (profile) {
-        const mail = profile.email ? profile.email : user?.email;
-        const existingUser = await userscollection.findOne({ email: mail });
-
-        token.username = profile?.name || "";
-        token.email = mail;
-        token.phonenum = existingUser ? existingUser.phonenum : "";
-        token.address = existingUser ? existingUser.address : "";
-      }
-
-      return token;
-    },
-
-    async session({ session, token }) {
-      // Pass the custom token data to the session object
-      session.user.username = token.username;
-      session.user.email = token.email;
-      session.user.phonenum = token.phonenum;
-      session.user.address = token.address;
-
+    async session({ session }) {
+      // Since we're storing auth data in cookies, NextAuth's session is not needed.
       return session;
     },
   },
@@ -61,70 +54,8 @@ export const authOptions = {
     strategy: "jwt",
     maxAge: logintime,
   },
-  secret: process.env.jwt_secret,
+  secret: process.env.JWT_SECRET,
 };
 
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
-
-
-// import NextAuth from "next-auth";
-// import GoogleProvider from "next-auth/providers/google";
-// import { logintime } from "@/app/commondata";
-// import { getcollection } from "@/app/Mongodb";
-
-// import { cookies } from "next/headers";
-
-// export const authOptions = {
-//   providers: [
-//     GoogleProvider({
-//       clientId: process.env.GOOGLE_CLIENT_ID,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//     }),
-//   ],
-//   callbacks: {
-//     async signIn({ profile, user }) {
-//       const { userscollection } = await getcollection();
-//       const mail = profile.email ? profile?.email : user?.email;
-//       const existingUser = await userscollection.findOne({
-//         email: mail,
-//       });
-
-//       if (!existingUser)
-//         await userscollection.insertOne({
-//           username: profile?.name || "",
-//           email: mail,
-//           phonenum: "",
-//           address: "",
-//         });
-
-//       cookies().set(
-//         "userdata",
-//         JSON.stringify({
-//           username: profile?.name || "",
-//           email: mail,
-//           phonenum: existingUser ? existingUser?.phonenum : "",
-//           address: existingUser ? existingUser?.address : "",
-//         }),
-//         {
-//           maxAge: logintime,
-//         }
-//       );
-
-//       return true;
-//     },
-//   },
-//   cookies: {
-//     sessionToken: {
-//       name: "token",
-//     },
-//   },
-//   session: {
-//     strategy: "jwt",
-//     maxAge: logintime,
-//   },
-//   secret: process.env.jwt_secret,
-// };
-
-// const handler = NextAuth(authOptions);
-// export { handler as GET, handler as POST };

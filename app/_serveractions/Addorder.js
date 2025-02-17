@@ -46,12 +46,14 @@ export const Placeorder = async (ordersdata, paymentMethod, totalPrice) => {
 
     if (insertedorder?.insertedCount != 0) {
       // send mails
-      const mailhtml = Ordercconfirmation(order);
-      sendEmail(
-        "Order confirmation",
-        ["rentbeandotin@gmail.com", order?.userdata?.email],
-        mailhtml
-      );
+      if (paymentMethod == "cod") {
+        const mailhtml = Ordercconfirmation(order);
+        sendEmail(
+          "Order confirmation",
+          ["rentbeandotin@gmail.com", order?.userdata?.email],
+          mailhtml
+        );
+      }
 
       return {
         status: 200,
