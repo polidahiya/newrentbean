@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { getcollection } from "@/app/Mongodb";
 import { generateToken } from "@/app/(main)/loginlogout/Serveractions";
+import { logintime } from "@/app/commondata";
 
 export const authOptions = {
   providers: [
