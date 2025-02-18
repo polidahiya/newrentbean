@@ -73,9 +73,7 @@ function Imagecard({ product, i }) {
 
   return (
     <div
-      className={`min-w-64 w-full md:max-w-64 p-2 flex flex-col justify-between gap-2 bg-white snap-always ${
-        i % 2 === 0 ? "snap-start" : ""
-      } ${
+      className={`min-w-64 w-full md:max-w-64 p-2 flex flex-col justify-between gap-2 bg-white snap-always snap-center md:snap-start ${
         isrentalstore
           ? availablefor == "Buy" && "hidden"
           : availablefor == "Rent" && "hidden"
@@ -88,6 +86,7 @@ function Imagecard({ product, i }) {
             alt={name}
             width={230}
             height={230}
+            loading="lazy"
             className="absolute h-full w-full object-contain"
           />
         </div>

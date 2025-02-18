@@ -308,7 +308,7 @@ const Historyproductcard = ({ item, product, index }) => {
 
   return (
     <div
-      className={`relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md rounded-[10px] overflow-hidden  ${
+      className={`relative h-full w-full max-w-[350px] test md:min-w-[270px] shadow-md rounded-[10px] overflow-hidden  ${
         canceltag == 0 && "bg-white"
       } ${canceltag == 1 && "bg-red-100"}
       ${canceltag == 2 && "bg-yellow-100"}`}

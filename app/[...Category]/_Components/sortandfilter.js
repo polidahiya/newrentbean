@@ -4,7 +4,6 @@ export const sortProducts = (products, sort) => {
   let sortedProducts = [...products];
 
   if (sort == 0) {
-    sortedProducts.sort(() => Math.random() - 0.5);
   }
   if (sort == 1) {
     sortedProducts.sort((a, b) => {

@@ -64,9 +64,15 @@ export function Appwrapper({
     }
   }, [cart]);
 
+  // store type
   useEffect(() => {
     Cookies.set("storetype", isrentalstore);
   }, [isrentalstore]);
+
+  // location
+  useEffect(() => {
+    Cookies.set("rblocation", location?.location);
+  }, [location]);
 
   // scroll check
   useEffect(() => {

@@ -25,7 +25,6 @@ function Location() {
                   key={i}
                   onClick={() => {
                     setlocation(() => ({ show: false, location: item }));
-                    Cookies.set("rblocation", item);
                   }}
                   className={`flex items-center justify-center w-32 aspect-[2/1] border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
                     location.location == item

@@ -1,7 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Productcard from "../_components/Productcard";
-import Secondnav from "./_Components/Secondnav";
 import { categorylist, domain } from "../commondata";
 import { Cachedproducts } from "../_serveractions/Getcachedata";
 import Productnotfound from "../_components/Productnotfound";
@@ -22,11 +21,7 @@ async function page({ params, searchParams }) {
 
   if (productid)
     return (
-      <Productpage
-        category={category}
-        subcat={subcat}
-        productid={productid}
-      />
+      <Productpage category={category} subcat={subcat} productid={productid} />
     );
 
   // Get products
@@ -47,33 +42,23 @@ async function page({ params, searchParams }) {
 
   const sortedProducts = sortProducts(
     pricerangedproducts,
-    searchParams.sort || 0
+    searchParams?.sort || 0
   );
-
-  const lengthofproducts = sortedProducts.length;
 
   return (
     <>
       <div className="p-2 md:px-10">
-        {/* <Secondnav
+        <Subcategories category={category} subcat={subcat} />
+        {/* <Appliedfilters
           category={category}
           subcat={subcat}
           searchParams={searchParams}
-          lengthofproducts={lengthofproducts}
         /> */}
-        <div className="w-full">
-          <Subcategories category={category} subcat={subcat} />
-          <Appliedfilters
-            category={category}
-            subcat={subcat}
-            searchParams={searchParams}
-          />
-          {sortedProducts.length > 0 ? (
-            <ProductGrid products={sortedProducts} />
-          ) : (
-            <Productnotfound />
-          )}
-        </div>
+        {sortedProducts.length > 0 ? (
+          <ProductGrid products={sortedProducts} />
+        ) : (
+          <Productnotfound />
+        )}
       </div>
       <Categorydescription
         category={category}

@@ -53,12 +53,12 @@ function Productcard({
   return (
     <Link
       href={link ? link : `/${category}/${subcat}/${id}`}
-      className={`group relative w-full shadow-xl min-w-44 md:min-w-60 bg-white duration-300 rounded-3xl overflow-hidden ${
+      className={`group relative w-full shadow-md min-w-44 md:min-w-60 bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 ${
         isrentalstore
           ? availablefor == "Buy" && "hidden"
           : availablefor == "Rent" && "hidden"
       } ${showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"} 
-      ${maxwidth && "max-w-44 md:max-w-72"}`}
+      ${maxwidth && "max-w-72 md:max-w-80"}`}
     >
       <div className="relative aspect-square w-full overflow-hidden">
         <Image
