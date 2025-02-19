@@ -13,7 +13,7 @@ function Description({ location = "Delhi" }) {
   };
 
   return (
-    <div className="pb-[20px] px-[10px] md:px-[40px] text-justify">
+    <div className="pb-[20px] px-7 md:px-[40px] text-justify">
       <header>
         <h1 className="text-[30px] mb-[40px] font-normal text-center font-recline">
           <strong className="font-bold font-recline">RentBean.in</strong> -

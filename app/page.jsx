@@ -48,7 +48,6 @@ export default async function Home({ searchParams, params }) {
         <Citiesdescription city={searchParams?.location} />
         <Footer />
       </div>
-
       <Mobilenav />
     </>
   );
