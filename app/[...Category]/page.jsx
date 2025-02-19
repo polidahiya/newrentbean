@@ -202,9 +202,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
       );
 
       return {
-        title: `Get ${subcat} at Best Price Online in ${location} | ${new Date().getFullYear()}`,
+        title: `Get ${subcat} on rent in ${location} | ${new Date().getFullYear()}`,
         description:
-          categoryData.desc || `Shop ${subcat} at the best prices online!`,
+          categoryData.desc || `Rent ${subcat} at the best prices online!`,
         openGraph: {
           images: subCategoryData ? `${domain}${subCategoryData.image}` : null,
         },
@@ -220,9 +220,10 @@ export const generateMetadata = async ({ params, searchParams }) => {
       return {
         title: `Get ${
           categoryData?.name
-        } at Best Price Online in ${location} | ${new Date().getFullYear()}`,
+        } on rent in ${location} | ${new Date().getFullYear()}`,
         description:
-          categoryData.desc || `Shop ${categoryData?.name} and decor online.`,
+          categoryData.desc ||
+          `Rent ${categoryData?.name} and buy ${categoryData?.name} at best price in ${location}`,
         openGraph: {
           images: `${domain}${categoryData.image}`,
         },

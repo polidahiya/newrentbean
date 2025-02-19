@@ -31,7 +31,7 @@ function fn1({ location }) {
       </h1>
       <p>
         Looking for high-quality{" "}
-        <strong>fitness equipment on rent in {location}</strong>? You've come to
+        <strong>fitness equipment on rent in {location}</strong>? You&#39;ve come to
         the right place! We offer a wide range of <strong>gym equipment</strong>
         , including <strong>treadmills</strong>,{" "}
         <strong>exercise cycles</strong>, <strong>cross trainers</strong>,{" "}
@@ -46,7 +46,7 @@ function fn1({ location }) {
         fitness machines, ensuring a seamless workout experience. From{" "}
         <strong>treadmills on rent</strong> to <strong>cross trainers</strong>{" "}
         and <strong>exercise cycles</strong>, we cater to all your fitness
-        requirements. Whether you're in <strong>{location}</strong> or nearby
+        requirements. Whether you&#39;re in <strong>{location}</strong> or nearby
         areas, our <strong>delivery and setup services</strong> make it easy to
         get started.
       </p>
@@ -86,7 +86,7 @@ function fn2({ location }) {
         Need a <strong>mobile on rent in {location}</strong>? Choose from top
         brands like <strong>Samsung</strong> and <strong>iPhone</strong>. We
         provide affordable mobile rentals for short-term or long-term use.
-        Whether you're in {location} for business or leisure, our{" "}
+        Whether you&#39;re in {location} for business or leisure, our{" "}
         <strong>iPhone rental</strong> and{" "}
         <strong>Samsung mobile on rent</strong> services are here to help.
       </p>
@@ -111,7 +111,7 @@ function fn2({ location }) {
       </p>
       <p>
         Explore our wide range of rental options today and find the perfect
-        solution for your needs in {location}. Whether you're looking for{" "}
+        solution for your needs in {location}. Whether you&#39;re looking for{" "}
         <strong>iPhone on rent for one day</strong>,{" "}
         <strong>laptop on rent for students</strong>, or{" "}
         <strong>home appliances on rent</strong>, we’ve got you covered. Contact
@@ -141,7 +141,7 @@ function fn3({ location }) {
         <strong>sofa on rent for one day</strong>. Our{" "}
         <strong>wooden bookshelf on rent</strong> and{" "}
         <strong>wooden center table on rent</strong> add a touch of elegance to
-        your space. Whether you're looking for a{" "}
+        your space. Whether you&#39;re looking for a{" "}
         <strong>wardrobe for rent</strong>, a <strong>mirror on rent</strong>,
         or a <strong>dining center table on rent</strong>, we have the perfect
         solution for you.
@@ -161,9 +161,9 @@ function fn4({ location }) {
     <div className="rental-services-description">
       <h1>Premium Rental Services in {location}</h1>
       <p>
-        Looking for the best rental services in {location}? You've come to the
+        Looking for the best rental services in {location}? You&#39;ve come to the
         right place! We offer a wide range of premium rental options to cater to
-        all your needs. Whether you're planning a party, a camping trip, or a
+        all your needs. Whether you&#39;re planning a party, a camping trip, or a
         special event, we have you covered.
       </p>
       <h2>Hookah on Rent</h2>
@@ -172,7 +172,7 @@ function fn4({ location }) {
         <strong>Hookah on Rent</strong> services. We provide high-quality
         hookahs with a variety of flavors to choose from. Our{" "}
         <strong>Hookah on Rent home delivery</strong> service ensures that you
-        get your hookah delivered right to your doorstep. Whether you're in{" "}
+        get your hookah delivered right to your doorstep. Whether you&#39;re in{" "}
         {location} or nearby areas, we offer competitive{" "}
         <strong>Hookah on Rent prices</strong> to make your experience
         affordable and enjoyable.
@@ -194,7 +194,7 @@ function fn4({ location }) {
         <strong>decoration lights on rent</strong>. We provide a wide range of
         lighting options including <strong>laser lights</strong> and{" "}
         <strong>Diwali lights</strong> to create the perfect ambiance. Whether
-        you're in {location} or nearby, our <strong>light on rent</strong>{" "}
+        you&#39;re in {location} or nearby, our <strong>light on rent</strong>{" "}
         services are just a call away.
       </p>
       <h2>Barbeque on Rent</h2>
@@ -210,7 +210,7 @@ function fn4({ location }) {
         Add a fun twist to your party with our{" "}
         <strong>beer tower on rent</strong> services. We offer{" "}
         <strong>Kingfisher Beer Towers</strong> at competitive prices. Whether
-        you're in {location} or nearby, our beer towers are perfect for any
+        you&#39;re in {location} or nearby, our beer towers are perfect for any
         celebration. Check out our <strong>beer tower quantity</strong> options
         to find the perfect fit for your event.
       </p>
@@ -224,7 +224,7 @@ function fn4({ location }) {
         areas.
       </p>
       <p>
-        No matter what you're looking for, our rental services in {location} are
+        No matter what you&#39;re looking for, our rental services in {location} are
         designed to make your life easier. Contact us today to book your rentals
         and enjoy a hassle-free experience!
       </p>
@@ -236,14 +236,14 @@ function fn5({ location }) {
     <div>
       <h1>Baby Gear and Camping Equipment on Rent in {location}</h1>
       <p>
-        Ensure your little one's safety and comfort with our premium baby car
+        Ensure your little one&#39;s safety and comfort with our premium baby car
         seats for rent. Designed with the highest standards of safety in mind,
         our rental car seats offer peace of mind for parents on the go. Whether
-        you're traveling or simply need a temporary solution, our baby car seats
+        you&#39;re traveling or simply need a temporary solution, our baby car seats
         provide a secure and cozy ride for your precious cargo.
       </p>
       <p>
-        Looking for baby gear or camping equipment on rent in {location}? You've
+        Looking for baby gear or camping equipment on rent in {location}? You&#39;ve
         come to the right place! We offer a wide range of high-quality,
         affordable rental services including baby car seats, baby carriers, baby
         strollers, baby cots, camping tents, trekking tents, canopy tents,
@@ -262,7 +262,7 @@ function fn5({ location }) {
         <li>Flexible rental durations</li>
       </ul>
       <p>
-        Whether you're a parent looking for baby gear or an adventurer in need
+        Whether you&#39;re a parent looking for baby gear or an adventurer in need
         of camping equipment, we provide reliable and affordable rental
         solutions in {location}. Explore our services today and make your life
         easier!

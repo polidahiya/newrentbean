@@ -3,8 +3,8 @@ export const mobile = "+91 95822 14574";
 export const address =
   "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002";
 
-export const domain = "http://localhost:3000";
-// export const domain = "https://rentbean.in";
+// export const domain = "http://localhost:3000";
+export const domain = "https://rentbean.in";
 
 export const sociallinks = {
   insta: "https://www.instagram.com/rentbean.in",
