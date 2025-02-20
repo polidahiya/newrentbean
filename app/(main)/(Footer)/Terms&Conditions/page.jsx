@@ -2,15 +2,15 @@ import React from "react";
 
 const page = () => {
   return (
-    <main id="main" className="site-main p-6 bg-gray-50">
+    <main id="main" className="site-main p-6">
       <article
-        className="post-2 page type-page status-publish ast-article-single bg-white shadow-md rounded-lg p-6"
+        className="post-2 page type-page status-publish ast-article-single"
         id="post-2"
         itemType="https://schema.org/CreativeWork"
         itemScope
       >
         <header className="entry-header mb-6">
-          <h1 className="text-center text-[25px] text-theme font-bold font-recline">
+          <h1 className="text-center text-[25px] text-theme font-bold font-recline px-5">
             Terms & Conditions – Rentbean
           </h1>
         </header>
@@ -151,7 +151,7 @@ const page = () => {
               What is the estimated time for delivery?
             </h2>
             <p className="mb-4">
-              Rentbean aims to dispatch your products within 2-5 days; however,
+              Rentbean aims to dispatch your products within 2-5 days after KYC; however,
               in exceptional situations such as transport strikes, riots, or
               natural calamities, delivery times may exceed the promised
               timeline. In such cases, updates will be provided, and your

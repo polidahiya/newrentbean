@@ -32,6 +32,7 @@ function Footer() {
     { name: "Shipping Policy", link: "/ShippingPolicy" },
     { name: "Privacy Policy", link: "/PrivacyPolicy" },
     { name: "Return and Refunds", link: "/ReturnandRefunds" },
+    { name: "Documents Required", link: "/Documentsrequired" },
     { name: "Terms & Conditions", link: "/Terms&Conditions" },
   ];
   const list2 = [
@@ -207,7 +208,7 @@ function Socialfollow() {
           aria-label={`Follow us on ${item.title}`}
         >
           {/* Tooltip */}
-          <p className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-gray-700 rounded-lg px-5 py-1 opacity-0 text-sm lg:group-hover:opacity-100 lg:group-hover:-top-10 pointer-events-none duration-500">
+          <p className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-gray-700 rounded-lg px-5 py-1 opacity-0 text-sm lg:group-hover:opacity-100 lg:group-hover:-top-10 pointer-events-none duration-500 drop-shadow-md">
             <span className="bg-theme text-transparent bg-clip-text font-semibold">
               {item.title}
             </span>

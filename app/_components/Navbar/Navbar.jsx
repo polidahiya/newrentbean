@@ -109,7 +109,7 @@ function Navbar({ params, productsname, token, userdata }) {
       {/* backbutton */}
       {!showsearch && path != "/" && (
         <button
-          className="absolute bottom-0 left-[10px] md:left-10 translate-y-[calc(100%+10px)] h-[40px] aspect-square bg-white text-theme rounded-full text-xl grid place-content-center lg:hidden"
+          className="absolute bottom-0 left-[10px] md:left-10 translate-y-[calc(100%+10px)] h-[40px] aspect-square bg-white text-theme border border-theme rounded-full text-xl grid place-content-center lg:hidden"
           onClick={() => {
             router.back();
           }}

@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 
-function PosterAdds({ location }) {
+function PosterAdds() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 

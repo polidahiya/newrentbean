@@ -68,7 +68,7 @@ function Customerreviews() {
             <button
               key={i}
               className={`h-[5px] rounded-full transition-all ${
-                i === activeIndex ? "bg-theme w-8" : "bg-gray-400 w-[5px]"
+                i === activeIndex ? "bg-theme w-8" : "bg-white w-[5px]"
               }`}
               onClick={() => swiperRef.current.swiper.slideTo(i)}
             ></button>
@@ -100,8 +100,8 @@ function Customerreviews() {
         </div>
       </div>
       <img
-        src="https://brownliving.in/cdn/shop/products/cork-diary-ruled-pages-single-diary-stationery-brown-living-476763.jpg?v=1682961698&width=1200"
-        alt=""
+        src="/logo&ui/reviewbg.jpg"
+        alt="reviewbg"
         className="absolute -z-10 inset-0 h-full w-full lg:hidden"
       />
     </div>

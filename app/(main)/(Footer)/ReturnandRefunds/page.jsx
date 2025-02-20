@@ -2,9 +2,9 @@ import React from "react";
 
 function page() {
   return (
-    <div className="p-[10px] md:p-[40px]">
-      <h1 className="text-center text-[25px] text-theme font-bold font-recline">
-        Cancelation & Return Policy
+    <div className="p-6 md:p-10">
+      <h1 className="text-center text-[25px] text-theme font-bold font-recline px-10">
+        Return & Cancelation Policy
       </h1>
       <h2 className="font-bold text-[18px] mt-[20px] font-recline">
         1. How and till when can I modify my order ?
@@ -40,14 +40,14 @@ function page() {
       </h2>
       <p className="text-[14px]  ">
         Yes. While all our products pass a series of stringent quality checks,
-        if you&#39;re not happy with the product&#39;s condition due to a defect or
-        non-functionality, you may return the same at the time of delivery. If
-        notified at the time of delivery, some exceptions can be considered in a
-        valid case or circumstance. Please note, a return option will not be
-        available at the time of delivery once our team exits your premises
+        if you&#39;re not happy with the product&#39;s condition due to a defect
+        or non-functionality, you may return the same at the time of delivery.
+        If notified at the time of delivery, some exceptions can be considered
+        in a valid case or circumstance. Please note, a return option will not
+        be available at the time of delivery once our team exits your premises
         after successful confirmation of your order delivery. We also advise
-        checking the product&#39;s specified dimensions before placing the order, as
-        item rejection will not be considered eligible for return.
+        checking the product&#39;s specified dimensions before placing the
+        order, as item rejection will not be considered eligible for return.
       </p>
       <h2 className="font-bold text-[18px] mt-[20px] font-recline">
         4. Can I close my rental subscription prior to the committed tenure ?

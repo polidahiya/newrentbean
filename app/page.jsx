@@ -39,8 +39,8 @@ export default async function Home({ searchParams, params }) {
         {/* <Newarrival products={products} /> */}
         {/* <Bestselling products={products} /> */}
         <Allproducts products={products.sort(() => Math.random() - 0.5)} />
-        <Blogscomp />
         <Customerreviews />
+        <Blogscomp />
         <div>
           <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline">
             Why Choose Us?
