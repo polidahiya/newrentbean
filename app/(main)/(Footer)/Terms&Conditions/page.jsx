@@ -151,7 +151,7 @@ const page = () => {
               What is the estimated time for delivery?
             </h2>
             <p className="mb-4">
-              Rentbean aims to dispatch your products within 2-5 days after KYC; however,
+              Rentbean aims to dispatch your products within 1 or 2 days after KYC; however,
               in exceptional situations such as transport strikes, riots, or
               natural calamities, delivery times may exceed the promised
               timeline. In such cases, updates will be provided, and your

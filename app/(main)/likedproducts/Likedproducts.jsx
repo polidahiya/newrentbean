@@ -8,14 +8,16 @@ import { AppContextfn } from "@/app/Context";
 import { likeproduct } from "@/app/_serveractions/Likedproducts";
 
 function Likedproducts({ filtereditems }) {
+  console.log(filtereditems);
+
   const { setmessagefn } = AppContextfn();
   const [favouritesproducts, setfavouritesproducts] = useState(filtereditems);
 
-  const dislike = async () => {
-    let res = await likeproduct(item._id, true);
+  const dislike = async (id) => {
+    let res = await likeproduct(id, true);
     if (res?.status == 200) {
       setfavouritesproducts((pre) => {
-        const filteredArray = pre.filter((pro) => pro._id != item._id);
+        const filteredArray = pre.filter((pro) => pro._id != id);
         return filteredArray;
       });
     }
@@ -40,17 +42,17 @@ function Likedproducts({ filtereditems }) {
             className="relative  w-full max-w-[350px] md:min-w-[270px] shadow-md rounded-[10px] overflow-hidden"
           >
             <Productcard
-              key={i + new Date().getMilliseconds() + Math.random()} // More stable key
+              key={i} // More stable key
               index={i}
-              id={item._id}
-              image={item.colorpalets[0]?.images[0]}
+              id={item?._id}
+              image={item?.images[0]}
               {...item}
             />
             {/* like button */}
             <button
               className="absolute right-[10px] top-[10px] bg-white rounded-full p-[3px] "
               title="Remove from favourites"
-              onClick={dislike}
+              onClick={() => dislike(item._id)}
             >
               <Heart
                 styles={`h-[25px]  w-[25px]  translate-y-[1px] fill-red-500 stroke-none`}

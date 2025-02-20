@@ -91,17 +91,14 @@ async function Productpage({ category, subcat, productid }) {
             {
               question: "What payment methods do you accept?",
               answer: [
-                "We accept major cards (Credit/Debit), Credit Card EMI, Debit Cardless EMI, Net Banking, Wallet, UPI, and PayU.",
+                "We accept major cards (Credit/Debit), Credit Card EMI, Debit Cardless EMI, Net Banking, Wallet, UPI.",
                 "All transactions are secure and convenient.",
               ],
             },
             {
-              question: "What does the furniture warranty cover?",
+              question: "Is there a security deposit?",
               answer: [
-                "1-year structural warranty.",
-                "5-year warranty against termites and borers.",
-                "Covers manufacturing defects and workmanship issues.",
-                "Ensures protection against termite/borer damage.",
+                "Some items may require a refundable security deposit, which will be returned after the product is returned in good condition.",
               ],
             },
             {
@@ -113,9 +110,9 @@ async function Productpage({ category, subcat, productid }) {
               ],
             },
             {
-              question: "Is assembly/installation service available?",
+              question: "How long does delivery take?",
               answer: [
-                "Assembly services are not included with our products at this time.",
+                "Delivery times vary based on location and availability, usually delivers within 1 or 2 days after KYC.",
               ],
             },
             {
@@ -136,10 +133,9 @@ async function Productpage({ category, subcat, productid }) {
               ],
             },
             {
-              question: "Do you offer bulk or wholesale pricing?",
+              question: "Can I extend my rental period?",
               answer: [
-                "Yes, we offer bulk and wholesale pricing for large orders.",
-                "Contact our sales team via the Contact Us page for a personalized quote.",
+                "Yes, you can extend your rental by contacting us before the rental duration ends. Additional charges may apply.",
               ],
             },
           ]}

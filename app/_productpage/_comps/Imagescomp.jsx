@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeart } from "react-icons/io";
 import { likeproduct, isliked } from "@/app/_serveractions/Likedproducts";
 import { AppContextfn } from "@/app/Context";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
@@ -117,13 +118,11 @@ function ImagesComp({ filteredproducts, token }) {
         <div className="absolute right-[10px] top-[10px] flex gap-2">
           {/* like  */}
           <button
-            className="text-2xl bg-white rounded-full border p-1"
+            className="text-2xl bg-white text-red-500 rounded-full border p-1"
             title="Add to favourites"
             onClick={handleLikeToggle}
           >
-            <IoMdHeartEmpty
-              className={`text-red-500 ${isLiked ? " fill-red-500 " : ""}`}
-            />
+            {isLiked ? <IoMdHeart /> : <IoMdHeartEmpty />}
           </button>
           {/* link */}
           <button
@@ -134,7 +133,6 @@ function ImagesComp({ filteredproducts, token }) {
             <IoLinkOutline />
           </button>
         </div>
-
         {/* dots */}
         <div className="absolute bottom-0 left-0 z-10 w-full">
           <div className="absolute bottom-[5px] left-1/2 flex gap-[10px] transform -translate-x-1/2">
@@ -147,19 +145,17 @@ function ImagesComp({ filteredproducts, token }) {
             ))}
           </div>
         </div>
-        {/* note */}
-        <p className="absolute top-full left-1/2 -translate-x-1/2 text-[8px] w-full text-center hidden lg:block">
-          Note: The actual product you receive may look slightly different from
-          the images due to natural variations in wood grain, color, and
-          texture, as well as differences in lighting during photography. Each
-          piece is unique, and these variations are normal.
-        </p>
       </div>
+      {/* note */}
+      <p className="absolute top-full left-1/2 -translate-x-1/2 text-[8px] w-full text-center hidden lg:block">
+        {'"'} *Please note: Product may vary slightly from images displayed.
+        {'"'}
+      </p>
     </div>
   );
 }
 
-const MainImage = ({ image, name, pid, index }) => {
+const MainImage = ({ image, name }) => {
   const [loading, setloading] = useState({
     effect: true,
     show: true,

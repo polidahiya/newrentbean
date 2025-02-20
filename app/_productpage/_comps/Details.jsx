@@ -71,7 +71,7 @@ function Details({ filteredProduct }) {
       />
       <div className="flex items-center justify-center gap-[10px] mt-[20px]">
         <Deliverytrucksvg />
-        <span className="text-[10px]">Delivery in 1-2 days post KYC</span>
+        <span className="text-[10px]">Delivery in 1 or 2 days post KYC</span>
       </div>
     </section>
   );

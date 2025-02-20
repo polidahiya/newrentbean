@@ -155,12 +155,17 @@ export const Cartlink = () => {
       )}
       {/* cart peak */}
       <div className="absolute h-3 w-full hidden lg:group-hover:block">
-        <div className="absolute top-full right-0  w-96 translate-x-[50px] rounded-lg bg-white flex  flex-col items-center  p-3 shadow-md">
-          <span className="absolute top-0 right-[65px] -translate-y-1/2 rotate-45 w-2 aspect-square bg-white"></span>
+        <div className="absolute top-full right-0  w-[500px] translate-x-[50px] rounded-lg bg-bg1  flex  flex-col items-center  p-3 shadow-lg">
+          <span className="absolute top-0 right-[65px] -translate-y-1/2 rotate-45 w-4 aspect-square bg-bg1"></span>
           {totalQuantity > 0 ? (
             <>
               <div className="w-full flex flex-col gap-3 max-h-80  overflow-y-scroll hidescroll">
                 {Object.values(cart).map((item, i) => {
+                  const finaltenure =
+                    item?.location in item?.prices
+                      ? item?.prices[item?.location]
+                      : item?.prices.Default;
+                  const totalprice = finaltenure[item?.selectedtenure]?.price;
                   return (
                     <Link
                       key={i}
@@ -168,7 +173,7 @@ export const Cartlink = () => {
                       className="flex gap-2"
                     >
                       <Image
-                        className="min-w-16 aspect-square rounded-sm object-cover bg-bg1"
+                        className="min-w-[100px] aspect-square rounded-sm object-cover bg-bg1"
                         src={item?.image}
                         alt={item?.name}
                         quality={10}
@@ -178,16 +183,49 @@ export const Cartlink = () => {
                       <div className="flex flex-col">
                         <h3 className="line-clamp-2">{item?.name}</h3>
                         {/* price */}
-                        <p className="text-black">
-                          ₹
-                          {(item?.price * item?.quantity).toLocaleString(
-                            "en-IN"
-                          )}
-                        </p>
+                        {item?.isrentalstore ? (
+                          <>
+                            <p className="text-sm">
+                              Rent: ₹
+                              {(totalprice * item?.quantity).toLocaleString(
+                                "en-IN"
+                              )}
+                              {"/-"}
+                            </p>
+                            <p className="text-sm">
+                              Security Deposit : ₹
+                              {(
+                                item?.securitydeposit * item?.quantity
+                              ).toLocaleString("en-IN")}
+                              {"/-"}
+                            </p>
+                            <p className="text-sm">
+                              Total : ₹
+                              {(
+                                totalprice * item?.quantity +
+                                item?.securitydeposit * item?.quantity
+                              ).toLocaleString("en-IN")}
+                              {"/-"}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p>
+                              Price: ₹
+                              {(item?.buyprice * item?.quantity).toLocaleString(
+                                "en-IN"
+                              )}
+                              {"/-"}
+                            </p>
+                          </>
+                        )}
                         <div className="flex gap-10 mt-auto">
                           <div>
                             <span className="text-slate-400">Quantity : </span>
                             <span>{item?.quantity}</span>
+                          </div>
+                          <div className="text-theme font-bold">
+                            {item?.isrentalstore ? "Rent" : "Buy"}
                           </div>
                         </div>
                       </div>

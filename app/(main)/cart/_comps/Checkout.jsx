@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { SiRazorpay } from "react-icons/si";
 
 function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
+  const maxcashpaymentavailable = 10000;
+  useEffect(() => {
+    if (paymentMethod === "cod" && totalPrice >= maxcashpaymentavailable)
+      setpaymentMethod("online");
+  }, [totalPrice]);
+
   return (
     <div className="w-full flex flex-col gap-6 bg-white mt-4 p-4">
       <h3 className="font-bold mt-5 mb-2 text-xl font-recline text-center">
@@ -51,13 +57,18 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
             value="cod"
             checked={paymentMethod === "cod"}
             onChange={() => setpaymentMethod("cod")}
-            disabled={totalPrice >= 10000}
+            disabled={totalPrice >= maxcashpaymentavailable}
             className="w-5 h-5 cursor-pointer"
           />
           <span className="text-gray-700 font-medium">
             Cash on Delivery (COD)
           </span>
         </label>
+        {totalPrice > maxcashpaymentavailable && (
+          <p className="text-sm opacity-75">
+            * COD is available only for orders below ₹{maxcashpaymentavailable}
+          </p>
+        )}
       </div>
 
       {/* Terms and Place Order Section */}
