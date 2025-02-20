@@ -9,15 +9,19 @@ import { AppContextfn } from "../Context";
 
 function FIxedbuttons() {
   const path = usePathname();
+  const isadminpage = path.split("/")[1] == "admin";
 
-  if (path.split("/")[0] != "admin")
-    return (
-      <div className="fixed bottom-16 lg:bottom-5 right-5 md:right-10 flex flex-col items-end gap-2 z-30">
-        <Gotopbutton />
-        <Whatsappbutton />
-        <Helpbutton />
-      </div>
-    );
+  return (
+    <div className="fixed bottom-16 lg:bottom-5 right-5 md:right-10 flex flex-col items-end gap-2 z-30">
+      <Gotopbutton />
+      {!isadminpage && (
+        <>
+          <Whatsappbutton />
+          <Helpbutton />
+        </>
+      )}
+    </div>
+  );
 }
 
 const Whatsappbutton = () => (

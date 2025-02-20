@@ -1,16 +1,16 @@
 "use server";
 import { Deleteiamgefromurl, uploadImage } from "@/app/Cloudinary";
-import { Adminverification } from "@/app/Verifytoken";
+import Verification from "@/app/Verifytoken";
 import { getcollection } from "../../Mongodb";
 
 export const Addblogaction = async (formdata, editmode, deletedimages) => {
   try {
-    const { blogscollection, ObjectId } = await getcollection();
-    const verification = await Adminverification();
-
-    if (!verification) {
-      return { status: 400, message: "Invalid user" };
+    const res = await Verification();
+    if (!res?.verified) {
+      return { status: 401, message: "Please login first" };
     }
+
+    const { blogscollection, ObjectId } = await getcollection();
 
     if (editmode.mode) {
       deletedimages.forEach((image) =>
