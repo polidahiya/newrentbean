@@ -12,6 +12,7 @@ import Citiesdescription from "./_components/Homepage/Citiesdescription";
 import Herosection from "./_components/Homepage/Herosection";
 import Navbar from "./_components/Navbar/Navbar";
 import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
+import Customerreviews from "./_components/Homepage/Customerreviews";
 
 export default async function Home({ searchParams, params }) {
   const allcookies = await cookies();
@@ -39,6 +40,7 @@ export default async function Home({ searchParams, params }) {
         {/* <Bestselling products={products} /> */}
         <Allproducts products={products.sort(() => Math.random() - 0.5)} />
         <Blogscomp />
+        <Customerreviews />
         <div>
           <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline">
             Why Choose Us?

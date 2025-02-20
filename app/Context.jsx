@@ -57,7 +57,7 @@ export function Appwrapper({
   //  update cookies when cart change
   useEffect(() => {
     if (cart && Object.keys(cart).length > 0) {
-      Cookies.set("rentbeancart", JSON.stringify(cart));
+      Cookies.set("rentbeancart", JSON.stringify(cart), { expires: 7 });
     } else {
       // Remove the cookie if the cart is empty
       Cookies.remove("rentbeancart");
@@ -66,12 +66,12 @@ export function Appwrapper({
 
   // store type
   useEffect(() => {
-    Cookies.set("storetype", isrentalstore);
+    Cookies.set("storetype", isrentalstore), { expires: 7 };
   }, [isrentalstore]);
 
   // location
   useEffect(() => {
-    Cookies.set("rblocation", location?.location);
+    Cookies.set("rblocation", location?.location, { expires: 7 });
   }, [location]);
 
   // scroll check
