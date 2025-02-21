@@ -45,7 +45,7 @@ export default async function RootLayout({ children }) {
         {/* pinterest site claim */}
         <meta
           name="p:domain_verify"
-          content="44c7e34daae240451f1159d0ec6cb12b"
+          content="9e98018f71cfced9ea0ff9df1dd5ebd6"
         />
         {/* ld json */}
         <script
@@ -55,10 +55,10 @@ export default async function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Rentbean",
-              url: "https://Rentbean.in",
+              url: "https://rentbean.in",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://Rentbean.in/Search?query={search_term_string}",
+                target: "https://rentbean.in/Search?query={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),

@@ -7,26 +7,26 @@ export async function GET() {
     const allproducts = await Cachedproducts();
     const today = new Date(); // Get today's date
 
-    const posts = allproducts.flatMap((item) => {
-      return item?.colorpalets.map((color, j) => ({
+    const posts = allproducts.map((item) => {
+      return {
         title: item?.name,
-        link: `${domain}/${item?.category}/${item?.subcat}/${item?._id}?color=${j}`,
+        link: `${domain}/${item?.category}/${item?.subcat}/${item?._id}`,
         description:
           "Dimensions: " +
           item?.Dimensions +
-          "_______________ Discover the best solid wood furniture in India. Shop Sheesham wood furniture, dining tables, sofas, and more online at affordable prices.______________ #furnituredesign #homedecor #interiordesign #furnitureinspo #furnituregoals #furnitureaddict #furniturelovers #modernfurniture #luxuryfurniture #customfurniture",
+          "_______________ 🚀 Why Buy When You Can Rent? 🏡💼 \nFrom furniture to electronics, fitness gear to party essentials – Rent with ease & save big! Flexible tenures, affordable rates, and hassle-free delivery. Rent now & enjoy!.______________ #RentInsteadOfBuying #SmartRenting #AffordableLiving #FurnitureOnRent #TechOnRent #FitnessOnRent #EventRentals #PartyEssentials #HomeDecorGoals #UpgradeWithoutBuying",
         pubDate: today.toUTCString(), // Convert to proper date string
-        imageUrl: color?.images[0],
-      }));
+        imageUrl: item?.images[0],
+      };
     });
 
     const rssFeed = `
       <?xml version="1.0" encoding="UTF-8" ?>
       <rss version="2.0">
         <channel>
-          <title>Rentbean - Get Solid Wood Furniture at best price</title>
+          <title>Rentbean - Get the best deals on rent</title>
           <link>${domain}</link>
-          <description>Discover the best solid wood furniture in India. Shop Sheesham wood furniture, dining tables, sofas, and more online at affordable prices.</description>
+          <description>Rentbean - Get the best deals on rent</description>
           <language>en-us</language>
           ${posts
             .map(

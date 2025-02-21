@@ -7,6 +7,7 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
+import Image from "next/image";
 const imageadd =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0RpPXotKjdoXstCxAVIqZCpCdmFYR_QIcSQ&s";
 
@@ -111,12 +112,14 @@ const Review1 = () => {
   return (
     <div className="pl-10 drop-shadow-md">
       <div className="relative p-5 pl-12 rounded-xl space-y-1 bg-white">
-        <img
-          src={imageadd}
+        <Image
+          height={80}
+          width={80}
+          src="/logo&ui/reviewers/client2.png"
           alt="client 1"
           className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 w-20 aspect-square rounded-full object-cover border-4 border-slate-300"
         />
-        <p className="text-2xl font-recline font-black">Parvesh Dahiya</p>
+        <p className="text-2xl font-recline font-black">Rahul Panchal</p>
         <p className="flex text-sm text-yellow-400">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
         </p>
@@ -137,8 +140,10 @@ const Review2 = () => {
   return (
     <div className="pr-10 mt-7 drop-shadow-md">
       <div className="relative p-5 pr-12 rounded-xl space-y-1 bg-white">
-        <img
-          src={imageadd}
+        <Image
+          height={80}
+          width={80}
+          src="/logo&ui/reviewers/client4.png"
           alt="client 1"
           className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 w-20 aspect-square rounded-full object-cover"
         />
@@ -149,8 +154,8 @@ const Review2 = () => {
         </p>
         <div className="flex items-start justify-between pt-2">
           <div>
-            <p className="text-2xl font-recline font-black">Parvesh Dahiya</p>
-            <p>@parveshdahiya</p>
+            <p className="text-2xl font-recline font-black">Tarun Mahiwal</p>
+            <p>@Tarunmahiwal</p>
           </div>
           <p className="flex text-sm text-yellow-400 mt-2">
             <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
@@ -164,8 +169,10 @@ const Review3 = () => {
   return (
     <div className="p-7 pt-16 mt-2">
       <div className="relative p-5 pt-20 rounded-3xl shadow-md space-y-2 bg-white">
-        <img
-          src={imageadd}
+        <Image
+          height={128}
+          width={128}
+          src="/logo&ui/reviewers/client3.png"
           alt="client 1"
           className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 w-32 aspect-square rounded-full object-cover border-4 border-theme"
         />
@@ -182,8 +189,10 @@ const Review3 = () => {
           on time. Customer support was also very responsive. Highly
           recommended!&#34;
         </p>
-        <img
-          src="/logo&ui/reviewers/signature.png"
+        <Image
+          height={80}
+          width={150}
+          src="/logo&ui/reviewers/vishal_signature.png"
           alt="signature image"
           className="w-full p-5 "
         />
@@ -194,9 +203,11 @@ const Review3 = () => {
 const Review4 = () => {
   return (
     <div className="pr-10">
-      <div className="relative p-5 pr-12 rounded-xl shadow-md space-y-1 bg-white">
-        <img
-          src={imageadd}
+      <div className="relative p-5 pr-12 rounded-xl drop-shadow-md space-y-1 bg-white">
+        <Image
+          height={80}
+          width={80}
+          src="/logo&ui/reviewers/client33.jpg"
           alt="client 1"
           className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 w-20 aspect-square rounded-full object-cover"
         />
@@ -208,8 +219,8 @@ const Review4 = () => {
         </p>
         <div className="flex items-start justify-between pt-2">
           <div>
-            <p className="text-2xl font-recline font-black">Parvesh Dahiya</p>
-            <p>@parveshdahiya</p>
+            <p className="text-2xl font-recline font-black">Manish Kushwaha</p>
+            <p>@manishKushwaha</p>
           </div>
           <p className="flex text-sm text-yellow-400 mt-2">
             <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
@@ -222,13 +233,15 @@ const Review4 = () => {
 const Review5 = () => {
   return (
     <div className="relative flex gap-1 mt-7 p-3 rounded-full bg-white shadow-md">
-      <img
-        src={imageadd}
+      <Image
+        height={128}
+        width={128}
+        src="/logo&ui/reviewers/client44.png"
         alt="client 1"
         className="w-32 aspect-square rounded-full object-cover"
       />
       <div className="space-y-1">
-        <p className="text-2xl font-recline font-black">Parvesh Dahiya</p>
+        <p className="text-2xl font-recline font-black">Priya Bangalia</p>
         <p className="text-sm">
           &#34;Renting from this platform was a breeze! The process was
           smooth,&#34;
@@ -258,14 +271,16 @@ const Review6 = () => {
         </p>
       </div>
       <div className="flex items-center justify-center gap-2 p-5 bg-slate-100 mt-auto">
-        <img
-          src={imageadd}
+        <Image
+          height={40}
+          width={40}
+          src="/logo&ui/reviewers/client5.png"
           alt="client 1"
           className="w-10 aspect-square rounded-full object-cover border-4 border-white"
         />
         <div>
-          <p className="font-recline font-black">Parvesh Dahiya</p>
-          <p className="text-sm -mt-1">@parveshdahiya</p>
+          <p className="font-recline font-black">Sumit Choudhary</p>
+          <p className="text-sm -mt-1">@Sumitchoudhary</p>
         </div>
       </div>
     </div>
@@ -275,18 +290,20 @@ const Review7 = () => {
   return (
     <div className="pt-14 pl-5 drop-shadow-md">
       <div className="relative p-5 pl-20 bg-white rounded-3xl ">
-        <img
-          src={imageadd}
-          alt=""
-          className="absolute bottom-0 left-0 -translate-x-1/4 -translate-y-1/4 w-20 aspect-[2/3] object-cover rounded-full  border-4 border-slate-200"
+        <Image
+          height={120}
+          width={80}
+          src="/logo&ui/reviewers/client.jpg"
+          alt="client"
+          className="absolute top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-20 aspect-[2/3] object-cover rounded-full  border-4 border-slate-200"
         />
-        <p className="text-2xl font-recline font-black">Parvesh Dahiya</p>
+        <p className="text-2xl font-recline font-black">Pawan</p>
         <p className="text-sm">
           &#34;I rented a refrigerator for my PG, and it was a fantastic
           experience. The product was in perfect condition, and the team handled
           delivery and pickup smoothly. Great service!&#34;
         </p>
-        <p className="text-end font-bold">@parveshdahiya</p>
+        <p className="text-end font-bold">@Pawan</p>
         <p className="absolute bottom-0 translate-y-1/2 right-10 px-1 rounded-full flex text-sm text-white bg-theme mt-2">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
         </p>
@@ -301,10 +318,12 @@ const Review7 = () => {
 const Review8 = () => {
   return (
     <div className="relative mt-14 flex flex-col bg-white rounded-3xl drop-shadow-md">
-      <img
-        src={imageadd}
-        alt="client 8"
-        className="max-h-28 w-full object-cover flex-1 rounded-t-3xl"
+      <Image
+        height={80}
+        width={80}
+        src="/logo&ui/reviewers/client77.png"
+        alt="client55"
+        className="max-h-36 w-full object-cover flex-1 rounded-t-3xl"
       />
       <div className="p-5 flex-1">
         <p className="text-2xl font-recline font-black text-center">
@@ -345,9 +364,11 @@ const Review9 = () => {
         </p>
         <div className="flex justify-end">
           <div>
-            <img
-              src="/logo&ui/reviewers/signature.png"
-              alt="signature image"
+            <Image
+              height={80}
+              width={80}
+              src="/logo&ui/reviewers/signature1.png"
+              alt="client1 signature"
               className="h-10"
             />
             <p>@parvesh</p>
@@ -361,9 +382,11 @@ const Review9 = () => {
           className="absolute top-full right-20 w-10 aspect-square bg-white"
           style={{ clipPath: "polygon(0 0, 100% 52%, 70% 0)" }}
         ></div>
-        <img
-          src={imageadd}
-          alt=""
+        <Image
+          height={80}
+          width={80}
+          src="/logo&ui/reviewers/client1.png"
+          alt="client 1"
           className="absolute top-full translate-y-10 right-0 w-20 aspect-square rounded-full object-cover border-4 border-white"
         />
       </div>
