@@ -89,10 +89,10 @@ function Footer() {
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-[20px] text-[12px]">
-          {/* <Link href="/Sitemap" className="flex items-center gap-1">
+          <Link href="/Sitemap" className="flex items-center gap-1">
             <FaSitemap className="text-yellow-500" />
             Site map
-          </Link> */}
+          </Link>
           <PWAInstallPrompt />
           <Protectedbygoogle />
           {/* <ThemeSwitcher /> */}

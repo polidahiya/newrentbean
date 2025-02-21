@@ -5,14 +5,11 @@ import {
   FaBlog,
   FaShoppingCart,
   FaSignInAlt,
+  FaDumbbell,
+  FaTv,
   FaCouch,
-  FaBed,
-  FaUtensils,
-  FaTable,
-  FaWarehouse,
-  FaWineBottle,
-  FaBook,
-  FaLaptopHouse,
+  FaGlassCheers,
+  FaBoxOpen,
   FaInfoCircle,
   FaPhoneAlt,
   FaShippingFast,
@@ -27,31 +24,25 @@ const SiteMap = () => {
     { loc: "/", label: "Home", icon: <FaHome /> },
     { loc: "/Blogs", label: "Blogs", icon: <FaBlog /> },
     { loc: "/cart", label: "Cart", icon: <FaShoppingCart /> },
+    { loc: "/orderdetails", label: "Order Details", icon: <FaFileContract /> },
+    { loc: "/likedproducts", label: "Liked Products", icon: <FaHeart /> },
     { loc: "/loginlogout", label: "Login/Logout", icon: <FaSignInAlt /> },
   ];
 
   const furnitureCategories = [
-    { loc: "/Living_Room", label: "Living Room", icon: <FaCouch /> },
-    { loc: "/Bedroom", label: "Bedroom", icon: <FaBed /> },
-    { loc: "/Dining", label: "Dining", icon: <FaUtensils /> },
-    { loc: "/Tables", label: "Tables", icon: <FaTable /> },
-    { loc: "/Storage", label: "Storage", icon: <FaWarehouse /> },
-    { loc: "/Bar_Furniture", label: "Bar Furniture", icon: <FaWineBottle /> },
     {
-      loc: "/Study_and_Bookshelf",
-      label: "Study and Bookshelf",
-      icon: <FaBook />,
+      loc: "/Health-&-Fitness",
+      label: "Health & Fitness",
+      icon: <FaDumbbell />,
     },
+    { loc: "/Electronic", label: "Electronic", icon: <FaTv /> },
+    { loc: "/Furniture", label: "Furniture", icon: <FaCouch /> },
     {
-      loc: "/Office_Furniture",
-      label: "Office Furniture",
-      icon: <FaLaptopHouse />,
+      loc: "/Event-&-Parties",
+      label: "Event & Parties",
+      icon: <FaGlassCheers />,
     },
-    {
-      loc: "/Home_Decor_&_More",
-      label: "Home Decor & More",
-      icon: <FaCouch />,
-    },
+    { loc: "/Others", label: "Others", icon: <FaBoxOpen /> },
   ];
 
   const policiesAndOthers = [
@@ -69,8 +60,11 @@ const SiteMap = () => {
       label: "Terms & Conditions",
       icon: <FaFileContract />,
     },
-    { loc: "/orderdetails", label: "Order Details", icon: <FaFileContract /> },
-    { loc: "/likedproducts", label: "Liked Products", icon: <FaHeart /> },
+    {
+      loc: "/Documentsrequired",
+      label: "Documents Required",
+      icon: <FaFileContract />,
+    },
   ];
 
   const Section = ({ title, links }) => (

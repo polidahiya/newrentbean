@@ -115,7 +115,9 @@ export async function GET() {
 
     return new Response(sitemap, {
       status: 200,
-      headers: { "Content-Type": "application/xml" },
+      headers: {
+        "Content-Type": "application/xml; charset=utf-8",
+      },
     });
   } catch (error) {
     console.error("Sitemap Generation Error:", error);
