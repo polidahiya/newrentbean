@@ -10,7 +10,7 @@ export const sociallinks = {
   insta: "https://www.instagram.com/rentbean.in",
   facebook: "https://www.facebook.com/share/1JFXEV9Uds/?mibextid=qi2Omg",
   twitter: "https://x.com/Rentbean?t=VQWPT4ltjY2cAcHw40xLmw&s=09",
-  pinterest: "https://in.pinterest.com/Rentbean/",
+  pinterest: "https://in.pinterest.com/rentbean099/",
 };
 
 export const categorylist = {
