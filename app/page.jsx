@@ -42,7 +42,7 @@ export default async function Home({ searchParams, params }) {
         <Allproducts products={products.sort(() => Math.random() - 0.5)} />
         <Customerreviews />
         <Blogscomp />
-        {/* <Roadmap /> */}
+        <Roadmap />
         <div>
           <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline">
             Why Choose Us?

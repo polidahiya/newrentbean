@@ -203,6 +203,7 @@ function Inputfiels({ refval, type, lable, extraelem, extrastyle }) {
 
 function SignInPage() {
   const { redirectloginlink } = AppContextfn();
+  const [loading, setloading] = useState(false);
 
   const providers = [
     {
@@ -241,8 +242,9 @@ function SignInPage() {
       {providers.map((provider) => (
         <button
           key={provider.id}
-          className="w-full flex items-center justify-center gap-2 border border-slate-200 rounded-lg h-11"
+          className="relative w-full flex items-center justify-center gap-2 border border-slate-200 rounded-lg h-11"
           onClick={() => {
+            setloading(true);
             signIn(provider.id, { callbackUrl: redirectloginlink || "/" });
             event("button_click", {
               category: "User Interaction",
@@ -251,6 +253,11 @@ function SignInPage() {
             });
           }}
         >
+          {loading && (
+            <div className="absolute top-1/2 left-5 -translate-y-1/2 h-full p-2">
+              <div className=" h-full aspect-square border-4 border-t-theme border-gray-300 rounded-full animate-spin"></div>
+            </div>
+          )}
           {provider.icon}
           <span>Continue with {provider.name}</span>
         </button>
