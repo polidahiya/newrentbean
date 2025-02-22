@@ -134,7 +134,6 @@ function Navbar({ params, productsname, token, userdata }) {
 export const Cartlink = () => {
   const { cart } = AppContextfn();
   const cartitems = Object.values(cart).filter((item) => item.added);
-
   const totalQuantity = cartitems.reduce(
     (total, value) => total + value.quantity,
     0
@@ -160,7 +159,7 @@ export const Cartlink = () => {
           {totalQuantity > 0 ? (
             <>
               <div className="w-full flex flex-col gap-3 max-h-80  overflow-y-scroll hidescroll">
-                {Object.values(cart).map((item, i) => {
+                {Object.values(cartitems).map((item, i) => {
                   const finaltenure =
                     item?.location in item?.prices
                       ? item?.prices[item?.location]
@@ -169,7 +168,7 @@ export const Cartlink = () => {
                   return (
                     <Link
                       key={i}
-                      href={`/${item?.category}/${item?.subcat}/${item?._id}`}
+                      href={item?.productlink}
                       className="flex gap-2"
                     >
                       <Image

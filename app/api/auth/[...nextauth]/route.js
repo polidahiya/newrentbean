@@ -55,7 +55,7 @@ export const authOptions = {
     strategy: "jwt",
     maxAge: logintime,
   },
-  secret: process.env.JWT_SECRET,
+  secret: process.env.jwt_secret,
 };
 
 const handler = NextAuth(authOptions);
