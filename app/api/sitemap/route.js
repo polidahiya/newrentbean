@@ -21,7 +21,7 @@ const generateCityUrls = () =>
   cities.map((city) => ({
     loc: `${domain}?location=${urlEncode(city)}`,
     lastmod: today,
-    changefreq: "weekly",
+    changefreq: "daily",
     priority: "1.0",
   }));
 
@@ -31,7 +31,7 @@ const generateCategoryUrls = () =>
       {
         loc: `${domain}/${urlEncode(category)}?location=${urlEncode(city)}`,
         lastmod: today,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: "0.8",
       },
       ...subcat.map((subcategory) => ({
@@ -39,7 +39,7 @@ const generateCategoryUrls = () =>
           subcategory.name
         )}?location=${urlEncode(city)}`,
         lastmod: today,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: "0.8",
       })),
     ])
@@ -51,7 +51,7 @@ const generateProductUrls = (products) =>
       product.subcat
     )}/${urlEncode(product._id)}`,
     lastmod: today,
-    changefreq: "weekly",
+    changefreq: "daily",
     priority: "0.8",
     image: product.images?.[0] || "",
     name: product.name || "",
@@ -61,7 +61,7 @@ const generateBlogUrls = (blogs) =>
   blogs.map((blog) => ({
     loc: `${domain}/Blogs/${urlEncode(blog._id)}`,
     lastmod: today,
-    changefreq: "weekly",
+    changefreq: "daily",
     priority: "0.6",
   }));
 
@@ -78,7 +78,7 @@ export async function GET() {
       {
         loc: domain,
         lastmod: today,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: "1.0",
       },
       ...generateCityUrls(),

@@ -177,15 +177,21 @@ export const generateMetadata = async ({ params, searchParams }) => {
     const filteredProduct = allProducts.find((item) => item._id === productid);
 
     if (filteredProduct) {
-      const ogImage =
-        filteredProduct?.colorpalets?.[colorIndex]?.images?.[0] || null;
+      const ogImage = filteredProduct?.images[0] || null;
 
       return {
-        title: `${filteredProduct?.name} | Rentbean`,
+        title:
+          filteredProduct?.seotitle != ""
+            ? filteredProduct?.seotitle
+            : `Rent ${filteredProduct?.name} | Rentbean`,
         description:
-          filteredProduct?.desc?.[0] ||
-          "Check out this amazing product at Rentbean!",
-        keywords: filteredProduct?.keywords || "",
+          filteredProduct?.seodescription != ""
+            ? filteredProduct?.seodescription
+            : "Check out this amazing product at Rentbean!",
+        keywords:
+          filteredProduct?.seokeywords != ""
+            ? filteredProduct?.seokeywords
+            : "Rent, Rentbean, Rentmojo , furlenco , Elctrons on rent , furniture on rent , treadmill on rent , mobile on rent , laptop on rent , ",
         openGraph: {
           images: ogImage,
         },
@@ -234,8 +240,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
   // Default fallback metadata
   return {
     title: "Rentbean | Best Furniture & Home Decor Online",
-    description:
-      "Discover the best furniture and home decor at Rentbean. Shop now for exclusive deals!",
+    description: "Rent now and save money. Renr now for exclusive deals!",
     openGraph: {
       images: `${domain}/minlogo.png`,
     },

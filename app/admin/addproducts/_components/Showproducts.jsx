@@ -20,7 +20,7 @@ function Showproducts({
 
   const [categorystate, setcategorystate] = useState({
     category: "Health-&-Fitness",
-    subcat: "Treadmill",
+    subcat: "Fitness-Machines",
     id: "",
   });
 

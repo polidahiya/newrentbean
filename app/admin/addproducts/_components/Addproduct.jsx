@@ -176,7 +176,7 @@ function Addandupdateproduct({
         clear={() => handleClearField("seodescription")}
       />
       <Standardinputfield
-        titlename="SeoKeywords"
+        titlename="SeoKeywords (Seperate keywords with ,)"
         isRequired
         value={data.seokeywords}
         onchange={(e) => handleChange("seokeywords", e.target.value)}
