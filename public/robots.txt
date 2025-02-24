@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /cart
+Disallow: /checkout
+Disallow: /loginlogout
+Disallow: /forgotpassword
+Disallow: /api/
+
+Sitemap: https://rentbean.in/api/sitemap

@@ -18,7 +18,7 @@ export const metadata = {
   keywords:
     "rent treadmill, rent cycle, rent gym bike, rent laptop, rent phone, rent iPhone, rent gaming console, rent PS4, rent PS5, rent home appliances, rent party items, rent hookah, rent baby car seat, rent beer tower, rent tent, rent camping gear, rent baby carrier, rent electronics, rent fitness equipment, rent gadgets, rent event items, rent furniture, online rental store, affordable rentals, flexible rental plans, rent near me.",
   openGraph: {
-    images: `${domain}/minlogo.png`,
+    images: `${domain}/logo&ui/minlogo.png`,
   },
   manifest: "/manifest.json",
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Productcard from "../_components/Productcard";
 import { categorylist, domain } from "../commondata";
 import { Cachedproducts } from "../_serveractions/Getcachedata";
@@ -9,6 +9,7 @@ import { sortProducts, pricefilter } from "./_Components/sortandfilter";
 import Productpage from "../_productpage/Productpage";
 import Appliedfilters from "./_Components/Appliedfilters";
 import Categorydescription from "./_Components/Categorydescription";
+import { cities } from "../commondata";
 
 async function page({ params, searchParams }) {
   const { Category: slug } = params;
@@ -18,6 +19,9 @@ async function page({ params, searchParams }) {
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
 
   const location = searchParams?.location?.replace(/-/g, " ") || "Delhi";
+
+  // link fixes
+  if (cities.includes(category)) redirect("/");
 
   if (productid)
     return (
@@ -242,7 +246,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
     title: "Rentbean | Best Furniture & Home Decor Online",
     description: "Rent now and save money. Renr now for exclusive deals!",
     openGraph: {
-      images: `${domain}/minlogo.png`,
+      images: `${domain}/logo&ui/minlogo.png`,
     },
   };
 };

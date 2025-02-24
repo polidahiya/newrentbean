@@ -19,15 +19,24 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <div>
-      <Navbar
-        params={params}
-        productsname={productsname}
-        token={token}
-        userdata={userdata}
-      />
-      {children}
-      <Footer />
-      <Mobilenav />
+      <div className="print:hidden">
+        <Navbar
+          params={params}
+          productsname={productsname}
+          token={token}
+          userdata={userdata}
+        />
+        {children}
+        <Footer />
+        <Mobilenav />
+      </div>
+      <div className="h-screen w-full items-center justify-center hidden print:flex">
+        <img
+          src="/logo&ui/funpart.jpg"
+          alt="wtf"
+          className="h-full w-full object-contain"
+        />
+      </div>
     </div>
   );
 }

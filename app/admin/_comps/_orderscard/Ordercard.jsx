@@ -11,6 +11,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { IoMdArrowDropdown } from "react-icons/io";
 import ProductCard from "./Productcard";
 import FormattedDate from "@/app/_components/_helperfunctions/Formateddate";
+import Link from "next/link";
 
 function Ordercard({ item }) {
   const { setmessagefn } = AppContextfn();
@@ -30,7 +31,7 @@ function Ordercard({ item }) {
   if (showorder)
     return (
       <div
-        className={`relative flex flex-col md:flex-row items-start gap-[20px] shadow-md my-[20px] p-[10px] pt-12 md:pt-[10px] `}
+        className={`relative flex flex-col md:flex-row items-start gap-[20px] shadow-md my-[20px] p-[10px] pt-12 md:pt-[10px]`}
       >
         <div className="flex flex-col items-start gap-[5px] w-full">
           <OrderDetail label="Order ID" value={item?._id} />
@@ -98,6 +99,13 @@ function Ordercard({ item }) {
               Update Note
             </button>
           </div>
+          {/* invoice button */}
+          <Link
+            href={`/admin/invoice?data=${JSON.stringify(item)}`}
+            className="px-5 py-1 border bg-blue-500 text-white"
+          >
+            Generate Invoice
+          </Link>
           <div className="absolute top-[10px] right-[10px] flex items-center gap-[10px] z-10">
             {/* change status */}
             <button

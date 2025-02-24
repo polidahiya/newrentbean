@@ -90,7 +90,9 @@ function Imagecard({ product, i }) {
             className="absolute h-full w-full object-contain"
           />
         </div>
-        <p className="text-center text-sm md:text-base mt-5 truncate">{name}</p>
+        <h2 className="text-center text-sm md:text-base mt-5 truncate">
+          {name}
+        </h2>
       </Link>
       <div className="flex justify-between items-center w-full px-2 mt-2">
         <div>

@@ -7,6 +7,7 @@ import { likeproduct, isliked } from "@/app/_serveractions/Likedproducts";
 import { AppContextfn } from "@/app/Context";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
 import { IoLinkOutline } from "react-icons/io5";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const fallbackImage = "/default-fallback-image.png";
 
@@ -98,7 +99,7 @@ function ImagesComp({ filteredproducts, token }) {
         ))}
       </div>
       {/* main */}
-      <div className="relative overflow-hidden  w-full h-full md:h-96">
+      <div className="relative group/main overflow-hidden  w-full h-full md:h-96">
         <div
           className="h-full w-full flex items-center overflow-x-scroll snap-x snap-mandatory scroll-smooth"
           onScroll={handleImageScroll}
@@ -145,6 +146,25 @@ function ImagesComp({ filteredproducts, token }) {
             ))}
           </div>
         </div>
+        {/* left and right buttons */}
+        <button
+          className="hidden lg:group-hover/main:flex items-center justify-center absolute top-1/2 -translate-y-1/2 left-0 w-10 aspect-square border rounded-full text-xl bg-white"
+          onClick={() => {
+            imagesScrollRef.current.scrollLeft -=
+              imagesScrollRef.current.clientWidth;
+          }}
+        >
+          <MdKeyboardArrowLeft />
+        </button>
+        <button
+          className="hidden lg:group-hover/main:flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-0 w-10 aspect-square border rounded-full text-xl bg-white rotate-180"
+          onClick={() => {
+            imagesScrollRef.current.scrollLeft +=
+              imagesScrollRef.current.clientWidth;
+          }}
+        >
+          <MdKeyboardArrowLeft />
+        </button>
       </div>
       {/* note */}
       <p className="absolute top-full left-1/2 -translate-x-1/2 text-[8px] w-full text-center hidden lg:block">

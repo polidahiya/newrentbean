@@ -12,7 +12,7 @@ function FIxedbuttons() {
   const isadminpage = path.split("/")[1] == "admin";
 
   return (
-    <div className="fixed bottom-16 lg:bottom-5 right-5 md:right-10 flex flex-col items-end gap-2 z-30">
+    <div className="fixed bottom-16 lg:bottom-5 right-5 md:right-10 flex flex-col items-end gap-2 z-30 print:hidden">
       <Gotopbutton />
       {!isadminpage && (
         <>

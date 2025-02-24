@@ -12,7 +12,13 @@ const documentTypes = [
         aria-label="Working Professional"
       />
     ),
-    mandatoryDocs: ["Pan Card", "Selfie", "Company name and Official Email id"],
+    mandatoryDocs: [
+      "Pan Card",
+      "Selfie",
+      "Company name and Official Email id",
+      "Aadhar Card",
+      "Voter Card",
+    ],
     additionalDocs: null,
   },
   {
@@ -20,7 +26,13 @@ const documentTypes = [
     icon: (
       <FaUser className="h-10 w-10 text-theme" aria-label="Self Employed" />
     ),
-    mandatoryDocs: ["Pan Card", "Selfie", "GST number"],
+    mandatoryDocs: [
+      "Pan Card",
+      "Selfie",
+      "GST number",
+      "Aadhar Card",
+      "Voter Card",
+    ],
     additionalDocs: null,
   },
   {
@@ -28,7 +40,13 @@ const documentTypes = [
     icon: (
       <SiFreelancer className="h-10 w-10 text-theme" aria-label="Freelance" />
     ),
-    mandatoryDocs: ["Pan Card", "Selfie", "Bank statement"],
+    mandatoryDocs: [
+      "Pan Card",
+      "Selfie",
+      "Bank statement",
+      "Aadhar Card",
+      "Voter Card",
+    ],
     additionalDocs: null,
   },
   {
@@ -41,6 +59,8 @@ const documentTypes = [
       "Profile pic",
       "Bank statement",
       "College name",
+      "Aadhar Card",
+      "Voter Card",
     ],
     additionalDocs: ["Parents Bank Statement", "Parents Govt id"],
   },

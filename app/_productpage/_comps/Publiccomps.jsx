@@ -3,6 +3,7 @@ import React from "react";
 import { AppContextfn } from "@/app/Context";
 import { useRouter } from "next/navigation";
 import { event } from "nextjs-google-analytics";
+import { PiSmileySad } from "react-icons/pi";
 
 export function Addtocartbuttons({ filteredproducts, cartproductid }) {
   const router = useRouter();
@@ -100,7 +101,18 @@ export function Addtocartbuttons({ filteredproducts, cartproductid }) {
         className="w-full h-full text-theme border border-theme text-sm rounded-full"
         onClick={handleAddToCart}
       >
-        {cart[cartproductid]?.added ? "VIEW CART" : "ADD TO CART"}
+        {filteredproducts?.available ? (
+          cart[cartproductid]?.added ? (
+            "VIEW CART"
+          ) : (
+            "ADD TO CART"
+          )
+        ) : (
+          <>
+            <PiSmileySad className="inline-block mr-2 scale-150"/>
+            currently unavailable
+          </>
+        )}
       </button>
     </div>
   );

@@ -1,116 +1,70 @@
 import React from "react";
 import { mail, mobile, address } from "@/app/commondata";
-import { cookies } from "next/headers";
 
-const InvoiceComponent = () => {
-  // Extracted Invoice Data
-  const invoiceData = {
-    invoiceNumber: generateInvoiceNumber(),
-    date: formatDate(),
-    seller: {
-      name: "Rentbean",
-      address: address,
-      gstin: "06EFNPS9216E1Z2",
-      state: "Haryana",
-      stateCode: "06",
-      contact: mobile,
-      email: mail,
-    },
-    buyer: {
-      name: "Test User",
-      address: "Test Address",
-      phone: "9999999999 (Test Mobile Number)",
-      email: "Testuser@gmail.com",
-      state: "Haryana",
-      stateCode: "06",
-    },
-    items: [
-      {
-        description: "Test Product Name",
-        quantity: "1 PCS",
-        rate: "13346",
-        amount: "13346",
-      },
-    ],
-    totals: {
-      amountInWords: numberToWordsINR(15749.0),
-      igst: "2402.00",
-      total: "15748.00",
-    },
-    bankDetails: {
-      bankName: "State Bank of India",
-      accountNumber: "33985498679",
-      branch: "SECTOR 4 GURGAON",
-      ifsc: "sbin0016019",
-    },
-  };
-
-  if (!cookies().get("admintoken"))
-    return (
-      <div className="h-screen grid place-content-center text-white">
-        invalid user{" "}
-      </div>
-    );
+async function InvoiceComponent({ searchParams }) {
+  const data = (await searchParams)?.data;
+  const {
+    orderNumber,
+    paymentMethod,
+    status,
+    userdata,
+    products,
+    totalPrice,
+    createdAt,
+  } = JSON.parse(data);
 
   return (
-    <div className="max-w-4xl mx-auto p-8 my-10" contentEditable="true">
+    <div
+      className="relative max-w-4xl mx-auto p-8 my-10 print:my-0 border"
+      contentEditable="true"
+    >
+      {/* logo */}
+      <img
+        src="/logo&ui/3dlogo.png"
+        alt="site logo"
+        className="absolute top-5 left-5 h-4 md:h-9"
+      />
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-extrabold text-gray-700">Tax Invoice</h1>
+        <h1 className="text-3xl font-extrabold text-gray-700">Invoice</h1>
         <p className="text-sm text-gray-500">
-          Invoice No: {invoiceData.invoiceNumber}
+          Invoice No: {generateInvoiceNumber()}
         </p>
-        <p className="text-sm text-gray-500">Date: {invoiceData.date}</p>
+        <p className="text-sm text-gray-500">Date: {formatDate()}</p>
       </div>
 
       {/* Seller & Buyer Information */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-8 mb-8">
         {/* Seller Info */}
         <div>
-          <h2 className="text-xl font-bold text-gray-800">
-            {invoiceData.seller.name}
-          </h2>
-          <address className="mt-2 not- text-gray-600">
-            {invoiceData.seller.address}
+          <h2 className="text-xl font-bold text-gray-800">Rentbean</h2>
+          <div className="mt-2 not- text-gray-600">
+            {address}
             <br />
-            GSTIN/UIN: {invoiceData.seller.gstin}
+            {/* GSTIN/UIN: {localdata.seller.gstin} */}
+            {/* <br /> */}
+            State Name: Haryana, Code: 06
             <br />
-            State Name: {invoiceData.seller.state}, Code:{" "}
-            {invoiceData.seller.stateCode}
+            Contact: {mobile}
             <br />
-            Contact: {invoiceData.seller.contact}
-            <br />
-            Email:{" "}
-            <a
-              href={`mailto:${invoiceData.seller.email}`}
-              className="text-blue-500"
-            >
-              {invoiceData.seller.email}
-            </a>
-          </address>
+            Email: {mail}
+          </div>
         </div>
 
         {/* Buyer Info */}
         <div>
           <h2 className="text-xl font-bold text-gray-800">Bill To</h2>
-          <address className="mt-2 not- text-gray-600">
-            {invoiceData.buyer.name}
+          <div className="mt-2 not- text-gray-600">
+            {userdata?.username}
             <br />
-            {invoiceData.buyer.address}
+            {userdata?.address}
             <br />
-            Phone: {invoiceData.buyer.phone}
+            Phone: {userdata?.phonenum}
             <br />
-            Email:{" "}
-            <a
-              href={`mailto:${invoiceData.buyer.email}`}
-              className="text-blue-500"
-            >
-              {invoiceData.buyer.email}
-            </a>
+            Email: {userdata?.email}
             <br />
-            State Name: {invoiceData.buyer.state}, Code:{" "}
-            {invoiceData.buyer.stateCode}
-          </address>
+            State Name: Haryana, Code: 06
+          </div>
         </div>
       </div>
 
@@ -125,36 +79,40 @@ const InvoiceComponent = () => {
               <th className="border px-4 py-2 text-left text-gray-600">
                 Description of Goods
               </th>
-              <th className="border px-4 py-2 text-right text-gray-600">
+              <th className="border px-4 py-2 text-center text-gray-600">
                 Quantity
               </th>
-              <th className="border px-4 py-2 text-right text-gray-600">
+              <th className="border px-4 py-2 text-center text-gray-600">
                 Rate
               </th>
-              <th className="border px-4 py-2 text-right text-gray-600">
+              <th className="border px-4 py-2 text-center text-gray-600">
                 Amount
               </th>
             </tr>
           </thead>
           <tbody>
-            {invoiceData.items.map((item, index) => (
-              <tr key={index} className="bg-white">
-                <td className="border px-4 py-3 text-gray-700">
-                  {item.description}
+            {products.map((item, index) => (
+              <tr key={index} className="relative bg-white">
+                <td className="border px-4 py-3 text-gray-700">{item?.name}</td>
+                <td className="border px-4 py-3 text-right text-gray-600">
+                  {item?.quantity}
                 </td>
                 <td className="border px-4 py-3 text-right text-gray-600">
-                  {item.quantity}
+                  ₹{parseInt(100, 10).toLocaleString("en-IN")}
                 </td>
                 <td className="border px-4 py-3 text-right text-gray-600">
-                  ₹{parseInt(item.rate, 10).toLocaleString("en-IN")}
+                  ₹{parseInt(100, 10).toLocaleString("en-IN")}
                 </td>
-                <td className="border px-4 py-3 text-right text-gray-600">
-                  ₹{parseInt(item.amount, 10).toLocaleString("en-IN")}
-                </td>
+                <button className="absolute top-0 left-full bg-red-500 text-white px-2 py-1 print:hidden">
+                  x
+                </button>
               </tr>
             ))}
           </tbody>
         </table>
+        <button className="bg-bg1 px-5 py-1 mt-5 shadow-md print:hidden">
+          Add more
+        </button>
       </div>
 
       {/* Totals & Tax */}
@@ -164,17 +122,16 @@ const InvoiceComponent = () => {
             Amount Chargeable (in words):
           </p>
           <p className="font-semibold text-gray-700">
-            {invoiceData.totals.amountInWords}
+            {numberToWordsINR(totalPrice)}
           </p>
         </div>
         <div className="text-right">
-          <p className="font-semibold text-gray-700">
+          {/* <p className="font-semibold text-gray-700">
             IGST: ₹
-            {parseInt(invoiceData.totals.igst, 10).toLocaleString("en-IN")}
-          </p>
+            {parseInt(localdata.totals.igst, 10).toLocaleString("en-IN")}
+          </p> */}
           <p className="text-xl font-bold text-gray-800">
-            Total: ₹
-            {parseInt(invoiceData.totals.total, 10).toLocaleString("en-IN")}
+            Total: ₹{parseInt(totalPrice, 10).toLocaleString("en-IN")}
           </p>
         </div>
       </div>
@@ -182,23 +139,16 @@ const InvoiceComponent = () => {
       {/* Bank Details */}
       <div className="mb-8">
         <h3 className="text-lg font-bold text-gray-700 mb-4">Bank Details</h3>
+        <p className="text-gray-600">Bank Name: State Bank of India</p>
+        <p className="text-gray-600">A/c No: 33985498679</p>
         <p className="text-gray-600">
-          Bank Name: {invoiceData.bankDetails.bankName}
-        </p>
-        <p className="text-gray-600">
-          A/c No: {invoiceData.bankDetails.accountNumber}
-        </p>
-        <p className="text-gray-600">
-          Branch & IFS Code: {invoiceData.bankDetails.branch} &{" "}
-          {invoiceData.bankDetails.ifsc}
+          Branch & IFS Code: SECTOR 4 GURGAON & sbin0016019
         </p>
       </div>
 
       {/* Footer */}
       <div className="text-right">
-        <p className="font-semibold text-gray-700">
-          for {invoiceData.seller.name}
-        </p>
+        <p className="font-semibold text-gray-700">for Rentbean</p>
         <p className="text-gray-500">Authorised Signatory</p>
       </div>
 
@@ -207,7 +157,7 @@ const InvoiceComponent = () => {
       </p>
     </div>
   );
-};
+}
 
 function formatDate() {
   const months = [
@@ -292,32 +242,17 @@ function numberToWordsINR(num) {
         belowTwenty[Math.floor(n / 100)] + " Hundred " + convertToWords(n % 100)
       );
     else {
-      const crore = Math.floor(n / 10000000);
-      const lakh = Math.floor((n % 10000000) / 100000);
-      const thousand = Math.floor((n % 100000) / 1000);
-      const hundred = Math.floor((n % 1000) / 100);
-      const ten = Math.floor((n % 100) / 10);
-      const unit = n % 10;
-
       let words = "";
+      let power = 0;
 
-      if (crore > 0) {
-        words += convertToWords(crore) + " Crore ";
-      }
-      if (lakh > 0) {
-        words += convertToWords(lakh) + " Lakh ";
-      }
-      if (thousand > 0) {
-        words += convertToWords(thousand) + " Thousand ";
-      }
-      if (hundred > 0) {
-        words += convertToWords(hundred) + " Hundred ";
-      }
-      if (ten > 0) {
-        words += convertToWords(ten) + " ";
-      }
-      if (unit > 0) {
-        words += convertToWords(unit);
+      while (n > 0) {
+        const remainder = n % 1000;
+        if (remainder !== 0) {
+          words =
+            convertToWords(remainder) + " " + thousands[power] + " " + words;
+        }
+        n = Math.floor(n / 1000);
+        power++;
       }
 
       return words.trim();
@@ -342,6 +277,9 @@ function numberToWordsINR(num) {
 
     return wordAmount.trim() + " Only";
   }
+
+  if (num === 0) return "Zero Rupees Only";
+  if (num < 0) return "Minus " + numberToWordsINR(-num);
 
   const { rupees, paise } = splitNumber(num);
   return inWords(rupees, paise);
