@@ -32,7 +32,7 @@ const generateCategoryUrls = () =>
         loc: `${domain}/${urlEncode(category)}?location=${urlEncode(city)}`,
         lastmod: today,
         changefreq: "daily",
-        priority: "0.8",
+        priority: "1.0",
       },
       ...subcat.map((subcategory) => ({
         loc: `${domain}/${urlEncode(category)}/${urlEncode(
@@ -40,7 +40,7 @@ const generateCategoryUrls = () =>
         )}?location=${urlEncode(city)}`,
         lastmod: today,
         changefreq: "daily",
-        priority: "0.8",
+        priority: "1.0",
       })),
     ])
   );
@@ -52,7 +52,7 @@ const generateProductUrls = (products) =>
     )}/${urlEncode(product._id)}`,
     lastmod: today,
     changefreq: "daily",
-    priority: "0.8",
+    priority: "1.0",
     image: product.images?.[0] || "",
     name: product.name || "",
   }));
@@ -62,7 +62,7 @@ const generateBlogUrls = (blogs) =>
     loc: `${domain}/Blogs/${urlEncode(blog._id)}`,
     lastmod: today,
     changefreq: "daily",
-    priority: "0.6",
+    priority: "1.0",
   }));
 
 export async function GET() {

@@ -95,8 +95,8 @@ function Productcard({
             </div>
           )}
         </div>
+        {!available && <div className="w-full absolute bottom-0 text-center bg-bg1 py-1 font-black">Out of stock</div>}
       </div>
-
       <div className="relative p-[10px]">
         <h3 className="py-[5px] md:py-[10px] text-xs md:text-base text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">
           {name}

@@ -12,11 +12,11 @@ import FIxedbuttons from "./_components/FIxedbuttons";
 import { cookies } from "next/headers";
 
 export const metadata = {
-  title: "Rentbean - Best Solid Wood Furniture in India",
+  title: "Rentbean - Great for flexible rental options.",
   description:
-    "Discover the best solid wood furniture in India. Shop Sheesham wood furniture, dining tables, sofas, and more online at affordable prices.",
+    "Rent premium products at the best prices! From treadmills, gym bikes, cycles, laptops, and iPhones to gaming consoles (PS4, PS5), home appliances, party essentials, hookahs, baby gear, camping equipment, and more—get everything you need on rent with flexible plans. Hassle-free booking, doorstep delivery & affordable rates. Rent now!",
   keywords:
-    "Wholesale solid wood furniture, Solid wood furniture online, Best solid wood furniture, Solid wood furniture near me, Solid wood furniture price, Cheap solid wood furniture, Sheesham wood furniture, Furniture market near me, Kirti Nagar furniture market, Bedroom furniture, Dining table, Sofa set, Rentbean furniture",
+    "rent treadmill, rent cycle, rent gym bike, rent laptop, rent phone, rent iPhone, rent gaming console, rent PS4, rent PS5, rent home appliances, rent party items, rent hookah, rent baby car seat, rent beer tower, rent tent, rent camping gear, rent baby carrier, rent electronics, rent fitness equipment, rent gadgets, rent event items, rent furniture, online rental store, affordable rentals, flexible rental plans, rent near me.",
   openGraph: {
     images: `${domain}/minlogo.png`,
   },
