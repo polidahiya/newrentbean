@@ -11,10 +11,11 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { IoMdArrowDropdown } from "react-icons/io";
 import ProductCard from "./Productcard";
 import FormattedDate from "@/app/_components/_helperfunctions/Formateddate";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function Ordercard({ item }) {
-  const { setmessagefn } = AppContextfn();
+  const router = useRouter();
+  const { setmessagefn, setinvoicedata } = AppContextfn();
   const [note, setnote] = useState(item?.note || "");
   const [deleteconfirm, setdeleteconfirm] = useState(false);
   const [showorder, setshoworder] = useState(true);
@@ -100,12 +101,15 @@ function Ordercard({ item }) {
             </button>
           </div>
           {/* invoice button */}
-          <Link
-            href={`/admin/invoice?data=${JSON.stringify(item)}`}
+          <button
             className="px-5 py-1 border bg-blue-500 text-white"
+            onClick={() => {
+              setinvoicedata(item);
+              router.push("/admin/invoice");
+            }}
           >
             Generate Invoice
-          </Link>
+          </button>
           <div className="absolute top-[10px] right-[10px] flex items-center gap-[10px] z-10">
             {/* change status */}
             <button

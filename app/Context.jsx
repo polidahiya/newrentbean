@@ -45,6 +45,8 @@ export function Appwrapper({
   });
   const [scrolltop, setscrolltop] = useState(false);
   const [shownavbottom, setshownavbottom] = useState(false);
+  // admin
+  const [invoicedata, setinvoicedata] = useState(false);
 
   // funtions
   const setmessagefn = (message) => {
@@ -131,6 +133,8 @@ export function Appwrapper({
         setlocation,
         scrolltop,
         shownavbottom,
+        invoicedata,
+        setinvoicedata,
       }}
     >
       {children}

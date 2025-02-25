@@ -1,17 +1,56 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { mail, mobile, address } from "@/app/commondata";
+import { AppContextfn } from "@/app/Context";
 
-async function InvoiceComponent({ searchParams }) {
-  const data = (await searchParams)?.data;
+function InvoiceComponent() {
+  const { invoicedata } = AppContextfn();
   const {
     orderNumber,
     paymentMethod,
-    status,
     userdata,
     products,
     totalPrice,
     createdAt,
-  } = JSON.parse(data);
+  } = invoicedata;
+
+  const testproduct = {
+    added: true,
+    quantity: 1,
+    sku: "Zigzag 2-rental-Gurgaon",
+    prices: {
+      Default: [
+        {
+          time: "1",
+          type: "month",
+          price: "500",
+        },
+        {
+          time: "3",
+          type: "months",
+          price: "1350",
+        },
+        {
+          time: "6",
+          type: "months",
+          price: "2500",
+        },
+      ],
+    },
+    selectedtenure: 0,
+    buyprice: "",
+    name: "Zig-Zag Ceramica Solid Sheesham Wood Bookshelf",
+    image:
+      "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1740020919/Rentbean/mpifqlxuac6hprdhikjm.jpg",
+    securitydeposit: "1000",
+    maxquantity: "1",
+    isrentalstore: true,
+    location: "Gurgaon",
+    productlink: "/Furniture/Bookshelves/67b69cb89efe30928f64a25f",
+    status: 0,
+  };
+
+  const [prostate, setprostate] = useState(products);
 
   return (
     <div
@@ -77,40 +116,78 @@ async function InvoiceComponent({ searchParams }) {
           <thead className="bg-gray-200">
             <tr>
               <th className="border px-4 py-2 text-left text-gray-600">
-                Description of Goods
+                Product
               </th>
               <th className="border px-4 py-2 text-center text-gray-600">
-                Quantity
+                Qty
               </th>
               <th className="border px-4 py-2 text-center text-gray-600">
-                Rate
+                Booking Price
               </th>
               <th className="border px-4 py-2 text-center text-gray-600">
-                Amount
+                Total
               </th>
             </tr>
           </thead>
           <tbody>
-            {products.map((item, index) => (
-              <tr key={index} className="relative bg-white">
-                <td className="border px-4 py-3 text-gray-700">{item?.name}</td>
-                <td className="border px-4 py-3 text-right text-gray-600">
-                  {item?.quantity}
-                </td>
-                <td className="border px-4 py-3 text-right text-gray-600">
-                  ₹{parseInt(100, 10).toLocaleString("en-IN")}
-                </td>
-                <td className="border px-4 py-3 text-right text-gray-600">
-                  ₹{parseInt(100, 10).toLocaleString("en-IN")}
-                </td>
-                <button className="absolute top-0 left-full bg-red-500 text-white px-2 py-1 print:hidden">
-                  x
-                </button>
-              </tr>
-            ))}
+            {prostate.map((item, index) => {
+              const finaltenure =
+                item?.location in item?.prices
+                  ? item?.prices[item?.location]
+                  : item?.prices.Default;
+              const totalprice = finaltenure[item?.selectedtenure]?.price;
+              return (
+                <tr key={index} className="relative bg-white">
+                  <td className="border px-4 py-3 text-gray-700">
+                    {item?.name}
+                    <br />
+                    (25/02/2025 - 12/03/2025)
+                  </td>
+                  <td className="border px-4 py-3 text-gray-600 text-center">
+                    {item?.quantity}
+                  </td>
+                  <td className="border px-4 py-3 text-gray-600 text-center">
+                    INR {parseInt(totalprice, 10).toLocaleString("en-IN")}/-
+                    <br />
+                    <span className="whitespace-nowrap">
+                      *(Deposit : INR {item?.securitydeposit * item?.quantity}{" "}
+                      /-)
+                    </span>
+                  </td>
+                  <td className="border px-4 py-3 text-gray-600 text-center whitespace-nowrap">
+                    INR{" "}
+                    {parseInt(
+                      item?.isrentalstore
+                        ? totalprice * item?.quantity +
+                            item?.securitydeposit * item?.quantity
+                        : item?.buyprice * item?.quantity,
+                      10
+                    ).toLocaleString("en-IN")}
+                    /-
+                  </td>
+                  <button
+                    className="absolute top-0 left-full bg-red-500 text-white px-2 py-1 print:hidden"
+                    onClick={() => {
+                      setprostate((pre) => {
+                        return pre.filter((_, i) => i != index);
+                      });
+                    }}
+                  >
+                    x
+                  </button>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
-        <button className="bg-bg1 px-5 py-1 mt-5 shadow-md print:hidden">
+        <button
+          className="bg-bg1 px-5 py-1 mt-5 shadow-md print:hidden"
+          onClick={() => {
+            setprostate((pre) => {
+              return [...pre, { ...testproduct }];
+            });
+          }}
+        >
           Add more
         </button>
       </div>
