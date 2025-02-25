@@ -50,7 +50,7 @@ function InvoiceComponent() {
     status: 0,
   };
 
-  const [prostate, setprostate] = useState(products);
+  const [prostate, setprostate] = useState(products || [testproduct]);
 
   return (
     <div

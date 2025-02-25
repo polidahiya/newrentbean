@@ -17,8 +17,10 @@ async function page({ params, searchParams }) {
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
   const subcat = slug && slug[1] ? decodeURIComponent(slug[1]) : null;
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
-
   const location = searchParams?.location?.replace(/-/g, " ") || "Delhi";
+
+  // undefined location
+  if (!cities.includes(location)) notFound();
 
   // link fixes
   if (cities.includes(category)) redirect("/");

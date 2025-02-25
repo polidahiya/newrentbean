@@ -46,16 +46,18 @@ const generateCategoryUrls = () =>
   );
 
 const generateProductUrls = (products) =>
-  products.map((product) => ({
-    loc: `${domain}/${urlEncode(product.category)}/${urlEncode(
-      product.subcat
-    )}/${urlEncode(product._id)}`,
-    lastmod: today,
-    changefreq: "daily",
-    priority: "1.0",
-    image: product.images?.[0] || "",
-    name: product.name || "",
-  }));
+  cities.flatMap((city) =>
+    products.flatMap((product) => ({
+      loc: `${domain}/${urlEncode(product.category)}/${urlEncode(
+        product.subcat
+      )}/${urlEncode(product._id)}?location=${urlEncode(city)}`,
+      lastmod: today,
+      changefreq: "daily",
+      priority: "1.0",
+      image: product.images?.[0] || "",
+      name: product.name || "",
+    }))
+  );
 
 const generateBlogUrls = (blogs) =>
   blogs.map((blog) => ({

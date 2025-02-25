@@ -4,6 +4,5 @@ Disallow: /cart
 Disallow: /checkout
 Disallow: /loginlogout
 Disallow: /forgotpassword
-Disallow: /api/
 
 Sitemap: https://rentbean.in/api/sitemap
