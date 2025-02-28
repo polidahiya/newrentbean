@@ -31,12 +31,18 @@ async function Productpage({ category, subcat, productid }) {
 
   const filteredProduct = allproducts.find((item) => item._id === productid);
 
+  const tenure =
+    filteredProduct?.prices?.Default[
+      filteredProduct?.prices?.Default.length - 1
+    ];
+  const instancerent = Math.floor(tenure?.price / tenure?.time);
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: filteredProduct.name,
     image: filteredProduct?.images[0],
-    description: filteredProduct.desc[0] || "Solid wood furniture - @Rentbean",
+    description: filteredProduct.desc[0] || "Rent flexibly with - @Rentbean",
     sku: filteredProduct?.sku,
     brand: {
       "@type": "Brand",
@@ -46,14 +52,14 @@ async function Productpage({ category, subcat, productid }) {
       "@type": "Offer",
       url: `${domain}/${filteredProduct.category}/${filteredProduct.subcat}/${filteredProduct._id}`, // Dynamically adds the product URL
       priceCurrency: "INR",
-      price: parseInt(filteredProduct.price, 10).toLocaleString("en-IN"),
+      price: parseInt(instancerent, 10).toLocaleString("en-IN"),
       availability: filteredProduct.available
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: filteredProduct.rating,
+      ratingValue: "5",
       bestRating: "5",
       worstRating: "1",
     },

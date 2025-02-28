@@ -58,3 +58,42 @@ function Categories() {
 }
 
 export default Categories;
+
+
+
+// import React from "react";
+// import { categorylist } from "@/app/commondata";
+// import Link from "next/link";
+// import Image from "next/image";
+
+// function Categories() {
+//   return (
+//     <div id="categories" className="">
+//       <div className="max-w-[800px] flex items-center justify-center gap-2 md:gap-5 px-2 flex-wrap mx-auto">
+//         {Object.entries(categorylist).map(([key, value], i) => {
+//           return (
+//             <Link
+//               className="categoriestile flex-1 aspect-[12/7]  rounded-lg flex flex-col items-center justify-center border border-gray-200 lg:hover:border-none lg:hover:scale-110 lg:hover:shadow-[0_8px_14px_0_#bfcfdc]   duration-200"
+//               key={i}
+//               href={"/" + key}
+//               title={key}
+//             >
+//               <Image
+//                 height={20}
+//                 width={20}
+//                 className="h-[30%] md:h-[20px]"
+//                 src={value?.image}
+//                 alt={key}
+//               />
+//               <p className="text-[8px] text-center md:whitespace-nowrap">
+//                 {key.replace(/-/g, " ")}
+//               </p>
+//             </Link>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Categories;

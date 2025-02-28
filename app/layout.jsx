@@ -64,6 +64,7 @@ export default async function RootLayout({ children }) {
             }),
           }}
         />
+        <meta name="theme-color" content="#d68e43" />
       </head>
       <Appwrapper
         token={token}

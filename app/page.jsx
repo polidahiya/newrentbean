@@ -1,11 +1,11 @@
 import React from "react";
 import Blogscomp from "./_components/Homepage/Blogscomp";
 import Promices from "./_components/Homepage/Promices";
-import Bestselling from "./_components/Homepage/Bestselling";
+// import Bestselling from "./_components/Homepage/Bestselling";
 import Categories from "./_components/Homepage/Categories";
 import { Cachedproducts } from "./_serveractions/Getcachedata";
 import Footer from "./_components/Footer";
-import Newarrival from "./_components/Homepage/Newarrival";
+// import Newarrival from "./_components/Homepage/Newarrival";
 import { cookies } from "next/headers";
 import Allproducts from "./_components/Homepage/Allproducts";
 import Citiesdescription from "./_components/Homepage/Citiesdescription";
