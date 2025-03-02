@@ -19,11 +19,13 @@ export const categorylist = {
     image: "/logo&ui/categories/fitnessandgym2.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-09-260.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-09-260.jpg",
         name: "Fitness-Machines",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-10-633.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-10-633.jpg",
         name: "Weight-&-Rack",
       },
     ],
@@ -33,11 +35,13 @@ export const categorylist = {
     image: "/logo&ui/categories/electronics.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-57-12-465.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-57-12-465.jpg",
         name: "Entertainment",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-18-23-267.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-18-23-267.jpg",
         name: "Laptops",
       },
       {
@@ -45,7 +49,8 @@ export const categorylist = {
         name: "Mobile-&-Accessories",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-28-036.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-28-036.jpg",
         name: "Home-Appliances",
       },
     ],
@@ -55,27 +60,33 @@ export const categorylist = {
     image: "/logo&ui/categories/furniture.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-09-357.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-09-357.jpg",
         name: "Beds",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_18-51-44-151.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-51-44-151.jpg",
         name: "Study-Tables",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-19-26-646.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-19-26-646.jpg",
         name: "Dining",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-24-920.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-24-920.jpg",
         name: "Bookshelves",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-03-35-634.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-03-35-634.jpg",
         name: "Sofas",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-47-889.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-47-889.jpg",
         name: "Center-Tables",
       },
     ],
@@ -85,7 +96,8 @@ export const categorylist = {
     image: "/logo&ui/categories/eventandparties.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-07-07-726.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-07-07-726.jpg",
         name: "Party-Items",
       },
     ],
@@ -95,11 +107,13 @@ export const categorylist = {
     image: "/logo&ui/categories/campinggear.svg",
     subcat: [
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-54-509.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-54-509.jpg",
         name: "Baby-Care",
       },
       {
-        image: "/logo&ui/categories/subcategories/Picsart_25-02-11_19-02-30-781.jpg",
+        image:
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-02-30-781.jpg",
         name: "Camping-Gear",
       },
     ],
@@ -197,3 +211,19 @@ export const orderstages = [
 export const cities = ["Delhi", "Noida", "Gurgaon", "Ghaziabad", "Faridabad"];
 
 export const CACHE_TIME = 60 * 60 * 1000; // 24 hours
+
+// addones
+export const boxoptions = {
+  Handset: {
+    img: "/logo&ui/inboximages/smartphone.jpg",
+  },
+  "USB Cable": {
+    img: "/logo&ui/inboximages/usbcable.jpg",
+  },
+  "SIM Tray Ejector": {
+    img: "/logo&ui/inboximages/simtrayejactor.jpg",
+  },
+  "Travel Adapter": {
+    img: "/logo&ui/inboximages/mobilecharger.jpg",
+  },
+};

@@ -18,7 +18,7 @@ function Similarproducts({ allproducts, category, subcat, productid }) {
   return (
     <>
       {similarproducts.length > 0 && (
-        <div className="bg-[#f7f7fa] px-[10px] md:px-[40px] py-5 mt-8  md:rounded-3xl md:shadow-lg md:mx-10">
+        <div className="px-2 md:px-10 py-5 mt-8">
           <h2 className="flex items-center gap-3 text-2xl font-semibold mb-4 text-gray-800">
             <AiFillProduct className="text-theme text-3xl" />
             <span className="font-recline">Similar Products</span>

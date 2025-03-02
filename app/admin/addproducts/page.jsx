@@ -32,6 +32,7 @@ function Page() {
       ],
     },
     buyprice: "",
+    alongwith: [],
     availablefor: "Rent", //"Rent", "Buy", "Both"
     seotitle: "",
     seodescription: "",

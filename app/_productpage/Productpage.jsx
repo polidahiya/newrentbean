@@ -13,6 +13,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import Details from "./_comps/Details";
 import { mail } from "@/app/commondata";
 import Productdesc from "./_comps/Productdesc";
+import Alongwith from "./_comps/Alongwith";
 
 async function Productpage({ category, subcat, productid }) {
   const token = cookies()?.get("token")?.value;
@@ -77,6 +78,9 @@ async function Productpage({ category, subcat, productid }) {
           <Imagescomp filteredproducts={filteredProduct} token={token} />
           <Details filteredProduct={filteredProduct} />
         </header>
+        {filteredProduct?.alongwith?.length > 0 && (
+          <Alongwith alongwith={filteredProduct?.alongwith} />
+        )}
         <Productdesc description={filteredProduct?.desc} />
         <Similarproducts
           allproducts={allproducts}

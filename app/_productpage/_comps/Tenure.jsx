@@ -65,7 +65,7 @@ function Tenure({ filteredProduct, cartproductid }) {
       </div>
       <div className="flex items-center justify-center">
         <input
-          className={`mt-1 ${inputwidth[locationrentprices.length]}`}
+          className={`mt-1 ${inputwidth[locationrentprices.length] || "100%"}`}
           type="range"
           value={cart[cartproductid]?.selectedtenure || 0}
           onChange={(e) => selecttenure(e.target.value)}

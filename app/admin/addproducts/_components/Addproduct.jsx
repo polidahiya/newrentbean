@@ -9,6 +9,7 @@ import Togglebuttons from "./_comps/Togglebuttons";
 import Addimagescomp from "./_comps/Addimagescomp";
 import Dropdownmenu from "./_comps/Dropdownmenu";
 import Rentpricecomp from "./_comps/Rentpricecomp";
+import ALongwithbox from "./_comps/ALongwithbox";
 
 function Addandupdateproduct({
   data,
@@ -158,6 +159,11 @@ function Addandupdateproduct({
         setState={setdata}
         placeholder=""
         title="Descriptions"
+      />
+      <ALongwithbox
+        state={data?.alongwith || []}
+        statename="alongwith"
+        setState={setdata}
       />
 
       {/* SEO Fields */}

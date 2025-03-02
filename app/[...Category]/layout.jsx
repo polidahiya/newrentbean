@@ -30,7 +30,7 @@ export default async function RootLayout({ children, params }) {
         <Footer />
         <Mobilenav />
       </div>
-      <div className="h-screen w-full items-center justify-center hidden print:flex">
+      <div className="h-[100svh] w-full items-center justify-center hidden print:flex">
         <img
           src="/logo&ui/funpart.jpg"
           alt="wtf"

@@ -148,7 +148,9 @@ function ImagesComp({ filteredproducts, token }) {
         </div>
         {/* left and right buttons */}
         <button
-          className="hidden lg:group-hover/main:flex items-center justify-center absolute top-1/2 -translate-y-1/2 left-0 w-10 aspect-square border rounded-full text-xl bg-white"
+          className={`hidden ${
+            activeImageIndex != 0 && "lg:group-hover/main:flex"
+          } items-center justify-center absolute top-1/2 -translate-y-1/2 left-0 w-10 aspect-square border rounded-full text-xl bg-white`}
           onClick={() => {
             imagesScrollRef.current.scrollLeft -=
               imagesScrollRef.current.clientWidth;
@@ -157,7 +159,9 @@ function ImagesComp({ filteredproducts, token }) {
           <MdKeyboardArrowLeft />
         </button>
         <button
-          className="hidden lg:group-hover/main:flex items-center justify-center absolute top-1/2 -translate-y-1/2 right-0 w-10 aspect-square border rounded-full text-xl bg-white rotate-180"
+          className={`hidden ${
+            activeImageIndex != images.length - 1 && "lg:group-hover/main:flex"
+          }  items-center justify-center absolute top-1/2 -translate-y-1/2 right-0 w-10 aspect-square border rounded-full text-xl bg-white rotate-180`}
           onClick={() => {
             imagesScrollRef.current.scrollLeft +=
               imagesScrollRef.current.clientWidth;

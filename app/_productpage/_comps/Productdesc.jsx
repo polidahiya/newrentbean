@@ -3,7 +3,7 @@ import { CgDetailsMore } from "react-icons/cg";
 
 function Productdesc({ description }) {
   return (
-    <div className="mt-8 p-6 md:p-8 bg-bg1  md:rounded-3xl md:shadow-lg  md:mx-10">
+    <div className="mt-8 p-6 md:px-10">
       {/* Heading */}
       <h2 className="flex items-center gap-3 text-2xl font-semibold mb-4 text-gray-800">
         <CgDetailsMore className="text-theme text-3xl" />
@@ -11,7 +11,7 @@ function Productdesc({ description }) {
       </h2>
 
       {/* List of product details */}
-      <ul className="space-y-3">
+      <ul className="space-y-3 pl-5">
         {description?.map((desc, i) => (
           <li
             key={i}

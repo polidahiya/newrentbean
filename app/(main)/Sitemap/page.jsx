@@ -93,7 +93,7 @@ const SiteMap = () => {
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <Section title="Main Pages" links={mainPages} />
-        <Section title="Furniture Categories" links={furnitureCategories} />
+        <Section title="Categories" links={furnitureCategories} />
         <Section title="Policies & Others" links={policiesAndOthers} />
       </div>
     </div>
