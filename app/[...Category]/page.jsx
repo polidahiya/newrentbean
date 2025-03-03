@@ -214,7 +214,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
       );
 
       return {
-        title: `Get ${subcat} on rent in ${location} | ${new Date().getFullYear()}`,
+        title: `Rent ${subcat} in ${location} | ${new Date().getFullYear()}`,
         description:
           categoryData.desc || `Rent ${subcat} at the best prices online!`,
         openGraph: {
@@ -230,9 +230,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
 
     if (categoryData) {
       return {
-        title: `Get ${
+        title: `Rent ${
           categoryData?.name
-        } on rent in ${location} | ${new Date().getFullYear()}`,
+        } in ${location} | ${new Date().getFullYear()}`,
         description:
           categoryData.desc ||
           `Rent ${categoryData?.name} and buy ${categoryData?.name} at best price in ${location}`,
@@ -243,9 +243,21 @@ export const generateMetadata = async ({ params, searchParams }) => {
     }
   }
 
+  // search
+  if (category == "Search") {
+    const searchQuery = searchParams?.query?.replace(/-/g, " ");
+    return {
+      title: `Rent ${searchQuery} in ${location} | ${new Date().getFullYear()}`,
+      description: `Rent ${searchQuery} and buy at best price in ${location}`,
+      openGraph: {
+        images: `${domain}/logo&ui/minlogo.png`,
+      },
+    };
+  }
+
   // Default fallback metadata
   return {
-    title: "Rentbean | Best Furniture & Home Decor Online",
+    title: "Rent electronics, furniture, party items and more ",
     description: "Rent now and save money. Renr now for exclusive deals!",
     openGraph: {
       images: `${domain}/logo&ui/minlogo.png`,

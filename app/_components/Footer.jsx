@@ -65,7 +65,7 @@ function Footer() {
           <Heading heading="Quick links" />
           <div className="flex flex-col gap-[10px] items-start">
             {list1.map((item, i) => (
-              <Links key={i} name={item.name} link={item.link} />
+              <Links key={i} name={item.name} link={item.link} prefetch={false}/>
             ))}
           </div>
         </div>
@@ -75,7 +75,7 @@ function Footer() {
           <div className="flex flex-col gap-[10px] items-start">
             {list2.map((item, i) => (
               <div key={i} className="flex items-center gap-[5px]">
-                <Links key={i} name={item.name} link={item.link} />
+                <Links key={i} name={item.name} link={item.link} prefetch={false}/>
               </div>
             ))}
           </div>
@@ -89,7 +89,7 @@ function Footer() {
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-[20px] text-[12px]">
-          <Link href="/Sitemap" className="flex items-center gap-1">
+          <Link href="/Sitemap" className="flex items-center gap-1" prefetch={false}>
             <FaSitemap className="text-yellow-500" />
             Site map
           </Link>
@@ -125,7 +125,7 @@ function Heading({ heading }) {
 
 function Links({ name, link }) {
   return (
-    <Link href={link} className="relative group">
+    <Link href={link} className="relative group" prefetch={false}>
       {name}
       <span className="w-0 h-[2px] absolute bottom-0 left-0 block bg-theme lg:group-hover:w-[calc(100%+20px)] duration-200"></span>
     </Link>
@@ -205,6 +205,7 @@ function Socialfollow() {
           className="group relative"
           target="_blank"
           rel="noopener noreferrer"
+          prefetch={false}
           aria-label={`Follow us on ${item.title}`}
         >
           {/* Tooltip */}

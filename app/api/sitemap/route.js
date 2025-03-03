@@ -12,7 +12,10 @@ const xmlEscape = (str) =>
     .replace(/'/g, "&apos;");
 
 const urlEncode = (str) =>
-  encodeURIComponent(str).replace(/%20/g, "-").replace(/%2F/g, "/"); // Preserve slashes
+  encodeURIComponent(str)
+    .replace(/%20/g, "-")
+    .replace(/%2F/g, "/")
+    .replace(/%26/g, "&"); // Preserve slashes
 
 const today = new Date().toISOString();
 

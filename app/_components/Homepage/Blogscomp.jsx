@@ -12,6 +12,7 @@ async function Blogscomp() {
       <center>
         <Link
           href="/Blogs"
+          prefetch={false}
           className="text-2xl md:text-4xl font-bold mb-4 font-recline "
           title=" more blogs"
         >
@@ -51,12 +52,13 @@ async function Blogscomp() {
                   {mainHeading}
                 </h3>
                 {paragraphs?.map((item, j) => (
-                  <p key={j} className="text-gray-600 mb-3 line-clamp-3">
+                  <p key={j} className="text-gray-600 text-sm mb-3 line-clamp-3">
                     {item.content}
                   </p>
                 ))}
                 <Link
                   href={`/Blogs/${blog?._id}`}
+                  prefetch={false}
                   className="mt-auto bg-theme w-fit flex items-center gap-3 text-white py-1 px-4 rounded-full"
                 >
                   Read Full

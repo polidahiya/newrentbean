@@ -48,7 +48,7 @@ function Navbar({ params, productsname, token, userdata }) {
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
           {/* logo */}
-          <Link className="h-full md:w-fit p-1" href="/">
+          <Link className="h-full md:w-fit p-1" href="/" prefetch={false}>
             <Image
               className="w-auto h-full"
               src="/logo&ui/3dlogo.png"
@@ -144,6 +144,7 @@ export const Cartlink = () => {
       <Link
         href="/cart"
         className="h-full w-full flex items-center justify-center"
+        prefetch={false}
       >
         <FaCartShopping className="text-[25px]" />
       </Link>
@@ -170,6 +171,7 @@ export const Cartlink = () => {
                       key={i}
                       href={item?.productlink}
                       className="flex gap-2"
+                      prefetch={false}
                     >
                       <Image
                         className="min-w-[100px] aspect-square rounded-sm object-cover bg-bg1"
@@ -234,6 +236,7 @@ export const Cartlink = () => {
               </div>
               <Link
                 href="/cart"
+                prefetch={false}
                 className="bg-theme text-white flex items-center justify-center gap-3 w-fit px-5 py-1 rounded-full text-sm font-semibold mt-3"
               >
                 Go to Cart <FaOpencart />

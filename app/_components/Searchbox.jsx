@@ -174,6 +174,7 @@ function Searchbox({ productsname }) {
         )}
         <Link
           href={search.trim() !== "" ? `/Search?query=${search}` : "#"}
+          prefetch={false}
           className="flex items-center justify-center bg-theme h-full aspect-square rounded-full lg:aspect-auto md:gap-[5px] lg:px-[10px]  text-white"
         >
           <FiSearch className="text-[20px]" />
@@ -200,6 +201,7 @@ function Searchbox({ productsname }) {
               >
                 <Link
                   href={`/Search?query=${item.original}`}
+                  prefetch={false}
                   className="w-full flex items-center justify-between h-[40px] lg:hover:bg-slate-100 pl-[20px] pr-[10px]"
                 >
                   <p className="text-start max-w-[calc(100%-50px)] text-ellipsis overflow-hidden whitespace-nowrap">

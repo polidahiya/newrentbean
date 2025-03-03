@@ -26,6 +26,7 @@ function PosterAdds() {
       {/* Left Portrait Ad */}
       <Link
         href="/Electronic/Entertainment"
+        prefetch={false}
         className="hidden lg:block w-[30%] aspect-[9/16] rounded-[10px] overflow-hidden"
       >
         <img
@@ -50,7 +51,7 @@ function PosterAdds() {
         >
           {imageArray.map((item, i) => (
             <SwiperSlide key={i}>
-              <Link href={item?.link}>
+              <Link href={item?.link} prefetch={false}>
                 <Image
                   className="h-full w-full object-contain"
                   src={item.img}
@@ -95,6 +96,7 @@ function PosterAdds() {
       {/* Right Portrait Video Ad */}
       <Link
         href="/Furniture"
+        prefetch={false}
         className="hidden lg:block w-[30%] aspect-[9/16] rounded-[10px] overflow-hidden"
       >
         <video
