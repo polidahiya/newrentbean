@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation";
 import { event } from "nextjs-google-analytics";
 import { PiSmileySad } from "react-icons/pi";
 
-export function Addtocartbuttons({ filteredproducts, cartproductid }) {
+export function Addtocartbuttons({
+  filteredproducts,
+  cartproductid,
+  isPastDate,
+}) {
   const router = useRouter();
   const { cart, setcart, setmessagefn, isrentalstore } = AppContextfn();
   const MAX_QUANTITY = filteredproducts?.maxquantity; // Define the maximum quantity
@@ -45,6 +49,11 @@ export function Addtocartbuttons({ filteredproducts, cartproductid }) {
 
     if (!availabilityOptions.includes(filteredproducts?.availablefor)) {
       setmessagefn("Product is not available");
+      return;
+    }
+    const { date, month, year } = cart[cartproductid]?.tenureStart;
+    if (isPastDate(date, month, year)) {
+      setmessagefn("Invalid Tenure Date");
       return;
     }
 
@@ -109,7 +118,7 @@ export function Addtocartbuttons({ filteredproducts, cartproductid }) {
           )
         ) : (
           <>
-            <PiSmileySad className="inline-block mr-2 scale-150"/>
+            <PiSmileySad className="inline-block mr-2 scale-150" />
             currently unavailable
           </>
         )}

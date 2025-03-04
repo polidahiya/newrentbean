@@ -162,6 +162,7 @@ async function Productpage({ category, subcat, productid }) {
       {parsedUserData?.usertype == "admin" && (
         <Link
           href={`/admin/addproducts?id=${filteredProduct?._id}`}
+          prefetch={false}
           className="fixed bottom-14 lg:bottom-5 left-1/2 -translate-x-1/2 bg-theme text-white px-5 py-1 rounded-full z-10"
         >
           Edit

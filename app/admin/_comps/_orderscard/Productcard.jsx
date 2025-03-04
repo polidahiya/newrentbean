@@ -3,6 +3,7 @@ import Image from "next/image";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { changeproductstatus } from "@/app/_serveractions/Adminorders";
 import { AppContextfn } from "@/app/Context";
+import { months } from "@/app/commondata";
 
 export default function ProductCard({ product, orderid, productindex }) {
   const [pshowstatus, setpshowstatus] = useState(false);
@@ -18,7 +19,9 @@ export default function ProductCard({ product, orderid, productindex }) {
     selectedtenure,
     securitydeposit,
     image,
+    tenureStart,
   } = product;
+
   const locationrentprices =
     location in prices ? prices[location] : prices?.Default;
   const tenure = locationrentprices[selectedtenure];
@@ -39,8 +42,22 @@ export default function ProductCard({ product, orderid, productindex }) {
       <div className="p-4">
         <OrderDetail label="Name" value={name} />
         <OrderDetail
+          label="Tenure start date"
+          value={
+            tenureStart?.date +
+            " " +
+            months[tenureStart?.month] +
+            " " +
+            tenureStart?.year
+          }
+        />
+        <OrderDetail
           label="Type"
           value={isrentalstore ? "For Rent" : "For Sell"}
+        />
+        <OrderDetail
+          label="Duration"
+          value={tenure?.time + " " + tenure?.type}
         />
         <OrderDetail
           label="Price"

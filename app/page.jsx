@@ -14,6 +14,7 @@ import Navbar from "./_components/Navbar/Navbar";
 import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
 import Customerreviews from "./_components/Homepage/Customerreviews";
 import Roadmap from "./_components/Homepage/Roadmap";
+import DirectSearchcomps from "./_components/Homepage/DirectSearchcomps";
 
 export default async function Home({ searchParams, params }) {
   const allcookies = await cookies();
@@ -40,6 +41,7 @@ export default async function Home({ searchParams, params }) {
         {/* <Newarrival products={products} /> */}
         {/* <Bestselling products={products} /> */}
         <Allproducts products={products.sort(() => Math.random() - 0.5)} />
+        {/* <DirectSearchcomps /> */}
         <Customerreviews />
         <Blogscomp />
         <Roadmap />

@@ -2,7 +2,6 @@
 import React from "react";
 import { AppContextfn } from "../Context";
 import { cities } from "../commondata";
-import Cookies from "js-cookie";
 
 function Location() {
   const { location, setlocation } = AppContextfn();

@@ -195,6 +195,31 @@ body {
   transform: translateX(100%);
 }
 
+/* calender animation */
+.moveup-animate {
+  animation: moveup-animate 0.5s ease-out forwards;
+}
+@keyframes moveup-animate {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.days-animate {
+  animation: days-animate 500ms forwards;
+}
+@keyframes days-animate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* input range */
 input[type="range"] {
   -webkit-appearance: none;

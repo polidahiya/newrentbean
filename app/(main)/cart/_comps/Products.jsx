@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineDelete } from "react-icons/ai";
 import { AppContextfn } from "@/app/Context";
+import { months } from "@/app/commondata";
 
 export default function Products({ cartproductid, item, i, setshowtenure }) {
   const { setcart, setmessagefn } = AppContextfn();
@@ -60,7 +61,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
   return (
     <div className="flex flex-col gap-5 w-full p-2">
       {i !== 0 && <hr />}
-      <div className="flex flex-col md:flex-row gap-[20px] md:h-[200px]">
+      <div className="flex flex-col md:flex-row gap-[20px] md:h-60">
         <Link
           href={item?.productlink}
           className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
@@ -86,6 +87,10 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
           </p>
           <p className="font-bold text-gray-500 font-recline mt-auto">
             {item?.isrentalstore ? "On Rent" : "For Buy"}
+          </p>
+          <p>
+            Tenure Start Date: {item?.tenureStart?.date}{" "}
+            {months[item?.tenureStart?.month]} {item?.tenureStart?.year}
           </p>
           {item?.isrentalstore ? (
             <>

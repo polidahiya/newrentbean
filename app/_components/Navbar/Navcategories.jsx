@@ -14,6 +14,7 @@ function Navcategories({ category }) {
           <div key={i} className="group relative">
             <Link
               key={i}
+              prefetch={false}
               href={"/" + item}
               className={`h-[30px] w-full flex items-center justify-center  text-sm px-5 py-[5px] rounded-full relative z-10 ${
                 category == item
@@ -49,6 +50,7 @@ function Navcategories({ category }) {
                         <Link
                           key={j}
                           href={`/${item}/${subcat.name}`}
+                          prefetch={false}
                           className="p-1 lg:hover:bg-theme lg:hover:text-white rounded-full lg:w-52 pl-10 lg:pl-0 lg:text-center text-[14px]"
                         >
                           {subcat?.name.replace(/-/g, " ")}

@@ -64,6 +64,7 @@ function Mobilenav() {
       </button>
       <Link
         href={"/allcategories"}
+        prefetch={false}
         className="h-full aspect-square  flex items-center justify-center"
       >
         <LuLayoutGrid className="h-full text-[25px] aspect-square " />
@@ -72,6 +73,7 @@ function Mobilenav() {
       {/* cart */}
       <Link
         href="/cart"
+        prefetch={false}
         className="relative h-full aspect-square flex items-center justify-center"
       >
         <LuShoppingCart className="text-[25px]" />

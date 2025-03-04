@@ -3,12 +3,21 @@ import React, { useEffect } from "react";
 import { Addtocartbuttons } from "./Publiccomps";
 import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
+import Dateselector from "./Dateselector";
 
 function Details({ filteredProduct }) {
   const { cart, setcart, isrentalstore, location } = AppContextfn();
   const cartproductid = `${filteredProduct?.sku}-${
     isrentalstore ? "rental" : "buy"
   }-${location?.location}`;
+
+  // Function to check if a selected date is in the past
+  const today = new Date();
+  const isPastDate = (day, month, year) => {
+    const timenow = today.getHours();
+    const selected = new Date(year, month, timenow > 8 ? day : day + 1);
+    return selected < today;
+  };
 
   useEffect(() => {
     if (!cart[cartproductid]?.added) {
@@ -19,6 +28,12 @@ function Details({ filteredProduct }) {
           }
           return final;
         }, {});
+
+        today.setHours(0, 0, 0, 0); // Normalize today’s date for comparison
+        // Default selected date = today + 2 days
+        const defaultDate = new Date(today);
+        defaultDate.setDate(today.getDate() + 2);
+
         return {
           ...cartitems,
           [cartproductid]: {
@@ -35,6 +50,11 @@ function Details({ filteredProduct }) {
             isrentalstore,
             location: location?.location,
             productlink: `/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
+            tenureStart: {
+              date: defaultDate.getDate(),
+              month: defaultDate.getMonth(),
+              year: defaultDate.getFullYear(),
+            },
           },
         };
       });
@@ -46,7 +66,14 @@ function Details({ filteredProduct }) {
       <h1 className="text-xl md:text-2xl font-recline tracking-wider text-center mt-5">
         {filteredProduct?.name}
       </h1>
-
+      {isrentalstore && (
+        <Dateselector
+          cart={cart}
+          setcart={setcart}
+          cartproductid={cartproductid}
+          isPastDate={isPastDate}
+        />
+      )}
       {isrentalstore ? (
         ["Both", "Rent"].includes(filteredProduct?.availablefor) ? (
           <Tenure
@@ -68,6 +95,7 @@ function Details({ filteredProduct }) {
       <Addtocartbuttons
         filteredproducts={filteredProduct}
         cartproductid={cartproductid}
+        isPastDate={isPastDate}
       />
       <div className="flex items-center justify-center gap-[10px] mt-[20px]">
         <Deliverytrucksvg />

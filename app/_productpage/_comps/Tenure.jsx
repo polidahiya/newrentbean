@@ -48,7 +48,7 @@ function Tenure({ filteredProduct, cartproductid }) {
 
   return (
     <div className="mt-5">
-      <p className="mt-2">Choose Tenure :</p>
+      <p className="mt-2 text-center">Choose Tenure</p>
 
       <div className="flex mt-2 gap-2 ">
         {locationrentprices.map((item, i) => (

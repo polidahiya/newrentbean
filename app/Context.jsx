@@ -73,7 +73,8 @@ export function Appwrapper({
 
   // location
   useEffect(() => {
-    Cookies.set("rblocation", location?.location, { expires: 7 });
+    if (location?.location != null)
+      Cookies.set("rblocation", location?.location, { expires: 7 });
   }, [location]);
 
   // scroll check

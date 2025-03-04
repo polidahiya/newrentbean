@@ -54,6 +54,7 @@ function Logedinusermenu({ token, userdata }) {
       >
         <Link
           href="/loginlogout"
+          prefetch={false}
           className="flex items-center justify-center text-white h-[30px] px-[10px] md:px-[20px] rounded-full bg-theme"
         >
           Login
@@ -95,6 +96,7 @@ function Logedinusermenu({ token, userdata }) {
             >
               <Link
                 href={`/orderdetails`}
+                prefetch={false}
                 replace
                 className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
               >
@@ -104,6 +106,7 @@ function Logedinusermenu({ token, userdata }) {
               <hr />
               <Link
                 href={`/likedproducts`}
+                prefetch={false}
                 replace
                 className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
               >
@@ -113,6 +116,7 @@ function Logedinusermenu({ token, userdata }) {
               <hr />
               <Link
                 href={`/updateuserdetails`}
+                prefetch={false}
                 replace
                 className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
               >
@@ -124,6 +128,7 @@ function Logedinusermenu({ token, userdata }) {
                 <>
                   <Link
                     href={`/admin`}
+                    prefetch={false}
                     replace
                     className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
                   >
