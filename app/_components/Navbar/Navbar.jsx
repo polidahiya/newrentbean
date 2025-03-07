@@ -43,7 +43,11 @@ function Navbar({ params, productsname, token, userdata }) {
   }, []);
 
   return (
-    <nav className="sticky bg-white top-0 left-0 w-full border-slate-300 px-2 md:px-10 z-40">
+    <nav
+      className={`sticky bg-white top-0 left-0 w-full px-2 md:px-10 z-40 ${
+        shownavbottom && "shadow"
+      }`}
+    >
       <div className="relative peer flex h-14 items-center justify-between py-2">
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
@@ -117,16 +121,6 @@ function Navbar({ params, productsname, token, userdata }) {
           <IoMdArrowRoundBack />
         </button>
       )}
-      {/* border effect */}
-      <div
-        className={`absolute top-full left-0 pointer-events-none w-full shadow-[inset_0_1px_1px_0_rgba(0,0,0,.14),inset_0_2px_1px_-1px_rgba(0,0,0,.12)] duration-300 overflow-hidden ${
-          shownavbottom ? "opacity-100 h-1" : "opacity-0 h-0"
-        }`}
-        style={{
-          WebkitMaskImage:
-            "-webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent)",
-        }}
-      ></div>
     </nav>
   );
 }

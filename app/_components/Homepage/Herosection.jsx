@@ -12,13 +12,22 @@ function PosterAdds() {
   const swiperRef = useRef(null);
 
   const imageArray = [
-    { img: "/images/highlights/ad1.jpg", link: "/Furniture" },
+    {
+      img: "/images/highlights/ad1.jpg",
+      link: "/Furniture",
+      title: "Furniture",
+    },
     {
       img: "/images/highlights/ad2.jpg",
       link: "/Health-&-Fitness/Fitness-Machines",
+      title: "Treadmill",
     },
-    { img: "/images/highlights/ad3.jpg", link: "/Furniture" },
-    { img: "/images/highlights/ad4.jpg", link: "/Electronic/Laptops" },
+    { img: "/images/highlights/ad3.jpg", link: "/Furniture", title: "Bed" },
+    {
+      img: "/images/highlights/ad4.jpg",
+      link: "/Electronic/Laptops",
+      title: "Laptop",
+    },
   ];
 
   return (
@@ -32,7 +41,7 @@ function PosterAdds() {
         <img
           className="h-full w-full object-cover"
           src="https://polidahiya.github.io/rentbeanimages/portraitad1.png"
-          alt="Portrait Ad 1"
+          alt="PS4 on Rent"
           loading="lazy"
         />
       </Link>
@@ -54,8 +63,8 @@ function PosterAdds() {
               <Link href={item?.link} prefetch={false}>
                 <Image
                   className="h-full w-full object-contain"
-                  src={item.img}
-                  alt={`Ad ${i + 1}`}
+                  src={item?.img}
+                  alt={item?.title}
                   fill
                   priority={i === activeIndex}
                   loading={i !== activeIndex ? "lazy" : undefined}
@@ -79,16 +88,20 @@ function PosterAdds() {
           <FaAngleLeft />
         </button>
 
-        {/* Custom Pagination Dots */}
-        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+        {/* custom pagination */}
+        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex z-10">
           {imageArray.map((_, i) => (
             <button
               key={i}
-              className={`h-[5px] rounded-full transition-all ${
-                i === activeIndex ? "bg-theme w-8" : "bg-gray-400 w-[5px]"
-              }`}
+              className={`flex items-center justify-center p-1`}
               onClick={() => swiperRef.current.swiper.slideTo(i)}
-            ></button>
+            >
+              <span
+                className={`block h-1 rounded-full bg-gray-400 duration-150 ${
+                  i === activeIndex ? "bg-theme w-8" : "w-1"
+                }`}
+              ></span>
+            </button>
           ))}
         </div>
       </div>

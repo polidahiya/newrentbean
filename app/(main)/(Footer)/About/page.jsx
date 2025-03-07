@@ -10,14 +10,14 @@ const About = () => {
           </h1>
         </div>
       </header>
-      <center>
+      <div className="flex justify-center">
         <p className="text-center max-w-[900px] italic text-[10px] md:text-[16px]">
           Welcome to Rentbean.in, your ultimate destination for hassle-free
           rentals of fitness equipment, electronics, furniture, and more.
           Founded in 2016, Rentbean.in is dedicated to simplifying your renting
           experience, making it convenient, affordable, and enjoyable.
         </p>
-      </center>
+      </div>
       <div>
         <h2 className="text-[18px] font-black  mt-[10px] font-recline">
           Our Story:

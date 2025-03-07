@@ -20,14 +20,13 @@ function page({ searchParams }) {
           className=" top-[20px] left-[30px] h-[50px] w-[50px]"
           width={156}
           height={60}
-          
         ></Image>
-        <center>
+        <div className="flex justify-center">
           <div className="relative w-fit flex items-center justify-center text-base md:text-[30px] ">
             <Usersvg styles="absolute top-[50%] left-0 translate-y-[-50%] translate-x-[-120%]  h-[30px] border border-slate-300 rounded-full fill-white" />
             Reset Password
           </div>
-        </center>
+        </div>
         <Publicpage token={searchParams?.token} />
         <p className="text-[14px] text-center mt-5">
           Back to

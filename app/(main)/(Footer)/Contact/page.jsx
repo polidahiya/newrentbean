@@ -2,6 +2,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { mail, mobile, address } from "@/app/commondata";
 import ContactForm from "./Form";
 import { cookies } from "next/headers";
+import Roadmap from "@/app/_components/Homepage/Roadmap";
 
 const page = () => {
   let userdata = cookies().get("userdata")?.value;
@@ -12,6 +13,9 @@ const page = () => {
       <div className="max-w-4xl flex items-start flex-col lg:flex-row gap-[20px] w-full ">
         <ContactCard />
         <ContactForm userdata={userdata} />
+      </div>
+      <div className="mt-5 md:mt-10">
+        <Roadmap />
       </div>
     </div>
   );

@@ -88,10 +88,12 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
           <p className="font-bold text-gray-500 font-recline mt-auto">
             {item?.isrentalstore ? "On Rent" : "For Buy"}
           </p>
-          <p>
-            Tenure Start Date: {item?.tenureStart?.date}{" "}
-            {months[item?.tenureStart?.month]} {item?.tenureStart?.year}
-          </p>
+          {item?.isrentalstore && (
+            <p>
+              Tenure Start Date: {item?.tenureStart?.date}{" "}
+              {months[item?.tenureStart?.month]} {item?.tenureStart?.year}
+            </p>
+          )}
           {item?.isrentalstore ? (
             <>
               <p className="text-sm">

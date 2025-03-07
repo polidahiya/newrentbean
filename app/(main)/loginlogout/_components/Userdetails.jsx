@@ -90,12 +90,12 @@ function Userdetails() {
         width={156}
         height={60}
       ></Image>
-      <center>
+      <div className="flex justify-center">
         <div className="relative w-fit flex items-center justify-center  text-[30px] ">
           <Usersvg styles="absolute top-[50%] left-0 translate-y-[-50%] translate-x-[-120%]  h-[30px] border border-slate-300 rounded-full fill-white" />
           {signupform ? "Sign up" : "Login"}
         </div>
-      </center>
+      </div>
 
       <div className="mt-[20px] lg:grid lg:grid-cols-2 lg:gap-x-[30px] ">
         {signupform && <Inputfiels refval={nameref} type="text" lable="Name" />}
@@ -132,7 +132,7 @@ function Userdetails() {
         )}
       </div>
       {/* login or signup button */}
-      <center>
+      <div className="flex justify-center">
         <button
           className="relative group flex items-center justify-center gap-[10px] px-[100px] bg-theme py-[5px] text-white rounded-full mt-[20px]  overflow-hidden"
           onClick={authenticateuser}
@@ -142,7 +142,7 @@ function Userdetails() {
           )}
           <span className="z-10">{signupform ? "Signup" : "Login"}</span>
         </button>
-      </center>
+      </div>
       <div className="relative">
         <hr className="my-10" />
         <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-8">

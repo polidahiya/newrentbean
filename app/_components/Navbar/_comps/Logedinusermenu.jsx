@@ -79,9 +79,9 @@ function Logedinusermenu({ token, userdata }) {
                 : "opacity-0 translate-y-[20px]"
             }`}
           >
-            <center>
+            <div className="flex justify-center">
               <Usersvg styles="h-[30px] border border-slate-300 rounded-full mt-[20px] aspect-square fill-white" />
-            </center>
+            </div>
             <div className="text-center mt-[5px]">
               {parsedUserData?.username || "User Name"}
             </div>

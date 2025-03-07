@@ -12,9 +12,7 @@ export async function GET() {
         title: item?.name,
         link: `${domain}/${item?.category}/${item?.subcat}/${item?._id}`,
         description:
-          "Dimensions: " +
-          item?.Dimensions +
-          "_______________ 🚀 Why Buy When You Can Rent? 🏡💼 \nFrom furniture to electronics, fitness gear to party essentials – Rent with ease & save big! Flexible tenures, affordable rates, and hassle-free delivery. Rent now & enjoy!.______________ #RentInsteadOfBuying #SmartRenting #AffordableLiving #FurnitureOnRent #TechOnRent #FitnessOnRent #EventRentals #PartyEssentials #HomeDecorGoals #UpgradeWithoutBuying",
+          "🚀 Why Buy When You Can Rent? 🏡💼 \nFrom furniture to electronics, fitness gear to party essentials – Rent with ease & save big! Flexible tenures, affordable rates, and hassle-free delivery. Rent now & enjoy!.______________ #RentInsteadOfBuying #SmartRenting #AffordableLiving #FurnitureOnRent #TechOnRent #FitnessOnRent #EventRentals #PartyEssentials #HomeDecorGoals #UpgradeWithoutBuying",
         pubDate: today.toUTCString(), // Convert to proper date string
         imageUrl: item?.images[0],
       };

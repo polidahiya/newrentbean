@@ -105,14 +105,14 @@ function Showblogs({ blogs }) {
             </Link>
           );
         })}
-        <center className="md:mt-4">
+        <div className="md:mt-4 flex justify-center">
           <Link
             href="/Blogs"
             className="flex items-center justify-center gap-1 w-fit px-6 py-1 text-white bg-theme font-semibold rounded-lg shadow-lg transition duration-300 ease-in-out whitespace-nowrap"
           >
             Show more <FaArrowAltCircleRight />
           </Link>
-        </center>
+        </div>
       </div>
     </div>
   );

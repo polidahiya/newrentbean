@@ -1,11 +1,9 @@
 import React from "react";
 import Blogscomp from "./_components/Homepage/Blogscomp";
 import Promices from "./_components/Homepage/Promices";
-// import Bestselling from "./_components/Homepage/Bestselling";
 import Categories from "./_components/Homepage/Categories";
 import { Cachedproducts } from "./_serveractions/Getcachedata";
 import Footer from "./_components/Footer";
-// import Newarrival from "./_components/Homepage/Newarrival";
 import { cookies } from "next/headers";
 import Allproducts from "./_components/Homepage/Allproducts";
 import Citiesdescription from "./_components/Homepage/Citiesdescription";
@@ -38,13 +36,11 @@ export default async function Home({ searchParams, params }) {
       <div className="flex flex-col gap-16 lg:gap-20">
         <Herosection location={"delhi"} />
         <Categories />
-        {/* <Newarrival products={products} /> */}
-        {/* <Bestselling products={products} /> */}
         <Allproducts products={products.sort(() => Math.random() - 0.5)} />
-        {/* <DirectSearchcomps /> */}
+        <DirectSearchcomps />
+        <Roadmap />
         <Customerreviews />
         <Blogscomp />
-        <Roadmap />
         <div>
           <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline">
             Why Choose Us?

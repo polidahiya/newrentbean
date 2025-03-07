@@ -9,7 +9,7 @@ async function Blogscomp() {
 
   return (
     <div className="">
-      <center>
+      <div className="flex justify-center">
         <Link
           href="/Blogs"
           prefetch={false}
@@ -18,7 +18,7 @@ async function Blogscomp() {
         >
           Blogs
         </Link>
-      </center>
+      </div>
       <section className="px-4 md:px-8 lg:px-16 mt-5">
         {blogs?.slice(0, 3).map((blog, i) => {
           const mainHeading = blog?.blogdata?.find(
@@ -45,14 +45,16 @@ async function Blogscomp() {
                 height={300}
                 width={400}
                 quality={10}
-                
               />
               <div className="w-full flex flex-col min-h-full">
                 <h3 className="text-xl md:text-2xl font-bold mb-2 ">
                   {mainHeading}
                 </h3>
                 {paragraphs?.map((item, j) => (
-                  <p key={j} className="text-gray-600 text-sm mb-3 line-clamp-3">
+                  <p
+                    key={j}
+                    className="text-gray-600 text-sm mb-3 line-clamp-3"
+                  >
                     {item.content}
                   </p>
                 ))}
@@ -68,7 +70,7 @@ async function Blogscomp() {
           );
         })}
       </section>
-      {/* <center>
+      {/* <div className="flex justify-center">
         <Link
           href={`/Blogs`}
           className="bg-theme text-white w-fit flex items-center gap-3  py-2 px-4 rounded-full mt-5"
@@ -76,7 +78,7 @@ async function Blogscomp() {
           More Blogs
           <LuArrowRightCircle />
         </Link>
-      </center> */}
+      </div> */}
     </div>
   );
 }

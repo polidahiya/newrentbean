@@ -6,7 +6,8 @@ import Tenure from "./Tenure";
 import Dateselector from "./Dateselector";
 
 function Details({ filteredProduct }) {
-  const { cart, setcart, isrentalstore, location } = AppContextfn();
+  const { cart, setcart, isrentalstore, setisrentalstore, location } =
+    AppContextfn();
   const cartproductid = `${filteredProduct?.sku}-${
     isrentalstore ? "rental" : "buy"
   }-${location?.location}`;
@@ -97,9 +98,36 @@ function Details({ filteredProduct }) {
         cartproductid={cartproductid}
         isPastDate={isPastDate}
       />
+      <div className="mt-5 flex items-center justify-center gap-1 text-sm">
+        {isrentalstore
+          ? ["Both", "Buy"].includes(filteredProduct?.availablefor) && (
+              <>
+                <span className="text-cyan-500">Buy this Product?</span>
+                <button
+                  className="lg:hover:text-theme"
+                  onClick={() => setisrentalstore((pre) => !pre)}
+                >
+                  Switch Store
+                </button>
+              </>
+            )
+          : ["Both", "Rent"].includes(filteredProduct?.availablefor) && (
+              <>
+                <span className="text-cyan-500">Rent this product?</span>
+                <button
+                  className="lg:hover:text-theme"
+                  onClick={() => setisrentalstore((pre) => !pre)}
+                >
+                  Switch Store
+                </button>
+              </>
+            )}
+      </div>
       <div className="flex items-center justify-center gap-[10px] mt-[20px]">
         <Deliverytrucksvg />
-        <span className="text-[10px]">Delivery in 1 or 2 days post KYC</span>
+        <span className="text-[10px]">
+          Delivery in 1 or 2 days {isrentalstore && "post KYC"}
+        </span>
       </div>
     </section>
   );
