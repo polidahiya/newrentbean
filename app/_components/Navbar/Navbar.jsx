@@ -80,9 +80,9 @@ function Navbar({ params, productsname, token, userdata }) {
         </div>
 
         {/* third comp */}
-        <div className="w-full h-full hidden lg:flex items-center justify-end gap-[5px] md:gap-[10px]">
+        <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
           {/* rent or buy switch */}
-          <div className="flex gap-1 text-sm lg:text-base">
+          <div className="hidden lg:flex gap-1 text-sm lg:text-base">
             <button
               className={`border rounded-md px-5 py-1 duration-300 ${
                 isrentalstore ? "bg-theme text-white" : "bg-bg1"
