@@ -48,7 +48,7 @@ function Navbar({ params, productsname, token, userdata }) {
         shownavbottom && "shadow"
       }`}
     >
-      <div className="relative peer flex h-14 items-center justify-between py-2">
+      <div className="relative flex h-14 items-center justify-between py-2">
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
           {/* logo */}
@@ -63,7 +63,7 @@ function Navbar({ params, productsname, token, userdata }) {
           </Link>
           {/* location */}
           <button
-            className="hidden lg:flex h-8 px-5 border rounded-full items-center justify-center gap-1 text-theme"
+            className="hidden lg:flex px-5 py-1 border rounded-md items-center justify-center gap-1"
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
           >
             <MdLocationPin className="inline-block" />{" "}
@@ -80,21 +80,27 @@ function Navbar({ params, productsname, token, userdata }) {
         </div>
 
         {/* third comp */}
-        <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
+        <div className="w-full h-full hidden lg:flex items-center justify-end gap-[5px] md:gap-[10px]">
           {/* rent or buy switch */}
-          <button
-            className={`hidden relative lg:flex h-8  border rounded-full items-center justify-center gap-1 text-theme
-               ${isrentalstore ? "flex-row-reverse pl-1 pr-5" : "pl-5 pr-1"}`}
-            onClick={() => setisrentalstore((pre) => !pre)}
-          >
-            {isrentalstore ? "Rent" : "Buy"}
-            <span className="block h-5 aspect-square rounded-full bg-theme"></span>
-          </button>
-          {/* search button */}
-
-          {/* cart */}
+          <div className="flex gap-1 text-sm lg:text-base">
+            <button
+              className={`border rounded-md px-5 py-1 duration-300 ${
+                isrentalstore ? "bg-theme text-white" : "bg-bg1"
+              }`}
+              onClick={() => setisrentalstore(true)}
+            >
+              Rent
+            </button>
+            <button
+              className={`border rounded-md px-5 py-1 duration-300 ${
+                !isrentalstore ? "bg-sky-600 text-white" : "bg-bg1"
+              }`}
+              onClick={() => setisrentalstore(false)}
+            >
+              Buy
+            </button>
+          </div>
           <Cartlink />
-          {/* loged in user menu */}
           <Logedinusermenu userdata={userdata} token={token} />
         </div>
         {/* exit back screen */}
@@ -109,7 +115,6 @@ function Navbar({ params, productsname, token, userdata }) {
       </div>
       {/* categories */}
       <Navcategories category={category} />
-
       {/* backbutton */}
       {!showsearch && path != "/" && (
         <button
