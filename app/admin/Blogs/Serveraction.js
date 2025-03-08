@@ -32,7 +32,7 @@ export const Addblogaction = async (formdata, editmode, deletedimages) => {
           const res = await uploadImage(buffer, "Rentbean/blog");
           formDataArray.push({
             index: parseInt(index),
-            data: { type: "image", content: res.url },
+            data: { type: "image", content: res.secure_url },
           });
         } else {
           formDataArray.push({

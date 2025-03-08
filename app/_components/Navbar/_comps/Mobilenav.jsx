@@ -98,3 +98,103 @@ function Mobilenav() {
 }
 
 export default Mobilenav;
+
+
+// "use client";
+// import React, { useEffect } from "react";
+// import { FiSearch } from "react-icons/fi";
+// import { LuLayoutGrid } from "react-icons/lu";
+// import { AppContextfn } from "@/app/Context";
+// import { HiOutlineHome } from "react-icons/hi";
+// import { LuShoppingCart } from "react-icons/lu";
+// import Link from "next/link";
+// import { MdOutlineStoreMallDirectory } from "react-icons/md";
+
+// function Mobilenav() {
+//   const {
+//     setshowsearch,
+//     setshowcat,
+//     searchinputref,
+//     location,
+//     setlocation,
+//     isrentalstore,
+//     setisrentalstore,
+//     setmessagefn,
+//     cart,
+//   } = AppContextfn();
+
+//   const cartitems = Object.values(cart).filter((item) => item.added);
+//   const totalQuantity = cartitems.reduce(
+//     (total, value) => total + value.quantity,
+//     0
+//   );
+
+//   useEffect(() => {
+//     const hidemenu2 = () => {
+//       setshowcat(false);
+//       setshowsearch(false);
+//     };
+//     window.addEventListener("popstate", hidemenu2);
+//     return () => {
+//       window.removeEventListener("popstate", hidemenu2);
+//     };
+//   }, []);
+
+//   return (
+//     <div className="h-12 w-full flex items-center justify-around px-2 border-t sticky bottom-0 lg:hidden bg-white z-20">
+//       <Link
+//         href="/"
+//         prefetch={false}
+//         className="h-full aspect-square  flex items-center justify-center"
+//       >
+//         <HiOutlineHome className="h-full text-[25px] aspect-square " />
+//       </Link>
+//       {/* search button */}
+//       <button
+//         className="h-full aspect-square  flex items-center justify-center"
+//         onClick={() => {
+//           history.pushState(null, "", "");
+//           setshowsearch(true);
+//           setTimeout(() => {
+//             searchinputref.current.focus();
+//           }, 100);
+//         }}
+//       >
+//         <FiSearch className="h-full text-[25px] aspect-square " />
+//       </button>
+//       <Link
+//         href={"/allcategories"}
+//         prefetch={false}
+//         className="h-full aspect-square  flex items-center justify-center"
+//       >
+//         <LuLayoutGrid className="h-full text-[25px] aspect-square " />
+//       </Link>
+
+//       {/* cart */}
+//       <Link
+//         href="/cart"
+//         prefetch={false}
+//         className="relative h-full aspect-square flex items-center justify-center"
+//       >
+//         <LuShoppingCart className="text-[25px]" />
+//         {totalQuantity > 0 && (
+//           <div className="absolute top-1 right-1 h-4 aspect-square bg-theme text-white text-[10px] rounded-full flex items-center justify-center ">
+//             {totalQuantity}
+//           </div>
+//         )}
+//       </Link>
+
+//       {/* rent or buy switch */}
+//       <button
+//         className={`h-full aspect-square  flex items-center justify-center `}
+//         onClick={() => {
+//           setisrentalstore((pre) => !pre);
+//         }}
+//       >
+//         <MdOutlineStoreMallDirectory className="h-full text-[25px] aspect-square " />
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default Mobilenav;

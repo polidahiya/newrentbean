@@ -60,7 +60,7 @@ async function page({ params }) {
                   width={400}
                   loading="lazy"
                   alt="furniture blog"
-                  className="w-full md:max-w-[60%] aspect-video object-cover object-center rounded-lg shadow-md mb-4 bg-bg1"
+                  className="w-full md:w-2/3 object-cover  rounded-lg shadow-md mb-4 bg-bg1"
                 />
               );
             default:

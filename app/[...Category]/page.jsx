@@ -35,8 +35,8 @@ async function page({ params, searchParams }) {
   const pricerange = searchParams.pricerange || 0;
   let producttorender;
 
+  const searchQuery = searchParams?.query?.replace(/-/g, " ");
   if (category == "Search") {
-    const searchQuery = searchParams?.query?.replace(/-/g, " ");
     producttorender = searchProducts(allproducts, searchQuery);
   } else {
     validateCategoryAndSubcategory(category, subcat);
@@ -60,6 +60,11 @@ async function page({ params, searchParams }) {
           subcat={subcat}
           searchParams={searchParams}
         /> */}
+        {category == "Search" && (
+          <h1 className="text-center py-2 px-10 mb-10">
+            Search - {"( " + searchQuery + " )"}
+          </h1>
+        )}
         {sortedProducts.length > 0 ? (
           <ProductGrid products={sortedProducts} />
         ) : (
@@ -76,7 +81,7 @@ async function page({ params, searchParams }) {
 }
 
 const ProductGrid = ({ products }) => (
-  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-[10px] md:gap-[20px]">
+  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mb-10">
     {products.map((item, i) => (
       <Productcard
         key={i + new Date().getMilliseconds() + Math.random()} // More stable key

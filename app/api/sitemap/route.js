@@ -1,6 +1,7 @@
 "use server";
 import { domain, categorylist, cities } from "@/app/commondata";
 import { Cachedproducts, Cachedblogs } from "@/app/_serveractions/Getcachedata";
+import { direactsearchlist } from "@/app/commondata";
 
 // Utility functions
 const xmlEscape = (str) =>
@@ -70,6 +71,16 @@ const generateBlogUrls = (blogs) =>
     priority: "1.0",
   }));
 
+const generateDireactsearchUrls = () =>
+  direactsearchlist.map((item) => ({
+    loc: `${domain}${item?.link}`,
+    lastmod: today,
+    changefreq: "daily",
+    priority: "1.0",
+    image: `${domain}${item?.image}` || "",
+    name: item?.name || "",
+  }));
+
 export async function GET() {
   try {
     // Fetch data in parallel
@@ -90,6 +101,7 @@ export async function GET() {
       ...generateCategoryUrls(),
       ...generateProductUrls(allproducts),
       ...generateBlogUrls(allblogs),
+      ...generateDireactsearchUrls(),
     ];
 
     // Generate sitemap XML
