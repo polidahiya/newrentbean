@@ -15,7 +15,7 @@ import Roadmap from "./_components/Homepage/Roadmap";
 import DirectSearchcomps from "./_components/Homepage/DirectSearchcomps";
 
 export default async function Home({ searchParams, params }) {
-  const allcookies = await cookies();
+  const allcookies = cookies();
   const token = allcookies.get("token")?.value;
   const userdata = allcookies.get("userdata")?.value;
 
@@ -42,7 +42,7 @@ export default async function Home({ searchParams, params }) {
         <Customerreviews />
         <Blogscomp />
         <div>
-          <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline">
+          <h2 className="text-center font-bold text-2xl md:text-4xl font-recline">
             Why Choose Us?
           </h2>
           <Promices />

@@ -22,13 +22,13 @@ export const categorylist = {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-09-260.jpg",
         name: "Fitness-Machines",
-        subcat:"Treadmills | Recmbent bike | Eliptical Crosstrainers"
+        subcat: "Treadmills | Recmbent bike | Eliptical Crosstrainers",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-10-633.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-10-633.jpg",
         name: "Weight-&-Rack",
-        subcat:""
+        subcat: "",
       },
     ],
   },
@@ -38,26 +38,26 @@ export const categorylist = {
     subcat: [
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_18-57-12-465.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-57-12-465.jpg",
         name: "Entertainment",
-        subcat:"Ps4 | Hoverboard"
+        subcat: "Ps4 | Hoverboard",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-18-23-267.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-18-23-267.jpg",
         name: "Laptops",
-        subcat:"Dell | HP | Lenovo"
+        subcat: "Dell | HP | Lenovo",
       },
       {
         image: "/logo&ui/categories/subcategories/phone.jpg",
         name: "Mobile-&-Accessories",
-        subcat:"Mobile phones"
+        subcat: "Mobile phones",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-28-036.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-28-036.jpg",
         name: "Home-Appliances",
-        subcat:"Fridge | Washing Machine | Air Conditioner | Inverter"
+        subcat: "Fridge | Washing Machine | Air Conditioner | Inverter",
       },
     ],
   },
@@ -67,39 +67,44 @@ export const categorylist = {
     subcat: [
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-09-357.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-09-357.jpg",
         name: "Beds",
-        subcat:"King size | Queen size | Single size"
+        subcat: "King size | Queen size | Single size",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_18-51-44-151.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_18-51-44-151.jpg",
         name: "Study-Tables",
-        subcat:""
+        subcat: "",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-19-26-646.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-19-26-646.jpg",
         name: "Dining",
-        subcat:"2 seater | 4 seater | 6 seater"
+        subcat: "2 seater | 4 seater | 6 seater",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-24-920.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-24-920.jpg",
         name: "Bookshelves",
-        subcat:""
+        subcat: "",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-03-35-634.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-03-35-634.jpg",
         name: "Sofas",
-        subcat:""
+        subcat: "",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-47-889.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-47-889.jpg",
         name: "Center-Tables",
-        subcat:"Square center table | Circular center table"
+        subcat: "Square center table | Circular center table",
+      },
+      {
+        image: "/logo&ui/categories/subcategories/wardrobe.jpg",
+        name: "Wardrobe",
+        subcat: "",
       },
     ],
   },
@@ -109,9 +114,9 @@ export const categorylist = {
     subcat: [
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-07-07-726.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-07-07-726.jpg",
         name: "Party-Items",
-        subcat:"Dj lights | Hookah | Dispensor | Beer tower | Barbaque"
+        subcat: "Dj lights | Hookah | Dispensor | Beer tower | Barbaque",
       },
     ],
   },
@@ -121,15 +126,15 @@ export const categorylist = {
     subcat: [
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-54-509.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-54-509.jpg",
         name: "Baby-Care",
-        subcat:"Baby cart seat | Baby carrier | Baby stoller"
+        subcat: "Baby cart seat | Baby carrier | Baby stoller",
       },
       {
         image:
-        "/logo&ui/categories/subcategories/Picsart_25-02-11_19-02-30-781.jpg",
+          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-02-30-781.jpg",
         name: "Camping-Gear",
-        subcat:"Tent | Sleeping bags | Folding chairs"
+        subcat: "Tent | Sleeping bags | Folding chairs",
       },
     ],
   },

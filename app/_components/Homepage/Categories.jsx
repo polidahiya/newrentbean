@@ -10,7 +10,7 @@ function Categories() {
         {Object.entries(categorylist).map(([key, value], i) => {
           return (
             <Link
-              className="categoriestile h-[60px] w-[60px] md:h-[70px] md:w-[120px]  rounded-lg flex flex-col items-center justify-center border border-gray-200 lg:hover:border-none lg:hover:scale-110 lg:hover:shadow-[0_8px_14px_0_#bfcfdc]   duration-200"
+              className="categoriestile h-[60px] w-[60px] md:h-[70px] md:w-[120px]  rounded-lg flex flex-col items-center justify-center bg-white border border-gray-200 lg:hover:border-none lg:hover:scale-110 lg:hover:shadow-[0_8px_14px_0_#bfcfdc]   duration-200"
               key={i}
               href={"/" + key}
               prefetch={false}

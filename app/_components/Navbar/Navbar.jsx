@@ -63,7 +63,7 @@ function Navbar({ params, productsname, token, userdata }) {
           </Link>
           {/* location */}
           <button
-            className="hidden lg:flex px-5 py-1 border rounded-md items-center justify-center gap-1"
+            className="hidden lg:flex px-5 py-1 border rounded-md items-center justify-center gap-1 bg-bg1"
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
           >
             <MdLocationPin className="inline-block" />{" "}
