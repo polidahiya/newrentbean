@@ -18,6 +18,7 @@ function Productcard({
   sku,
   image,
   link,
+  tags,
   maxwidth = true,
 }) {
   const { isrentalstore, location } = AppContextfn();
@@ -84,18 +85,29 @@ function Productcard({
             } duration-500`}
           ></div>
         )}
-        <div className="absolute top-[5px] left-[5px] md:top-[10px] md:left-[10px] flex flex-col items-start gap-[5px] text-[8px] md:text-[14px] text-white">
+        <div className="absolute top-2 left-1 md:top-2 md:left-2 flex flex-col items-start gap-1 text-[8px] md:text-sm text-white">
           {/* available */}
           {!available && (
             <div
-              className={`flex items-center gap-[5px]  bg-red-600 py-[5px] px-[5px] md:px-[10px] rounded-[5px]`}
+              className={`flex items-center gap-1 bg-red-600 py-1 px-1 md:px-2 rounded-md`}
             >
               <FiClock />
               Comming soon!
             </div>
           )}
+          {tags?.includes("New-Product") && (
+            <div
+              className={`flex items-center gap-1 bg-green-600 py-1 px-1 md:px-2 rounded-md`}
+            >
+              New Arrival
+            </div>
+          )}
         </div>
-        {!available && <div className="w-full absolute bottom-0 text-center bg-bg1 py-1 font-black">Out of stock</div>}
+        {!available && (
+          <div className="w-full absolute bottom-0 text-center bg-bg1 py-1 font-black">
+            Out of stock
+          </div>
+        )}
       </div>
       <div className="relative p-[10px]">
         <h3 className="py-[5px] md:py-[10px] text-xs md:text-base text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">

@@ -93,7 +93,7 @@ function Navbar({ params, productsname, token, userdata }) {
             </button>
             <button
               className={`border rounded-md px-5 py-1 duration-300 ${
-                !isrentalstore ? "bg-sky-600 text-white" : "bg-bg1"
+                !isrentalstore ? "bg-cyan-600 text-white" : "bg-bg1"
               }`}
               onClick={() => setisrentalstore(false)}
             >

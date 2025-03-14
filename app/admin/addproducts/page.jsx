@@ -16,6 +16,7 @@ function Page() {
   const initialState = {
     category: "Health-&-Fitness",
     subcat: "Fitness-Machines",
+    tags: [],
     name: "",
     available: true,
     trash: false,
@@ -36,7 +37,7 @@ function Page() {
     availablefor: "Rent", //"Rent", "Buy", "Both"
     seotitle: "",
     seodescription: "",
-    seokeywords: "",
+    seokeywords: "Rentbean, Rentmojo, Furlenco, Justdial, olx, Rent",
   };
   const [data, setdata] = useState(initialState);
   const [deletedimages, setdeletedimages] = useState([]);

@@ -10,6 +10,7 @@ import Addimagescomp from "./_comps/Addimagescomp";
 import Dropdownmenu from "./_comps/Dropdownmenu";
 import Rentpricecomp from "./_comps/Rentpricecomp";
 import ALongwithbox from "./_comps/ALongwithbox";
+import Multiselecttags from "./_comps/Multiselecttags";
 
 function Addandupdateproduct({
   data,
@@ -91,6 +92,13 @@ function Addandupdateproduct({
         state={data.availablefor}
         onchange={handleDropdownChange}
         options={["Rent", "Buy", "Both"]}
+      />
+      <Multiselecttags
+        state={data?.tags || []}
+        statename="tags"
+        setState={setdata}
+        title={"Tags"}
+        options={["New-Product", "Brand-New", "Refurbished","Best-Seller","High-Demand","Last-Stock","Only-One-Left","On-Sale"]}
       />
 
       {/* Product Name */}

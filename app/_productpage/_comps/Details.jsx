@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { lazy, useEffect } from "react";
 import { Addtocartbuttons } from "./Publiccomps";
 import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
 import Dateselector from "./Dateselector";
+import Image from "next/image";
 
 function Details({ filteredProduct }) {
   const { cart, setcart, isrentalstore, setisrentalstore, location } =
@@ -135,13 +136,25 @@ function Details({ filteredProduct }) {
 
 const PriceDisplay = ({ filteredProduct }) => {
   return (
-    <div
-      className="font-bold mt-10 text-2xl font-recline text-center"
-      itemProp="offers"
-      itemScope
-      itemType="http://schema.org/Offer"
-    >
-      Price: ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
+    <div className="mt-10 flex flex-col gap-3 justify-center items-center">
+      {filteredProduct?.tags?.includes("Refurbished") && (
+        <div className="px-5 py-1 rounded-md bg-cyan-600 text-white inline-block">
+          Get Refurbished at :
+        </div>
+      )}
+      {filteredProduct?.tags?.includes("Brand-New") && (
+        <div className="px-5 py-1 rounded-md bg-green-600 text-white inline-block">
+          Get New at :
+        </div>
+      )}
+      <div
+        className="font-bold  text-2xl font-recline text-center"
+        itemProp="offers"
+        itemScope
+        itemType="http://schema.org/Offer"
+      >
+        ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
+      </div>
     </div>
   );
 };
@@ -216,7 +229,15 @@ const Deliverytrucksvg = () => {
 const Notavailableforstore = ({ title }) => {
   return (
     <div className="my-10 text-center">
-      <p>{title}</p>
+      <Image
+        src="/logo&ui/emoji-sad.png"
+        alt="Sad-image-png"
+        height={56}
+        width={56}
+        className="aspect-square w-14 mx-auto opacity-75"
+        loading="lazy"
+      ></Image>
+      <p className="mt-5">{title}</p>
     </div>
   );
 };

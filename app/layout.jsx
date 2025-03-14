@@ -66,22 +66,22 @@ export default async function RootLayout({ children }) {
         />
         <meta name="theme-color" content="#d68e43" />
       </head>
-      <Appwrapper
-        token={token}
-        userdata={userdata}
-        rblocation={rblocation}
-        parsedCart={parsedCart}
-        storetype={storetype}
-      >
-        <body className="antialiased max-w-[1500px] mx-auto">
+      <body className="antialiased max-w-[1500px] mx-auto">
+        <Appwrapper
+          token={token}
+          userdata={userdata}
+          rblocation={rblocation}
+          parsedCart={parsedCart}
+          storetype={storetype}
+        >
           <Message />
           <Confirmdialogbox />
           <Location />
           <div>{children}</div>
           {/* <Logininstant /> */}
           <FIxedbuttons />
-        </body>
-      </Appwrapper>
+        </Appwrapper>
+      </body>
     </html>
   );
 }

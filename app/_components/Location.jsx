@@ -14,9 +14,9 @@ function Location() {
         <div
           className={`relative h-full w-full  flex flex-col items-center justify-between p-[20px] gap-[20px] bg-white z-10`}
         >
-          <h2 className="text-xl font-semibold font-recline whitespace-nowrap mt-5 tracking-widest">
+          <h3 className="text-xl font-semibold font-recline whitespace-nowrap mt-5 tracking-widest">
             🌍 Select your location
-          </h2>
+          </h3>
           <div className="w-full flex items-center justify-center flex-wrap gap-5">
             {cities?.map((item, i) => {
               return (

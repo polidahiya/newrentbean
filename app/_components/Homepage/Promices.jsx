@@ -38,7 +38,7 @@ function Promices() {
           grabCursor={true}
           modules={[EffectCards]}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          className="mySwiper "
+          className="mySwiper"
         >
           {services.map((item, i) => (
             <SwiperSlide key={i} className="rounded-lg shadow-lg bg-gray-50">
