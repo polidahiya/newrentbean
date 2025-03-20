@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 
-function PosterAdds() {
+function PosterAdds({ location }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
@@ -34,7 +34,7 @@ function PosterAdds() {
     <div className="flex items-center px-[10px] md:px-[40px] pt-[20px] gap-[20px] overflow-hidden">
       {/* Left Portrait Ad */}
       <Link
-        href="/Electronic/Entertainment"
+        href={`${location}/Electronic/Entertainment`}
         prefetch={false}
         className="hidden lg:block w-[30%] aspect-[9/16] rounded-[10px] overflow-hidden"
       >
@@ -60,7 +60,7 @@ function PosterAdds() {
         >
           {imageArray.map((item, i) => (
             <SwiperSlide key={i}>
-              <Link href={item?.link} prefetch={false}>
+              <Link href={`/${location}/${item?.link}`} prefetch={false}>
                 <Image
                   className="h-full w-full object-contain"
                   src={item?.img}

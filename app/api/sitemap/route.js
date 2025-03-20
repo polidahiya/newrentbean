@@ -23,7 +23,7 @@ const today = new Date().toISOString();
 // Generate URLs
 const generateCityUrls = () =>
   cities.map((city) => ({
-    loc: `${domain}?location=${urlEncode(city)}`,
+    loc: `${domain}/${urlEncode(city)}`,
     lastmod: today,
     changefreq: "daily",
     priority: "1.0",
@@ -33,15 +33,15 @@ const generateCategoryUrls = () =>
   cities.flatMap((city) =>
     Object.entries(categorylist).flatMap(([category, { subcat }]) => [
       {
-        loc: `${domain}/${urlEncode(category)}?location=${urlEncode(city)}`,
+        loc: `${domain}/${urlEncode(city)}/${urlEncode(category)}`,
         lastmod: today,
         changefreq: "daily",
         priority: "1.0",
       },
       ...subcat.map((subcategory) => ({
-        loc: `${domain}/${urlEncode(category)}/${urlEncode(
+        loc: `${domain}/${urlEncode(city)}/${urlEncode(category)}/${urlEncode(
           subcategory.name
-        )}?location=${urlEncode(city)}`,
+        )}`,
         lastmod: today,
         changefreq: "daily",
         priority: "1.0",
@@ -52,9 +52,9 @@ const generateCategoryUrls = () =>
 const generateProductUrls = (products) =>
   cities.flatMap((city) =>
     products.flatMap((product) => ({
-      loc: `${domain}/${urlEncode(product.category)}/${urlEncode(
-        product.subcat
-      )}/${urlEncode(product._id)}?location=${urlEncode(city)}`,
+      loc: `${domain}/${urlEncode(city)}/${urlEncode(
+        product.category
+      )}/${urlEncode(product.subcat)}/${urlEncode(product._id)}`,
       lastmod: today,
       changefreq: "daily",
       priority: "1.0",
@@ -72,14 +72,16 @@ const generateBlogUrls = (blogs) =>
   }));
 
 const generateDireactsearchUrls = () =>
-  direactsearchlist.map((item) => ({
-    loc: `${domain}${item?.link}`,
-    lastmod: today,
-    changefreq: "daily",
-    priority: "1.0",
-    image: `${domain}${item?.image}` || "",
-    name: item?.name || "",
-  }));
+  cities.flatMap((city) =>
+    direactsearchlist.map((item) => ({
+      loc: `${domain}/${urlEncode(city)}${item?.link}`,
+      lastmod: today,
+      changefreq: "daily",
+      priority: "1.0",
+      image: `${domain}${item?.image}` || "",
+      name: item?.name || "",
+    }))
+  );
 
 export async function GET() {
   try {

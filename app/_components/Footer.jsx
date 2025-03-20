@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import { RiStarSLine } from "react-icons/ri";
+// import { RiStarSLine } from "react-icons/ri";
 import {
   FaCcVisa,
   FaCcMastercard,
@@ -21,10 +21,9 @@ import { sociallinks } from "../commondata";
 import { FaSitemap } from "react-icons/fa";
 import PWAInstallPrompt from "./Pwapromot";
 import { IoShieldHalf } from "react-icons/io5";
-
 // import ThemeSwitcher from "./Switchtheme";
 
-function Footer() {
+async function Footer() {
   const list1 = [
     { name: "About Us", link: "/About" },
     { name: "Blogs", link: "/Blogs" },
@@ -36,11 +35,11 @@ function Footer() {
     { name: "Terms & Conditions", link: "/Terms&Conditions" },
   ];
   const list2 = [
-    { name: "Health & Fitness", link: "/Health-&-Fitness" },
-    { name: "Electronic", link: "/Electronic" },
-    { name: "Furniture", link: "/Furniture" },
-    { name: "Event & Parties", link: "/Event-&-Parties" },
-    { name: "Others", link: "/Others" },
+    { name: "Health & Fitness", link: "/Delhi/Health-&-Fitness" },
+    { name: "Electronic", link: "/Delhi/Electronic" },
+    { name: "Furniture", link: "/Delhi/Furniture" },
+    { name: "Event & Parties", link: "/Delhi/Event-&-Parties" },
+    { name: "Others", link: "/Delhi/Others" },
   ];
   return (
     <footer className="bg-bg1 px-[30px] md:px-[50px] p-[20px] pt-[30px] lg:pt-[20px] text-[14px]">
@@ -65,7 +64,12 @@ function Footer() {
           <Heading heading="Quick links" />
           <div className="flex flex-col gap-[10px] items-start">
             {list1.map((item, i) => (
-              <Links key={i} name={item.name} link={item.link} prefetch={false}/>
+              <Links
+                key={i}
+                name={item.name}
+                link={item.link}
+                prefetch={false}
+              />
             ))}
           </div>
         </div>
@@ -75,7 +79,12 @@ function Footer() {
           <div className="flex flex-col gap-[10px] items-start">
             {list2.map((item, i) => (
               <div key={i} className="flex items-center gap-[5px]">
-                <Links key={i} name={item.name} link={item.link} prefetch={false}/>
+                <Links
+                  key={i}
+                  name={item.name}
+                  link={item.link}
+                  prefetch={false}
+                />
               </div>
             ))}
           </div>
@@ -89,7 +98,11 @@ function Footer() {
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-[20px] text-[12px]">
-          <Link href="/Sitemap" className="flex items-center gap-1" prefetch={false}>
+          <Link
+            href="/Sitemap"
+            className="flex items-center gap-1"
+            prefetch={false}
+          >
             <FaSitemap className="text-yellow-500" />
             Site map
           </Link>

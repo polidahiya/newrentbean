@@ -1,5 +1,5 @@
 "use client";
-import React, { lazy, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Addtocartbuttons } from "./Publiccomps";
 import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
@@ -51,7 +51,7 @@ function Details({ filteredProduct }) {
             maxquantity: filteredProduct?.maxquantity,
             isrentalstore,
             location: location?.location,
-            productlink: `/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
+            productlink: `/${location?.location}/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
             tenureStart: {
               date: defaultDate.getDate(),
               month: defaultDate.getMonth(),

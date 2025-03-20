@@ -4,7 +4,13 @@ import { AiFillProduct } from "react-icons/ai";
 import Link from "next/link";
 import { LuArrowRightCircle } from "react-icons/lu";
 
-function Similarproducts({ allproducts, category, subcat, productid }) {
+function Similarproducts({
+  allproducts,
+  category,
+  subcat,
+  productid,
+  location,
+}) {
   const maxproducts = 15;
   const similarproducts = allproducts
     .filter(
@@ -39,7 +45,7 @@ function Similarproducts({ allproducts, category, subcat, productid }) {
             {similarproducts.length == maxproducts && (
               <div className="relative flex items-center z-20 whitespace-nowrap px-5">
                 <Link
-                  href={`/${category}/${subcat}`}
+                  href={`/${location}/${category}/${subcat}`}
                   className="relative group flex items-center justify-center gap-[10px] px-6 py-3  text-white font-semibold rounded-full overflow-hidden"
                 >
                   <span>View all</span>

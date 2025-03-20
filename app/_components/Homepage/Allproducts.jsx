@@ -79,7 +79,10 @@ function Imagecard({ product, i }) {
           : availablefor == "Rent" && "hidden"
       }`}
     >
-      <Link href={`/${category}/${subcat}/${_id}`} prefetch={false}>
+      <Link
+        href={`/${location?.location || "Delhi"}/${category}/${subcat}/${_id}`}
+        prefetch={false}
+      >
         <div className="relative w-full aspect-square overflow-hidden">
           <Image
             src={images[0]}
@@ -111,7 +114,7 @@ function Imagecard({ product, i }) {
           </div>
         </div>
         <Link
-          href={`/${category}`}
+          href={`/${location?.location || "Delhi"}/${category}`}
           prefetch={false}
           className="border border-theme text-theme text-sm md:text-base px-3 md:px-5 py-2 flex items-center justify-center lg:hover:bg-theme lg:hover:text-white duration-300"
         >

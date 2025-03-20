@@ -2,6 +2,7 @@
 import React from "react";
 import { AppContextfn } from "../Context";
 import { cities } from "../commondata";
+import Link from "next/link";
 
 function Location() {
   const { location, setlocation } = AppContextfn();
@@ -20,8 +21,9 @@ function Location() {
           <div className="w-full flex items-center justify-center flex-wrap gap-5">
             {cities?.map((item, i) => {
               return (
-                <button
+                <Link
                   key={i}
+                  href={`/${item}`}
                   onClick={() => {
                     setlocation(() => ({ show: false, location: item }));
                   }}
@@ -32,7 +34,7 @@ function Location() {
                   }`}
                 >
                   {item}
-                </button>
+                </Link>
               );
             })}
           </div>

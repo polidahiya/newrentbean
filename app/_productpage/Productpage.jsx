@@ -15,7 +15,7 @@ import { mail } from "@/app/commondata";
 import Productdesc from "./_comps/Productdesc";
 import Alongwith from "./_comps/Alongwith";
 
-async function Productpage({ category, subcat, productid }) {
+async function Productpage({ category, subcat, productid, location }) {
   const token = cookies()?.get("token")?.value;
   const userdata = cookies()?.get("userdata")?.value;
   const parsedUserData = userdata ? JSON.parse(userdata) : null;
@@ -87,6 +87,7 @@ async function Productpage({ category, subcat, productid }) {
           category={category}
           subcat={subcat}
           productid={productid}
+          location={location}
         />
 
         <FAQSection

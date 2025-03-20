@@ -1,8 +1,8 @@
-import Navbar from "../_components/Navbar/Navbar";
-import { Cachedproducts } from "../_serveractions/Getcachedata";
+import Navbar from "@/app/_components/Navbar/Navbar";
+import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import { cookies } from "next/headers";
-import Footer from "../_components/Footer";
-import Mobilenav from "../_components/Navbar/_comps/Mobilenav";
+import Footer from "@/app/_components/Footer";
+import Mobilenav from "@/app/_components/Navbar/_comps/Mobilenav";
 
 export const metadata = {
   title: "Rentbean",

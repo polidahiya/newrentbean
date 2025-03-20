@@ -31,18 +31,18 @@ const SiteMap = () => {
 
   const furnitureCategories = [
     {
-      loc: "/Health-&-Fitness",
+      loc: "/Delhi/Health-&-Fitness",
       label: "Health & Fitness",
       icon: <FaDumbbell />,
     },
-    { loc: "/Electronic", label: "Electronic", icon: <FaTv /> },
-    { loc: "/Furniture", label: "Furniture", icon: <FaCouch /> },
+    { loc: "/Delhi/Electronic", label: "Electronic", icon: <FaTv /> },
+    { loc: "/Delhi/Furniture", label: "Furniture", icon: <FaCouch /> },
     {
-      loc: "/Event-&-Parties",
+      loc: "/Delhi/Event-&-Parties",
       label: "Event & Parties",
       icon: <FaGlassCheers />,
     },
-    { loc: "/Others", label: "Others", icon: <FaBoxOpen /> },
+    { loc: "/Delhi/Others", label: "Others", icon: <FaBoxOpen /> },
   ];
 
   const policiesAndOthers = [

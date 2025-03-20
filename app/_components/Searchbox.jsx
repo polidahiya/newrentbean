@@ -7,7 +7,7 @@ import { AppContextfn } from "../Context";
 import { searchoptions, permanentsearchoptions } from "../commondata";
 import { FiArrowUpLeft } from "react-icons/fi";
 
-function Searchbox({ productsname }) {
+function Searchbox({ productsname, location }) {
   const router = useRouter();
   const { setshowsearch, searchinputref } = AppContextfn();
   const [search, setSearch] = useState("");
@@ -115,11 +115,11 @@ function Searchbox({ productsname }) {
             if (e.key === "Enter") {
               if (arrowselectedsuggest == null) {
                 if (search.trim() !== "")
-                  router.push(`/Search?query=${search}`);
+                  router.push(`/${location}/Search?query=${search}`);
               } else {
                 setSearch(finalsuggestion[arrowselectedsuggest]?.original);
                 router.push(
-                  `/Search?query=${finalsuggestion[arrowselectedsuggest]?.original}`
+                  `/${location}/Search?query=${finalsuggestion[arrowselectedsuggest]?.original}`
                 );
               }
               searchinputref.current.blur();
@@ -173,7 +173,9 @@ function Searchbox({ productsname }) {
           </p>
         )}
         <Link
-          href={search.trim() !== "" ? `/Search?query=${search}` : "#"}
+          href={
+            search.trim() !== "" ? `/${location}/Search?query=${search}` : "#"
+          }
           prefetch={false}
           className="flex items-center justify-center bg-theme h-full aspect-square rounded-full lg:aspect-auto md:gap-[5px] lg:px-[10px]  text-white"
         >
@@ -197,10 +199,10 @@ function Searchbox({ productsname }) {
                 onClick={() => {
                   setSearch(item.original);
                 }}
-                className={`${arrowselectedsuggest === i && "bg-slate-200"}`}
+                className={`border-b last:border-none ${arrowselectedsuggest === i && "bg-slate-200"}`}
               >
                 <Link
-                  href={`/Search?query=${item.original}`}
+                  href={`/${location}/Search?query=${item.original}`}
                   prefetch={false}
                   className="w-full flex items-center justify-between h-[40px] lg:hover:bg-slate-100 pl-[20px] pr-[10px]"
                 >
@@ -209,7 +211,6 @@ function Searchbox({ productsname }) {
                   </p>
                   <FiArrowUpLeft className="text-[18px]" />
                 </Link>
-                <hr />
               </div>
             ))}
           </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa";
 import Image from "next/image";
 
-function Navcategories({ category }) {
+function Navcategories({ category, location }) {
   return (
     <div className={`hidden lg:flex items-center justify-center gap-5 py-2`}>
       {Object.entries(categorylist).map(([key, item], i) => {
@@ -14,7 +14,7 @@ function Navcategories({ category }) {
             <Link
               key={i}
               prefetch={false}
-              href={"/" + key}
+              href={"/" + location + "/" + key}
               className={`w-full flex items-center justify-center  text-sm px-5 py-1 rounded-full relative z-10 ${
                 category == key
                   ? "lg:bg-theme lg:text-white"
@@ -35,7 +35,7 @@ function Navcategories({ category }) {
                   return (
                     <Link
                       key={j}
-                      href={`/${key}/${subcat.name}`}
+                      href={`/${location}/${key}/${subcat.name}`}
                       prefetch={false}
                       className="p-1 flex items-center gap-2 lg:w-52 text-sm lg:hover:bg-bg1 group/link"
                     >

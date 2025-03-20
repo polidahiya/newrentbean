@@ -6,8 +6,10 @@ import "swiper/css";
 import Link from "next/link";
 import { direactsearchlist } from "@/app/commondata";
 import Image from "next/image";
+import { AppContextfn } from "@/app/Context";
 
 export default function DireactSearchListSwiper() {
+  const { location } = AppContextfn();
   const [activeIndex, setActiveIndex] = useState(0);
   const textSwiperRef = useRef(null);
   const imageSwiperRef = useRef(null);
@@ -67,7 +69,7 @@ export default function DireactSearchListSwiper() {
                   ❮
                 </button>
                 <Link
-                  href={item?.link}
+                  href={`/${location?.location}/${item?.link}`}
                   className=" text-theme border border-theme px-5 py-2 rounded-md lg:order-1"
                 >
                   Rent Now

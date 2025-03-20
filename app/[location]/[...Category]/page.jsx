@@ -1,33 +1,32 @@
 import React from "react";
-import { notFound, redirect } from "next/navigation";
-import Productcard from "../_components/Productcard";
-import { categorylist, domain } from "../commondata";
-import { Cachedproducts } from "../_serveractions/Getcachedata";
-import Productnotfound from "../_components/Productnotfound";
+import { notFound } from "next/navigation";
+import Productcard from "@/app/_components/Productcard";
+import { categorylist, domain, cities } from "@/app/commondata";
+import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
+import Productnotfound from "@/app/_components/Productnotfound";
 import Subcategories from "./_Components/Subcategories";
 import { sortProducts, pricefilter } from "./_Components/sortandfilter";
-import Productpage from "../_productpage/Productpage";
-import Appliedfilters from "./_Components/Appliedfilters";
+import Productpage from "@/app/_productpage/Productpage";
+// import Appliedfilters from "./_Components/Appliedfilters";
 import Categorydescription from "./_Components/Categorydescription";
-import { cities } from "../commondata";
 
 async function page({ params, searchParams }) {
-  const { Category: slug } = params;
-
+  const { Category: slug, location } = await params;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
   const subcat = slug && slug[1] ? decodeURIComponent(slug[1]) : null;
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
-  const location = searchParams?.location?.replace(/-/g, " ") || "Delhi";
 
   // undefined location
   if (!cities.includes(location)) notFound();
 
-  // link fixes
-  if (cities.includes(category)) redirect("/");
-
   if (productid)
     return (
-      <Productpage category={category} subcat={subcat} productid={productid} />
+      <Productpage
+        category={category}
+        subcat={subcat}
+        productid={productid}
+        location={location}
+      />
     );
 
   // Get products
@@ -54,7 +53,11 @@ async function page({ params, searchParams }) {
   return (
     <>
       <div className="p-2 md:px-10">
-        <Subcategories category={category} subcat={subcat} />
+        <Subcategories
+          category={category}
+          subcat={subcat}
+          location={location}
+        />
         {/* <Appliedfilters
           category={category}
           subcat={subcat}
@@ -66,7 +69,7 @@ async function page({ params, searchParams }) {
           </h1>
         )}
         {sortedProducts.length > 0 ? (
-          <ProductGrid products={sortedProducts} />
+          <ProductGrid products={sortedProducts} location={location} />
         ) : (
           <Productnotfound />
         )}
@@ -80,14 +83,14 @@ async function page({ params, searchParams }) {
   );
 }
 
-const ProductGrid = ({ products }) => (
+const ProductGrid = ({ products, location }) => (
   <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mb-10">
     {products.map((item, i) => (
       <Productcard
         key={i + new Date().getMilliseconds() + Math.random()} // More stable key
         index={i}
         id={item._id}
-        link={`/${item?.category}/${item?.subcat}/${item._id}`}
+        link={`/${location}/${item?.category}/${item?.subcat}/${item._id}`}
         image={item?.images[0]}
         {...item}
       />
@@ -176,11 +179,10 @@ const categoriesedproducts = (allproducts, category, subcat) => {
 };
 
 export const generateMetadata = async ({ params, searchParams }) => {
-  const { Category: slug } = params;
+  const { Category: slug, location } = params;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
   const subcat = slug && slug[1] ? decodeURIComponent(slug[1]) : null;
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
-  const location = searchParams?.location?.replace(/-/g, " ") || "Delhi";
 
   // Handle product-specific metadata
   if (productid) {
@@ -189,11 +191,10 @@ export const generateMetadata = async ({ params, searchParams }) => {
 
     if (filteredProduct) {
       const ogImage = filteredProduct?.images[0] || null;
-
       return {
         title:
           filteredProduct?.seotitle != ""
-            ? filteredProduct?.seotitle
+            ? filteredProduct?.seotitle.replace(/location/gi, location)
             : `Rent ${filteredProduct?.name} | Rentbean`,
         description:
           filteredProduct?.seodescription != ""
@@ -262,7 +263,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
 
   // Default fallback metadata
   return {
-    title: "Rent electronics, furniture, party items and more ",
+    title: "Rent electronics, furniture, party items and more",
     description: "Rent now and save money. Renr now for exclusive deals!",
     openGraph: {
       images: `${domain}/logo&ui/minlogo.png`,

@@ -67,7 +67,7 @@ function Navbar({ params, productsname, token, userdata }) {
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
           >
             <MdLocationPin className="inline-block" />{" "}
-            <span>{location.location}</span>
+            <span>{location?.location}</span>
           </button>
         </div>
         {/* searchbar */}
@@ -76,7 +76,10 @@ function Navbar({ params, productsname, token, userdata }) {
             showsearch ? "block z-40" : "hidden"
           }`}
         >
-          <Searchbox productsname={productsname} />
+          <Searchbox
+            productsname={productsname}
+            location={location?.location || "Delhi"}
+          />
         </div>
 
         {/* third comp */}
@@ -114,7 +117,7 @@ function Navbar({ params, productsname, token, userdata }) {
         )}
       </div>
       {/* categories */}
-      <Navcategories category={category} />
+      <Navcategories category={category} location={location?.location} />
       {/* backbutton */}
       {!showsearch && path != "/" && (
         <button
@@ -158,7 +161,11 @@ export const Cartlink = () => {
           <span className="absolute top-0 right-[65px] -translate-y-1/2 rotate-45 w-4 aspect-square bg-bg1"></span>
           {totalQuantity > 0 ? (
             <>
-              <div className="w-full flex flex-col gap-3 max-h-80  overflow-y-scroll hidescroll">
+              <div
+                className={`w-full text-xs flex flex-col max-h-80  overflow-y-scroll ${
+                  totalQuantity < 3 && "hidescroll"
+                }`}
+              >
                 {Object.values(cartitems).map((item, i) => {
                   const finaltenure =
                     item?.location in item?.prices
@@ -169,11 +176,11 @@ export const Cartlink = () => {
                     <Link
                       key={i}
                       href={item?.productlink}
-                      className="flex gap-2"
+                      className="flex gap-2 border-b p-2 bg-white"
                       prefetch={false}
                     >
                       <Image
-                        className="min-w-[100px] aspect-square rounded-sm object-cover bg-bg1"
+                        className="min-w-[100px] aspect-square rounded-sm object-cover bg-blend-multiply"
                         src={item?.image}
                         alt={item?.name}
                         quality={10}
@@ -181,25 +188,27 @@ export const Cartlink = () => {
                         height={100}
                       ></Image>
                       <div className="flex flex-col">
-                        <h3 className="line-clamp-2">{item?.name}</h3>
+                        <h3 className="line-clamp-2 text-sm font-semibold">
+                          {item?.name}
+                        </h3>
                         {/* price */}
                         {item?.isrentalstore ? (
                           <>
-                            <p className="text-sm">
+                            <p>
                               Rent: ₹
                               {(totalprice * item?.quantity).toLocaleString(
                                 "en-IN"
                               )}
                               {"/-"}
                             </p>
-                            <p className="text-sm">
+                            <p>
                               Security Deposit : ₹
                               {(
                                 item?.securitydeposit * item?.quantity
                               ).toLocaleString("en-IN")}
                               {"/-"}
                             </p>
-                            <p className="text-sm">
+                            <p>
                               Total : ₹
                               {(
                                 totalprice * item?.quantity +

@@ -53,7 +53,7 @@ function Productcard({
 
   return (
     <Link
-      href={link ? link : `/${category}/${subcat}/${id}`}
+      href={link ? link : `/${location?.location}/${category}/${subcat}/${id}`}
       className={`group relative w-full shadow-md min-w-44 md:min-w-60 bg-white rounded-3xl overflow-hidden duration-300 ${
         isrentalstore
           ? availablefor == "Buy" && "hidden"
