@@ -321,7 +321,7 @@ const Review8 = () => {
       <Image
         height={80}
         width={80}
-        src="/logo&ui/reviewers/client77.png"
+        src="/logo&ui/reviewers/clientshivani.jpg"
         alt="client55"
         className="max-h-36 w-full object-cover flex-1 rounded-t-3xl"
       />
