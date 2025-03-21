@@ -93,9 +93,8 @@ const citiesAndLocations = [
   "Nehru Place",
   "Uttam Nagar",
   "Tilak Nagar",
-  "Indirapuram"
+  "Indirapuram",
 ];
-
 
 // Utility functions
 const xmlEscape = (str) =>
@@ -131,7 +130,7 @@ const generateCategoryUrls = () =>
         lastmod: today,
         changefreq: "daily",
         priority: "1.0",
-        image: category.image || "",
+        image: `${domain}${category.image}` || "",
         name: category || "",
       },
       ...subcat.map((subcategory) => ({
@@ -141,7 +140,7 @@ const generateCategoryUrls = () =>
         lastmod: today,
         changefreq: "daily",
         priority: "1.0",
-        image: subcategory?.image || "",
+        image: `${domain}${subcategory?.image}` || "",
         name: subcategory?.name || "",
       })),
     ])
