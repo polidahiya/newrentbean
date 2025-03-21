@@ -142,6 +142,20 @@ function Showproducts({
       </div>
 
       {/* products */}
+      <div>
+        <button
+          className="px-5 py-1 bg-bg1 rounded-md"
+          onClick={() => setgridview(false)}
+        >
+          Blocks
+        </button>
+        <button
+          className="px-5 py-1 bg-bg1 rounded-md ml-2"
+          onClick={() => setgridview(true)}
+        >
+          Table
+        </button>
+      </div>
       {!loading ? (
         gridview ? (
           <Producttabularform products={products} />
@@ -232,7 +246,7 @@ const Productcardview = ({ products }) => {
 
 const Producttabularform = ({ products }) => {
   return (
-    <div className="container mx-auto p-4 overflow-x-scroll">
+    <div className="container mx-auto overflow-x-scroll mt-5">
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
           <thead className="bg-gray-100">
@@ -270,7 +284,7 @@ const Producttabularform = ({ products }) => {
               <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
                 Security Deposit
               </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap min-w-80">
                 Pricing
               </th>
               <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
@@ -370,15 +384,20 @@ const Producttabularform = ({ products }) => {
                   {item.securitydeposit ? `₹${item.securitydeposit}` : "N/A"}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
-                  {item.prices &&
-                  item.prices.Default &&
-                  item.prices.Default.length > 0
-                    ? item.prices.Default.map((price, idx) => (
-                        <div key={idx}>
-                          {price.time} {price.type}: ₹{price.price}
+                  {["Both", "Rent"].includes(item?.availablefor)
+                    ? Object.entries(item.prices).map(([key, tenure]) => (
+                        <div key={key}>
+                          <strong className="mt-2 block">{key}</strong>
+                          <ul>
+                            {tenure.map((item, j) => (
+                              <li key={j} className="list-disc text-sm">
+                                {item?.time} {item?.type} - Rs {item?.price}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       ))
-                    : "No pricing"}
+                    : "N/A"}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
                   {item.buyprice ? `₹${item.buyprice}` : "N/A"}
@@ -397,14 +416,14 @@ const Producttabularform = ({ products }) => {
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
                   {item.seodescription || "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b flex flex-wrap gap-1 items-center">
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
                   {item.seokeywords.split(",").map((item, i) => (
-                    <span
+                    <li
                       key={i}
-                      className="bg-slate-200 rounded-full px-2 text-xs"
+                      className="bg-slate-200 rounded-full px-2 text-xs mt-1"
                     >
                       {item}
-                    </span>
+                    </li>
                   )) || "N/A"}
                 </td>
               </tr>
@@ -415,7 +434,5 @@ const Producttabularform = ({ products }) => {
     </div>
   );
 };
-
-// medical equpment
 
 export default Showproducts;

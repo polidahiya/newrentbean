@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Footer from "./_components/Footer";
 import Navbar from "./_components/Navbar/Navbar";
+import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
 
 function page() {
   return (
@@ -18,7 +19,6 @@ function page() {
             alt="not found gif image"
             height={300}
             width={400}
-            
             className="max-w-[400px] m-auto w-full object-contain object-center"
           ></Image>
           <h3 className=" font-bold text-center">
@@ -36,6 +36,7 @@ function page() {
         </section>
       </div>
       <Footer />
+      <Mobilenav />
     </div>
   );
 }
