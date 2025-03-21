@@ -51,7 +51,7 @@ async function Productpage({ category, subcat, productid, location }) {
     },
     offers: {
       "@type": "Offer",
-      url: `${domain}/${filteredProduct.category}/${filteredProduct.subcat}/${filteredProduct._id}`, // Dynamically adds the product URL
+      url: `${domain}/${location}/${filteredProduct.category}/${filteredProduct.subcat}/${filteredProduct._id}`, // Dynamically adds the product URL
       priceCurrency: "INR",
       price: parseInt(instancerent, 10).toLocaleString("en-IN"),
       availability: filteredProduct.available

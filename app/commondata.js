@@ -25,10 +25,9 @@ export const categorylist = {
         subcat: "Treadmills | Recmbent bike | Eliptical Crosstrainers",
       },
       {
-        image:
-          "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-10-633.jpg",
-        name: "Weight-&-Rack",
-        subcat: "",
+        image: "/logo&ui/categories/subcategories/medicalequipment.jpg",
+        name: "Medical-Equipments",
+        subcat: "Hospital Beds | Walking Aids",
       },
     ],
   },

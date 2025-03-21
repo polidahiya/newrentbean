@@ -9,6 +9,7 @@ import Productcard from "@/app/_components/Productcard";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
 import { IoIosCopy } from "react-icons/io";
+import Image from "next/image";
 
 function Showproducts({
   setdata,
@@ -26,6 +27,7 @@ function Showproducts({
 
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(false);
+  const [gridview, setgridview] = useState(true);
 
   const handlecategorychange = (e) => {
     const value = e.target.value;
@@ -141,86 +143,279 @@ function Showproducts({
 
       {/* products */}
       {!loading ? (
-        <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px] p-3 md:p-8">
-          {products.map((item, i) => {
-            return (
-              <div
-                key={i}
-                className="relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md bg-white rounded-3xl"
-              >
-                <Productcard
-                  index={i}
-                  id={item._id}
-                  image={item.images[0]}
-                  {...item}
-                />
-                <div className="absolute top-0 right-0 flex flex-col w-12 gap-2 p-1">
-                  {/* delete product button */}
-                  <button
-                    className="w-full aspect-square bg-red-600 text-white rounded-full"
-                    onClick={async () => {
-                      setshowdialog({
-                        show: true,
-                        title: "Delete?",
-                        continue: async () => {
-                          const res = await Deleteproduct(
-                            item.images,
-                            item._id
-                          );
-                          if (res.status == 200)
-                            setproducts(
-                              products.filter(
-                                (product) => item._id !== product._id
-                              )
-                            );
-
-                          setmessagefn(res?.message);
-                        },
-                        type: false,
-                      });
-                    }}
-                  >
-                    X
-                  </button>
-
-                  {/* update product button */}
-                  <button
-                    className="w-full aspect-square flex items-center justify-center bg-green-600 rounded-full text-white"
-                    onClick={() => {
-                      setdata(item);
-                      setdeletedimages([]);
-                      setshoweditform(true);
-                    }}
-                  >
-                    <FaEdit className="inline-block" />
-                  </button>
-
-                  {/* copy product */}
-                  <button
-                    className="w-full aspect-square flex items-center justify-center bg-blue-500 rounded-full text-white"
-                    onClick={() => {
-                      setdata(() => {
-                        const updateddata = item;
-                        delete updateddata._id;
-                        updateddata.images = [];
-                        return updateddata;
-                      });
-                      setdeletedimages([]);
-                      setshoweditform(true);
-                    }}
-                  >
-                    <IoIosCopy className="inline-block" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        gridview ? (
+          <Producttabularform products={products} />
+        ) : (
+          <Productcardview products={products} />
+        )
       ) : (
         <Componentloading />
       )}
     </div>
   );
 }
+
+const Productcardview = ({ products }) => {
+  return (
+    <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px] p-3 md:p-8">
+      {products.map((item, i) => {
+        return (
+          <div
+            key={i}
+            className="relative h-full w-full max-w-[350px] md:min-w-[270px] shadow-md bg-white rounded-3xl"
+          >
+            <Productcard
+              index={i}
+              id={item._id}
+              image={item.images[0]}
+              {...item}
+            />
+            <div className="absolute top-0 right-0 flex flex-col w-12 gap-2 p-1">
+              {/* delete product button */}
+              <button
+                className="w-full aspect-square bg-red-600 text-white rounded-full"
+                onClick={async () => {
+                  setshowdialog({
+                    show: true,
+                    title: "Delete?",
+                    continue: async () => {
+                      const res = await Deleteproduct(item.images, item._id);
+                      if (res.status == 200)
+                        setproducts(
+                          products.filter((product) => item._id !== product._id)
+                        );
+
+                      setmessagefn(res?.message);
+                    },
+                    type: false,
+                  });
+                }}
+              >
+                X
+              </button>
+
+              {/* update product button */}
+              <button
+                className="w-full aspect-square flex items-center justify-center bg-green-600 rounded-full text-white"
+                onClick={() => {
+                  setdata(item);
+                  setdeletedimages([]);
+                  setshoweditform(true);
+                }}
+              >
+                <FaEdit className="inline-block" />
+              </button>
+
+              {/* copy product */}
+              <button
+                className="w-full aspect-square flex items-center justify-center bg-blue-500 rounded-full text-white"
+                onClick={() => {
+                  setdata(() => {
+                    const updateddata = item;
+                    delete updateddata._id;
+                    updateddata.images = [];
+                    return updateddata;
+                  });
+                  setdeletedimages([]);
+                  setshoweditform(true);
+                }}
+              >
+                <IoIosCopy className="inline-block" />
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const Producttabularform = ({ products }) => {
+  return (
+    <div className="container mx-auto p-4 overflow-x-scroll">
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Image
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Name
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Category
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Subcategory
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Tags
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Available
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Trash
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                SKU
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap min-w-80">
+                Description
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Max Quantity
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Security Deposit
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Pricing
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Buy Price
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Along With
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap">
+                Available For
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap min-w-64">
+                SEO Title
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap min-w-64">
+                SEO Description
+              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap min-w-64">
+                SEO Keywords
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((item, index) => (
+              <tr
+                key={index}
+                className="hover:bg-gray-50 transition-colors duration-200"
+              >
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.images && item.images.length > 0 ? (
+                    <Image
+                      src={item.images[0]}
+                      alt={item.name || "Product Image"}
+                      width={100} // Reduced size for table
+                      height={100}
+                      className="object-cover object-center"
+                      loading="lazy"
+                    />
+                  ) : (
+                    "No Image"
+                  )}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.name || "Unnamed Item"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.category || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.subcat || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.tags && item.tags.length > 0
+                    ? item.tags.join(", ")
+                    : "No Tags"}
+                </td>
+                <td className="px-4 py-2 text-sm border-b">
+                  <span
+                    className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                      item.available
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                    }`}
+                  >
+                    {item.available ? "Yes" : "No"}
+                  </span>
+                </td>
+                <td className="px-4 py-2 text-sm border-b">
+                  <span
+                    className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                      item.trash
+                        ? "bg-red-100 text-red-800"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {item.trash ? "Yes" : "No"}
+                  </span>
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.sku || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  <ul>
+                    {item.desc && item.desc.length > 0
+                      ? item.desc.map((item, i) => (
+                          <li key={i} className="list-disc">
+                            {item}
+                          </li>
+                        ))
+                      : "No description"}
+                  </ul>
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.maxquantity || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.securitydeposit ? `₹${item.securitydeposit}` : "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.prices &&
+                  item.prices.Default &&
+                  item.prices.Default.length > 0
+                    ? item.prices.Default.map((price, idx) => (
+                        <div key={idx}>
+                          {price.time} {price.type}: ₹{price.price}
+                        </div>
+                      ))
+                    : "No pricing"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.buyprice ? `₹${item.buyprice}` : "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.alongwith && item.alongwith.length > 0
+                    ? item.alongwith.join(", ")
+                    : "None"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.availablefor || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.seotitle || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                  {item.seodescription || "N/A"}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-600 border-b flex flex-wrap gap-1 items-center">
+                  {item.seokeywords.split(",").map((item, i) => (
+                    <span
+                      key={i}
+                      className="bg-slate-200 rounded-full px-2 text-xs"
+                    >
+                      {item}
+                    </span>
+                  )) || "N/A"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+// medical equpment
 
 export default Showproducts;
