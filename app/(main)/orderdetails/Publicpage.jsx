@@ -1,282 +1,56 @@
 "use client";
-import {
-  getordershistory,
-  Cancelorder,
-} from "@/app/_serveractions/Getordershistory";
+import { Cancelorder } from "@/app/_serveractions/Getordershistory";
 import Productnotfound from "@/app/_components/Productnotfound";
-import Productcard from "@/app/_components/Productcard";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { LiaExclamationTriangleSolid } from "react-icons/lia";
 import { IoHelpCircleOutline } from "react-icons/io5";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { orderstages } from "@/app/commondata";
 import { AppContextfn } from "@/app/Context";
 import Link from "next/link";
+import Image from "next/image";
+import selectedtenure from "@/app/_components/_helperfunctions/selectedtenure";
 
 export default function Publicpage({ res }) {
   const { setmessagefn } = AppContextfn();
-  // const [ordershistory, setordershistory] = useState(res?.result || []);
-  const [ordershistory, setordershistory] = useState([
-    {
-      _id: "67b347bf386ed07d20d7e24c",
-      orderNumber: "Rb250217-1107",
-      paymentMethod: "online",
-      status: 0,
-      userdata: {
-        username: "Admin",
-        email: "polidahiya830@gmail.com",
-        phonenum: "08700705247",
-        usertype: "admin",
-        address: "this is my address",
-      },
-      products: [
-        {
-          added: true,
-          quantity: 1,
-          sku: "Rbbabycarrier003-rental-Gurgaon",
-          prices: {
-            Default: [
-              {
-                time: "3",
-                type: "days",
-                price: "600",
-              },
-              {
-                time: "7",
-                type: "days",
-                price: "900",
-              },
-              {
-                time: "30",
-                type: "days",
-                price: "1350",
-              },
-            ],
-          },
-          selectedtenure: 0,
-          buyprice: "",
-          name: "Baby carrier age group 4-36 months ",
-          image:
-            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1739038863/Rentbean/yz9rsbyurfdlbiwy5svi.webp",
-          securitydeposit: "1000",
-          maxquantity: "2",
-          isrentalstore: true,
-          location: "Gurgaon",
-          productlink: "/Others/Baby-Care/67a7a092cf64514f3677416d",
-          status: 0,
-        },
-      ],
-      totalPrice: 1600,
-      note: "",
-      createdAt: "2025-02-17T14:29:19.372Z",
-      paymentStatus: "success",
-    },
-    {
-      _id: "67b16dd194efced249447080",
-      orderNumber: "Rb250216-1105",
-      paymentMethod: "cod",
-      status: 0,
-      userdata: {
-        username: "parvesh",
-        email: "polidahiya830@gmail.com",
-        phonenum: "8700705247",
-        usertype: "admin",
-        address: "Near shiv temple,village hayatpur",
-      },
-      products: [
-        {
-          added: true,
-          quantity: 1,
-          sku: "Rbfrisd001-rental-Delhi",
-          prices: {
-            Default: [
-              {
-                time: "3",
-                type: "months",
-                price: "2400",
-              },
-              {
-                time: "6",
-                type: "months",
-                price: "4200",
-              },
-              {
-                time: "12",
-                type: "months",
-                price: "7800",
-              },
-            ],
-          },
-          selectedtenure: 0,
-          buyprice: "",
-          name: "Fridge 190 L Single Door ",
-          image:
-            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1738521339/Rentbean/s1nt2sposgm80fb2qsdt.jpg",
-          securitydeposit: "1000",
-          maxquantity: "1",
-          isrentalstore: true,
-          location: "Delhi",
-          productlink: "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc",
-          status: 0,
-        },
-      ],
-      totalPrice: 3400,
-      note: "",
-      createdAt: "2025-02-16T04:47:13.789Z",
-    },
-    {
-      _id: "67b16d3494efced24944707f",
-      orderNumber: "Rb250216-1104",
-      paymentMethod: "cod",
-      status: 0,
-      userdata: {
-        username: "parvesh",
-        email: "polidahiya830@gmail.com",
-        phonenum: "8700705247",
-        usertype: "admin",
-        address: "Near shiv temple,village hayatpur",
-      },
-      products: [
-        {
-          added: true,
-          quantity: 1,
-          sku: "Rbfrisd001-rental-Delhi",
-          prices: {
-            Default: [
-              {
-                time: "3",
-                type: "months",
-                price: "2400",
-              },
-              {
-                time: "6",
-                type: "months",
-                price: "4200",
-              },
-              {
-                time: "12",
-                type: "months",
-                price: "7800",
-              },
-            ],
-          },
-          selectedtenure: 0,
-          buyprice: "",
-          name: "Fridge 190 L Single Door ",
-          image:
-            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1738521339/Rentbean/s1nt2sposgm80fb2qsdt.jpg",
-          securitydeposit: "1000",
-          maxquantity: "1",
-          isrentalstore: true,
-          location: "Delhi",
-          productlink: "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc",
-          status: 0,
-        },
-      ],
-      totalPrice: 3400,
-      note: "",
-      createdAt: "2025-02-16T04:44:36.728Z",
-    },
-    {
-      _id: "67b16d1094efced24944707e",
-      orderNumber: "Rb250216-1103",
-      paymentMethod: "cod",
-      status: 0,
-      userdata: {
-        username: "parvesh",
-        email: "polidahiya830@gmail.com",
-        phonenum: "8700705247",
-        usertype: "admin",
-        address: "Near shiv temple,village hayatpur",
-      },
-      products: [
-        {
-          added: true,
-          quantity: 1,
-          sku: "Rbfrisd001-rental-Delhi",
-          prices: {
-            Default: [
-              {
-                time: "3",
-                type: "months",
-                price: "2400",
-              },
-              {
-                time: "6",
-                type: "months",
-                price: "4200",
-              },
-              {
-                time: "12",
-                type: "months",
-                price: "7800",
-              },
-            ],
-          },
-          selectedtenure: 0,
-          buyprice: "",
-          name: "Fridge 190 L Single Door ",
-          image:
-            "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1738521339/Rentbean/s1nt2sposgm80fb2qsdt.jpg",
-          securitydeposit: "1000",
-          maxquantity: "1",
-          isrentalstore: true,
-          location: "Delhi",
-          productlink: "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc",
-          status: 0,
-        },
-      ],
-      totalPrice: 3400,
-      note: "",
-      createdAt: "2025-02-16T04:44:00.145Z",
-    },
-  ]);
+  const [ordershistory, setordershistory] = useState(res?.result || []);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await getordershistory();
-  //     if (res?.result) {
-  //       setordershistory(res?.result);
-  //     }
-  //     if (res?.message) setmessagefn(res?.message);
-  //   })();
-  // }, []);
-
-  if (ordershistory.length == 0)
+  if (ordershistory.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)]">
+      <div className="flex items-center justify-center min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] bg-gray-50">
         <Productnotfound />
       </div>
     );
+  }
 
   return (
-    <div className="w-full min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] flex flex-col  gap-[20px] p-[20px]">
-      {ordershistory.map((item, i) => (
-        <div
-          key={i}
-          className="relative shadow-md rounded-[10px] overflow-hidden bg-bg1"
-        >
-          <div className="w-full flex justify-center flex-wrap gap-3 p-[20px]">
-            {item?.products.map((product, index) => {
-              return (
-                <Historyproductcard
-                  key={index}
-                  item={item}
-                  product={product}
-                  index={index}
-                />
-              );
-            })}
+    <div className="w-full min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] bg-gray-50 py-8 px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {ordershistory.map((item, i) => (
+          <div
+            key={i}
+            className="bg-white rounded-xl shadow-sm border border-gray-100 mb-6 overflow-hidden hover:shadow-md transition-shadow duration-300"
+          >
+            <div className="p-6">
+              <div className="flex flex-col gap-6">
+                {item?.products.map((product, index) => (
+                  <Historyproductcard
+                    key={index}
+                    item={item}
+                    product={product}
+                    index={index}
+                  />
+                ))}
+              </div>
+              <OrderStatus item={item} />
+            </div>
           </div>
-          <OrderStatus item={item} />
-        </div>
-      ))}
-      {/* Order details note */}
-      <p className="text-center text-sm text-gray-600  mb-[10px]">
-        Note: The details of the orders shown are reflective of the state at the
-        time of your purchase and may not represent current availability or
-        prices.
-      </p>
+        ))}
+        <p className="text-center text-sm text-gray-500 mt-6 italic">
+          Note: Order details reflect the state at purchase time and may not
+          show current availability or prices.
+        </p>
+      </div>
     </div>
   );
 }
@@ -284,80 +58,95 @@ export default function Publicpage({ res }) {
 const Historyproductcard = ({ item, product, index }) => {
   const { setmessagefn } = AppContextfn();
   const [showconfirmation, setshowconfirmation] = useState(false);
-  const [moreoptions, setmoreoptions] = useState({
-    show: false,
-    effect: false,
-  });
+  const [moreoptions, setmoreoptions] = useState(false);
   const [canceltag, setcanceltag] = useState(product?.status);
-
-  const toggleMoreOptions = () => {
-    setmoreoptions((prev) => ({ ...prev, show: !prev.show }));
-    setTimeout(() => {
-      setmoreoptions((prev) => ({ ...prev, effect: prev.show }));
-    }, 100);
-  };
 
   const handleCancelOrder = async () => {
     const res = await Cancelorder(item._id, index);
     setshowconfirmation(false);
-    if (res?.status == 200) {
+    if (res?.status === 200) {
       setcanceltag(1);
     }
     setmessagefn(res?.message);
   };
 
+  // Format start date if available
+  const startDate = product?.tenureStart
+    ? `${product.tenureStart.date}/${product.tenureStart.month}/${product.tenureStart.year}`
+    : new Date(item.createdAt).toLocaleDateString();
+
+  const tenure = selectedtenure(product);
+
   return (
     <div
-      className={`relative h-full w-full max-w-[350px] test md:min-w-[270px] shadow-md rounded-[10px] overflow-hidden  ${
-        canceltag == 0 && "bg-white"
-      } ${canceltag == 1 && "bg-red-100"}
-      ${canceltag == 2 && "bg-yellow-100"}`}
+      className={`relative flex gap-4 p-4 rounded-lg transition-colors duration-200 ${
+        canceltag === 0
+          ? "bg-white"
+          : canceltag === 1
+          ? "bg-red-50"
+          : "bg-yellow-50"
+      }`}
     >
-      <Productcard
-        key={index} // More stable key
-        index={index}
-        id={product?._id}
-        link={`/${product?.category}/${product?.subcat}/${product?._id}`}
-        image={product?.image}
-        {...product}
-        available={true}
-      />
-      {/* options */}
-      {canceltag == 0 && item.status < 3 && (
-        <div
-          className="absolute right-[10px] top-[10px] p-[5px] aspect-square bg-white rounded-full cursor-pointer z-10 "
-          onClick={toggleMoreOptions}
-        >
-          <BiDotsHorizontalRounded />
-          <div
-            className={`absolute top-[calc(100%+10px)] right-0 bg-white rounded-[10px] w-[150px] shadow-md p-[5px] duration-300 ${
-              moreoptions.effect
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-[20px]"
-            }`}
+      <div className="flex-shrink-0">
+        <Image
+          src={product?.image}
+          alt={product?.name}
+          loading="lazy"
+          height={80}
+          width={80}
+          className="rounded-md object-cover"
+        />
+      </div>
+      <div className="flex-1">
+        <h3 className="text-lg font-medium text-gray-900">{product?.name}</h3>
+        <div className="text-sm text-gray-600 mt-1 space-y-1">
+          <p>
+            <span className="font-medium">Order #:</span> {item.orderNumber}
+          </p>
+          <p>
+            <span className="font-medium">Price:</span> ₹{tenure?.price} for{" "}
+            {tenure?.time} {tenure?.type} |
+            <span className="font-medium"> Security:</span> ₹
+            {product?.securitydeposit}
+          </p>
+          <p>
+            <span className="font-medium">Start Date:</span> {startDate}
+          </p>
+        </div>
+      </div>
+
+      {canceltag === 0 && item.status < 3 && (
+        <div className="relative">
+          <button
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={() => setmoreoptions(!moreoptions)}
           >
-            <button
-              className="w-full rounded-[5px] text-center lg:hover:bg-slate-100"
-              onClick={() => setshowconfirmation(true)}
-            >
-              Cancel Product
-            </button>
-          </div>
+            <BiDotsHorizontalRounded className="text-gray-600 text-xl" />
+          </button>
+          {moreoptions && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 z-10 animate-fade-in">
+              <button
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                onClick={() => setshowconfirmation(true)}
+              >
+                Cancel Product
+              </button>
+            </div>
+          )}
         </div>
       )}
-      {/* tags */}
-      {canceltag != 0 && (
-        <div className="absolute top-32 left-1/2 -translate-x-1/2  text-white bg-black bg-opacity-50 px-5 whitespace-nowrap">
-          This order is {canceltag == 1 && "canceled"}
-          {canceltag == 2 && "refunded"}
-        </div>
+
+      {canceltag !== 0 && (
+        <span className="absolute top-2 right-2 px-2 py-1 text-xs font-medium text-white bg-gray-800 bg-opacity-75 rounded-full">
+          {canceltag === 1 ? "Canceled" : "Refunded"}
+        </span>
       )}
-      {/* black screen */}
-      {moreoptions.show && (
+
+      {moreoptions && (
         <div
-          className="fixed h-full w-full top-0 left-0"
-          onClick={toggleMoreOptions}
-        ></div>
+          className="fixed inset-0 z-0"
+          onClick={() => setmoreoptions(false)}
+        />
       )}
       {showconfirmation && (
         <Cancleorderconfirmation
@@ -371,9 +160,9 @@ const Historyproductcard = ({ item, product, index }) => {
 
 const OrderStatus = ({ item }) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-6">
       {item.status < 4 && (
-        <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px] ">
+        <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px]">
           <div className="flex items-center w-full mt-[10px] px-[40px] md:px-[60px]">
             {orderstages.slice(0, 4).map((_, i) => (
               <div
@@ -383,19 +172,18 @@ const OrderStatus = ({ item }) => {
                 {i !== 0 && (
                   <div
                     className={`h-[2px] w-full ${
-                      item.status >= i ? "bg-theme" : "bg-slate-300"
+                      item.status >= i ? "bg-blue-500" : "bg-slate-300"
                     }`}
-                  ></div>
+                  />
                 )}
                 <div
                   className={`min-w-[10px] aspect-square rounded-full ${
-                    item.status >= i ? "bg-theme" : "bg-slate-300"
+                    item.status >= i ? "bg-blue-500" : "bg-slate-300"
                   }`}
-                ></div>
+                />
               </div>
             ))}
           </div>
-          {/* stage names */}
           <div className="flex items-center justify-between w-full py-[10px] px-[20px] text-[10px] md:text-[14px] gap-[10px]">
             {orderstages.slice(0, 4).map((stage, i) => (
               <span key={i} className="text-center">
@@ -411,30 +199,31 @@ const OrderStatus = ({ item }) => {
 
 const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
   return (
-    <div className="fixed top-0 left-0 h-screen w-full bg-black bg-opacity-30 z-20 flex items-center justify-center">
-      <div className="w-[90%] max-w-[600px] bg-white rounded-lg p-6 shadow-lg">
-        <div className="flex items-center gap-3 text-yellow-600 mb-4">
-          <p className="text-lg font-semibold text-center">
-            Canceling the order at this stage may result in a 5% deduction from
-            your refund.
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-xl p-6 w-full max-w-[600px] shadow-xl">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <LiaExclamationTriangleSolid className="text-2xl text-yellow-500 flex-shrink-0" />
+          <p className="text-gray-800 text-sm">
+            Canceling now may incur a 5% deduction from your refund.
           </p>
         </div>
-        <div className="flex flex-col md:flex-row justify-center gap-4 mt-6">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center whitespace-nowrap">
           <Link
             href="/Contact"
-            className="border border-slate-300 rounded-md px-4 py-1 text-slate-500 hover:bg-slate-50 flex items-center justify-center gap-1"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
           >
-            <IoHelpCircleOutline className="text-[20px]" /> Need Help
+            <IoHelpCircleOutline className="text-lg" />
+            Need Help
           </Link>
           <button
-            className="bg-yellow-500 text-white rounded-md px-4 py-1 hover:bg-yellow-400 flex items-center justify-center gap-1"
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             onClick={confirmfn}
           >
-            <LiaExclamationTriangleSolid className="text-[20px] text-white " />
+            <LiaExclamationTriangleSolid className="text-lg" />
             Confirm Cancellation
           </button>
           <button
-            className="border border-slate-300 rounded-md px-4 py-1 text-slate-500 hover:bg-slate-50"
+            className="px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
             onClick={() => setshowconfirmation(false)}
           >
             Go Back

@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { FaOpencart } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
 import { usePathname } from "next/navigation";
+import selectedtenure from "../_helperfunctions/selectedtenure";
 
 function Navbar({ params, productsname, token, userdata }) {
   const router = useRouter();
@@ -173,11 +174,8 @@ export const Cartlink = () => {
                 }`}
               >
                 {Object.values(cartitems).map((item, i) => {
-                  const finaltenure =
-                    item?.location in item?.prices
-                      ? item?.prices[item?.location]
-                      : item?.prices.Default;
-                  const totalprice = finaltenure[item?.selectedtenure]?.price;
+                  const finaltenure = selectedtenure(item);
+                  const totalprice = finaltenure?.price;
                   return (
                     <Link
                       key={i}
