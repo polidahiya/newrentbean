@@ -140,7 +140,6 @@ function Showproducts({
           Trash Products
         </button>
       </div>
-
       {/* products */}
       <div>
         <button
@@ -158,9 +157,21 @@ function Showproducts({
       </div>
       {!loading ? (
         gridview ? (
-          <Producttabularform products={products} />
+          <Producttabularform
+            products={products}
+            setproducts={setproducts}
+            setdata={setdata}
+            setdeletedimages={setdeletedimages}
+            setshoweditform={setshoweditform}
+          />
         ) : (
-          <Productcardview products={products} />
+          <Productcardview
+            products={products}
+            setproducts={setproducts}
+            setdata={setdata}
+            setdeletedimages={setdeletedimages}
+            setshoweditform={setshoweditform}
+          />
         )
       ) : (
         <Componentloading />
@@ -169,7 +180,14 @@ function Showproducts({
   );
 }
 
-const Productcardview = ({ products }) => {
+const Productcardview = ({
+  products,
+  setproducts,
+  setdata,
+  setdeletedimages,
+  setshoweditform,
+}) => {
+  const { setmessagefn, setshowdialog } = AppContextfn();
   return (
     <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px] p-3 md:p-8">
       {products.map((item, i) => {
@@ -244,7 +262,14 @@ const Productcardview = ({ products }) => {
   );
 };
 
-const Producttabularform = ({ products }) => {
+const Producttabularform = ({
+  products,
+  setproducts,
+  setdata,
+  setdeletedimages,
+  setshoweditform,
+}) => {
+  const { setmessagefn, setshowdialog } = AppContextfn();
   return (
     <div className="container mx-auto overflow-x-scroll mt-5">
       <div className="overflow-x-auto">
@@ -305,13 +330,14 @@ const Producttabularform = ({ products }) => {
               <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b whitespace-nowrap min-w-64">
                 SEO Keywords
               </th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
             {products.map((item, index) => (
               <tr
                 key={index}
-                className="hover:bg-gray-50 transition-colors duration-200"
+                className="relative hover:bg-gray-50 transition-colors duration-200"
               >
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
                   {item.images && item.images.length > 0 ? (
@@ -425,6 +451,66 @@ const Producttabularform = ({ products }) => {
                       {item}
                     </li>
                   )) || "N/A"}
+                </td>
+                <td>
+                  <div className="flex flex-col w-12 gap-2 p-1">
+                    {/* delete product button */}
+                    <button
+                      className="w-full aspect-square bg-red-600 text-white rounded-full"
+                      onClick={async () => {
+                        setshowdialog({
+                          show: true,
+                          title: "Delete?",
+                          continue: async () => {
+                            const res = await Deleteproduct(
+                              item.images,
+                              item._id
+                            );
+                            if (res.status == 200)
+                              setproducts(
+                                products.filter(
+                                  (product) => item._id !== product._id
+                                )
+                              );
+
+                            setmessagefn(res?.message);
+                          },
+                          type: false,
+                        });
+                      }}
+                    >
+                      X
+                    </button>
+
+                    {/* update product button */}
+                    <button
+                      className="w-full aspect-square flex items-center justify-center bg-green-600 rounded-full text-white"
+                      onClick={() => {
+                        setdata(item);
+                        setdeletedimages([]);
+                        setshoweditform(true);
+                      }}
+                    >
+                      <FaEdit className="inline-block" />
+                    </button>
+
+                    {/* copy product */}
+                    <button
+                      className="w-full aspect-square flex items-center justify-center bg-blue-500 rounded-full text-white"
+                      onClick={() => {
+                        setdata(() => {
+                          const updateddata = item;
+                          delete updateddata._id;
+                          updateddata.images = [];
+                          return updateddata;
+                        });
+                        setdeletedimages([]);
+                        setshoweditform(true);
+                      }}
+                    >
+                      <IoIosCopy className="inline-block" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

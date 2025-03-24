@@ -42,19 +42,19 @@ async function Footer() {
     { name: "Others", link: "/Delhi/Others" },
   ];
   return (
-    <footer className="bg-bg1 px-[30px] md:px-[50px] p-[20px] pt-[30px] lg:pt-[20px] text-[14px]">
-      <section className=" flex gap-[50px] flex-col md:flex-row">
+    <footer className="bg-bg1 px-8 md:px-12 p-5 pt-8 lg:pt-5 text-sm">
+      <section className=" flex gap-12 flex-col md:flex-row">
         <div className="flex-1 flex flex-col items-start">
           <Image
             src="/logo&ui/3dlogo.png"
             alt="logo image"
             width={200}
             height={52}
-            className="h-[40px] w-auto"
+            className="h-10 w-auto"
           ></Image>
-          <p className="mt-[30px]  mb-[20px] text-justify">
+          <p className="mt-8  mb-5 text-justify">
             {
-              "We provide high-quality rentals for furniture, electronics, fitness gear, baby care, and party items. Our goal is to offer flexible, affordable solutions, making premium products accessible without ownership hassles."
+              "We provide high-quality rentals and sales for furniture, electronics, fitness gear, baby care, and party items. Our goal is to offer flexible, affordable solutions, making premium products accessible—whether you choose to rent or buy—without ownership hassles."
             }
           </p>
           <Socialfollow />
@@ -78,7 +78,7 @@ async function Footer() {
           <Heading heading="Categories" />
           <div className="flex flex-col gap-[10px] items-start">
             {list2.map((item, i) => (
-              <div key={i} className="flex items-center gap-[5px]">
+              <div key={i} className="flex items-center gap-1">
                 <Links
                   key={i}
                   name={item.name}
@@ -97,7 +97,7 @@ async function Footer() {
           <strong className="font-bold">Rentbean.in</strong>. All rights
           reserved.
         </p>
-        <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-[20px] text-[12px]">
+        <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-5 text-[12px]">
           <Link
             href="/Sitemap"
             className="flex items-center gap-1"
@@ -129,9 +129,9 @@ async function Footer() {
 
 function Heading({ heading }) {
   return (
-    <h3 className="relative font-bold text-[20px] mb-[30px]">
+    <h3 className="relative font-bold text-xl mb-8">
       {heading}
-      <span className="w-[120%] h-[2px] absolute bottom-[-5px] left-0 block bg-theme"></span>
+      <span className="w-[120%] h-[2px] absolute -bottom-1 left-0 block bg-theme"></span>
     </h3>
   );
 }
@@ -178,7 +178,7 @@ function Socialfollow() {
       title: "Facebook.com",
       link: sociallinks.facebook,
       logo: (
-        <FaFacebook className="text-[20px] lg:group-hover:translate-y-1 duration-300" />
+        <FaFacebook className="text-xl lg:group-hover:translate-y-1 duration-300" />
       ),
       qrcode: "/faceboo.svg",
     },
@@ -186,7 +186,7 @@ function Socialfollow() {
       title: "X.com",
       link: sociallinks.twitter,
       logo: (
-        <RiTwitterXFill className="text-[20px] lg:group-hover:translate-y-1 duration-300" />
+        <RiTwitterXFill className="text-xl lg:group-hover:translate-y-1 duration-300" />
       ),
       qrcode: "/x.com.svg",
     },
@@ -194,7 +194,7 @@ function Socialfollow() {
       title: "Instagram.com",
       link: sociallinks.insta,
       logo: (
-        <RiInstagramFill className="text-[20px] lg:group-hover:translate-y-1 duration-300" />
+        <RiInstagramFill className="text-xl lg:group-hover:translate-y-1 duration-300" />
       ),
       qrcode: "/instagram.svg",
     },
@@ -202,7 +202,7 @@ function Socialfollow() {
       title: "Pinterest.com",
       link: sociallinks.pinterest,
       logo: (
-        <FaPinterestP className="text-[20px] lg:group-hover:translate-y-1 duration-300" />
+        <FaPinterestP className="text-xl lg:group-hover:translate-y-1 duration-300" />
       ),
       qrcode: "/pinterest.svg",
     },
@@ -239,7 +239,7 @@ function Socialfollow() {
 
 function Divider() {
   return (
-    <div className="flex items-center justify-center gap-[5px] lg:gap-[20px] w-full h-px mt-[50px] mb-[20px] bg-[linear-gradient(90deg,transparent,#cbd5e1,transparent)]"></div>
+    <div className="w-full h-px mt-12 mb-5 bg-[linear-gradient(90deg,transparent,#cbd5e1,transparent)]"></div>
   );
 }
 
