@@ -9,7 +9,9 @@ export const Cachedproducts = unstable_cache(
     const { Productscollection } = await getcollection();
     const productsList = await Productscollection.find({
       trash: false,
-    }).toArray();
+    })
+      .sort({ sortOrder: 1 })
+      .toArray();
     return productsList.map((item) => ({
       ...item,
       _id: item._id.toString(),

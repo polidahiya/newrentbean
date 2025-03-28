@@ -12,25 +12,20 @@ export const Getliveproducts = async (categorystate, searchmode) => {
       return { status: 400, message: "Invalid user" };
     }
 
-    let products;
-    if (searchmode == "category") {
-      products = await Productscollection.find({
+    const queries = {
+      category: {
         category: categorystate.category,
-        subcat: categorystate?.subcat,
-      }).toArray();
-    }
+        subcat: categorystate.subcat,
+      },
+      id: categorystate.id ? { _id: new ObjectId(categorystate.id) } : null,
+      trash: { trash: true },
+    };
 
-    if (searchmode == "id") {
-      products = await Productscollection.find({
-        _id: new ObjectId(categorystate?.id),
-      }).toArray();
-    }
+    const query = queries[searchmode] || {}; // Ensure query is never undefined
 
-    if (searchmode == "trash") {
-      products = await Productscollection.find({
-        trash: true,
-      }).toArray();
-    }
+    const products = await Productscollection.find(query)
+      .sort({ sortOrder: 1 })
+      .toArray();
 
     products.map((item) => (item._id = item._id.toString()));
 

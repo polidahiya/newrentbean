@@ -73,3 +73,55 @@ export const Deleteproduct = async (images, id) => {
     return { status: 500, message: "Server Error" };
   }
 };
+
+export const Bulkupdate = async (products) => {
+  try {
+    const res = await Verification("Add-Product");
+
+    if (!res?.verified) {
+      return { status: 400, message: "Invalid user" };
+    }
+    //
+    if (!products || !Array.isArray(products)) {
+      return { status: 400, message: "Invalid data format" };
+    }
+
+    const { Productscollection, ObjectId } = await getcollection();
+
+    const bulkOperations = products.map((product) => {
+      const { _id, ...updateFields } = product; // Remove _id from update data
+      return {
+        updateOne: {
+          filter: { _id: new ObjectId(_id) },
+          update: { $set: updateFields }, // Only update other fields
+        },
+      };
+    });
+
+    await Productscollection.bulkWrite(bulkOperations);
+
+    return { status: 200, message: "Updated Successfully" };
+  } catch (error) {
+    console.log(error);
+    return { status: 500, message: "Server Error" };
+  }
+};
+
+// export const Bulkaddproperty = async () => {
+//   try {
+//     const { Productscollection, ObjectId } = await getcollection();
+//     const products = await Productscollection.find({}).toArray();
+
+//     const bulkOperations = products.map((product, index) => ({
+//       updateOne: {
+//         filter: { _id: new ObjectId(product._id) },
+//         update: { $set: { sortOrder: index + 1 } }, // Set unique order values
+//       },
+//     }));
+
+//     await Productscollection.bulkWrite(bulkOperations);
+//     console.log("Updated all products with sortOrder");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
