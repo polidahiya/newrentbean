@@ -3,9 +3,13 @@ import React from "react";
 import { AppContextfn } from "../Context";
 import { cities } from "../commondata";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function Location() {
   const { location, setlocation } = AppContextfn();
+  const path = usePathname();
+  const router = useRouter();
 
   if (location.show || location?.location == null)
     return (
@@ -24,7 +28,15 @@ function Location() {
                 <Link
                   key={i}
                   href={`/${item}`}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const splitpath = path.split("/");
+                    if (cities.includes(splitpath[1])) {
+                      splitpath[1] = item;
+                      const newjoinedpath = splitpath.join("/");
+                      router.push(newjoinedpath);
+                    }
+
                     setlocation(() => ({ show: false, location: item }));
                   }}
                   className={`flex items-center justify-center w-32 aspect-[2/1] border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${

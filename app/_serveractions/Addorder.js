@@ -5,7 +5,12 @@ import { getcollection } from "@/app/Mongodb";
 import Ordercconfirmation from "../_mailtemplates/Ordercconfirmation";
 import sendEmail from "./Sendmail";
 
-export const Placeorder = async (ordersdata, paymentMethod, totalPrice) => {
+export const Placeorder = async (
+  ordersdata,
+  paymentMethod,
+  totalPrice,
+  location
+) => {
   try {
     const { orderscollection, sitedata } = await getcollection();
     const tokenres = await Verification("public");
@@ -33,6 +38,7 @@ export const Placeorder = async (ordersdata, paymentMethod, totalPrice) => {
         ...product[1],
         status: 0,
       })),
+      location,
       totalPrice,
       note: "",
       createdAt: new Date(),

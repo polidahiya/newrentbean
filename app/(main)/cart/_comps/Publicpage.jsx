@@ -23,6 +23,7 @@ export default function Page({ userdata, token }) {
     settoggleorderplacedmenu,
     setmessagefn,
     setredirectloginlink,
+    location,
     // setinstantlogin,
   } = AppContextfn();
   const [showtenure, setshowtenure] = useState({ show: false, data: {} });
@@ -32,8 +33,8 @@ export default function Page({ userdata, token }) {
   const totalPrice = cartitems.reduce((total, [key, value]) => {
     if (value.isrentalstore) {
       const finaltenure =
-        value?.location in value?.prices
-          ? value?.prices[value?.location]
+        location?.location in value?.prices
+          ? value?.prices[location?.location]
           : value?.prices.Default;
       const securitydeposit = value?.securitydeposit * value.quantity;
       const totalprice =
@@ -69,7 +70,12 @@ export default function Page({ userdata, token }) {
 
     Recaptcha(
       async () => {
-        const res = await Placeorder(cartitems, paymentMethod, totalPrice);
+        const res = await Placeorder(
+          cartitems,
+          paymentMethod,
+          totalPrice,
+          location?.location || "Default"
+        );
         if (res?.status == 200) {
           event("button_click", {
             category: "User Interaction",
@@ -137,7 +143,7 @@ export default function Page({ userdata, token }) {
 
   const ordersuccess = () => {
     settoggleorderplacedmenu(true);
-    Cookies.set("rentbeancart", JSON.stringify({}), {
+    Cookies.set("rentbeancart2", JSON.stringify({}), {
       expires: 7,
     });
     setcart({});

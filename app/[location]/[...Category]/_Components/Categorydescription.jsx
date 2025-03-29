@@ -1,9 +1,9 @@
 const categoryComponents = {
-  "Health-&-Fitness": fn1,
-  Electronic: fn2,
-  Furniture: fn3,
-  "Event-&-Parties": fn4,
-  Others: fn5,
+  "Health-&-Fitness": category1,
+  Electronic: category2,
+  Furniture: category3,
+  "Event-&-Parties": category4,
+  Others: category5,
 };
 
 const subcategoryComponents = {};
@@ -14,7 +14,7 @@ function Categorydescription({ category, subcat, location }) {
   const SubcatComponent = subcategoryComponents[subcat];
 
   return (
-    <div className="categorydesc px-5 md:px-10 text-sm my- font-recline  my-10 text-justify ">
+    <div className="text px-5 md:px-10 text-sm my-10 text-justify ">
       {/* {subcat ? (
         <SubcatComponent location={location} />
       ) : ( */}
@@ -23,17 +23,15 @@ function Categorydescription({ category, subcat, location }) {
     </div>
   );
 }
-function fn1({ location }) {
+function category1({ location }) {
   return (
-    <div className="fitness-equipment-rent-description">
-      <h1>
-        <strong>Fitness Equipment on Rent in {location}</strong>
-      </h1>
+    <div>
+      <h1>Fitness Equipment on Rent in {location}</h1>
       <p>
         Looking for high-quality{" "}
-        <strong>fitness equipment on rent in {location}</strong>? You&#39;ve come to
-        the right place! We offer a wide range of <strong>gym equipment</strong>
-        , including <strong>treadmills</strong>,{" "}
+        <strong>fitness equipment on rent in {location}</strong>? You&#39;ve
+        come to the right place! We offer a wide range of{" "}
+        <strong>gym equipment</strong>, including <strong>treadmills</strong>,{" "}
         <strong>exercise cycles</strong>, <strong>cross trainers</strong>,{" "}
         <strong>spin bikes</strong>, <strong>recumbent bikes</strong>,{" "}
         <strong>air bikes</strong>, and more. Whether you need a{" "}
@@ -46,9 +44,9 @@ function fn1({ location }) {
         fitness machines, ensuring a seamless workout experience. From{" "}
         <strong>treadmills on rent</strong> to <strong>cross trainers</strong>{" "}
         and <strong>exercise cycles</strong>, we cater to all your fitness
-        requirements. Whether you&#39;re in <strong>{location}</strong> or nearby
-        areas, our <strong>delivery and setup services</strong> make it easy to
-        get started.
+        requirements. Whether you&#39;re in <strong>{location}</strong> or
+        nearby areas, our <strong>delivery and setup services</strong> make it
+        easy to get started.
       </p>
       <p>
         Why buy when you can rent? Enjoy the convenience of renting{" "}
@@ -67,9 +65,9 @@ function fn1({ location }) {
     </div>
   );
 }
-function fn2({ location }) {
+function category2({ location }) {
   return (
-    <div className="seo-optimized-description">
+    <div>
       <h1>
         Affordable Rentals in {location} - Laptops, Mobiles, Home Appliances &
         More
@@ -120,9 +118,9 @@ function fn2({ location }) {
     </div>
   );
 }
-function fn3({ location }) {
+function category3({ location }) {
   return (
-    <div className="furniture-rental-description">
+    <div>
       <h1>Affordable and Premium Furniture on Rent in {location}</h1>
       <p>
         Looking for <strong>furniture on rent</strong> in {location}? We offer a
@@ -156,15 +154,15 @@ function fn3({ location }) {
     </div>
   );
 }
-function fn4({ location }) {
+function category4({ location }) {
   return (
-    <div className="rental-services-description">
+    <div>
       <h1>Premium Rental Services in {location}</h1>
       <p>
-        Looking for the best rental services in {location}? You&#39;ve come to the
-        right place! We offer a wide range of premium rental options to cater to
-        all your needs. Whether you&#39;re planning a party, a camping trip, or a
-        special event, we have you covered.
+        Looking for the best rental services in {location}? You&#39;ve come to
+        the right place! We offer a wide range of premium rental options to
+        cater to all your needs. Whether you&#39;re planning a party, a camping
+        trip, or a special event, we have you covered.
       </p>
       <h2>Hookah on Rent</h2>
       <p>
@@ -224,34 +222,35 @@ function fn4({ location }) {
         areas.
       </p>
       <p>
-        No matter what you&#39;re looking for, our rental services in {location} are
-        designed to make your life easier. Contact us today to book your rentals
-        and enjoy a hassle-free experience!
+        No matter what you&#39;re looking for, our rental services in {location}{" "}
+        are designed to make your life easier. Contact us today to book your
+        rentals and enjoy a hassle-free experience!
       </p>
     </div>
   );
 }
-function fn5({ location }) {
+function category5({ location }) {
   return (
     <div>
       <h1>Baby Gear and Camping Equipment on Rent in {location}</h1>
       <p>
-        Ensure your little one&#39;s safety and comfort with our premium baby car
-        seats for rent. Designed with the highest standards of safety in mind,
-        our rental car seats offer peace of mind for parents on the go. Whether
-        you&#39;re traveling or simply need a temporary solution, our baby car seats
-        provide a secure and cozy ride for your precious cargo.
+        Ensure your little one&#39;s safety and comfort with our premium baby
+        car seats for rent. Designed with the highest standards of safety in
+        mind, our rental car seats offer peace of mind for parents on the go.
+        Whether you&#39;re traveling or simply need a temporary solution, our
+        baby car seats provide a secure and cozy ride for your precious cargo.
       </p>
       <p>
-        Looking for baby gear or camping equipment on rent in {location}? You&#39;ve
-        come to the right place! We offer a wide range of high-quality,
-        affordable rental services including baby car seats, baby carriers, baby
-        strollers, baby cots, camping tents, trekking tents, canopy tents,
-        gazebo tents, and all essential camping gear. Whether you need a baby
-        car seat for a short trip or camping gear for an outdoor adventure, we
-        have you covered. Our products are sanitized, well-maintained, and
-        available at competitive rental prices. Book now and enjoy a hassle-free
-        experience with our convenient rental services in {location}.
+        Looking for baby gear or camping equipment on rent in {location}?
+        You&#39;ve come to the right place! We offer a wide range of
+        high-quality, affordable rental services including baby car seats, baby
+        carriers, baby strollers, baby cots, camping tents, trekking tents,
+        canopy tents, gazebo tents, and all essential camping gear. Whether you
+        need a baby car seat for a short trip or camping gear for an outdoor
+        adventure, we have you covered. Our products are sanitized,
+        well-maintained, and available at competitive rental prices. Book now
+        and enjoy a hassle-free experience with our convenient rental services
+        in {location}.
       </p>
       <h2>Why Choose Us?</h2>
       <ul>
@@ -262,8 +261,8 @@ function fn5({ location }) {
         <li>Flexible rental durations</li>
       </ul>
       <p>
-        Whether you&#39;re a parent looking for baby gear or an adventurer in need
-        of camping equipment, we provide reliable and affordable rental
+        Whether you&#39;re a parent looking for baby gear or an adventurer in
+        need of camping equipment, we provide reliable and affordable rental
         solutions in {location}. Explore our services today and make your life
         easier!
       </p>

@@ -9,7 +9,7 @@ import { orderstages } from "@/app/commondata";
 import { AppContextfn } from "@/app/Context";
 import Link from "next/link";
 import Image from "next/image";
-import selectedtenure from "@/app/_components/_helperfunctions/selectedtenure";
+import { fixedselectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 
 export default function Publicpage({ res }) {
   const { setmessagefn } = AppContextfn();
@@ -75,7 +75,7 @@ const Historyproductcard = ({ item, product, index }) => {
     ? `${product.tenureStart.date}/${product.tenureStart.month}/${product.tenureStart.year}`
     : new Date(item.createdAt).toLocaleDateString();
 
-  const tenure = selectedtenure(product);
+  const tenure = fixedselectedtenure(product);
 
   return (
     <div

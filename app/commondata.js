@@ -205,7 +205,7 @@ export const searchoptions = [
 ];
 
 export const permanentsearchoptions = [
-  "Sofa-sets",
+  "Sofa",
   "Laptop",
   "Hookah",
   "Treadmill",

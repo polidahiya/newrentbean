@@ -29,7 +29,7 @@ export default async function RootLayout({ children }) {
   const parseduserdata = allcookies.get("userdata")?.value;
   const userdata = parseduserdata ? JSON.parse(parseduserdata) : null;
   const rblocation = allcookies.get("rblocation")?.value;
-  const cookiecart = allcookies.get("rentbeancart")?.value;
+  const cookiecart = allcookies.get("rentbeancart2")?.value;
   const parsedCart = cookiecart ? JSON.parse(cookiecart) : {};
   const storetype = allcookies.get("storetype")?.value;
 

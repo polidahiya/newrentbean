@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { FaOpencart } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
 import { usePathname } from "next/navigation";
-import selectedtenure from "../_helperfunctions/selectedtenure";
+import { selectedtenure } from "../_helperfunctions/selectedtenure";
 
 function Navbar({ params, productsname, token, userdata }) {
   const router = useRouter();

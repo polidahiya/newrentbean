@@ -62,6 +62,7 @@ function Ordercard({ item }) {
             label="Order Date and Time"
             value={FormattedDate(item?.createdAt)}
           />
+          <OrderDetail label="Location" value={item?.location} />
           {item?.delivered_date && (
             <OrderDetail
               label="Delivered Date"
@@ -76,6 +77,7 @@ function Ordercard({ item }) {
                 product={product}
                 orderid={item?._id}
                 productindex={i}
+                location={item?.location}
               />
             ))}
           </div>

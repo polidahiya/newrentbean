@@ -11,7 +11,7 @@ function Details({ filteredProduct }) {
     AppContextfn();
   const cartproductid = `${filteredProduct?.sku}-${
     isrentalstore ? "rental" : "buy"
-  }-${location?.location}`;
+  }`;
 
   // Function to check if a selected date is in the past
   const today = new Date();
@@ -50,7 +50,6 @@ function Details({ filteredProduct }) {
             securitydeposit: filteredProduct?.securitydeposit,
             maxquantity: filteredProduct?.maxquantity,
             isrentalstore,
-            location: location?.location,
             productlink: `/${location?.location}/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
             tenureStart: {
               date: defaultDate.getDate(),

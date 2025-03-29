@@ -5,7 +5,12 @@ import { changeproductstatus } from "@/app/_serveractions/Adminorders";
 import { AppContextfn } from "@/app/Context";
 import { months } from "@/app/commondata";
 
-export default function ProductCard({ product, orderid, productindex }) {
+export default function ProductCard({
+  product,
+  orderid,
+  productindex,
+  location,
+}) {
   const [pshowstatus, setpshowstatus] = useState(false);
   const [localStatus, setLocalStatus] = useState(product?.status); // Local state for status
 
@@ -15,7 +20,6 @@ export default function ProductCard({ product, orderid, productindex }) {
     quantity,
     prices,
     buyprice,
-    location,
     selectedtenure,
     securitydeposit,
     image,
@@ -74,9 +78,6 @@ export default function ProductCard({ product, orderid, productindex }) {
               "en-IN"
             )}/-`}
           />
-        )}
-        {isrentalstore && (
-          <OrderDetail label="Location" value={`${location}`} />
         )}
       </div>
       {/* status button*/}

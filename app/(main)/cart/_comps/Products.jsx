@@ -7,7 +7,7 @@ import { AppContextfn } from "@/app/Context";
 import { months } from "@/app/commondata";
 
 export default function Products({ cartproductid, item, i, setshowtenure }) {
-  const { setcart, setmessagefn } = AppContextfn();
+  const { setcart, setmessagefn, location } = AppContextfn();
   const fallbackImage = "/logo&ui/default-fallback-image.png";
   const MAX_QUANTITY = item?.maxquantity;
 
@@ -53,8 +53,8 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
   };
 
   const finaltenure =
-    item?.location in item?.prices
-      ? item?.prices[item?.location]
+    location?.location in item?.prices
+      ? item?.prices[location?.location]
       : item?.prices.Default;
   const totalprice = finaltenure[item?.selectedtenure]?.price;
 

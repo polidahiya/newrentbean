@@ -76,9 +76,7 @@ const Producttabularform = ({
                 key={index}
                 className="relative hover:bg-gray-50 transition-colors duration-200"
               >
-                <td className="text-center">
-                  {index + 1} ,{item?.sortOrder}
-                </td>
+                <td className="text-center">{index + 1}</td>
                 <td>
                   <div className="text-xs px-5 flex flex-col gap-1 items-stretch">
                     <button
