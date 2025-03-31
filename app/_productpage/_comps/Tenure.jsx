@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppContextfn } from "@/app/Context";
 
 function Tenure({ filteredProduct, cartproductid }) {
   const { cart, setcart, location } = AppContextfn();
+  const [inputvalue, setinputvalue] = useState(
+    cart[cartproductid]?.selectedtenure || 0
+  );
+
+  useEffect(() => {
+    selecttenure(Math.round(inputvalue || 0));
+  }, [inputvalue]);
 
   const locationrentprices =
     location?.location in filteredProduct?.prices
@@ -54,10 +61,10 @@ function Tenure({ filteredProduct, cartproductid }) {
         {locationrentprices.map((item, i) => (
           <button
             key={i}
-            className={`flex-1 py-3 text-sm  ${
+            className={`relative flex-1 py-3 text-sm before:absolute before:left-1/2 before:bottom-0  before:h-2 before:w-[2px] before:rounded-full before:bg-theme ${
               cart[cartproductid]?.selectedtenure == i && "text-theme "
             }`}
-            onClick={() => selecttenure(i)}
+            onClick={() => setinputvalue(i)}
           >
             {item?.time} {item?.type}
           </button>
@@ -67,10 +74,13 @@ function Tenure({ filteredProduct, cartproductid }) {
         <input
           className={`mt-1 ${inputwidth[locationrentprices.length] || "100%"}`}
           type="range"
-          value={cart[cartproductid]?.selectedtenure || 0}
-          onChange={(e) => selecttenure(e.target.value)}
+          value={inputvalue}
+          onChange={(e) => setinputvalue(parseFloat(e.target.value))}
+          onMouseUp={(e) => setinputvalue(Math.round(e.target.value || 0))}
+          onTouchEnd={(e) => setinputvalue(Math.round(e.target.value || 0))}
           min={0}
           max={locationrentprices.length - 1}
+          step={0.01}
         />
       </div>
       <div className="flex w-full py-3 mt-10 rounded-2xl shadow-[5px_5px_7px_rgba(0,0,0,0.123)_inset,-5px_-5px_7px_rgba(255,255,255)_inset]">

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Productnotfound from "@/app/_components/Productnotfound";
 import Productcard from "@/app/_components/Productcard";
@@ -8,8 +7,6 @@ import { AppContextfn } from "@/app/Context";
 import { likeproduct } from "@/app/_serveractions/Likedproducts";
 
 function Likedproducts({ filtereditems }) {
-  console.log(filtereditems);
-
   const { setmessagefn } = AppContextfn();
   const [favouritesproducts, setfavouritesproducts] = useState(filtereditems);
 

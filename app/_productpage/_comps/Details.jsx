@@ -67,20 +67,20 @@ function Details({ filteredProduct }) {
       <h1 className="text-xl md:text-2xl font-recline tracking-wider text-center mt-5">
         {filteredProduct?.name}
       </h1>
-      {isrentalstore && (
-        <Dateselector
-          cart={cart}
-          setcart={setcart}
-          cartproductid={cartproductid}
-          isPastDate={isPastDate}
-        />
-      )}
       {isrentalstore ? (
         ["Both", "Rent"].includes(filteredProduct?.availablefor) ? (
-          <Tenure
-            filteredProduct={filteredProduct}
-            cartproductid={cartproductid}
-          />
+          <>
+            <Dateselector
+              cart={cart}
+              setcart={setcart}
+              cartproductid={cartproductid}
+              isPastDate={isPastDate}
+            />
+            <Tenure
+              filteredProduct={filteredProduct}
+              cartproductid={cartproductid}
+            />
+          </>
         ) : (
           <Notavailableforstore title="This Product is not available for Rent" />
         )

@@ -214,9 +214,11 @@ body {
 @keyframes days-animate {
   0% {
     opacity: 0;
+    transform: translateY(15px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0px);
   }
 }
 
@@ -302,7 +304,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .text strong {
-  font-weight: bold ;
+  font-weight: bold;
 }
 
 .text h2 {

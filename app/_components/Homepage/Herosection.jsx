@@ -66,8 +66,7 @@ function PosterAdds({ location }) {
                   src={item?.img}
                   alt={item?.title}
                   fill
-                  priority={i === activeIndex}
-                  loading={i !== activeIndex ? "lazy" : undefined}
+                  loading="lazy"
                 />
               </Link>
             </SwiperSlide>
