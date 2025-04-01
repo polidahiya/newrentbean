@@ -1,7 +1,12 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Productcard from "@/app/_components/Productcard";
-import { categorylist, domain, cities } from "@/app/commondata";
+import {
+  categorylist,
+  domain,
+  cities,
+  citiesAndLocations,
+} from "@/app/commondata";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import Productnotfound from "@/app/_components/Productnotfound";
 import Subcategories from "./_Components/Subcategories";
@@ -17,7 +22,8 @@ async function page({ params, searchParams }) {
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
 
   // undefined location
-  if (!cities.includes(location)) notFound();
+  if (!cities.includes(location) && !citiesAndLocations.includes(location.replace(/-/g," ")))
+    notFound();
 
   if (productid)
     return (

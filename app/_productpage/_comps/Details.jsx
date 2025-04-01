@@ -90,7 +90,7 @@ function Details({ filteredProduct }) {
           cartproductid={cartproductid}
         />
       ) : (
-        <Notavailableforstore title="This Product is not available for Buy" />
+        <Notavailableforstore title="This product is not available for purchase" />
       )}
 
       <Addtocartbuttons
