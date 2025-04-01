@@ -15,6 +15,22 @@ export function middleware(req) {
   ];
 
   const redirects = {
+    // "": "",
+    "/Furniture/Center-Tables/67b60ac523429fd41b34842a":
+      "/Noida/Furniture/Center-Tables/67b60ac523429fd41b34842a",
+    "/Health-&-Fitness/Fitness-Machines/67aa0991926cbba85e25ef59":
+      "/Noida/Health-&-Fitness/Fitness-Machines/67aa0991926cbba85e25ef59",
+    "/Faridabad/Furniture/Sofa/sofa6": "/Noida/Furniture/Sofas",
+    "/Electronic/Mobile-%26-Accessories/67beab13214753926787bfd2":
+      "/Noida/Electronic/Mobile-%26-Accessories/67beab13214753926787bfd2",
+    "/Gurgaon/Event_and_Parties/Hookah/hookah2":
+      "/Noida/Event-&-Parties/Party-Items",
+    "/Furniture/Beds/67a88b18a1ffaa422456899b":
+      "/Noida/Furniture/Beds/67a88b18a1ffaa422456899b",
+    "/Search/Fitness_and_Gym": "/Noida/Health-&-Fitness/Fitness-Machines",
+    "/Delhi/Furniture/Bookshelf": "/Noida/Furniture/Bookshelves",
+    "/Electronic/Mobile-%26-Accessories/67c13a4f779915d391caa3f4":
+      "/Noida/Electronic/Mobile-%26-Accessories/67c13a4f779915d391caa3f4",
     "/Gurgaon/Furniture/Bed/bed2": "/Noida/Furniture/Beds",
     "/Search/Electronic": "/Noida/Electronic",
     "/Event%20&%20Parties/Event-&-Parties": "/Noida/Event-&-Parties",

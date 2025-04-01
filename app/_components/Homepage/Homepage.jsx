@@ -47,7 +47,7 @@ export default async function Homepage({ params, location = "Delhi" }) {
           </h2>
           <Promices />
         </div>
-        <Citiesdescription location={location} />
+        <Citiesdescription location={location.replace(/-/g, " ")} />
         <Footer />
       </div>
       <Mobilenav />

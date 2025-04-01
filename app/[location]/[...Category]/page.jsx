@@ -22,7 +22,7 @@ async function page({ params, searchParams }) {
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
 
   // undefined location
-  if (!cities.includes(location) && !citiesAndLocations.includes(location.replace(/-/g," ")))
+  if (!cities.includes(location) && !citiesAndLocations.includes(location))
     notFound();
 
   if (productid)
@@ -83,7 +83,7 @@ async function page({ params, searchParams }) {
       <Categorydescription
         category={category}
         subcat={subcat}
-        location={location}
+        location={location.replace(/-/g, " ")}
       />
     </>
   );

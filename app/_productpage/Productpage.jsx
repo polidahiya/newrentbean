@@ -73,6 +73,7 @@ async function Productpage({ category, subcat, productid, location }) {
           category={category}
           subcat={subcat}
           productName={filteredProduct.name}
+          location={location}
         />
         <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 gap-5">
           <Imagescomp filteredproducts={filteredProduct} token={token} />
@@ -173,26 +174,23 @@ async function Productpage({ category, subcat, productid, location }) {
   );
 }
 
-const Breadcrumbs = ({ category, subcat, productName }) => (
+const Breadcrumbs = ({ category, subcat, productName, location }) => (
   <div className="pl-16 lg:pl-10 mt-5 bg-white text-theme flex items-center gap-[3px] text-[#87878] text-sm whitespace-nowrap cursor-pointer">
     <Link
       className="lg:hover:text-cyan-500 flex items-center justify-center gap-1"
-      href="/"
+      href={`/${location}`}
     >
       <AiOutlineHome className="inline-block" />
       Home
     </Link>
     <RxChevronRight className="min-w-3" />
-    <Link
-      className="lg:hover:text-cyan-500"
-      href={`/${category}`.replace(/-/g, " ")}
-    >
+    <Link className="lg:hover:text-cyan-500" href={`/${location}/${category}`}>
       {category}
     </Link>
     <RxChevronRight className="min-w-3" />
     <Link
       className="lg:hover:text-cyan-500"
-      href={`/${category}/${subcat}`.replace(/-/g, " ")}
+      href={`/${location}/${category}/${subcat}`}
     >
       {subcat}
     </Link>
