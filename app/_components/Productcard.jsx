@@ -60,6 +60,7 @@ function Productcard({
           : availablefor == "Rent" && "hidden"
       } ${showproduct ? "opacity-100 scale-100" : "opacity-0 scale-75"} 
       ${maxwidth && "max-w-72 md:max-w-80"}`}
+      prefetch={false}
     >
       <div className="relative aspect-square w-full overflow-hidden">
         <Image
