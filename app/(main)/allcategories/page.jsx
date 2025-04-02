@@ -12,6 +12,7 @@ async function page({ params }) {
         <div key={i}>
           <Link
             href={`/${location}/${key}`}
+            prefetch={false}
             className="w-full flex items-center justify-center font-recline gap-5"
           >
             <p className="font-recline text-xl tracking-wide">
@@ -28,6 +29,7 @@ async function page({ params }) {
                   href={`/${location}/${key}/${subcat?.name}`}
                   key={j}
                   className="flex flex-col items-center"
+                  prefetch={false}
                 >
                   <Image
                     src={subcat?.image}

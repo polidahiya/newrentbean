@@ -15,13 +15,43 @@ export function middleware(req) {
   ];
 
   const redirects = {
-    "/Furniture/Sofas/67b6102a9a118e904146dca1":"/Delhi/Furniture/Sofas",
-    "/Furniture/Beds/67d12e721dc96095ed7b31ea":"/Delhi/Furniture/Beds",
-    "/Faridabad/Furniture/Bed/bed3":"/Faridabad/Furniture/Beds",
-    "/Ghaziabad/Furniture/Study_Table/studytable6":"/Ghaziabad/Furniture/Study-Tables",
-    "/Event%20&%20Parties/Fitness_and_Gym":"/Delhi/Health-&-Fitness",
-    "/Event-&-Parties/Party-Items":"/Delhi/Event-&-Parties/Party-Items",
-    "/Health-&-Fitness/Weight-&-Rack":"/Delhi",
+    "/cancelationandreturnpolicy/Event-&-Parties": "/Delhi/Event-&-Parties",
+    "/Noida/Fitness_and_Gym/Cross_Trainer":
+      "/Noida/Health-&-Fitness/Fitness-Machines",
+    "/Faridabad/Fitness_and_Gym/Treadmill/treadmill3":
+      "/Faridabad/Health-&-Fitness/Fitness-Machines",
+    "/Faridabad/Electronics/AC/ac1": "/Faridabad/Electronic/Home-Appliances",
+    "/Ghaziabad/Electronics/TV/tv1": "/Ghaziabad",
+    "/Noida/Fitness_and_Gym/Gym_Bikes":
+      "/Noida/Health-&-Fitness/Fitness-Machines",
+    "/Ghaziabad/Event_and_Parties/Hookah/hookah1": "/Ghaziabad/Event-&-Parties",
+    "/Electronic/Furniture": "/Delhi/Electronic",
+    "/Gurgaon/Electronics/Laptop/laptop4": "/Gurgaon/Electronic/Laptops",
+    "/Electronic/Home-Appliances/679fbafdf3ad08d67baa9dbc":
+      "/Delhi/Electronic/Home-Appliances",
+    "/Health-&-Fitness/Fitness-Machines/67aa0354f9713c5c2b8855d4":
+      "/Delhi/Health-&-Fitness/Fitness-Machines",
+    "/Ghaziabad/Fitness_and_Gym/Gym_Bikes/gymbike1":
+      "/Ghaziabad/Health-&-Fitness",
+    "/aboutus/Health-&-Fitness": "/Delhi/Health-&-Fitness",
+    "/Others/Electronic": "/Delhi/Electronic",
+    "/Gurgaon/Electronics/AC/ac2": "/Gurgaon",
+    "/Event%20&%20Parties/Party%20Items": "/Delhi/Event-&-Parties/Party-Items",
+    "/Health-&-Fitness/Fitness-Machines":
+      "/Delhi/Health-&-Fitness/Fitness-Machines",
+    "/Electronic/Mobile-&-Accessories/67beeda8563e926b9c822404":
+      "/Delhi/Electronic/Mobile-&-Accessories/67beeda8563e926b9c822404",
+    "/Event-&-Parties/Party-Items/67b8c76fea54f4737b41436a":
+      "/Delhi/Event-&-Parties/Party-Items/67b8c76fea54f4737b41436a",
+    "/Gurgaon/Event_and_Parties/Hookah": "/Gurgaon/Event-&-Parties/Party-Items",
+    "/Furniture/Sofas/67b6102a9a118e904146dca1": "/Delhi/Furniture/Sofas",
+    "/Furniture/Beds/67d12e721dc96095ed7b31ea": "/Delhi/Furniture/Beds",
+    "/Faridabad/Furniture/Bed/bed3": "/Faridabad/Furniture/Beds",
+    "/Ghaziabad/Furniture/Study_Table/studytable6":
+      "/Ghaziabad/Furniture/Study-Tables",
+    "/Event%20&%20Parties/Fitness_and_Gym": "/Delhi/Health-&-Fitness",
+    "/Event-&-Parties/Party-Items": "/Delhi/Event-&-Parties/Party-Items",
+    "/Health-&-Fitness/Weight-&-Rack": "/Delhi",
     "/Faridabad/Electronics/TV/tv1": "/Delhi",
     "/Ghaziabad/Furniture/Bookshelf/bookshelf4": "/Delhi/Furniture/Bookshelves",
     "/Gurgaon/Fitness_and_Gym/Gym_Bikes/gymbike2":
