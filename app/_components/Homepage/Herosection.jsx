@@ -122,7 +122,29 @@ function PosterAdds({ location }) {
           ></video>
         </Link>
       </div>
-      {/* <div className="w-full grid grid-cols-6 gap-2 mt-10 px-2 md:px-10"></div> */}
+      {/* <div className="w-full flex gap-2 mt-10 px-2 md:px-10">
+        {new Array(5).fill(null).map((item, i) => (
+          <Link
+            key={i}
+            href={"/"}
+            prefetch={false}
+            className={`relative rounded-md max-h-20 block overflow-hidden duration-300 group flex-1 hover:flex-[2]`}
+          >
+            <img
+              src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg"
+              alt=""
+              className="h-full w-full object-cover"
+            />
+            <div
+              className={`absolute inset-0 px-2 flex flex-col justify-center bg-gradient-to-r from-white to-transparent text-xs duration-300 opacity-0 hover:opacity-100`}
+            >
+              <h1 className="font-semibold text-base">test</h1>
+              <p>sdlfdsljfdk</p>
+              <p>sdlfdsljfdk</p>
+            </div>
+          </Link>
+        ))}
+      </div> */}
     </div>
   );
 }
