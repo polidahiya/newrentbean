@@ -6,7 +6,7 @@ import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import Footer from "../Footer";
 import { cookies } from "next/headers";
 import Allproducts from "./Allproducts";
-import Citiesdescription from "./Citiesdescription";
+import Description from "./homedesc/Description";
 import Herosection from "./Herosection";
 import Navbar from "../Navbar/Navbar";
 import Mobilenav from "../Navbar/_comps/Mobilenav";
@@ -47,7 +47,7 @@ export default async function Homepage({ params, location = "Delhi" }) {
           </h2>
           <Promices />
         </div>
-        <Citiesdescription location={location.replace(/-/g, " ")} />
+        <Description location={location.replace(/-/g, " ")} />
         <Footer />
       </div>
       <Mobilenav />

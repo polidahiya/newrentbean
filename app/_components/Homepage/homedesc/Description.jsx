@@ -1,15 +1,17 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import Wrapper from "./Wrapper";
+import Togglebutton from "./Togglebutton";
 
-function Description({ location = "Delhi" }) {
-  const [moredesc, setmoredesc] = useState(false);
+function Description({ location }) {
   const popularplaces = {
     Gurgaon:
       "Sector 50, Sector 70, Manesar, Behrampur, Pataudi, and Daulatabad",
     Noida: "Sector 20, Sector 40, Sector 60, Sahibabad, and Chander Nagar",
     Delhi:
       "Nehru Place, Greater Kailash, Hauz Khas, Tilak Nagar, Moti Bagh, and RK Puram",
+    Ghaziabad: "Indirapuram, Vaishali, Raj Nagar, Kavi Nagar, and Kaushambi",
+    Faridabad: "Sector 15, Sector 21C, Ballabgarh, Old Faridabad, and NIT",
   };
 
   return (
@@ -54,7 +56,8 @@ function Description({ location = "Delhi" }) {
             {location}, including popular areas like {popularplaces[location]}.
           </p>
         </section>
-        <section className={`overflow-hidden ${moredesc ? "" : "h-0"} `}>
+        <></>
+        <Wrapper>
           <h2 className=" text-[18px] font-semibold mt-[10px] font-recline">
             Discover Premium Furniture, Appliances, and Electronics
           </h2>
@@ -66,7 +69,7 @@ function Description({ location = "Delhi" }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Fitness_and_Gym"}>
+            <Link href={"/" + location + "/Health-&-Fitness/Fitness-Machines"}>
               Fitness and Gym item Rentals
             </Link>
             : Explore our wide selection of top-quality treadmills and other gym
@@ -74,7 +77,7 @@ function Description({ location = "Delhi" }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Electronics"}>
+            <Link href={"/" + location + "/Electronic/Home-Appliances"}>
               Appliance Rentals
             </Link>
             : Rent appliances from trusted names like Panasonic, Samsung, and
@@ -83,7 +86,7 @@ function Description({ location = "Delhi" }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Electronics"}>
+            <Link href={"/" + location + "/Electronic"}>
               Electronics Rentals
             </Link>
             : Stay ahead with the latest smart gadgets by renting laptops,
@@ -92,7 +95,7 @@ function Description({ location = "Delhi" }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Event_and_Parties"}>
+            <Link href={"/" + location + "/Event-&-Parties"}>
               Event & party items
             </Link>
             : Rent the life of the party! From hookahs to beer towers, DJ
@@ -100,8 +103,8 @@ function Description({ location = "Delhi" }) {
             Let the good times roll with our extensive selection of rental
             items.
           </p>
-        </section>
-        <section className={`overflow-hidden ${moredesc ? "" : "h-0"} `}>
+        </Wrapper>
+        <Wrapper>
           <h2 className=" text-[18px] font-semibold mt-[10px] font-recline">
             Enjoy Exclusive Benefits with Your Subscription
           </h2>
@@ -142,8 +145,8 @@ function Description({ location = "Delhi" }) {
               refund for your peace of mind.
             </li>
           </ul>
-        </section>
-        <section className={`overflow-hidden ${moredesc ? "" : "h-0"} `}>
+        </Wrapper>
+        <Wrapper>
           <h2 className=" text-[18px] font-semibold mt-[10px] font-recline">
             Unlock Exceptional Value with{" "}
             <strong className="font-bold">RentBean.in</strong>
@@ -172,24 +175,10 @@ function Description({ location = "Delhi" }) {
             3 months up to 3 years, giving you the freedom to customize your
             subscription according to your needs.
           </p>
-        </section>
-        <button
-          className="flex justify-center items-center w-full fill-textcolor mt-[10px]"
-          onClick={() => {
-            setmoredesc(!moredesc);
-          }}
-        >
-          {moredesc ? "Read Less" : "Read More"}
-          <svg
-            className={`h-[20px] fill-textcolor ${
-              moredesc ? "rotate-180" : ""
-            }`}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5.707 9.71a1 1 0 000 1.415l4.892 4.887a2 2 0 002.828 0l4.89-4.89a1 1 0 10-1.414-1.415l-4.185 4.186a1 1 0 01-1.415 0L7.121 9.71a1 1 0 00-1.414 0z"></path>
-          </svg>
-        </button>
+        </Wrapper>
+        <Togglebutton>
+          <path d="M5.707 9.71a1 1 0 000 1.415l4.892 4.887a2 2 0 002.828 0l4.89-4.89a1 1 0 10-1.414-1.415l-4.185 4.186a1 1 0 01-1.415 0L7.121 9.71a1 1 0 00-1.414 0z"></path>
+        </Togglebutton>
       </main>
     </div>
   );

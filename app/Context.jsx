@@ -45,6 +45,7 @@ export function Appwrapper({
   });
   const [scrolltop, setscrolltop] = useState(false);
   const [shownavbottom, setshownavbottom] = useState(false);
+  const [moredesc, setmoredesc] = useState(false);
   // admin
   const [invoicedata, setinvoicedata] = useState(false);
 
@@ -125,6 +126,8 @@ export function Appwrapper({
         setmessagefn,
         instantlogin,
         setinstantlogin,
+        moredesc,
+        setmoredesc,
         showdialog,
         setshowdialog,
         showdialoginitialvalues,

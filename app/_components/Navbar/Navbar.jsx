@@ -119,6 +119,8 @@ function Navbar({ params, productsname, token, userdata }) {
       </div>
       {/* categories */}
       <Navcategories category={category} location={location?.location} />
+
+      <Link href="/Contact" prefetch={false}></Link>
       {/* backbutton */}
       {!showsearch &&
         path != "/" &&
@@ -128,12 +130,17 @@ function Navbar({ params, productsname, token, userdata }) {
         path != "/Noida" &&
         path != "/Ghaziabad" && (
           <button
-            className="absolute bottom-0 left-[10px] md:left-10 translate-y-[calc(100%+10px)] h-[40px] aspect-square bg-white text-theme border border-theme rounded-full text-xl grid place-content-center lg:hidden"
+            className="group bg-theme flex items-center justify-center p-1 h-10 lg:h-8 absolute top-full lg:bottom-0 translate-y-2 lg:-translate-y-10 left-[10px] md:left-11 rounded-full overflow-hidden"
             onClick={() => {
               router.back();
             }}
           >
-            <IoMdArrowRoundBack />
+            <span className="h-8 lg:h-6 aspect-square rounded-full bg-white text-theme grid place-content-center">
+              <IoMdArrowRoundBack />
+            </span>
+            <span className="text-white opacity-0 text-sm max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-20 lg:group-hover:px-3 whitespace-nowrap transition-all duration-300 ease-in-out">
+              Back
+            </span>
           </button>
         )}
     </nav>

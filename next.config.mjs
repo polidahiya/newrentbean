@@ -22,7 +22,7 @@ const redirects = {
   "/Health%20&%20Fitness/Health-&-Fitness/Fitness-Machines":
     "/Delhi/Health-&-Fitness/Fitness-Machines",
   "/Search/Electronics": "/Delhi/Electronic",
-  
+
   "/null/:path*": "/Delhi/:path*",
   "/:category(Health-&-Fitness|Electronic|Furniture|Event-&-Parties|Others)/:path*":
     "/Delhi/:category/:path*",
@@ -35,6 +35,8 @@ const redirects = {
   "/:location*/Furniture/Bed/:path*": "/:location*/Furniture/Beds",
   "/:location*/Furniture/Bookshelf/:path*": "/:location*/Furniture/Bookshelves",
   "/:location*/Furniture/Sofa/:path*": "/:location*/Furniture/Sofas",
+  "/:location*/Furniture/Centre_Table/:path*":
+    "/:location*/Furniture/Center-Tables",
   "/:location*/Furniture/Study_Table/:path*":
     "/:location*/Furniture/Study-Tables",
 
