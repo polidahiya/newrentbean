@@ -1,0 +1,16 @@
+{
+  "name": "Rentbean.in | Event planners",
+  "short_name": "Event planners",
+  "description": "Craft your beautiful moments",
+  "icons": [
+    {
+      "src": "/eventplanners/images/favicon.png",
+      "sizes": "295x295",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#ffffff"
+}

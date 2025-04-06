@@ -14,6 +14,7 @@ async function page({ params }) {
             href={`/${location}/${key}`}
             prefetch={false}
             className="w-full flex items-center justify-center font-recline gap-5"
+            replace
           >
             <p className="font-recline text-xl tracking-wide">
               {key?.replace(/-/g, " ")}
@@ -30,6 +31,7 @@ async function page({ params }) {
                   key={j}
                   className="flex flex-col items-center"
                   prefetch={false}
+                  replace
                 >
                   <Image
                     src={subcat?.image}

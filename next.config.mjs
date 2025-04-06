@@ -6,7 +6,6 @@ const redirects = {
   "/Search/Fitness_and_Gym": "/Delhi/Health-&-Fitness/Fitness-Machines",
   "/Search/Electronic": "/Delhi/Electronic",
   "/Event%20&%20Parties/Event-&-Parties": "/Delhi/Event-&-Parties",
-  "/Search/Electronic/Laptops": "/Delhi/Electronic/Laptops",
   "/Ghaziabad/Furniture/Bed/bed4": "/Ghaziabad/Furniture/Beds",
   "/Ghaziabad/Electronics/Projector/projector1": "/",
   "/Gurgaon/Electronics/Laptop/laptop1": "/Gurgaon/Electronic/Laptops",
@@ -21,7 +20,6 @@ const redirects = {
   "/aboutus/Health-&-Fitness": "/Delhi/Health-&-Fitness",
   "/Health%20&%20Fitness/Health-&-Fitness/Fitness-Machines":
     "/Delhi/Health-&-Fitness/Fitness-Machines",
-  "/Search/Electronics": "/Delhi/Electronic",
 
   "/null/:path*": "/Delhi/:path*",
   "/:category(Health-&-Fitness|Electronic|Furniture|Event-&-Parties|Others)/:path*":
@@ -75,11 +73,29 @@ const nextConfig = {
     ];
   },
   async redirects() {
-    return Object.entries(redirects).map(([source, destination]) => ({
-      source,
-      destination,
-      permanent: true, // 301 Redirect for SEO
-    }));
+    const staticRedirects = Object.entries(redirects).map(
+      ([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })
+    );
+
+    const dynamicRedirects = [
+      {
+        source: "/Search",
+        has: [
+          {
+            type: "query",
+            key: "query",
+          },
+        ],
+        destination: "/Delhi/Search?query=:query",
+        permanent: true,
+      },
+    ];
+
+    return [...staticRedirects, ...dynamicRedirects];
   },
 };
 

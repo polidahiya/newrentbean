@@ -10,9 +10,10 @@ import { AppContextfn } from "../Context";
 function FIxedbuttons() {
   const path = usePathname();
   const isadminpage = path.split("/")[1] == "admin";
+  const iseventmanager = path.split("/")[1] == "eventplanners";
 
   return (
-    <div className="fixed bottom-16 lg:bottom-5 right-5 md:right-10 flex flex-col items-end gap-2 z-30 print:hidden">
+    <div className="fixed bottom-20 lg:bottom-5 right-5 md:right-10 flex flex-col items-end gap-2 z-30 print:hidden">
       <Gotopbutton />
       {!isadminpage && (
         <>

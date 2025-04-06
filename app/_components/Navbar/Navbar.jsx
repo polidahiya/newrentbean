@@ -30,6 +30,7 @@ function Navbar({ params, productsname, token, userdata }) {
     isrentalstore,
     setisrentalstore,
     shownavbottom,
+    isopenstoremenu,
   } = AppContextfn();
 
   useEffect(() => {
@@ -108,9 +109,9 @@ function Navbar({ params, productsname, token, userdata }) {
           <Logedinusermenu userdata={userdata} token={token} />
         </div>
         {/* exit back screen */}
-        {(showcat || showsearch) && (
+        {(showcat || showsearch || isopenstoremenu?.show) && (
           <div
-            className="block lg:hidden fixed top-0 left-0 bg-black opacity-40 h-screen w-screen z-30"
+            className="block lg:hidden fixed top-0 left-0 bg-black opacity-20 h-screen w-screen z-30"
             onClick={() => {
               window.history.back();
             }}

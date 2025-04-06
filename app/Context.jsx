@@ -46,6 +46,10 @@ export function Appwrapper({
   const [scrolltop, setscrolltop] = useState(false);
   const [shownavbottom, setshownavbottom] = useState(false);
   const [moredesc, setmoredesc] = useState(false);
+  const [isopenstoremenu, setisopenstoremenu] = useState({
+    show: false,
+    effect: false,
+  });
   // admin
   const [invoicedata, setinvoicedata] = useState(false);
 
@@ -124,6 +128,8 @@ export function Appwrapper({
         messagearray,
         setmessagearray,
         setmessagefn,
+        isopenstoremenu,
+        setisopenstoremenu,
         instantlogin,
         setinstantlogin,
         moredesc,
