@@ -14,6 +14,7 @@ import { sortProducts, pricefilter } from "./_Components/sortandfilter";
 import Productpage from "@/app/_productpage/Productpage";
 // import Appliedfilters from "./_Components/Appliedfilters";
 import Categorydescription from "./_Components/Categorydescription";
+import Breadcrumbs from "@/app/_components/Breadcrumbs";
 
 async function page({ params, searchParams }) {
   const { Category: slug, location } = await params;
@@ -64,16 +65,29 @@ async function page({ params, searchParams }) {
           subcat={subcat}
           location={location}
         />
+        <div className="py-5 pl-3">
+          <h1 className="text-3xl font-semibold">
+            {category == "Search"
+              ? `Search - ${searchQuery}`
+              : category.replace(/-/g, " ")}
+          </h1>
+          <div className="opacity-70 my-2">
+            <Breadcrumbs
+              list={
+                subcat
+                  ? [{ name: category, link: `/${location}/${category}` }]
+                  : []
+              }
+              currentroute={subcat ? subcat : category}
+              location={location}
+            />
+          </div>
+        </div>
         {/* <Appliedfilters
           category={category}
           subcat={subcat}
           searchParams={searchParams}
         /> */}
-        {category == "Search" && (
-          <h1 className="text-center py-2 px-10 mb-10">
-            Search - {"( " + searchQuery + " )"}
-          </h1>
-        )}
         {sortedProducts.length > 0 ? (
           <ProductGrid products={sortedProducts} location={location} />
         ) : (

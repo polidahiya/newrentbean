@@ -54,7 +54,7 @@ function Navbar({ params, productsname, token, userdata }) {
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
           {/* logo */}
-          <Link className="h-full md:w-fit p-1" href="/" prefetch={false}>
+          <Link className="h-full md:w-fit p-1" href="/Delhi" prefetch={false}>
             <Image
               className="w-auto h-full"
               src="/logo&ui/3dlogo.png"

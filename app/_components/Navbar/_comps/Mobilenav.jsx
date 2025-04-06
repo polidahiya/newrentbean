@@ -162,7 +162,7 @@ function Mobilenav() {
       {isopenstoremenu?.show && <Storemenu closestoremenu={closestoremenu} />}
       <div className="h-16 w-full flex items-center justify-around px-2 border-t sticky bottom-0 lg:hidden bg-white rounded-t-3xl z-20">
         <Link
-          href="/"
+          href="/Delhi"
           prefetch={false}
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             (path == "/" ||

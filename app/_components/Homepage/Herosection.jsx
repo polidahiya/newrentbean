@@ -32,7 +32,7 @@ function PosterAdds({ location }) {
 
   return (
     <div>
-      <div className="flex items-center px-[10px] md:px-[40px] pt-[20px] gap-[20px] overflow-hidden">
+      <div className="flex items-center md:px-10 pt-5 gap-5 overflow-hidden">
         {/* Left Portrait Ad */}
         <Link
           href={`${location}/Electronic/Entertainment`}
@@ -48,7 +48,7 @@ function PosterAdds({ location }) {
         </Link>
 
         {/* Main Poster Carousel */}
-        <div className="relative w-full aspect-video rounded-3xl overflow-hidden group border">
+        <div className="relative w-full aspect-video lg:rounded-3xl overflow-hidden group lg:border">
           <Swiper
             ref={swiperRef}
             modules={[Navigation, Autoplay]}
@@ -57,13 +57,13 @@ function PosterAdds({ location }) {
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             loop
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            className="w-full h-full"
+            className="h-full w-full"
           >
             {imageArray.map((item, i) => (
               <SwiperSlide key={i}>
                 <Link href={`/${location}/${item?.link}`} prefetch={false}>
                   <Image
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover rounded-3xl lg:rounded-none p-2 lg:p-0"
                     src={item?.img}
                     alt={item?.title}
                     fill
@@ -122,29 +122,6 @@ function PosterAdds({ location }) {
           ></video>
         </Link>
       </div>
-      {/* <div className="w-full flex gap-2 mt-10 px-2 md:px-10">
-        {new Array(5).fill(null).map((item, i) => (
-          <Link
-            key={i}
-            href={"/"}
-            prefetch={false}
-            className={`relative rounded-md max-h-20 block overflow-hidden duration-300 group flex-1 hover:flex-[2]`}
-          >
-            <img
-              src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg"
-              alt=""
-              className="h-full w-full object-cover"
-            />
-            <div
-              className={`absolute inset-0 px-2 flex flex-col justify-center bg-gradient-to-r from-white to-transparent text-xs duration-300 opacity-0 hover:opacity-100`}
-            >
-              <h1 className="font-semibold text-base">test</h1>
-              <p>sdlfdsljfdk</p>
-              <p>sdlfdsljfdk</p>
-            </div>
-          </Link>
-        ))}
-      </div> */}
     </div>
   );
 }

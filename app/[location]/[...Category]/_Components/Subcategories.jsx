@@ -6,7 +6,7 @@ import { categorylist } from "@/app/commondata";
 function Subcategories({ category, subcat, location }) {
   if (categorylist[category]?.subcat.length > 0)
     return (
-      <div className="relative flex items-center justify-center mb-5">
+      <div className="relative flex items-center justify-center">
         <div className="w-fit  flex items-center overflow-x-scroll p-2 gap-3 ">
           {categorylist[category]?.subcat.map((itemsubcat, i) => {
             return (

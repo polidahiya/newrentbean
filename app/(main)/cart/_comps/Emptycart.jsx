@@ -15,7 +15,7 @@ function Emptycart() {
         Your Cart is Empty, Add Some Products.
       </p>
       <Link
-        href="/"
+        href="/Delhi"
         className="py-[10px] px-[50px] bg-theme text-white mt-[20px] rounded-full"
       >
         Home

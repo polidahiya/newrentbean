@@ -28,7 +28,7 @@ function page() {
             The page you are looking for is not avaible!
           </p>
           <Link
-            href="/"
+            href="/Delhi"
             className="block bg-green-500 text-white px-[50px] py-[10px] w-fit m-auto mt-[30px] hover:text-green-500 outline outline-[1px] hover:outline-green-500 hover:bg-white"
           >
             Go to Home

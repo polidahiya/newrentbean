@@ -14,6 +14,7 @@ import Details from "./_comps/Details";
 import { mail } from "@/app/commondata";
 import Productdesc from "./_comps/Productdesc";
 import Alongwith from "./_comps/Alongwith";
+import Breadcrumbs from "../_components/Breadcrumbs";
 
 async function Productpage({ category, subcat, productid, location }) {
   const token = cookies()?.get("token")?.value;
@@ -69,12 +70,16 @@ async function Productpage({ category, subcat, productid, location }) {
   return (
     <>
       <article>
-        <Breadcrumbs
-          category={category}
-          subcat={subcat}
-          productName={filteredProduct.name}
-          location={location}
-        />
+        <div className="pl-16 md:pl-24 lg:pl-10 mt-2 md:mt-4 bg-white text-theme text-sm">
+          <Breadcrumbs
+            list={[
+              { name: category, link: `/${location}/${category}` },
+              { name: subcat, link: `/${location}/${category}/${subcat}` },
+            ]}
+            currentroute={filteredProduct?.name}
+          />
+        </div>
+
         <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 gap-5">
           <Imagescomp filteredproducts={filteredProduct} token={token} />
           <Details filteredProduct={filteredProduct} />
@@ -165,7 +170,7 @@ async function Productpage({ category, subcat, productid, location }) {
         <Link
           href={`/admin/addproducts?id=${filteredProduct?._id}`}
           prefetch={false}
-          className="fixed bottom-14 lg:bottom-5 left-1/2 -translate-x-1/2 bg-theme text-white px-5 py-1 rounded-full z-10"
+          className="fixed bottom-20 lg:bottom-5 left-1/2 -translate-x-1/2 bg-theme text-white px-5 py-1 rounded-full z-10"
         >
           Edit
         </Link>
@@ -173,30 +178,5 @@ async function Productpage({ category, subcat, productid, location }) {
     </>
   );
 }
-
-const Breadcrumbs = ({ category, subcat, productName, location }) => (
-  <div className="pl-16 lg:pl-10 mt-5 bg-white text-theme flex items-center gap-[3px] text-[#87878] text-sm whitespace-nowrap cursor-pointer">
-    <Link
-      className="lg:hover:text-cyan-500 flex items-center justify-center gap-1"
-      href={`/${location}`}
-    >
-      <AiOutlineHome className="inline-block" />
-      Home
-    </Link>
-    <RxChevronRight className="min-w-3" />
-    <Link className="lg:hover:text-cyan-500" href={`/${location}/${category}`}>
-      {category}
-    </Link>
-    <RxChevronRight className="min-w-3" />
-    <Link
-      className="lg:hover:text-cyan-500"
-      href={`/${location}/${category}/${subcat}`}
-    >
-      {subcat}
-    </Link>
-    <RxChevronRight className="min-w-3" />
-    <span className="text-ellipsis overflow-hidden">{productName}</span>
-  </div>
-);
 
 export default Productpage;

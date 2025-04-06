@@ -26,7 +26,7 @@ function Adminnavbar() {
 
   return (
     <nav className="sticky top-0 flex items-center gap-[5px] md:gap-[10px] h-[50px] shadow-md p-[7px] px-[10px] lg:px-[40px] z-20 bg-bg1">
-      <Link href="/">
+      <Link href="/Delhi">
         <Image src="/logo&ui/3dlogo.png" alt="logo" height={40} width={150} />
       </Link>
       {navLinks.map(({ href, label, logo }, index) => (
