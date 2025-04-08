@@ -1,5 +1,5 @@
 import React from "react";
-import Effecttext from "./_comps/Effecttext";
+import Effecttext from "./Effecttext";
 import Link from "next/link";
 
 function Footer() {

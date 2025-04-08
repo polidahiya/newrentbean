@@ -1,104 +1,3 @@
-// "use client";
-// import React, { useEffect } from "react";
-// import { FiSearch } from "react-icons/fi";
-// import { LuLayoutGrid } from "react-icons/lu";
-// import { AppContextfn } from "@/app/Context";
-// import { MdLocationPin } from "react-icons/md";
-// import { LuShoppingCart } from "react-icons/lu";
-// import Link from "next/link";
-
-// function Mobilenav() {
-//   const {
-//     showsearch,
-//     setshowsearch,
-//     showcat,
-//     setshowcat,
-//     searchinputref,
-//     location,
-//     setlocation,
-//     isrentalstore,
-//     setisrentalstore,
-//     shownavbottom,
-//     cart,
-//   } = AppContextfn();
-
-//   const cartitems = Object.values(cart).filter((item) => item.added);
-//   const totalQuantity = cartitems.reduce(
-//     (total, value) => total + value.quantity,
-//     0
-//   );
-
-//   useEffect(() => {
-//     const hidemenu2 = () => {
-//       setshowcat(false);
-//       setshowsearch(false);
-//     };
-//     window.addEventListener("popstate", hidemenu2);
-//     return () => {
-//       window.removeEventListener("popstate", hidemenu2);
-//     };
-//   }, []);
-
-//   return (
-//     <div className="h-12 w-full flex items-center justify-around border-t sticky bottom-0 lg:hidden bg-white z-20">
-//       {/* location */}
-//       <button
-//         className="h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme"
-//         onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
-//       >
-//         <MdLocationPin className="inline-block" />{" "}
-//         <span>{location.location}</span>
-//       </button>
-//       {/* search button */}
-//       <button
-//         className="h-full aspect-square  flex items-center justify-center"
-//         onClick={() => {
-//           history.pushState(null, "", "");
-//           setshowsearch(true);
-//           setTimeout(() => {
-//             searchinputref.current.focus();
-//           }, 100);
-//         }}
-//       >
-//         <FiSearch className="h-full text-[25px] aspect-square " />
-//       </button>
-//       <Link
-//         href={"/allcategories"}
-//         prefetch={false}
-//         className="h-full aspect-square  flex items-center justify-center"
-//       >
-//         <LuLayoutGrid className="h-full text-[25px] aspect-square " />
-//       </Link>
-
-//       {/* cart */}
-//       <Link
-//         href="/cart"
-//         prefetch={false}
-//         className="relative h-full aspect-square flex items-center justify-center"
-//       >
-//         <LuShoppingCart className="text-[25px]" />
-//         {totalQuantity > 0 && (
-//           <div className="absolute top-1 right-1 h-4 aspect-square bg-theme text-white text-[10px] rounded-full flex items-center justify-center ">
-//             {totalQuantity}
-//           </div>
-//         )}
-//       </Link>
-
-//       {/* rent or buy switch */}
-//       <button
-//         className={`h-8 px-5 border rounded-full flex items-center justify-center gap-1 text-theme
-//                ${isrentalstore ? "flex-row-reverse pl-1 pr-5" : "pl-5 pr-1"}`}
-//         onClick={() => setisrentalstore((pre) => !pre)}
-//       >
-//         {isrentalstore ? "Rent" : "Buy"}
-//         <span className="block h-5 aspect-square rounded-full bg-theme"></span>
-//       </button>
-//     </div>
-//   );
-// }
-
-// export default Mobilenav;
-
 "use client";
 import React, { useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
@@ -110,12 +9,13 @@ import Link from "next/link";
 import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { MdTimer } from "react-icons/md";
-import { MdTimerOff } from "react-icons/md";
+import { IoBagCheck } from "react-icons/io5";
 
 function Mobilenav() {
   const path = usePathname();
   const {
     showsearch,
+    showcat,
     setshowsearch,
     setshowcat,
     searchinputref,
@@ -133,9 +33,9 @@ function Mobilenav() {
 
   useEffect(() => {
     const hidemenu2 = () => {
-      setshowcat(false);
-      setshowsearch(false);
-      closestoremenu();
+      if (showcat) setshowcat(false);
+      if (showsearch) setshowsearch(false);
+      if (isopenstoremenu?.show) closestoremenu();
     };
     window.addEventListener("popstate", hidemenu2);
     return () => {
@@ -248,6 +148,8 @@ function Mobilenav() {
     </>
   );
 }
+
+
 const Storemenu = ({ closestoremenu }) => {
   const {
     location,
@@ -265,10 +167,14 @@ const Storemenu = ({ closestoremenu }) => {
       }`}
     >
       <button
-        className="absolute top-0 right-0 bg-bg1 w-10 aspect-square grid place-content-center"
-        onClick={() => closestoremenu()}
+        aria-label="Close Store Menu"
+        className="absolute top-3 right-3 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center"
+        onClick={() => {
+          window.history.back();
+          closestoremenu();
+        }}
       >
-        X
+        ✕
       </button>
       <h3 className="flex items-center justify-center gap-1 text-xl font-semibold">
         <MdOutlineStoreMallDirectory />
@@ -294,7 +200,7 @@ const Storemenu = ({ closestoremenu }) => {
             setisrentalstore(false);
           }}
         >
-          <MdTimerOff />
+          <IoBagCheck />
           Buy
         </button>
       </div>
@@ -302,7 +208,10 @@ const Storemenu = ({ closestoremenu }) => {
         className="w-full flex items-center justify-center gap-1 mt-4 border py-2 rounded-lg text-theme font-semibold"
         onClick={() => {
           setlocation((pre) => ({ ...pre, show: true }));
-          closestoremenu();
+          {
+            window.history.back();
+            closestoremenu();
+          }
         }}
       >
         {location?.location}

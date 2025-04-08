@@ -1,4 +1,5 @@
 import React from "react";
+import "./epstyles.css"
 
 export const metadata = {
   title: "Event Planners",

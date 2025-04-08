@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
-import Effecttext from "./_comps/Effecttext";
+import Effecttext from "./Effecttext";
 import "swiper/css";
 import Image from "next/image";
 
@@ -178,20 +178,36 @@ export default function DireactSearchListSwiper() {
       >
         {eventsdata.map((item, index) => (
           <SwiperSlide key={index} className="aspect-[4/3] md:aspect-video">
-            <Image
-              src={item?.image}
-              alt={item?.alt}
-              className={`object-cover w-full h-full`}
-              loading="lazy"
-              width={638}
-              height={358}
-              // style={{
-              //   maskImage:
-              //     "url('/eventplanners/party-svgrepo-com.png')",
-              //   maskSize: "cover",
-              //   maskRepeat: "no-repeat",
-              // }}
-            ></Image>
+            <div
+              className="h-full w-full"
+              style={{
+                maskImage: "url('/eventplanners/maskimage.png')",
+                WebkitMaskImage: "url('/eventplanners/maskimage.png')", // for Safari
+                maskSize: "cover",
+                maskRepeat: "no-repeat",
+                maskPosition: "center",
+                WebkitMaskSize: "cover",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                transition: "transform 0.5s ease-in-out", // smooth transition
+                transform: "scale(1)", // your desired scale
+              }}
+            >
+              <Image
+                src={item?.image}
+                alt={item?.alt}
+                className={`object-cover w-full h-full`}
+                loading="lazy"
+                width={638}
+                height={358}
+                // style={{
+                //   maskImage: "url('/eventplanners/maskimage.png')",
+                //   maskSize: "cover",
+                //   maskRepeat: "no-repeat",
+                //   maskPosition: "center",
+                // }}
+              ></Image>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

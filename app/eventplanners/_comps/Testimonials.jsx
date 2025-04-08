@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Effecttext from "./_comps/Effecttext";
+import Effecttext from "../_comps/Effecttext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
 import "swiper/css";
