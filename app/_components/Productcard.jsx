@@ -127,7 +127,7 @@ function Productcard({
             )}
           </div>
         </div>
-        <div className="absolute w-24 h-[2px] bottom-1 left-1/2 -translate-x-1/2 bg-theme rounded-full"></div>
+        <div className="absolute w-24 h-0.5 bottom-1 left-1/2 -translate-x-1/2 bg-theme rounded-full"></div>
       </div>
     </Link>
   );

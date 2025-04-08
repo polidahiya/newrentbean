@@ -1,5 +1,6 @@
 import React from "react";
-import "./epstyles.css"
+import "./epstyles.css";
+import Navbar from "./_comps/Navbar/Navbar";
 
 export const metadata = {
   title: "Event Planners",
@@ -8,7 +9,12 @@ export const metadata = {
 };
 
 function layout({ children }) {
-  return <>{children}</>;
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
 }
 
 export default layout;

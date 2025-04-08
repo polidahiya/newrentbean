@@ -16,11 +16,19 @@
 }
 
 /* social animations */
-@keyframes socialanimation {
+@keyframes fadeoutanimation {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes socialanimationicons {
+  0% {
+    height: 32px;
+  }
+  100% {
+    height: 178px;
   }
 }

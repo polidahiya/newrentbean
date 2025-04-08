@@ -22,7 +22,7 @@ function Allproducts({ products }) {
           <div className="opacity-90 font-recline">
             {" "}
             take these home
-            <div className="h-[2px] w-[100px] bg-theme"></div>
+            <div className="h-0.5 w-[100px] bg-theme"></div>
           </div>
         </div>
         <div className="flex gap-2">

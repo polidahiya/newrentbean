@@ -171,7 +171,7 @@ const OrderStatus = ({ item }) => {
               >
                 {i !== 0 && (
                   <div
-                    className={`h-[2px] w-full ${
+                    className={`h-0.5 w-full ${
                       item.status >= i ? "bg-blue-500" : "bg-slate-300"
                     }`}
                   />

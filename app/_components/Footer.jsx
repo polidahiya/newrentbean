@@ -131,7 +131,7 @@ function Heading({ heading }) {
   return (
     <h3 className="relative font-bold text-xl mb-8">
       {heading}
-      <span className="w-[120%] h-[2px] absolute -bottom-1 left-0 block bg-theme"></span>
+      <span className="w-[120%] h-0.5 absolute -bottom-1 left-0 block bg-theme"></span>
     </h3>
   );
 }
@@ -140,7 +140,7 @@ function Links({ name, link }) {
   return (
     <Link href={link} className="relative group" prefetch={false}>
       {name}
-      <span className="w-0 h-[2px] absolute bottom-0 left-0 block bg-theme lg:group-hover:w-[calc(100%+20px)] duration-200"></span>
+      <span className="w-0 h-0.5 absolute bottom-0 left-0 block bg-theme lg:group-hover:w-[calc(100%+20px)] duration-200"></span>
     </Link>
   );
 }

@@ -2,8 +2,8 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="text my-10 max-w-4xl mx-auto">
-      <h1>RentBean India – Comprehensive Rental Agreement</h1>
+    <div className="text my-10 max-w-4xl mx-auto px-5">
+      <h1 className="text-theme">RentBean India – Comprehensive Rental Agreement</h1>
 
       <p>Date of Agreement: __//20___</p>
 
