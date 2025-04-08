@@ -8,13 +8,40 @@ function Backgroundimages() {
   const [activeIndex, setActiveIndex] = useState(0);
   const textSwiperRef = useRef(null);
   const data = [
-    "/eventplanners/heroimages/image1.jpg",
-    "/eventplanners/heroimages/image2.jpg",
-    "/eventplanners/heroimages/image3.jpg",
-    "/eventplanners/heroimages/image4.jpg",
+    {
+      heading: "THis is a heading",
+      para: " this is a para this is a para",
+      image: "/eventplanners/heroimages/image1.jpg",
+    },
+    {
+      heading: "THis is a heading",
+      para: " this is a para this is a para",
+      image: "/eventplanners/heroimages/image2.jpg",
+    },
+    {
+      heading: "THis is a heading",
+      para: " this is a para this is a para",
+      image: "/eventplanners/heroimages/image3.jpg",
+    },
+    {
+      heading: "THis is a heading",
+      para: " this is a para this is a para",
+      image: "/eventplanners/heroimages/image4.jpg",
+    },
   ];
+
   return (
     <>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 test z-10 text-white">
+        {data.map((item, i) => {
+          return (
+            <div key={i} className={`${activeIndex == i ? "block" : "hidden"}`}>
+              <h2 className="font-semibold text-3xl">{item?.heading}</h2>
+              <p className="opacity-60">{item?.para}</p>
+            </div>
+          );
+        })}
+      </div>
       <Swiper
         onSwiper={(swiper) => (textSwiperRef.current = swiper)}
         modules={[Navigation, Autoplay, Parallax, Controller]}
@@ -30,12 +57,12 @@ function Backgroundimages() {
         {data.map((item, index) => (
           <SwiperSlide key={index}>
             <picture>
-              <source media="(max-width: 767px)" srcSet={item} />
+              <source media="(max-width: 767px)" srcSet={item?.image} />
               <source
                 media="(min-width: 601px) and (max-width: 1024px)"
-                srcSet={item}
+                srcSet={item?.image}
               />
-              <source media="(min-width: 1025px)" srcSet={item} />
+              <source media="(min-width: 1025px)" srcSet={item?.image} />
               <img
                 src={item}
                 alt="Responsive Image"

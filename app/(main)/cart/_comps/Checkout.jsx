@@ -93,14 +93,27 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
         <p className="text-[12px] text-gray-600 text-center">
           By placing an order, you agree to our{" "}
           <Link
+            target="_blank"
             href="/Terms&Conditions"
             className="text-sky-500 hover:underline"
           >
             Terms & Conditions
           </Link>{" "}
-          and{" "}
-          <Link href="/PrivacyPolicy" className="text-sky-500 hover:underline">
+          ,{" "}
+          <Link
+            target="_blank"
+            href="/PrivacyPolicy"
+            className="text-sky-500 hover:underline"
+          >
             Privacy Policies
+          </Link>{" "}
+          and{" "}
+          <Link
+            target="_blank"
+            href="/rentalagreement"
+            className="text-sky-500 hover:underline"
+          >
+            Rental Agreement
           </Link>
           .
         </p>

@@ -10,7 +10,7 @@ import Backgroundimages from "./Backgroundimages";
 function Herosection() {
   return (
     <div className="relative min-h-screen w-full">
-      <nav className="relative flex items-center justify-between h-16 px-20 py-2 w-full text-white">
+      <nav className="relative flex items-center justify-between h-16 px-20 py-2 w-full text-white z-10">
         <div className="h-full">
           <img
             src="/eventplanners/logo.png"
@@ -74,11 +74,9 @@ function Herosection() {
           </button>
         </div>
       </nav>
-      {/* center data */}
-      <div className=""></div>
       {/* socials */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 right-24 flex flex-col items-center socialanimation opacity-0"
+        className="absolute top-1/2 -translate-y-1/2 right-24 flex flex-col items-center socialanimation opacity-0 z-10"
         style={{ animation: "socialanimation 0.6s 1.4s ease-in-out forwards" }}
       >
         <div className="w-px h-20 bg-gradient-to-b from-transparent to-white"></div>
@@ -111,7 +109,7 @@ function Herosection() {
         <div className="w-px h-20 bg-gradient-to-b from-white to-transparent"></div>
       </div>
       <Trusties />
-      <div className="absolute inset-0 h-full w-full -z-10">
+      <div className="absolute inset-0 h-full w-full">
         <Backgroundimages />
       </div>
     </div>
