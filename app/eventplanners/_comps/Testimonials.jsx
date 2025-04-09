@@ -74,7 +74,7 @@ b
         {data.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="text-center p-10">
-              <p className="text-theme rotate-180 flex items-center justify-center mb-5">
+              <p className="text-eventtheme rotate-180 flex items-center justify-center mb-5">
                 <SiComma />
                 <SiComma />
               </p>
@@ -86,13 +86,13 @@ b
               >
                 <button
                   onClick={() => textSwiperRef.current?.slidePrev()}
-                  className=" text-theme lg:border border-theme w-10 aspect-square grid place-content-center rounded-full hover:bg-theme hover:text-white"
+                  className=" text-eventtheme lg:border border-eventtheme w-10 aspect-square grid place-content-center rounded-full hover:bg-eventtheme hover:text-white"
                 >
                   ❮
                 </button>
                 <button
                   onClick={() => textSwiperRef.current?.slideNext()}
-                  className=" text-theme lg:border border-theme w-10 aspect-square grid place-content-center rounded-full hover:bg-theme hover:text-white"
+                  className=" text-eventtheme lg:border border-eventtheme w-10 aspect-square grid place-content-center rounded-full hover:bg-eventtheme hover:text-white"
                 >
                   ❯
                 </button>

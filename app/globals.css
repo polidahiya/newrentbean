@@ -18,6 +18,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --text: #525252;
+  --eventtheme: #e82e77;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,7 +44,7 @@ html {
 }
 
 body {
-  color: #525252;
+  color: var(--text);
   --theme: #d68e43;
   /* --theme: rgb(0, 153, 255); */
   /* background-image: url(/public/categoriesimages/homedecoreandmore.webp); */

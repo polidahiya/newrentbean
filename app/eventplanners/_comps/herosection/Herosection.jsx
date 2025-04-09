@@ -9,7 +9,7 @@ import Backgroundimages from "./Backgroundimages";
 
 function Herosection() {
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative h-screen lg:min-h-[720px]  w-full">
       <div
         className="absolute top-1/2 -translate-y-1/2 right-24 flex flex-col items-center socialanimation opacity-0 z-10"
         style={{
@@ -25,28 +25,28 @@ function Herosection() {
         >
           <Link
             href={"/"}
-            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-theme translate-y-full"
+            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-eventtheme translate-y-full"
             style={{ animation: "moveupanimation 0.3s 3.2s forwards" }}
           >
             <FaFacebook />
           </Link>
           <Link
             href={"/"}
-            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-theme translate-y-full"
+            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-eventtheme translate-y-full"
             style={{ animation: "moveupanimation 0.3s 3.3s forwards" }}
           >
             <RiInstagramFill />
           </Link>
           <Link
             href={"/"}
-            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-theme translate-y-full"
+            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-eventtheme translate-y-full"
             style={{ animation: "moveupanimation 0.3s 3.4s forwards" }}
           >
             <RiTwitterXFill />
           </Link>
           <Link
             href={"/"}
-            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-theme translate-y-full"
+            className="border border-white border-opacity-50 rounded-full p-1 hover:bg-white hover:text-eventtheme translate-y-full"
             style={{ animation: "moveupanimation 0.3s 3.5s forwards" }}
           >
             <FaPinterestP />

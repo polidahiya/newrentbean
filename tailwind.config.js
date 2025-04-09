@@ -11,6 +11,8 @@ module.exports = {
       colors: {
         theme: "#d68e43",
         bg1: "#f7f7fa",
+        text: "var(--text)",
+        eventtheme: "var(--eventtheme)",
       },
       fontFamily: {
         recline: "Recline",

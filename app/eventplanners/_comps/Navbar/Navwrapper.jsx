@@ -15,8 +15,8 @@ function Navwrapper({ children }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 flex items-center justify-between h-20 px-20 py-4 w-full text-white z-20  duration-500 ${
-        scrolled && "bg-black bg-opacity-60 backdrop-blur-md"
+      className={`fixed group/nav top-0 left-0 flex items-center justify-between h-20 px-20 w-full text-white lg:hover:bg-white lg:hover:text-text z-20  duration-500 ${
+        scrolled && "bg-white text-text"
       }`}
     >
       {children}

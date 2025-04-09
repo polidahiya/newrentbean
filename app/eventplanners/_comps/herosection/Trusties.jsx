@@ -12,7 +12,7 @@ function Trusties() {
   ];
 
   return (
-    <div className="absolute bottom-0 left-0 w-full flex justify-evenly items-center list-none py-7 z-10">
+    <div className="absolute bottom-0 left-0 w-full flex justify-between items-center list-none py-7 px-20 z-10">
       {images.map((item, i) => (
         <div className="overflow-hidden" key={i}>
           <Image

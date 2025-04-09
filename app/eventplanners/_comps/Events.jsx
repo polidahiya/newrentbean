@@ -227,7 +227,7 @@ export default function DireactSearchListSwiper() {
           <SwiperSlide key={index}>
             <div className="text-center p-10">
               <h3
-                className="text-3xl font-semibold mt-4 mb-6 flex justify-center text-theme"
+                className="text-3xl font-semibold mt-4 mb-6 flex justify-center text-eventtheme"
                 data-swiper-parallax="-150"
               >
                 <Effecttext text={item?.title} />
@@ -250,13 +250,13 @@ export default function DireactSearchListSwiper() {
               >
                 <button
                   onClick={() => textSwiperRef.current?.slidePrev()}
-                  className=" text-theme lg:border border-theme w-10 aspect-square grid place-content-center rounded-full hover:bg-theme hover:text-white"
+                  className=" text-eventtheme lg:border border-eventtheme w-10 aspect-square grid place-content-center rounded-full hover:bg-eventtheme hover:text-white"
                 >
                   ❮
                 </button>
                 <button
                   onClick={() => textSwiperRef.current?.slideNext()}
-                  className=" text-theme lg:border border-theme w-10 aspect-square grid place-content-center rounded-full hover:bg-theme hover:text-white"
+                  className=" text-eventtheme lg:border border-eventtheme w-10 aspect-square grid place-content-center rounded-full hover:bg-eventtheme hover:text-white"
                 >
                   ❯
                 </button>
@@ -280,7 +280,7 @@ export default function DireactSearchListSwiper() {
           >
             <span
               className={`block h-1 rounded-full bg-gray-400 duration-150 ${
-                i === activeIndex ? "bg-theme w-8" : "w-1"
+                i === activeIndex ? "bg-eventtheme w-8" : "w-1"
               }`}
             ></span>
             <span className="hidden lg:group-hover:block absolute top-0 -translate-y-full left-1/2 -translate-x-1/2 aspect-square w-20 border bg-white rounded-md overflow-hidden">
