@@ -82,12 +82,14 @@ const Producttabularform = ({
                     <button
                       className="border px-5 py-1 rounded-md bg-white"
                       onClick={() => moveUp(index)}
+                      aria-label="Move Up" title="Move Up"
                     >
                       UP
                     </button>
                     <button
                       className="border px-5 py-1 rounded-md bg-white"
                       onClick={() => moveDown(index)}
+                      aria-label="Move down" title="Move down"
                     >
                       DOWN
                     </button>

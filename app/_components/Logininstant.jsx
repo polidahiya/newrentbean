@@ -58,6 +58,8 @@ function Logininstant() {
             <button
               className="w-fit px-5 py-[6px] bg-theme text-white rounded-full"
               onClick={loginfn}
+              aria-label="Next"
+              title="Next"
             >
               Next
             </button>
@@ -84,6 +86,8 @@ function Logininstant() {
             onClick={() => {
               window.history.back();
             }}
+            aria-label="Close"
+            title="Close"
           >
             X
           </button>
@@ -94,6 +98,8 @@ function Logininstant() {
           onClick={() => {
             window.history.back();
           }}
+          aria-label="Close"
+          title="Close"
         ></button>
       </div>
     );

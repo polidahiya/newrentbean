@@ -83,6 +83,7 @@ function Page() {
           <button
             className="absolute top-5 right-5 w-10 aspect-square border text-white bg-red-500"
             onClick={() => setshoweditform(false)}
+            aria-label="Cancel" title="Cancel"
           >
             x
           </button>

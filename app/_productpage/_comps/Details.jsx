@@ -106,6 +106,8 @@ function Details({ filteredProduct }) {
                 <button
                   className="lg:hover:text-theme"
                   onClick={() => setisrentalstore((pre) => !pre)}
+                  aria-label="Switch Store"
+                  title="Switch Store"
                 >
                   Switch Store
                 </button>
@@ -117,6 +119,8 @@ function Details({ filteredProduct }) {
                 <button
                   className="lg:hover:text-theme"
                   onClick={() => setisrentalstore((pre) => !pre)}
+                  aria-label="Switch Store"
+                  title="Switch Store"
                 >
                   Switch Store
                 </button>

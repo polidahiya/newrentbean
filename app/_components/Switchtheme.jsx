@@ -73,6 +73,7 @@ const ThemeSwitcher = () => {
           theme === "light" ? "text-yellow-500" : "text-gray-500"
         }`}
         aria-label="Set Light Mode"
+        title="Set Light Mode"
       >
         <FaSun />
       </button>
@@ -82,6 +83,7 @@ const ThemeSwitcher = () => {
           theme === "dark" ? "text-blue-500" : "text-gray-500"
         }`}
         aria-label="Set Dark Mode"
+        title="Set Dark Mode"
       >
         <FaMoon />
       </button>
@@ -89,6 +91,7 @@ const ThemeSwitcher = () => {
         onClick={() => handleThemeChange("auto")}
         className={`p-2 ${theme === "auto" ? "text-white" : "text-gray-500"}`}
         aria-label="Set Auto Mode"
+        title="Set Auto Mode"
       >
         <FaAdjust />
       </button>

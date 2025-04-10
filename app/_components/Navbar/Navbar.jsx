@@ -67,6 +67,7 @@ function Navbar({ params, productsname, token, userdata }) {
           <button
             className="hidden lg:flex px-5 py-1 border rounded-md items-center justify-center gap-1 bg-bg1"
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
+            aria-label="Select Location" title="Select Location"
           >
             <MdLocationPin className="inline-block" />{" "}
             <span>{location?.location}</span>
@@ -93,6 +94,7 @@ function Navbar({ params, productsname, token, userdata }) {
                 isrentalstore ? "bg-theme text-white" : "bg-bg1"
               }`}
               onClick={() => setisrentalstore(true)}
+              aria-label="Rent Store" title="Rent Store"
             >
               Rent
             </button>
@@ -101,6 +103,7 @@ function Navbar({ params, productsname, token, userdata }) {
                 !isrentalstore ? "bg-cyan-600 text-white" : "bg-bg1"
               }`}
               onClick={() => setisrentalstore(false)}
+              aria-label="Buy Store" title="Buy Store"
             >
               Buy
             </button>
@@ -135,6 +138,7 @@ function Navbar({ params, productsname, token, userdata }) {
             onClick={() => {
               router.back();
             }}
+            aria-label="Cancel" title="Cancel"
           >
             <span className="h-8 lg:h-6 aspect-square rounded-full bg-white text-theme grid place-content-center">
               <IoMdArrowRoundBack />

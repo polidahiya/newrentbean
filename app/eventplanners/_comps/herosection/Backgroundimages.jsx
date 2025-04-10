@@ -6,41 +6,42 @@ import "swiper/css";
 import Image from "next/image";
 import { RiShareBoxFill } from "react-icons/ri";
 
+const data = [
+  {
+    heading: "Unforgettable Wedding Moments",
+    para: "From dreamy décor to seamless coordination, we specialize in crafting personalized wedding experiences that reflect your unique love story. Let us turn your special day into a beautiful memory that lasts forever.",
+    image: "/eventplanners/heroimages/image1.jpg",
+  },
+  {
+    heading: "Epic Parties, Made Effortless",
+    para: "Whether you're planning a birthday blowout, an elegant anniversary dinner, or a high-energy eventthemed party, we take care of everything—from concept to execution—so you can focus on making memories with your guests.",
+    image: "/eventplanners/heroimages/image2.jpg",
+  },
+  {
+    heading: "School Events with a Spark",
+    para: "Bring energy, creativity, and professionalism to every school event—be it annual functions, talent shows, sports days, or cultural festivals. We ensure every student, teacher, and parent walks away with a smile.",
+    image: "/eventplanners/heroimages/image3.jpg",
+  },
+  {
+    heading: "Corporate Events, Redefined",
+    para: "Impress clients, motivate employees, and build brand presence with our tailored corporate event solutions. From product launches to team-building retreats and formal galas, we execute with precision and flair.",
+    image: "/eventplanners/heroimages/image4.jpg",
+  },
+  {
+    heading: "Tailored Themes for Every Occasion",
+    para: "No two events should look the same. We bring your imagination to life with bespoke decorations, curated experiences, and eventtheme-based planning — whether you dream of rustic elegance, a Bollywood night, or a fairytale setting.",
+    image: "/eventplanners/heroimages/image1.jpg",
+  },
+  {
+    heading: "Stress-Free Event Planning",
+    para: "From the first consultation to the final guest leaving, we handle every aspect of event planning. Our team ensures everything runs smoothly — managing venues, vendors, food, music, and everything in between.",
+    image: "/eventplanners/heroimages/image2.jpg",
+  },
+];
+
 function Backgroundimages() {
   const [activeIndex, setActiveIndex] = useState(0);
   const textSwiperRef = useRef(null);
-  const data = [
-    {
-      heading: "Unforgettable Wedding Moments",
-      para: "From dreamy décor to seamless coordination, we specialize in crafting personalized wedding experiences that reflect your unique love story. Let us turn your special day into a beautiful memory that lasts forever.",
-      image: "/eventplanners/heroimages/image1.jpg",
-    },
-    {
-      heading: "Epic Parties, Made Effortless",
-      para: "Whether you're planning a birthday blowout, an elegant anniversary dinner, or a high-energy eventthemed party, we take care of everything—from concept to execution—so you can focus on making memories with your guests.",
-      image: "/eventplanners/heroimages/image2.jpg",
-    },
-    {
-      heading: "School Events with a Spark",
-      para: "Bring energy, creativity, and professionalism to every school event—be it annual functions, talent shows, sports days, or cultural festivals. We ensure every student, teacher, and parent walks away with a smile.",
-      image: "/eventplanners/heroimages/image3.jpg",
-    },
-    {
-      heading: "Corporate Events, Redefined",
-      para: "Impress clients, motivate employees, and build brand presence with our tailored corporate event solutions. From product launches to team-building retreats and formal galas, we execute with precision and flair.",
-      image: "/eventplanners/heroimages/image4.jpg",
-    },
-    {
-      heading: "Tailored Themes for Every Occasion",
-      para: "No two events should look the same. We bring your imagination to life with bespoke decorations, curated experiences, and eventtheme-based planning — whether you dream of rustic elegance, a Bollywood night, or a fairytale setting.",
-      image: "/eventplanners/heroimages/image1.jpg",
-    },
-    {
-      heading: "Stress-Free Event Planning",
-      para: "From the first consultation to the final guest leaving, we handle every aspect of event planning. Our team ensures everything runs smoothly — managing venues, vendors, food, music, and everything in between.",
-      image: "/eventplanners/heroimages/image2.jpg",
-    },
-  ];
 
   return (
     <>

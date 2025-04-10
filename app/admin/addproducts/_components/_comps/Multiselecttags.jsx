@@ -29,6 +29,7 @@ function Multiselecttags({ state, setState, statename, options, title }) {
             <button
               onClick={() => Handleremove(item)}
               className="bg-white h-full aspect-square rounded-sm"
+              aria-label="Cancel" title="Cancel"
             >
               X
             </button>

@@ -20,6 +20,7 @@ function Confirmdialogbox() {
                 showdialog?.continue();
                 setshowdialog(showdialoginitialvalues);
               }}
+              aria-label="Ok" title="Ok"
             >
               Ok
             </button>
@@ -28,6 +29,7 @@ function Confirmdialogbox() {
               onClick={() => {
                 setshowdialog(showdialoginitialvalues);
               }}
+              aria-label="Cancel" title="Cancel"
             >
               Cancle
             </button>

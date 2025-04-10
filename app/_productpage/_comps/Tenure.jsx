@@ -65,6 +65,7 @@ function Tenure({ filteredProduct, cartproductid }) {
               cart[cartproductid]?.selectedtenure == i && "text-theme "
             }`}
             onClick={() => setinputvalue(i)}
+            aria-label="Tenure" title="Tenure"
           >
             {item?.time} {item?.type}
           </button>

@@ -87,6 +87,7 @@ export default function ProductCard({
           onClick={() => {
             setpshowstatus((pre) => !pre);
           }}
+          aria-label="Change Status" title="Change Status"
         >
           Status
           <IoMdArrowDropdown className={`${pshowstatus && "rotate-180"}`} />
@@ -136,6 +137,7 @@ const ProductstatusOption = ({ orderid, productindex, setLocalStatus }) => {
           key={status}
           className="w-full p-[5px] lg:hover:bg-slate-100 "
           onClick={() => changestatusfn(status)}
+          aria-label={label} title={label}
         >
           {label}
         </button>

@@ -116,6 +116,7 @@ function Rentpricecomp({ data, setdata }) {
                     className="h-9 border bg-white text-red-500 px-3 rounded-md"
                     type="button"
                     onClick={() => handledeletetenure(key, j)}
+                    aria-label="Delete" title="Delete"
                   >
                     <AiFillDelete />
                   </button>
@@ -128,6 +129,7 @@ function Rentpricecomp({ data, setdata }) {
               onClick={() => {
                 handleaddtenure(key);
               }}
+              aria-label="add" title="add"
             >
               <MdAddToPhotos className="inline" /> Add more
             </button>
@@ -138,6 +140,7 @@ function Rentpricecomp({ data, setdata }) {
                 onClick={() => {
                   handledeletecity(key);
                 }}
+                aria-label="Delete City" title="Delete City"
               >
                 <AiFillDelete className="inline" /> Delete City
               </button>

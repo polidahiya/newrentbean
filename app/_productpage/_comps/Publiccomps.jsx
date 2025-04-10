@@ -87,6 +87,7 @@ export function Addtocartbuttons({
           className={`flex items-center justify-center h-full aspect-square text-xl ${
             cart[cartproductid]?.quantity <= 1 && "opacity-50"
           }`}
+          aria-label="Decrease" title="Decrease"
         >
           -
         </button>
@@ -101,6 +102,7 @@ export function Addtocartbuttons({
           className={`flex items-center justify-center h-full aspect-square text-xl ${
             cart[cartproductid]?.quantity >= MAX_QUANTITY && "opacity-50"
           }`}
+          aria-label="Increase" title="Increase"
         >
           +
         </button>
@@ -109,6 +111,7 @@ export function Addtocartbuttons({
       <button
         className="w-full h-full text-theme border border-theme text-sm rounded-full"
         onClick={handleAddToCart}
+        aria-label="Add to Cart" title="Add to Cart"
       >
         {filteredproducts?.available ? (
           cart[cartproductid]?.added ? (

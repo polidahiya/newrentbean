@@ -60,6 +60,7 @@ function Notif({ item }) {
       <button
         className="absolute right-1 top-1 w-7 h-7 bg-theme text-white rounded-full flex items-center justify-center"
         onClick={removemessage}
+        aria-label="Close" title="Close"
       >
         X
       </button>

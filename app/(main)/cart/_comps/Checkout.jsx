@@ -80,6 +80,7 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
               : "bg-gray-300 cursor-not-allowed"
           }`}
           onClick={Order}
+          aria-label="Place order" title="Place order"
         >
           <IoShieldCheckmark size={20} />
           Place Order
@@ -113,7 +114,7 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
             href="/rentalagreement"
             className="text-sky-500 hover:underline"
           >
-            Rental Agreement
+            Rent Agreement
           </Link>
           .
         </p>

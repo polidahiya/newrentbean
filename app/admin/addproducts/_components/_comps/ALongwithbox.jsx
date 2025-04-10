@@ -35,7 +35,7 @@ function ALongwithbox({ state, setState, statename }) {
             <button
               onClick={() => Handleremove(item)}
               className="absolute top-0 right-0 bg-red-500 text-white w-5 h-5 flex items-center justify-center hover:bg-red-600 transition-colors"
-              aria-label={`Remove ${item}`}
+              aria-label="Cancel" title="Cancel"
             >
               ×
             </button>

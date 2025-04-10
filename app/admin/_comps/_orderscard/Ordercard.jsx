@@ -98,6 +98,7 @@ function Ordercard({ item }) {
                 const res = await updatenote(item?._id, note);
                 setmessagefn(res?.message);
               }}
+              aria-label="Update Note" title="Update Note"
             >
               Update Note
             </button>
@@ -109,6 +110,7 @@ function Ordercard({ item }) {
               setinvoicedata(item);
               router.push("/admin/invoice");
             }}
+            aria-label="Generate Invoice" title="Generate Invoice"
           >
             Generate Invoice
           </button>
@@ -119,6 +121,7 @@ function Ordercard({ item }) {
               onClick={() => {
                 setshowstatusmenu((pre) => !pre);
               }}
+              aria-label="Change status" title="Change status"
             >
               Change status
               <IoMdArrowDropdown
@@ -131,6 +134,7 @@ function Ordercard({ item }) {
               onClick={() => {
                 setdeleteconfirm(true);
               }}
+              aria-label="Delete Order" title="Delete Order"
             >
               <AiOutlineDelete />
             </button>
@@ -189,6 +193,7 @@ const StatusMenuOption = ({ changestatusfn }) => {
           key={status}
           className="w-full p-[5px] lg:hover:bg-slate-100"
           onClick={() => changestatusfn(status)}
+          aria-label={label} title={label}
         >
           {label}
         </button>
@@ -215,6 +220,7 @@ const Deleteconfirmationmenu = ({
           }
           setmessagefn(res?.message);
         }}
+        aria-label="Confirm Delete" title="Confirm Delete"
       >
         Confirm
       </button>
@@ -222,6 +228,7 @@ const Deleteconfirmationmenu = ({
         onClick={() => {
           setdeleteconfirm(false);
         }}
+        aria-label="Cancel" title="Cancel"
       >
         Cancel
       </button>

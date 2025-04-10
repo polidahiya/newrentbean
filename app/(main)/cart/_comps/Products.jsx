@@ -134,6 +134,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
               <button
                 className="h-full aspect-square rounded-md border border-slate-300"
                 onClick={handleDecrement}
+                aria-label="Descresase" title="Descrease"
               >
                 -
               </button>
@@ -143,6 +144,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
               <button
                 className="h-full aspect-square rounded-md border border-slate-300"
                 onClick={handleIncrement}
+                aria-label="Increase" title="Increase"
               >
                 +
               </button>
@@ -158,6 +160,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
                     cartproductid: cartproductid,
                   });
                 }}
+                aria-label="Select Tenure" title="Select Tenure"
               >
                 {finaltenure[item?.selectedtenure]?.time}{" "}
                 {finaltenure[item?.selectedtenure]?.type}
@@ -168,6 +171,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
             <button
               className="h-full flex items-center gap-1 border border-slate-300 px-[20px] rounded-md"
               onClick={handleRemoveProduct}
+              aria-label="Remove" title="Remove"
             >
               <AiOutlineDelete className="aspect-square" />
               <span className="hidden md:block">Remove</span>

@@ -29,12 +29,14 @@ function Allproducts({ products }) {
           <button
             onClick={() => handleScroll(-scrollvalue)}
             className="flex items-center justify-center h-9 w-9 opacity-50 border border-gray-400 rounded-full hover:opacity-70"
+            aria-label="Scroll left" title="Scroll left"
           >
             <FaAngleLeft />
           </button>
           <button
             onClick={() => handleScroll(scrollvalue)}
             className="flex items-center justify-center h-9 w-9 opacity-50 border border-gray-400 rounded-full hover:opacity-70 rotate-180"
+            aria-label="scroll Right" title="scroll Right"
           >
             <FaAngleLeft />
           </button>

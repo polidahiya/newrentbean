@@ -51,6 +51,7 @@ function Logedinusermenu({ token, userdata }) {
           const link = new URL(window.location.href);
           setredirectloginlink(link.pathname);
         }}
+        aria-label="Login" title="Login"
       >
         <Link
           href="/loginlogout"
@@ -66,7 +67,8 @@ function Logedinusermenu({ token, userdata }) {
     <>
       {/* User menu button */}
       <div className="relative  h-full aspect-square z-30">
-        <button className=" h-full aspect-square  p-1" onClick={showmenu}>
+        <button className=" h-full aspect-square  p-1" onClick={showmenu}
+        aria-label="Show menu" title="Show menu">
           <Usersvg styles="h-full aspect-square fill-white stroke-white border border-slate-300 rounded-full" />
         </button>
 
@@ -160,6 +162,7 @@ function Logedinusermenu({ token, userdata }) {
           onClick={() => {
             window.history.back();
           }}
+          aria-label="Cancel" title="Cancel"
         ></button>
       )}
     </>

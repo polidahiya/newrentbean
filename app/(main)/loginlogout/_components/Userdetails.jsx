@@ -110,6 +110,8 @@ function Userdetails() {
               onClick={() => {
                 settogglepassword(!togglepassword);
               }}
+              aria-label="Show or Hide Password"
+              title="Show or Hide Password"
             >
               {togglepassword ? <IoIosEyeOff /> : <IoIosEye />}
             </button>
@@ -136,6 +138,8 @@ function Userdetails() {
         <button
           className="relative group flex items-center justify-center gap-[10px] px-[100px] bg-theme py-[5px] text-white rounded-full mt-[20px]  overflow-hidden"
           onClick={authenticateuser}
+          aria-label={signupform ? "Signup" : "Login"}
+          title={signupform ? "Signup" : "Login"}
         >
           {loading && (
             <div className="h-[20px] aspect-square rounded-full  border-r-2 border-l-2 border-white animate-spin z-10"></div>
@@ -252,6 +256,7 @@ function SignInPage() {
               value: 1,
             });
           }}
+          aria-label="Continue with Google" title="Continue with Google"
         >
           {loading && (
             <div className="absolute top-1/2 left-5 -translate-y-1/2 h-full p-2">

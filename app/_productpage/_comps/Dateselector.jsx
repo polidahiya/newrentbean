@@ -168,6 +168,7 @@ const CustomCalendar = ({ cart, setcart, cartproductid, isPastDate }) => {
               }`}
                 onClick={() => updateTenureStart({ date: day })}
                 style={{ animationDelay: index * 20 + "ms" }}
+                aria-label={day} title={day}
               >
                 {day}
               </button>

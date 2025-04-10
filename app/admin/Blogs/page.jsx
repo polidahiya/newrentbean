@@ -114,14 +114,16 @@ function Addblog() {
       <div className="fixed top-16 right-2 z-10 flex gap-2">
         <button
           className=" border border-slate-300 p-2 rounded-md hover:text-sky-500 text-[20px] bg-white"
-          title="Show preview"
           onClick={() => setpreview((pre) => !pre)}
+          aria-label="show preview"
+          title="show preview"
         >
           <HiOutlineViewfinderCircle />
         </button>
         <button
           className=" border border-slate-300 p-2 rounded-md hover:text-sky-500 text-[20px] bg-white"
-          title="Resfresh site now"
+          aria-label="Refresh Site now"
+          title="Refresh Site now"
           onClick={async () => {
             const res = await refreshblogsnow();
             setmessagefn(res.message);

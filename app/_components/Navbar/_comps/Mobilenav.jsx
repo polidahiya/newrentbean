@@ -136,6 +136,7 @@ function Mobilenav() {
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             isopenstoremenu?.show && "text-theme"
           }`}
+          aria-label={isrentalstore?"Rent":"Buy"} title={isrentalstore?"Rent":"Buy"}
         >
           <MdOutlineStoreMallDirectory />
           <span className="text-xs font-semibold">

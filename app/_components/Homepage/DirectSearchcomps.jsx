@@ -65,6 +65,7 @@ export default function DireactSearchListSwiper() {
                 <button
                   onClick={() => textSwiperRef.current?.slidePrev()}
                   className=" text-theme lg:border border-theme px-5 py-2 rounded-md lg:order-2"
+                  aria-label="Scroll left" title="Scroll left"
                 >
                   ❮
                 </button>
@@ -77,6 +78,7 @@ export default function DireactSearchListSwiper() {
                 <button
                   onClick={() => textSwiperRef.current?.slideNext()}
                   className=" text-theme lg:border border-theme px-5 py-2 rounded-md order-3"
+                  aria-label="scroll Right" title="scroll Right"
                 >
                   ❯
                 </button>

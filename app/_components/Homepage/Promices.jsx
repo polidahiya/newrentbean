@@ -64,6 +64,7 @@ function Promices() {
                   i === activeIndex ? "bg-theme w-8" : "bg-gray-400 w-[5px]"
                 }`}
                 onClick={() => swiperRef.current.swiper.slideTo(i)}
+                aria-label="Index" title="Index"
               ></button>
             ))}
           </div>

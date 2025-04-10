@@ -85,6 +85,7 @@ function Publicpage({ token = null }) {
         <button
           className="relative group flex items-center justify-center gap-[10px] px-[50px] py-[5px] bg-theme text-white rounded-full mt-[20px]  overflow-hidden"
           onClick={Submitform}
+          aria-label="Change Password" title="Change Password"
         >
           {loading && (
             <div className="h-[20px] aspect-square rounded-full  border-r-2 border-l-2 border-white animate-spin z-10"></div>

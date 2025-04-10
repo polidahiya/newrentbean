@@ -120,16 +120,18 @@ function ImagesComp({ filteredproducts, token }) {
           {/* like  */}
           <button
             className="text-2xl bg-white text-red-500 rounded-full border p-1"
-            title="Add to favourites"
             onClick={handleLikeToggle}
+            aria-label={isLiked ? "Dislike" : "Like"}
+            title={isLiked ? "Dislike" : "Like"}
           >
             {isLiked ? <IoMdHeart /> : <IoMdHeartEmpty />}
           </button>
           {/* link */}
           <button
             className="text-2xl rounded-full bg-white border p-1"
-            title="Copy Link"
             onClick={handleSharePage}
+            aria-label="Copy Link"
+            title="Copy Link"
           >
             <IoLinkOutline />
           </button>
@@ -155,6 +157,7 @@ function ImagesComp({ filteredproducts, token }) {
             imagesScrollRef.current.scrollLeft -=
               imagesScrollRef.current.clientWidth;
           }}
+          aria-label="Left" title="Left"
         >
           <MdKeyboardArrowLeft />
         </button>
@@ -166,6 +169,7 @@ function ImagesComp({ filteredproducts, token }) {
             imagesScrollRef.current.scrollLeft +=
               imagesScrollRef.current.clientWidth;
           }}
+          aria-label="Right" title="Right"
         >
           <MdKeyboardArrowLeft />
         </button>

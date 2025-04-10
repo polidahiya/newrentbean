@@ -10,6 +10,7 @@ function Togglebutton({ children }) {
       onClick={() => {
         setmoredesc(!moredesc);
       }}
+      aria-label={moredesc?"Read less":"Read more"} title={moredesc?"Read less":"Read more"}
     >
       {moredesc ? "Read Less" : "Read More"}
       <svg

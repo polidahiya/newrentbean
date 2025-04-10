@@ -28,6 +28,7 @@ function Standardinputfield({
           type="button"
           className="px-4 py-2 border  text-gray-500 rounded-md "
           onClick={clear}
+          aria-label="clear" title="clear"
         >
           <RiDeleteBackFill className="h-full w-full" />
         </button>

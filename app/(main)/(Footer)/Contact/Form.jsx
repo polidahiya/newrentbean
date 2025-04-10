@@ -137,6 +137,7 @@ export default function ContactForm({ userdata }) {
               value: 1,
             });
           }}
+          aria-label="send message" title="Send message"
         >
           {loading && (
             <div className="h-[20px] aspect-square border-[2px] border-l-0 border-t-0 rounded-full border-white animate-spin duration-200"></div>

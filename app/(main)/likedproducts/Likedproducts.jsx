@@ -48,8 +48,9 @@ function Likedproducts({ filtereditems }) {
             {/* like button */}
             <button
               className="absolute right-[10px] top-[10px] bg-white rounded-full p-[3px] "
-              title="Remove from favourites"
+             
               onClick={() => dislike(item._id)}
+              aria-label="Like Product" title="Like Product"
             >
               <Heart
                 styles={`h-[25px]  w-[25px]  translate-y-[1px] fill-red-500 stroke-none`}

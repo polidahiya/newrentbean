@@ -53,12 +53,14 @@ function Customerreviews() {
           <button
             className="h-full aspect-square flex items-center justify-center bg-white rounded-full"
             onClick={() => swiperRef.current.swiper.slidePrev()}
+            aria-label="Scroll left" title="Scroll left"
           >
             <FaAngleLeft />
           </button>
           <button
             className="h-full aspect-square flex items-center justify-center bg-white rounded-full rotate-180"
             onClick={() => swiperRef.current.swiper.slideNext()}
+            aria-label="Scroll Right" title="Scroll Right"
           >
             <FaAngleLeft />
           </button>
@@ -72,6 +74,7 @@ function Customerreviews() {
                 i === activeIndex ? "bg-theme w-8" : "bg-white w-[5px]"
               }`}
               onClick={() => swiperRef.current.swiper.slideTo(i)}
+              aria-label="Index of slides" title="Index of slides"
             ></button>
           ))}
         </div>

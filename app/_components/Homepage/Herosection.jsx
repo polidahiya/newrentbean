@@ -79,12 +79,14 @@ function PosterAdds({ location }) {
           <button
             className="absolute left-5 top-1/2 transform -translate-y-1/2 w-12 aspect-square flex items-center justify-center bg-white lg:bg-gray-300 rounded-full opacity-0 lg:group-hover:opacity-80 transition hover:bg-white z-10"
             onClick={() => swiperRef.current.swiper.slidePrev()}
+            aria-label="Scroll Left" title="Scroll Left"
           >
             <FaAngleLeft />
           </button>
           <button
             className="absolute right-5 top-1/2 transform -translate-y-1/2 w-12 aspect-square flex items-center justify-center bg-white lg:bg-gray-300 rounded-full opacity-0 lg:group-hover:opacity-80 transition hover:bg-white rotate-180 z-10"
             onClick={() => swiperRef.current.swiper.slideNext()}
+            aria-label="Scroll Right" title="Scroll Right"
           >
             <FaAngleLeft />
           </button>
@@ -96,6 +98,7 @@ function PosterAdds({ location }) {
                 key={i}
                 className={`flex items-center justify-center p-1`}
                 onClick={() => swiperRef.current.swiper.slideTo(i)}
+                aria-label="Index" title="Index"
               >
                 <span
                   className={`block h-1 rounded-full bg-gray-400 duration-150 ${

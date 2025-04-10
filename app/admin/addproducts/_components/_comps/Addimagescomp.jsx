@@ -78,6 +78,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
                 type="button"
                 onClick={() => handleMoveImage(imgIndex, -1)}
                 className="h-full aspect-square text-sm border rounded-md"
+                aria-label="move left" title="move left"
               >
                 <BsArrowLeftShort className="inline-block" />
               </button>
@@ -85,6 +86,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
                 type="button"
                 onClick={() => handleMoveImage(imgIndex, 1)}
                 className="h-full aspect-square text-sm border rounded-md"
+                aria-label="move right" title="move right"
               >
                 <BsArrowLeftShort className="inline-block rotate-180" />
               </button>
@@ -107,6 +109,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
                 type="button"
                 onClick={() => handleDeleteImage(imgIndex)}
                 className="h-full aspect-square text-red-500 border rounded-md"
+                aria-label="Delete" title="Delete"
               >
                 <AiFillDelete className="inline-block" />
               </button>

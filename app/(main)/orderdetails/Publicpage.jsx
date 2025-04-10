@@ -120,6 +120,7 @@ const Historyproductcard = ({ item, product, index }) => {
           <button
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => setmoreoptions(!moreoptions)}
+            aria-label="Open Menu" title="Open Menu"
           >
             <BiDotsHorizontalRounded className="text-gray-600 text-xl" />
           </button>
@@ -128,6 +129,7 @@ const Historyproductcard = ({ item, product, index }) => {
               <button
                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
                 onClick={() => setshowconfirmation(true)}
+                aria-label="Cancel Product" title="Cancel Product"
               >
                 Cancel Product
               </button>
@@ -218,6 +220,7 @@ const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
           <button
             className="flex items-center justify-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             onClick={confirmfn}
+            aria-label="Confirm Cancellation" title="Confirm Cancellation"
           >
             <LiaExclamationTriangleSolid className="text-lg" />
             Confirm Cancellation
@@ -225,6 +228,7 @@ const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
           <button
             className="px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
             onClick={() => setshowconfirmation(false)}
+            aria-label="Go Back" title="Go Back"
           >
             Go Back
           </button>

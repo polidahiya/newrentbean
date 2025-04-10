@@ -87,6 +87,8 @@ const Gotopbutton = ({ iseventmanager }) => {
           behavior: "smooth",
         });
       }}
+      aria-label="Go to Top" title="Go to Top"
+
     >
       <FaArrowUpLong className="translate-y-[2px]" />
       <span className="h-0 m-0 p-0 opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-4 duration-300">

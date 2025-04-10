@@ -52,6 +52,7 @@ function Multiplevaluesfield({
               type="button"
               className="px-4 py-2 text-red-500 border  rounded-md "
               onClick={() => handleDelete(index)}
+              aria-label="Delete" title="Delete"
             >
               <AiFillDelete className="h-full w-full" />
             </button>
@@ -62,6 +63,7 @@ function Multiplevaluesfield({
         type="button"
         className="border border-gray-300 px-5 py-2 rounded-md text-sm mt-2"
         onClick={handleAdd}
+        aria-label="Add" title="Add"
       >
         <MdAddToPhotos className="inline" /> Add more
       </button>

@@ -222,6 +222,7 @@ function Addandupdateproduct({
         <button
           type="submit"
           className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          aria-label="Submit" title="Submit"
         >
           {loading && (
             <span className="block h-5 aspect-square border-t-2 border-b-2 border-white rounded-full animate-spin"></span>
@@ -237,6 +238,7 @@ function Addandupdateproduct({
               setdeletedimages([]);
               setshoweditform(false);
             }}
+            aria-label="Cancel" title="Cancel"
           >
             Cancel Update
           </button>

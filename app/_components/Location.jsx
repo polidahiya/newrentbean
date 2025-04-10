@@ -61,6 +61,8 @@ function Location() {
           <button
             className="absolute right-0 top-0 h-[50px] aspect-square  bg-white z-10 lg:hover:bg-theme lg:hover:text-white"
             onClick={() => setlocation((pre) => ({ ...pre, show: false }))}
+            aria-label="Close"
+            title="Close"
           >
             X
           </button>
@@ -68,6 +70,8 @@ function Location() {
         <button
           className="absolute top-0 left-0 h-full w-full cursor-auto -z-10 bg-black bg-opacity-30"
           onClick={() => setlocation((pre) => ({ ...pre, show: false }))}
+          aria-label="Close"
+          title="Close"
         ></button>
       </div>
     );

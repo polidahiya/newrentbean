@@ -44,6 +44,7 @@ const PWAInstallPrompt = () => {
         <button
           onClick={handleInstallClick}
           className="flex items-center gap-1"
+          aria-label="Install app" title="Install app"
         >
           <MdInstallDesktop className="text-yellow-500 hidden md:block" />
           <MdInstallMobile className="text-yellow-500 md:hidden" />

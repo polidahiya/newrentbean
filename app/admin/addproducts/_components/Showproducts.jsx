@@ -146,12 +146,14 @@ function Showproducts({
         <button
           className="px-5 py-1 bg-bg1 rounded-md"
           onClick={() => setgridview(false)}
+          aria-label="Blocks" title="Blocks"
         >
           Blocks
         </button>
         <button
           className="px-5 py-1 bg-bg1 rounded-md ml-2"
           onClick={() => setgridview(true)}
+          aria-label="Table" title="Table"
         >
           Table
         </button>
@@ -161,6 +163,7 @@ function Showproducts({
             const res = await Bulkupdate(products);
             setmessagefn(res?.message);
           }}
+          aria-label="Bulk Update" title="Bulk Update"
         >
           Bulk Update
         </button>
@@ -232,6 +235,7 @@ const Productcardview = ({
                     type: false,
                   });
                 }}
+                aria-label="Cancel" title="Cancel"
               >
                 X
               </button>
@@ -244,6 +248,7 @@ const Productcardview = ({
                   setdeletedimages([]);
                   setshoweditform(true);
                 }}
+                aria-label="Edit" title="Edit"
               >
                 <FaEdit className="inline-block" />
               </button>
@@ -261,6 +266,7 @@ const Productcardview = ({
                   setdeletedimages([]);
                   setshoweditform(true);
                 }}
+                aria-label="Duplicate" title="Duplicate"
               >
                 <IoIosCopy className="inline-block" />
               </button>

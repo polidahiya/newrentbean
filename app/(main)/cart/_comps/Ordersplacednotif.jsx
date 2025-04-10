@@ -26,6 +26,7 @@ function Ordersplacednotif() {
               settoggleorderplacedmenu(false);
               router.replace("/");
             }}
+            aria-label="ok" title="ok"
           >
             Ok
           </button>

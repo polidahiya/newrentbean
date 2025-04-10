@@ -25,6 +25,7 @@ function Togglebuttons({
               ? "bg-blue-600 text-white"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300"
           }`}
+          aria-label="ok" title="ok"
         >
           {positiveText}
         </button>
@@ -36,6 +37,7 @@ function Togglebuttons({
               ? "bg-blue-600 text-white"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300"
           }`}
+          aria-label="Cancel" title="Cancel"
         >
           {negativeText}
         </button>

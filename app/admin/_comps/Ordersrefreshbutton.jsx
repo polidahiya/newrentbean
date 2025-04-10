@@ -7,15 +7,18 @@ function Ordersrefreshbutton({ Refreshorders }) {
   return (
     <button
       className=" grid place-content-center h-full aspect-square  border border-slate-300 p-1 md:p-0 rounded-[5px] ml-auto "
-      title="Refresh Orderes"
       onClick={async () => {
         setloading(true);
         const url = new URL(window.location);
         await Refreshorders(url.pathname);
         setloading(false);
       }}
+      aria-label="Refresh"
+      title="Refresh"
     >
-      <MdOutlineRefresh className={`${loading && "animate-spin duration-200"}`} />
+      <MdOutlineRefresh
+        className={`${loading && "animate-spin duration-200"}`}
+      />
     </button>
   );
 }

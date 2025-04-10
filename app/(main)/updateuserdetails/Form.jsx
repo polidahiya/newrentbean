@@ -111,6 +111,7 @@ function Form({ userdata }) {
         <button
           className="flex items-center justify-center gap-[10px] px-[100px] py-[5px] bg-theme text-white rounded-full mt-[20px] "
           onClick={updateuserfn}
+          aria-label="Update Details" title="Update Details"
         >
           {showloading && (
             <div className="h-[20px] aspect-square rounded-full  border-r-2 border-l-2 border-white animate-spin"></div>
