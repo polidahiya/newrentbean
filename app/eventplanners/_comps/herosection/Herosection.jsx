@@ -10,8 +10,9 @@ import Backgroundimages from "./Backgroundimages";
 function Herosection() {
   return (
     <div className="relative h-screen lg:min-h-[720px]  w-full">
+      {/* Socails */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 right-24 flex flex-col items-center socialanimation opacity-0 z-10"
+        className="absolute top-1/2 -translate-y-1/2 right-6 lg:right-24 flex flex-col items-center socialanimation opacity-0 z-10"
         style={{
           animation: "fadeoutanimation 0.6s 3s ease-in-out forwards",
         }}

@@ -189,23 +189,16 @@ export default function DireactSearchListSwiper() {
                 WebkitMaskSize: "cover",
                 WebkitMaskRepeat: "no-repeat",
                 WebkitMaskPosition: "center",
-                transition: "transform 0.5s ease-in-out", // smooth transition
-                transform: "scale(1)", // your desired scale
               }}
+              data-swiper-parallax-scale="0.1"
             >
               <Image
+                data-swiper-parallax-scale="1.9"
                 src={item?.image}
                 alt={item?.alt}
                 className={`object-cover w-full h-full`}
                 loading="lazy"
-                width={638}
-                height={358}
-                // style={{
-                //   maskImage: "url('/eventplanners/maskimage.png')",
-                //   maskSize: "cover",
-                //   maskRepeat: "no-repeat",
-                //   maskPosition: "center",
-                // }}
+                fill
               ></Image>
             </div>
           </SwiperSlide>

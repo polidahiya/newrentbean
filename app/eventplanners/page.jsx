@@ -7,13 +7,13 @@ export default function page() {
   return (
     <div className="">
       <Herosection />
-      <div className="px-10 mt-20">
+      <div className="md:px-10 mt-20">
         <Events />
       </div>
-      <div className="px-10 mt-20">
+      <div className="md:px-10 mt-20">
         <Testimonials />
       </div>
-      <div className="px-10 mt-20 text">
+      <div className="px-5 md:px-10 mt-20 text">
         <section>
           <h1>Professional Event Planning Services in Delhi & NCR</h1>
           <p>
@@ -46,7 +46,7 @@ export default function page() {
         </section>
       </div>
 
-      <div className="px-10 mt-20">
+      <div className="px-5 md:px-10 mt-20">
         <Footer />
       </div>
     </div>

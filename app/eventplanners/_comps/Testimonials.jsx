@@ -6,53 +6,54 @@ import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
 import "swiper/css";
 import { SiComma } from "react-icons/si";
 
+const data = [
+  {
+    comment: `Synonyms of test
+1
+a
+: a means of testing: such as
+(1)
+: something (such as a series of questions or exercises) for measuring the skill, knowledge, intelligence, capacities, or aptitudes of an individual or group
+(2)
+: a procedure, reaction, or reagent used to identify or characterize a substance or constituent
+b
+: a positive result in such a test`,
+    name: "John Doe",
+  },
+  {
+    comment: `Synonyms of test
+1
+a
+: a means of testing: such as
+(1)
+: something (such as a series of questions or exercises) for measuring the skill, knowledge, intelligence, capacities, or aptitudes of an individual or group
+(2)
+: a procedure, reaction, or reagent used to identify or characterize a substance or constituent
+b
+: a positive result in such a test`,
+    name: "John Doe",
+  },
+  {
+    comment: `Synonyms of test
+1
+a
+: a means of testing: such as
+(1)
+: something (such as a series of questions or exercises) for measuring the skill, knowledge, intelligence, capacities, or aptitudes of an individual or group
+(2)
+: a procedure, reaction, or reagent used to identify or characterize a substance or constituent
+b
+: a positive result in such a test`,
+    name: "John Doe",
+  },
+];
+
 function Testimonials() {
-  const data = [
-    {
-      comment: `Synonyms of test
-1
-a
-: a means of testing: such as
-(1)
-: something (such as a series of questions or exercises) for measuring the skill, knowledge, intelligence, capacities, or aptitudes of an individual or group
-(2)
-: a procedure, reaction, or reagent used to identify or characterize a substance or constituent
-b
-: a positive result in such a test`,
-      name: "John Doe",
-    },
-    {
-      comment: `Synonyms of test
-1
-a
-: a means of testing: such as
-(1)
-: something (such as a series of questions or exercises) for measuring the skill, knowledge, intelligence, capacities, or aptitudes of an individual or group
-(2)
-: a procedure, reaction, or reagent used to identify or characterize a substance or constituent
-b
-: a positive result in such a test`,
-      name: "John Doe",
-    },
-    {
-      comment: `Synonyms of test
-1
-a
-: a means of testing: such as
-(1)
-: something (such as a series of questions or exercises) for measuring the skill, knowledge, intelligence, capacities, or aptitudes of an individual or group
-(2)
-: a procedure, reaction, or reagent used to identify or characterize a substance or constituent
-b
-: a positive result in such a test`,
-      name: "John Doe",
-    },
-  ];
   const [activeIndex, setActiveIndex] = useState(0);
   const textSwiperRef = useRef(null);
 
   return (
-    <div className="bg-bg1 p-10">
+    <div className="bg-bg1 px-5 md:px-10 py-10">
       <div className="flex justify-center">
         <Effecttext text={"TESTIMONIALS"} />
       </div>

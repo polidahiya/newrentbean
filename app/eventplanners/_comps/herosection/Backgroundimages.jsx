@@ -45,7 +45,7 @@ function Backgroundimages() {
 
   return (
     <>
-      <div className="absolute top-0 left-0 h-full w-full px-20 py-40 flex flex-col z-10 text-white">
+      <div className="absolute top-0 left-0 h-full w-full px-5 lg:px-20 py-40 flex flex-col z-10 text-white">
         <div>
           {data.map((item, i) => {
             return (
@@ -68,7 +68,7 @@ function Backgroundimages() {
                 </h2>
                 <div className="overflow-hidden mt-5">
                   <p
-                    className="opacity-60 max-w-xl translate-y-full"
+                    className="opacity-60 max-w-xl translate-y-full pr-10 "
                     style={{ animation: `moveupanimation 1s 3s forwards` }}
                   >
                     {item?.para}
@@ -87,8 +87,8 @@ function Backgroundimages() {
           })}
           {/* control bittons */}
         </div>
-        <div className="flex items-center h-10 mt-auto">
-          <div className="h-7 text-xs flex items-center">
+        <div className="flex items-center md:gap-10 h-10 mt-auto">
+          <div className="h-7 text-xs hidden  md:flex items-center">
             {data.map((item, i) => {
               return (
                 <React.Fragment key={i}>
@@ -106,7 +106,7 @@ function Backgroundimages() {
               );
             })}
           </div>
-          <div className=" flex justify-center gap-2 ml-10">
+          <div className=" flex justify-center gap-2">
             <button
               onClick={() => textSwiperRef.current?.slidePrev()}
               className=" text-white lg:border border-white w-10 aspect-square grid place-content-center rounded-full bg-opacity-50"
