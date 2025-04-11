@@ -2,6 +2,7 @@ import React from "react";
 import "./epstyles.css";
 import Navbar from "./_comps/Navbar/Navbar";
 import Mobilenav from "./_comps/Navbar/Mobilenav";
+import Footer from "./_comps/Footer";
 
 export const metadata = {
   title: "Event Planners",
@@ -14,6 +15,7 @@ function layout({ children }) {
     <>
       <Navbar />
       {children}
+      <Footer />
       <Mobilenav />
     </>
   );

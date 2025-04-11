@@ -16,7 +16,10 @@ function Showevents() {
           }}
         >
           <h2 className="text-xl font-semibold mb-2">
-            {categoryname.replace(/-/g, " ")}
+            <Linkeffect
+              title={categoryname.replace(/-/g, " ")}
+              linkto={`/eventplanners/${categoryname}`}
+            />
           </h2>
 
           <div className="space-y-3 ml-2 text-sm">
@@ -33,7 +36,7 @@ function Showevents() {
                 <h3>
                   <Linkeffect
                     title={subcatname.replace(/-/g, " ")}
-                    linkto={"/"}
+                    linkto={`/eventplanners/${categoryname}/${subcatname}`}
                   />
                 </h3>
 
@@ -44,7 +47,7 @@ function Showevents() {
                         <div key={k} className="opacity-80">
                           <Linkeffect
                             title={supersubcatname.replace(/-/g, " ")}
-                            linkto={"/"}
+                            linkto={`/eventplanners/${categoryname}/${subcatname}/${supersubcatname}`}
                           />
                         </div>
                       )

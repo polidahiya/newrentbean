@@ -1,6 +1,5 @@
 import Herosection from "./_comps/herosection/Herosection";
 import Events from "./_comps/Events";
-import Footer from "./_comps/Footer";
 import Testimonials from "./_comps/Testimonials";
 
 export default function page() {
@@ -44,10 +43,6 @@ export default function page() {
             extraordinary!
           </p>
         </section>
-      </div>
-
-      <div className="px-5 md:px-10 mt-20">
-        <Footer />
       </div>
     </div>
   );

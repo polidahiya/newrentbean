@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="px-5 md:px-10 mt-20">
       <Effecttext text={"Contact Us"} />
       <h2 className=" text-3xl lg:text-4xl mt-5 max-w-xl">
         Ready to book a consultation or have a question for us?
