@@ -20,8 +20,6 @@ const BirthdayPartyService = async ({ params }) => {
     throw new Error("Failed to fetch image");
   }
   const data = await response.json();
-  //   console.log(data);
-
   const image = data?.urls?.regular;
 
   // State for booking inquiry form
@@ -186,7 +184,7 @@ const BirthdayPartyService = async ({ params }) => {
         className="py-16 px-4 md:px-16 bg-gradient-to-r from-blue-200 to-purple-200"
       >
         <h2 className="text-4xl font-bold text-center text-white mb-12">
-          Let’s Plan Your Party!
+          Let's Plan Your Party!
         </h2>
         <form
           onSubmit={handleSubmit}
@@ -194,7 +192,7 @@ const BirthdayPartyService = async ({ params }) => {
         >
           {submitted && (
             <p className="text-green-600 mb-4 text-center">
-              Thank you for your inquiry! We’ll get back to you soon.
+              Thank you for your inquiry! We'll get back to you soon.
             </p>
           )}
           <div className="mb-6">
@@ -309,12 +307,12 @@ const BirthdayPartyService = async ({ params }) => {
             {
               name: "Lisa M.",
               quote:
-                "Joyful Moments made my daughter’s 5th birthday magical! Everything was perfect.",
+                "Joyful Moments made my daughter's 5th birthday magical! Everything was perfect.",
             },
             {
               name: "James R.",
               quote:
-                "The team handled every detail for my 30th. Best party I’ve ever had!",
+                "The team handled every detail for my 30th. Best party I've ever had!",
             },
             {
               name: "Priya S.",
@@ -326,7 +324,7 @@ const BirthdayPartyService = async ({ params }) => {
               key={index}
               className="bg-purple-50 p-6 rounded-lg shadow-md text-center"
             >
-              <p className="text-gray-700 italic">"{testimonial.quote}"</p>
+              <p className="text-gray-700 italic">{'"'}{testimonial.quote}{'"'}</p>
               <p className="mt-4 text-purple-700 font-semibold">
                 {testimonial.name}
               </p>
