@@ -22,9 +22,7 @@ function Navbar({ params, productsname, token, userdata }) {
 
   const {
     showsearch,
-    setshowsearch,
     showcat,
-    setshowcat,
     location,
     setlocation,
     isrentalstore,
@@ -32,17 +30,6 @@ function Navbar({ params, productsname, token, userdata }) {
     shownavbottom,
     isopenstoremenu,
   } = AppContextfn();
-
-  useEffect(() => {
-    const hidemenu2 = () => {
-      setshowcat(false);
-      setshowsearch(false);
-    };
-    window.addEventListener("popstate", hidemenu2);
-    return () => {
-      window.removeEventListener("popstate", hidemenu2);
-    };
-  }, []);
 
   return (
     <nav

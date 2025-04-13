@@ -13,34 +13,8 @@ import { RiAdminFill } from "react-icons/ri";
 
 function Logedinusermenu({ token, userdata }) {
   const router = useRouter();
-  const {
-    toggleusermenu,
-    settoggleusermenu,
-    setmessagefn,
-    setredirectloginlink,
-  } = AppContextfn();
-
-  useEffect(() => {
-    window.addEventListener("popstate", hidemenu);
-    return () => {
-      window.removeEventListener("popstate", hidemenu);
-    };
-  }, []);
-
-  const showmenu = () => {
-    history.pushState(null, "", "");
-    settoggleusermenu((pre) => ({ ...pre, show: true }));
-    setTimeout(() => {
-      settoggleusermenu((pre) => ({ ...pre, effect: true }));
-    }, 100);
-  };
-
-  const hidemenu = () => {
-    settoggleusermenu((pre) => ({ ...pre, effect: false }));
-    setTimeout(() => {
-      settoggleusermenu((pre) => ({ ...pre, show: false }));
-    }, 300);
-  };
+  const { toggleusermenu, setmessagefn, setredirectloginlink, showusermenu } =
+    AppContextfn();
 
   const parsedUserData = userdata ? JSON.parse(userdata) : null;
 
@@ -51,7 +25,8 @@ function Logedinusermenu({ token, userdata }) {
           const link = new URL(window.location.href);
           setredirectloginlink(link.pathname);
         }}
-        aria-label="Login" title="Login"
+        aria-label="Login"
+        title="Login"
       >
         <Link
           href="/loginlogout"
@@ -67,8 +42,12 @@ function Logedinusermenu({ token, userdata }) {
     <>
       {/* User menu button */}
       <div className="relative  h-full aspect-square z-30">
-        <button className=" h-full aspect-square  p-1" onClick={showmenu}
-        aria-label="Show menu" title="Show menu">
+        <button
+          className=" h-full aspect-square  p-1"
+          onClick={showusermenu}
+          aria-label="Show menu"
+          title="Show menu"
+        >
           <Usersvg styles="h-full aspect-square fill-white stroke-white border border-slate-300 rounded-full" />
         </button>
 
@@ -162,7 +141,8 @@ function Logedinusermenu({ token, userdata }) {
           onClick={() => {
             window.history.back();
           }}
-          aria-label="Cancel" title="Cancel"
+          aria-label="Cancel"
+          title="Cancel"
         ></button>
       )}
     </>

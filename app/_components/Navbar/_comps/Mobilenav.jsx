@@ -15,14 +15,12 @@ function Mobilenav() {
   const path = usePathname();
   const {
     showsearch,
-    showcat,
     setshowsearch,
-    setshowcat,
     searchinputref,
     isrentalstore,
     cart,
     isopenstoremenu,
-    setisopenstoremenu,
+    openstoremenu,
   } = AppContextfn();
 
   const cartitems = Object.values(cart).filter((item) => item.added);
@@ -31,35 +29,9 @@ function Mobilenav() {
     0
   );
 
-  useEffect(() => {
-    const hidemenu2 = () => {
-      if (showcat) setshowcat(false);
-      if (showsearch) setshowsearch(false);
-      if (isopenstoremenu?.show) closestoremenu();
-    };
-    window.addEventListener("popstate", hidemenu2);
-    return () => {
-      window.removeEventListener("popstate", hidemenu2);
-    };
-  }, []);
-
-  const openstoremenu = () => {
-    setisopenstoremenu((pre) => ({ ...pre, show: true }));
-    setTimeout(() => {
-      setisopenstoremenu((pre) => ({ ...pre, effect: true }));
-    }, 100);
-  };
-
-  const closestoremenu = () => {
-    setisopenstoremenu((pre) => ({ ...pre, effect: false }));
-    setTimeout(() => {
-      setisopenstoremenu((pre) => ({ ...pre, show: false }));
-    }, 100);
-  };
-
   return (
     <>
-      {isopenstoremenu?.show && <Storemenu closestoremenu={closestoremenu} />}
+      {isopenstoremenu?.show && <Storemenu />}
       <div className="h-16 w-full flex items-center justify-around px-2 border-t sticky bottom-0 lg:hidden bg-white rounded-t-3xl z-20">
         <Link
           href="/Delhi"
@@ -136,7 +108,8 @@ function Mobilenav() {
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             isopenstoremenu?.show && "text-theme"
           }`}
-          aria-label={isrentalstore?"Rent":"Buy"} title={isrentalstore?"Rent":"Buy"}
+          aria-label={isrentalstore ? "Rent" : "Buy"}
+          title={isrentalstore ? "Rent" : "Buy"}
         >
           <MdOutlineStoreMallDirectory />
           <span className="text-xs font-semibold">
@@ -150,8 +123,7 @@ function Mobilenav() {
   );
 }
 
-
-const Storemenu = ({ closestoremenu }) => {
+const Storemenu = () => {
   const {
     location,
     setlocation,
@@ -164,7 +136,7 @@ const Storemenu = ({ closestoremenu }) => {
       className={`fixed bottom-16 border left-1/2 -translate-x-1/2 w-80 mx-2 bg-white rounded-2xl shadow-md p-5 lg:hidden duration-300 overflow-hidden ${
         isopenstoremenu.effect
           ? "opacity-100 -translate-y-5 z-50"
-          : "opacity-0 -translate-y-0"
+          : "opacity-0 -translate-y-0 z-0"
       }`}
     >
       <button
@@ -172,7 +144,6 @@ const Storemenu = ({ closestoremenu }) => {
         className="absolute top-3 right-3 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center"
         onClick={() => {
           window.history.back();
-          closestoremenu();
         }}
       >
         ✕
@@ -211,7 +182,6 @@ const Storemenu = ({ closestoremenu }) => {
           setlocation((pre) => ({ ...pre, show: true }));
           {
             window.history.back();
-            closestoremenu();
           }
         }}
       >

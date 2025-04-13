@@ -54,6 +54,50 @@ export function Appwrapper({
   const [invoicedata, setinvoicedata] = useState(false);
 
   // funtions
+  // statepop
+  useEffect(() => {
+    const hidemenu = () => {
+      setshowcat(false);
+      setshowsearch(false);
+      hideusermenu();
+      closestoremenu();
+    };
+    window.addEventListener("popstate", hidemenu);
+    return () => {
+      window.removeEventListener("popstate", hidemenu);
+    };
+  }, []);
+
+  const openstoremenu = () => {
+    setisopenstoremenu((pre) => ({ ...pre, show: true }));
+    setTimeout(() => {
+      setisopenstoremenu((pre) => ({ ...pre, effect: true }));
+    }, 100);
+  };
+
+  const closestoremenu = () => {
+    setisopenstoremenu((pre) => ({ ...pre, effect: false }));
+    setTimeout(() => {
+      setisopenstoremenu((pre) => ({ ...pre, show: false }));
+    }, 300);
+  };
+
+  const showusermenu = () => {
+    history.pushState(null, "", "");
+    settoggleusermenu((pre) => ({ ...pre, show: true }));
+    setTimeout(() => {
+      settoggleusermenu((pre) => ({ ...pre, effect: true }));
+    }, 100);
+  };
+
+  const hideusermenu = () => {
+    settoggleusermenu((pre) => ({ ...pre, effect: false }));
+    setTimeout(() => {
+      settoggleusermenu((pre) => ({ ...pre, show: false }));
+    }, 300);
+  };
+
+  // messages
   const setmessagefn = (message) => {
     setmessagearray([
       ...messagearray,
@@ -120,6 +164,7 @@ export function Appwrapper({
         setshowsearch,
         toggleusermenu,
         settoggleusermenu,
+        showusermenu,
         searchinputref,
         redirectloginlink,
         setredirectloginlink,
@@ -130,6 +175,7 @@ export function Appwrapper({
         setmessagefn,
         isopenstoremenu,
         setisopenstoremenu,
+        openstoremenu,
         instantlogin,
         setinstantlogin,
         moredesc,
