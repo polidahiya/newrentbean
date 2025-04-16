@@ -26,7 +26,6 @@ function Navbar({ params, productsname, token, userdata }) {
     setlocation,
     isrentalstore,
     shownavbottom,
-    isopenstoremenu,
   } = AppContextfn();
 
   return (
@@ -85,7 +84,7 @@ function Navbar({ params, productsname, token, userdata }) {
           <Logedinusermenu userdata={userdata} token={token} />
         </div>
         {/* exit back screen */}
-        {(showcat || showsearch || isopenstoremenu?.show) && (
+        {(showcat || showsearch) && (
           <div
             className="block lg:hidden fixed top-0 left-0 bg-black opacity-20 h-screen w-screen z-30"
             onClick={() => {

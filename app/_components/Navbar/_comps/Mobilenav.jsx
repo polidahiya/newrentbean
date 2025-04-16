@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { LuLayoutGrid } from "react-icons/lu";
 import { AppContextfn } from "@/app/Context";
@@ -8,8 +8,6 @@ import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
 import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
-import { MdTimer } from "react-icons/md";
-import { IoBagCheck } from "react-icons/io5";
 import Switchstore from "./Switchstore";
 
 function Mobilenav() {
@@ -128,47 +126,48 @@ function Mobilenav() {
 }
 
 const Storemenu = () => {
-  const {
-    location,
-    setlocation,
-    isrentalstore,
-    setisrentalstore,
-    isopenstoremenu,
-  } = AppContextfn();
+  const { location, setlocation, isopenstoremenu, closestoremenu } =
+    AppContextfn();
   return (
-    <div
-      className={`fixed bottom-16 border left-1/2 -translate-x-1/2 w-80 mx-2 bg-white rounded-2xl shadow-md p-5 lg:hidden duration-300 overflow-hidden ${
-        isopenstoremenu.effect
-          ? "opacity-100 -translate-y-5 z-50"
-          : "opacity-0 -translate-y-0 z-0"
-      }`}
-    >
-      <button
-        aria-label="Close Store Menu"
-        className="absolute top-3 right-3 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center"
-        onClick={() => {
-          window.history.back();
-        }}
+    <>
+      <div
+        className={`fixed bottom-16 border left-1/2 -translate-x-1/2 w-80 mx-2 bg-white rounded-2xl shadow-md p-5 lg:hidden duration-300 overflow-hidden ${
+          isopenstoremenu.effect
+            ? "opacity-100 -translate-y-5 z-50"
+            : "opacity-0 -translate-y-0 z-0"
+        }`}
       >
-        ✕
-      </button>
-      <h3 className="flex items-center justify-center gap-1 text-xl font-semibold">
-        <MdOutlineStoreMallDirectory />
-        Store
-      </h3>
-      <div className="mt-7">
-        <Switchstore />
+        <button
+          aria-label="Close Store Menu"
+          className="absolute top-3 right-3 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center"
+          onClick={() => closestoremenu()}
+        >
+          ✕
+        </button>
+        <h3 className="flex items-center justify-center gap-1 text-xl font-semibold">
+          <MdOutlineStoreMallDirectory />
+          Store
+        </h3>
+        <div className="mt-7">
+          <Switchstore />
+        </div>
+        <div
+          className="w-full flex items-center justify-center gap-1 mt-4 border py-2 rounded-lg text-theme font-semibold"
+          onClick={() => {
+            setlocation((pre) => ({ ...pre, show: true }));
+            closestoremenu();
+          }}
+        >
+          {location?.location}
+        </div>
       </div>
       <div
-        className="w-full flex items-center justify-center gap-1 mt-4 border py-2 rounded-lg text-theme font-semibold"
+        className="fixed top-0 left-0 inset-0 h-screen w-full z-40"
         onClick={() => {
-          setlocation((pre) => ({ ...pre, show: true }));
-          window.history.back();
+          closestoremenu();
         }}
-      >
-        {location?.location}
-      </div>
-    </div>
+      ></div>
+    </>
   );
 };
 

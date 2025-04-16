@@ -356,37 +356,33 @@ function subcat2({ location }) {
       <h1>Medical Equipment Rental in {location}</h1>
       <p>
         Looking for an <strong>Oxygen Cylinder on Rent in {location}</strong>?
-        We provide affordable
+        We provide affordable{" "}
         <strong> Oxygen Cylinders on rent near you</strong>, ensuring
         high-quality medical support. Get the best{" "}
         <strong>Oxygen Cylinder on Rent Price</strong> and explore our services
-        in
-        <strong> Delhi, Gurgaon, Faridabad, and Noida</strong>. We also offer{" "}
-        <strong>Gas Cylinders on Rent in Delhi</strong> and
+        in <strong> Delhi, Gurgaon, Faridabad, and Noida</strong>. We also offer{" "}
+        <strong>Gas Cylinders on Rent in Delhi</strong> and{" "}
         <strong> LPG Cylinders on Rent</strong> at competitive rates.
       </p>
       <p>
         Need an <strong>Oxygen Concentrator on Rent near {location}</strong>?
         Choose from our range, including{" "}
         <strong>10-Liter Oxygen Concentrators</strong>, at the best prices.
-        Available in
-        <strong> Faridabad, Delhi, Gurgaon, and Noida</strong>, we ensure fast
-        and reliable delivery.
+        Available in <strong> Faridabad, Delhi, Gurgaon, and Noida</strong>, we
+        ensure fast and reliable delivery.
       </p>
       <p>
         Find <strong>Wheelchairs on Rent near {location}</strong>, including{" "}
-        <strong>Foldable</strong> and
-        <strong> Electric Wheelchairs</strong>, at budget-friendly prices.
-        Whether in
+        <strong>Foldable</strong> and <strong> Electric Wheelchairs</strong>, at
+        budget-friendly prices. Whether in{" "}
         <strong> Delhi, Gurgaon, or Dwarka</strong>, we provide high-quality
         mobility solutions.
       </p>
       <p>
         Looking for a <strong>Patient Bed on Rent near {location}</strong>? We
-        provide
-        <strong> Manual and Motorized Beds</strong>, including{" "}
+        provide <strong> Manual and Motorized Beds</strong>, including{" "}
         <strong>Recliner Beds</strong>, at the best{" "}
-        <strong>Hospital Bed on Rent Prices</strong>. Available in
+        <strong>Hospital Bed on Rent Prices</strong>. Available in{" "}
         <strong> Delhi, Gurgaon, Noida, Faridabad, and Ghaziabad</strong>.
       </p>
     </div>
@@ -460,9 +456,9 @@ function subcat4({ location }) {
         <strong>laptop rent for 1 month</strong> or even on a daily basis.
         Whether you need a{" "}
         <strong>coding laptop on rent near {location}</strong> for programming
-        or a high-performance
+        or a high-performance{" "}
         <strong>gaming laptop on rent near {location}</strong>, we have you
-        covered. Choose an affordable option with
+        covered. Choose an affordable option with{" "}
         <strong>laptop on rent near me under 500</strong> or find premium models
         for professional use.
       </p>
@@ -477,7 +473,7 @@ function subcat4({ location }) {
       </p>
       <p>
         Whether you need a <strong>laptop on rent for personal use</strong>, a{" "}
-        <strong>laptop on rent for students</strong>, or just a
+        <strong>laptop on rent for students</strong>, or just a{" "}
         <strong>laptop on rent for a day</strong>, we ensure a seamless rental
         experience. Rent now and get the best laptops at the most affordable
         prices!
@@ -495,22 +491,20 @@ function subcat5({ location }) {
       <h1>Mobile Phone on Rent Near {location}</h1>
       <p>
         Looking for a <strong>mobile phone on rent near {location}</strong>?
-        Whether you&#39;re in
-        <strong>Faridabad, Haryana</strong>, <strong>Delhi</strong>,{" "}
-        <strong>Noida</strong>, or even <strong>Pune</strong>, we have a wide
-        range of smartphones available for rental. From the latest{" "}
-        <strong>iPhone on rent</strong> to high-end
+        Whether you&#39;re in <strong>Faridabad, Haryana</strong>,{" "}
+        <strong>Delhi</strong>, <strong>Noida</strong>, or even{" "}
+        <strong>Pune</strong>, we have a wide range of smartphones available for
+        rental. From the latest <strong>iPhone on rent</strong> to high-end{" "}
         <strong> Samsung Galaxy on rent</strong>, you can choose from a variety
         of options to suit your needs.
       </p>
       <p>
         Need a phone for a short duration? You can{" "}
-        <strong>rent a phone for a month</strong> or even opt for an
+        <strong>rent a phone for a month</strong> or even opt for an{" "}
         <strong>iPhone on rent for one day</strong>. Our services extend to
         individuals and businesses looking for reliable{" "}
         <strong>iPhone rental near me</strong>. For Apple enthusiasts, we
-        provide exclusive
-        <strong>iPhone on rent in Delhi</strong> and{" "}
+        provide exclusive <strong>iPhone on rent in Delhi</strong> and{" "}
         <strong>iPhone on rent near Faridabad, Haryana</strong>.
       </p>
       <p>
@@ -550,7 +544,7 @@ function subcat6({ location }) {
       <p>
         Get an <strong>AC on rent per month</strong> in {location}. We provide{" "}
         <strong>window AC on rent</strong>, <strong>standing AC on rent</strong>
-        ,<strong>tower AC on rent</strong>, and{" "}
+        , <strong>tower AC on rent</strong>, and{" "}
         <strong>portable AC on rent</strong>. Looking to{" "}
         <strong>buy AC on rent</strong>? Check our flexible plans for{" "}
         <strong>
@@ -594,21 +588,21 @@ function subcat7({ location }) {
       <p>
         Looking for a <strong>bed on rent near {location}</strong>? We offer a
         variety of rental options, including <strong>single bed on rent</strong>
-        ,<strong>double bed on rent</strong>, and{" "}
+        , <strong>double bed on rent</strong>, and{" "}
         <strong>king size bed on rent near {location}</strong>. Whether you need
         a <strong>bed on rent for 1 month</strong> or longer, we provide the
         best solutions to fit your needs.
       </p>
       <p>
         Our services are available in multiple locations, including{" "}
-        <strong>bed on rent in Delhi</strong>,
+        <strong>bed on rent in Delhi</strong>,{" "}
         <strong>bed on rent in Gurgaon</strong>, and nearby areas. We also offer{" "}
         <strong>folding bed on rent</strong>, perfect for temporary stays, and{" "}
         <strong>bed with mattress on rent in Delhi</strong> for added comfort.
       </p>
       <p>
         If you&#39;re looking for a{" "}
-        <strong>queen size bed on rent near {location}</strong> or a
+        <strong>queen size bed on rent near {location}</strong> or a{" "}
         <strong>solid wood bed on rent near {location}</strong>, we have
         high-quality options for you. Our collection includes{" "}
         <strong>double solid wood beds on rent</strong>, ensuring durability and
@@ -617,7 +611,7 @@ function subcat7({ location }) {
         comfort solutions.
       </p>
       <p>
-        No matter your requirement—<strong>single bed on rent near me</strong>,{" "}
+        No matter your requirement— <strong>single bed on rent near me</strong>,{" "}
         <strong>double bed on rent</strong>, or even a{" "}
         <strong>folding bed on rent near me</strong>—we make it easy for you to
         find the perfect bed rental option. Rent a bed today and enjoy
@@ -725,24 +719,23 @@ function subcat11({ location }) {
       <h1>Furniture and Sofa Rental in {location}</h1>
       <p>
         Looking for a <strong>sofa set on rent near {location}</strong>? We
-        offer the best
-        <strong>furniture on rent</strong>, including{" "}
+        offer the best <strong>furniture on rent</strong>, including{" "}
         <strong>sofa on rent for one day</strong> and long-term rentals. Whether
-        you need a <strong>sofa on rent in Delhi</strong>,
+        you need a <strong>sofa on rent in Delhi</strong>,{" "}
         <strong>sofa on rent Noida</strong>, or{" "}
         <strong>furniture on rent in Faridabad</strong>, we have you covered.
       </p>
       <p>
         Hosting a special event? Get a <strong>wedding sofa on rent</strong>.
-        Need a <strong>2-seater sofa on rent near {location}</strong> or a
+        Need a <strong>2-seater sofa on rent near {location}</strong> or a{" "}
         <strong>3-seater sofa on rent near {location}</strong>? We provide
         comfortable and stylish furniture for every occasion. Rent{" "}
-        <strong>cheap furniture in Delhi</strong> or explore
+        <strong>cheap furniture in Delhi</strong> or explore{" "}
         <strong>the best furniture rental services in Delhi</strong> for
         high-quality pieces.
       </p>
       <p>
-        We also offer <strong>L-shape sofa on rent near {location}</strong> and
+        We also offer <strong>L-shape sofa on rent near {location}</strong> and{" "}
         <strong>L-shape sofa on rent in Hyderabad</strong>. Whether you&#39;re
         in Gurgaon, Noida, Faridabad, or anywhere else, you can{" "}
         <strong>rent furniture</strong> hassle-free. Looking for{" "}
@@ -894,9 +887,8 @@ function subcat16({ location }) {
       <h1>Camping & Event Equipment on Rent Near {location}</h1>
       <p>
         Looking for a <strong>tent on rent near {location}</strong>? We provide
-        high-quality
-        <strong> camping tents for rent in {location}</strong> to make your
-        outdoor experience comfortable. Whether you need a{" "}
+        high-quality <strong> camping tents for rent in {location}</strong> to
+        make your outdoor experience comfortable. Whether you need a{" "}
         <strong>4-person tent on rent</strong> or a{" "}
         <strong>camping tent on rent near you</strong>, we have a variety of
         options to choose from.
@@ -905,9 +897,8 @@ function subcat16({ location }) {
         If you are planning a trip and need{" "}
         <strong>sleeping bags on rent near {location}</strong>, we offer premium{" "}
         <strong>Decathlon sleeping bags</strong> for a cozy night outdoors. Get
-        the best
-        <strong>camping equipment on rent near {location}</strong> without any
-        hassle.
+        the best <strong>camping equipment on rent near {location}</strong>{" "}
+        without any hassle.
       </p>
       <p>
         Hosting a party or an event? We offer{" "}

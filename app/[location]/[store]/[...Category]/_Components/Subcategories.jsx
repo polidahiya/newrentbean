@@ -6,14 +6,14 @@ import { categorylist } from "@/app/commondata";
 function Subcategories({ category, subcat, location,store }) {
   if (categorylist[category]?.subcat.length > 0)
     return (
-      <div className="relative flex items-center justify-center">
+      <div className="relative flex items-center justify-center lg:hidden">
         <div className="w-fit  flex items-center overflow-x-scroll p-2 gap-3 ">
           {categorylist[category]?.subcat.map((itemsubcat, i) => {
             return (
               <Link
                 key={i}
                 href={`/${location}/${store}/${category}/${itemsubcat.name}`}
-                className={`min-w-28 w-28 lg:w-36 lg:min-w-36 flex flex-col items-center  ${
+                className={`min-w-20 w-20 lg:w-36 lg:min-w-36 flex flex-col items-center  ${
                   subcat == itemsubcat.name &&
                   "bg-theme bg-clip-text text-transparent"
                 }`}
@@ -25,12 +25,12 @@ function Subcategories({ category, subcat, location,store }) {
                   quality={50}
                   alt={itemsubcat.name}
                   priority={true}
-                  className={`w-full aspect-square object-contain object-center rounded-[10px]  p-[2px] ${
+                  className={`w-full aspect-square object-contain object-center rounded-md  p-0.5 ${
                     subcat == itemsubcat.name ? "bg-theme" : "bg-white"
                   }`}
                 ></Image>
                 <div
-                  className={`h-fit w-full  text-center p-[5px]  text-[14px] text-ellipsis whitespace-nowrap overflow-hidden ${
+                  className={`h-fit w-full  text-center p-[5px]  text-xs text-ellipsis whitespace-nowrap overflow-hidden ${
                     subcat == itemsubcat.name && "font-semibold"
                   }`}
                 >

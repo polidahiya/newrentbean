@@ -60,7 +60,6 @@ export function Appwrapper({
       setshowcat(false);
       setshowsearch(false);
       hideusermenu();
-      closestoremenu();
     };
     window.addEventListener("popstate", hidemenu);
     return () => {
@@ -166,6 +165,7 @@ export function Appwrapper({
         settoggleusermenu,
         showusermenu,
         hideusermenu,
+        closestoremenu,
         searchinputref,
         redirectloginlink,
         setredirectloginlink,

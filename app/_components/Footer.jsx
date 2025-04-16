@@ -32,6 +32,7 @@ async function Footer() {
     { name: "Privacy Policy", link: "/PrivacyPolicy" },
     { name: "Return and Refunds", link: "/ReturnandRefunds" },
     { name: "Documents Required", link: "/Documentsrequired" },
+    { name: "Rent Agreement", link: "/rentalagreement" },
     { name: "Terms & Conditions", link: "/Terms&Conditions" },
   ];
   const list2 = [

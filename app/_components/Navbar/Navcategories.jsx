@@ -15,12 +15,19 @@ function Navcategories({ category, location, isrentalstore }) {
               key={i}
               prefetch={false}
               href={`/${location}/${isrentalstore ? "Rent" : "Buy"}/${key}`}
-              className={`w-full flex items-center justify-center  text-sm px-5 py-1 rounded-full relative z-10 ${
+              className={`w-full flex items-center justify-center gap-2 text-sm px-5 py-1 rounded-full relative z-10 ${
                 category == key
                   ? "lg:bg-theme lg:text-white"
                   : "lg:group-hover:bg-slate-100"
               }`}
             >
+              <Image
+                height="15"
+                width="15"
+                src={item.image}
+                alt={key}
+                className={`h-4 aspect-square ${category == key && "brightness-0 invert"}`}
+              />
               {key.replace(/-/g, " ")}
             </Link>
             <FaCaretDown
@@ -35,7 +42,9 @@ function Navcategories({ category, location, isrentalstore }) {
                   return (
                     <Link
                       key={j}
-                      href={`/${location}/${isrentalstore ? "Rent" : "Buy"}/${key}/${subcat.name}`}
+                      href={`/${location}/${
+                        isrentalstore ? "Rent" : "Buy"
+                      }/${key}/${subcat.name}`}
                       prefetch={false}
                       className="p-1 flex items-center gap-2 lg:w-52 text-sm lg:hover:bg-bg1 group/link"
                     >
