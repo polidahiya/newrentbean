@@ -5,7 +5,7 @@ import Categories from "./Categories";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import Footer from "../Footer";
 import { cookies } from "next/headers";
-import Allproducts from "./Allproducts";
+import Allproducts from "./allproducts/Allproducts";
 import Description from "./homedesc/Description";
 import Herosection from "./Herosection";
 import Navbar from "../Navbar/Navbar";
@@ -14,7 +14,11 @@ import Customerreviews from "./Customerreviews";
 import Roadmap from "./Roadmap";
 import DirectSearchcomps from "./DirectSearchcomps";
 
-export default async function Homepage({ params, location = "Delhi" }) {
+export default async function Homepage({
+  params,
+  location = "Delhi",
+  store = "Rent",
+}) {
   const allcookies = cookies();
   const token = allcookies.get("token")?.value;
   const userdata = allcookies.get("userdata")?.value;
@@ -23,6 +27,9 @@ export default async function Homepage({ params, location = "Delhi" }) {
   if (userdata) parseduserdata = JSON.parse(userdata);
 
   const products = await Cachedproducts();
+  const instoreproducts = products.filter(
+    (item) => item?.availablefor == store || item?.availablefor == "Both"
+  );
   const productsname = products?.map((item) => item?.name);
 
   return (
@@ -34,10 +41,14 @@ export default async function Homepage({ params, location = "Delhi" }) {
         userdata={userdata}
       />
       <div className="flex flex-col gap-16 lg:gap-20">
-        <Herosection location={location} />
-        <Categories location={location} />
-        <Allproducts products={products.sort(() => Math.random() - 0.5)} />
-        <DirectSearchcomps />
+        <Herosection location={location} store={store} />
+        <Categories location={location} store={store} />
+        <Allproducts
+          products={instoreproducts.sort(() => Math.random() - 0.5)}
+          location={location}
+          store={store}
+        />
+        <DirectSearchcomps location={location} store={store} />
         <Roadmap />
         <Customerreviews />
         <Blogscomp />
@@ -47,7 +58,7 @@ export default async function Homepage({ params, location = "Delhi" }) {
           </h2>
           <Promices />
         </div>
-        <Description location={location.replace(/-/g, " ")} />
+        <Description location={location.replace(/-/g, " ")} store={store} />
         <Footer />
       </div>
       <Mobilenav />

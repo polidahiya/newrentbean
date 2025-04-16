@@ -13,7 +13,7 @@ import { RiAdminFill } from "react-icons/ri";
 
 function Logedinusermenu({ token, userdata }) {
   const router = useRouter();
-  const { toggleusermenu, setmessagefn, setredirectloginlink, showusermenu } =
+  const { toggleusermenu, setmessagefn, setredirectloginlink, showusermenu,hideusermenu } =
     AppContextfn();
 
   const parsedUserData = userdata ? JSON.parse(userdata) : null;
@@ -72,7 +72,7 @@ function Logedinusermenu({ token, userdata }) {
             <div
               className="flex flex-col gap-[2px] w-full mt-[30px]"
               onClick={() => {
-                setTimeout(hidemenu, 100);
+                setTimeout(hideusermenu, 100);
               }}
             >
               <Link

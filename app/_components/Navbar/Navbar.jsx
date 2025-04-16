@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navcategories from "./Navcategories";
@@ -8,14 +8,13 @@ import { FaCartShopping } from "react-icons/fa6";
 import { AppContextfn } from "@/app/Context";
 import Searchbox from "../Searchbox";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { useRouter } from "next/navigation";
 import { FaOpencart } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { selectedtenure } from "../_helperfunctions/selectedtenure";
+import Switchstore from "./_comps/Switchstore";
 
 function Navbar({ params, productsname, token, userdata }) {
-  const router = useRouter();
   const path = usePathname();
   const slug = params?.Category;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
@@ -26,7 +25,6 @@ function Navbar({ params, productsname, token, userdata }) {
     location,
     setlocation,
     isrentalstore,
-    setisrentalstore,
     shownavbottom,
     isopenstoremenu,
   } = AppContextfn();
@@ -41,7 +39,11 @@ function Navbar({ params, productsname, token, userdata }) {
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
           {/* logo */}
-          <Link className="h-full md:w-fit p-1" href="/Delhi" prefetch={false}>
+          <Link
+            className="h-full md:w-fit p-1"
+            href={`/${location?.location}/${isrentalstore ? "Rent" : "Buy"}`}
+            prefetch={false}
+          >
             <Image
               className="w-auto h-full"
               src="/logo&ui/3dlogo.png"
@@ -52,9 +54,10 @@ function Navbar({ params, productsname, token, userdata }) {
           </Link>
           {/* location */}
           <button
-            className="hidden lg:flex px-5 py-1 border rounded-md items-center justify-center gap-1 bg-bg1"
+            className="hidden lg:flex px-5 py-1 border rounded-lg items-center justify-center gap-1 bg-bg1"
             onClick={() => setlocation((pre) => ({ ...pre, show: true }))}
-            aria-label="Select Location" title="Select Location"
+            aria-label="Select Location"
+            title="Select Location"
           >
             <MdLocationPin className="inline-block" />{" "}
             <span>{location?.location}</span>
@@ -62,7 +65,7 @@ function Navbar({ params, productsname, token, userdata }) {
         </div>
         {/* searchbar */}
         <div
-          className={`absolute top-[calc(100%+20px)] md:static h-10 w-full md:h-full lg:min-w-[500px] md:block lg:z-20 ${
+          className={`absolute top-[calc(100%+20px)] md:static h-10 w-full md:h-full lg:w-full lg:max-w-[500px] md:block lg:z-20 ${
             showsearch ? "block z-40" : "hidden"
           }`}
         >
@@ -75,25 +78,8 @@ function Navbar({ params, productsname, token, userdata }) {
         {/* third comp */}
         <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
           {/* rent or buy switch */}
-          <div className="hidden lg:flex gap-1 text-sm lg:text-base">
-            <button
-              className={`border rounded-md px-5 py-1 duration-300 ${
-                isrentalstore ? "bg-theme text-white" : "bg-bg1"
-              }`}
-              onClick={() => setisrentalstore(true)}
-              aria-label="Rent Store" title="Rent Store"
-            >
-              Rent
-            </button>
-            <button
-              className={`border rounded-md px-5 py-1 duration-300 ${
-                !isrentalstore ? "bg-cyan-600 text-white" : "bg-bg1"
-              }`}
-              onClick={() => setisrentalstore(false)}
-              aria-label="Buy Store" title="Buy Store"
-            >
-              Buy
-            </button>
+          <div className="hidden lg:block">
+            <Switchstore />
           </div>
           <Cartlink />
           <Logedinusermenu userdata={userdata} token={token} />
@@ -109,7 +95,11 @@ function Navbar({ params, productsname, token, userdata }) {
         )}
       </div>
       {/* categories */}
-      <Navcategories category={category} location={location?.location} />
+      <Navcategories
+        category={category}
+        location={location?.location}
+        isrentalstore={isrentalstore}
+      />
 
       <Link href="/Contact" prefetch={false}></Link>
       {/* backbutton */}
@@ -123,9 +113,10 @@ function Navbar({ params, productsname, token, userdata }) {
           <button
             className="group bg-theme flex items-center justify-center p-1 h-10 lg:h-8 absolute top-full lg:bottom-0 translate-y-2 lg:-translate-y-10 left-[10px] md:left-11 rounded-full overflow-hidden"
             onClick={() => {
-              router.back();
+              window.history.back();
             }}
-            aria-label="Cancel" title="Cancel"
+            aria-label="Cancel"
+            title="Cancel"
           >
             <span className="h-8 lg:h-6 aspect-square rounded-full bg-white text-theme grid place-content-center">
               <IoMdArrowRoundBack />

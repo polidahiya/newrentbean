@@ -3,7 +3,7 @@ import Link from "next/link";
 import Wrapper from "./Wrapper";
 import Togglebutton from "./Togglebutton";
 
-function Description({ location }) {
+function Description({ location, store }) {
   const popularplaces = {
     Gurgaon:
       "Sector 50, Sector 70, Manesar, Behrampur, Pataudi, and Daulatabad",
@@ -69,7 +69,15 @@ function Description({ location }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Health-&-Fitness/Fitness-Machines"}>
+            <Link
+              href={
+                "/" +
+                location +
+                "/" +
+                store +
+                "/Health-&-Fitness/Fitness-Machines"
+              }
+            >
               Fitness and Gym item Rentals
             </Link>
             : Explore our wide selection of top-quality treadmills and other gym
@@ -77,7 +85,11 @@ function Description({ location }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Electronic/Home-Appliances"}>
+            <Link
+              href={
+                "/" + location + "/" + store + "/Electronic/Home-Appliances"
+              }
+            >
               Appliance Rentals
             </Link>
             : Rent appliances from trusted names like Panasonic, Samsung, and
@@ -86,7 +98,7 @@ function Description({ location }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Electronic"}>
+            <Link href={"/" + location + "/" + store + "/Electronic"}>
               Electronics Rentals
             </Link>
             : Stay ahead with the latest smart gadgets by renting laptops,
@@ -95,7 +107,7 @@ function Description({ location }) {
           </p>
           <p className=" text-[12px] my-[5px]">
             -{" "}
-            <Link href={"/" + location + "/Event-&-Parties"}>
+            <Link href={"/" + location + "/" + store + "/Event-&-Parties"}>
               Event & party items
             </Link>
             : Rent the life of the party! From hookahs to beer towers, DJ

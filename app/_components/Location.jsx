@@ -1,17 +1,20 @@
 "use client";
 import React from "react";
 import { AppContextfn } from "../Context";
-import { cities } from "../commondata";
+import { cities, citiesAndLocations } from "../commondata";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 function Location() {
   const { location, setlocation } = AppContextfn();
   const path = usePathname();
   const router = useRouter();
 
-  if (location.show || location?.location == null)
+  const searchParams = useSearchParams();
+  const query = searchParams.toString();
+  const queryString = query ? `?${query}` : "";
+
+  if (location?.show || location?.location == null)
     return (
       <div
         className={`fixed top-0 left-0 h-screen w-full flex items-center justify-center p-5 md:px-28 md:py-10 z-50`}
@@ -20,9 +23,9 @@ function Location() {
           className={`relative h-full w-full  flex flex-col items-center justify-between p-[20px] gap-[20px] bg-white z-10`}
         >
           <h3 className="text-xl font-semibold font-recline whitespace-nowrap mt-5 tracking-widest">
-            🌍 Select your location
+            🌍 Select your location {"("}India{")"}
           </h3>
-          <div className="w-full flex items-center justify-center flex-wrap gap-5">
+          <div className="w-full flex flex-col md:flex-row md:items-center justify-center flex-wrap gap-5">
             {cities?.map((item, i) => {
               return (
                 <Link
@@ -30,17 +33,31 @@ function Location() {
                   href={`/${item}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    const splitpath = path.split("/");
-                    if (cities.includes(splitpath[1])) {
-                      splitpath[1] = item;
-                      const newjoinedpath = splitpath.join("/");
-                      router.push(newjoinedpath);
+                    const matchedCity = cities.find((city) =>
+                      path.includes(`${city}`)
+                    );
+                    if (matchedCity) {
+                      const updatedUrl =
+                        path.replace(`${matchedCity}`, item) + queryString;
+                      router.push(updatedUrl);
+                    } else {
+                      const matchedLocation = citiesAndLocations.find(
+                        (location) => path.includes(`${location}`)
+                      );
+                      if (matchedLocation) {
+                        const updatedUrl =
+                          path.replace(`${matchedLocation}`, item) +
+                          queryString;
+                        router.push(updatedUrl);
+                      } else {
+                        router.refresh();
+                      }
                     }
 
                     setlocation(() => ({ show: false, location: item }));
                   }}
-                  className={`flex items-center justify-center w-32 aspect-[2/1] border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
-                    location.location == item
+                  className={`flex items-center justify-center w-full h-12 md:h-auto md:w-32 md:aspect-[2/1] border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
+                    location?.location == item
                       ? "bg-theme text-white"
                       : "bg-white text-theme border"
                   }`}

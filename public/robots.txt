@@ -24,4 +24,4 @@ Disallow: /checkout
 Disallow: /loginlogout
 Disallow: /forgotpassword
 
-Sitemap: https://rentbean.in/api/sitemap2
+Sitemap: https://rentbean.in/api/sitemap

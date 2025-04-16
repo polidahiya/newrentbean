@@ -1,17 +1,16 @@
-import React from "react";
-import Homepage from "../_components/Homepage/Homepage";
-import { cities, citiesAndLocations } from "../commondata";
-import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-async function page({ params }) {
-  const allparams = await params;
-  const location = decodeURIComponent(allparams?.location);
+async function page() {
+  const allcookies = await cookies();
+  const location = allcookies.get("rblocation")?.value;
+  const storetype = allcookies.get("storetype")?.value;
 
-  // undefined location
-  if (!cities.includes(location) && !citiesAndLocations.includes(location))
-    notFound();
-
-  return <Homepage location={location} />;
+  if (location) {
+    redirect(`/${location}/${storetype == "false" ? "Buy" : "Rent"}`);
+  } else {
+    redirect(`/Delhi/Rent`);
+  }
 }
 
 export default page;

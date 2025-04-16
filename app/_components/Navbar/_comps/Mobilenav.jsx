@@ -10,6 +10,7 @@ import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { MdTimer } from "react-icons/md";
 import { IoBagCheck } from "react-icons/io5";
+import Switchstore from "./Switchstore";
 
 function Mobilenav() {
   const path = usePathname();
@@ -21,6 +22,7 @@ function Mobilenav() {
     cart,
     isopenstoremenu,
     openstoremenu,
+    location,
   } = AppContextfn();
 
   const cartitems = Object.values(cart).filter((item) => item.added);
@@ -34,7 +36,7 @@ function Mobilenav() {
       {isopenstoremenu?.show && <Storemenu />}
       <div className="h-16 w-full flex items-center justify-around px-2 border-t sticky bottom-0 lg:hidden bg-white rounded-t-3xl z-20">
         <Link
-          href="/Delhi"
+          href={`/${location?.location}/${isrentalstore ? "Rent" : "Buy"}`}
           prefetch={false}
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             (path == "/" ||
@@ -68,7 +70,9 @@ function Mobilenav() {
         </button>
 
         <Link
-          href="/allcategories"
+          href={`/allcategories?location=${location?.location}&store=${
+            isrentalstore ? "Rent" : "Buy"
+          }`}
           prefetch={false}
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             path.includes("/allcategories") && "text-theme"
@@ -152,37 +156,14 @@ const Storemenu = () => {
         <MdOutlineStoreMallDirectory />
         Store
       </h3>
-      <div className="flex items-center justify-center gap-2 mt-7">
-        <button
-          className={`w-full flex items-center justify-center gap-1 border py-2 rounded-lg ${
-            isrentalstore && "text-white bg-theme"
-          }`}
-          onClick={() => {
-            setisrentalstore(true);
-          }}
-        >
-          <MdTimer />
-          Rent
-        </button>
-        <button
-          className={`w-full flex items-center justify-center gap-1 border py-2 rounded-lg ${
-            !isrentalstore && "text-white bg-cyan-600"
-          }`}
-          onClick={() => {
-            setisrentalstore(false);
-          }}
-        >
-          <IoBagCheck />
-          Buy
-        </button>
+      <div className="mt-7">
+        <Switchstore />
       </div>
       <div
         className="w-full flex items-center justify-center gap-1 mt-4 border py-2 rounded-lg text-theme font-semibold"
         onClick={() => {
           setlocation((pre) => ({ ...pre, show: true }));
-          {
-            window.history.back();
-          }
+          window.history.back();
         }}
       >
         {location?.location}

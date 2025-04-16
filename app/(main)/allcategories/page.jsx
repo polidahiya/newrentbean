@@ -3,15 +3,15 @@ import { categorylist } from "@/app/commondata";
 import Link from "next/link";
 import Image from "next/image";
 
-async function page({ params }) {
-  const allparams = await params;
-  const location = allparams?.location || "Delhi";
+async function page({ searchParams }) {
+  const { location, store } = await searchParams;
+
   return (
     <div className="px-2 md:px-10 py-5">
       {Object.entries(categorylist).map(([key, item], i) => (
         <div key={i}>
           <Link
-            href={`/${location}/${key}`}
+            href={`/${location}/${store}/${key}`}
             prefetch={false}
             className="w-full flex items-center justify-center font-recline gap-5"
             replace
@@ -27,7 +27,7 @@ async function page({ params }) {
             {item?.subcat.map((subcat, j) => {
               return (
                 <Link
-                  href={`/${location}/${key}/${subcat?.name}`}
+                  href={`/${location}/${store}/${key}/${subcat?.name}`}
                   key={j}
                   className="flex flex-col items-center"
                   prefetch={false}

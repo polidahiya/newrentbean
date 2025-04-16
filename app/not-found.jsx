@@ -19,6 +19,7 @@ function page() {
             alt="not found gif image"
             height={300}
             width={400}
+            unoptimized
             className="max-w-[400px] m-auto w-full object-contain object-center"
           ></Image>
           <h3 className=" font-bold text-center">
@@ -28,7 +29,7 @@ function page() {
             The page you are looking for is not avaible!
           </p>
           <Link
-            href="/Delhi"
+            href="/Delhi/Rent"
             className="block bg-green-500 text-white px-[50px] py-[10px] w-fit m-auto mt-[30px] hover:text-green-500 outline outline-[1px] hover:outline-green-500 hover:bg-white"
           >
             Go to Home

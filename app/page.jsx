@@ -1,15 +1,16 @@
-import React from "react";
-import Homepage from "./_components/Homepage/Homepage";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 async function page() {
-  const location = (await cookies()).get("rblocation")?.value;
-  if (location) {
-    redirect("/" + location);
-  }
+  const allcookies = await cookies();
+  const location = allcookies.get("rblocation")?.value;
+  const storetype = allcookies.get("storetype")?.value;
 
-  return <Homepage />;
+  if (location) {
+    redirect(`/${location}/${storetype == "false" ? "Buy" : "Rent"}`);
+  } else {
+    redirect(`/Delhi/Rent`);
+  }
 }
 
 export default page;

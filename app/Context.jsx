@@ -165,6 +165,7 @@ export function Appwrapper({
         toggleusermenu,
         settoggleusermenu,
         showusermenu,
+        hideusermenu,
         searchinputref,
         redirectloginlink,
         setredirectloginlink,

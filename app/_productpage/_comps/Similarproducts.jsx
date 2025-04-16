@@ -10,21 +10,30 @@ function Similarproducts({
   subcat,
   productid,
   location,
+  store,
+  isrentalstore,
 }) {
   const maxproducts = 15;
+
   const similarproducts = allproducts
-    .filter(
-      (item) =>
+    .filter((item) => {
+      const instore = isrentalstore
+        ? ["Rent", "Both"].includes(item?.availablefor)
+        : ["Buy", "Both"].includes(item?.availablefor);
+
+      return (
         item.category == category &&
         item.subcat == subcat &&
-        item._id != productid
-    )
+        item._id != productid &&
+        instore
+      );
+    })
     .slice(0, maxproducts);
 
   return (
     <>
       {similarproducts.length > 0 && (
-        <div className="px-2 md:px-10 py-5 mt-8">
+        <div className="px-2 md:px-10 py-5 mt-8 bg-bg1">
           <h2 className="flex items-center gap-3 text-2xl font-semibold mb-4 text-gray-800">
             <AiFillProduct className="text-theme text-3xl" />
             <span className="font-recline">Similar Products</span>
@@ -37,6 +46,8 @@ function Similarproducts({
                   index={i}
                   id={item._id}
                   image={item?.images[0]}
+                  location={location}
+                  isrentalstore={isrentalstore}
                   {...item}
                   maxwidth={true}
                 />
@@ -45,8 +56,8 @@ function Similarproducts({
             {similarproducts.length == maxproducts && (
               <div className="relative flex items-center z-20 whitespace-nowrap px-5">
                 <Link
-                  href={`/${location}/${category}/${subcat}`}
-                  className="relative group flex items-center justify-center gap-[10px] px-6 py-3  text-white font-semibold rounded-full overflow-hidden"
+                  href={`/${location}/${store}/${category}/${subcat}`}
+                  className="relative group flex items-center justify-center gap-[10px] px-6 py-3 bg-theme text-white font-semibold rounded-full overflow-hidden"
                 >
                   <span>View all</span>
                   <LuArrowRightCircle />

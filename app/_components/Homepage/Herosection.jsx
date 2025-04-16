@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 
-function PosterAdds({ location }) {
+function PosterAdds({ location,store }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
@@ -35,7 +35,7 @@ function PosterAdds({ location }) {
       <div className="flex items-center md:px-10 pt-5 gap-5 overflow-hidden">
         {/* Left Portrait Ad */}
         <Link
-          href={`${location}/Electronic/Entertainment`}
+          href={`/${location}/${store}/Electronic/Entertainment`}
           prefetch={false}
           className="hidden lg:block w-[30%] aspect-[9/16] rounded-2xl overflow-hidden border"
         >
@@ -61,7 +61,7 @@ function PosterAdds({ location }) {
           >
             {imageArray.map((item, i) => (
               <SwiperSlide key={i}>
-                <Link href={`/${location}/${item?.link}`} prefetch={false}>
+                <Link href={`/${location}/${store}/${item?.link}`} prefetch={false}>
                   <Image
                     className="h-full w-full object-cover rounded-3xl lg:rounded-none p-2 lg:p-0"
                     src={item?.img}
@@ -112,7 +112,7 @@ function PosterAdds({ location }) {
 
         {/* Right Portrait Video Ad */}
         <Link
-          href="/Furniture"
+          href={`/${location}/${store}/Furniture`}
           prefetch={false}
           className="hidden lg:block w-[30%] aspect-[9/16] rounded-2xl overflow-hidden border"
         >

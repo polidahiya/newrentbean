@@ -6,15 +6,27 @@ export async function GET() {
   try {
     const allproducts = await Cachedproducts();
     const today = new Date(); // Get today's date
+    const rentdesc = `🚀 Why Buy When You Can Rent? 🏡💼 \nFrom furniture to electronics, fitness gear to party essentials – Rent with ease & save big! Flexible tenures, affordable rates, and hassle-free delivery. Rent now & enjoy!.______________ #RentInsteadOfBuying #SmartRenting #AffordableLiving #FurnitureOnRent #TechOnRent #FitnessOnRent #EventRentals #PartyEssentials #HomeDecorGoals #UpgradeWithoutBuying`;
+    const buydesc = `🛍️ Own the Comfort You Deserve! 🪑📦 From stunning furniture to cutting-edge electronics – make it yours for good! No monthly fees, no return hassles. Buy once, enjoy forever. Style your space, your way. Shop now and elevate your lifestyle! #BuyWithConfidence #HomeUpgrades #FurnitureForKeeps #ElectronicsDeals #SmartShopping #OwnYourStyle #OneTimeInvestment #HomeGoals #ForeverYours #AdoreYourSpace`;
 
-    const posts = allproducts.map((item) => {
+    const posts = allproducts.flatMap((product) => {
+      if (product.availablefor === "Both")
+        return ["Rent", "Buy"].map((store) => ({
+          title: product?.name,
+          link: `${domain}/Delhi/${store}/${product?.category}/${product?.subcat}/${product?._id}`,
+          description: store === "Rent" ? rentdesc : buydesc,
+          pubDate: today.toUTCString(), // Convert to proper date string
+          imageUrl: product?.images[0],
+        }));
+
       return {
-        title: item?.name,
-        link: `${domain}/${item?.category}/${item?.subcat}/${item?._id}`,
-        description:
-          "🚀 Why Buy When You Can Rent? 🏡💼 \nFrom furniture to electronics, fitness gear to party essentials – Rent with ease & save big! Flexible tenures, affordable rates, and hassle-free delivery. Rent now & enjoy!.______________ #RentInsteadOfBuying #SmartRenting #AffordableLiving #FurnitureOnRent #TechOnRent #FitnessOnRent #EventRentals #PartyEssentials #HomeDecorGoals #UpgradeWithoutBuying",
+        title: product?.name,
+        link: `${domain}/Delhi/${
+          product.availablefor === "Rent" ? "Rent" : "Buy"
+        }/${product?.category}/${product?.subcat}/${product?._id}`,
+        description: product.availablefor === "Rent" ? rentdesc : buydesc,
         pubDate: today.toUTCString(), // Convert to proper date string
-        imageUrl: item?.images[0],
+        imageUrl: product?.images[0],
       };
     });
 

@@ -7,16 +7,21 @@ import { notFound } from "next/navigation";
 import Promices from "@/app/_components/Homepage/Promices";
 import { cookies } from "next/headers";
 import Similarproducts from "./_comps/Similarproducts";
-import { RxChevronRight } from "react-icons/rx";
 import FAQSection from "@/app/_components/Faq";
-import { AiOutlineHome } from "react-icons/ai";
 import Details from "./_comps/Details";
 import { mail } from "@/app/commondata";
 import Productdesc from "./_comps/Productdesc";
 import Alongwith from "./_comps/Alongwith";
 import Breadcrumbs from "../_components/Breadcrumbs";
 
-async function Productpage({ category, subcat, productid, location }) {
+async function Productpage({
+  category,
+  subcat,
+  productid,
+  location,
+  store,
+  isrentalstore,
+}) {
   const token = cookies()?.get("token")?.value;
   const userdata = cookies()?.get("userdata")?.value;
   const parsedUserData = userdata ? JSON.parse(userdata) : null;
@@ -43,46 +48,69 @@ async function Productpage({ category, subcat, productid, location }) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: filteredProduct.name,
-    image: filteredProduct?.images[0],
-    description: filteredProduct.desc[0] || "Rent flexibly with - @Rentbean",
+    image: filteredProduct.images?.[0] || "",
+
+    description: filteredProduct.desc?.[0] || "Rent flexibly with - @Rentbean",
+
     sku: filteredProduct?.sku,
+    productID: filteredProduct?._id,
+    category: filteredProduct?.category,
+
     brand: {
       "@type": "Brand",
       name: "Rentbean",
     },
+
     offers: {
       "@type": "Offer",
-      url: `${domain}/${location}/${filteredProduct.category}/${filteredProduct.subcat}/${filteredProduct._id}`, // Dynamically adds the product URL
+      url: `${domain}/${location}/${store}/${filteredProduct.category}/${filteredProduct.subcat}/${filteredProduct._id}`,
       priceCurrency: "INR",
-      price: parseInt(instancerent, 10).toLocaleString("en-IN"),
+      price: parseInt(
+        isrentalstore ? instancerent : filteredProduct?.buyprice,
+        10
+      ),
       availability: filteredProduct.available
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: "Rentbean",
+      },
     },
+
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5",
+      ratingValue: "5.0",
+      reviewCount: "10",
       bestRating: "5",
       worstRating: "1",
     },
   };
-
   return (
     <>
       <article>
         <div className="pl-16 md:pl-24 lg:pl-10 mt-2 md:mt-4 bg-white text-theme text-sm">
           <Breadcrumbs
             list={[
-              { name: category, link: `/${location}/${category}` },
-              { name: subcat, link: `/${location}/${category}/${subcat}` },
+              { name: category, link: `/${location}/${store}/${category}` },
+              {
+                name: subcat,
+                link: `/${location}/${store}/${category}/${subcat}`,
+              },
             ]}
             currentroute={filteredProduct?.name}
+            location={location}
           />
         </div>
-
         <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 gap-5">
           <Imagescomp filteredproducts={filteredProduct} token={token} />
-          <Details filteredProduct={filteredProduct} />
+          <Details
+            filteredProduct={filteredProduct}
+            location={location}
+            store={store}
+            isrentalstore={isrentalstore}
+          />
         </header>
         {filteredProduct?.alongwith?.length > 0 && (
           <Alongwith alongwith={filteredProduct?.alongwith} />
@@ -94,6 +122,8 @@ async function Productpage({ category, subcat, productid, location }) {
           subcat={subcat}
           productid={productid}
           location={location}
+          store={store}
+          isrentalstore={isrentalstore}
         />
 
         <FAQSection
@@ -165,6 +195,7 @@ async function Productpage({ category, subcat, productid, location }) {
           __html: JSON.stringify(productSchema),
         }}
       />
+
       {/* edit button */}
       {parsedUserData?.usertype == "admin" && (
         <Link

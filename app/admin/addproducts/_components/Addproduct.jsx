@@ -98,7 +98,16 @@ function Addandupdateproduct({
         statename="tags"
         setState={setdata}
         title={"Tags"}
-        options={["New-Product", "Brand-New", "Refurbished","Best-Seller","High-Demand","Last-Stock","Only-One-Left","On-Sale"]}
+        options={[
+          "New-Product",
+          "Brand-New",
+          "Refurbished",
+          "Best-Seller",
+          "High-Demand",
+          "Last-Stock",
+          "Only-One-Left",
+          "On-Sale",
+        ]}
       />
 
       {/* Product Name */}
@@ -128,14 +137,16 @@ function Addandupdateproduct({
       />
 
       {/* Security Deposit */}
-      <Standardinputfield
-        titlename="Security Deposit"
-        type="number"
-        isRequired
-        value={data.securitydeposit}
-        onchange={(e) => handleChange("securitydeposit", e.target.value)}
-        clear={() => handleClearField("securitydeposit")}
-      />
+      {(data.availablefor === "Rent" || data.availablefor === "Both") && (
+        <Standardinputfield
+          titlename="Security Deposit"
+          type="number"
+          isRequired
+          value={data.securitydeposit}
+          onchange={(e) => handleChange("securitydeposit", e.target.value)}
+          clear={() => handleClearField("securitydeposit")}
+        />
+      )}
 
       <Addimagescomp
         data={data}
@@ -175,27 +186,58 @@ function Addandupdateproduct({
       />
 
       {/* SEO Fields */}
-      <Standardinputfield
-        titlename="SeoTitle"
-        isRequired
-        value={data.seotitle}
-        onchange={(e) => handleChange("seotitle", e.target.value)}
-        clear={() => handleClearField("seotitle")}
-      />
-      <Standardinputfield
-        titlename="SeoDescription"
-        isRequired
-        value={data.seodescription}
-        onchange={(e) => handleChange("seodescription", e.target.value)}
-        clear={() => handleClearField("seodescription")}
-      />
-      <Standardinputfield
-        titlename="SeoKeywords (Seperate keywords with ,)"
-        isRequired
-        value={data.seokeywords}
-        onchange={(e) => handleChange("seokeywords", e.target.value)}
-        clear={() => handleClearField("seokeywords")}
-      />
+      {(data.availablefor === "Rent" || data.availablefor === "Both") && (
+        <>
+          <p className="font-semibold text-xl">Rent Seo</p>
+          <Standardinputfield
+            titlename="SeoTitle"
+            isRequired
+            value={data.seotitle}
+            onchange={(e) => handleChange("seotitle", e.target.value)}
+            clear={() => handleClearField("seotitle")}
+          />
+          <Standardinputfield
+            titlename="SeoDescription"
+            isRequired
+            value={data.seodescription}
+            onchange={(e) => handleChange("seodescription", e.target.value)}
+            clear={() => handleClearField("seodescription")}
+          />
+          <Standardinputfield
+            titlename="SeoKeywords (Seperate keywords with ,)"
+            isRequired
+            value={data.seokeywords}
+            onchange={(e) => handleChange("seokeywords", e.target.value)}
+            clear={() => handleClearField("seokeywords")}
+          />
+        </>
+      )}
+      {(data.availablefor === "Buy" || data.availablefor === "Both") && (
+        <>
+          <p className="font-semibold text-xl">Buy Seo</p>
+          <Standardinputfield
+            titlename="Buy seo title"
+            isRequired
+            value={data.buyseotitle || ""}
+            onchange={(e) => handleChange("buyseotitle", e.target.value)}
+            clear={() => handleClearField("buyseotitle")}
+          />
+          <Standardinputfield
+            titlename="Buy seo description"
+            isRequired
+            value={data.buyseodescription || ""}
+            onchange={(e) => handleChange("buyseodescription", e.target.value)}
+            clear={() => handleClearField("buyseodescription")}
+          />
+          <Standardinputfield
+            titlename="Buy seo keywords (Seperate keywords with ,)"
+            isRequired
+            value={data.buyseokeywords || "Rentbean, Furlenco, Justdial, olx,"}
+            onchange={(e) => handleChange("buyseokeywords", e.target.value)}
+            clear={() => handleClearField("buyseokeywords")}
+          />
+        </>
+      )}
 
       {/* Availability */}
       <Togglebuttons
@@ -222,7 +264,8 @@ function Addandupdateproduct({
         <button
           type="submit"
           className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          aria-label="Submit" title="Submit"
+          aria-label="Submit"
+          title="Submit"
         >
           {loading && (
             <span className="block h-5 aspect-square border-t-2 border-b-2 border-white rounded-full animate-spin"></span>
@@ -238,7 +281,8 @@ function Addandupdateproduct({
               setdeletedimages([]);
               setshoweditform(false);
             }}
-            aria-label="Cancel" title="Cancel"
+            aria-label="Cancel"
+            title="Cancel"
           >
             Cancel Update
           </button>

@@ -5,10 +5,10 @@ import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
 import Dateselector from "./Dateselector";
 import Image from "next/image";
+import Switchstore from "./Switchstore";
 
-function Details({ filteredProduct }) {
-  const { cart, setcart, isrentalstore, setisrentalstore, location } =
-    AppContextfn();
+function Details({ filteredProduct, store, location, isrentalstore }) {
+  const { cart, setcart } = AppContextfn();
   const cartproductid = `${filteredProduct?.sku}-${
     isrentalstore ? "rental" : "buy"
   }`;
@@ -50,7 +50,7 @@ function Details({ filteredProduct }) {
             securitydeposit: filteredProduct?.securitydeposit,
             maxquantity: filteredProduct?.maxquantity,
             isrentalstore,
-            productlink: `/${location?.location}/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
+            productlink: `/${location}/${store}/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
             tenureStart: {
               date: defaultDate.getDate(),
               month: defaultDate.getMonth(),
@@ -60,7 +60,7 @@ function Details({ filteredProduct }) {
         };
       });
     }
-  }, [isrentalstore, location?.location]);
+  }, []);
 
   return (
     <section className="flex-1 w-full lg:min-w-[400px] p-5 bg-bg1 md:rounded-3xl md:shadow-lg ">
@@ -98,35 +98,11 @@ function Details({ filteredProduct }) {
         cartproductid={cartproductid}
         isPastDate={isPastDate}
       />
-      <div className="mt-5 flex items-center justify-center gap-1 text-sm">
-        {isrentalstore
-          ? ["Both", "Buy"].includes(filteredProduct?.availablefor) && (
-              <>
-                <span className="text-cyan-500">Buy this Product?</span>
-                <button
-                  className="lg:hover:text-theme"
-                  onClick={() => setisrentalstore((pre) => !pre)}
-                  aria-label="Switch Store"
-                  title="Switch Store"
-                >
-                  Switch Store
-                </button>
-              </>
-            )
-          : ["Both", "Rent"].includes(filteredProduct?.availablefor) && (
-              <>
-                <span className="text-cyan-500">Rent this product?</span>
-                <button
-                  className="lg:hover:text-theme"
-                  onClick={() => setisrentalstore((pre) => !pre)}
-                  aria-label="Switch Store"
-                  title="Switch Store"
-                >
-                  Switch Store
-                </button>
-              </>
-            )}
-      </div>
+      <Switchstore
+        filteredProduct={filteredProduct}
+        location={location}
+        store={store}
+      />
       <div className="flex items-center justify-center gap-[10px] mt-[20px]">
         <Deliverytrucksvg />
         <span className="text-[10px]">

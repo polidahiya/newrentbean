@@ -3,7 +3,7 @@ import Image from "next/image";
 import { categorylist } from "@/app/commondata";
 // import { BiSolidCategory } from "react-icons/bi";
 
-function Subcategories({ category, subcat, location }) {
+function Subcategories({ category, subcat, location,store }) {
   if (categorylist[category]?.subcat.length > 0)
     return (
       <div className="relative flex items-center justify-center">
@@ -12,7 +12,7 @@ function Subcategories({ category, subcat, location }) {
             return (
               <Link
                 key={i}
-                href={`/${location}/${category}/${itemsubcat.name}`}
+                href={`/${location}/${store}/${category}/${itemsubcat.name}`}
                 className={`min-w-28 w-28 lg:w-36 lg:min-w-36 flex flex-col items-center  ${
                   subcat == itemsubcat.name &&
                   "bg-theme bg-clip-text text-transparent"

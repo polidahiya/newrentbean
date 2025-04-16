@@ -6,10 +6,8 @@ import "swiper/css";
 import Link from "next/link";
 import { direactsearchlist } from "@/app/commondata";
 import Image from "next/image";
-import { AppContextfn } from "@/app/Context";
 
-export default function DireactSearchListSwiper() {
-  const { location } = AppContextfn();
+export default function DireactSearchListSwiper({ location, store }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const textSwiperRef = useRef(null);
   const imageSwiperRef = useRef(null);
@@ -65,12 +63,13 @@ export default function DireactSearchListSwiper() {
                 <button
                   onClick={() => textSwiperRef.current?.slidePrev()}
                   className=" text-theme lg:border border-theme px-5 py-2 rounded-md lg:order-2"
-                  aria-label="Scroll left" title="Scroll left"
+                  aria-label="Scroll left"
+                  title="Scroll left"
                 >
                   ❮
                 </button>
                 <Link
-                  href={`/${location?.location}/${item?.link}`}
+                  href={`/${location}/${store}${item?.link}`}
                   className=" text-theme border border-theme px-5 py-2 rounded-md lg:order-1"
                 >
                   Rent Now
@@ -78,7 +77,8 @@ export default function DireactSearchListSwiper() {
                 <button
                   onClick={() => textSwiperRef.current?.slideNext()}
                   className=" text-theme lg:border border-theme px-5 py-2 rounded-md order-3"
-                  aria-label="scroll Right" title="scroll Right"
+                  aria-label="scroll Right"
+                  title="scroll Right"
                 >
                   ❯
                 </button>

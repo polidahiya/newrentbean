@@ -35,11 +35,11 @@ async function Footer() {
     { name: "Terms & Conditions", link: "/Terms&Conditions" },
   ];
   const list2 = [
-    { name: "Health & Fitness", link: "/Delhi/Health-&-Fitness" },
-    { name: "Electronic", link: "/Delhi/Electronic" },
-    { name: "Furniture", link: "/Delhi/Furniture" },
-    { name: "Event & Parties", link: "/Delhi/Event-&-Parties" },
-    { name: "Others", link: "/Delhi/Others" },
+    { name: "Health & Fitness", link: "/Delhi/Rent/Health-&-Fitness" },
+    { name: "Electronic", link: "/Delhi/Rent/Electronic" },
+    { name: "Furniture", link: "/Delhi/Rent/Furniture" },
+    { name: "Event & Parties", link: "/Delhi/Rent/Event-&-Parties" },
+    { name: "Others", link: "/Delhi/Rent/Others" },
   ];
   return (
     <footer className="bg-bg1 px-8 md:px-12 p-5 pt-8 lg:pt-5 text-sm">

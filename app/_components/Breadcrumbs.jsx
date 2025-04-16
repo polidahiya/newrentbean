@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { HiOutlineHome } from "react-icons/hi";
 
-function Breadcrumbs({ list, currentroute = "Current route", location }) {
+function Breadcrumbs({ list, currentroute = "Current route", location ,store="Rent"}) {
   return (
     <div className="space-x-2">
-      <Link href={`/${location}`} className="lg:hover:text-cyan-500 group">
+      <Link href={`/${location}/${store}`} className="lg:hover:text-cyan-500 group">
         <HiOutlineHome className="hidden group-first:inline -translate-y-[2px] mr-1" />
         Home
       </Link>

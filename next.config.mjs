@@ -2,44 +2,75 @@
 
 const redirects = {
   "/Furniture/Beds/67a88b18a1ffaa422456899b":
-    "/Noida/Furniture/Beds/67a88b18a1ffaa422456899b",
-  "/Search/Fitness_and_Gym": "/Delhi/Health-&-Fitness/Fitness-Machines",
-  "/Search/Electronic": "/Delhi/Electronic",
-  "/Event%20&%20Parties/Event-&-Parties": "/Delhi/Event-&-Parties",
-  "/Ghaziabad/Furniture/Bed/bed4": "/Ghaziabad/Furniture/Beds",
-  "/Ghaziabad/Electronics/Projector/projector1": "/",
-  "/Gurgaon/Electronics/Laptop/laptop1": "/Gurgaon/Electronic/Laptops",
-  "/Electronic/Electronic": "/Delhi/Electronic",
-  "/Gurgaon/Others/Baby_Carrier/babycarrier1": "/Gurgaon/Others/Baby-Care",
-  "/Health%20&%20Fitness/Fitness_and_Gym": "/Delhi/Health-&-Fitness",
+    "/Noida/Rent/Furniture/Beds/67a88b18a1ffaa422456899b",
+
+  "/Search/Fitness_and_Gym": "/Delhi/Rent/Health-&-Fitness/Fitness-Machines",
+
+  "/Search/Electronic": "/Delhi/Rent/Electronic",
+
+  "/Event%20&%20Parties/Event-&-Parties": "/Delhi/Rent/Event-&-Parties",
+
+  "/Ghaziabad/Furniture/Bed/bed4": "/Ghaziabad/Rent/Furniture/Beds",
+
+  "/Ghaziabad/Electronics/Projector/projector1": "/Delhi/Rent",
+
+  "/Gurgaon/Electronics/Laptop/laptop1": "/Gurgaon/Rent/Electronic/Laptops",
+
+  "/Electronic/Electronic": "/Delhi/Rent/Electronic",
+
+  "/Gurgaon/Others/Baby_Carrier/babycarrier1": "/Gurgaon/Rent/Others/Baby-Care",
+
+  "/Health%20&%20Fitness/Fitness_and_Gym": "/Delhi/Rent/Health-&-Fitness",
+
   "/Delhi/Others/Baby_Car_Seats/babycarseat1":
-    "/Delhi/Others/Baby-Care/67a78a526bc874a1dec69593",
-  "/Event%20&%20Parties/Party%20Items": "/Delhi/Event-&-Parties/Party-Items",
-  "/cancelationandreturnpolicy/Event-&-Parties": "/Delhi/Event-&-Parties",
-  "/Event%20&%20Parties/Fitness_and_Gym": "/Delhi/Health-&-Fitness",
-  "/aboutus/Health-&-Fitness": "/Delhi/Health-&-Fitness",
+    "/Delhi/Rent/Others/Baby-Care/67a78a526bc874a1dec69593",
+
+  "/Event%20&%20Parties/Party%20Items":
+    "/Delhi/Rent/Event-&-Parties/Party-Items",
+
+  "/cancelationandreturnpolicy/Event-&-Parties": "/Delhi/Rent/Event-&-Parties",
+
+  "/Event%20&%20Parties/Fitness_and_Gym": "/Delhi/Rent/Health-&-Fitness",
+
+  "/aboutus/Health-&-Fitness": "/Delhi/Rent/Health-&-Fitness",
+
   "/Health%20&%20Fitness/Health-&-Fitness/Fitness-Machines":
-    "/Delhi/Health-&-Fitness/Fitness-Machines",
+    "/Delhi/Rent/Health-&-Fitness/Fitness-Machines",
 
-  "/null/:path*": "/Delhi/:path*",
+  "/null/:path*": "/Delhi/Rent/:path*",
+
+  "/:location/:category(Health-&-Fitness|Electronic|Furniture|Event-&-Parties|Others)/:path*":
+    "/:location/Rent/:category/:path*",
+
   "/:category(Health-&-Fitness|Electronic|Furniture|Event-&-Parties|Others)/:path*":
-    "/Delhi/:category/:path*",
-  "/:location*/Event_and_Parties/:path*": "/:location*/Event-&-Parties",
-  "/:location*/Fitness_and_Gym/:path*":
-    "/:location*/Health-&-Fitness/Fitness-Machines",
-  "/:location*/Electronics/:path*": "/:location*/Electronic",
-  "/:location*/Electronics/:path*": "/:location*/Electronic",
+    "/Delhi/Rent/:category/:path*",
 
-  "/:location*/Furniture/Bed/:path*": "/:location*/Furniture/Beds",
-  "/:location*/Furniture/Bookshelf/:path*": "/:location*/Furniture/Bookshelves",
-  "/:location*/Furniture/Sofa/:path*": "/:location*/Furniture/Sofas",
-  "/:location*/Furniture/Centre_Table/:path*":
-    "/:location*/Furniture/Center-Tables",
-  "/:location*/Furniture/Study_Table/:path*":
-    "/:location*/Furniture/Study-Tables",
+  "/:location/Event_and_Parties/:path*":
+    "/:location/Rent/Event-&-Parties/:path*",
+
+  "/:location/Fitness_and_Gym/:path*":
+    "/:location/Rent/Health-&-Fitness/Fitness-Machines/:path*",
+
+  "/:location/Electronics/:path*": "/:location/Rent/Electronic/:path*",
+
+  "/:location/Furniture/Bed/:path*": "/:location/Rent/Furniture/Beds/:path*",
+
+  "/:location/Furniture/Bookshelf/:path*":
+    "/:location/Rent/Furniture/Bookshelves/:path*",
+
+  "/:location/Furniture/Sofa/:path*": "/:location/Rent/Furniture/Sofas/:path*",
+
+  "/:location/Furniture/Centre_Table/:path*":
+    "/:location/Rent/Furniture/Center-Tables/:path*",
+
+  "/:location/Furniture/Study_Table/:path*":
+    "/:location/Rent/Furniture/Study-Tables/:path*",
+
+  "/:location/Furniture/Study_Table/:path*":
+    "/:location/Rent/Furniture/Study-Tables/:path*",
 
   "/:file(parameters.yaml|parameters.json|parameters.ini|.env|config|database.php|security.php|mailjet.env|mailchimp.env|sendgrid_keys.json)":
-    "/Delhi",
+    "/Delhi/Rent",
 };
 
 const nextConfig = {

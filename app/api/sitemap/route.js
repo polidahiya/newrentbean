@@ -17,79 +17,92 @@ const xmlEscape = (str) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
 
-const urlEncode = (str) =>
-  encodeURIComponent(str)
-    .replace(/%20/g, "-")
-    .replace(/%2F/g, "/")
-    .replace(/%26/g, "&"); // Preserve slashes
-
 const today = new Date().toISOString();
 
 // Generate URLs
 const generateCityUrls = () =>
-  citiesAndLocations.map((city) => ({
-    loc: `${domain}/${urlEncode(city)}`,
-    lastmod: today,
-    changefreq: "daily",
-    priority: "1.0",
-  }));
+  ["Rent", "Buy"].flatMap((store) =>
+    citiesAndLocations.map((city) => ({
+      loc: `${domain}/${city}/${store}`,
+      lastmod: today,
+      changefreq: "weekly",
+      priority: "1.0",
+    }))
+  );
 
 const generateCategoryUrls = () =>
   cities.flatMap((city) =>
-    Object.entries(categorylist).flatMap(([category, { subcat }]) => [
-      {
-        loc: `${domain}/${urlEncode(city)}/${urlEncode(category)}`,
-        lastmod: today,
-        changefreq: "daily",
-        priority: "1.0",
-        image: `${domain}${category.image}` || "",
-        name: category || "",
-      },
-      ...subcat.map((subcategory) => ({
-        loc: `${domain}/${urlEncode(city)}/${urlEncode(category)}/${urlEncode(
-          subcategory.name
-        )}`,
-        lastmod: today,
-        changefreq: "daily",
-        priority: "1.0",
-        image: `${domain}${subcategory?.image}` || "",
-        name: subcategory?.name || "",
-      })),
-    ])
+    ["Rent", "Buy"].flatMap((store) =>
+      Object.entries(categorylist).flatMap(([categoryname, category]) => [
+        {
+          loc: `${domain}/${city}/${store}/${categoryname}`,
+          lastmod: today,
+          changefreq: "weekly",
+          priority: "0.9",
+          image: `${domain}${category.image}` || "",
+          name: categoryname || "",
+        },
+        ...category.subcat.map((subcategory) => ({
+          loc: `${domain}/${city}/${store}/${categoryname}/${subcategory.name}`,
+          lastmod: today,
+          changefreq: "weekly",
+          priority: "0.8",
+          image: `${domain}${subcategory?.image}` || "",
+          name: subcategory?.name || "",
+        })),
+      ])
+    )
   );
 
 const generateProductUrls = (products) =>
   cities.flatMap((city) =>
-    products.flatMap((product) => ({
-      loc: `${domain}/${urlEncode(city)}/${urlEncode(
-        product.category
-      )}/${urlEncode(product.subcat)}/${urlEncode(product._id)}`,
-      lastmod: today,
-      changefreq: "daily",
-      priority: "1.0",
-      image: product.images?.[0] || "",
-      name: product.name || "",
-    }))
+    products.flatMap((product) => {
+      if (product.availablefor === "Both") {
+        return ["Rent", "Buy"].map((store) => ({
+          loc: `${domain}/${city}/${store}/${product.category}/${product.subcat}/${product._id}`,
+          lastmod: today,
+          changefreq: "weekly",
+          priority: "0.7",
+          image: product.images?.[0] || "",
+          name: product.name || "",
+        }));
+      }
+
+      return [
+        {
+          loc: `${domain}/${city}/${
+            product.availablefor === "Rent" ? "Rent" : "Buy"
+          }/${product.category}/${product.subcat}/${product._id}`,
+          lastmod: today,
+          changefreq: "weekly",
+          priority: "0.7",
+          image: product.images?.[0] || "",
+          name: product.name || "",
+        },
+      ];
+    })
   );
 
 const generateBlogUrls = (blogs) =>
   blogs.map((blog) => ({
-    loc: `${domain}/Blogs/${urlEncode(blog._id)}`,
+    loc: `${domain}/Blogs/${blog._id}`,
     lastmod: today,
-    changefreq: "daily",
-    priority: "1.0",
+    changefreq: "weekly",
+    priority: "0.6",
   }));
 
 const generateDireactsearchUrls = () =>
   cities.flatMap((city) =>
-    direactsearchlist.map((item) => ({
-      loc: `${domain}/${urlEncode(city)}${item?.link}`,
-      lastmod: today,
-      changefreq: "daily",
-      priority: "1.0",
-      image: `${domain}${item?.image}` || "",
-      name: item?.name || "",
-    }))
+    ["Rent", "Buy"].flatMap((store) =>
+      direactsearchlist.map((item) => ({
+        loc: `${domain}/${city}/${store}${item?.link}`,
+        lastmod: today,
+        changefreq: "weekly",
+        priority: "0.9",
+        image: `${domain}${item?.image}` || "",
+        name: item?.name || "",
+      }))
+    )
   );
 
 export async function GET() {
@@ -105,7 +118,7 @@ export async function GET() {
       {
         loc: domain,
         lastmod: today,
-        changefreq: "daily",
+        changefreq: "weekly",
         priority: "1.0",
       },
       ...generateCityUrls(),

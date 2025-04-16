@@ -9,7 +9,7 @@ import { FiArrowUpLeft } from "react-icons/fi";
 
 function Searchbox({ productsname, location }) {
   const router = useRouter();
-  const { setshowsearch, searchinputref } = AppContextfn();
+  const { setshowsearch, searchinputref, isrentalstore } = AppContextfn();
   const [search, setSearch] = useState("");
   const [showsuggestions, setshowsuggestions] = useState([false, false]);
   const [arrowselectedsuggest, setarrowselectedsuggest] = useState(null);
@@ -115,11 +115,19 @@ function Searchbox({ productsname, location }) {
             if (e.key === "Enter") {
               if (arrowselectedsuggest == null) {
                 if (search.trim() !== "")
-                  router.push(`/${location}/Search?query=${search}`);
+                  router.push(
+                    `/${location}/${
+                      isrentalstore ? "Rent" : "Buy"
+                    }/Search?query=${search}`
+                  );
               } else {
                 setSearch(finalsuggestion[arrowselectedsuggest]?.original);
                 router.push(
-                  `/${location}/Search?query=${finalsuggestion[arrowselectedsuggest]?.original}`
+                  `/${location}/${
+                    isrentalstore ? "Rent" : "Buy"
+                  }/Search?query=${
+                    finalsuggestion[arrowselectedsuggest]?.original
+                  }`
                 );
               }
               searchinputref.current.blur();
@@ -174,7 +182,11 @@ function Searchbox({ productsname, location }) {
         )}
         <Link
           href={
-            search.trim() !== "" ? `/${location}/Search?query=${search}` : "#"
+            search.trim() !== ""
+              ? `/${location}/${
+                  isrentalstore ? "Rent" : "Buy"
+                }/Search?query=${search}`
+              : "#"
           }
           prefetch={false}
           className="flex items-center justify-center bg-theme h-full aspect-square rounded-full lg:aspect-auto md:gap-[5px] lg:px-[10px]  text-white"
@@ -199,10 +211,14 @@ function Searchbox({ productsname, location }) {
                 onClick={() => {
                   setSearch(item.original);
                 }}
-                className={`border-b last:border-none ${arrowselectedsuggest === i && "bg-slate-200"}`}
+                className={`border-b last:border-none ${
+                  arrowselectedsuggest === i && "bg-slate-200"
+                }`}
               >
                 <Link
-                  href={`/${location}/Search?query=${item.original}`}
+                  href={`/${location}/${
+                    isrentalstore ? "Rent" : "Buy"
+                  }/Search?query=${item.original}`}
                   prefetch={false}
                   className="w-full flex items-center justify-between h-[40px] lg:hover:bg-slate-100 pl-[20px] pr-[10px]"
                 >
