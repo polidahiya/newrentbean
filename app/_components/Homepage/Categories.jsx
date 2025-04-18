@@ -30,30 +30,8 @@ function Categories({ location, store }) {
           );
         })}
       </div>
-      {/*  */}
-      {/* <div className=" flex items-stretch justify-center flex-wrap  gap-[1.4vw] px-[1.4vw] mt-[30px]">
-        {Object.keys(categorylist).map((item, i) => {
-          return (
-            <Link
-              key={i}
-              href={`/${item}`.replace(/ /g, "-")}
-              className={`item w-[30vw] md:w-[23vw] lg:w-[15vw] bg-white rounded-md lg:rounded-[1vw] lg:overflow-hidden lg:shadow-[0px_0px_10px_#bababa7f] lg:hover:scale-[103%] duration-200 `}
-            >
-              <Image
-                src={categorylist[item].image}
-                width={300}
-                height={300}
-                quality={10}
-                alt={item}
-                priority={true}
-                
-                className="w-full aspect-[4/3] object-cover object-center rounded-[2.5vw] md:rounded-[1vw] bg-bg1"
-              ></Image>
-              <div className="text-center text-[14px] md:text-[16px] py-[10px]">{item}</div>
-            </Link>
-          );
-        })}
-      </div> */}
+    
+    
     </div>
   );
 }
@@ -65,29 +43,40 @@ export default Categories;
 // import Link from "next/link";
 // import Image from "next/image";
 
-// function Categories() {
+// function Categories({ location, store }) {
 //   return (
 //     <div id="categories" className="">
-//       <div className="max-w-[800px] flex items-center justify-center gap-2 md:gap-5 px-2 flex-wrap mx-auto">
+//       <div className="flex items-center">
 //         {Object.entries(categorylist).map(([key, value], i) => {
 //           return (
-//             <Link
-//               className="categoriestile flex-1 aspect-[12/7]  rounded-lg flex flex-col items-center justify-center border border-gray-200 lg:hover:border-none lg:hover:scale-110 lg:hover:shadow-[0_8px_14px_0_#bfcfdc]   duration-200"
-//               key={i}
-//               href={"/" + key}
-//               title={key}
-//             >
-//               <Image
-//                 height={20}
-//                 width={20}
-//                 className="h-[30%] md:h-[20px]"
-//                 src={value?.image}
-//                 alt={key}
-//               />
-//               <p className="text-[8px] text-center md:whitespace-nowrap">
-//                 {key.replace(/-/g, " ")}
-//               </p>
-//             </Link>
+//             <div className="inline-flex justify-center items-center gap-12">
+//               <div className="bg-gradient-to-b from-stone-300/40 to-transparent p-1 rounded-2xl dark:from-stone-700/40">
+//                 <button className="group p-1 rounded-[12px] bg-gradient-to-b from-white to-stone-200/40 shadow-[0_1px_3px_rgba(0,0,0,0.5)] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)] active:scale-[0.995] dark:from-stone-800 dark:to-stone-700">
+//                   <div className="bg-gradient-to-b from-stone-200/40 to-white/80 rounded-[8px] px-2 py-2 dark:from-stone-700 dark:to-stone-800">
+//                     <div className="flex gap-2 items-center">
+//                       <span className="font-semibold text-stone-900 dark:text-stone-100 px-3">
+//                         <Link
+//                           className="flex flex-1 border lg:hover:scale-110 lg:hover:shadow-[0_8px_14px_0_#bfcfdc] duration-200"
+//                           key={i}
+//                           href={`/${location}/${store}/${key}`}
+//                           prefetch={false}
+//                           title={key}
+//                         >
+//                           <Image
+//                             height={20}
+//                             width={20}
+//                             className=""
+//                             src={value?.image}
+//                             alt={key}
+//                           />
+//                           <p className="">{key.replace(/-/g, " ")}</p>
+//                         </Link>
+//                       </span>
+//                     </div>
+//                   </div>
+//                 </button>
+//               </div>
+//             </div>
 //           );
 //         })}
 //       </div>

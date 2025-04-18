@@ -1,32 +1,30 @@
 import Link from "next/link";
 import React from "react";
-import { TiHome } from "react-icons/ti";
-import { CgMenuGridO } from "react-icons/cg";
-import { FaPhoneAlt } from "react-icons/fa";
+import { IoHome, IoCalendar, IoCall } from "react-icons/io5";
 
 function Mobilenav() {
   return (
-    <div className="sticky  bottom-0 h-14 w-full flex items-center justify-around bg-white test z-50 lg:hidden">
+    <div className="fixed bottom-0 left-0 right-0 h-16 p-2 flex items-center justify-around bg-white shadow-lg z-50 lg:hidden border-t border-gray-100">
       <Link
         href={"/eventplanners"}
-        className="flex items-center gap-1 px-5 py-1 rounded-md border"
+        className="h-full aspect-square flex flex-col  items-center justify-center gap-1  rounded-full shadow-md"
       >
-        <TiHome />
-        Home
+        <IoHome className="" />
+        {/* <span className="text-xs font-medium">Home</span> */}
       </Link>
       <Link
-        href={"/eventplanners"}
-        className="flex items-center gap-1 px-5 py-1 rounded-md border"
+        href={"/eventplanners/allevents"}
+        className="h-full aspect-square flex flex-col  items-center justify-center gap-1  rounded-full shadow-md"
       >
-        <CgMenuGridO />
-        Events
+        <IoCalendar className="" />
+        {/* <span className="text-xs font-medium">Events</span> */}
       </Link>
       <Link
-        href={"/eventplanners"}
-        className="flex items-center gap-1 px-5 py-1 rounded-md border"
+        href={"/eventplanners/contact"}
+        className="h-full aspect-square flex flex-col  items-center justify-center gap-1  rounded-full shadow-md"
       >
-        <FaPhoneAlt />
-        Contact
+        <IoCall className="" />
+        {/* <span className="text-xs font-medium">Contact</span> */}
       </Link>
     </div>
   );

@@ -365,8 +365,10 @@ export const direactsearchlist = [
     heading: "Work & Play",
     subheading:
       "Boost your productivity with a high-performance laptop, perfect for work, online classes, or entertainment on the go.",
-    startingat: "₹ 1200 / month",
+    buy: "₹ 13,500",
+    rent: "₹ 1,200 / month",
     link: "/Search?query=laptop",
+    availablefor: "Both",
   },
   {
     name: "Fridge",
@@ -374,8 +376,10 @@ export const direactsearchlist = [
     heading: "Keep It Fresh",
     subheading:
       "Store your food and beverages with ease. Rent a spacious, energy-efficient fridge to ensure everything stays fresh and cool.",
-    startingat: "₹ 650 / month",
+    buy: "₹",
+    rent: "₹ 650 / month",
     link: "/Search?query=fridge",
+    availablefor: "Rent",
   },
   {
     name: "Air Fryer",
@@ -383,8 +387,10 @@ export const direactsearchlist = [
     heading: "Healthy Cooking",
     subheading:
       "Enjoy crispy and delicious meals with an air fryer that uses little to no oil, making your favorite dishes healthier and tastier.",
-    startingat: "₹ 142 / day",
+    buy: "₹",
+    rent: "₹ 142 / day",
     link: "/Search?query=air-fryer",
+    availablefor: "Rent",
   },
   {
     name: "Washing Machine",
@@ -392,8 +398,10 @@ export const direactsearchlist = [
     heading: "Laundry Made Easy",
     subheading:
       "Say goodbye to laundry hassles! Rent a powerful washing machine that makes washing clothes quick and effortless.",
-    startingat: "₹ 600 / month",
+    buy: "₹",
+    rent: "₹ 600 / month",
     link: "/Search?query=washing-machine",
+    availablefor: "Rent",
   },
   {
     name: "Treadmill",
@@ -401,8 +409,10 @@ export const direactsearchlist = [
     heading: "Stay Fit, Stay Active",
     subheading:
       "Bring the gym to your home with a high-quality treadmill. Stay on top of your fitness goals with convenient and easy workouts anytime.",
-    startingat: "₹ 1,916 / month",
+    buy: "₹",
+    rent: "₹ 1,916 / month",
     link: "/Search?query=treadmill",
+    availablefor: "Rent",
   },
   {
     name: "Baby Stroller",
@@ -410,8 +420,10 @@ export const direactsearchlist = [
     heading: "Comfort & Safety for Your Baby",
     subheading:
       "Make outings easier with a sturdy and comfortable baby stroller. Ensure your little one's safety while on the move.",
-    startingat: "₹ 60 / day",
+    buy: "₹",
+    rent: "₹ 60 / day",
     link: "/Search?query=baby-stroller",
+    availablefor: "Rent",
   },
   {
     name: "Recumbent Bike",
@@ -419,8 +431,10 @@ export const direactsearchlist = [
     heading: "Low Impact, High Results",
     subheading:
       "Enjoy a comfortable and effective workout with a recumbent bike, perfect for those looking to stay active without straining their body.",
-    startingat: "₹ 1,583 / month",
+    buy: "₹",
+    rent: "₹ 1,583 / month",
     link: "/Search?query=recumbent-bike",
+    availablefor: "Rent",
   },
   {
     name: "Inverter Battery",
@@ -428,8 +442,10 @@ export const direactsearchlist = [
     heading: "Reliable Power Backup",
     subheading:
       "Ensure an uninterrupted power supply at home or office with a high-capacity inverter battery, keeping your essentials running smoothly.",
-    startingat: "₹ 583 / month",
+    buy: "₹ 10,900",
+    rent: "₹ 583 / month",
     link: "/Search?query=inverter-battery",
+    availablefor: "Both",
   },
   {
     name: "Baby Carrier",
@@ -437,8 +453,10 @@ export const direactsearchlist = [
     heading: "Hands-Free Convenience",
     subheading:
       "Keep your baby close and comfortable while staying hands-free. Rent a baby carrier for ease and comfort on the go.",
-    startingat: "₹ 33 / day",
+    buy: "₹",
+    rent: "₹ 33 / day",
     link: "/Search?query=baby-carrier",
+    availablefor: "Rent",
   },
   {
     name: "Hookah",
@@ -446,8 +464,10 @@ export const direactsearchlist = [
     heading: "Relax & Unwind",
     subheading:
       "Enjoy a premium hookah experience at home or with friends. Rent high-quality hookahs for a smooth and flavorful session.",
-    startingat: "₹ 142 / day",
+    buy: "₹",
+    rent: "₹ 142 / day",
     link: "/Search?query=hookah",
+    availablefor: "Rent",
   },
   {
     name: "PS4",
@@ -455,8 +475,10 @@ export const direactsearchlist = [
     heading: "Game On",
     subheading:
       "Immerse yourself in the world of gaming with a PlayStation 4. Enjoy high-quality graphics, online multiplayer, and endless entertainment.",
-    startingat: "₹ 200 / day",
+    buy: "₹",
+    rent: "₹ 200 / day",
     link: "/Search?query=ps4",
+    availablefor: "Rent",
   },
   {
     name: "Baby Car Seat",
@@ -464,8 +486,10 @@ export const direactsearchlist = [
     heading: "Safety First",
     subheading:
       "Ensure your child's safety while traveling. Rent a baby car seat designed for comfort and maximum protection.",
-    startingat: "₹ 90 / day",
+    buy: "₹",
+    rent: "₹ 90 / day",
     link: "/Search?query=baby-car-seat",
+    availablefor: "Rent",
   },
   {
     name: "Hoverboard",
@@ -473,8 +497,10 @@ export const direactsearchlist = [
     heading: "Glide with Style",
     subheading:
       "Experience smooth and effortless rides with a hoverboard that offers speed, balance, and fun for all ages.",
-    startingat: "₹ 133 / day",
+    buy: "₹",
+    rent: "₹ 133 / day",
     link: "/Search?query=hoverboard",
+    availablefor: "Rent",
   },
   {
     name: "Crosstrainer",
@@ -482,7 +508,9 @@ export const direactsearchlist = [
     heading: "Cardio Made Easy",
     subheading:
       "Enhance your cardio routine with a crosstrainer, designed to provide an effective workout with minimal impact on your joints.",
-    startingat: "₹ 1,583 / month",
+    buy: "₹",
+    rent: "₹ 1,583 / month",
     link: "/Search?query=cross-trainer",
+    availablefor: "Rent",
   },
 ];

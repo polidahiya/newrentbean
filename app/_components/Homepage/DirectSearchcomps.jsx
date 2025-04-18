@@ -20,6 +20,10 @@ export default function DireactSearchListSwiper({ location, store }) {
     }
   }, []);
 
+  const filteredlist = direactsearchlist.filter(
+    (item) => item.availablefor == "Both" || item.availablefor == store
+  );
+
   return (
     <div className="relative w-full flex flex-col-reverse lg:flex-row">
       <Swiper
@@ -34,7 +38,7 @@ export default function DireactSearchListSwiper({ location, store }) {
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="w-full lg:w-1/2"
       >
-        {direactsearchlist.map((item, index) => (
+        {filteredlist.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="p-5 md:p-10">
               <h3
@@ -54,7 +58,9 @@ export default function DireactSearchListSwiper({ location, store }) {
                 data-swiper-parallax="-450"
               >
                 Starting at just :{" "}
-                <span className="text-theme">{item?.startingat}</span>
+                <span className="text-theme">
+                  {store == "Rent" ? item?.rent : item?.buy}
+                </span>
               </p>
               <div
                 className="mt-10 flex justify-center lg:justify-start gap-2"
@@ -72,7 +78,7 @@ export default function DireactSearchListSwiper({ location, store }) {
                   href={`/${location}/${store}${item?.link}`}
                   className=" text-theme border border-theme px-5 py-2 rounded-md lg:order-1"
                 >
-                  Rent Now
+                  {store} Now
                 </Link>
                 <button
                   onClick={() => textSwiperRef.current?.slideNext()}
@@ -97,7 +103,7 @@ export default function DireactSearchListSwiper({ location, store }) {
         parallax={true}
         className="relative w-full lg:w-1/2"
       >
-        {direactsearchlist.map((item, index) => (
+        {filteredlist.map((item, index) => (
           <SwiperSlide key={index} className="aspect-[4/3] md:aspect-video">
             <Image
               src={item?.image}
@@ -117,7 +123,7 @@ export default function DireactSearchListSwiper({ location, store }) {
       </Swiper>
       {/* custom pagination */}
       <div className="absolute top-full lg:bottom-3 left-1/2 transform -translate-x-1/2 flex z-10">
-        {direactsearchlist.map((_, i) => (
+        {filteredlist.map((_, i) => (
           <button
             key={i}
             className={`relative group flex items-center justify-center p-1`}

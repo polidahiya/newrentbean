@@ -17,7 +17,7 @@ async function page({ params }) {
 
   return (
     <Wrapper store={store}>
-      <Homepage location={location} store={store} />;
+      <Homepage location={location} store={store} />
     </Wrapper>
   );
 }

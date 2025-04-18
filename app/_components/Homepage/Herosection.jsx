@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 
-function PosterAdds({ location,store }) {
+function PosterAdds({ location, store }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
@@ -61,14 +61,20 @@ function PosterAdds({ location,store }) {
           >
             {imageArray.map((item, i) => (
               <SwiperSlide key={i}>
-                <Link href={`/${location}/${store}/${item?.link}`} prefetch={false}>
+                <Link
+                  href={`/${location}/${store}/${item?.link}`}
+                  prefetch={false}
+                  className="relative h-full w-full block"
+                >
                   <Image
                     className="h-full w-full object-cover rounded-3xl lg:rounded-none p-2 lg:p-0"
                     src={item?.img}
                     alt={item?.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 70vw"
+                    priority={i == 0 ? true : false}
                     quality={100}
-                    loading="lazy"
+                    loading={i != 0 ? "lazy" : "eager"}
                   />
                 </Link>
               </SwiperSlide>
@@ -79,14 +85,16 @@ function PosterAdds({ location,store }) {
           <button
             className="absolute left-5 top-1/2 transform -translate-y-1/2 w-12 aspect-square flex items-center justify-center bg-white lg:bg-gray-300 rounded-full opacity-0 lg:group-hover:opacity-80 transition hover:bg-white z-10"
             onClick={() => swiperRef.current.swiper.slidePrev()}
-            aria-label="Scroll Left" title="Scroll Left"
+            aria-label="Scroll Left"
+            title="Scroll Left"
           >
             <FaAngleLeft />
           </button>
           <button
             className="absolute right-5 top-1/2 transform -translate-y-1/2 w-12 aspect-square flex items-center justify-center bg-white lg:bg-gray-300 rounded-full opacity-0 lg:group-hover:opacity-80 transition hover:bg-white rotate-180 z-10"
             onClick={() => swiperRef.current.swiper.slideNext()}
-            aria-label="Scroll Right" title="Scroll Right"
+            aria-label="Scroll Right"
+            title="Scroll Right"
           >
             <FaAngleLeft />
           </button>
@@ -98,7 +106,8 @@ function PosterAdds({ location,store }) {
                 key={i}
                 className={`flex items-center justify-center p-1`}
                 onClick={() => swiperRef.current.swiper.slideTo(i)}
-                aria-label="Index" title="Index"
+                aria-label="Index"
+                title="Index"
               >
                 <span
                   className={`block h-1 rounded-full bg-gray-400 duration-150 ${

@@ -30,7 +30,7 @@ export default function Homenavbar({ userdata, token }) {
         alt="Rentbean logo"
         height={50}
         width={200}
-        
+        priority
       ></Image>
       <div className="absolute hidden md:flex top-0 left-[50%] translate-x-[-50%] h-full items-center justify-center gap-4 lg:gap-12 text-white">
         {list.map((item, i) => (
