@@ -114,6 +114,7 @@ export default function DireactSearchListSwiper({ location, store }) {
               loading="lazy"
               width={638}
               height={358}
+              unoptimized
               //  data-swiper-parallax-scale="0.5"
             ></Image>
           </SwiperSlide>
