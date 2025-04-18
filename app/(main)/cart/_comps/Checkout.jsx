@@ -4,7 +4,7 @@ import { IoShieldCheckmark } from "react-icons/io5";
 import { SiRazorpay } from "react-icons/si";
 
 function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
-  const maxcashpaymentavailable = 10000;
+  const maxcashpaymentavailable = 25000;
   useEffect(() => {
     if (paymentMethod === "cod" && totalPrice >= maxcashpaymentavailable)
       setpaymentMethod("online");

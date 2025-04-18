@@ -74,7 +74,7 @@ function Navbar() {
       </div>
       <div className="overflow-hidden flex-1 flex items-center justify-end">
         <button
-          className="callnow flex items-center gap-2 border border-white rounded-full px-5 py-2  bg-white text-eventtheme hover:bg-eventtheme hover:text-white cursor-pointer group-hover/nav:border-eventtheme -translate-y-full"
+          className="callnow flex items-center gap-2 border border-white rounded-full px-5 py-2 text-xs md:text-base bg-white text-eventtheme hover:bg-eventtheme hover:text-white cursor-pointer group-hover/nav:border-eventtheme -translate-y-full"
           style={{
             animation: `movedownanimation 0.6s 1.2s ease-in-out forwards`,
           }}

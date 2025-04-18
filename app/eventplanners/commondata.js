@@ -2,47 +2,41 @@ export const categories = {
   "Wedding-Planning": {
     heading: "Unforgettable Weddings",
     subheading: "Crafting your dream wedding with elegance and love.",
-    keywords: [
-      // "wedding",
-      "wedding decor",
-      // "bridal",
-      // "ceremony",
-      // "romantic wedding",
+    images: [
+      "https://i.pinimg.com/736x/cc/ad/32/ccad32362b224d1351d2063ee1fa224d.jpg",
+      "https://www.ptaufiqphotography.com/wp-content/uploads/2024/06/ptaufiq-indian-wedding-rajkot-India-ceremony-couple-portraits.jpg",
     ],
     subcat: {
       "Pre-Wedding-Shoot": {
         heading: "Pre-Wedding Shoot",
         subheading: "Capture your love story in stunning locations.",
-        keywords: [
-          "pre-wedding",
-          "couple shoot",
-          "engagement shoot",
-          "romantic couple",
+        images: [
+          "https://serviceninjas.in/wp-content/uploads/2021/11/a1.jpg",
+          "https://images.boldsky.com/img/2023/05/image-of-a-bride-in-a-pre-wedding-shoot-outfit-1685527348.jpg",
         ],
       },
       Haldi: {
         heading: "Haldi Ceremony",
         subheading: "Vibrant and joyful celebrations with turmeric and fun.",
-        keywords: [
-          "haldi ceremony",
-          "turmeric ritual",
-          "indian wedding",
-          "haldi decor",
+        images: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHSUI5oL6aeRuifYzYgBlNU94FKQB1anscLA&s",
+          "https://www.theknot.com/tk-media/images/b0e84a56-db35-4752-acdd-c8d39c2743cc",
         ],
       },
       Sangeet: {
         heading: "Sangeet Night",
         subheading: "Dance and music to kick off your wedding festivities.",
-        keywords: ["sangeet", "indian dance", "wedding party", "sangeet night"],
+        images: [
+          "https://ramsevent.com/public/uploads/service_images/1726813757-group-people-joyously-dancing-indian-wedding-celebration_641503-143494.webp",
+          "https://im.idiva.com/content/2019/Jul/iDiva_Low-Cost-Sangeet-Ceremony_Thumb_5d397f45d092c.jpg",
+        ],
       },
       Mehendi: {
         heading: "Mehendi Celebration",
         subheading: "Intricate designs and festive vibes for your special day.",
-        keywords: [
-          "mehendi",
-          "henna design",
-          "mehndi ceremony",
-          "bridal henna",
+        images: [
+          "https://i.pinimg.com/736x/7a/1e/c8/7a1ec8c8521f12f2f3fe0af0beb62bcb.jpg",
+          "https://i.pinimg.com/736x/fd/fb/1b/fdfb1b1c602a38625a7f4c44e3fcb1e2.jpg",
         ],
       },
     },
@@ -50,183 +44,136 @@ export const categories = {
   "Birthday-&-Parties": {
     heading: "Joyful Celebrations",
     subheading: "Making every milestone memorable with fun and flair.",
-    keywords: ["birthday party", "celebration", "party decor", "birthday cake"],
+    images: [
+      "https://i.pinimg.com/736x/a5/64/d3/a564d3ca1343668509b1721cf1148368.jpg",
+      "https://i.pinimg.com/736x/a0/d3/c7/a0d3c76cf08925897e386060598247ef.jpg",
+    ],
     subcat: {
       "Baby-Shower": {
         heading: "Baby Shower",
         subheading: "Welcoming your little one with love and excitement.",
-        keywords: [
-          "baby shower",
-          "baby celebration",
-          "nursery decor",
-          "baby party",
+        images: [
+          "https://rukminim2.flixcart.com/image/850/1000/xif0q/birthday-combo/j/z/e/baby-shower-decoration-items-kit-for-home-baby-shower-decoration-original-imah5yynugys55m8.jpeg?q=20&crop=false",
+          "https://i.pinimg.com/736x/6d/cb/f6/6dcbf6db6f9c5e60a9c4c358424d25c0.jpg",
         ],
       },
       "Birthday-Celebration": {
         heading: "Birthday Celebration",
         subheading: "From kids to adults, we make birthdays unforgettable.",
-        keywords: ["birthday", "birthday cake", "party balloons", "kids party"],
+        images: [
+          "https://i.pinimg.com/736x/a5/64/d3/a564d3ca1343668509b1721cf1148368.jpg",
+          "https://i.pinimg.com/736x/a0/d3/c7/a0d3c76cf08925897e386060598247ef.jpg",
+        ],
       },
       Anniversaries: {
         heading: "Anniversary Parties",
         subheading: "Celebrating love and milestones with elegance.",
-        keywords: [
-          "anniversary",
-          "couple celebration",
-          "romantic dinner",
-          "anniversary decor",
+        images: [
+          "https://i.pinimg.com/736x/00/1d/7a/001d7a3787e54e01a929df99c8c82192.jpg",
+          "https://i.pinimg.com/736x/7f/dc/0e/7fdc0e25211d58d422bf5ff71ac69f10.jpg",
         ],
       },
       "Private-Dinner-&-Parties": {
         heading: "Private Dinners & Parties",
         subheading: "Intimate gatherings with gourmet dining and style.",
-        keywords: [
-          "private dinner",
-          "dinner party",
-          "fine dining",
-          "intimate gathering",
+        images: [
+          "https://i.pinimg.com/736x/6e/4d/4b/6e4d4b97f29ba82a09c19dcd44214088.jpg",
+          "https://i.pinimg.com/736x/af/1a/aa/af1aaa76f7cdb145df34a9d7c7e3a1df.jpg",
         ],
       },
       "Retirement-&-Farewell": {
         heading: "Retirement & Farewell",
         subheading: "Honoring achievements with heartfelt celebrations.",
-        keywords: [
-          "retirement party",
-          "farewell",
-          "celebration event",
-          "goodbye party",
+        images: [
+          "https://www.paperlesspost.com/blog/wp-content/uploads/061623_Blog_Prosumer_RetirementPartyIdeas_01-hero.png",
+          "https://www.homefurniturelife.com/wp-content/uploads/2022/03/71XxQmhsszL._AC_SL1500_.jpg",
         ],
       },
       Housewarming: {
         heading: "Housewarming Events",
         subheading: "Warm your new home with joy and togetherness.",
-        keywords: ["housewarming", "home decor", "new home", "house party"],
+        images: [],
       },
     },
   },
   "Corporate-Events": {
     heading: "Professional Events",
     subheading: "Elevating your business with seamless event planning.",
-    keywords: [
-      "corporate event",
-      "business meeting",
-      "professional event",
-      "conference",
-    ],
+    images: [],
     subcat: {
       "Conferences-&-Seminars": {
         heading: "Conferences & Seminars",
         subheading: "Inspiring gatherings for knowledge and networking.",
-        keywords: [
-          "conference",
-          "seminar",
-          "business event",
-          "networking event",
-        ],
+        images: [],
       },
       "Office-Parties-&-Annual-Day-Events": {
         heading: "Office Parties & Annual Days",
         subheading: "Boosting morale with fun and festive celebrations.",
-        keywords: [
-          "office party",
-          "annual day",
-          "corporate celebration",
-          "team party",
-        ],
+        images: [],
       },
       "Award-Ceremonies": {
         heading: "Award Ceremonies",
         subheading: "Recognizing excellence with grandeur and pride.",
-        keywords: ["award ceremony", "trophy", "recognition event", "gala"],
+        images: [],
       },
       "Team-Building-Events": {
         heading: "Team Building Events",
         subheading: "Strengthening bonds with engaging activities.",
-        keywords: [
-          "team building",
-          "group activity",
-          "corporate team",
-          "team event",
-        ],
+        images: [],
       },
     },
   },
   "Social-&-Cultural-Events": {
     heading: "Cultural & Social Gatherings",
     subheading: "Bringing communities together with vibrant celebrations.",
-    keywords: [
-      "cultural event",
-      "festival",
-      "community gathering",
-      "social event",
-    ],
+    images: [],
     subcat: {
       "Festival-Event-Setups": {
         heading: "Festival Event Setups",
         subheading: "Immersive decor for unforgettable festivities.",
-        keywords: [
-          "festival decor",
-          "cultural festival",
-          "event setup",
-          "festive lights",
-        ],
+        images: [],
         subcat: {
           "Diwali-Decorations": {
             heading: "Diwali Decorations",
             subheading: "Lighting up your celebration with diyas and joy.",
-            keywords: ["diwali", "diwali decor", "diya", "indian festival"],
+            images: [],
           },
           "Holi-Decorations": {
             heading: "Holi Decorations",
             subheading: "Bursting with colors for a vibrant festival.",
-            keywords: ["holi", "holi festival", "color festival", "holi decor"],
+            images: [],
           },
           "Navratri-Decorations": {
             heading: "Navratri Decorations",
             subheading: "Celebrating devotion with garba and grandeur.",
-            keywords: ["navratri", "garba", "navratri decor", "indian dance"],
+            images: [],
           },
           Eid: {
             heading: "Eid Celebrations",
             subheading: "Festive setups for a joyful Eid gathering.",
-            keywords: [
-              "eid",
-              "eid decor",
-              "islamic festival",
-              "eid celebration",
-            ],
+            images: [],
           },
           Christmas: {
             heading: "Christmas Celebrations",
             subheading: "Spreading cheer with festive decor and warmth.",
-            keywords: [
-              "christmas",
-              "christmas decor",
-              "christmas tree",
-              "winter holiday",
-            ],
+            images: [],
           },
         },
       },
       "Puja-Ceremonies-&-Engagements": {
         heading: "Puja & Engagement Ceremonies",
         subheading: "Sacred and romantic moments planned with care.",
-        keywords: [
-          "puja ceremony",
-          "engagement",
-          "indian ritual",
-          "religious ceremony",
-        ],
+        images: [],
       },
       "Exhibitions-&-Fairs": {
         heading: "Exhibitions & Fairs",
         subheading: "Showcasing creativity with stunning setups.",
-        keywords: ["exhibition", "fair", "trade show", "booth setup"],
+        images: [],
       },
       "Music-&-DJ-Nights": {
         heading: "Music & DJ Nights",
         subheading: "High-energy events with top beats and vibes.",
-        keywords: ["dj night", "music event", "party lights", "dance party"],
+        images: [],
       },
     },
   },
