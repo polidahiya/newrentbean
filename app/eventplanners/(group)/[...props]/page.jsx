@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { categories } from "../../commondata";
 
 const BirthdayPartyService = async ({ params }) => {
@@ -16,12 +17,12 @@ const BirthdayPartyService = async ({ params }) => {
       <style>
         {`
           .bgimage {
-            background-image: url('${selectcategory?.images[0] || ""}');
+            background-image: url(${selectcategory?.images[0] || ""});
           }
 
           @media (min-width: 1024px) {
             .bgimage {
-              background-image: url('${selectcategory?.images[1] || ""}');
+              background-image: url(${selectcategory?.images[1] || ""});
             }
           }
         `}
@@ -36,21 +37,64 @@ const BirthdayPartyService = async ({ params }) => {
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="relative z-10 text-center text-white px-4">
-            <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg">
-              {selectcategory?.heading}
+            <h1 className="text-5xl md:text-7xl font-extrabold font-recline">
+              {/* {selectcategory?.heading} */}
+              {selectcategory?.heading.split("").map((item, i) => (
+                <span
+                  key={i}
+                  className="font-recline blur-xl opacity-0 scale-50 translate-y-5"
+                  style={{
+                    animation: `fadeout 1s ${0.08 * i}s forwards`,
+                  }}
+                >
+                  {item}
+                </span>
+              ))}
             </h1>
-            <p className="text-xl md:text-2xl mt-4 font-semibold">
+            <p className="text-xl md:text-2xl mt-4 opacity-75">
               {selectcategory?.subheading}
             </p>
-            <a
-              href="#booking"
+            <Link
+              href="/eventplanners/contact"
               className="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full hover:bg-pink-600 transition duration-300"
             >
-              Book Your Party Now!
-            </a>
+              Book Your Event Now!
+            </Link>
           </div>
         </section>
-
+        {/* categories */}
+        {selectcategory?.subcat && (
+          <div className="py-16 px-4 md:px-16">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">
+              Categories
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {Object.entries(selectcategory?.subcat).map(([key, item], i) => (
+                <Link
+                  href={`/eventplanners/${category}${
+                    subcat ? `/${subcat}` : ""
+                  }/${key}`}
+                  key={i}
+                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                >
+                  <img
+                    src={item?.images[1]}
+                    alt={key}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold text-gray-700">
+                      {item?.heading}
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      {item?.subheading}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
         {/* Services Overview */}
         <section className="py-16 px-4 md:px-16 bg-white">
           <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">
@@ -158,6 +202,32 @@ const BirthdayPartyService = async ({ params }) => {
           </div>
         </section>
 
+        {/* Testimonials */}
+        {selectcategory?.reviews && (
+          <section className="py-16 px-4 md:px-16 bg-white">
+            <h2 className="text-4xl font-bold text-center text-pink-600 mb-12">
+              Happy Clients Say
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {selectcategory?.reviews.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-purple-50 p-6 rounded-lg shadow-md text-center"
+                >
+                  <p className="text-gray-700 italic">
+                    {'"'}
+                    {testimonial?.review}
+                    {'"'}
+                  </p>
+                  <p className="mt-4 text-purple-700 font-semibold">
+                    {testimonial?.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Photo Gallery */}
         <section className="py-16 px-4 md:px-16 bg-yellow-100">
           <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">
@@ -185,46 +255,6 @@ const BirthdayPartyService = async ({ params }) => {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-16 px-4 md:px-16 bg-white">
-          <h2 className="text-4xl font-bold text-center text-pink-600 mb-12">
-            Happy Clients Say
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Lisa M.",
-                quote:
-                  "Joyful Moments made my daughter's 5th birthday magical! Everything was perfect.",
-              },
-              {
-                name: "James R.",
-                quote:
-                  "The team handled every detail for my 30th. Best party I've ever had!",
-              },
-              {
-                name: "Priya S.",
-                quote:
-                  "Their creativity and professionalism blew us away. Highly recommend!",
-              },
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-purple-50 p-6 rounded-lg shadow-md text-center"
-              >
-                <p className="text-gray-700 italic">
-                  {'"'}
-                  {testimonial.quote}
-                  {'"'}
-                </p>
-                <p className="mt-4 text-purple-700 font-semibold">
-                  {testimonial.name}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Call to Action */}
         <section className="py-16 bg-gradient-to-r from-pink-500 to-purple-500 text-center text-white">
           <h2 className="text-4xl font-bold mb-4">
@@ -233,12 +263,12 @@ const BirthdayPartyService = async ({ params }) => {
           <p className="text-xl mb-6">
             Let Joyful Moments bring your birthday vision to life!
           </p>
-          <a
-            href="#booking"
+          <Link
+            href="/eventplanners/contact"
             className="inline-block bg-white text-pink-500 py-3 px-8 rounded-full font-semibold hover:bg-gray-100 transition duration-300"
           >
             Get Started Today
-          </a>
+          </Link>
         </section>
       </div>
     </>
