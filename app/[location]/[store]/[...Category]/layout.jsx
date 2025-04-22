@@ -1,7 +1,7 @@
 import Navbar from "@/app/_components/Navbar/Navbar";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import { cookies } from "next/headers";
-import Footer from "@/app/_components/Footer";
+import Footer from "@/app/_components/footer/Footer";
 import Mobilenav from "@/app/_components/Navbar/_comps/Mobilenav";
 
 export const metadata = {

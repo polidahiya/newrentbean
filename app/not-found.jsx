@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import Footer from "./_components/Footer";
+import Footer from "./_components/footer/Footer";
 import Navbar from "./_components/Navbar/Navbar";
 import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
 

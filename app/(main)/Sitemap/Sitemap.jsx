@@ -19,7 +19,7 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
-const SiteMap = () => {
+const SiteMap = ({ type }) => {
   const mainPages = [
     { loc: "/", label: "Home", icon: <FaHome /> },
     { loc: "/Blogs", label: "Blogs", icon: <FaBlog /> },
@@ -31,18 +31,18 @@ const SiteMap = () => {
 
   const furnitureCategories = [
     {
-      loc: "/Delhi/Health-&-Fitness",
+      loc: `/Delhi/${type}/Health-&-Fitness`,
       label: "Health & Fitness",
       icon: <FaDumbbell />,
     },
-    { loc: "/Delhi/Electronic", label: "Electronic", icon: <FaTv /> },
-    { loc: "/Delhi/Furniture", label: "Furniture", icon: <FaCouch /> },
+    { loc: `/Delhi/${type}/Electronic`, label: "Electronic", icon: <FaTv /> },
+    { loc: `/Delhi/${type}/Furniture`, label: "Furniture", icon: <FaCouch /> },
     {
-      loc: "/Delhi/Event-&-Parties",
+      loc: `/Delhi/${type}/Event-&-Parties`,
       label: "Event & Parties",
       icon: <FaGlassCheers />,
     },
-    { loc: "/Delhi/Others", label: "Others", icon: <FaBoxOpen /> },
+    { loc: `/Delhi/${type}/Others`, label: "Others", icon: <FaBoxOpen /> },
   ];
 
   const policiesAndOthers = [

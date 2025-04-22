@@ -3,7 +3,7 @@ import Blogscomp from "./Blogscomp";
 import Promices from "./Promices";
 import Categories from "./Categories";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
-import Footer from "../Footer";
+import Footer from "../footer/Footer";
 import { cookies } from "next/headers";
 import Allproducts from "./allproducts/Allproducts";
 import Description from "./homedesc/Description";

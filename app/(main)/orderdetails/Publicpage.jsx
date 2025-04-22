@@ -120,7 +120,8 @@ const Historyproductcard = ({ item, product, index }) => {
           <button
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => setmoreoptions(!moreoptions)}
-            aria-label="Open Menu" title="Open Menu"
+            aria-label="Open Menu"
+            title="Open Menu"
           >
             <BiDotsHorizontalRounded className="text-gray-600 text-xl" />
           </button>
@@ -129,7 +130,8 @@ const Historyproductcard = ({ item, product, index }) => {
               <button
                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
                 onClick={() => setshowconfirmation(true)}
-                aria-label="Cancel Product" title="Cancel Product"
+                aria-label="Cancel Product"
+                title="Cancel Product"
               >
                 Cancel Product
               </button>
@@ -163,7 +165,7 @@ const Historyproductcard = ({ item, product, index }) => {
 const OrderStatus = ({ item }) => {
   return (
     <div className="flex justify-center mt-6">
-      {item.status < 4 && (
+      {![4, 5].includes(item.status) && (
         <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px]">
           <div className="flex items-center w-full mt-[10px] px-[40px] md:px-[60px]">
             {orderstages.slice(0, 4).map((_, i) => (
@@ -185,6 +187,18 @@ const OrderStatus = ({ item }) => {
                 />
               </div>
             ))}
+            <div className={`flex items-center w-full`}>
+              <div
+                className={`h-0.5 w-full border-2 border-dashed ${
+                  item.status == 6 ? "border-blue-500" : "border-slate-300"
+                }`}
+              />
+              <div
+                className={`min-w-[10px] aspect-square rounded-full ${
+                  item.status == 6 ? "bg-blue-500" : "bg-slate-300"
+                }`}
+              />
+            </div>
           </div>
           <div className="flex items-center justify-between w-full py-[10px] px-[20px] text-[10px] md:text-[14px] gap-[10px]">
             {orderstages.slice(0, 4).map((stage, i) => (
@@ -192,6 +206,7 @@ const OrderStatus = ({ item }) => {
                 {stage}
               </span>
             ))}
+            <span className="text-center">Completed</span>
           </div>
         </div>
       )}
@@ -220,7 +235,8 @@ const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
           <button
             className="flex items-center justify-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             onClick={confirmfn}
-            aria-label="Confirm Cancellation" title="Confirm Cancellation"
+            aria-label="Confirm Cancellation"
+            title="Confirm Cancellation"
           >
             <LiaExclamationTriangleSolid className="text-lg" />
             Confirm Cancellation
@@ -228,7 +244,8 @@ const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
           <button
             className="px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
             onClick={() => setshowconfirmation(false)}
-            aria-label="Go Back" title="Go Back"
+            aria-label="Go Back"
+            title="Go Back"
           >
             Go Back
           </button>

@@ -224,6 +224,7 @@ export const orderstages = [
   "Order Delivered",
   "Order Canceled",
   "Order Refunded",
+  "Order Completed",
 ];
 
 // list of cities

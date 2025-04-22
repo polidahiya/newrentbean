@@ -11,6 +11,7 @@ function Selectordertype({ ordertype, Refreshorders }) {
     { id: 3, label: "Delivered" },
     { id: 4, label: "Canceled" },
     { id: 5, label: "Refunded" },
+    { id: 6, label: "Completed" },
   ];
 
   return (

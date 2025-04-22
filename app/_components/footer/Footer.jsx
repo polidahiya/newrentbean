@@ -17,11 +17,11 @@ import { FaFacebook } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { RiTwitterXFill } from "react-icons/ri";
 import { FaPinterestP } from "react-icons/fa6";
-import { sociallinks } from "../commondata";
-import { FaSitemap } from "react-icons/fa";
-import PWAInstallPrompt from "./Pwapromot";
+import { sociallinks } from "../../commondata";
+import PWAInstallPrompt from "../Pwapromot";
 import { IoShieldHalf } from "react-icons/io5";
 // import ThemeSwitcher from "./Switchtheme";
+import Sitemapbutton from "./Sitemapbutton";
 
 async function Footer() {
   const list1 = [
@@ -99,14 +99,7 @@ async function Footer() {
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-5 text-[12px]">
-          <Link
-            href="/Sitemap"
-            className="flex items-center gap-1"
-            prefetch={false}
-          >
-            <FaSitemap className="text-yellow-500" />
-            Site map
-          </Link>
+          <Sitemapbutton />
           <PWAInstallPrompt />
           <Protectedbygoogle />
           {/* <ThemeSwitcher /> */}

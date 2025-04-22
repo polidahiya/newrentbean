@@ -1,7 +1,7 @@
 import Navbar from "../_components/Navbar/Navbar";
 import { Cachedproducts } from "../_serveractions/Getcachedata";
 import { cookies } from "next/headers";
-import Footer from "../_components/Footer";
+import Footer from "../_components/footer/Footer";
 import Mobilenav from "../_components/Navbar/_comps/Mobilenav";
 
 export default async function RootLayout({ children, params }) {
