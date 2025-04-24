@@ -1,4 +1,5 @@
 import React from "react";
+import { media } from "@/app/eventplanners/commondata";
 
 const page = () => {
   return (
@@ -49,7 +50,7 @@ const page = () => {
       </p>
 
       <p>
-        <strong>Contact:</strong> support@rentbean.in
+        <strong>Contact:</strong> {media?.email}
       </p>
     </div>
   );

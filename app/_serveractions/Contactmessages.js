@@ -44,7 +44,6 @@ export async function Getmessage(type) {
         break;
     }
     messages.map((item) => (item._id = item._id.toString()));
-    console.log(messages);
 
     return { status: 200, message: messages.length + "new messages", messages };
   } catch (error) {

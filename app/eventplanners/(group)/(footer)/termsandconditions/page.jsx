@@ -1,4 +1,5 @@
 import React from "react";
+import { media } from "@/app/eventplanners/commondata";
 
 function page() {
   return (
@@ -61,8 +62,8 @@ function page() {
       </ul>
       <h3>b. Cancellation by RentBean India</h3>
       <p>
-        If we cancel due to unavailability or unforeseen issues, you{"’"}ll receive
-        a full refund and suggested alternatives.
+        If we cancel due to unavailability or unforeseen issues, you{"’"}ll
+        receive a full refund and suggested alternatives.
       </p>
 
       <h2>3. Damage, Loss, or Theft Policy</h2>
@@ -98,7 +99,7 @@ function page() {
       </p>
 
       <p>
-        <strong>Contact:</strong> support@rentbean.in
+        <strong>Contact:</strong> {media?.email}
       </p>
     </div>
   );

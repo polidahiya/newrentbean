@@ -1,3 +1,15 @@
+export const media = {
+  phone: "+91 95822 14574",
+  email: "events.rentbean@gmail.com",
+  address: "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002",
+  twitter: "",
+  insta: "",
+  facebook: "",
+  pinterest: "https://www.pinterest.com/eventsrentbean/",
+};
+
+export const cities = ["Delhi", "Gurgaon", "Noida", "Faridabad", "Ghaziabad"];
+
 export const categories = {
   "Wedding-Planning": {
     heading: "Unforgettable Weddings",
@@ -280,6 +292,10 @@ export const categories = {
             stars: 4,
           },
         ],
+        gallary:[
+          "https://i.pinimg.com/474x/ff/42/c1/ff42c12bd026c3af155e5bbc7db4d021.jpg",
+          "https://i.pinimg.com/736x/4b/97/d5/4b97d555ac37d66d1f7bc06db7cb45fe.jpg"
+        ]
       },
       "Retirement-&-Farewell": {
         heading: "Retirement & Farewell",

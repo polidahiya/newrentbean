@@ -28,7 +28,9 @@ function FIxedbuttons() {
 const Whatsappbutton = ({ iseventmanager }) => (
   <Link
     href={`https://wa.me/${mobile.replace(/ /g, "")}?text=${encodeURIComponent(
-      "Hi Rentbean, I found your products interesting, and I would like to know more!"
+      iseventmanager
+        ? "Hi, I'm interested in planning an event. Can you help me with the details?"
+        : "Hi Rentbean, I found your products interesting, and I would like to know more!"
     )}`}
     target="_blank"
     rel="noopener noreferrer"
@@ -52,7 +54,7 @@ const Whatsappbutton = ({ iseventmanager }) => (
 
 const Helpbutton = ({ iseventmanager }) => (
   <Link
-    href="/Contact"
+    href={iseventmanager ? "/eventplanners/contact" : "/Contact"}
     className={`group  flex items-center justify-center p-1 rounded-full overflow-hidden ${
       iseventmanager ? "bg-eventtheme" : "bg-theme"
     }`}
@@ -87,8 +89,8 @@ const Gotopbutton = ({ iseventmanager }) => {
           behavior: "smooth",
         });
       }}
-      aria-label="Go to Top" title="Go to Top"
-
+      aria-label="Go to Top"
+      title="Go to Top"
     >
       <FaArrowUpLong className="translate-y-[2px]" />
       <span className="h-0 m-0 p-0 opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-4 duration-300">

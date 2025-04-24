@@ -1,6 +1,5 @@
-// AboutUs.jsx
-
 import React from "react";
+import { media } from "@/app/eventplanners/commondata";
 
 const AboutUs = () => {
   return (
@@ -47,10 +46,10 @@ const AboutUs = () => {
         event!
       </p>
       <p>
-        <strong>Email:</strong> support@rentbean.in
+        <strong>Email:</strong> {media?.email}
       </p>
       <p>
-        <strong>Phone:</strong> [Add your contact number]
+        <strong>Phone:</strong> {media?.phone}
       </p>
     </div>
   );
