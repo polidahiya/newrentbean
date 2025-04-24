@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const categoryComponents = {
   "Health-&-Fitness": category1,
   Electronic: category2,
@@ -25,7 +27,7 @@ const subcatcomponents = {
   "Camping-Gear": subcat16,
 };
 
-function Categorydescription({ category, subcat, location }) {
+function Categorydescription({ category, subcat, location, store }) {
   if (!category || category === "Search") return null;
   const CategoryComponent = categoryComponents[category];
   const SubcatComponent = subcatcomponents[subcat];
@@ -33,9 +35,9 @@ function Categorydescription({ category, subcat, location }) {
   return (
     <div className="text px-5 md:px-10 text-sm my-10 text-justify">
       {subcat ? (
-        <SubcatComponent location={location} />
+        <SubcatComponent location={location} store={store} />
       ) : (
-        <CategoryComponent location={location} />
+        <CategoryComponent location={location} store={store} />
       )}
     </div>
   );
@@ -44,7 +46,7 @@ function Categorydescription({ category, subcat, location }) {
 // category1 - Fitness Equipment on Rent
 // Meta Description: Rent high-quality fitness equipment like treadmills, exercise cycles, and cross trainers in {location} with affordable plans and doorstep delivery.
 // Keywords: fitness equipment rental, treadmill on rent, gym equipment on rent, exercise cycle rental, fitness machines {location}, affordable gym rentals
-function category1({ location }) {
+function category1({ location, store }) {
   return (
     <div>
       <h1>Fitness Equipment on Rent in {location}</h1>
@@ -90,7 +92,7 @@ function category1({ location }) {
 // category2 - Affordable Rentals (Electronics)
 // Meta Description: Affordable rentals in {location} - laptops, mobiles (iPhone, Samsung), and home appliances like ACs, fridges, and washing machines with flexible plans.
 // Keywords: laptop on rent {location}, mobile rental, iPhone on rent, Samsung mobile rental, home appliances rental, AC on rent, fridge rental
-function category2({ location }) {
+function category2({ location, store }) {
   return (
     <div>
       <h1>
@@ -147,7 +149,7 @@ function category2({ location }) {
 // category3 - Furniture on Rent
 // Meta Description: Rent affordable and premium furniture in {location} - beds, sofas, study tables, wardrobes, and more with flexible rental options.
 // Keywords: furniture on rent {location}, bed rental, sofa on rent, study table rental, wardrobe on rent, cheap furniture rental
-function category3({ location }) {
+function category3({ location, store }) {
   return (
     <div>
       <h1>Affordable and Premium Furniture on Rent in {location}</h1>
@@ -187,7 +189,7 @@ function category3({ location }) {
 // category4 - Premium Rental Services (Events & Parties)
 // Meta Description: Premium rental services in {location} - hookahs, tents, DJ lights, barbeques, beer towers, and water dispensers for parties and events.
 // Keywords: rental services {location}, hookah on rent, tent rental, DJ lights rental, barbeque on rent, beer tower rental, water dispenser rental
-function category4({ location }) {
+function category4({ location, store }) {
   return (
     <div>
       <h1>Premium Rental Services in {location}</h1>
@@ -266,7 +268,7 @@ function category4({ location }) {
 // category5 - Baby Gear and Camping Equipment
 // Meta Description: Rent baby gear (car seats, strollers, cots) and camping equipment (tents, gear) in {location} - affordable, sanitized, and convenient.
 // Keywords: baby gear rental {location}, camping equipment rental, baby car seat on rent, stroller rental, camping tent rental, affordable rentals
-function category5({ location }) {
+function category5({ location, store }) {
   return (
     <div>
       <h1>Baby Gear and Camping Equipment on Rent in {location}</h1>
@@ -310,7 +312,7 @@ function category5({ location }) {
 // subcat1 - Fitness & Massage Equipment
 // Meta Description: Rent fitness equipment (treadmills, gym bikes) and massage gear (foot massagers, chairs) in {location} with flexible, affordable plans.
 // Keywords: treadmill on rent {location}, gym bike rental, massage equipment rental, exercise cycle on rent, bicycle rental, fitness gear rental
-function subcat1({ location }) {
+function subcat1({ location, store }) {
   return (
     <div className="text">
       <h1>Get Fitness & Massage Equipment on Rent in {location}</h1>
@@ -350,7 +352,7 @@ function subcat1({ location }) {
 // subcat2 - Medical Equipment Rental
 // Meta Description: Rent medical equipment in {location} - oxygen cylinders, concentrators, wheelchairs, and patient beds at affordable prices with fast delivery.
 // Keywords: medical equipment rental {location}, oxygen cylinder on rent, wheelchair rental, patient bed rental, oxygen concentrator rental
-function subcat2({ location }) {
+function subcat2({ location, store }) {
   return (
     <div className="text">
       <h1>Medical Equipment Rental in {location}</h1>
@@ -392,7 +394,7 @@ function subcat2({ location }) {
 // subcat3 - Gaming Consoles and Hoverboards
 // Meta Description: Rent PS4, PS5, and hoverboards in {location} - affordable gaming and entertainment options with flexible rental plans.
 // Keywords: PS4 on rent {location}, PS5 rental, hoverboard on rent, gaming console rental, entertainment rentals
-function subcat3({ location }) {
+function subcat3({ location, store }) {
   return (
     <div className="text">
       <h1>Gaming Consoles and Hoverboards on Rent in {location}</h1>
@@ -438,7 +440,128 @@ function subcat3({ location }) {
 // subcat4 - Laptops on Rent
 // Meta Description: Rent laptops (Dell, HP) in {location} for students, professionals, or gaming - affordable daily, monthly plans with doorstep delivery.
 // Keywords: laptop on rent {location}, Dell laptop rental, HP laptop on rent, gaming laptop rental, laptop for students, affordable laptop rental
-function subcat4({ location }) {
+function subcat4({ location, store }) {
+  if (store === "Buy") {
+    const productSchema = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `Refurbished Laptops in ${location}`,
+      description: `Shop certified refurbished laptops in ${location} under 5000, 10000, and 20000. Get Dell, HP, Lenovo, and Mac with 1-year warranties.`,
+      brand: ["Dell", "HP", "Lenovo", "Apple"],
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "INR",
+        price: "5000",
+        availability: "https://schema.org/InStock",
+      },
+    };
+
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: `Are refurbished laptops in ${location} reliable?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `Yes, our refurbished laptops in ${location} undergo rigorous testing and come with 1-year warranties, ensuring like-new performance from brands like Dell, HP, and Lenovo.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `Do you offer refurbished gaming laptops in ${location}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `Absolutely! We provide high-performance refurbished gaming laptops in ${location}, featuring brands like Dell and Lenovo, perfect for gamers on a budget.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `What is the warranty on used laptops in ${location}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `Our used laptops in ${location} come with 1-year warranties, ensuring peace of mind with every purchase from Rentbean.`,
+          },
+        },
+      ],
+    };
+
+    return (
+      <div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(productSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+        <h1>Premium Refurbished Laptops in {location}</h1>
+        <p>
+          Discover top-quality refurbished laptops at Rentbean, the best place
+          for <strong>second-hand laptops in {location}</strong> and across
+          India! Browse certified pre-owned laptops from leading brands like{" "}
+          <Link href={`/${location}/${store}/Search?query=dell`}>Dell</Link>,{" "}
+          <Link href={`/${location}/${store}/Search?query=hp`}>HP</Link>,
+          <Link href={`/${location}/${store}/Search?query=lenovo`}>Lenovo</Link>
+          ,{" "}
+          <Link href={`/${location}/${store}/Search?query=thinkpad`}>
+            ThinkPad
+          </Link>
+          , and <Link href={`/${location}/${store}/Search?query=mac`}>Mac</Link>
+          , tailored for work,
+          <Link href={`/${location}/${store}/Search?query=gaming`}>gaming</Link>
+          , or studies. Score unbeatable deals on{" "}
+          <strong>refurbished laptops under 15000 and 20000</strong>,
+          outshining platforms like Flipkart, Amazon, and OLX, or find local
+          gems in {location}. Our <strong>used laptops in {location}</strong>
+          under 5000 and 10000 come with <strong>1-year warranties</strong>,
+          rigorous quality checks, and like-new performance. Searching for{" "}
+          <strong>refurbished gaming laptops</strong> or budget-friendly options
+          near you? We provide <strong>doorstep delivery</strong>, easy EMI, and
+          up to <strong>75% savings</strong>. Ideal for students, professionals,
+          and gamers, our curated collection guarantees reliability and value.
+          Shop now at Rentbean for the best{" "}
+          <strong>
+            refurbished and second-hand laptop deals in {location}
+          </strong>
+          !
+        </p>
+        <div>
+          <h2>Frequently Asked Questions</h2>
+          <div>
+            <h3>Are refurbished laptops in {location} reliable?</h3>
+            <p>
+              Yes, our refurbished laptops in {location} undergo rigorous
+              testing and come with 1-year warranties, ensuring like-new
+              performance from brands like Dell, HP, and Lenovo.
+            </p>
+          </div>
+          <div>
+            <h3>Do you offer refurbished gaming laptops in {location}?</h3>
+            <p>
+              Absolutely! We provide high-performance refurbished gaming laptops
+              in {location}, featuring brands like Dell and Lenovo, perfect for
+              gamers on a budget.
+            </p>
+          </div>
+          <div>
+            <h3>What is the warranty on used laptops in {location}?</h3>
+            <p>
+              Our used laptops in {location} come with 1-year warranties,
+              ensuring peace of mind with every purchase from Rentbean.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="text">
       <h1>Laptop on Rent in {location}</h1>
@@ -485,7 +608,7 @@ function subcat4({ location }) {
 // subcat5 - Mobile Phones on Rent
 // Meta Description: Rent mobile phones (iPhone, Samsung) in {location} for short or long-term use - affordable, flexible plans with doorstep delivery.
 // Keywords: mobile on rent {location}, iPhone rental, Samsung Galaxy on rent, phone rental near me, affordable mobile rental
-function subcat5({ location }) {
+function subcat5({ location, store }) {
   return (
     <div className="text">
       <h1>Mobile Phone on Rent Near {location}</h1>
@@ -529,7 +652,7 @@ function subcat5({ location }) {
 // subcat6 - Appliance and AC Rentals
 // Meta Description: Rent home appliances (fridges, ACs, washing machines) in {location} - affordable monthly plans with doorstep delivery.
 // Keywords: fridge on rent {location}, AC rental, washing machine on rent, home appliance rental, inverter on rent, RO rental
-function subcat6({ location }) {
+function subcat6({ location, store }) {
   return (
     <div className="text">
       <h1>Appliance and AC Rentals in {location}</h1>
@@ -581,7 +704,7 @@ function subcat6({ location }) {
 // subcat7 - Beds on Rent
 // Meta Description: Rent beds (single, double, king size) in {location} - affordable, flexible options with mattresses and doorstep delivery.
 // Keywords: bed on rent {location}, single bed rental, double bed on rent, king size bed rental, mattress on rent, furniture rental
-function subcat7({ location }) {
+function subcat7({ location, store }) {
   return (
     <div className="text">
       <h1>Bed on Rent Near {location}</h1>
@@ -624,7 +747,7 @@ function subcat7({ location }) {
 // subcat8 - Study Tables on Rent
 // Meta Description: Rent study tables in {location} - ergonomic, affordable options for students and professionals with doorstep delivery.
 // Keywords: study table on rent {location}, furniture rental, study table and chair rental, affordable study table rental
-function subcat8({ location }) {
+function subcat8({ location, store }) {
   return (
     <div className="text">
       <h1>Study Table on Rent in {location}</h1>
@@ -658,7 +781,7 @@ function subcat8({ location }) {
 // subcat9 - Dining Tables on Rent
 // Meta Description: Rent dining tables (2, 4, 6-seater) in {location} - affordable, stylish options for your home with doorstep delivery.
 // Keywords: dining table on rent {location}, 4-seater dining table rental, 6-seater dining table on rent, furniture rental
-function subcat9({ location }) {
+function subcat9({ location, store }) {
   return (
     <div className="text">
       <h1>Dining Table on Rent in {location}</h1>
@@ -694,7 +817,7 @@ function subcat9({ location }) {
 // subcat10 - Bookshelves on Rent
 // Meta Description: Rent bookshelves in {location} - wooden, stylish storage solutions at affordable rates with doorstep delivery.
 // Keywords: bookshelf on rent {location}, wooden bookshelf rental, furniture rental, affordable bookshelf rental
-function subcat10({ location }) {
+function subcat10({ location, store }) {
   return (
     <div className="text">
       <h1>Bookshelf on Rent Near {location}</h1>
@@ -713,7 +836,7 @@ function subcat10({ location }) {
 // subcat11 - Sofas on Rent
 // Meta Description: Rent sofas (2-seater, 3-seater, L-shape) in {location} - affordable, stylish options for homes and events with doorstep delivery.
 // Keywords: sofa on rent {location}, 2-seater sofa rental, L-shape sofa on rent, furniture rental, wedding sofa rental
-function subcat11({ location }) {
+function subcat11({ location, store }) {
   return (
     <div className="text">
       <h1>Furniture and Sofa Rental in {location}</h1>
@@ -754,7 +877,7 @@ function subcat11({ location }) {
 // subcat12 - Center Tables on Rent
 // Meta Description: Rent center tables (wooden, circular, square) in {location} - affordable, stylish options for homes and offices with doorstep delivery.
 // Keywords: center table on rent {location}, wooden table rental, dining table on rent, office table rental, furniture rental
-function subcat12({ location }) {
+function subcat12({ location, store }) {
   return (
     <div className="text">
       <h1>Table on Rent in {location}</h1>
@@ -789,7 +912,7 @@ function subcat12({ location }) {
 // subcat13 - Wardrobes on Rent
 // Meta Description: Rent wardrobes (sliding, 3-door, single-door) in {location} - affordable storage solutions with doorstep delivery.
 // Keywords: wardrobe on rent {location}, sliding wardrobe rental, furniture rental, affordable wardrobe rental
-function subcat13({ location }) {
+function subcat13({ location, store }) {
   return (
     <div className="text">
       <h1>Wardrobe on Rent Near {location}</h1>
@@ -807,7 +930,7 @@ function subcat13({ location }) {
 // subcat14 - Party Items on Rent
 // Meta Description: Rent party items (DJ lights, hookahs, beer towers, barbeques) in {location} - affordable, premium options for events with delivery.
 // Keywords: party items on rent {location}, DJ lights rental, hookah on rent, beer tower rental, barbeque rental, event rentals
-function subcat14({ location }) {
+function subcat14({ location, store }) {
   return (
     <div className="text">
       <h1>Find Rental Services Near {location}</h1>
@@ -851,7 +974,7 @@ function subcat14({ location }) {
 // subcat15 - Baby Care Items on Rent
 // Meta Description: Rent baby gear (car seats, cots, strollers) in {location} - safe, affordable options for parents with doorstep delivery.
 // Keywords: baby car seat on rent {location}, baby cot rental, stroller on rent, baby gear rental, affordable baby rentals
-function subcat15({ location }) {
+function subcat15({ location, store }) {
   return (
     <div className="text">
       <h1>Baby Car Seat, Baby Cot, and Stroller Rentals in {location}</h1>
@@ -881,7 +1004,7 @@ function subcat15({ location }) {
 // subcat16 - Camping & Event Equipment on Rent
 // Meta Description: Rent camping gear (tents, sleeping bags) and event items (chairs) in {location} - affordable, quality options with delivery.
 // Keywords: tent on rent {location}, camping equipment rental, sleeping bag on rent, chairs for rent, event equipment rental
-function subcat16({ location }) {
+function subcat16({ location, store }) {
   return (
     <div className="text">
       <h1>Camping & Event Equipment on Rent Near {location}</h1>

@@ -10,32 +10,26 @@ const data = [
   {
     heading: "Unforgettable Wedding Moments",
     para: "From dreamy décor to seamless coordination, we specialize in crafting personalized wedding experiences that reflect your unique love story. Let us turn your special day into a beautiful memory that lasts forever.",
-    image: "/eventplanners/heroimages/image1.jpg",
+    image:
+      "https://i.pinimg.com/736x/63/de/3a/63de3a93ad459acf7e6d9ee0d5102aac.jpg",
   },
   {
     heading: "Epic Parties, Made Effortless",
     para: "Whether you're planning a birthday blowout, an elegant anniversary dinner, or a high-energy eventthemed party, we take care of everything—from concept to execution—so you can focus on making memories with your guests.",
-    image: "/eventplanners/heroimages/image2.jpg",
+    image:
+      "https://i.pinimg.com/736x/c9/fc/5b/c9fc5b906a994962bbc5d530e1cb9ce6.jpg",
   },
   {
     heading: "School Events with a Spark",
     para: "Bring energy, creativity, and professionalism to every school event—be it annual functions, talent shows, sports days, or cultural festivals. We ensure every student, teacher, and parent walks away with a smile.",
-    image: "/eventplanners/heroimages/image3.jpg",
+    image:
+      "https://i.pinimg.com/736x/88/af/1b/88af1be141f3e2742610fddbfa8c5af4.jpg",
   },
   {
     heading: "Corporate Events, Redefined",
     para: "Impress clients, motivate employees, and build brand presence with our tailored corporate event solutions. From product launches to team-building retreats and formal galas, we execute with precision and flair.",
-    image: "/eventplanners/heroimages/image4.jpg",
-  },
-  {
-    heading: "Tailored Themes for Every Occasion",
-    para: "No two events should look the same. We bring your imagination to life with bespoke decorations, curated experiences, and eventtheme-based planning — whether you dream of rustic elegance, a Bollywood night, or a fairytale setting.",
-    image: "/eventplanners/heroimages/image1.jpg",
-  },
-  {
-    heading: "Stress-Free Event Planning",
-    para: "From the first consultation to the final guest leaving, we handle every aspect of event planning. Our team ensures everything runs smoothly — managing venues, vendors, food, music, and everything in between.",
-    image: "/eventplanners/heroimages/image2.jpg",
+    image:
+      "https://i.pinimg.com/736x/7c/69/92/7c6992a479992ef6f1848286d934a939.jpg",
   },
 ];
 
@@ -122,7 +116,6 @@ function Backgroundimages() {
           </div>
         </div>
       </div>
-
       <Swiper
         onSwiper={(swiper) => (textSwiperRef.current = swiper)}
         modules={[Navigation, Autoplay, Parallax, Controller]}
@@ -137,13 +130,9 @@ function Backgroundimages() {
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="h-full w-full overflow-hidden">
-            <Image
-              src={item.image}
-              alt="Slide Image"
-              fill
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-              className="object-cover h-full w-full inset-0"
+            <div
+              style={{ backgroundImage: `url(${item.image})` }}
+              className="h-full w-full inset-0 bg-cover bg-center"
               data-swiper-parallax-scale="1.5"
             />
           </SwiperSlide>

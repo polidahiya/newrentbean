@@ -25,7 +25,7 @@ const generateCityUrls = () =>
     citiesAndLocations.map((city) => ({
       loc: `${domain}/${city}/${store}`,
       lastmod: today,
-      changefreq: "weekly",
+      changefreq: "daily",
       priority: "1.0",
     }))
   );
@@ -37,7 +37,7 @@ const generateCategoryUrls = () =>
         {
           loc: `${domain}/${city}/${store}/${categoryname}`,
           lastmod: today,
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: "0.9",
           image: `${domain}${category.image}` || "",
           name: categoryname || "",
@@ -45,7 +45,7 @@ const generateCategoryUrls = () =>
         ...category.subcat.map((subcategory) => ({
           loc: `${domain}/${city}/${store}/${categoryname}/${subcategory.name}`,
           lastmod: today,
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: "0.8",
           image: `${domain}${subcategory?.image}` || "",
           name: subcategory?.name || "",
@@ -61,7 +61,7 @@ const generateProductUrls = (products) =>
         return ["Rent", "Buy"].map((store) => ({
           loc: `${domain}/${city}/${store}/${product.category}/${product.subcat}/${product._id}`,
           lastmod: today,
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: "0.7",
           image: product.images?.[0] || "",
           name: product.name || "",
@@ -74,7 +74,7 @@ const generateProductUrls = (products) =>
             product.availablefor === "Rent" ? "Rent" : "Buy"
           }/${product.category}/${product.subcat}/${product._id}`,
           lastmod: today,
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: "0.7",
           image: product.images?.[0] || "",
           name: product.name || "",
@@ -87,7 +87,7 @@ const generateBlogUrls = (blogs) =>
   blogs.map((blog) => ({
     loc: `${domain}/Blogs/${blog._id}`,
     lastmod: today,
-    changefreq: "weekly",
+    changefreq: "daily",
     priority: "0.6",
   }));
 
@@ -97,7 +97,7 @@ const generateDireactsearchUrls = () =>
       direactsearchlist.map((item) => ({
         loc: `${domain}/${city}/${store}${item?.link}`,
         lastmod: today,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: "0.9",
         image: `${domain}${item?.image}` || "",
         name: item?.name || "",
@@ -118,7 +118,7 @@ export async function GET() {
       {
         loc: domain,
         lastmod: today,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: "1.0",
       },
       ...generateCityUrls(),

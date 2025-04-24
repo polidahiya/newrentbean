@@ -292,7 +292,7 @@ export const categories = {
             stars: 4,
           },
         ],
-        gallary:[
+        gallery:[
           "https://i.pinimg.com/474x/ff/42/c1/ff42c12bd026c3af155e5bbc7db4d021.jpg",
           "https://i.pinimg.com/736x/4b/97/d5/4b97d555ac37d66d1f7bc06db7cb45fe.jpg"
         ]

@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <Navwrapper>
       <div className="h-full flex-1 py-4">
-        <div className="relative h-full">
+        <Link href="/eventplanners" className="relative block h-full">
           <img
             src="/eventplanners/logo.png"
             alt="rentbean eventplanners logo "
@@ -25,7 +25,7 @@ function Navbar() {
               animation: `movedownanimation 0.6s ease-in-out forwards`,
             }}
           />
-        </div>
+        </Link>
       </div>
       <div className="hidden flex-1 h-full  lg:flex items-center justify-center">
         <div className="overflow-hidden text-sm h-full">

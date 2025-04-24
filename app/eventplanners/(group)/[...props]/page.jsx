@@ -30,7 +30,7 @@ const BirthdayPartyService = async ({ params }) => {
       <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 font-sans">
         {/* Hero Section */}
         <section
-          className="bgimage relative bg-cover bg-center h-[700px] lg:min-h-[720px] lg:max-h-[720px] flex items-center justify-center"
+          className="bgimage relative bg-cover bg-center h-[calc(100svh-50px)] lg:min-h-[720px] lg:max-h-[720px] flex items-center justify-center"
           style={{
             backgroundAttachment: "fixed",
           }}
@@ -135,7 +135,7 @@ const BirthdayPartyService = async ({ params }) => {
         </section>
 
         {/* Party Packages */}
-        {!selectcategory?.subcat && (
+        {/* {!selectcategory?.subcat && (
           <section className="py-16 px-4 md:px-16 bg-gradient-to-r from-yellow-100 to-orange-100">
             <h2 className="text-4xl font-bold text-center text-pink-600 mb-12">
               Our Party Packages
@@ -202,7 +202,7 @@ const BirthdayPartyService = async ({ params }) => {
               </div>
             </div>
           </section>
-        )}
+        )} */}
 
         {/* Testimonials */}
         {selectcategory?.reviews && (
@@ -231,13 +231,13 @@ const BirthdayPartyService = async ({ params }) => {
         )}
 
         {/* Photo Gallery */}
-        {!selectcategory?.subcat && selectcategory?.gallary && (
+        {!selectcategory?.subcat && selectcategory?.gallery && (
           <section className="py-16 px-4 md:px-16 bg-yellow-100">
             <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">
               Our Past Celebrations
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {selectcategory?.gallary.map((src, index) => (
+              {selectcategory?.gallery.map((src, index) => (
                 <div
                   key={index}
                   className="relative overflow-hidden rounded-lg shadow-lg group"

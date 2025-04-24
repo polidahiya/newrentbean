@@ -130,6 +130,7 @@ async function page({ params, searchParams }) {
         category={category}
         subcat={subcat}
         location={location.replace(/-/g, " ")}
+        store={store}
       />
     </Wrapper>
   );

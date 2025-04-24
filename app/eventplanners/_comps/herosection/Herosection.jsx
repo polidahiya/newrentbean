@@ -9,7 +9,7 @@ import Backgroundimages from "./Backgroundimages";
 
 function Herosection() {
   return (
-    <div className="relative h-screen lg:min-h-[720px]  w-full">
+    <div className="relative h-[calc(100svh-50px)] lg:min-h-[720px]  w-full">
       {/* Socails */}
       <div
         className="absolute top-1/2 -translate-y-1/2 right-6 lg:right-24 flex flex-col items-center socialanimation opacity-0 z-10"
