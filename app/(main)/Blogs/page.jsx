@@ -8,11 +8,11 @@ async function page() {
 
   return (
     <div>
-      <h2 className="text-center font-bold text-[25px] md:text-[35px]  font-recline mt-[20px]">
+      <h2 className="text-center font-bold text-[25px] md:text-[35px]  font-recline  mt-5">
         Blogs
       </h2>
       <section
-        className={`min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] place-items-center gap-[20px] p-[20px]`}
+        className={`min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] place-items-center gap-5 p-5`}
       >
         {blogs?.map((blog, i) => {
           const mainHeading = blog?.blogdata?.find(

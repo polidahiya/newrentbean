@@ -83,7 +83,7 @@ function Publicpage({ token = null }) {
       </div>
       <div className="flex justify-center">
         <button
-          className="relative group flex items-center justify-center gap-[10px] px-[50px] py-[5px] bg-theme text-white rounded-full mt-[20px]  overflow-hidden"
+          className="relative group flex items-center justify-center gap-2 px-[50px] py-[5px] bg-theme text-white rounded-full  mt-5  overflow-hidden"
           onClick={Submitform}
           aria-label="Change Password" title="Change Password"
         >

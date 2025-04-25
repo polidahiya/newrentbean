@@ -61,7 +61,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
   return (
     <div className="flex flex-col gap-5 w-full p-2">
       {i !== 0 && <hr />}
-      <div className="flex flex-col md:flex-row gap-[20px] md:h-60">
+      <div className="flex flex-col md:flex-row gap-5 md:h-60">
         <Link
           href={item?.productlink}
           className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
@@ -129,7 +129,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
             </>
           )}
 
-          <div className="flex gap-[20px] h-[30px] mt-[20px] md:mt-auto">
+          <div className="flex gap-5 h-[30px]  mt-5 md:mt-auto">
             <div className="flex items-center gap-1 h-full">
               <button
                 className="h-full aspect-square rounded-md border border-slate-300"
@@ -138,7 +138,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
               >
                 -
               </button>
-              <span className="h-full flex items-center justify-center px-[20px] border border-slate-300 rounded-md">
+              <span className="h-full flex items-center justify-center px-5 border border-slate-300 rounded-md">
                 {item.quantity}
               </span>
               <button
@@ -169,7 +169,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
 
             {/* removebutton */}
             <button
-              className="h-full flex items-center gap-1 border border-slate-300 px-[20px] rounded-md"
+              className="h-full flex items-center gap-1 border border-slate-300 px-5 rounded-md"
               onClick={handleRemoveProduct}
               aria-label="Remove" title="Remove"
             >

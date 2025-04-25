@@ -8,7 +8,7 @@ async function page() {
   if (token) redirect("/");
   return (
     <div
-      className="relative flex items-center justify-center py-[20px]"
+      className="relative flex items-center justify-center py-5"
       style={{
         background: "url(/images/loginwallpaper.jpg) center left / cover",
         minHeight: "calc(100vh - 60px)",

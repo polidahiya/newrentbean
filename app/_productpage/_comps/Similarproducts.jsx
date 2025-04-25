@@ -38,7 +38,7 @@ function Similarproducts({
             <AiFillProduct className="text-theme text-3xl" />
             <span className="font-recline">Similar Products</span>
           </h2>
-          <div className="flex items-stretch gap-[20px]  mt-[20px] max-w-full overflow-x-scroll pb-[20px]">
+          <div className="flex items-stretch gap-5   mt-5 max-w-full overflow-x-scroll pb-5">
             {similarproducts.map((item, i) => {
               return (
                 <Productcard
@@ -57,11 +57,11 @@ function Similarproducts({
               <div className="relative flex items-center z-20 whitespace-nowrap px-5">
                 <Link
                   href={`/${location}/${store}/${category}/${subcat}`}
-                  className="relative group flex items-center justify-center gap-[10px] px-6 py-3 bg-theme text-white font-semibold rounded-full overflow-hidden"
+                  className="relative group flex items-center justify-center gap-2 px-6 py-3 bg-theme text-white font-semibold rounded-full overflow-hidden"
                 >
                   <span>View all</span>
                   <LuArrowRightCircle />
-                  <div className="absolute top-0 left-0 w-[200%] h-full bg-bg1 -z-10 group-hover:translate-x-[-50%] duration-200"></div>
+                  <div className="absolute top-0 left-0 w-[200%] h-full bg-bg1 -z-10 group-hover:-translate-x-1/2 duration-200"></div>
                 </Link>
               </div>
             )}

@@ -113,7 +113,7 @@ function Addblog() {
     <div>
       <div className="fixed top-16 right-2 z-10 flex gap-2">
         <button
-          className=" border border-slate-300 p-2 rounded-md hover:text-sky-500 text-[20px] bg-white"
+          className=" border border-slate-300 p-2 rounded-md hover:text-sky-500 text-xl bg-white"
           onClick={() => setpreview((pre) => !pre)}
           aria-label="show preview"
           title="show preview"
@@ -121,7 +121,7 @@ function Addblog() {
           <HiOutlineViewfinderCircle />
         </button>
         <button
-          className=" border border-slate-300 p-2 rounded-md hover:text-sky-500 text-[20px] bg-white"
+          className=" border border-slate-300 p-2 rounded-md hover:text-sky-500 text-xl bg-white"
           aria-label="Refresh Site now"
           title="Refresh Site now"
           onClick={async () => {
@@ -144,11 +144,11 @@ function Addblog() {
         setdeletedimages={setdeletedimages}
       />
       <div
-        className={`sticky bottom-0  flex-col gap-[10px] p-[10px] bg-bg1 ${
+        className={`sticky bottom-0  flex-col gap-2 p-[10px] bg-bg1 ${
           preview ? "hidden" : "flex"
         }`}
       >
-        <div className="flex flex-wrap items-center gap-[5px]">
+        <div className="flex flex-wrap items-center gap-1">
           <Addbutton
             label="Main Heading"
             onclickfn={() => Addblogcomps(mainheading)}

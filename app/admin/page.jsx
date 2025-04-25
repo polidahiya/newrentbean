@@ -29,7 +29,7 @@ export default async function Adminhome({ searchParams }) {
   if (ordersres.status != 200) {
     return (
       <>
-        <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-[40px]  shadow-md z-30">
+        <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
           <Selectordertype
             ordertype={ordertype}
             Refreshorders={Refreshorders}
@@ -50,7 +50,7 @@ export default async function Adminhome({ searchParams }) {
 
   return (
     <div>
-      <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-[40px]  shadow-md z-30">
+      <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
         <Selectordertype ordertype={ordertype} Refreshorders={Refreshorders} />
         <Searchbox />
       </div>

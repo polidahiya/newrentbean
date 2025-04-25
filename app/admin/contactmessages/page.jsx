@@ -43,7 +43,7 @@ function Page() {
           setresfresh={setresfresh}
         />
         {messages.length != 0 ? (
-          <div className={`p-[20px] flex flex-wrap gap-[20px]`}>
+          <div className={`p-[20px] flex flex-wrap gap-5`}>
             {messages.map((item) => (
               <Card
                 key={new Date().getMilliseconds() + Math.random()}
@@ -63,7 +63,7 @@ function Page() {
 
 const Switchmessages = ({ messagetype, setmessagetype, setresfresh }) => {
   return (
-    <div className="sticky top-[50px] bg-white w-full flex items-center gap-[10px]  p-[10px] px-[40px] shadow-md z-20 border-t border-t-slate-300">
+    <div className="sticky top-[50px] bg-white w-full flex items-center gap-2  p-[10px] px-10 shadow-md z-20 border-t border-t-slate-300">
       <button
         className={`border border-slate-300 px-[10px] py-[5px] rounded-[5px] ${
           messagetype == "all" && "bg-theme text-white"
@@ -133,7 +133,7 @@ const Card = ({ item }) => {
   if (!deleted)
     return (
       <div className="relative flex-1 min-w-full md:min-w-[400px] max-w-md mx-auto bg-white shadow-lg rounded-xl overflow-hidden mt-8 border border-gray-200">
-        <div className="absolute right-[5px] top-[5px] flex gap-[5px] h-[35px]">
+        <div className="absolute right-[5px] top-[5px] flex gap-1 h-[35px]">
           <button
             className="h-full aspect-square grid place-content-center border border-slate-300 rounded-[5px] text-blue-500"
             title="Set Viewed"

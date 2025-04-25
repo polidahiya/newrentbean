@@ -79,7 +79,7 @@ function ImagesComp({ filteredproducts, token }) {
     <div className="flex w-full lg:flex-[2] lg:sticky lg:top-[130px] flex-col-reverse lg:flex-row lg:items-center gap-2">
       {/* mini images */}
       <div
-        className={`flex  lg:w-[70px] lg:h-full lg:flex-col flex-wrap lg:flex-nowrap gap-[10px] lg:max-h-[400px] ${
+        className={`flex  lg:w-[70px] lg:h-full lg:flex-col flex-wrap lg:flex-nowrap gap-2 lg:max-h-[400px] ${
           images.length > 5
             ? "overflow-y-scroll hidescroll justify-center lg:justify-normal"
             : "justify-center"
@@ -138,7 +138,7 @@ function ImagesComp({ filteredproducts, token }) {
         </div>
         {/* dots */}
         <div className="absolute bottom-0 left-0 z-10 w-full">
-          <div className="absolute bottom-[5px] left-1/2 flex gap-[10px] transform -translate-x-1/2">
+          <div className="absolute bottom-[5px] left-1/2 flex gap-2 transform -translate-x-1/2">
             {images.map((_, index) => (
               <div
                 key={index}

@@ -37,7 +37,7 @@ function Navbar({ params, productsname, token, userdata }) {
     >
       <div className="relative flex h-14 items-center justify-between py-2">
         {/* firstcomp */}
-        <div className="flex items-center gap-0 md:gap-[10px] w-full h-full">
+        <div className="flex items-center gap-0 md:gap-2 w-full h-full">
           {/* logo */}
           <Link
             className="h-full md:w-fit p-1"
@@ -77,7 +77,7 @@ function Navbar({ params, productsname, token, userdata }) {
         </div>
 
         {/* third comp */}
-        <div className="w-full h-full flex items-center justify-end gap-[5px] md:gap-[10px]">
+        <div className="w-full h-full flex items-center justify-end gap-1 md:gap-2">
           {/* rent or buy switch */}
           <div className="hidden lg:block">
             <Switchstore />

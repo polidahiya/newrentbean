@@ -10,7 +10,7 @@ const page = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 py-12 px-4">
-      <div className="max-w-4xl flex items-start flex-col lg:flex-row gap-[20px] w-full ">
+      <div className="max-w-4xl flex items-start flex-col lg:flex-row gap-5 w-full ">
         <ContactCard />
         <ContactForm userdata={userdata} />
       </div>

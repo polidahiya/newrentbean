@@ -59,7 +59,7 @@ function Form({ userdata }) {
         width={156}
         height={60}
       ></Image>
-      <div className="flex items-center justify-center gap-[10px] text-[25px] font-semibold  font-recline ">
+      <div className="flex items-center justify-center gap-2 text-[25px] font-semibold  font-recline ">
         <Updateusersvg styles="h-[30px] translate-y-[-3px]" />
         Update Details
       </div>
@@ -109,7 +109,7 @@ function Form({ userdata }) {
       </div>
       <div className="flex justify-center">
         <button
-          className="flex items-center justify-center gap-[10px] px-[100px] py-[5px] bg-theme text-white rounded-full mt-[20px] "
+          className="flex items-center justify-center gap-2 px-[100px] py-[5px] bg-theme text-white rounded-full  mt-5 "
           onClick={updateuserfn}
           aria-label="Update Details" title="Update Details"
         >

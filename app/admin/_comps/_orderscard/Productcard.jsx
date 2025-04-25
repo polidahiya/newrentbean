@@ -81,9 +81,9 @@ export default function ProductCard({
         )}
       </div>
       {/* status button*/}
-      <div className="absolute top-[10px] right-[10px] flex items-center gap-[10px] z-10">
+      <div className="absolute top-[10px] right-[10px] flex items-center gap-2 z-10">
         <button
-          className="flex items-center gap-[10px] border border-slate-300 h-[30px] px-[20px] bg-white"
+          className="flex items-center gap-2 border border-slate-300 h-[30px] px-5 bg-white"
           onClick={() => {
             setpshowstatus((pre) => !pre);
           }}
@@ -156,7 +156,7 @@ const Canceledorrefundedbadge = ({ status }) => {
   return (
     <div
       className={`absolute top-[10px] left-[10px] ${status == 1 && "bg-red-500"}
-      ${status == 2 && "bg-yellow-600"} text-white px-[20px] py-[5px]`}
+      ${status == 2 && "bg-yellow-600"} text-white px-5 py-[5px]`}
     >
       {status == 1 && "Canceled"}
       {status == 2 && "Refunded"}

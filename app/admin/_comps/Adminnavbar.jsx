@@ -25,7 +25,7 @@ function Adminnavbar() {
   if (path == "/admin/invoice") return;
 
   return (
-    <nav className="sticky top-0 flex items-center gap-[5px] md:gap-[10px] h-[50px] shadow-md p-[7px] px-[10px] lg:px-[40px] z-20 bg-bg1">
+    <nav className="sticky top-0 flex items-center gap-1 md:gap-2 h-[50px] shadow-md p-[7px] px-[10px] lg:px-10 z-20 bg-bg1">
       <Link href="/Delhi">
         <Image src="/logo&ui/3dlogo.png" alt="logo" height={40} width={150} />
       </Link>
@@ -41,7 +41,7 @@ function Adminnavbar() {
 
 const NavLink = ({ href, children, isFirst }) => (
   <Link
-    className={`flex items-center gap-[10px] h-full rounded-[5px] px-[10px] bg-white ${
+    className={`flex items-center gap-2 h-full rounded-[5px] px-[10px] bg-white ${
       isFirst && "ml-auto"
     }`}
     href={href}

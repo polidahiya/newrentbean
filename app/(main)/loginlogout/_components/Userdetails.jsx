@@ -106,7 +106,7 @@ function Userdetails() {
           lable="Password"
           extraelem={
             <button
-              className="absolute top-[50%] right-[10px] translate-y-[-50%] z-[11] text-[20px]"
+              className="absolute top-[50%] right-[10px] translate-y-[-50%] z-[11] text-xl"
               onClick={() => {
                 settogglepassword(!togglepassword);
               }}
@@ -136,7 +136,7 @@ function Userdetails() {
       {/* login or signup button */}
       <div className="flex justify-center">
         <button
-          className="relative group flex items-center justify-center gap-[10px] px-[100px] bg-theme py-[5px] text-white rounded-full mt-[20px]  overflow-hidden"
+          className="relative group flex items-center justify-center gap-2 px-[100px] bg-theme py-[5px] text-white rounded-full  mt-5  overflow-hidden"
           onClick={authenticateuser}
           aria-label={signupform ? "Signup" : "Login"}
           title={signupform ? "Signup" : "Login"}

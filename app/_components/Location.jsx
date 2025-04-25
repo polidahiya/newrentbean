@@ -20,7 +20,7 @@ function Location() {
         className={`fixed top-0 left-0 h-screen w-full flex items-center justify-center p-5 md:px-28 md:py-10 z-50`}
       >
         <div
-          className={`relative h-full w-full  flex flex-col items-center justify-between p-[20px] gap-[20px] bg-white z-10`}
+          className={`relative h-full w-full  flex flex-col items-center justify-between p-5 gap-5 bg-white z-10`}
         >
           <h3 className="text-xl font-semibold font-recline whitespace-nowrap mt-5 tracking-widest">
             🌍 Select your location {"("}India{")"}

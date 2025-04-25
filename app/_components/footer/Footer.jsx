@@ -63,7 +63,7 @@ async function Footer() {
         {/*  */}
         <div className="flex flex-col flex-1  items-start">
           <Heading heading="Quick links" />
-          <div className="flex flex-col gap-[10px] items-start">
+          <div className="flex flex-col gap-2 items-start">
             {list1.map((item, i) => (
               <Links
                 key={i}
@@ -77,7 +77,7 @@ async function Footer() {
         {/*  */}
         <div className="flex flex-col flex-1  items-start">
           <Heading heading="Categories" />
-          <div className="flex flex-col gap-[10px] items-start">
+          <div className="flex flex-col gap-2 items-start">
             {list2.map((item, i) => (
               <div key={i} className="flex items-center gap-1">
                 <Links
@@ -104,7 +104,7 @@ async function Footer() {
           <Protectedbygoogle />
           {/* <ThemeSwitcher /> */}
         </div>
-        <div className="flex flex-1 items-center justify-end gap-[10px]">
+        <div className="flex flex-1 items-center justify-end gap-2">
           <FaCcVisa size={15} title="Visa" />
           <FaCcMastercard size={15} title="MasterCard" />
           <FaCcAmex size={15} title="American Express" />

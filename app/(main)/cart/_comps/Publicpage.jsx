@@ -166,7 +166,7 @@ export default function Page({ userdata, token }) {
         <Showtenuremenu showtenure={showtenure} setshowtenure={setshowtenure} />
       )}
       <div className="p-2 md:px-10 bg-bg1">
-        <div className="flex items-center justify-center gap-[10px] text-xl md:text-2xl font-bold font-recline py-5">
+        <div className="flex items-center justify-center gap-2 text-xl md:text-2xl font-bold font-recline py-5">
           Cart
           <FaOpencart />
         </div>

@@ -22,7 +22,7 @@ function Selectcategory({ data, setdata }) {
   return (
     <div className="flex flex-col md:flex-row  items-center justify-center gap-10 mt-10 px-5">
       <div className="w-full flex gap-5 items-center">
-        <label className="flex-1 text-[20px] font-bold ">Category :</label>
+        <label className="flex-1 text-xl font-bold ">Category :</label>
         <select
           className="flex-1 p-2 border border-slate-300 outline-none rounded-md"
           value={data?.category}
@@ -37,7 +37,7 @@ function Selectcategory({ data, setdata }) {
       </div>
       {categorylist[data?.category]?.subcat.length != 0 && (
         <div className="w-full flex gap-5 items-center">
-          <label className="flex-1 text-[20px] font-bold ">
+          <label className="flex-1 text-xl font-bold ">
             Sub-Category :
           </label>
           <select

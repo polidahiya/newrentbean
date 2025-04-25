@@ -129,7 +129,7 @@ export default function ContactForm({ userdata }) {
         </div>
         <button
           type="submit"
-          className="flex items-center justify-center gap-[10px] w-full bg-theme text-white py-3 px-4 rounded-lg shadow-sm hover:from-indigo-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400"
+          className="flex items-center justify-center gap-2 w-full bg-theme text-white py-3 px-4 rounded-lg shadow-sm hover:from-indigo-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400"
           onClick={() => {
             event("button_click", {
               category: "User Interaction",

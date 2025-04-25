@@ -103,7 +103,7 @@ function Details({ filteredProduct, store, location, isrentalstore }) {
         location={location}
         store={store}
       />
-      <div className="flex items-center justify-center gap-[10px] mt-[20px]">
+      <div className="flex items-center justify-center gap-2  mt-5">
         <Deliverytrucksvg />
         <span className="text-[10px]">
           Delivery in 1 or 2 days {isrentalstore && "post KYC"}

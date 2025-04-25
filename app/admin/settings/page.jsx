@@ -11,7 +11,7 @@ function Page() {
   };
 
   return (
-    <div className="flex flex-col gap-5 py-5 px-[10px] md:px-[40px]">
+    <div className="flex flex-col gap-5 py-5 px-[10px] md:px-10">
       <div className="flex items-center justify-between p-2 rounded-lg border">
         <p className="ml-5">Refresh site now</p>
         <button

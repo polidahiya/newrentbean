@@ -105,7 +105,7 @@ function Searchbox({ productsname, location }) {
         <input
           ref={searchinputref}
           type="text"
-          className="w-full px-[20px] outline-none"
+          className="w-full px-5 outline-none"
           value={search}
           onChange={(e) => {
             setarrowselectedsuggest(null);
@@ -189,9 +189,9 @@ function Searchbox({ productsname, location }) {
               : "#"
           }
           prefetch={false}
-          className="flex items-center justify-center bg-theme h-full aspect-square rounded-full lg:aspect-auto md:gap-[5px] lg:px-[10px]  text-white"
+          className="flex items-center justify-center bg-theme h-full aspect-square rounded-full lg:aspect-auto md:gap-1 lg:px-[10px]  text-white"
         >
-          <FiSearch className="text-[20px]" />
+          <FiSearch className="text-xl" />
           <span className=" hidden lg:block">Search</span>
         </Link>
       </div>
@@ -220,7 +220,7 @@ function Searchbox({ productsname, location }) {
                     isrentalstore ? "Rent" : "Buy"
                   }/Search?query=${item.original}`}
                   prefetch={false}
-                  className="w-full flex items-center justify-between h-[40px] lg:hover:bg-slate-100 pl-[20px] pr-[10px]"
+                  className="w-full flex items-center justify-between h-[40px] lg:hover:bg-slate-100 pl-5 pr-[10px]"
                 >
                   <p className="text-start max-w-[calc(100%-50px)] text-ellipsis overflow-hidden whitespace-nowrap">
                     {item.highlighted}

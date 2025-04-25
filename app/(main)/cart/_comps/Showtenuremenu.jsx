@@ -8,7 +8,7 @@ const Showtenuremenu = ({ showtenure, setshowtenure }) => {
       className={`fixed top-0 left-0 h-screen w-full flex items-center justify-center p-5 md:px-28 md:py-10 z-50`}
     >
       <div
-        className={`relative h-full w-full  flex flex-col items-center justify-center p-[20px] gap-[20px] bg-white z-10`}
+        className={`relative h-full w-full  flex flex-col items-center justify-center p-5 gap-5 bg-white z-10`}
       >
         <h2 className="absolute top-5 left-1/2 -translate-x-1/2 text-xl font-semibold font-recline whitespace-nowrap mt-5 tracking-widest">
           <FcClock className="inline-block" /> Select your location

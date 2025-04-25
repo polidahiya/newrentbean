@@ -89,7 +89,7 @@ async function page({ params, searchParams }) {
         <div className={`py-5 pl-3 ${category == "Search" && "mt-5 lg:mt-0"}`}>
           <h1 className="text-3xl font-semibold">
             {category == "Search"
-              ? `Search - ${searchQuery}`
+              ? `Search (${store}) - ${searchQuery}`
               : category.replace(/-/g, " ")}
           </h1>
           <div className="opacity-70 my-2">

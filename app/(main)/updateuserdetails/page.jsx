@@ -14,7 +14,7 @@ function page() {
 
   return (
     <div
-      className="flex items-center justify-center px-[10px] md:px-[40px]"
+      className="flex items-center justify-center px-[10px] md:px-10"
       style={{
         background: "url(/images/loginwallpaper.jpg) center left / cover",
         minHeight: "calc(100vh - 60px)",

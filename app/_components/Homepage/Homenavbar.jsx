@@ -23,7 +23,7 @@ export default function Homenavbar({ userdata, token }) {
     },
   ];
   return (
-    <nav className="absolute top-0 left-0 h-[40px] md:h-[60px] w-full flex items-center justify-between px-[10px] md:px-[40px] mt-[10px] md:mt-0 md:py-[10px] z-20 ">
+    <nav className="absolute top-0 left-0 h-[40px] md:h-[60px] w-full flex items-center justify-between px-[10px] md:px-10 mt-[10px] md:mt-0 md:py-[10px] z-20 ">
       <Image
         className="h-[30px] w-auto md:h-[40px] "
         src="/logo&ui/3dlogo.png"
@@ -32,7 +32,7 @@ export default function Homenavbar({ userdata, token }) {
         width={200}
         priority
       ></Image>
-      <div className="absolute hidden md:flex top-0 left-[50%] translate-x-[-50%] h-full items-center justify-center gap-4 lg:gap-12 text-white">
+      <div className="absolute hidden md:flex top-0 left-[50%] -translate-x-1/2 h-full items-center justify-center gap-4 lg:gap-12 text-white">
         {list.map((item, i) => (
           <Link
             key={i}
@@ -43,7 +43,7 @@ export default function Homenavbar({ userdata, token }) {
           </Link>
         ))}
       </div>
-      <div className="flex items-center justify-end gap-[10px] h-full ">
+      <div className="flex items-center justify-end gap-2 h-full ">
         <Cartlink />
         <Logedinusermenu userdata={userdata} token={token} />
       </div>

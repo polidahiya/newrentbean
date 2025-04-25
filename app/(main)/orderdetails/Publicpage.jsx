@@ -167,7 +167,7 @@ const OrderStatus = ({ item }) => {
     <div className="flex justify-center mt-6">
       {![4, 5].includes(item.status) && (
         <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px]">
-          <div className="flex items-center w-full mt-[10px] px-[40px] md:px-[60px]">
+          <div className="flex items-center w-full mt-[10px] px-10 md:px-[60px]">
             {orderstages.slice(0, 4).map((_, i) => (
               <div
                 key={i}
@@ -200,7 +200,7 @@ const OrderStatus = ({ item }) => {
               />
             </div>
           </div>
-          <div className="flex items-center justify-between w-full py-[10px] px-[20px] text-[10px] md:text-[14px] gap-[10px]">
+          <div className="flex items-center justify-between w-full py-[10px] px-5 text-[10px] md:text-[14px] gap-2">
             {orderstages.slice(0, 4).map((stage, i) => (
               <span key={i} className="text-center">
                 {stage}

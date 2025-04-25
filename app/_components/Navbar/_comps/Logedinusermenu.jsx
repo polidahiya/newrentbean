@@ -61,7 +61,7 @@ function Logedinusermenu({ token, userdata }) {
             }`}
           >
             <div className="flex justify-center">
-              <Usersvg styles="h-[30px] border border-slate-300 rounded-full mt-[20px] aspect-square fill-white" />
+              <Usersvg styles="h-[30px] border border-slate-300 rounded-full  mt-5 aspect-square fill-white" />
             </div>
             <div className="text-center mt-[5px]">
               {parsedUserData?.username || "User Name"}
@@ -79,7 +79,7 @@ function Logedinusermenu({ token, userdata }) {
                 href={`/orderdetails`}
                 prefetch={false}
                 replace
-                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-2 lg:hover:bg-slate-100 cursor-pointer"
               >
                 <Navorderssvg styles="w-6 h-6" />
                 Orders Detail
@@ -89,7 +89,7 @@ function Logedinusermenu({ token, userdata }) {
                 href={`/likedproducts`}
                 prefetch={false}
                 replace
-                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-2 lg:hover:bg-slate-100 cursor-pointer"
               >
                 <Heart styles="w-6 h-6 fill-red-500" />
                 Liked Products
@@ -99,7 +99,7 @@ function Logedinusermenu({ token, userdata }) {
                 href={`/updateuserdetails`}
                 prefetch={false}
                 replace
-                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-2 lg:hover:bg-slate-100 cursor-pointer"
               >
                 <Updateusersvg styles="w-6 h-6" />
                 Update User Details
@@ -111,7 +111,7 @@ function Logedinusermenu({ token, userdata }) {
                     href={`/admin`}
                     prefetch={false}
                     replace
-                    className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                    className="p-1 flex items-center gap-2 lg:hover:bg-slate-100 cursor-pointer"
                   >
                     <RiAdminFill className="w-6 h-6" />
                     Admin Dashboard
@@ -120,7 +120,7 @@ function Logedinusermenu({ token, userdata }) {
                 </>
               )}
               <div
-                className="p-1 flex items-center gap-[10px] lg:hover:bg-slate-100 cursor-pointer"
+                className="p-1 flex items-center gap-2 lg:hover:bg-slate-100 cursor-pointer"
                 onClick={async () => {
                   const res = await logout();
                   setmessagefn(res?.message);

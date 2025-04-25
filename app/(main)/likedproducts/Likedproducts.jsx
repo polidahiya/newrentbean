@@ -30,7 +30,7 @@ function Likedproducts({ filtereditems }) {
 
   return (
     <div
-      className={`min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[20px] p-[20px]`}
+      className={`min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-5 p-5`}
     >
       {favouritesproducts.map((item, i) => {
         return (

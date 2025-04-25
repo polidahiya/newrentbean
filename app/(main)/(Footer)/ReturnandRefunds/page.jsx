@@ -6,7 +6,7 @@ function page() {
       <h1 className="text-center text-[25px] text-theme font-bold font-recline px-10">
         Return & Cancelation Policy
       </h1>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         1. How and till when can I modify my order ?
       </h2>
       <p className="text-[14px]  ">
@@ -26,7 +26,7 @@ function page() {
         relocation or raise a relocation request via the customer dashboard for
         further assistance.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         2. How can I cancel my existing order ?
       </h2>
       <p className="text-[14px]  ">
@@ -34,7 +34,7 @@ function page() {
         delivery without any extra cost. Once delivered, an existing order
         cannot be cancelled.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         3. Can I return a few or all items of the order if I’m not happy with
         the products at the time of delivery ?
       </h2>
@@ -49,7 +49,7 @@ function page() {
         checking the product&#39;s specified dimensions before placing the
         order, as item rejection will not be considered eligible for return.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         4. Can I close my rental subscription prior to the committed tenure ?
       </h2>
       <p className="text-[14px]  ">
@@ -59,7 +59,7 @@ function page() {
         applicable since the products will be returned before the end of your
         chosen tenure. To raise a closure request,
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         5. What are the early closure charges ?
       </h2>
       <p className="text-[14px]  ">
@@ -72,7 +72,7 @@ function page() {
         your customer dashboard or your contract for the exact amount payable at
         any time.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         6. How do I get my refundable deposit ?
       </h2>
       <p className="text-[14px]  ">

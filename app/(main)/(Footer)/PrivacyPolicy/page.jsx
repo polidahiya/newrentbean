@@ -7,7 +7,7 @@ function page() {
       <h1 className="text-center text-[25px] text-theme font-bold font-recline">
         Privacy Policy
       </h1>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         1. Information We Collect
       </h2>
       <p className="text-[14px]  ">
@@ -34,7 +34,7 @@ function page() {
           resume your shopping session later.
         </li>
       </ul>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">2. Use of Information</h2>
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">2. Use of Information</h2>
       <p className="text-[14px]  ">
         We use the collected information for the following purposes:
       </p>
@@ -54,14 +54,14 @@ function page() {
           offers. You can opt-out of these communications at any time.
         </li>
       </ul>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">3. Data Security</h2>
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">3. Data Security</h2>
       <p className="text-[14px]  ">
         We take reasonable measures to protect your personal information from
         unauthorized access, alteration, disclosure, or destruction. This
         includes using encryption, secure socket layer (SSL) technology, and
         regularly updating our security practices.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">4. Data Sharing</h2>
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">4. Data Sharing</h2>
       <p className="text-[14px]  ">
         We do not sell, trade, or rent your personal information to third
         parties. However, we may share your data with trusted service providers
@@ -69,19 +69,19 @@ function page() {
         servicing you, as long as those parties agree to keep this information
         confidential.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">5. Legal Compliance</h2>
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">5. Legal Compliance</h2>
       <p className="text-[14px]  ">
         We may disclose your information when required by law or in response to
         lawful requests by public authorities, including to meet national
         security or law enforcement requirements.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">6. Consent</h2>
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">6. Consent</h2>
       <p className="text-[14px]  ">
         By using our website and providing your personal information, you
         consent to the collection, use, and storage of your data as described in
         this Privacy Policy.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">
         7. Changes to this Privacy Policy
       </h2>
       <p className="text-[14px]  ">
@@ -89,7 +89,7 @@ function page() {
         time. We will notify you of any changes by posting the updated policy on
         our website with the effective date.
       </p>
-      <h2 className="font-bold text-[18px] mt-[20px] font-recline">8. Contact Us</h2>
+      <h2 className="font-bold text-[18px]  mt-5 font-recline">8. Contact Us</h2>
       <p className="text-[14px]  ">
         If you have any questions or concerns regarding this Privacy Policy or
         the handling of your personal information, please contact us at {mail}.

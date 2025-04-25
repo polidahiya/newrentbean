@@ -82,14 +82,16 @@ const Producttabularform = ({
                     <button
                       className="border px-5 py-1 rounded-md bg-white"
                       onClick={() => moveUp(index)}
-                      aria-label="Move Up" title="Move Up"
+                      aria-label="Move Up"
+                      title="Move Up"
                     >
                       UP
                     </button>
                     <button
                       className="border px-5 py-1 rounded-md bg-white"
                       onClick={() => moveDown(index)}
-                      aria-label="Move down" title="Move down"
+                      aria-label="Move down"
+                      title="Move down"
                     >
                       DOWN
                     </button>
@@ -193,16 +195,34 @@ const Producttabularform = ({
                   {item.availablefor || "N/A"}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
-                  {item.seotitle || "N/A"}
+                  <span className="text-theme">{item.seotitle || "N/A"}</span>
+                  <br />
+                  <span className="text-cyan-600">
+                    {item.buyseotitle || "N/A"}
+                  </span>
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
-                  {item.seodescription || "N/A"}
+                  <span className="text-theme">
+                    {item.seodescription || "N/A"}
+                  </span>
+                  <br />
+                  <span className="text-cyan-600">
+                    {item.buyseodescription || "N/A"}
+                  </span>
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600 border-b">
                   {item.seokeywords.split(",").map((item, i) => (
                     <li
                       key={i}
-                      className="bg-slate-200 rounded-full px-2 text-xs mt-1"
+                      className="text-theme rounded-full px-2 text-xs mt-1"
+                    >
+                      {item}
+                    </li>
+                  )) || "N/A"}
+                  {item?.buyseokeywords?.split(",").map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-cyan-600 rounded-full px-2 text-xs mt-1"
                     >
                       {item}
                     </li>

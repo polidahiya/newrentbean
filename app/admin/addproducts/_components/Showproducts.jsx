@@ -85,7 +85,7 @@ function Showproducts({
       {/* search categories way */}
       <div className="flex flex-col md:flex-row  items-center justify-center gap-10 mt-10">
         <div className="w-full flex gap-5 items-center">
-          <label className="flex-1 text-[20px] font-bold ">Category :</label>
+          <label className="flex-1 text-xl font-bold ">Category :</label>
           <select
             className="flex-1 p-2 border border-slate-300 outline-none rounded-md"
             value={categorystate?.category}
@@ -100,7 +100,7 @@ function Showproducts({
         </div>
         {categorylist[categorystate?.category]?.subcat.length != 0 && (
           <div className="w-full flex gap-5 items-center">
-            <label className="flex-1 text-[20px] font-bold ">
+            <label className="flex-1 text-xl font-bold ">
               Sub-Category :
             </label>
             <select
@@ -202,7 +202,7 @@ const Productcardview = ({
 }) => {
   const { setmessagefn, setshowdialog } = AppContextfn();
   return (
-    <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-[10px] md:gap-[20px] p-3 md:p-8">
+    <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-2 md:gap-[20px] p-3 md:p-8">
       {products.map((item, i) => {
         return (
           <div

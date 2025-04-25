@@ -15,7 +15,7 @@ function Selectordertype({ ordertype, Refreshorders }) {
   ];
 
   return (
-    <div className="md:h-[30px] bg-white w-full flex items-center flex-wrap gap-[10px]">
+    <div className="md:h-[30px] bg-white w-full flex items-center flex-wrap gap-2">
       {orderTypes.map((order) => (
         <Link
           key={order.id}

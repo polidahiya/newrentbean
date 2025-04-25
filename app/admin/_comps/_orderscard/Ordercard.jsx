@@ -32,9 +32,9 @@ function Ordercard({ item }) {
   if (showorder)
     return (
       <div
-        className={`relative flex flex-col md:flex-row items-start gap-[20px] shadow-md my-[20px] p-[10px] pt-12 md:pt-[10px]`}
+        className={`relative flex flex-col md:flex-row items-start gap-5 shadow-md my-[20px] p-[10px] pt-12 md:pt-[10px]`}
       >
-        <div className="flex flex-col items-start gap-[5px] w-full">
+        <div className="flex flex-col items-start gap-1 w-full">
           <OrderDetail label="Order ID" value={item?._id} />
           <OrderDetail label="Order Status" value={orderstages[item?.status]} />
           {item?.paymentMethod == "online" && (
@@ -83,7 +83,7 @@ function Ordercard({ item }) {
           </div>
 
           {/* note */}
-          <div className="flex items-end gap-[10px] w-full mt-5">
+          <div className="flex items-end gap-2 w-full mt-5">
             <textarea
               className="h-full w-full border border-slate-300 min-h-[50px] p-[10px]"
               placeholder="Write a note here"
@@ -93,7 +93,7 @@ function Ordercard({ item }) {
               }}
             ></textarea>
             <button
-              className="text-white bg-green-600 md:whitespace-nowrap h-[30px] px-[20px]"
+              className="text-white bg-green-600 md:whitespace-nowrap h-[30px] px-5"
               onClick={async () => {
                 const res = await updatenote(item?._id, note);
                 setmessagefn(res?.message);
@@ -116,10 +116,10 @@ function Ordercard({ item }) {
           >
             Generate Invoice
           </button>
-          <div className="absolute top-[10px] right-[10px] flex items-center gap-[10px] z-10">
+          <div className="absolute top-[10px] right-[10px] flex items-center gap-2 z-10">
             {/* change status */}
             <button
-              className="flex items-center gap-[10px] border border-slate-300 h-[30px] px-[20px] bg-white"
+              className="flex items-center gap-2 border border-slate-300 h-[30px] px-5 bg-white"
               onClick={() => {
                 setshowstatusmenu((pre) => !pre);
               }}
@@ -216,7 +216,7 @@ const Deleteconfirmationmenu = ({
   id,
 }) => {
   return (
-    <div className="absolute top-[50px] right-[10px] flex items-center gap-[20px] p-[20px] bg-white rounded-[10px] shadow-md border border-slate-300 z-10">
+    <div className="absolute top-[50px] right-[10px] flex items-center gap-5 p-5 bg-white rounded-[10px] shadow-md border border-slate-300 z-10">
       <button
         className="text-red-500"
         onClick={async () => {
