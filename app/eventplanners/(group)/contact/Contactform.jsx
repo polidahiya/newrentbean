@@ -10,16 +10,21 @@ function Contactform() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setSubmitted(true);
-    setTimeout(() => {
-      setName("");
-      setEmail("");
-      setDate("");
-      setDetails("");
-      setSubmitted(false);
-    }, 2000);
+
+    const subject = encodeURIComponent("Event Inquiry from " + name);
+    const body = encodeURIComponent(
+      `Full Name: ${name}\nEmail: ${email}\nPreferred Date: ${date}\nEvent Details: ${details}`
+    );
+
+    window.location.href = `mailto:events.rentbean@gmail.com?subject=${subject}&body=${body}`;
+
+    // Optionally, clear the form
+    setName("");
+    setEmail("");
+    setDate("");
+    setDetails("");
   };
+
   return (
     <section id="booking" className="py-16 px-5 lg:px-0">
       <h2 className="text-4xl font-bold text-center text-white my-5">

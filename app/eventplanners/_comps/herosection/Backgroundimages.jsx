@@ -3,33 +3,40 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
 import "swiper/css";
-import Image from "next/image";
 import { RiShareBoxFill } from "react-icons/ri";
 
 const data = [
   {
     heading: "Unforgettable Wedding Moments",
     para: "From dreamy décor to seamless coordination, we specialize in crafting personalized wedding experiences that reflect your unique love story. Let us turn your special day into a beautiful memory that lasts forever.",
-    image:
+    image: [
       "https://i.pinimg.com/736x/63/de/3a/63de3a93ad459acf7e6d9ee0d5102aac.jpg",
+      "https://kashmirlife.net/wp-content/uploads/2013/09/Marriage-Anniversary-HD-Wallpaper-9-e1670851440530.jpg",
+    ],
   },
   {
     heading: "Epic Parties, Made Effortless",
     para: "Whether you're planning a birthday blowout, an elegant anniversary dinner, or a high-energy eventthemed party, we take care of everything—from concept to execution—so you can focus on making memories with your guests.",
-    image:
+    image: [
       "https://i.pinimg.com/736x/c9/fc/5b/c9fc5b906a994962bbc5d530e1cb9ce6.jpg",
+      "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?cs=srgb&dl=pexels-wendywei-1190298.jpg&fm=jpg",
+    ],
   },
   {
     heading: "School Events with a Spark",
     para: "Bring energy, creativity, and professionalism to every school event—be it annual functions, talent shows, sports days, or cultural festivals. We ensure every student, teacher, and parent walks away with a smile.",
-    image:
+    image: [
       "https://i.pinimg.com/736x/88/af/1b/88af1be141f3e2742610fddbfa8c5af4.jpg",
+      "https://www.hdfoundationschool.com/images/gallery/2019/annual-function-2019-01.jpg",
+    ],
   },
   {
     heading: "Corporate Events, Redefined",
     para: "Impress clients, motivate employees, and build brand presence with our tailored corporate event solutions. From product launches to team-building retreats and formal galas, we execute with precision and flair.",
-    image:
+    image: [
       "https://i.pinimg.com/736x/7c/69/92/7c6992a479992ef6f1848286d934a939.jpg",
+      "https://www.aashuevents.com/wp-content/uploads/2024/02/Volcanic-Events-Fuerteventura-Cooperated-DMC.jpg",
+    ],
   },
 ];
 
@@ -131,10 +138,23 @@ function Backgroundimages() {
         {data.map((item, index) => (
           <SwiperSlide key={index} className="h-full w-full overflow-hidden">
             <div
-              style={{ backgroundImage: `url(${item.image})` }}
-              className="h-full w-full inset-0 bg-cover bg-center"
+              className="relative h-full w-full"
               data-swiper-parallax-scale="1.5"
-            />
+            >
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcSet={item?.image[1] || ""}
+                />
+                <img
+                  src={item?.image[0] || ""}
+                  alt="Background"
+                  layout="fill"
+                  className="h-full w-full object-cover object-center brightness-75"
+                  priority
+                />
+              </picture>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

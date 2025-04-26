@@ -4,7 +4,7 @@ export const media = {
   address: "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002",
   twitter: "",
   insta: "",
-  facebook: "",
+  facebook: "https://www.facebook.com/share/1E8UDVHdLi/",
   pinterest: "https://www.pinterest.com/eventsrentbean/",
 };
 
