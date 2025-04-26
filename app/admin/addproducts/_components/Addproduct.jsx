@@ -263,7 +263,7 @@ function Addandupdateproduct({
       <div className="flex items-center justify-center gap-5">
         <button
           type="submit"
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          className="flex items-center justify-center gap-2 px-4 py-2  bg-blue-600 text-white rounded-md hover:bg-blue-700"
           aria-label="Submit"
           title="Submit"
         >
@@ -274,7 +274,7 @@ function Addandupdateproduct({
         </button>
         {data._id && (
           <button
-            className="flex items-center justify-center gap-2 px-4 py-2 border rounded-md"
+            className="flex items-center justify-center gap-2 px-4 py-2  border rounded-md"
             type="button"
             onClick={() => {
               resetState();

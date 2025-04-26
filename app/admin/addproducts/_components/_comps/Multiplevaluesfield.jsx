@@ -37,7 +37,7 @@ function Multiplevaluesfield({
 
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-600">{title}</label>
+      <label className="block text-sm  font-medium text-gray-600">{title}</label>
       <ul className="mt-2 space-y-1">
         {state.map((dimension, index) => (
           <div key={index} className="flex items-stretch gap-2 mt-1">
@@ -50,7 +50,7 @@ function Multiplevaluesfield({
             />
             <button
               type="button"
-              className="px-4 py-2 text-red-500 border  rounded-md "
+              className="px-4 py-2  text-red-500 border  rounded-md "
               onClick={() => handleDelete(index)}
               aria-label="Delete" title="Delete"
             >
@@ -61,7 +61,7 @@ function Multiplevaluesfield({
       </ul>
       <button
         type="button"
-        className="border border-gray-300 px-5 py-2 rounded-md text-sm mt-2"
+        className="border border-gray-300 px-5 py-2  rounded-md text-sm  mt-2"
         onClick={handleAdd}
         aria-label="Add" title="Add"
       >

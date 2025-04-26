@@ -229,7 +229,7 @@ export default function DireactSearchListSwiper() {
               {item?.desc.map((itemj, j) => {
                 return (
                   <p
-                    className="py-2"
+                    className="py-2 "
                     data-swiper-parallax={-((j + 1) * 150 + 150)}
                     key={j}
                   >

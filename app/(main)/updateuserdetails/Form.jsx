@@ -55,7 +55,7 @@ function Form({ userdata }) {
       <Image
         src="/logo&ui/minlogo.png"
         alt="Rentbean logo image"
-        className=" top-[20px] left-[30px] h-[50px] w-[50px]"
+        className=" top-5 left-[30px] h-[50px] w-[50px]"
         width={156}
         height={60}
       ></Image>

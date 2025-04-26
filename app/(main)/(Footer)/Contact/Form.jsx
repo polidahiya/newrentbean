@@ -57,7 +57,7 @@ export default function ContactForm({ userdata }) {
         <div className="mb-6">
           <label
             htmlFor="name"
-            className="block text-gray-700 text-sm font-medium mb-1"
+            className="block text-gray-700 text-sm  font-medium mb-1"
           >
             Name
           </label>
@@ -67,7 +67,7 @@ export default function ContactForm({ userdata }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm"
+            className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm "
             required
             placeholder="Your Name"
           />
@@ -76,7 +76,7 @@ export default function ContactForm({ userdata }) {
         <div className="mb-6">
           <label
             htmlFor="email"
-            className="block text-gray-700 text-sm font-medium mb-1"
+            className="block text-gray-700 text-sm  font-medium mb-1"
           >
             Email
           </label>
@@ -86,7 +86,7 @@ export default function ContactForm({ userdata }) {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm"
+            className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm "
             required
             placeholder="Your Email"
           />
@@ -94,7 +94,7 @@ export default function ContactForm({ userdata }) {
         <div className="mb-6">
           <label
             htmlFor="subject"
-            className="block text-gray-700 text-sm font-medium mb-1"
+            className="block text-gray-700 text-sm  font-medium mb-1"
           >
             Subject
           </label>
@@ -104,7 +104,7 @@ export default function ContactForm({ userdata }) {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm"
+            className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm "
             required
             placeholder="Enter subject here"
           />
@@ -112,7 +112,7 @@ export default function ContactForm({ userdata }) {
         <div className="mb-6">
           <label
             htmlFor="message"
-            className="block text-gray-700 text-sm font-medium mb-1"
+            className="block text-gray-700 text-sm  font-medium mb-1"
           >
             Message
           </label>
@@ -122,7 +122,7 @@ export default function ContactForm({ userdata }) {
             value={formData.message}
             onChange={handleChange}
             rows="6"
-            className="block w-full max-h-96 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm"
+            className="block w-full max-h-96 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:text-sm "
             required
             placeholder="Type your message here!"
           ></textarea>

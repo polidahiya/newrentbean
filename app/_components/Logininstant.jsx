@@ -43,7 +43,7 @@ function Logininstant() {
         >
           {/* left */}
           <div
-            className="absolute h-full top-0 w-1/2 left-0 flex flex-col items-center justify-center gap-2 px-5 text-sm"
+            className="absolute h-full top-0 w-1/2 left-0 flex flex-col items-center justify-center gap-2 px-5 text-sm "
             style={{
               background: "url(/images/instantloginimage.jpg) center/contain",
             }}

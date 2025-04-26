@@ -28,7 +28,7 @@ function Navbar() {
         </Link>
       </div>
       <div className="hidden flex-1 h-full  lg:flex items-center justify-center">
-        <div className="overflow-hidden text-sm h-full">
+        <div className="overflow-hidden text-sm  h-full">
           <Link
             href={"/eventplanners"}
             className="grid place-content-center relative group/links h-full -translate-y-full px-5"
@@ -43,7 +43,7 @@ function Navbar() {
           </Link>
         </div>
         <Categorydropdown />
-        <div className="overflow-hidden text-sm h-full">
+        <div className="overflow-hidden text-sm  h-full">
           <Link
             href={"/eventplanners/contact"}
             className="grid place-content-center relative group/links h-full -translate-y-full px-5"
@@ -57,7 +57,7 @@ function Navbar() {
             </span>
           </Link>
         </div>
-        {/* <div className="overflow-hidden text-sm h-full">
+        {/* <div className="overflow-hidden text-sm  h-full">
           <Link
             href={"/"}
             className="grid place-content-center relative group/links h-full -translate-y-full px-5"
@@ -75,7 +75,7 @@ function Navbar() {
       <div className="overflow-hidden flex-1 flex items-center justify-end">
         <Link
           href={"/eventplanners/contact"}
-          className="callnow flex items-center gap-2 border border-white rounded-full px-5 py-2 text-xs md:text-base bg-white text-eventtheme hover:bg-eventtheme hover:text-white cursor-pointer group-hover/nav:border-eventtheme -translate-y-full"
+          className="callnow flex items-center gap-2 border border-white rounded-full px-5 py-2  text-xs md:text-base bg-white text-eventtheme hover:bg-eventtheme hover:text-white cursor-pointer group-hover/nav:border-eventtheme -translate-y-full"
           style={{
             animation: `movedownanimation 0.6s 1.2s ease-in-out forwards`,
           }}
@@ -93,7 +93,7 @@ const Categorydropdown = () => {
     <div className="group/categorycontainer h-full">
       <Link
         href={"/eventplanners/allevents"}
-        className="grid place-content-center relative group/links h-full -translate-y-full px-5 text-sm"
+        className="grid place-content-center relative group/links h-full -translate-y-full px-5 text-sm "
         style={{
           animation: `movedownanimation 0.6s 0.4s ease-in-out forwards`,
         }}

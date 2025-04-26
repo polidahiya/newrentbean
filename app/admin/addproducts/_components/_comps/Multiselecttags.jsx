@@ -18,12 +18,12 @@ function Multiselecttags({ state, setState, statename, options, title }) {
 
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-600">{title}</label>
+      <label className="block text-sm  font-medium text-gray-600">{title}</label>
       <div className="flex items-center gap-1 my-2 flex-wrap">
         {state.map((item, i) => (
           <div
             key={i}
-            className="flex items-center gap-2 text-sm bg-slate-100 h-10 p-1 pl-5 rounded-md"
+            className="flex items-center gap-2 text-sm  bg-slate-100 h-10 p-1 pl-5 rounded-md"
           >
             {item}
             <button
@@ -39,7 +39,7 @@ function Multiselecttags({ state, setState, statename, options, title }) {
       <div className="mt-1 block w-full px-2 border rounded-md">
         <select
           onChange={(e) => Handleadd(e.target.value)}
-          className="block w-full py-2 outline-none"
+          className="block w-full py-2  outline-none"
           defaultValue=""
         >
           <option value="" disabled>

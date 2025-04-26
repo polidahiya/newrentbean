@@ -26,7 +26,7 @@ const Showtenuremenu = ({ showtenure, setshowtenure }) => {
                   });
                   setshowtenure(() => ({ show: false }));
                 }}
-                className={`w-full flex items-center justify-center px-5 py-2 border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
+                className={`w-full flex items-center justify-center px-5 py-2  border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
                   cart[showtenure?.cartproductid]?.selectedtenure == i
                     ? "bg-theme text-white"
                     : "bg-white text-theme border"

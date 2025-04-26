@@ -72,7 +72,7 @@ export default async function Adminhome({ searchParams }) {
             <Link
               key={i}
               href={`/admin?order=${ordertype}&page=${i + 1}`}
-              className={`border border-slate-300 px-3 py-1 text-sm  first:rounded-l-xl last:rounded-r-xl ${
+              className={`border border-slate-300 px-3 py-1 text-sm   first:rounded-l-xl last:rounded-r-xl ${
                 i == pagenumber - 1 && "bg-theme text-white"
               }`}
             >

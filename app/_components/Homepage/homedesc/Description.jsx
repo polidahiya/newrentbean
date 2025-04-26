@@ -17,14 +17,14 @@ function Description({ location, store }) {
   return (
     <div className="pb-[20px] px-7 md:px-10 text-justify">
       <header>
-        <h1 className="text-[30px] mb-10 font-normal text-center font-recline">
+        <h1 className="text-3xl mb-10 font-normal text-center font-recline">
           <strong className="font-bold font-recline">RentBean.in</strong> -
           Elevate Your Lifestyle
         </h1>
       </header>
       <main>
         <section>
-          <h2 className=" text-[18px] font-semibold mt-[10px] font-recline ">
+          <h2 className=" text-lg font-semibold mt-2 font-recline ">
             Enhance Your Lifestyle with{" "}
             <strong className="font-bold">RentBean.in</strong> in {location}
           </h2>
@@ -58,7 +58,7 @@ function Description({ location, store }) {
         </section>
         <></>
         <Wrapper>
-          <h2 className=" text-[18px] font-semibold mt-[10px] font-recline">
+          <h2 className=" text-lg font-semibold mt-2 font-recline">
             Discover Premium Furniture, Appliances, and Electronics
           </h2>
           <p className=" text-[12px] my-[5px]">
@@ -117,7 +117,7 @@ function Description({ location, store }) {
           </p>
         </Wrapper>
         <Wrapper>
-          <h2 className=" text-[18px] font-semibold mt-[10px] font-recline">
+          <h2 className=" text-lg font-semibold mt-2 font-recline">
             Enjoy Exclusive Benefits with Your Subscription
           </h2>
           <p className=" text-[12px] my-[5px]">
@@ -159,7 +159,7 @@ function Description({ location, store }) {
           </ul>
         </Wrapper>
         <Wrapper>
-          <h2 className=" text-[18px] font-semibold mt-[10px] font-recline">
+          <h2 className=" text-lg font-semibold mt-2 font-recline">
             Unlock Exceptional Value with{" "}
             <strong className="font-bold">RentBean.in</strong>
           </h2>

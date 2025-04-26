@@ -38,7 +38,7 @@ function Ordercard({ item }) {
           <OrderDetail label="Order ID" value={item?._id} />
           <OrderDetail label="Order Status" value={orderstages[item?.status]} />
           {item?.paymentMethod == "online" && (
-            <p className="text-sm text-gray-700 flex items-center gap-2">
+            <p className="text-sm  text-gray-700 flex items-center gap-2">
               <span className="font-bold">Payment Status :</span>
               <span
                 className={`h-[15px] aspect-square rounded-full ${
@@ -175,7 +175,7 @@ function Ordercard({ item }) {
 }
 
 const OrderDetail = ({ label, value }) => (
-  <p className="text-sm text-gray-700">
+  <p className="text-sm  text-gray-700">
     <span className="font-bold">{label}:</span> {value}
   </p>
 );

@@ -125,7 +125,7 @@ function Rentpricecomp({ data, setdata }) {
             </div>
             <button
               type="button"
-              className="border border-gray-300 px-5 py-2 rounded-md text-sm mt-2"
+              className="border border-gray-300 px-5 py-2  rounded-md text-sm  mt-2"
               onClick={() => {
                 handleaddtenure(key);
               }}
@@ -136,7 +136,7 @@ function Rentpricecomp({ data, setdata }) {
             {key != "Default" && (
               <button
                 type="button"
-                className="border border-gray-300 px-5 py-2 text-red-500 rounded-md text-sm mt-2 ml-2"
+                className="border border-gray-300 px-5 py-2  text-red-500 rounded-md text-sm  mt-2 ml-2"
                 onClick={() => {
                   handledeletecity(key);
                 }}

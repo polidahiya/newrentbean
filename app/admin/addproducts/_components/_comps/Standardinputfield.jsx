@@ -12,7 +12,7 @@ function Standardinputfield({
 }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-600">
+      <label className="block text-sm  font-medium text-gray-600">
         {titlename}
       </label>
       <div className="flex items-stretch gap-2 mt-1">
@@ -26,7 +26,7 @@ function Standardinputfield({
         />
         <button
           type="button"
-          className="px-4 py-2 border  text-gray-500 rounded-md "
+          className="px-4 py-2  border  text-gray-500 rounded-md "
           onClick={clear}
           aria-label="clear" title="clear"
         >

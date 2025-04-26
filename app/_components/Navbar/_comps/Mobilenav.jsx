@@ -152,7 +152,7 @@ const Storemenu = () => {
           <Switchstore />
         </div>
         <div
-          className="w-full flex items-center justify-center gap-1 mt-4 border py-2 rounded-lg text-theme font-semibold"
+          className="w-full flex items-center justify-center gap-1 mt-4 border py-2  rounded-lg text-theme font-semibold"
           onClick={() => {
             setlocation((pre) => ({ ...pre, show: true }));
             closestoremenu();

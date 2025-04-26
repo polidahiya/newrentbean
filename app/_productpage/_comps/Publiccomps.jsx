@@ -109,7 +109,7 @@ export function Addtocartbuttons({
       </div>
       {/* add to cart button */}
       <button
-        className="w-full h-full text-theme border border-theme text-sm rounded-full"
+        className="w-full h-full text-theme border border-theme text-sm  rounded-full"
         onClick={handleAddToCart}
         aria-label="Add to Cart" title="Add to Cart"
       >

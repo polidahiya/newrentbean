@@ -35,7 +35,7 @@ function Navbar({ params, productsname, token, userdata }) {
         shownavbottom && "shadow"
       }`}
     >
-      <div className="relative flex h-14 items-center justify-between py-2">
+      <div className="relative flex h-14 items-center justify-between py-2 ">
         {/* firstcomp */}
         <div className="flex items-center gap-0 md:gap-2 w-full h-full">
           {/* logo */}
@@ -118,7 +118,7 @@ function Navbar({ params, productsname, token, userdata }) {
           <span className="h-8 lg:h-6 aspect-square rounded-full bg-white text-theme grid place-content-center">
             <IoMdArrowRoundBack />
           </span>
-          <span className="text-white opacity-0 text-sm max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-20 lg:group-hover:px-3 whitespace-nowrap transition-all duration-300 ease-in-out">
+          <span className="text-white opacity-0 text-sm  max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-20 lg:group-hover:px-3 whitespace-nowrap transition-all duration-300 ease-in-out">
             Back
           </span>
         </button>
@@ -179,7 +179,7 @@ export const Cartlink = () => {
                         height={100}
                       ></Image>
                       <div className="flex flex-col">
-                        <h3 className="line-clamp-2 text-sm font-semibold">
+                        <h3 className="line-clamp-2 text-sm  font-semibold">
                           {item?.name}
                         </h3>
                         {/* price */}
@@ -236,7 +236,7 @@ export const Cartlink = () => {
               <Link
                 href="/cart"
                 prefetch={false}
-                className="bg-theme text-white flex items-center justify-center gap-3 w-fit px-5 py-1 rounded-full text-sm font-semibold mt-3"
+                className="bg-theme text-white flex items-center justify-center gap-3 w-fit px-5 py-1 rounded-full text-sm  font-semibold mt-3"
               >
                 Go to Cart <FaOpencart />
               </Link>
@@ -250,7 +250,7 @@ export const Cartlink = () => {
                 width={100}
                 className="w-[100px]"
               ></Image>
-              <p className="text-sm text-center">
+              <p className="text-sm  text-center">
                 Your Cart is Empty, Add Some Products.
               </p>
             </div>

@@ -45,29 +45,29 @@ const Producttabularform = ({
     <div className="container mx-auto overflow-x-scroll mt-5">
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
-          <thead className="bg-gray-100 text-center whitespace-nowrap text-sm font-semibold sds text-gray-700">
+          <thead className="bg-gray-100 text-center whitespace-nowrap text-sm  font-semibold sds text-gray-700">
             <tr>
-              <th className="px-4 py-2 border-b">Index</th>
-              <th className="px-4 py-2 border-b">Sort</th>
-              <th className="px-4 py-2 border-b">Image</th>
-              <th className="px-4 py-2 border-b">Name</th>
-              <th className="px-4 py-2 border-b">Category</th>
-              <th className="px-4 py-2 border-b">Subcategory</th>
-              <th className="px-4 py-2 border-b">Tags</th>
-              <th className="px-4 py-2 border-b">Available</th>
-              <th className="px-4 py-2 border-b">Trash</th>
-              <th className="px-4 py-2 border-b">SKU</th>
-              <th className="px-4 py-2 border-b min-w-80">Description</th>
-              <th className="px-4 py-2 border-b">Max Quantity</th>
-              <th className="px-4 py-2 border-b">Security Deposit</th>
-              <th className="px-4 py-2 border-b min-w-80">Pricing</th>
-              <th className="px-4 py-2 border-b">Buy Price</th>
-              <th className="px-4 py-2 border-b">Along With</th>
-              <th className="px-4 py-2 border-b">Available For</th>
-              <th className="px-4 py-2 border-b min-w-64">SEO Title</th>
-              <th className="px-4 py-2 border-b min-w-64">SEO Description</th>
-              <th className="px-4 py-2 border-b min-w-64">SEO Keywords</th>
-              <th className="px-4 py-2 border-b">Edit</th>
+              <th className="px-4 py-2  border-b">Index</th>
+              <th className="px-4 py-2  border-b">Sort</th>
+              <th className="px-4 py-2  border-b">Image</th>
+              <th className="px-4 py-2  border-b">Name</th>
+              <th className="px-4 py-2  border-b">Category</th>
+              <th className="px-4 py-2  border-b">Subcategory</th>
+              <th className="px-4 py-2  border-b">Tags</th>
+              <th className="px-4 py-2  border-b">Available</th>
+              <th className="px-4 py-2  border-b">Trash</th>
+              <th className="px-4 py-2  border-b">SKU</th>
+              <th className="px-4 py-2  border-b min-w-80">Description</th>
+              <th className="px-4 py-2  border-b">Max Quantity</th>
+              <th className="px-4 py-2  border-b">Security Deposit</th>
+              <th className="px-4 py-2  border-b min-w-80">Pricing</th>
+              <th className="px-4 py-2  border-b">Buy Price</th>
+              <th className="px-4 py-2  border-b">Along With</th>
+              <th className="px-4 py-2  border-b">Available For</th>
+              <th className="px-4 py-2  border-b min-w-64">SEO Title</th>
+              <th className="px-4 py-2  border-b min-w-64">SEO Description</th>
+              <th className="px-4 py-2  border-b min-w-64">SEO Keywords</th>
+              <th className="px-4 py-2  border-b">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -97,7 +97,7 @@ const Producttabularform = ({
                     </button>
                   </div>
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.images && item.images.length > 0 ? (
                     <Image
                       src={item.images[0]}
@@ -111,21 +111,21 @@ const Producttabularform = ({
                     "No Image"
                   )}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.name || "Unnamed Item"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.category || "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.subcat || "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.tags && item.tags.length > 0
                     ? item.tags.join(", ")
                     : "No Tags"}
                 </td>
-                <td className="px-4 py-2 text-sm border-b">
+                <td className="px-4 py-2  text-sm  border-b">
                   <span
                     className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
                       item.available
@@ -136,7 +136,7 @@ const Producttabularform = ({
                     {item.available ? "Yes" : "No"}
                   </span>
                 </td>
-                <td className="px-4 py-2 text-sm border-b">
+                <td className="px-4 py-2  text-sm  border-b">
                   <span
                     className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
                       item.trash
@@ -147,10 +147,10 @@ const Producttabularform = ({
                     {item.trash ? "Yes" : "No"}
                   </span>
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.sku || "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   <ul>
                     {item.desc && item.desc.length > 0
                       ? item.desc.map((item, i) => (
@@ -161,20 +161,20 @@ const Producttabularform = ({
                       : "No description"}
                   </ul>
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.maxquantity || "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.securitydeposit ? `₹${item.securitydeposit}` : "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {["Both", "Rent"].includes(item?.availablefor)
                     ? Object.entries(item.prices).map(([key, tenure]) => (
                         <div key={key}>
                           <strong className="mt-2 block">{key}</strong>
                           <ul>
                             {tenure.map((item, j) => (
-                              <li key={j} className="list-disc text-sm">
+                              <li key={j} className="list-disc text-sm ">
                                 {item?.time} {item?.type} - Rs {item?.price}
                               </li>
                             ))}
@@ -183,25 +183,25 @@ const Producttabularform = ({
                       ))
                     : "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.buyprice ? `₹${item.buyprice}` : "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.alongwith && item.alongwith.length > 0
                     ? item.alongwith.join(", ")
                     : "None"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.availablefor || "N/A"}
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   <span className="text-theme">{item.seotitle || "N/A"}</span>
                   <br />
                   <span className="text-cyan-600">
                     {item.buyseotitle || "N/A"}
                   </span>
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   <span className="text-theme">
                     {item.seodescription || "N/A"}
                   </span>
@@ -210,7 +210,7 @@ const Producttabularform = ({
                     {item.buyseodescription || "N/A"}
                   </span>
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600 border-b">
+                <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.seokeywords.split(",").map((item, i) => (
                     <li
                       key={i}

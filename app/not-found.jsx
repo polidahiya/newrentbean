@@ -11,7 +11,7 @@ function page() {
       <Navbar />
       <div className="m-0 min-h-[calc(100dvh-60px)] lg:min-h-[calc(100dvh-120px)] overflow-hidden flex items-center justify-center pb-10">
         <section>
-          <h1 className="m-0 p-0 translate-y-[50px] text-[30px] font-extrabold text-center">
+          <h1 className="m-0 p-0 translate-y-[50px] text-3xl font-extrabold text-center">
             404
           </h1>
           <Image
@@ -30,7 +30,7 @@ function page() {
           </p>
           <Link
             href="/Delhi/Rent"
-            className="block bg-green-500 text-white px-[50px] py-[10px] w-fit m-auto mt-[30px] hover:text-green-500 outline outline-[1px] hover:outline-green-500 hover:bg-white"
+            className="block bg-green-500 text-white px-12 py-2 w-fit m-auto mt-7 hover:text-green-500 outline outline-[1px] hover:outline-green-500 hover:bg-white"
           >
             Go to Home
           </Link>

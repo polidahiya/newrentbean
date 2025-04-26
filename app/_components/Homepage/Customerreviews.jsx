@@ -123,10 +123,10 @@ const Review1 = () => {
           className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 w-20 aspect-square rounded-full object-cover border-4 border-slate-300"
         />
         <p className="text-2xl font-recline font-black">Rahul Panchal</p>
-        <p className="flex text-sm text-yellow-400">
+        <p className="flex text-sm  text-yellow-400">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
         </p>
-        <p className="text-sm">
+        <p className="text-sm ">
           &#34;I needed furniture for my temporary apartment, and this platform
           was a lifesaver! The renting prices were reasonable, and the return
           process was smooth. Will definitely use this service again.&#34;
@@ -150,7 +150,7 @@ const Review2 = () => {
           alt="client 1"
           className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 w-20 aspect-square rounded-full object-cover"
         />
-        <p className="text-sm text-center">
+        <p className="text-sm  text-center">
           &#34;I rented a laptop for work, and while the device was great, the
           delivery took a little longer than expected. Otherwise, the experience
           was smooth.&#34;
@@ -160,7 +160,7 @@ const Review2 = () => {
             <p className="text-2xl font-recline font-black">Tarun Mahiwal</p>
             <p>@Tarunmahiwal</p>
           </div>
-          <p className="flex text-sm text-yellow-400 mt-2">
+          <p className="flex text-sm  text-yellow-400 mt-2">
             <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
           </p>
         </div>
@@ -186,7 +186,7 @@ const Review3 = () => {
           <HiStar /> <HiStar /> <HiStar className="text-xl" /> <HiStar />{" "}
           <HiStar />
         </p>
-        <p className="text-sm text-center">
+        <p className="text-sm  text-center">
           &#34;I rented a treadmill for three months, and the entire process was
           seamless. The product was in excellent condition, and the delivery was
           on time. Customer support was also very responsive. Highly
@@ -214,7 +214,7 @@ const Review4 = () => {
           alt="client 1"
           className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 w-20 aspect-square rounded-full object-cover"
         />
-        <p className="text-sm text-center">
+        <p className="text-sm  text-center">
           &#34;I rented a DSLR camera for my vacation, and it was a fantastic
           experience. The camera worked perfectly, and the rates were much
           better than buying one. Will use this platform again for future
@@ -225,7 +225,7 @@ const Review4 = () => {
             <p className="text-2xl font-recline font-black">Manish Kushwaha</p>
             <p>@manishKushwaha</p>
           </div>
-          <p className="flex text-sm text-yellow-400 mt-2">
+          <p className="flex text-sm  text-yellow-400 mt-2">
             <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
           </p>
         </div>
@@ -245,11 +245,11 @@ const Review5 = () => {
       />
       <div className="space-y-1">
         <p className="text-2xl font-recline font-black">Priya Bangalia</p>
-        <p className="text-sm">
+        <p className="text-sm ">
           &#34;Renting from this platform was a breeze! The process was
           smooth,&#34;
         </p>
-        <p className="flex items-center justify-end text-sm text-theme mt-2 pr-10">
+        <p className="flex items-center justify-end text-sm  text-theme mt-2 pr-10">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar /> {"(5.0)"}
         </p>
       </div>
@@ -264,12 +264,12 @@ const Review6 = () => {
         <p className="text-4xl font-recline font-black text-center py-5">
           Top-notch!
         </p>
-        <p className="text-sm">
+        <p className="text-sm ">
           &#34;The platform offers a great range of rental products, and the
           service is smooth. However, some items are a bit pricey compared to
           competitors. Overall, still a great experience.&#34;
         </p>
-        <p className="flex text-sm text-yellow-400">
+        <p className="flex text-sm  text-yellow-400">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
         </p>
       </div>
@@ -283,7 +283,7 @@ const Review6 = () => {
         />
         <div>
           <p className="font-recline font-black">Sumit Choudhary</p>
-          <p className="text-sm -mt-1">@Sumitchoudhary</p>
+          <p className="text-sm  -mt-1">@Sumitchoudhary</p>
         </div>
       </div>
     </div>
@@ -301,13 +301,13 @@ const Review7 = () => {
           className="absolute top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-20 aspect-[2/3] object-cover rounded-full  border-4 border-slate-200"
         />
         <p className="text-2xl font-recline font-black">Pawan</p>
-        <p className="text-sm">
+        <p className="text-sm ">
           &#34;I rented a refrigerator for my PG, and it was a fantastic
           experience. The product was in perfect condition, and the team handled
           delivery and pickup smoothly. Great service!&#34;
         </p>
         <p className="text-end font-bold">@Pawan</p>
-        <p className="absolute bottom-0 translate-y-1/2 right-10 px-1 rounded-full flex text-sm text-white bg-theme mt-2">
+        <p className="absolute bottom-0 translate-y-1/2 right-10 px-1 rounded-full flex text-sm  text-white bg-theme mt-2">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
         </p>
         <div
@@ -332,10 +332,10 @@ const Review8 = () => {
         <p className="text-2xl font-recline font-black text-center">
           RECOMENDED!
         </p>
-        <p className="flex justify-center text-sm text-yellow-400 my-2">
+        <p className="flex justify-center text-sm  text-yellow-400 my-2">
           <HiStar /> <HiStar /> <HiStar /> <HiStar /> <HiStar />
         </p>
-        <p className="text-sm text-center">
+        <p className="text-sm  text-center">
           &#34;Rented a gaming console for a month. The console worked
           perfectly, and the process was smooth, but delivery took an extra day.
           Overall, a good experience!&#34;
@@ -360,7 +360,7 @@ const Review9 = () => {
   return (
     <div className="drop-shadow-md">
       <div className="relative p-4 bg-white rounded-3xl">
-        <p className="text-sm text-center">
+        <p className="text-sm  text-center">
           &#34;I needed a projector for a family gathering, and this platform
           had the best prices. The device was well-maintained, and the return
           process was super easy. Will definitely rent again!&#34;

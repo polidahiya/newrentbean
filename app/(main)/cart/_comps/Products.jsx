@@ -96,18 +96,18 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
           )}
           {item?.isrentalstore ? (
             <>
-              <p className="text-sm">
+              <p className="text-sm ">
                 Rent: ₹{(totalprice * item?.quantity).toLocaleString("en-IN")}
                 {"/-"}
               </p>
-              <p className="text-sm">
+              <p className="text-sm ">
                 Security Deposit : ₹
                 {(item?.securitydeposit * item?.quantity).toLocaleString(
                   "en-IN"
                 )}
                 {"/-"} <span className="text-sky-500">{"(*Refundable)"}</span>
               </p>
-              <p className="text-sm">
+              <p className="text-sm ">
                 Total : ₹
                 {(
                   totalprice * item?.quantity +

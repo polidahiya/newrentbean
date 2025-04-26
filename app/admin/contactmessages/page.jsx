@@ -160,7 +160,7 @@ const Card = ({ item }) => {
           <div className="text-2xl font-bold text-gray-900 mb-2">{name}</div>
           <div className="flex items-center space-x-2 mb-4">
             <div
-              className="text-sm text-blue-600 cursor-pointer hover:text-blue-800 truncate"
+              className="text-sm  text-blue-600 cursor-pointer hover:text-blue-800 truncate"
               onClick={handleCopyEmail}
             >
               {email}
@@ -171,7 +171,7 @@ const Card = ({ item }) => {
               title="Copy email"
             />
           </div>
-          <div className="text-sm text-gray-700 mb-4">
+          <div className="text-sm  text-gray-700 mb-4">
             <strong className="text-gray-900">Subject:</strong> {subject}
           </div>
           <div className="text-gray-800">{message}</div>

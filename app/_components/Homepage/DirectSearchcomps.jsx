@@ -68,7 +68,7 @@ export default function DireactSearchListSwiper({ location, store }) {
               >
                 <button
                   onClick={() => textSwiperRef.current?.slidePrev()}
-                  className=" text-theme lg:border border-theme px-5 py-2 rounded-md lg:order-2"
+                  className=" text-theme lg:border border-theme px-5 py-2  rounded-md lg:order-2"
                   aria-label="Scroll left"
                   title="Scroll left"
                 >
@@ -76,13 +76,13 @@ export default function DireactSearchListSwiper({ location, store }) {
                 </button>
                 <Link
                   href={`/${location}/${store}${item?.link}`}
-                  className=" text-theme border border-theme px-5 py-2 rounded-md lg:order-1"
+                  className=" text-theme border border-theme px-5 py-2  rounded-md lg:order-1"
                 >
                   {store} Now
                 </Link>
                 <button
                   onClick={() => textSwiperRef.current?.slideNext()}
-                  className=" text-theme lg:border border-theme px-5 py-2 rounded-md order-3"
+                  className=" text-theme lg:border border-theme px-5 py-2  rounded-md order-3"
                   aria-label="scroll Right"
                   title="scroll Right"
                 >

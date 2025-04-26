@@ -86,12 +86,12 @@ function Userdetails() {
       <Image
         src="/logo&ui/minlogo.png"
         alt="logo image"
-        className=" top-[20px] left-[30px] h-[50px] w-[50px]"
+        className=" top-5 left-[30px] h-[50px] w-[50px]"
         width={156}
         height={60}
       ></Image>
       <div className="flex justify-center">
-        <div className="relative w-fit flex items-center justify-center  text-[30px] ">
+        <div className="relative w-fit flex items-center justify-center  text-3xl ">
           <Usersvg styles="absolute top-[50%] left-0 translate-y-[-50%] translate-x-[-120%]  h-[30px] border border-slate-300 rounded-full fill-white" />
           {signupform ? "Sign up" : "Login"}
         </div>
@@ -159,7 +159,7 @@ function Userdetails() {
       <div className="flex gap-5 justify-center mt-5">
         {/* forgetpassword */}
         {!signupform && (
-          <p className="text-[14px] text-center ">
+          <p className="text-sm text-center ">
             Forgot password?
             <Link
               href={"/forgotpassword"}
@@ -170,7 +170,7 @@ function Userdetails() {
           </p>
         )}
         {/* form switcher */}
-        <div className="text-[14px] text-center ">
+        <div className="text-sm text-center ">
           {signupform ? "Already have an account?" : "Don't have an account?"}
           <span
             className="text-theme cursor-pointer ml-1"

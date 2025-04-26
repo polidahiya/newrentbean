@@ -12,7 +12,7 @@ const moreLinks = [
 
 function Footer() {
   return (
-    <footer className="px-5 md:px-10 mt-20 text-sm bg-gray-50 py-12 border-t border-gray-200">
+    <footer className="px-5 md:px-10 mt-20 text-sm  bg-gray-50 py-12 border-t border-gray-200">
       <Effecttext text="Contact Us" />
       <h2 className="text-2xl md:text-3xl font-semibold mt-4 max-w-xl">
         Ready to book a consultation or have a question for us?
@@ -83,7 +83,7 @@ function Footer() {
         </div>
       </div>
 
-      <p className="text-center mt-12 text-sm text-gray-500">
+      <p className="text-center mt-12 text-sm  text-gray-500">
         © {new Date().getFullYear()} RentBean.in | EventPlanners. All rights
         reserved.
       </p>

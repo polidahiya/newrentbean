@@ -43,7 +43,7 @@ async function Footer() {
     { name: "Others", link: "/Delhi/Rent/Others" },
   ];
   return (
-    <footer className="bg-bg1 px-8 md:px-12 p-5 pt-8 lg:pt-5 text-sm">
+    <footer className="bg-bg1 px-8 md:px-12 p-5 pt-8 lg:pt-5 text-sm ">
       <section className=" flex gap-12 flex-col md:flex-row">
         <div className="flex-1 flex flex-col items-start">
           <Image
@@ -93,7 +93,7 @@ async function Footer() {
       </section>
       <Divider />
       <section className="flex items-center justify-between flex-col-reverse lg:flex-row">
-        <p className=" text-[12px] flex-1 mt-[10px] lg:mt-0">
+        <p className=" text-[12px] flex-1 mt-2 lg:mt-0">
           &copy; {new Date().getFullYear()}{" "}
           <strong className="font-bold">Rentbean.in</strong>. All rights
           reserved.
@@ -204,7 +204,7 @@ function Socialfollow() {
 
   return (
     <div className="w-full flex items-center gap-5 mt-auto">
-      <p className="text-[16px] font-bold">Socials:</p>
+      <p className="text-base font-bold">Socials:</p>
       {social.map((item, i) => (
         <Link
           key={i}
@@ -216,7 +216,7 @@ function Socialfollow() {
           aria-label={`Follow us on ${item.title}`}
         >
           {/* Tooltip */}
-          <p className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-gray-700 rounded-lg px-5 py-1 opacity-0 text-sm lg:group-hover:opacity-100 lg:group-hover:-top-10 pointer-events-none duration-500 drop-shadow-md">
+          <p className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-gray-700 rounded-lg px-5 py-1 opacity-0 text-sm  lg:group-hover:opacity-100 lg:group-hover:-top-10 pointer-events-none duration-500 drop-shadow-md">
             <span className="bg-theme text-transparent bg-clip-text font-semibold">
               {item.title}
             </span>

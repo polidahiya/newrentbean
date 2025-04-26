@@ -23,7 +23,7 @@ export default function Homenavbar({ userdata, token }) {
     },
   ];
   return (
-    <nav className="absolute top-0 left-0 h-[40px] md:h-[60px] w-full flex items-center justify-between px-[10px] md:px-10 mt-[10px] md:mt-0 md:py-[10px] z-20 ">
+    <nav className="absolute top-0 left-0 h-[40px] md:h-[60px] w-full flex items-center justify-between px-[10px] md:px-10 mt-2 md:mt-0 md:py-2 z-20 ">
       <Image
         className="h-[30px] w-auto md:h-[40px] "
         src="/logo&ui/3dlogo.png"

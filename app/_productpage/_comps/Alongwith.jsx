@@ -23,7 +23,7 @@ function Alongwith({ alongwith }) {
               alt={item}
               className="hue-rotate-60"
             />
-            <p className="text-sm text-center pb-1">{item}</p>
+            <p className="text-sm  text-center pb-1">{item}</p>
           </div>
         ))}
       </div>

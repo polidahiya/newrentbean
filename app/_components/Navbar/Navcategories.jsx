@@ -7,7 +7,7 @@ import Image from "next/image";
 
 function Navcategories({ category, location, isrentalstore }) {
   return (
-    <div className={`hidden lg:flex items-center justify-center gap-5 py-2`}>
+    <div className={`hidden lg:flex items-center justify-center gap-5 py-2 `}>
       {Object.entries(categorylist).map(([key, item], i) => {
         return (
           <div key={i} className="group relative">
@@ -15,7 +15,7 @@ function Navcategories({ category, location, isrentalstore }) {
               key={i}
               prefetch={false}
               href={`/${location}/${isrentalstore ? "Rent" : "Buy"}/${key}`}
-              className={`w-full flex items-center justify-center gap-2 text-sm px-5 py-1 rounded-full relative z-10 ${
+              className={`w-full flex items-center justify-center gap-2 text-sm  px-5 py-1 rounded-full relative z-10 ${
                 category == key
                   ? "lg:bg-theme lg:text-white"
                   : "lg:group-hover:bg-slate-100"
@@ -46,7 +46,7 @@ function Navcategories({ category, location, isrentalstore }) {
                         isrentalstore ? "Rent" : "Buy"
                       }/${key}/${subcat.name}`}
                       prefetch={false}
-                      className="p-1 flex items-center gap-2 lg:w-52 text-sm lg:hover:bg-bg1 group/link"
+                      className="p-1 flex items-center gap-2 lg:w-52 text-sm  lg:hover:bg-bg1 group/link"
                     >
                       <Image
                         src={subcat?.image}

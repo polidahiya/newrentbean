@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Switchstore({ filteredProduct, location, store }) {
   return (
-    <div className="mt-5 flex items-center justify-center gap-1 text-sm">
+    <div className="mt-5 flex items-center justify-center gap-1 text-sm ">
       {(filteredProduct?.availablefor == "Both" ||
         filteredProduct?.availablefor != store) && (
         <>

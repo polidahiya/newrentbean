@@ -70,7 +70,7 @@ function Backgroundimages() {
                 </div>
                 <div className="mt-20 overflow-hidden">
                   <button
-                    className="px-5 py-2 border border-white rounded-full translate-y-full flex items-center gap-2"
+                    className="px-5 py-2  border border-white rounded-full translate-y-full flex items-center gap-2"
                     style={{ animation: `moveupanimation 1s 3.6s forwards` }}
                   >
                     View Plans <RiShareBoxFill />

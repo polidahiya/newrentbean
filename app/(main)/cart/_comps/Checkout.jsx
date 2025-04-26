@@ -23,7 +23,7 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
         Payment Method
       </span>
 
-      <div className="w-full flex flex-col gap-4 text-sm">
+      <div className="w-full flex flex-col gap-4 text-sm ">
         {/* Online Payment Option */}
         <label
           className={`w-full md:max-w-80 flex items-center gap-4 p-4 border rounded-md cursor-pointer transition duration-300 ${
@@ -65,7 +65,7 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
           </span>
         </label>
         {totalPrice > maxcashpaymentavailable && (
-          <p className="text-sm opacity-75">
+          <p className="text-sm  opacity-75">
             * COD is available only for orders below ₹{maxcashpaymentavailable}
           </p>
         )}

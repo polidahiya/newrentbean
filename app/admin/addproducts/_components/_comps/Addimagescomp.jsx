@@ -77,7 +77,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
               <button
                 type="button"
                 onClick={() => handleMoveImage(imgIndex, -1)}
-                className="h-full aspect-square text-sm border rounded-md"
+                className="h-full aspect-square text-sm  border rounded-md"
                 aria-label="move left" title="move left"
               >
                 <BsArrowLeftShort className="inline-block" />
@@ -85,7 +85,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
               <button
                 type="button"
                 onClick={() => handleMoveImage(imgIndex, 1)}
-                className="h-full aspect-square text-sm border rounded-md"
+                className="h-full aspect-square text-sm  border rounded-md"
                 aria-label="move right" title="move right"
               >
                 <BsArrowLeftShort className="inline-block rotate-180" />
@@ -129,7 +129,7 @@ function Addimagescomp({ data, setstate, setdeletedimages }) {
           />
           <div className="h-full w-full pointer-events-none flex flex-col gap-2 items-center justify-center">
             <BiSolidImageAdd className="text-5xl" />
-            <p className="text-center text-sm">Add Image</p>
+            <p className="text-center text-sm ">Add Image</p>
           </div>
         </div>
       </div>

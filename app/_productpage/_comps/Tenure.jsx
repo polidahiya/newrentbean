@@ -61,7 +61,7 @@ function Tenure({ filteredProduct, cartproductid }) {
         {locationrentprices.map((item, i) => (
           <button
             key={i}
-            className={`relative flex-1 py-3 text-sm before:absolute before:left-1/2 before:bottom-0  before:h-2 before:w-0.5 before:rounded-full before:bg-theme ${
+            className={`relative flex-1 py-3 text-sm  before:absolute before:left-1/2 before:bottom-0  before:h-2 before:w-0.5 before:rounded-full before:bg-theme ${
               cart[cartproductid]?.selectedtenure == i && "text-theme "
             }`}
             onClick={() => setinputvalue(i)}

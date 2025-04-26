@@ -37,7 +37,7 @@ export default function Previewblog({
                     setblogdata={setblogdata}
                   />
                   {i == 0 && (
-                    <span className="flex items-center gap-2 text-[14px] font-normal mt-3 ml-3 text-gray-500">
+                    <span className="flex items-center gap-2 text-sm font-normal mt-3 ml-3 text-gray-500">
                       <SlCalender />
                       <span>{item?.date || "02/12/24"}</span>
                     </span>
@@ -51,7 +51,7 @@ export default function Previewblog({
                 <div
                   key={i}
                   className={`group hover:ring-2 ring-indigo-300 relative my-2 cursor-pointer transition-all duration-200 ${
-                    item?.type == "heading" ? "text-[22px] font-semibold" : "text-[16px]"
+                    item?.type == "heading" ? "text-[22px] font-semibold" : "text-base"
                   }`}
                   onClick={() => {
                     setactivelem(i);

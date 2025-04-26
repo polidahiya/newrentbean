@@ -70,7 +70,7 @@ function Logedinusermenu({ token, userdata }) {
               {parsedUserData?.email || "User Email"}
             </div>
             <div
-              className="flex flex-col gap-[2px] w-full mt-[30px]"
+              className="flex flex-col gap-[2px] w-full mt-7"
               onClick={() => {
                 setTimeout(hideusermenu, 100);
               }}

@@ -53,7 +53,7 @@ async function Blogscomp() {
                 {paragraphs?.map((item, j) => (
                   <p
                     key={j}
-                    className="text-gray-600 text-sm mb-3 line-clamp-3"
+                    className="text-gray-600 text-sm  mb-3 line-clamp-3"
                   >
                     {item.content}
                   </p>
@@ -73,7 +73,7 @@ async function Blogscomp() {
       {/* <div className="flex justify-center">
         <Link
           href={`/Blogs`}
-          className="bg-theme text-white w-fit flex items-center gap-3  py-2 px-4 rounded-full mt-5"
+          className="bg-theme text-white w-fit flex items-center gap-3  py-2  px-4 rounded-full mt-5"
         >
           More Blogs
           <LuArrowRightCircle />

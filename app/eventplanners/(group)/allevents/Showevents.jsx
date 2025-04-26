@@ -22,7 +22,7 @@ function Showevents() {
             />
           </h2>
 
-          <div className="space-y-3 ml-2 text-sm">
+          <div className="space-y-3 ml-2 text-sm ">
             {Object.entries(category.subcat).map(([subcatname, subcat], j) => (
               <div
                 key={j}

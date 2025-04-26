@@ -23,7 +23,7 @@ function Page() {
       </div>
       <Link
         href="https://analytics.google.com/analytics/web/#/p471782386/reports/intelligenthome"
-        className="px-5 py-2  border rounded-lg w-fit ml-auto"
+        className="px-5 py-2   border rounded-lg w-fit ml-auto"
       >
         View Analytics
       </Link>

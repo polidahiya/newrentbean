@@ -40,7 +40,7 @@ async function page({ searchParams }) {
                     width={100}
                     className="w-24 aspect-square object-contain"
                   ></Image>
-                  <p className="text-center text-sm mt-1">
+                  <p className="text-center text-sm  mt-1">
                     {subcat?.name?.replace(/-/g, " ")}
                   </p>
                 </Link>

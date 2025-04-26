@@ -66,10 +66,10 @@ function InvoiceComponent() {
       {/* Header Section */}
       <div className="text-center mb-8">
         <h1 className="text-3xl font-extrabold text-gray-700">Invoice</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm  text-gray-500">
           Invoice No: {generateInvoiceNumber()}
         </p>
-        <p className="text-sm text-gray-500">Date: {formatDate()}</p>
+        <p className="text-sm  text-gray-500">Date: {formatDate()}</p>
       </div>
 
       {/* Seller & Buyer Information */}
@@ -115,16 +115,16 @@ function InvoiceComponent() {
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead className="bg-gray-200">
             <tr>
-              <th className="border px-4 py-2 text-left text-gray-600">
+              <th className="border px-4 py-2  text-left text-gray-600">
                 Product
               </th>
-              <th className="border px-4 py-2 text-center text-gray-600">
+              <th className="border px-4 py-2  text-center text-gray-600">
                 Qty
               </th>
-              <th className="border px-4 py-2 text-center text-gray-600">
+              <th className="border px-4 py-2  text-center text-gray-600">
                 Booking Price
               </th>
-              <th className="border px-4 py-2 text-center text-gray-600">
+              <th className="border px-4 py-2  text-center text-gray-600">
                 Total
               </th>
             </tr>
@@ -195,7 +195,7 @@ function InvoiceComponent() {
       {/* Totals & Tax */}
       <div className="flex justify-between items-end mb-8">
         <div>
-          <p className="text-sm  text-gray-500">
+          <p className="text-sm   text-gray-500">
             Amount Chargeable (in words):
           </p>
           <p className="font-semibold text-gray-700">
@@ -229,7 +229,7 @@ function InvoiceComponent() {
         <p className="text-gray-500">Authorised Signatory</p>
       </div>
 
-      <p className="text-center mt-8 text-sm text-gray-400 ">
+      <p className="text-center mt-8 text-sm  text-gray-400 ">
         This is a Computer Generated Invoice
       </p>
     </div>

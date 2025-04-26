@@ -46,7 +46,7 @@ export default function Publicpage({ res }) {
             </div>
           </div>
         ))}
-        <p className="text-center text-sm text-gray-500 mt-6 italic">
+        <p className="text-center text-sm  text-gray-500 mt-6 italic">
           Note: Order details reflect the state at purchase time and may not
           show current availability or prices.
         </p>
@@ -99,7 +99,7 @@ const Historyproductcard = ({ item, product, index }) => {
       </div>
       <div className="flex-1">
         <h3 className="text-lg font-medium text-gray-900">{product?.name}</h3>
-        <div className="text-sm text-gray-600 mt-1 space-y-1">
+        <div className="text-sm  text-gray-600 mt-1 space-y-1">
           <p>
             <span className="font-medium">Order #:</span> {item.orderNumber}
           </p>
@@ -128,7 +128,7 @@ const Historyproductcard = ({ item, product, index }) => {
           {moreoptions && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 z-10 animate-fade-in">
               <button
-                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="w-full text-left px-4 py-2  text-sm  text-gray-700 hover:bg-gray-50 rounded-lg"
                 onClick={() => setshowconfirmation(true)}
                 aria-label="Cancel Product"
                 title="Cancel Product"
@@ -167,7 +167,7 @@ const OrderStatus = ({ item }) => {
     <div className="flex justify-center mt-6">
       {![4, 5].includes(item.status) && (
         <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px]">
-          <div className="flex items-center w-full mt-[10px] px-10 md:px-[60px]">
+          <div className="flex items-center w-full mt-2 px-10 md:px-[60px]">
             {orderstages.slice(0, 4).map((_, i) => (
               <div
                 key={i}
@@ -200,7 +200,7 @@ const OrderStatus = ({ item }) => {
               />
             </div>
           </div>
-          <div className="flex items-center justify-between w-full py-[10px] px-5 text-[10px] md:text-[14px] gap-2">
+          <div className="flex items-center justify-between w-full py-2 px-5 text-[10px] md:text-sm gap-2">
             {orderstages.slice(0, 4).map((stage, i) => (
               <span key={i} className="text-center">
                 {stage}
@@ -220,20 +220,20 @@ const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
       <div className="bg-white rounded-xl p-6 w-full max-w-[600px] shadow-xl">
         <div className="flex items-center justify-center gap-3 mb-4">
           <LiaExclamationTriangleSolid className="text-2xl text-yellow-500 flex-shrink-0" />
-          <p className="text-gray-800 text-sm">
+          <p className="text-gray-800 text-sm ">
             Canceling now may incur a 5% deduction from your refund.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center whitespace-nowrap">
           <Link
             href="/Contact"
-            className="flex items-center justify-center gap-2 px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
+            className="flex items-center justify-center gap-2 px-4 py-2  text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
           >
             <IoHelpCircleOutline className="text-lg" />
             Need Help
           </Link>
           <button
-            className="flex items-center justify-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+            className="flex items-center justify-center gap-2 px-4 py-2  bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             onClick={confirmfn}
             aria-label="Confirm Cancellation"
             title="Confirm Cancellation"
@@ -242,7 +242,7 @@ const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
             Confirm Cancellation
           </button>
           <button
-            className="px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
+            className="px-4 py-2  text-gray-600 border border-gray-200 rounded-lg hover transition-colors"
             onClick={() => setshowconfirmation(false)}
             aria-label="Go Back"
             title="Go Back"

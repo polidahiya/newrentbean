@@ -55,7 +55,7 @@ const CustomCalendar = ({ cart, setcart, cartproductid, isPastDate }) => {
     <div className="relative group mx-7">
       {/* Display Selected Date */}
       <div
-        className={`flex items-center justify-center mt-4 text-center gap-2 text-sm bg-white py-2 rounded-md group-hover:outline outline-gray-200 outline-1 ${
+        className={`flex items-center justify-center mt-4 text-center gap-2 text-sm  bg-white py-2  rounded-md group-hover:outline outline-gray-200 outline-1 ${
           isPastDate(
             cart[cartproductid]?.tenureStart?.date,
             cart[cartproductid]?.tenureStart?.month,
@@ -133,7 +133,7 @@ const CustomCalendar = ({ cart, setcart, cartproductid, isPastDate }) => {
           </div>
 
           {/* Calendar Grid */}
-          <div className="grid grid-cols-7 text-center text-sm mt-5">
+          <div className="grid grid-cols-7 text-center text-sm  mt-5">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
               <div key={day} className="font-bold opacity-75 mb-2">
                 {day}

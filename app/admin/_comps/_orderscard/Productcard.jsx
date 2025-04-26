@@ -147,7 +147,7 @@ const ProductstatusOption = ({ orderid, productindex, setLocalStatus }) => {
 };
 
 const OrderDetail = ({ label, value }) => (
-  <p className="text-sm text-gray-700">
+  <p className="text-sm  text-gray-700">
     <span className="font-bold">{label}:</span> {value}
   </p>
 );

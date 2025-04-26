@@ -6,7 +6,7 @@ function Togglebutton({ children }) {
 
   return (
     <button
-      className="flex justify-center items-center w-full fill-textcolor mt-[10px]"
+      className="flex justify-center items-center w-full fill-textcolor mt-2"
       onClick={() => {
         setmoredesc(!moredesc);
       }}

@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 function FAQSection({ faqlist }) {
   return (
-    <div className="py-24 px-5 md:px-10">
+    <div className="py-2 px-5 md:px-10">
       <h2 className="font-tenor text-4xl md:text-4xl text-center">
         Frequently asked Questions
       </h2>
@@ -43,7 +43,7 @@ const Faq = ({ faq }) => {
           return (
             <li
               key={i}
-              className="pb-2 text-sm last:pb-4 pl-5 list-disc"
+              className="pb-2 text-sm  last:pb-4 pl-5 list-disc"
               dangerouslySetInnerHTML={{ __html: item }}
             ></li>
           );

@@ -42,7 +42,7 @@ async function page() {
                 <p className="text-lg font-semibold text-slate-700 line-clamp-2 mb-2">
                   {mainHeading}
                 </p>
-                <p className="text-sm font-bold text-slate-500 mb-1">
+                <p className="text-sm  font-bold text-slate-500 mb-1">
                   Last updated: {blog?.date}
                 </p>
                 <p className="absolute top-3 right-3 font-black bg-theme bg-clip-text text-transparent w-fit">

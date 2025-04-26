@@ -86,7 +86,7 @@ const BirthdayPartyService = async ({ params }) => {
                     <h3 className="text-xl font-semibold text-gray-700">
                       {item?.heading}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-sm  text-gray-500 mt-1">
                       {item?.subheading}
                     </p>
                   </div>
@@ -154,13 +154,13 @@ const BirthdayPartyService = async ({ params }) => {
                 </ul>
                 <a
                   href="#booking"
-                  className="mt-6 inline-block bg-purple-500 text-white py-2 px-6 rounded-full hover:bg-purple-600 transition duration-300"
+                  className="mt-6 inline-block bg-purple-500 text-white py-2  px-6 rounded-full hover:bg-purple-600 transition duration-300"
                 >
                   Choose Package
                 </a>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-lg text-center border-4 border-pink-500 relative">
-                <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-pink-500 text-white px-4 py-1 rounded-full text-sm  font-semibold">
                   Most Popular
                 </span>
                 <h3 className="text-2xl font-semibold text-purple-800 mb-4">
@@ -176,7 +176,7 @@ const BirthdayPartyService = async ({ params }) => {
                 </ul>
                 <a
                   href="#booking"
-                  className="mt-6 inline-block bg-pink-500 text-white py-2 px-6 rounded-full hover:bg-pink-600 transition duration-300"
+                  className="mt-6 inline-block bg-pink-500 text-white py-2  px-6 rounded-full hover:bg-pink-600 transition duration-300"
                 >
                   Choose Package
                 </a>
@@ -195,7 +195,7 @@ const BirthdayPartyService = async ({ params }) => {
                 </ul>
                 <a
                   href="#booking"
-                  className="mt-6 inline-block bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300"
+                  className="mt-6 inline-block bg-blue-500 text-white py-2  px-6 rounded-full hover:bg-blue-600 transition duration-300"
                 >
                   Choose Package
                 </a>

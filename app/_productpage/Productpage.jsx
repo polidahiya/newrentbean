@@ -90,7 +90,7 @@ async function Productpage({
   return (
     <>
       <article>
-        <div className="pl-16 md:pl-24 lg:pl-10 mt-2 md:mt-4 bg-white text-theme text-sm">
+        <div className="pl-16 md:pl-24 lg:pl-10 mt-2 md:mt-4 bg-white text-theme text-sm ">
           <Breadcrumbs
             list={[
               { name: category, link: `/${location}/${store}/${category}` },
@@ -103,7 +103,7 @@ async function Productpage({
             location={location}
           />
         </div>
-        <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 gap-5">
+        <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2  gap-5">
           <Imagescomp filteredproducts={filteredProduct} token={token} />
           <Details
             filteredProduct={filteredProduct}
@@ -125,68 +125,69 @@ async function Productpage({
           store={store}
           isrentalstore={isrentalstore}
         />
-
-        <FAQSection
-          faqlist={[
-            {
-              question: "How can I place an order?",
-              answer: [
-                "Browse our website and add desired items to your cart.",
-                "Follow the checkout process to enter shipping and payment details.",
-              ],
-            },
-            {
-              question: "What payment methods do you accept?",
-              answer: [
-                "We accept major cards (Credit/Debit), Credit Card EMI, Debit Cardless EMI, Net Banking, Wallet, UPI.",
-                "All transactions are secure and convenient.",
-              ],
-            },
-            {
-              question: "Is there a security deposit?",
-              answer: [
-                "Some items may require a refundable security deposit, which will be returned after the product is returned in good condition.",
-              ],
-            },
-            {
-              question: "What should I do if I receive a damaged item?",
-              answer: [
-                "Contact customer support within 24 hours of receiving the damaged item.",
-                "Provide photos of the damage for quick assistance.",
-                "We will arrange a replacement or rectification promptly.",
-              ],
-            },
-            {
-              question: "How long does delivery take?",
-              answer: [
-                "Delivery times vary based on location and availability, usually delivers within 1 or 2 days after KYC.",
-              ],
-            },
-            {
-              question: "Can I track my order?",
-              answer: [
-                "Once your order is shipped, you will receive a confirmation email with a tracking link.",
-                "Use the tracking link to check your order’s progress.",
-              ],
-            },
-            {
-              question: "Can I modify or cancel my order after placing it?",
-              answer: [
-                "You can cancel your order within 24 hours of placing it.",
-                "After this period, the order cannot be canceled.",
-                "If the product does not meet specifications, report the issue immediately.",
-                `For more details, contact customer care or email us at <a href="mailto:${mail}" target="_blank" class="text-blue-500 hover:underline">${mail}</a>.`,
-                "Products purchased on discount or during sales cannot be canceled.",
-              ],
-            },
-            {
-              question: "Can I extend my rental period?",
-              answer: [
-                "Yes, you can extend your rental by contacting us before the rental duration ends. Additional charges may apply.",
-              ],
-            },
-          ]}
-        />
+        <div className="mt-5">
+          <FAQSection
+            faqlist={[
+              {
+                question: "How can I place an order?",
+                answer: [
+                  "Browse our website and add desired items to your cart.",
+                  "Follow the checkout process to enter shipping and payment details.",
+                ],
+              },
+              {
+                question: "What payment methods do you accept?",
+                answer: [
+                  "We accept major cards (Credit/Debit), Credit Card EMI, Debit Cardless EMI, Net Banking, Wallet, UPI.",
+                  "All transactions are secure and convenient.",
+                ],
+              },
+              {
+                question: "Is there a security deposit?",
+                answer: [
+                  "Some items may require a refundable security deposit, which will be returned after the product is returned in good condition.",
+                ],
+              },
+              {
+                question: "What should I do if I receive a damaged item?",
+                answer: [
+                  "Contact customer support within 24 hours of receiving the damaged item.",
+                  "Provide photos of the damage for quick assistance.",
+                  "We will arrange a replacement or rectification promptly.",
+                ],
+              },
+              {
+                question: "How long does delivery take?",
+                answer: [
+                  "Delivery times vary based on location and availability, usually delivers within 1 or 2 days after KYC.",
+                ],
+              },
+              {
+                question: "Can I track my order?",
+                answer: [
+                  "Once your order is shipped, you will receive a confirmation email with a tracking link.",
+                  "Use the tracking link to check your order’s progress.",
+                ],
+              },
+              {
+                question: "Can I modify or cancel my order after placing it?",
+                answer: [
+                  "You can cancel your order within 24 hours of placing it.",
+                  "After this period, the order cannot be canceled.",
+                  "If the product does not meet specifications, report the issue immediately.",
+                  `For more details, contact customer care or email us at <a href="mailto:${mail}" target="_blank" class="text-blue-500 hover:underline">${mail}</a>.`,
+                  "Products purchased on discount or during sales cannot be canceled.",
+                ],
+              },
+              {
+                question: "Can I extend my rental period?",
+                answer: [
+                  "Yes, you can extend your rental by contacting us before the rental duration ends. Additional charges may apply.",
+                ],
+              },
+            ]}
+          />
+        </div>
         <Promices />
       </article>
       <script

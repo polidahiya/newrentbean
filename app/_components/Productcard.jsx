@@ -48,7 +48,7 @@ function Productcard({
           loading="lazy"
           unoptimized
         />
-        <div className="absolute top-2 left-1 md:top-2 md:left-2 flex flex-col items-start gap-1 text-[8px] md:text-sm text-white">
+        <div className="absolute top-2 left-1 md:top-2 md:left-2 flex flex-col items-start gap-1 text-[8px] md:text-sm  text-white">
           {/* available */}
           {!available && (
             <div
@@ -73,11 +73,11 @@ function Productcard({
         )}
       </div>
       <div className="relative p-[10px]">
-        <h3 className="py-[5px] md:py-[10px] text-xs md:text-base text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">
+        <h3 className="py-[5px] md:py-2 text-xs md:text-base text-center w-full whitespace-nowrap text-ellipsis overflow-hidden">
           {name}
         </h3>
         <div className="flex items-center justify-center w-full">
-          <div className="bg-theme text-white text-sm min-w-[90%] px-2 py-2 flex items-center justify-center rounded-full text-nowrap">
+          <div className="bg-theme text-white text-sm  min-w-[90%] px-2 py-2  flex items-center justify-center rounded-full text-nowrap">
             {isrentalstore ? (
               <>
                 <span>Rent </span> : ₹{" "}

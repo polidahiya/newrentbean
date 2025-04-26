@@ -39,7 +39,7 @@ const Whatsappbutton = ({ iseventmanager }) => (
     }`}
     prefetch={false}
   >
-    <span className="text-white opacity-0 text-sm max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-60  lg:group-hover:px-5 whitespace-nowrap transition-all duration-300 ease-in-out">
+    <span className="text-white opacity-0 text-sm  max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-60  lg:group-hover:px-5 whitespace-nowrap transition-all duration-300 ease-in-out">
       Chat with us on WhatsApp
     </span>
     <span
@@ -60,7 +60,7 @@ const Helpbutton = ({ iseventmanager }) => (
     }`}
     prefetch={false}
   >
-    <span className="text-white opacity-0 text-sm max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-32  lg:group-hover:px-5 whitespace-nowrap transition-all duration-300 ease-in-out">
+    <span className="text-white opacity-0 text-sm  max-w-0 lg:group-hover:opacity-100 lg:group-hover:max-w-32  lg:group-hover:px-5 whitespace-nowrap transition-all duration-300 ease-in-out">
       Need Help
     </span>
     <span
@@ -78,7 +78,7 @@ const Gotopbutton = ({ iseventmanager }) => {
 
   return (
     <button
-      className={`group flex flex-col items-center justify-center gap-1 text-sm 
+      className={`group flex flex-col items-center justify-center gap-1 text-sm  
           text-white h-10 w-10 lg:hover:h-16 rounded-full
          overflow-hidden duration-300 ${
            !scrolltop && "opacity-0 pointer-events-none"

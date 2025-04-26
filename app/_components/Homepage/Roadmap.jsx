@@ -54,10 +54,10 @@ function Roadmap() {
               {index + 1}
             </div>
             <div className="mb-4 text-4xl">{step.icon}</div>
-            <h3 className="text-sm md:text-lg font-semibold text-gray-700">
+            <h3 className="text-sm  md:text-lg font-semibold text-gray-700">
               {step.title}
             </h3>
-            <p className="text-xs md:text-sm text-gray-500 mt-1">{step.description}</p>
+            <p className="text-xs md:text-sm  text-gray-500 mt-1">{step.description}</p>
           </div>
         ))}
       </div>

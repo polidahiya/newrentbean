@@ -52,7 +52,7 @@ function Showblogs({ setblogdata, seteditmode, setdeletedimages }) {
   };
 
   return (
-    <div className="flex-1 py-2 w-full">
+    <div className="flex-1 py-2  w-full">
       <h1 className="text-[25px] font-bold flex items-center justify-center gap-2">
         More Blogs
         <button onClick={() => setrefresh((pre) => pre + 1)}>
@@ -84,7 +84,7 @@ function Showblogs({ setblogdata, seteditmode, setdeletedimages }) {
               <p className="mt-1 line-clamp-2">{mainHeading}</p>
               <div className="absolute top-2 right-2 text-white hidden group-hover:flex gap-2">
                 <button
-                  className="bg-green-500 px-2 py-1 text-sm rounded-md hover:bg-green-600"
+                  className="bg-green-500 px-2 py-1 text-sm  rounded-md hover:bg-green-600"
                   onClick={() => {
                     setblogdata(blog?.blogdata);
                     setdeletedimages([]);
@@ -98,7 +98,7 @@ function Showblogs({ setblogdata, seteditmode, setdeletedimages }) {
                   Edit
                 </button>
                 <button
-                  className="bg-red-500 px-2 py-1 text-sm rounded-md hover:bg-red-600"
+                  className="bg-red-500 px-2 py-1 text-sm  rounded-md hover:bg-red-600"
                   onClick={async () => {
                     const res = await Deleteblog(blog);
                     setmessagefn(res?.message);
@@ -129,7 +129,7 @@ function Showblogs({ setblogdata, seteditmode, setdeletedimages }) {
         >
           Previous
         </button>
-        <span className="text-sm text-gray-600">
+        <span className="text-sm  text-gray-600">
           Page {currentPage} of {totalPages}
         </span>
         <button

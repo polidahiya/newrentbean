@@ -225,7 +225,7 @@ function Searchbox({ productsname, location }) {
                   <p className="text-start max-w-[calc(100%-50px)] text-ellipsis overflow-hidden whitespace-nowrap">
                     {item.highlighted}
                   </p>
-                  <FiArrowUpLeft className="text-[18px]" />
+                  <FiArrowUpLeft className="text-lg" />
                 </Link>
               </div>
             ))}

@@ -74,23 +74,23 @@ const DocumentCard = ({ title, icon, mandatoryDocs, additionalDocs }) => {
         {icon}
         <span className="whitespace-nowrap text-lg font-recline">{title}</span>
       </div>
-      <h3 className="text-sm font-semibold mb-2">Mandatory Documents:</h3>
+      <h3 className="text-sm  font-semibold mb-2">Mandatory Documents:</h3>
       <ol className="list-disc list-inside space-y-1 mb-4">
         {mandatoryDocs.map((doc, index) => (
-          <li key={index} className="text-sm text-gray-700">
+          <li key={index} className="text-sm  text-gray-700">
             📄 {doc}
           </li>
         ))}
       </ol>
       {additionalDocs && (
         <>
-          <h3 className="text-sm font-semibold mb-2">Additional Documents:</h3>
+          <h3 className="text-sm  font-semibold mb-2">Additional Documents:</h3>
           <p className="text-xs text-gray-600 mb-2">
             We might also ask for the following docs in some cases:
           </p>
           <ol className="list-disc list-inside space-y-1 mb-4">
             {additionalDocs.map((doc, index) => (
-              <li key={index} className="text-sm text-gray-700">
+              <li key={index} className="text-sm  text-gray-700">
                 📄 {doc}
               </li>
             ))}

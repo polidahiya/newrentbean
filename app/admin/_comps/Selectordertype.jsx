@@ -20,7 +20,7 @@ function Selectordertype({ ordertype, Refreshorders }) {
         <Link
           key={order.id}
           href={`/admin/?order=${order.id}`}
-          className={`h-full grid place-content-center border border-slate-300 py-1 md:py-0 px-[10px] text-sm md:text-base rounded-[5px] ${
+          className={`h-full grid place-content-center border border-slate-300 py-1 md:py-0 px-[10px] text-sm  md:text-base rounded-[5px] ${
             ordertype == order.id && "bg-theme text-white"
           }`}
         >

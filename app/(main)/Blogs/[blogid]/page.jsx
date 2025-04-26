@@ -23,7 +23,7 @@ async function page({ params }) {
                 >
                   {item?.content}
                   {i == 0 && (
-                    <span className="flex items-center gap-2 text-[14px] font-normal mt-3 ml-3 text-gray-500">
+                    <span className="flex items-center gap-2 text-sm  font-normal mt-3 ml-3 text-gray-500">
                       <SlCalender />
                       <span>{blog?.date}</span>
                     </span>
@@ -39,7 +39,7 @@ async function page({ params }) {
                   className={`my-2 text-justify ${
                     item?.type == "heading"
                       ? "text-[22px] font-semibold"
-                      : "text-[16px]"
+                      : "text-base"
                   }`}
                 >
                   {item?.type == "list" && (
@@ -75,7 +75,7 @@ async function page({ params }) {
 
 function Showblogs({ blogs }) {
   return (
-    <div className="flex-1 py-2 w-full mt-6">
+    <div className="flex-1 py-2  w-full mt-6">
       <h1 className="text-[25px] font-bold flex items-center justify-center gap-2">
         More Blogs
       </h1>
