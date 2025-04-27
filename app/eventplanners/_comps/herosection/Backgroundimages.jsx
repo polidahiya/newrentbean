@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
 import "swiper/css";
 import { RiShareBoxFill } from "react-icons/ri";
+import Link from "next/link";
 
 const data = [
   {
@@ -13,6 +14,7 @@ const data = [
       "https://i.pinimg.com/736x/63/de/3a/63de3a93ad459acf7e6d9ee0d5102aac.jpg",
       "https://kashmirlife.net/wp-content/uploads/2013/09/Marriage-Anniversary-HD-Wallpaper-9-e1670851440530.jpg",
     ],
+    link: "/eventplanners/Wedding-Planning",
   },
   {
     heading: "Epic Parties, Made Effortless",
@@ -21,6 +23,7 @@ const data = [
       "https://i.pinimg.com/736x/c9/fc/5b/c9fc5b906a994962bbc5d530e1cb9ce6.jpg",
       "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?cs=srgb&dl=pexels-wendywei-1190298.jpg&fm=jpg",
     ],
+    link: "/eventplanners/Birthday-&-Parties",
   },
   {
     heading: "School Events with a Spark",
@@ -29,6 +32,7 @@ const data = [
       "https://i.pinimg.com/736x/88/af/1b/88af1be141f3e2742610fddbfa8c5af4.jpg",
       "https://www.hdfoundationschool.com/images/gallery/2019/annual-function-2019-01.jpg",
     ],
+    link: "/eventplanners/Social-&-Cultural-Events/Exhibitions-&-Fairs",
   },
   {
     heading: "Corporate Events, Redefined",
@@ -37,6 +41,7 @@ const data = [
       "https://i.pinimg.com/736x/7c/69/92/7c6992a479992ef6f1848286d934a939.jpg",
       "https://www.aashuevents.com/wp-content/uploads/2024/02/Volcanic-Events-Fuerteventura-Cooperated-DMC.jpg",
     ],
+    link: "/eventplanners/Corporate-Events",
   },
 ];
 
@@ -46,8 +51,8 @@ function Backgroundimages() {
 
   return (
     <>
-      <div className="absolute top-0 left-0 h-full w-full px-5 lg:px-20 py-40 flex flex-col z-10 text-white">
-        <div>
+      <div className="absolute top-0 left-0 h-full w-full px-5 lg:px-20 py-40 flex flex-col z-10 text-white pointer-events-none lg:pointer-events-auto">
+        <div className="">
           {data.map((item, i) => {
             return (
               <div
@@ -76,20 +81,21 @@ function Backgroundimages() {
                   </p>
                 </div>
                 <div className="mt-20 overflow-hidden">
-                  <button
-                    className="px-5 py-2  border border-white rounded-full translate-y-full flex items-center gap-2"
+                  <Link
+                    href={item?.link}
+                    className="px-5 py-2  border border-white rounded-full translate-y-full inline-flex items-center gap-2 pointer-events-auto"
                     style={{ animation: `moveupanimation 1s 3.6s forwards` }}
                   >
                     View Plans <RiShareBoxFill />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );
           })}
           {/* control bittons */}
         </div>
-        <div className="flex items-center md:gap-10 h-10 mt-auto">
-          <div className="h-7 text-xs hidden  md:flex items-center">
+        <div className="hidden  md:flex items-center md:gap-10 h-10 mt-auto w-fit">
+          <div className="h-7 text-xs flex items-center">
             {data.map((item, i) => {
               return (
                 <React.Fragment key={i}>
@@ -151,7 +157,7 @@ function Backgroundimages() {
                   alt="Background"
                   layout="fill"
                   className="h-full w-full object-cover object-center brightness-75"
-                  priority
+                  priority="true"
                 />
               </picture>
             </div>

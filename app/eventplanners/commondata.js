@@ -3,7 +3,8 @@ export const media = {
   email: "events.rentbean@gmail.com",
   address: "Plot no. 626 basement, sector 39 Gurgaon Haryana 122002",
   twitter: "",
-  insta: "",
+  insta:
+    "https://www.instagram.com/events.rentbean?igsh=MXdxaWt0eWlrMnQ4bQ%3D%3D",
   facebook: "https://www.facebook.com/share/1E8UDVHdLi/",
   pinterest: "https://www.pinterest.com/eventsrentbean/",
 };
@@ -292,10 +293,10 @@ export const categories = {
             stars: 4,
           },
         ],
-        gallery:[
+        gallery: [
           "https://i.pinimg.com/474x/ff/42/c1/ff42c12bd026c3af155e5bbc7db4d021.jpg",
-          "https://i.pinimg.com/736x/4b/97/d5/4b97d555ac37d66d1f7bc06db7cb45fe.jpg"
-        ]
+          "https://i.pinimg.com/736x/4b/97/d5/4b97d555ac37d66d1f7bc06db7cb45fe.jpg",
+        ],
       },
       "Retirement-&-Farewell": {
         heading: "Retirement & Farewell",
