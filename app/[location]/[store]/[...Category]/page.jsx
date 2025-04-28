@@ -123,7 +123,12 @@ async function page({ params, searchParams }) {
             isrentalstore={isrentalstore}
           />
         ) : (
-          <Productnotfound />
+          <Productnotfound
+            location={location}
+            store={store}
+            category={category}
+            subcat={subcat}
+          />
         )}
       </div>
       <Categorydescription

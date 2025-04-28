@@ -1133,8 +1133,8 @@ function subcat17({ location, store }) {
 
       <p>
         Whether you need a simple <strong>dumbbell rack</strong> or a complete{" "}
-        <strong>home gym setup</strong>, we've got you covered. Get top brands
-        and reliable equipment delivered at your doorstep in {location},
+        <strong>home gym setup</strong>, we{"'"}ve got you covered. Get top
+        brands and reliable equipment delivered at your doorstep in {location},
         starting under $500!
       </p>
 
@@ -1147,7 +1147,7 @@ function subcat17({ location, store }) {
       </ul>
 
       <p>
-        Don't wait! Build your dream gym space with{" "}
+        Don{"'"}t wait! Build your dream gym space with{" "}
         <strong>home gym equipment rental in {location}</strong> today. Achieve
         your fitness goals without the commitment of ownership!
       </p>
