@@ -157,7 +157,8 @@ function ImagesComp({ filteredproducts, token }) {
             imagesScrollRef.current.scrollLeft -=
               imagesScrollRef.current.clientWidth;
           }}
-          aria-label="Left" title="Left"
+          aria-label="Left"
+          title="Left"
         >
           <MdKeyboardArrowLeft />
         </button>
@@ -169,7 +170,8 @@ function ImagesComp({ filteredproducts, token }) {
             imagesScrollRef.current.scrollLeft +=
               imagesScrollRef.current.clientWidth;
           }}
-          aria-label="Right" title="Right"
+          aria-label="Right"
+          title="Right"
         >
           <MdKeyboardArrowLeft />
         </button>
@@ -199,6 +201,7 @@ const MainImage = ({ image, name }) => {
         height={754}
         width={754}
         loading="lazy"
+        unoptimized
         onLoad={() => {
           setloading((pre) => ({ ...pre, effect: false }));
           setTimeout(() => {

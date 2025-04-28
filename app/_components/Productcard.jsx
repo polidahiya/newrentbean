@@ -46,7 +46,7 @@ function Productcard({
           sizes="(max-width: 768px) 176px, (max-width: 1024px) 240px, 300px"
           className="min-w-full min-h-full  object-cover object-center  scale-100 lg:group-hover:scale-105 lg:duration-300"
           loading="lazy"
-          unoptimized
+          // unoptimized
         />
         <div className="absolute top-2 left-1 md:top-2 md:left-2 flex flex-col items-start gap-1 text-[8px] md:text-sm  text-white">
           {/* available */}
