@@ -1,15 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import Imagescomp from "./_comps/Imagescomp";
+import ImagesComp from "./_comps/Imagescomp";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
-import { categorylist, domain } from "@/app/commondata";
+import { categorylist ,domain,mail} from "@/app/commondata";
 import { notFound } from "next/navigation";
 import Promices from "@/app/_components/Homepage/Promices";
 import { cookies } from "next/headers";
 import Similarproducts from "./_comps/Similarproducts";
 import FAQSection from "@/app/_components/Faq";
 import Details from "./_comps/Details";
-import { mail } from "@/app/commondata";
 import Productdesc from "./_comps/Productdesc";
 import Alongwith from "./_comps/Alongwith";
 import Breadcrumbs from "../_components/Breadcrumbs";
@@ -87,6 +86,7 @@ async function Productpage({
       worstRating: "1",
     },
   };
+
   return (
     <>
       <article>
@@ -104,7 +104,7 @@ async function Productpage({
           />
         </div>
         <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2  gap-5">
-          <Imagescomp filteredproducts={filteredProduct} token={token} />
+          <ImagesComp filteredproducts={filteredProduct} token={token} />
           <Details
             filteredProduct={filteredProduct}
             location={location}

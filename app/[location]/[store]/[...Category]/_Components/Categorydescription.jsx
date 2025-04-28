@@ -10,6 +10,7 @@ const categoryComponents = {
 
 const subcatcomponents = {
   "Fitness-Machines": subcat1,
+  "Gym-Equipments": subcat17,
   "Medical-Equipments": subcat2,
   Entertainment: subcat3,
   Laptops: subcat4,
@@ -517,9 +518,9 @@ function subcat4({ location, store }) {
           , tailored for work,
           <Link href={`/${location}/${store}/Search?query=gaming`}>gaming</Link>
           , or studies. Score unbeatable deals on{" "}
-          <strong>refurbished laptops under 15000 and 20000</strong>,
-          outshining platforms like Flipkart, Amazon, and OLX, or find local
-          gems in {location}. Our <strong>used laptops in {location}</strong>
+          <strong>refurbished laptops under 15000 and 20000</strong>, outshining
+          platforms like Flipkart, Amazon, and OLX, or find local gems in{" "}
+          {location}. Our <strong>used laptops in {location}</strong>
           under 5000 and 10000 come with <strong>1-year warranties</strong>,
           rigorous quality checks, and like-new performance. Searching for{" "}
           <strong>refurbished gaming laptops</strong> or budget-friendly options
@@ -1031,6 +1032,124 @@ function subcat16({ location, store }) {
         at affordable prices. Whether you need{" "}
         <strong>chairs on rent for a party</strong> or a{" "}
         <strong>chair on rent in Delhi</strong>, we have you covered.
+      </p>
+    </div>
+  );
+}
+
+function subcat17({ location, store }) {
+  if (store == "Buy") {
+    return (
+      <div className="text">
+        <h1>Buy Gym Equipment in {location} – Build Your Ultimate Home Gym</h1>
+
+        <p>
+          Looking for a trusted <strong>gym equipment shop near you</strong> in{" "}
+          {location}? Discover a wide range of{" "}
+          <strong>home gym equipment</strong> perfect for strength training,
+          cardio, and fitness routines. We offer everything you need, including{" "}
+          <strong>dumbbells sets (5kg, 10kg, 20kg)</strong> and sturdy{" "}
+          <strong>barbell rods</strong> (5 feet and 7 feet).
+        </p>
+
+        <h3>Top Products You Can Buy:</h3>
+        <ul>
+          <li>
+            <strong>Home gym equipment all-in-one</strong> setups
+          </li>
+          <li>
+            <strong>Gym weight racks</strong> for home gyms
+          </li>
+          <li>
+            <strong>Weight holders</strong> and storage solutions
+          </li>
+          <li>
+            <strong>Decathlon gym equipment</strong> and premium brands
+          </li>
+          <li>
+            <strong>Multi-purpose gym storage racks</strong> to organize your
+            weights
+          </li>
+        </ul>
+
+        <p>
+          Wondering <strong>what is the weight of a rod in the gym</strong>? We
+          stock gym rods weighing <strong>20 kg</strong> and provide complete
+          details to match your training needs. Get durable gym rods with or
+          without plates — ideal for all fitness levels.
+        </p>
+
+        <h3>Why Buy From Us?</h3>
+        <ul>
+          <li>Affordable gym equipment under $500</li>
+          <li>Quality-tested products from top brands</li>
+          <li>Expert advice to build your perfect home gym</li>
+          <li>Fast delivery and setup assistance in {location}</li>
+        </ul>
+
+        <p>
+          Invest in your fitness journey today with the best{" "}
+          <strong>gym equipment in {location}</strong>. Create a space where
+          goals are crushed and dreams are built — starting right from your
+          home!
+        </p>
+      </div>
+    );
+  }
+  return (
+    <div className="text">
+      <h1>
+        Rent Gym Equipment in {location} – Affordable and Flexible Options
+      </h1>
+
+      <p>
+        Looking to set up a fitness zone at home in {location} without a heavy
+        investment? We offer premium <strong>gym equipment for rent</strong> at
+        unbeatable prices. Choose from our wide range of{" "}
+        <strong>dumbbell gym equipment</strong>, including{" "}
+        <strong>dumbbell sets of 5kg, 10kg, and 20kg</strong> — perfect for
+        beginners and pros alike.
+      </p>
+
+      <h3>Our Rental Collection Includes:</h3>
+      <ul>
+        <li>
+          <strong>Home gym equipment all-in-one</strong> packages
+        </li>
+        <li>
+          <strong>Barbell rods</strong> — available in 5 feet and 7 feet sizes
+        </li>
+        <li>
+          <strong>Gym rods with plates</strong> and{" "}
+          <strong>weight holders</strong>
+        </li>
+        <li>
+          <strong>Multi-purpose gym storage racks</strong> for easy organization
+        </li>
+        <li>
+          <strong>Decathlon gym equipment</strong> and other top brands
+        </li>
+      </ul>
+
+      <p>
+        Whether you need a simple <strong>dumbbell rack</strong> or a complete{" "}
+        <strong>home gym setup</strong>, we've got you covered. Get top brands
+        and reliable equipment delivered at your doorstep in {location},
+        starting under $500!
+      </p>
+
+      <h3>Why Rent From Us?</h3>
+      <ul>
+        <li>Low upfront cost</li>
+        <li>Flexible rental plans</li>
+        <li>Quick delivery and pickup</li>
+        <li>Well-maintained, sanitized gym equipment</li>
+      </ul>
+
+      <p>
+        Don't wait! Build your dream gym space with{" "}
+        <strong>home gym equipment rental in {location}</strong> today. Achieve
+        your fitness goals without the commitment of ownership!
       </p>
     </div>
   );
