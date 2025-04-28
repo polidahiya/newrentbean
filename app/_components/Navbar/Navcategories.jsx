@@ -4,6 +4,7 @@ import { categorylist } from "@/app/commondata";
 import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa";
 import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 
 function Navcategories({ category, location, isrentalstore }) {
   return (
@@ -21,12 +22,14 @@ function Navcategories({ category, location, isrentalstore }) {
                   : "lg:group-hover:bg-slate-100"
               }`}
             >
-              <Image
+              <Nextimage
                 height="15"
                 width="15"
                 src={item.image}
                 alt={key}
-                className={`h-4 aspect-square ${category == key && "brightness-0 invert"}`}
+                className={`h-4 aspect-square ${
+                  category == key && "brightness-0 invert"
+                }`}
               />
               {key.replace(/-/g, " ")}
             </Link>
@@ -48,7 +51,7 @@ function Navcategories({ category, location, isrentalstore }) {
                       prefetch={false}
                       className="p-1 flex items-center gap-2 lg:w-52 text-sm  lg:hover:bg-bg1 group/link"
                     >
-                      <Image
+                      <Nextimage
                         src={subcat?.image}
                         alt={subcat?.name}
                         height={40}
