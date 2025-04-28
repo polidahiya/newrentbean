@@ -18,6 +18,7 @@ function Page() {
     subcat: "Fitness-Machines",
     tags: [],
     name: "",
+    brand: "Rentbean",
     available: true,
     trash: false,
     sku: "",

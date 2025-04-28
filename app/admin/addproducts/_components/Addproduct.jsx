@@ -125,6 +125,13 @@ function Addandupdateproduct({
         onchange={(e) => handleChange("sku", e.target.value)}
         clear={() => handleClearField("sku")}
       />
+      {/* SKU ID */}
+      <Standardinputfield
+        titlename="Brand (*brand name eg-Dell, Hp etc or Rentbean)"
+        value={data.brand}
+        onchange={(e) => handleChange("brand", e.target.value)}
+        clear={() => handleClearField("brand")}
+      />
 
       {/* Max Quantity */}
       <Standardinputfield

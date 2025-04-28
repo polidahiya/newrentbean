@@ -25,6 +25,11 @@ export const categorylist = {
         subcat: "Treadmills | Recmbent bike | Eliptical Crosstrainers",
       },
       {
+        image: "/logo&ui/categories/subcategories/gumequipments.jpg",
+        name: "Gym-Equipments",
+        subcat: "Weights | Rods",
+      },
+      {
         image: "/logo&ui/categories/subcategories/medicalequipment.jpg",
         name: "Medical-Equipments",
         subcat: "Hospital Beds | Walking Aids",

@@ -52,13 +52,13 @@ async function Productpage({
 
     description: filteredProduct.desc?.[0] || "Rent flexibly with - @Rentbean",
 
-    sku: store+filteredProduct?.sku,
-    productID: filteredProduct?._id+"_"+store,
+    sku: store + filteredProduct?.sku,
+    productID: filteredProduct?._id + "_" + store,
     category: filteredProduct?.category,
 
     brand: {
       "@type": "Brand",
-      name: "Rentbean",
+      name: filteredProduct?.brand || "Rentbean",
     },
 
     offers: {
