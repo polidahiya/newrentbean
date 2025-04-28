@@ -4,7 +4,7 @@ import { Addtocartbuttons } from "./Publiccomps";
 import { AppContextfn } from "@/app/Context";
 import Tenure from "./Tenure";
 import Dateselector from "./Dateselector";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Switchstore from "./Switchstore";
 
 function Details({ filteredProduct, store, location, isrentalstore }) {
@@ -208,14 +208,14 @@ const Deliverytrucksvg = () => {
 const Notavailableforstore = ({ title }) => {
   return (
     <div className="my-10 text-center">
-      <Image
+      <Nextimage
         src="/logo&ui/emoji-sad.png"
         alt="Sad-image-png"
         height={56}
         width={56}
         className="aspect-square w-14 mx-auto opacity-75"
         loading="lazy"
-      ></Image>
+      ></Nextimage>
       <p className="mt-5">{title}</p>
     </div>
   );

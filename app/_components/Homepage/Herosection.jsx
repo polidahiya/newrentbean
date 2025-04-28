@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import { FaAngleLeft } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -66,7 +66,7 @@ function PosterAdds({ location, store }) {
                   prefetch={false}
                   className="relative h-full w-full block"
                 >
-                  <Image
+                  <Nextimage
                     className="h-full w-full object-cover rounded-3xl lg:rounded-none p-2 lg:p-0"
                     src={item?.img}
                     alt={item?.title}

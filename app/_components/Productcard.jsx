@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import { FiClock } from "react-icons/fi";
 
 function Productcard({
@@ -39,14 +39,13 @@ function Productcard({
       prefetch={false}
     >
       <div className="relative aspect-square w-full overflow-hidden">
-        <Image
+        <Nextimage
           src={image}
           alt={name}
           fill
           sizes="(max-width: 768px) 176px, (max-width: 1024px) 240px, 300px"
           className="min-w-full min-h-full  object-cover object-center  scale-100 lg:group-hover:scale-105 lg:duration-300"
           loading="lazy"
-          // unoptimized
         />
         <div className="absolute top-2 left-1 md:top-2 md:left-2 flex flex-col items-start gap-1 text-[8px] md:text-sm  text-white">
           {/* available */}

@@ -1,5 +1,5 @@
 import { AppContextfn } from "@/app/Context";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import { Deleteproduct } from "../Serveraction";
 import { FaEdit } from "react-icons/fa";
 import { IoIosCopy } from "react-icons/io";
@@ -99,7 +99,7 @@ const Producttabularform = ({
                 </td>
                 <td className="px-4 py-2  text-sm  text-gray-600 border-b">
                   {item.images && item.images.length > 0 ? (
-                    <Image
+                    <Nextimage
                       src={item.images[0]}
                       alt={item.name || "Product Image"}
                       width={300}

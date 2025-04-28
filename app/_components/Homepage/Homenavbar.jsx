@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Logedinusermenu from "../Navbar/_comps/Logedinusermenu";
 import { Cartlink } from "../Navbar/Navbar";
 
@@ -24,14 +24,14 @@ export default function Homenavbar({ userdata, token }) {
   ];
   return (
     <nav className="absolute top-0 left-0 h-[40px] md:h-[60px] w-full flex items-center justify-between px-[10px] md:px-10 mt-2 md:mt-0 md:py-2 z-20 ">
-      <Image
+      <Nextimage
         className="h-[30px] w-auto md:h-[40px] "
         src="/logo&ui/3dlogo.png"
         alt="Rentbean logo"
         height={50}
         width={200}
         priority
-      ></Image>
+      ></Nextimage>
       <div className="absolute hidden md:flex top-0 left-[50%] -translate-x-1/2 h-full items-center justify-center gap-4 lg:gap-12 text-white">
         {list.map((item, i) => (
           <Link

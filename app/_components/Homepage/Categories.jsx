@@ -1,7 +1,7 @@
 import React from "react";
 import { categorylist } from "@/app/commondata";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 
 function Categories({ location, store }) {
   return (
@@ -16,7 +16,7 @@ function Categories({ location, store }) {
               prefetch={false}
               title={key}
             >
-              <Image
+              <Nextimage
                 height={20}
                 width={20}
                 className="h-[30%] md:h-[20px]"

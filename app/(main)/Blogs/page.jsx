@@ -1,6 +1,6 @@
 import React from "react";
 import { Cachedblogs } from "@/app/_serveractions/Getcachedata";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 
 async function page() {
@@ -29,13 +29,12 @@ async function page() {
               className="group relative w-full md:max-w-[300px] bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div className="relative overflow-hidden rounded-t-lg">
-                <Image
+                <Nextimage
                   className="rounded-t-lg w-full aspect-[4/3] object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   src={firstImage}
                   height={300}
                   width={300}
                   alt="Blog Image"
-                  
                 />
               </div>
               <div className="p-4">

@@ -1,17 +1,17 @@
 import React from "react";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 
 function Productnotfound({ location, store, category, subcat }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[50vh]">
-      <Image
+      <Nextimage
         className="brightness-110"
         src="/logo&ui/product_not_found.jpeg"
         alt="no product found image"
         width={300}
         height={300}
-      ></Image>
+      ></Nextimage>
       <div>
         <span className="text-cyan-500">No products to {store} - </span>
         <Link

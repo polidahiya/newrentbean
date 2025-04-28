@@ -5,7 +5,7 @@ import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
 import "swiper/css";
 import Link from "next/link";
 import { direactsearchlist } from "@/app/commondata";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 
 export default function DireactSearchListSwiper({ location, store }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -105,7 +105,7 @@ export default function DireactSearchListSwiper({ location, store }) {
       >
         {filteredlist.map((item, index) => (
           <SwiperSlide key={index} className="aspect-[4/3] md:aspect-video">
-            <Image
+            <Nextimage
               src={item?.image}
               alt={item?.name}
               className={`object-contain w-full h-full duration-[1.6s] ${
@@ -114,9 +114,8 @@ export default function DireactSearchListSwiper({ location, store }) {
               loading="lazy"
               width={638}
               height={358}
-              unoptimized
               //  data-swiper-parallax-scale="0.5"
-            ></Image>
+            ></Nextimage>
           </SwiperSlide>
         ))}
         <div className="absolute w-full aspect-square top-0 -translate-y-1/2 right-0 translate-x-1/2 bg-theme rounded-full scale-x-125 scale-y-150"></div>
@@ -140,7 +139,7 @@ export default function DireactSearchListSwiper({ location, store }) {
               }`}
             ></span>
             <span className="hidden lg:group-hover:block absolute top-0 -translate-y-full left-1/2 -translate-x-1/2 aspect-square w-20 border bg-white rounded-md overflow-hidden">
-              <Image
+              <Nextimage
                 src={_?.image}
                 alt={_?.name}
                 className="h-full w-full object-contain"

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { likeproduct, isliked } from "@/app/_serveractions/Likedproducts";
@@ -194,14 +194,13 @@ const MainImage = ({ image, name }) => {
 
   return (
     <div className="relative  min-w-[100%] h-full w-full p-px snap-start snap-always overflow-hidden">
-      <Image
+      <Nextimage
         className="min-w-full w-full h-full object-contain"
         src={hasError ? fallbackImage : image}
         alt={name}
         height={754}
         width={754}
         loading="lazy"
-        unoptimized
         onLoad={() => {
           setloading((pre) => ({ ...pre, effect: false }));
           setTimeout(() => {
@@ -238,7 +237,7 @@ const MiniImage = ({ image, alt, onClick, isActive }) => {
       }`}
       onClick={onClick}
     >
-      <Image
+      <Nextimage
         className={`h-full w-full aspect-square object-cover bg-white`}
         src={hasError ? fallbackImage : image}
         alt={alt}

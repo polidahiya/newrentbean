@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 // import { RiStarSLine } from "react-icons/ri";
 import {
   FaCcVisa,
@@ -46,13 +46,13 @@ async function Footer() {
     <footer className="bg-bg1 px-8 md:px-12 p-5 pt-8 lg:pt-5 text-sm ">
       <section className=" flex gap-12 flex-col md:flex-row">
         <div className="flex-1 flex flex-col items-start">
-          <Image
+          <Nextimage
             src="/logo&ui/3dlogo.png"
             alt="logo image"
             width={200}
             height={52}
             className="h-10 w-auto"
-          ></Image>
+          ></Nextimage>
           <p className="mt-8  mb-5 text-justify">
             {
               "We provide high-quality rentals and sales for furniture, electronics, fitness gear, baby care, and party items. Our goal is to offer flexible, affordable solutions, making premium products accessible—whether you choose to rent or buy—without ownership hassles."

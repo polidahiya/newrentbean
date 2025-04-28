@@ -8,7 +8,8 @@ import React, { useState } from "react";
 import { orderstages } from "@/app/commondata";
 import { AppContextfn } from "@/app/Context";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
+
 import { fixedselectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 
 export default function Publicpage({ res }) {
@@ -88,7 +89,7 @@ const Historyproductcard = ({ item, product, index }) => {
       }`}
     >
       <div className="flex-shrink-0">
-        <Image
+        <Nextimage
           src={product?.image}
           alt={product?.name}
           loading="lazy"

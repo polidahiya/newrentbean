@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import { FaDollyFlatbed } from "react-icons/fa";
 import { RiBloggerFill } from "react-icons/ri";
 import { IoBagAdd } from "react-icons/io5";
@@ -27,7 +27,7 @@ function Adminnavbar() {
   return (
     <nav className="sticky top-0 flex items-center gap-1 md:gap-2 h-[50px] shadow-md p-[7px] px-[10px] lg:px-10 z-20 bg-bg1">
       <Link href="/Delhi">
-        <Image src="/logo&ui/3dlogo.png" alt="logo" height={40} width={150} />
+        <Nextimage src="/logo&ui/3dlogo.png" alt="logo" height={40} width={150} />
       </Link>
       {navLinks.map(({ href, label, logo }, index) => (
         <NavLink key={href} href={href} isFirst={index === 0}>

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Parallax, Controller } from "swiper/modules";
 import Effecttext from "./Effecttext";
 import "swiper/css";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 
 const eventsdata = [
   {
@@ -192,14 +192,14 @@ export default function DireactSearchListSwiper() {
               }}
               data-swiper-parallax-scale="0.1"
             >
-              <Image
+              <Nextimage
                 data-swiper-parallax-scale="1.9"
                 src={item?.image}
                 alt={item?.alt}
                 className={`object-cover w-full h-full`}
                 loading="lazy"
                 fill
-              ></Image>
+              ></Nextimage>
             </div>
           </SwiperSlide>
         ))}
@@ -277,7 +277,7 @@ export default function DireactSearchListSwiper() {
               }`}
             ></span>
             <span className="hidden lg:group-hover:block absolute top-0 -translate-y-full left-1/2 -translate-x-1/2 aspect-square w-20 border bg-white rounded-md overflow-hidden">
-              <Image
+              <Nextimage
                 src={_?.image}
                 alt={_?.alt}
                 className="h-full w-full object-contain"

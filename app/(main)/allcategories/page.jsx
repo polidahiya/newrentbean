@@ -1,7 +1,7 @@
 import React from "react";
 import { categorylist } from "@/app/commondata";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 
 async function page({ searchParams }) {
   const { location, store } = await searchParams;
@@ -33,13 +33,13 @@ async function page({ searchParams }) {
                   prefetch={false}
                   replace
                 >
-                  <Image
+                  <Nextimage
                     src={subcat?.image}
                     alt={subcat?.name}
                     height={100}
                     width={100}
                     className="w-24 aspect-square object-contain"
-                  ></Image>
+                  ></Nextimage>
                   <p className="text-center text-sm  mt-1">
                     {subcat?.name?.replace(/-/g, " ")}
                   </p>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Cachedblogs } from "@/app/_serveractions/Getcachedata";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 // import { LuArrowRightCircle } from "react-icons/lu";
 
@@ -37,7 +37,7 @@ async function Blogscomp() {
               key={i}
               className="flex flex-col md:flex-row items-stretch gap-5 p-5 bg-white shadow-md mt-5 "
             >
-              <Image
+              <Nextimage
                 src={firstImage}
                 className=" md:h-[250px]  w-full md:w-fit aspect-[4/3]  object-cover object-center bg-bg1"
                 alt="Blog Image"

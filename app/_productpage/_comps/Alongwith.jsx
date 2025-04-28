@@ -1,6 +1,6 @@
 import React from "react";
 import { boxoptions } from "@/app/commondata";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import { FaBoxOpen } from "react-icons/fa";
 
 function Alongwith({ alongwith }) {
@@ -16,7 +16,7 @@ function Alongwith({ alongwith }) {
             key={i}
             className="relative flex flex-col items-center justify-center w-32 border overflow-hidden rounded-md"
           >
-            <Image
+            <Nextimage
               height={126}
               width={126}
               src={boxoptions[item]?.img}

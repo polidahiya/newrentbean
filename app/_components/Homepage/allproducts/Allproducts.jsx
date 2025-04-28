@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 import Wrapper from "./Wrapper";
 
@@ -44,7 +44,7 @@ function Imagecard({ product, i, location, store, isrentalstore }) {
         prefetch={false}
       >
         <div className="relative w-full aspect-square overflow-hidden">
-          <Image
+          <Nextimage
             src={images[0]}
             alt={name}
             width={230}

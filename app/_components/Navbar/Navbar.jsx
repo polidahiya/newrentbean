@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Navcategories from "./Navcategories";
 import Logedinusermenu from "./_comps/Logedinusermenu";
 import { FaCartShopping } from "react-icons/fa6";
@@ -44,14 +44,14 @@ function Navbar({ params, productsname, token, userdata }) {
             href={`/${location?.location}/${isrentalstore ? "Rent" : "Buy"}`}
             prefetch={false}
           >
-            <Image
+            <Nextimage
               className="w-auto h-full"
               src="/logo&ui/3dlogo.png"
               alt="Rentbean logo"
               height={50}
               width={200}
               priority
-            ></Image>
+            ></Nextimage>
           </Link>
           {/* location */}
           <button
@@ -170,14 +170,14 @@ export const Cartlink = () => {
                       className="flex gap-2 border-b p-2 bg-white"
                       prefetch={false}
                     >
-                      <Image
+                      <Nextimage
                         className="min-w-[100px] aspect-square rounded-sm object-cover bg-blend-multiply"
                         src={item?.image}
                         alt={item?.name}
                         quality={10}
                         width={100}
                         height={100}
-                      ></Image>
+                      ></Nextimage>
                       <div className="flex flex-col">
                         <h3 className="line-clamp-2 text-sm  font-semibold">
                           {item?.name}
@@ -243,13 +243,13 @@ export const Cartlink = () => {
             </>
           ) : (
             <div className="flex items-center px-5">
-              <Image
+              <Nextimage
                 src="/no-cart.png"
                 alt="Empty cart image"
                 height={100}
                 width={100}
                 className="w-[100px]"
-              ></Image>
+              ></Nextimage>
               <p className="text-sm  text-center">
                 Your Cart is Empty, Add Some Products.
               </p>

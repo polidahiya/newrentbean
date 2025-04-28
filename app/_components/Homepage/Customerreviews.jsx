@@ -7,9 +7,7 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
-import Image from "next/image";
-const imageadd =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0RpPXotKjdoXstCxAVIqZCpCdmFYR_QIcSQ&s";
+import Nextimage from "@/app/_components/Nextimage";
 
 function Customerreviews() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -115,7 +113,7 @@ const Review1 = () => {
   return (
     <div className="pl-10 drop-shadow-md">
       <div className="relative p-5 pl-12 rounded-xl space-y-1 bg-white">
-        <Image
+        <Nextimage
           height={80}
           width={80}
           src="/logo&ui/reviewers/client2.png"
@@ -143,7 +141,7 @@ const Review2 = () => {
   return (
     <div className="pr-10 mt-7 drop-shadow-md">
       <div className="relative p-5 pr-12 rounded-xl space-y-1 bg-white">
-        <Image
+        <Nextimage
           height={80}
           width={80}
           src="/logo&ui/reviewers/client4.png"
@@ -172,7 +170,7 @@ const Review3 = () => {
   return (
     <div className="p-7 pt-16 mt-2">
       <div className="relative p-5 pt-20 rounded-3xl shadow-md space-y-2 bg-white">
-        <Image
+        <Nextimage
           height={128}
           width={128}
           src="/logo&ui/reviewers/client3.png"
@@ -192,7 +190,7 @@ const Review3 = () => {
           on time. Customer support was also very responsive. Highly
           recommended!&#34;
         </p>
-        <Image
+        <Nextimage
           height={80}
           width={150}
           src="/logo&ui/reviewers/vishal_signature.png"
@@ -207,7 +205,7 @@ const Review4 = () => {
   return (
     <div className="pr-10">
       <div className="relative p-5 pr-12 rounded-xl drop-shadow-md space-y-1 bg-white">
-        <Image
+        <Nextimage
           height={80}
           width={80}
           src="/logo&ui/reviewers/client33.jpg"
@@ -236,7 +234,7 @@ const Review4 = () => {
 const Review5 = () => {
   return (
     <div className="relative flex gap-1 mt-7 p-3 rounded-full bg-white shadow-md">
-      <Image
+      <Nextimage
         height={128}
         width={128}
         src="/logo&ui/reviewers/client44.png"
@@ -274,7 +272,7 @@ const Review6 = () => {
         </p>
       </div>
       <div className="flex items-center justify-center gap-2 p-5 bg-slate-100 mt-auto">
-        <Image
+        <Nextimage
           height={40}
           width={40}
           src="/logo&ui/reviewers/client5.png"
@@ -293,7 +291,7 @@ const Review7 = () => {
   return (
     <div className="pt-14 pl-5 drop-shadow-md">
       <div className="relative p-5 pl-20 bg-white rounded-3xl ">
-        <Image
+        <Nextimage
           height={120}
           width={80}
           src="/logo&ui/reviewers/client.jpg"
@@ -321,7 +319,7 @@ const Review7 = () => {
 const Review8 = () => {
   return (
     <div className="relative mt-14 flex flex-col bg-white rounded-3xl drop-shadow-md">
-      <Image
+      <Nextimage
         height={80}
         width={80}
         src="/logo&ui/reviewers/clientshivani.jpg"
@@ -367,7 +365,7 @@ const Review9 = () => {
         </p>
         <div className="flex justify-end">
           <div>
-            <Image
+            <Nextimage
               height={80}
               width={80}
               src="/logo&ui/reviewers/signature1.png"
@@ -385,7 +383,7 @@ const Review9 = () => {
           className="absolute top-full right-20 w-10 aspect-square bg-white"
           style={{ clipPath: "polygon(0 0, 100% 52%, 70% 0)" }}
         ></div>
-        <Image
+        <Nextimage
           height={80}
           width={80}
           src="/logo&ui/reviewers/client1.png"

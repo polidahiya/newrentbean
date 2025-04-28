@@ -4,7 +4,7 @@ import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 import Link from "next/link";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 
 async function page({ params }) {
   const blogs = await Cachedblogs();
@@ -53,7 +53,7 @@ async function page({ params }) {
               if (item?.content instanceof File) image = item?.preview;
               else image = item?.content;
               return (
-                <Image
+                <Nextimage
                   key={i}
                   src={image}
                   height={300}
@@ -94,7 +94,7 @@ function Showblogs({ blogs }) {
               key={i}
               className="group rounded-xl shadow-md p-2 min-w-64 md:min-w-full"
             >
-              <Image
+              <Nextimage
                 className="w-full aspect-video rounded-md object-cover object-center bg-bg1"
                 height={300}
                 width={500}

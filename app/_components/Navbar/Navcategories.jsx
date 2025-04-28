@@ -3,7 +3,6 @@ import React from "react";
 import { categorylist } from "@/app/commondata";
 import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa";
-import Image from "next/image";
 import Nextimage from "@/app/_components/Nextimage";
 
 function Navcategories({ category, location, isrentalstore }) {

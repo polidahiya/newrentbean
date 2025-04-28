@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
+import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 import { AiOutlineDelete } from "react-icons/ai";
 import { AppContextfn } from "@/app/Context";
@@ -66,7 +66,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
           href={item?.productlink}
           className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
         >
-          <Image
+          <Nextimage
             src={imgSrc}
             alt={item.name}
             height={100}
@@ -134,7 +134,8 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
               <button
                 className="h-full aspect-square rounded-md border border-slate-300"
                 onClick={handleDecrement}
-                aria-label="Descresase" title="Descrease"
+                aria-label="Descresase"
+                title="Descrease"
               >
                 -
               </button>
@@ -144,7 +145,8 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
               <button
                 className="h-full aspect-square rounded-md border border-slate-300"
                 onClick={handleIncrement}
-                aria-label="Increase" title="Increase"
+                aria-label="Increase"
+                title="Increase"
               >
                 +
               </button>
@@ -160,7 +162,8 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
                     cartproductid: cartproductid,
                   });
                 }}
-                aria-label="Select Tenure" title="Select Tenure"
+                aria-label="Select Tenure"
+                title="Select Tenure"
               >
                 {finaltenure[item?.selectedtenure]?.time}{" "}
                 {finaltenure[item?.selectedtenure]?.type}
@@ -171,7 +174,8 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
             <button
               className="h-full flex items-center gap-1 border border-slate-300 px-5 rounded-md"
               onClick={handleRemoveProduct}
-              aria-label="Remove" title="Remove"
+              aria-label="Remove"
+              title="Remove"
             >
               <AiOutlineDelete className="aspect-square" />
               <span className="hidden md:block">Remove</span>
