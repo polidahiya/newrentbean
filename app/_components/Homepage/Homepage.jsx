@@ -48,6 +48,11 @@ export default async function Homepage({
           location={location}
           store={store}
         />
+        {/* <img
+          src="https://polidahiya.github.io/rentbeanimages/Picsart_25-04-28_22-55-56-222.jpg"
+          alt=""
+          className="w-full"
+        /> */}
         <DirectSearchcomps location={location} store={store} />
         <Roadmap />
         <Customerreviews />

@@ -15,14 +15,19 @@ function Showevents() {
             }s ease-in-out forwards`,
           }}
         >
-          <h2 className="text-xl font-semibold mb-2">
+          <h2 className="relative text-xl font-semibold mb-2 rounded-xl pb-5 pt-20 lg:pt-0 px-5 lg:px-0  overflow-hidden text-white lg:text-inherit">
             <Linkeffect
               title={categoryname.replace(/-/g, " ")}
               linkto={`/eventplanners/${categoryname}`}
             />
+            <img
+              src={category?.images[1]}
+              alt={categoryname}
+              className="absolute inset-0 h-full w-full object-cover object-center -z-10 brightness-50 lg:hidden"
+            />
           </h2>
 
-          <div className="space-y-3 ml-2 text-sm ">
+          <div className="space-y-3 ml-2 text-sm hidden lg:block">
             {Object.entries(category.subcat).map(([subcatname, subcat], j) => (
               <div
                 key={j}

@@ -30,8 +30,7 @@ function Categories({ location, store }) {
           );
         })}
       </div>
-    
-    
+
     </div>
   );
 }
