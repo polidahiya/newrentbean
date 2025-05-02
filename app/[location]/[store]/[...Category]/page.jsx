@@ -276,6 +276,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
         openGraph: {
           images: ogImage,
         },
+        alternates: {
+          canonical: `${domain}/Delhi/${store}/${category}/${subcat}/${productid}`,
+        },
       };
     }
   }
@@ -295,6 +298,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
         openGraph: {
           images: subCategoryData ? `${domain}${subCategoryData.image}` : null,
         },
+        alternates: {
+          canonical: `${domain}/Delhi/${store}/${category}/${subcat}`,
+        },
       };
     }
   }
@@ -313,6 +319,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
           `${store} ${categoryData?.name} and buy ${categoryData?.name} at best price in ${location}`,
         openGraph: {
           images: `${domain}${categoryData.image}`,
+        },
+        alternates: {
+          canonical: `${domain}/Delhi/${store}/${category}`,
         },
       };
     }

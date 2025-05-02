@@ -15,15 +15,17 @@ function Showevents() {
             }s ease-in-out forwards`,
           }}
         >
-          <h2 className="relative text-xl font-semibold mb-2 rounded-xl pb-5 pt-20 lg:pt-0 px-5 lg:px-0  overflow-hidden text-white lg:text-inherit">
+          <h2 className="relative text-xl font-semibold mb-2 rounded-xl overflow-hidden lg:overflow-visible text-white lg:text-inherit">
             <Linkeffect
               title={categoryname.replace(/-/g, " ")}
               linkto={`/eventplanners/${categoryname}`}
+              className="relative block group lg:w-fit pb-5 lg:pb-0 pt-20 lg:pt-0 px-5 lg:px-0 lg:mb-5"
             />
             <img
               src={category?.images[1]}
               alt={categoryname}
               className="absolute inset-0 h-full w-full object-cover object-center -z-10 brightness-50 lg:hidden"
+              fetchPriority="high"
             />
           </h2>
 
@@ -68,9 +70,9 @@ function Showevents() {
   );
 }
 
-const Linkeffect = ({ title, linkto }) => {
+const Linkeffect = ({ title, linkto, ...props }) => {
   return (
-    <Link href={linkto} className="relative block group w-fit">
+    <Link href={linkto} className="relative block group w-fit" {...props}>
       {title}
       <span className="block absolute top-full left-0 h-0.5 w-0 lg:group-hover:w-full bg-eventtheme duration-300"></span>
     </Link>

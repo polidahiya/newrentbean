@@ -1,8 +1,13 @@
+"use client";
 import React from "react";
 import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 function Productnotfound({ location, store, category, subcat }) {
+  const searchParams = useSearchParams();
+  const query = searchParams.toString();
+  const queryString = query ? `?${query}` : "";
   return (
     <div className="flex flex-col items-center justify-center min-h-[50vh]">
       <Nextimage
@@ -17,7 +22,7 @@ function Productnotfound({ location, store, category, subcat }) {
         <Link
           href={`/${location}/${store == "Buy" ? "Rent" : "Buy"}/${category}${
             subcat ? `/${subcat}` : ""
-          }`}
+          }${queryString}`}
           className="lg:hover:text-theme"
           aria-label="Switch Store"
           title="Switch Store"

@@ -16,6 +16,7 @@ function Navbar() {
             style={{
               animation: `movedownanimation 0.6s ease-in-out forwards`,
             }}
+            fetchPriority="high"
           />
           <img
             src="/eventplanners/logopink.png"
@@ -24,6 +25,7 @@ function Navbar() {
             style={{
               animation: `movedownanimation 0.6s ease-in-out forwards`,
             }}
+            fetchPriority="high"
           />
         </Link>
       </div>
