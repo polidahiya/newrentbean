@@ -154,7 +154,7 @@ const Storemenu = () => {
             closestoremenu();
           }}
         >
-          {location}
+          {location?.location}
         </div>
       </div>
       <div
