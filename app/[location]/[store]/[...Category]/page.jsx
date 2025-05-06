@@ -336,6 +336,9 @@ export const generateMetadata = async ({ params, searchParams }) => {
       openGraph: {
         images: `${domain}/logo&ui/minlogo.png`,
       },
+      alternates: {
+        canonical: `${domain}/Delhi/${store}/Search?query=${searchQuery}`,
+      },
     };
   }
 

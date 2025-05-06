@@ -13,6 +13,7 @@ import Mobilenav from "../Navbar/_comps/Mobilenav";
 import Customerreviews from "./Customerreviews";
 import Roadmap from "./Roadmap";
 import DirectSearchcomps from "./DirectSearchcomps";
+import Ads1 from "./Ads1";
 
 export default async function Homepage({
   params,
@@ -40,7 +41,7 @@ export default async function Homepage({
         token={token}
         userdata={userdata}
       />
-      <div className="flex flex-col gap-16 lg:gap-20">
+      <div className="flex flex-col gap-5 lg:gap-20">
         <Herosection location={location} store={store} />
         <Categories location={location} store={store} />
         <Allproducts
@@ -48,12 +49,8 @@ export default async function Homepage({
           location={location}
           store={store}
         />
-        {/* <img
-          src="https://polidahiya.github.io/rentbeanimages/Picsart_25-04-28_22-55-56-222.jpg"
-          alt=""
-          className="w-full"
-        /> */}
         <DirectSearchcomps location={location} store={store} />
+        {/* <Ads1 /> */}
         <Roadmap />
         <Customerreviews />
         <Blogscomp />
@@ -64,9 +61,9 @@ export default async function Homepage({
           <Promices />
         </div>
         <Description location={location.replace(/-/g, " ")} store={store} />
-        <Footer />
+        <Footer store={store} location={location}/>
       </div>
-      <Mobilenav />
+      <Mobilenav store={store} location={location}/>
     </>
   );
 }

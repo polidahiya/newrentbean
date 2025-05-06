@@ -1,14 +1,10 @@
-"use client";
-import React from "react";
 import { FaSitemap } from "react-icons/fa";
 import Link from "next/link";
-import { AppContextfn } from "@/app/Context";
 
-function Sitemapbutton() {
-  const { isrentalstore } = AppContextfn();
+function Sitemapbutton({ store, location }) {
   return (
     <Link
-      href={`/Sitemap/${isrentalstore ? "Rent" : "Buy"}`}
+      href={`/Sitemap/${location}/${store}`}
       className="flex items-center gap-1"
       prefetch={false}
     >

@@ -33,7 +33,7 @@ function Banner() {
           <p className="font-semibold text-[10px] lg:text-sm text-eventtheme">
             Turn Moments into Memories
           </p>
-          <p className="text-[8px] lg:text-[10px] opacity-75">
+          <p className="text-[8px] lg:text-[10px] opacity-75 hidden lg:block">
             From grand weddings to intimate gatherings, bring your vision to
             life with creativity, precision, and passion.
           </p>

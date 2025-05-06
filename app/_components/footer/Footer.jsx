@@ -23,7 +23,7 @@ import { IoShieldHalf } from "react-icons/io5";
 // import ThemeSwitcher from "./Switchtheme";
 import Sitemapbutton from "./Sitemapbutton";
 
-async function Footer() {
+async function Footer({ store = "Rent", location = "Delhi" }) {
   const list1 = [
     { name: "About Us", link: "/About" },
     { name: "Blogs", link: "/Blogs" },
@@ -36,11 +36,14 @@ async function Footer() {
     { name: "Terms & Conditions", link: "/Terms&Conditions" },
   ];
   const list2 = [
-    { name: "Health & Fitness", link: "/Delhi/Rent/Health-&-Fitness" },
-    { name: "Electronic", link: "/Delhi/Rent/Electronic" },
-    { name: "Furniture", link: "/Delhi/Rent/Furniture" },
-    { name: "Event & Parties", link: "/Delhi/Rent/Event-&-Parties" },
-    { name: "Others", link: "/Delhi/Rent/Others" },
+    {
+      name: "Health & Fitness",
+      link: `/${location}/${store}/Health-&-Fitness`,
+    },
+    { name: "Electronic", link: `/${location}/${store}/Electronic` },
+    { name: "Furniture", link: `/${location}/${store}/Furniture` },
+    { name: "Event & Parties", link: `/${location}/${store}/Event-&-Parties` },
+    { name: "Others", link: `/${location}/${store}/Others` },
   ];
   return (
     <footer className="bg-bg1 px-8 md:px-12 p-5 pt-8 lg:pt-5 text-sm ">
@@ -99,7 +102,7 @@ async function Footer() {
           reserved.
         </p>
         <div className="h-full flex flex-1 items-center justify-center flex-wrap gap-5 text-[12px]">
-          <Sitemapbutton />
+          <Sitemapbutton store={store} location={location} />
           <PWAInstallPrompt />
           <Protectedbygoogle />
           {/* <ThemeSwitcher /> */}

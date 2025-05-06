@@ -1,4 +1,3 @@
-"use client";
 import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 import Wrapper from "./Wrapper";

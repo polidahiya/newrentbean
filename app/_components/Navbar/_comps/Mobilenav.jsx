@@ -10,17 +10,15 @@ import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import Switchstore from "./Switchstore";
 
-function Mobilenav() {
+function Mobilenav({ store = "Rent", location = "Delhi" }) {
   const path = usePathname();
   const {
     showsearch,
     setshowsearch,
     searchinputref,
-    isrentalstore,
     cart,
     isopenstoremenu,
     openstoremenu,
-    location,
   } = AppContextfn();
 
   const cartitems = Object.values(cart).filter((item) => item.added);
@@ -34,7 +32,7 @@ function Mobilenav() {
       {isopenstoremenu?.show && <Storemenu />}
       <div className="h-16 w-full flex items-center justify-around px-2 border-t sticky bottom-0 lg:hidden bg-white rounded-t-3xl z-20">
         <Link
-          href={`/${location?.location}/${isrentalstore ? "Rent" : "Buy"}`}
+          href={`/${location}/${store}`}
           prefetch={false}
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             (path == "/" ||
@@ -68,9 +66,7 @@ function Mobilenav() {
         </button>
 
         <Link
-          href={`/allcategories?location=${location?.location}&store=${
-            isrentalstore ? "Rent" : "Buy"
-          }`}
+          href={`/allcategories?location=${location}&store=${store}`}
           prefetch={false}
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             path.includes("/allcategories") && "text-theme"
@@ -110,13 +106,13 @@ function Mobilenav() {
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
             isopenstoremenu?.show && "text-theme"
           }`}
-          aria-label={isrentalstore ? "Rent" : "Buy"}
-          title={isrentalstore ? "Rent" : "Buy"}
+          aria-label={store}
+          title={store}
         >
           <MdOutlineStoreMallDirectory />
           <span className="text-xs font-semibold">
             Store{"("}
-            {isrentalstore ? "Rent" : "Buy"}
+            {store}
             {")"}
           </span>
         </button>
@@ -158,7 +154,7 @@ const Storemenu = () => {
             closestoremenu();
           }}
         >
-          {location?.location}
+          {location}
         </div>
       </div>
       <div

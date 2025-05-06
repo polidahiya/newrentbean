@@ -19,7 +19,8 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
-const SiteMap = ({ type }) => {
+async function page({ params }) {
+  const [location, store] = (await params).slug;
   const mainPages = [
     { loc: "/", label: "Home", icon: <FaHome /> },
     { loc: "/Blogs", label: "Blogs", icon: <FaBlog /> },
@@ -31,18 +32,30 @@ const SiteMap = ({ type }) => {
 
   const furnitureCategories = [
     {
-      loc: `/Delhi/${type}/Health-&-Fitness`,
+      loc: `/${location}/${store}/Health-&-Fitness`,
       label: "Health & Fitness",
       icon: <FaDumbbell />,
     },
-    { loc: `/Delhi/${type}/Electronic`, label: "Electronic", icon: <FaTv /> },
-    { loc: `/Delhi/${type}/Furniture`, label: "Furniture", icon: <FaCouch /> },
     {
-      loc: `/Delhi/${type}/Event-&-Parties`,
+      loc: `/${location}/${store}/Electronic`,
+      label: "Electronic",
+      icon: <FaTv />,
+    },
+    {
+      loc: `/${location}/${store}/Furniture`,
+      label: "Furniture",
+      icon: <FaCouch />,
+    },
+    {
+      loc: `/${location}/${store}/Event-&-Parties`,
       label: "Event & Parties",
       icon: <FaGlassCheers />,
     },
-    { loc: `/Delhi/${type}/Others`, label: "Others", icon: <FaBoxOpen /> },
+    {
+      loc: `/${location}/${store}/Others`,
+      label: "Others",
+      icon: <FaBoxOpen />,
+    },
   ];
 
   const policiesAndOthers = [
@@ -98,6 +111,6 @@ const SiteMap = ({ type }) => {
       </div>
     </div>
   );
-};
+}
 
-export default SiteMap;
+export default page;
