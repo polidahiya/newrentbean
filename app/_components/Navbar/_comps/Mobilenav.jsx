@@ -27,6 +27,20 @@ function Mobilenav({ store = "Rent", location = "Delhi" }) {
     0
   );
 
+  const highlightedPaths = [
+    "/Delhi/Rent",
+    "/Delhi/Buy",
+    "/Gurgaon/Rent",
+    "/Gurgaon/Buy",
+    "/Faridabad/Rent",
+    "/Faridabad/Buy",
+    "/Noida/Rent",
+    "/Noida/Buy",
+    "/Ghaziabad/Rent",
+    "/Ghaziabad/Buy",
+  ];
+  const isHighlighted = highlightedPaths.includes(path);
+
   return (
     <>
       {isopenstoremenu?.show && <Storemenu />}
@@ -35,13 +49,7 @@ function Mobilenav({ store = "Rent", location = "Delhi" }) {
           href={`/${location}/${store}`}
           prefetch={false}
           className={`flex-1 flex flex-col items-center gap-1 text-xl opacity-80 ${
-            (path == "/" ||
-              path == "/Gurgaon" ||
-              path == "/Delhi" ||
-              path == "/Faridabad" ||
-              path == "/Noida" ||
-              path == "/Ghaziabad") &&
-            "text-theme"
+            isHighlighted && "text-theme"
           }`}
         >
           <HiOutlineHome />

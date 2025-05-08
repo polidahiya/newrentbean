@@ -345,6 +345,9 @@ export const boxoptions = {
   "Travel Adapter": {
     img: "/logo&ui/inboximages/mobilecharger.jpg",
   },
+  Laptop: {
+    img: "/logo&ui/inboximages/laptop.jpg",
+  },
 };
 
 // months

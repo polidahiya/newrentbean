@@ -10,6 +10,8 @@ function Nextimage({ ...props }) {
       onError={() => {
         setImgError(true);
       }}
+      placeholder="blur"
+      blurDataURL="/logo&ui/default-fallback-image.png"
       unoptimized={imgError}
       {...props}
     />
