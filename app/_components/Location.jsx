@@ -4,8 +4,16 @@ import { AppContextfn } from "../Context";
 import { cities, citiesAndLocations } from "../commondata";
 import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import Nextimage from "./Nextimage";
 
 function Location() {
+  const Locationimages = {
+    Delhi: "/logo&ui/locationimages/Delhi.jpg",
+    Noida: "/logo&ui/locationimages/Noida.jpg",
+    Gurgaon: "/logo&ui/locationimages/Gurgaon.jpg",
+    Ghaziabad: "/logo&ui/locationimages/Ghaziabad.jpg",
+    Faridabad: "/logo&ui/locationimages/Faridabad.jpg",
+  };
   const { location, setlocation } = AppContextfn();
   const path = usePathname();
   const router = useRouter();
@@ -56,12 +64,19 @@ function Location() {
 
                     setlocation(() => ({ show: false, location: item }));
                   }}
-                  className={`flex items-center justify-center w-full h-12 md:h-auto md:w-32 md:aspect-[2/1] border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
+                  className={`relative flex items-center justify-center gap-2 w-full h-12 md:h-auto lg:w-fit pl-4 pr-8 py-3 border rounded-lg lg:hover:scale-110 lg:hover:shadow-lg lg:hover:border-none duration-200  ${
                     location?.location == item
                       ? "bg-theme text-white"
                       : "bg-white text-theme border"
                   }`}
                 >
+                  <Nextimage
+                    src={Locationimages[item]}
+                    alt={item}
+                    className={`absolute top-1/2 -translate-y-1/2 lg:translate-y-0 left-3 lg:static w-8 lg:w-12 aspect-square p-1 rounded-full bg-white`}
+                    height={40}
+                    width={40}
+                  />
                   {item}
                 </Link>
               );
