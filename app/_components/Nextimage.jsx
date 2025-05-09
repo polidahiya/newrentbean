@@ -10,6 +10,7 @@ function Nextimage({ ...props }) {
       onError={() => {
         setImgError(true);
       }}
+      title={props?.alt || "Image"}
       unoptimized={imgError}
       {...props}
     />

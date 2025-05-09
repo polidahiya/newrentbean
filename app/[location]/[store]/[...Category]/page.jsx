@@ -277,7 +277,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
           images: ogImage,
         },
         alternates: {
-          canonical: `${domain}/Delhi/${store}/${category}/${subcat}/${productid}`,
+          canonical: `${domain}/${location}/${store}/${category}/${subcat}/${productid}`,
         },
       };
     }
@@ -299,7 +299,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
           images: subCategoryData ? `${domain}${subCategoryData.image}` : null,
         },
         alternates: {
-          canonical: `${domain}/Delhi/${store}/${category}/${subcat}`,
+          canonical: `${domain}/${location}/${store}/${category}/${subcat}`,
         },
       };
     }
@@ -321,7 +321,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
           images: `${domain}${categoryData.image}`,
         },
         alternates: {
-          canonical: `${domain}/Delhi/${store}/${category}`,
+          canonical: `${domain}/${location}/${store}/${category}`,
         },
       };
     }
@@ -337,7 +337,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
         images: `${domain}/logo&ui/minlogo.png`,
       },
       alternates: {
-        canonical: `${domain}/Delhi/${store}/Search?query=${searchQuery}`,
+        canonical: `${domain}/${location}/${store}/Search?query=${searchQuery}`,
       },
     };
   }

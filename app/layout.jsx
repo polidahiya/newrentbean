@@ -10,6 +10,7 @@ import Confirmdialogbox from "./_components/Confirmdialogbox";
 import Location from "./_components/Location";
 import FIxedbuttons from "./_components/FIxedbuttons";
 import { cookies } from "next/headers";
+import { cities } from "./commondata";
 
 export const metadata = {
   title: "Rentbean - Great for flexible rental options.",
@@ -21,6 +22,7 @@ export const metadata = {
     images: `${domain}/logo&ui/minlogo.png`,
   },
   manifest: "/manifest.json",
+  robots: "index, follow",
 };
 
 export default async function RootLayout({ children }) {
@@ -54,19 +56,32 @@ export default async function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Rentbean",
+              name: "Rentbean India",
               url: "https://rentbean.in",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://rentbean.in/Search?query={search_term_string}",
+                target: "https://rentbean.in/Delhi/Rent/Search?query={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
+              publisher: {
+                "@type": "Organization",
+                name: "RentBean",
+                url: "https://rentbean.in",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "India",
+              },
+              areaServed: cities.map((item) => ({
+                "@type": "City",
+                name: item,
+              })),
             }),
           }}
         />
         <meta name="theme-color" content="#d68e43" />
       </head>
-      <body className="antialiased max-w-[1500px] mx-auto">
+      <body className="antialiased max-w-[1900px] mx-auto">
         <Appwrapper
           token={token}
           userdata={userdata}

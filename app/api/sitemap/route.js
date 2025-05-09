@@ -21,7 +21,7 @@ const today = new Date().toISOString();
 
 // Generate URLs
 const generateCityUrls = () =>
-  ["Rent", "Buy"].flatMap((store) =>
+  ["Buy", "Rent"].flatMap((store) =>
     citiesAndLocations.map((city) => ({
       loc: `${domain}/${city}/${store}`,
       lastmod: today,
@@ -32,7 +32,7 @@ const generateCityUrls = () =>
 
 const generateCategoryUrls = () =>
   cities.flatMap((city) =>
-    ["Rent", "Buy"].flatMap((store) =>
+    ["Buy", "Rent"].flatMap((store) =>
       Object.entries(categorylist).flatMap(([categoryname, category]) => [
         {
           loc: `${domain}/${city}/${store}/${categoryname}`,
@@ -58,7 +58,7 @@ const generateProductUrls = (products) =>
   cities.flatMap((city) =>
     products.flatMap((product) => {
       if (product.availablefor === "Both") {
-        return ["Rent", "Buy"].map((store) => ({
+        return ["Buy", "Rent"].map((store) => ({
           loc: `${domain}/${city}/${store}/${product.category}/${product.subcat}/${product._id}`,
           lastmod: today,
           changefreq: "daily",
@@ -93,7 +93,7 @@ const generateBlogUrls = (blogs) =>
 
 const generateDireactsearchUrls = () =>
   cities.flatMap((city) =>
-    ["Rent", "Buy"].flatMap((store) =>
+    ["Buy", "Rent"].flatMap((store) =>
       direactsearchlist.map((item) => ({
         loc: `${domain}/${city}/${store}${item?.link}`,
         lastmod: today,
