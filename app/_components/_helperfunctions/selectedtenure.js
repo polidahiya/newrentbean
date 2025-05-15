@@ -1,17 +1,5 @@
-import { AppContextfn } from "@/app/Context";
-
-export function selectedtenure(item) {
-  const { location } = AppContextfn();
+export const selectedtenure = (item, location) => {
   const finaltenure =
-    location?.location in item?.prices
-      ? item?.prices[location?.location]
-      : item?.prices.Default;
-  return finaltenure[item?.selectedtenure];
-}
-export function fixedselectedtenure(item) {
-  const finaltenure =
-    item?.location in item?.prices
-      ? item?.prices[item?.location]
-      : item?.prices.Default;
-  return finaltenure[item?.selectedtenure];
-}
+    location in item.prices ? item.prices[location] : item.prices.Default;
+  return { selected: finaltenure[item.selectedtenure], all: finaltenure };
+};

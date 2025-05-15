@@ -1,18 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Nextimage from "@/app/_components/Nextimage";
 import Link from "next/link";
 import { AiOutlineDelete } from "react-icons/ai";
 import { AppContextfn } from "@/app/Context";
 import { months } from "@/app/commondata";
+import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 
 export default function Products({ cartproductid, item, i, setshowtenure }) {
   const { setcart, setmessagefn, location } = AppContextfn();
-  const fallbackImage = "/logo&ui/default-fallback-image.png";
   const MAX_QUANTITY = item?.maxquantity;
-
-  const [imgSrc, setImgSrc] = useState(item?.image);
-  const handleImageError = () => setImgSrc(fallbackImage);
 
   const handleIncrement = () => {
     if (item?.quantity < MAX_QUANTITY) {
@@ -51,12 +48,10 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
     });
     setmessagefn("Removed from cart");
   };
-
-  const finaltenure =
-    location?.location in item?.prices
-      ? item?.prices[location?.location]
-      : item?.prices.Default;
-  const totalprice = finaltenure[item?.selectedtenure]?.price;
+  const tenure = selectedtenure(item, location?.location);
+  const finaltenure = tenure?.all;
+  const selectedt = tenure?.selected;
+  const totalprice = selectedt?.price;
 
   return (
     <div className="flex flex-col gap-5 w-full p-2">
@@ -67,12 +62,11 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
           className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
         >
           <Nextimage
-            src={imgSrc}
+            src={item?.image}
             alt={item.name}
             height={100}
             width={100}
             className="h-full w-full aspect-[2/1] md:aspect-square object-contain md:object-cover object-center"
-            onError={handleImageError}
           />
         </Link>
         <div className="flex flex-col h-full w-full">
@@ -165,8 +159,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
                 aria-label="Select Tenure"
                 title="Select Tenure"
               >
-                {finaltenure[item?.selectedtenure]?.time}{" "}
-                {finaltenure[item?.selectedtenure]?.type}
+                {selectedt?.time} {selectedt?.type}
               </button>
             )}
 

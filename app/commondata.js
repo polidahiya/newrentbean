@@ -144,47 +144,6 @@ export const categorylist = {
   },
 };
 
-export const filterlist = [
-  {
-    name: "No Filter",
-    min: 0,
-    max: 500000,
-  },
-  {
-    name: "Less than 10k",
-    min: 0,
-    max: 10000,
-  },
-  {
-    name: "10k - 25k",
-    min: 10000,
-    max: 25000,
-  },
-  {
-    name: "25k - 40k",
-    min: 25000,
-    max: 40000,
-  },
-  {
-    name: "40k - 50k",
-    min: 40000,
-    max: 50000,
-  },
-  {
-    name: "More than 50k",
-    min: 50000,
-    max: 500000,
-  },
-];
-
-export const sortinglist = [
-  { name: "Default" },
-  { name: "Discount" },
-  { name: "Rating" },
-  { name: "Price : low to high" },
-  { name: "Price : high to low" },
-];
-
 // fixed search options
 export const searchoptions = [
   "Health & Fitness",

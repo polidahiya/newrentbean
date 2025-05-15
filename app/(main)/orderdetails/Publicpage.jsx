@@ -9,8 +9,7 @@ import { orderstages } from "@/app/commondata";
 import { AppContextfn } from "@/app/Context";
 import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
-
-import { fixedselectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
+import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 
 export default function Publicpage({ res }) {
   const { setmessagefn } = AppContextfn();
@@ -25,7 +24,7 @@ export default function Publicpage({ res }) {
   }
 
   return (
-    <div className="w-full min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] bg-gray-50 py-8 px-4 md:px-6 lg:px-8">
+    <div className="w-full min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] py-8 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {ordershistory.map((item, i) => (
           <div
@@ -76,7 +75,7 @@ const Historyproductcard = ({ item, product, index }) => {
     ? `${product.tenureStart.date}/${product.tenureStart.month}/${product.tenureStart.year}`
     : new Date(item.createdAt).toLocaleDateString();
 
-  const tenure = fixedselectedtenure(product);
+  const tenure = selectedtenure(product, item?.location).selected;
 
   return (
     <div

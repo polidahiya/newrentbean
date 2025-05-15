@@ -10,8 +10,8 @@ async function page() {
   const res = await getordershistory();
 
   return (
-    <div>
-      <h2 className="text-center font-bold text-[25px] md:text-3xl  font-recline  mt-5">
+    <div className="bg-gray-50">
+      <h2 className="text-center font-bold text-[25px] md:text-3xl  font-recline  pt-5">
         Orders Details
       </h2>
       <Publicpage res={res} />

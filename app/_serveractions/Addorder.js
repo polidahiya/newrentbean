@@ -65,6 +65,7 @@ export const Placeorder = async (
         status: 200,
         message: "Order Placed Successfully",
         id: insertedorder.insertedId.toString(),
+        orderNumber,
       };
     } else {
       return { status: 200, message: "Order Failed" };

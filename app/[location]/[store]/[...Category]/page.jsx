@@ -12,10 +12,10 @@ import Productnotfound from "@/app/_components/Productnotfound";
 import Subcategories from "./_Components/Subcategories";
 import { sortProducts, pricefilter } from "./_Components/sortandfilter";
 import Productpage from "@/app/_productpage/Productpage";
-// import Appliedfilters from "./_Components/Appliedfilters";
 import Categorydescription from "./_Components/Categorydescription";
 import Breadcrumbs from "@/app/_components/Breadcrumbs";
 import Wrapper from "../Wrapper";
+import Sort from "./_Components/Sort";
 
 async function page({ params, searchParams }) {
   const { Category: slug, location, store } = await params;
@@ -87,11 +87,16 @@ async function page({ params, searchParams }) {
           store={store}
         />
         <div className={`py-5 pl-3 ${category == "Search" && "mt-5 lg:mt-0"}`}>
-          <h1 className="text-3xl font-semibold">
-            {category == "Search"
-              ? `Search (${store}) - ${searchQuery}`
-              : category.replace(/-/g, " ")}
-          </h1>
+          <div className="flex">
+            <h1 className="text-3xl font-semibold flex-1">
+              {category == "Search"
+                ? `Search (${store}) - ${searchQuery}`
+                : category.replace(/-/g, " ")}
+            </h1>
+            <div className="flex-1 flex justify-end items-start hidden">
+              <Sort />
+            </div>
+          </div>
           <div className="opacity-70 my-2">
             <Breadcrumbs
               list={
@@ -110,11 +115,6 @@ async function page({ params, searchParams }) {
             />
           </div>
         </div>
-        {/* <Appliedfilters
-          category={category}
-          subcat={subcat}
-          searchParams={searchParams}
-        /> */}
         {sortedProducts.length > 0 ? (
           <ProductGrid
             products={sortedProducts}

@@ -14,6 +14,7 @@ import Showtenuremenu from "./Showtenuremenu";
 import Checkout from "./Checkout";
 import Razorpayidcreate from "@/app/_serveractions/_razorpay/Razorpayidcreate";
 import Verifyrazorpay from "@/app/_serveractions/_razorpay/Verifyrazorpay";
+import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 
 export default function Page({ userdata, token }) {
   const router = useRouter();
@@ -30,15 +31,12 @@ export default function Page({ userdata, token }) {
   const [paymentMethod, setpaymentMethod] = useState("online");
 
   const cartitems = Object.entries(cart).filter(([key, item]) => item.added);
+
   const totalPrice = cartitems.reduce((total, [key, value]) => {
     if (value.isrentalstore) {
-      const finaltenure =
-        location?.location in value?.prices
-          ? value?.prices[location?.location]
-          : value?.prices.Default;
       const securitydeposit = value?.securitydeposit * value.quantity;
-      const totalprice =
-        finaltenure[value?.selectedtenure]?.price * value.quantity;
+      const price = selectedtenure(value, location?.location);
+      const totalprice = price?.selected?.price * value.quantity;
       return Number(total) + Number(totalprice) + Number(securitydeposit);
     } else {
       const totalprice = value?.buyprice * value?.quantity;
@@ -77,11 +75,26 @@ export default function Page({ userdata, token }) {
           location?.location || "Default"
         );
         if (res?.status == 200) {
-          event("button_click", {
-            category: "User Interaction",
-            label: "Order placed",
-            value: 1,
-          });
+          try {
+            event("purchase", {
+              transaction_id: res?.orderNumber,
+              affiliation: "Online Store",
+              value: totalPrice, // total value (excluding tax and shipping if desired)
+              tax: 0,
+              shipping: 0,
+              currency: "INR",
+              items: cartitems.map(([key, item]) => ({
+                item_id: key,
+                item_name: item?.name,
+                quantity: item?.quantity,
+                price: item?.isrentalstore
+                  ? selectedtenure(item, location?.location)?.selected?.price
+                  : item?.buyprice,
+              })),
+            });
+          } catch (error) {
+            console.error(error);
+          }
 
           if (paymentMethod == "online") {
             loadRazorpay(userdata, res?.id);

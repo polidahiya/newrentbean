@@ -128,7 +128,7 @@ function Navbar({ params, productsname, token, userdata }) {
 }
 
 export const Cartlink = () => {
-  const { cart } = AppContextfn();
+  const { cart, location } = AppContextfn();
   const cartitems = Object.values(cart).filter((item) => item.added);
   const totalQuantity = cartitems.reduce(
     (total, value) => total + value.quantity,
@@ -161,7 +161,7 @@ export const Cartlink = () => {
                 }`}
               >
                 {Object.values(cartitems).map((item, i) => {
-                  const finaltenure = selectedtenure(item);
+                  const finaltenure = selectedtenure(item, location?.location);
                   const totalprice = finaltenure?.price;
                   return (
                     <Link

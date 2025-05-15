@@ -1,4 +1,3 @@
-import { filterlist } from "@/app/commondata";
 
 export const sortProducts = (products, sort) => {
   let sortedProducts = [...products];
