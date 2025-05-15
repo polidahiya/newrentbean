@@ -55,7 +55,7 @@ export default async function Adminhome({ searchParams }) {
         <Searchbox />
       </div>
       {orders.length == 0 && <Productnotfound />}
-      <div className={`p-[20px]`}>
+      <div className={`p-5`}>
         {orders.map((item, i) => {
           return (
             <Ordercard

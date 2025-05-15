@@ -43,7 +43,7 @@ function Page() {
           setresfresh={setresfresh}
         />
         {messages.length != 0 ? (
-          <div className={`p-[20px] flex flex-wrap gap-5`}>
+          <div className={`p-5 flex flex-wrap gap-5`}>
             {messages.map((item) => (
               <Card
                 key={new Date().getMilliseconds() + Math.random()}

@@ -93,7 +93,7 @@ async function page({ params, searchParams }) {
                 ? `Search (${store}) - ${searchQuery}`
                 : category.replace(/-/g, " ")}
             </h1>
-            <div className="flex-1 flex justify-end items-start hidden">
+            <div className="flex-1 flex justify-end items-start">
               <Sort />
             </div>
           </div>

@@ -45,24 +45,28 @@ export default function ProductCard({
       />
       <div className="p-4">
         <OrderDetail label="Name" value={name} />
-        <OrderDetail
-          label="Tenure start date"
-          value={
-            tenureStart?.date +
-            " " +
-            months[tenureStart?.month] +
-            " " +
-            tenureStart?.year
-          }
-        />
+        {isrentalstore && (
+          <OrderDetail
+            label="Tenure start date"
+            value={
+              tenureStart?.date +
+              " " +
+              months[tenureStart?.month] +
+              " " +
+              tenureStart?.year
+            }
+          />
+        )}
         <OrderDetail
           label="Type"
           value={isrentalstore ? "For Rent" : "For Sell"}
         />
-        <OrderDetail
-          label="Duration"
-          value={tenure?.time + " " + tenure?.type}
-        />
+        {isrentalstore && (
+          <OrderDetail
+            label="Duration"
+            value={tenure?.time + " " + tenure?.type}
+          />
+        )}
         <OrderDetail
           label="Price"
           value={`₹${parseInt(
@@ -87,7 +91,8 @@ export default function ProductCard({
           onClick={() => {
             setpshowstatus((pre) => !pre);
           }}
-          aria-label="Change Status" title="Change Status"
+          aria-label="Change Status"
+          title="Change Status"
         >
           Status
           <IoMdArrowDropdown className={`${pshowstatus && "rotate-180"}`} />
@@ -137,7 +142,8 @@ const ProductstatusOption = ({ orderid, productindex, setLocalStatus }) => {
           key={status}
           className="w-full p-[5px] lg:hover:bg-slate-100 "
           onClick={() => changestatusfn(status)}
-          aria-label={label} title={label}
+          aria-label={label}
+          title={label}
         >
           {label}
         </button>
@@ -163,14 +169,3 @@ const Canceledorrefundedbadge = ({ status }) => {
     </div>
   );
 };
-
-const ProductColorDetail = ({ color }) => (
-  <div className="flex items-center gap-2">
-    <span className="text-gray-700">Color:</span>
-    <span
-      className="h-6 w-6 rounded-full inline-block"
-      style={{ backgroundColor: color?.color }}
-    />
-    {color.name}
-  </div>
-);

@@ -20,6 +20,7 @@ function Ordercard({ item }) {
   const [deleteconfirm, setdeleteconfirm] = useState(false);
   const [showorder, setshoworder] = useState(true);
   const [showstatusmenu, setshowstatusmenu] = useState(false);
+  const [open, setopen] = useState(false);
   // change status funtion
   const changestatusfn = async (status) => {
     const res = await changestatus(item._id, status);
@@ -70,17 +71,25 @@ function Ordercard({ item }) {
             />
           )}
           <hr className="my-3 border-gray-300" />
-          <div className="w-full flex items-center justify-center gap-2 flex-wrap">
-            {item?.products?.map((product, i) => (
-              <ProductCard
-                key={i}
-                product={product}
-                orderid={item?._id}
-                productindex={i}
-                location={item?.location}
-              />
-            ))}
-          </div>
+          <button
+            className="px-5 py-1 rounded-full bg-theme text-white"
+            onClick={() => setopen((pre) => !pre)}
+          >
+            {open ? "Close" : "Open"}
+          </button>
+          {open && (
+            <div className="w-full flex items-start justify-center gap-2 flex-wrap">
+              {item?.products?.map((product, i) => (
+                <ProductCard
+                  key={i}
+                  product={product}
+                  orderid={item?._id}
+                  productindex={i}
+                  location={item?.location}
+                />
+              ))}
+            </div>
+          )}
 
           {/* note */}
           <div className="flex items-end gap-2 w-full mt-5">
