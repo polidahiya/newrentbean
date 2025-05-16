@@ -7,13 +7,12 @@ async function page() {
   const blogs = await Cachedblogs();
 
   return (
-    <div>
-      <h2 className="text-center font-bold text-[25px] md:text-[35px]  font-recline  mt-5">
+    <div className="min-h-screen py-10">
+      <h2 className="text-center font-bold text-[25px] md:text-[35px]  font-recline  mb-5">
         Blogs
       </h2>
-      <section
-        className={`min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] place-items-center gap-5 p-5`}
-      >
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-5 md:px-10">
         {blogs?.map((blog, i) => {
           const mainHeading = blog?.blogdata?.find(
             (item) => item.type === "mainheading"
@@ -24,28 +23,28 @@ async function page() {
 
           return (
             <Link
-              href={"/Blogs/" + blog?._id}
+              href={`/Blogs/${blog?._id}`}
               key={i}
-              className="group relative w-full md:max-w-[300px] bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-transparent"
             >
-              <div className="relative overflow-hidden rounded-t-lg">
+              <div className="relative overflow-hidden">
                 <Nextimage
-                  className="rounded-t-lg w-full aspect-[4/3] object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-auto aspect-[4/3] object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   src={firstImage}
                   height={300}
-                  width={300}
+                  width={400}
                   alt="Blog Image"
                 />
-              </div>
-              <div className="p-4">
-                <p className="text-lg font-semibold text-slate-700 line-clamp-2 mb-2">
-                  {mainHeading}
-                </p>
-                <p className="text-sm  font-bold text-slate-500 mb-1">
-                  Last updated: {blog?.date}
-                </p>
-                <p className="absolute top-3 right-3 font-black bg-theme bg-clip-text text-transparent w-fit">
+                <div className="absolute top-2 right-2 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full text-[11px] font-extrabold text-theme border border-theme shadow-sm">
                   Rentbean
+                </div>
+              </div>
+              <div className="p-4 space-y-2">
+                <h3 className="text-lg font-semibold text-slate-800 line-clamp-2">
+                  {mainHeading}
+                </h3>
+                <p className="text-xs text-slate-500 font-medium">
+                  📅 Last updated: {blog?.date}
                 </p>
               </div>
             </Link>

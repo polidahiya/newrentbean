@@ -92,16 +92,16 @@ function Showblogs({ blogs }) {
             <Link
               href={"/Blogs/" + blog?._id}
               key={i}
-              className="group rounded-xl shadow-md p-2 min-w-64 md:min-w-full"
+              className="group rounded-xl p-2 min-w-64 md:min-w-full"
             >
               <Nextimage
-                className="w-full aspect-video rounded-md object-cover object-center bg-bg1"
+                className="w-full aspect-video rounded-xl object-cover object-center"
                 height={300}
                 width={500}
                 src={firstImage}
                 alt={`Blog image ${i + 1}`} // Add descriptive alt text
               />
-              <p className="mt-1 line-clamp-2">{mainHeading}</p>
+              <p className="p-2 text-center line-clamp-2">{mainHeading}</p>
             </Link>
           );
         })}

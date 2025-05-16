@@ -3,7 +3,7 @@ import Nextimage from "../../Nextimage";
 
 export default function Homestoreswitch({ location, store }) {
   return (
-    <div className="relative w-full flex flex-col items-center justify-center py-12 px-4 md:bg-gray-50 overflow-hidden">
+    <div className="relative w-full flex flex-col items-center justify-center md:py-12 px-4 md:bg-gray-50 overflow-hidden">
       <h1 className="text-3xl font-semibold md:font-bold text-center mb-4 z-10">
         Choose How You Want to Shop
       </h1>
@@ -13,27 +13,20 @@ export default function Homestoreswitch({ location, store }) {
         method.
       </p>
 
-      <div className="flex items-center justify-center space-x-4 bg-white p-2 rounded-full shadow-md z-10">
-        <Link
-          href={`/${location}/Rent`}
-          className={`px-6 py-2 rounded-full font-medium transition-all ${
-            store === "Rent"
-              ? "bg-black text-white hover:bg-gray-800"
-              : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-          }`}
-        >
-          Rent
-        </Link>
-        <Link
-          href={`/${location}/Buy`}
-          className={`px-6 py-2 rounded-full font-medium transition-all ${
-            store === "Buy"
-              ? "bg-black text-white hover:bg-gray-800"
-              : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-          }`}
-        >
-          Buy
-        </Link>
+      <div className="flex items-center justify-center bg-gray-100 p-1 rounded-full shadow-md z-10 w-fit mx-auto">
+        {["Rent", "Buy"].map((item, i) => (
+          <Link
+            key={i}
+            href={`/${location}/${item}`}
+            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+              store === item
+                ? "bg-black text-white shadow-sm"
+                : "text-gray-700 hover:bg-gray-200"
+            }`}
+          >
+            {item}
+          </Link>
+        ))}
       </div>
 
       <div className="mt-6 text-center text-sm text-gray-500 z-10">
@@ -48,7 +41,7 @@ export default function Homestoreswitch({ location, store }) {
           alt="Rent"
           width={900}
           height={400}
-          className="object-cover"
+          className="object-cover saturate-200"
           style={{
             maskImage: "linear-gradient(to right, black 0%, transparent 70%)",
             WebkitMaskImage:
@@ -60,7 +53,7 @@ export default function Homestoreswitch({ location, store }) {
           alt="Buy"
           width={900}
           height={400}
-          className="object-cover"
+          className="object-cover saturate-200"
           style={{
             maskImage: "linear-gradient(to left, black 0%, transparent 70%)",
             WebkitMaskImage:

@@ -15,6 +15,7 @@ import Roadmap from "./Roadmap";
 import DirectSearchcomps from "./DirectSearchcomps";
 import Ads1 from "./Ads1";
 import Homestoreswitch from "./Homestoreswitch/File";
+import Epbanner from "../Epfloatingbanner/Banner";
 
 export default async function Homepage({
   params,
@@ -42,30 +43,58 @@ export default async function Homepage({
         token={token}
         userdata={userdata}
       />
-      <div className="flex flex-col gap-5 lg:gap-20">
+      <div>
         <Herosection location={location} store={store} />
-        <Homestoreswitch location={location} store={store}/>
-        <Categories location={location} store={store} />
-        <Allproducts
-          products={instoreproducts.sort(() => Math.random() - 0.5)}
-          location={location}
-          store={store}
-        />
-        <DirectSearchcomps location={location} store={store} />
+        <Spaceadder>
+          <Homestoreswitch location={location} store={store} />
+        </Spaceadder>
+        <Spaceadder>
+          <Categories location={location} store={store} />
+        </Spaceadder>
+        <Spaceadder>
+          <Allproducts
+            products={instoreproducts.sort(() => Math.random() - 0.5)}
+            location={location}
+            store={store}
+          />
+        </Spaceadder>
+        <Spaceadder>
+          <DirectSearchcomps location={location} store={store} />
+        </Spaceadder>
         {/* <Ads1 /> */}
-        <Roadmap />
-        <Customerreviews />
-        <Blogscomp />
-        <div>
-          <h2 className="text-center font-bold text-2xl md:text-4xl font-recline">
-            Why Choose Us?
-          </h2>
-          <Promices />
+        <Spaceadder>
+          <Roadmap />
+        </Spaceadder>
+
+        <div className="px-5 md:px-14">
+          <Epbanner />
         </div>
-        <Description location={location.replace(/-/g, " ")} store={store} />
-        <Footer store={store} location={location} />
+        <Spaceadder>
+          <Customerreviews />
+        </Spaceadder>
+        <Spaceadder>
+          <Blogscomp />
+        </Spaceadder>
+        <Spaceadder>
+          <div>
+            <h2 className="text-center font-bold text-2xl md:text-4xl font-recline">
+              Why Choose Us?
+            </h2>
+            <Promices />
+          </div>
+        </Spaceadder>
+        <Spaceadder>
+          <Description location={location.replace(/-/g, " ")} store={store} />
+        </Spaceadder>
+        <Spaceadder>
+          <Footer store={store} location={location} />
+        </Spaceadder>
       </div>
       <Mobilenav store={store} location={location} />
     </>
   );
 }
+
+const Spaceadder = ({ children }) => {
+  return <div className="mt-5 lg:mt-20">{children}</div>;
+};

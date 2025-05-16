@@ -26,7 +26,7 @@ function Customerreviews() {
 
   return (
     <div className="relative lg:bg-bg1">
-      <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline mt-10">
+      <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline pt-10">
         Customer Reviews
       </h2>
       <div className="relative lg:p-20 lg:hidden">
