@@ -1,31 +1,15 @@
-
 export const sortProducts = (products, sort) => {
-  let sortedProducts = [...products];
-
-  if (sort == 0) {
-  }
   if (sort == 1) {
-    sortedProducts.sort((a, b) => {
-      return parseFloat(b.discount) - parseFloat(a.discount);
+    return products.sort((a, b) => {
+      return parseFloat(a.buyprice) - parseFloat(b.buyprice);
     });
   }
   if (sort == 2) {
-    sortedProducts.sort((a, b) => {
-      return parseFloat(b.rating) - parseFloat(a.rating);
+    return products.sort((a, b) => {
+      return parseFloat(b.buyprice) - parseFloat(a.buyprice);
     });
   }
-  if (sort == 3) {
-    sortedProducts.sort((a, b) => {
-      return parseFloat(a.price) - parseFloat(b.price);
-    });
-  }
-  if (sort == 4) {
-    sortedProducts.sort((a, b) => {
-      return parseFloat(b.price) - parseFloat(a.price);
-    });
-  }
-
-  return sortedProducts;
+  return products;
 };
 
 export const pricefilter = (products, pricerange) => {

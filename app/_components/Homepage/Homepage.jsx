@@ -14,6 +14,7 @@ import Customerreviews from "./Customerreviews";
 import Roadmap from "./Roadmap";
 import DirectSearchcomps from "./DirectSearchcomps";
 import Ads1 from "./Ads1";
+import Homestoreswitch from "./Homestoreswitch/File";
 
 export default async function Homepage({
   params,
@@ -43,6 +44,7 @@ export default async function Homepage({
       />
       <div className="flex flex-col gap-5 lg:gap-20">
         <Herosection location={location} store={store} />
+        <Homestoreswitch location={location} store={store}/>
         <Categories location={location} store={store} />
         <Allproducts
           products={instoreproducts.sort(() => Math.random() - 0.5)}
@@ -61,9 +63,9 @@ export default async function Homepage({
           <Promices />
         </div>
         <Description location={location.replace(/-/g, " ")} store={store} />
-        <Footer store={store} location={location}/>
+        <Footer store={store} location={location} />
       </div>
-      <Mobilenav store={store} location={location}/>
+      <Mobilenav store={store} location={location} />
     </>
   );
 }

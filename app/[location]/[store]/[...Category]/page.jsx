@@ -10,12 +10,14 @@ import {
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import Productnotfound from "@/app/_components/Productnotfound";
 import Subcategories from "./_Components/Subcategories";
-import { sortProducts, pricefilter } from "./_Components/sortandfilter";
+import { sortProducts } from "./_Components/sortandfilter";
 import Productpage from "@/app/_productpage/Productpage";
 import Categorydescription from "./_Components/Categorydescription";
 import Breadcrumbs from "@/app/_components/Breadcrumbs";
 import Wrapper from "../Wrapper";
 import Sort from "./_Components/Sort";
+import { searchProducts } from "./_Components/Searchproducts";
+import Heading from "./_Components/Heading";
 
 async function page({ params, searchParams }) {
   const { Category: slug, location, store } = await params;
@@ -53,9 +55,8 @@ async function page({ params, searchParams }) {
 
   // Get products
   let allproducts = await Cachedproducts();
-  const pricerange = searchParams.pricerange || 0;
-  let producttorender;
 
+  let producttorender;
   const searchQuery = searchParams?.query?.replace(/-/g, " ");
   if (category == "Search") {
     producttorender = searchProducts(allproducts, searchQuery, isrentalstore);
@@ -68,14 +69,8 @@ async function page({ params, searchParams }) {
       isrentalstore
     );
   }
-
-  // Filter products
-  const pricerangedproducts = pricefilter(producttorender, pricerange);
-
-  const sortedProducts = sortProducts(
-    pricerangedproducts,
-    searchParams?.sort || 0
-  );
+  const sortvalue = searchParams?.sort || 0;
+  const sortedProducts = sortProducts(producttorender, sortvalue || 0);
 
   return (
     <Wrapper store={store}>
@@ -88,13 +83,14 @@ async function page({ params, searchParams }) {
         />
         <div className={`py-5 pl-3 ${category == "Search" && "mt-5 lg:mt-0"}`}>
           <div className="flex">
-            <h1 className="text-3xl font-semibold flex-1">
-              {category == "Search"
-                ? `Search (${store}) - ${searchQuery}`
-                : category.replace(/-/g, " ")}
-            </h1>
-            <div className="flex-1 hidden justify-end items-start">
-              <Sort />
+            <Heading
+              location={location}
+              store={store}
+              searchQuery={searchQuery}
+              category={category}
+            />
+            <div className="flex-1 flex justify-end items-start">
+              {store == "Buy" && <Sort sortvalue={sortvalue} />}
             </div>
           </div>
           <div className="opacity-70 my-2">
@@ -116,12 +112,20 @@ async function page({ params, searchParams }) {
           </div>
         </div>
         {sortedProducts.length > 0 ? (
-          <ProductGrid
-            products={sortedProducts}
-            location={location}
-            store={store}
-            isrentalstore={isrentalstore}
-          />
+          <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mb-10">
+            {sortedProducts.map((item, i) => (
+              <Productcard
+                key={i}
+                index={i}
+                id={item._id}
+                link={`/${location}/${store}/${item?.category}/${item?.subcat}/${item._id}`}
+                image={item?.images[0]}
+                isrentalstore={isrentalstore}
+                location={location}
+                {...item}
+              />
+            ))}
+          </div>
         ) : (
           <Productnotfound
             location={location}
@@ -139,87 +143,6 @@ async function page({ params, searchParams }) {
       />
     </Wrapper>
   );
-}
-
-const ProductGrid = ({ products, location, store, isrentalstore }) => (
-  <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mb-10">
-    {products.map((item, i) => (
-      <Productcard
-        key={i}
-        index={i}
-        id={item._id}
-        link={`/${location}/${store}/${item?.category}/${item?.subcat}/${item._id}`}
-        image={item?.images[0]}
-        isrentalstore={isrentalstore}
-        location={location}
-        {...item}
-      />
-    ))}
-  </div>
-);
-
-function searchProducts(allproducts, searchQuery, isrentalstore) {
-  const words = searchQuery?.split(" ") || [];
-
-  // Filtering products based on the search query
-  words.forEach((word) => {
-    if (word.trim() !== "") {
-      allproducts = allproducts.filter((product) => {
-        const nameMatch = product?.name
-          ?.toLowerCase()
-          .includes(word.toLowerCase());
-
-        const descMatch = product?.desc?.some((descItem) =>
-          descItem.toLowerCase().includes(word.toLowerCase())
-        );
-
-        const keywordsMatch = product?.keywords
-          ?.toLowerCase()
-          .includes(word.toLowerCase());
-
-        const categoryMatch = product?.category
-          ?.toLowerCase()
-          .includes(word.toLowerCase());
-
-        const subcategoryMatch = product?.subcat
-          ?.toLowerCase()
-          .includes(word.toLowerCase());
-
-        const idMatch = product?._id
-          ?.toLowerCase()
-          .includes(word.toLowerCase());
-
-        const instore = isrentalstore
-          ? ["Rent", "Both"].includes(product?.availablefor)
-          : ["Buy", "Both"].includes(product?.availablefor);
-
-        return (
-          (nameMatch ||
-            descMatch ||
-            keywordsMatch ||
-            categoryMatch ||
-            subcategoryMatch ||
-            idMatch) &&
-          instore
-        );
-      });
-    }
-  });
-
-  // Sorting the filtered products
-  return allproducts.sort((a, b) => {
-    const nameA = a?.name?.toLowerCase();
-    const nameB = b?.name?.toLowerCase();
-    const lowerQuery = searchQuery?.toLowerCase();
-
-    if (nameA.includes(lowerQuery) && !nameB.includes(lowerQuery)) {
-      return -1;
-    } else if (!nameA.includes(lowerQuery) && nameB.includes(lowerQuery)) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
 }
 
 const validateCategoryAndSubcategory = (category, subcat) => {
