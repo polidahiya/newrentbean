@@ -18,7 +18,7 @@ function PosterAdds({ location, store }) {
       title: "Furniture",
     },
     {
-      img: ["/images/highlights/ad2.jpg", "/images/highlights/ad2.jpg"],
+      img: ["/images/highlights/mobilead2.jpg", "/images/highlights/ad2.jpg"],
       link: "/Health-&-Fitness/Fitness-Machines",
       title: "Treadmill",
     },
@@ -87,7 +87,7 @@ function PosterAdds({ location, store }) {
               </SwiperSlide>
             ))}
           </Swiper>
-
+          
           {/* Custom Navigation Buttons */}
           <button
             className="absolute left-5 top-1/2 transform -translate-y-1/2 w-12 aspect-square flex items-center justify-center bg-white lg:bg-gray-300 rounded-full opacity-0 lg:group-hover:opacity-80 transition hover:bg-white z-10"

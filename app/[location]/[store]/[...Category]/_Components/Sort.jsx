@@ -15,9 +15,9 @@ function Sort({ sortvalue }) {
   const searchParams = useSearchParams();
 
   return (
-    <div className="group relative flex items-center gap-2 border px-5 py-1 rounded-md ">
+    <div className="group relative flex items-center gap-2 border px-5 py-1 rounded-md">
       <BsSortDownAlt /> Sort
-      <div className="group-hover:block hidden absolute top-0 right-0 z-10 w-full">
+      <div className="group-hover:block hidden absolute top-0 right-0 w-full">
         <div className="mt-10 p-2 rounded-md border bg-white shadow-md float-right">
           {sortlist.map((item, i) => {
             const params = new URLSearchParams(searchParams);

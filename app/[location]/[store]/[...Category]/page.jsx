@@ -81,38 +81,42 @@ async function page({ params, searchParams }) {
           location={location}
           store={store}
         />
-        <div className={`py-5 pl-3 ${category == "Search" && "mt-5 lg:mt-0"}`}>
-          <div className="flex">
-            <Heading
-              location={location}
-              store={store}
-              searchQuery={searchQuery}
-              category={category}
-            />
+        <div
+          className={`pl-3 ${
+            category == "Search" ? "mt-0" : "mt-5"
+          } relative z-30`}
+        >
+          <Heading
+            location={location}
+            store={store}
+            searchQuery={searchQuery}
+            category={category}
+          />
+          <div className="flex items-center">
+            <div className="opacity-70">
+              <Breadcrumbs
+                list={
+                  subcat
+                    ? [
+                        {
+                          name: category,
+                          link: `/${location}/${store}/${category}`,
+                        },
+                      ]
+                    : []
+                }
+                currentroute={subcat ? subcat : category}
+                location={location}
+                store={store}
+              />
+            </div>
             <div className="flex-1 flex justify-end items-start">
               {store == "Buy" && <Sort sortvalue={sortvalue} />}
             </div>
           </div>
-          <div className="opacity-70 my-2">
-            <Breadcrumbs
-              list={
-                subcat
-                  ? [
-                      {
-                        name: category,
-                        link: `/${location}/${store}/${category}`,
-                      },
-                    ]
-                  : []
-              }
-              currentroute={subcat ? subcat : category}
-              location={location}
-              store={store}
-            />
-          </div>
         </div>
         {sortedProducts.length > 0 ? (
-          <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mb-10">
+          <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mt-5 mb-10">
             {sortedProducts.map((item, i) => (
               <Productcard
                 key={i}

@@ -3,7 +3,7 @@ import Nextimage from "../../Nextimage";
 
 export default function Homestoreswitch({ location, store }) {
   return (
-    <div className="lg:px-10">
+    <div className="md:px-10">
       <div className="relative w-full flex flex-col items-center justify-center md:py-12 px-4 md:bg-gray-50 rounded-3xl overflow-hidden">
         <h1 className="text-3xl font-semibold md:font-bold text-center mb-4 z-10">
           Choose How You Want to Shop
