@@ -13,18 +13,22 @@ function PosterAdds({ location, store }) {
 
   const imageArray = [
     {
-      img: "/images/highlights/ad1.jpg",
+      img: ["/images/highlights/mobilead1.jpg", "/images/highlights/ad1.jpg"],
       link: "/Furniture",
       title: "Furniture",
     },
     {
-      img: "/images/highlights/ad2.jpg",
+      img: ["/images/highlights/ad2.jpg", "/images/highlights/ad2.jpg"],
       link: "/Health-&-Fitness/Fitness-Machines",
       title: "Treadmill",
     },
-    { img: "/images/highlights/ad3.jpg", link: "/Furniture", title: "Bed" },
     {
-      img: "/images/highlights/ad4.jpg",
+      img: ["/images/highlights/mobilead3.jpg", "/images/highlights/ad3.jpg"],
+      link: "/Furniture",
+      title: "Bed",
+    },
+    {
+      img: ["/images/highlights/mobilead4.jpg", "/images/highlights/ad4.jpg"],
       link: "/Electronic/Laptops",
       title: "Laptop",
     },
@@ -48,7 +52,7 @@ function PosterAdds({ location, store }) {
         </Link>
 
         {/* Main Poster Carousel */}
-        <div className="relative w-full aspect-video lg:rounded-3xl overflow-hidden group lg:border">
+        <div className="relative w-full aspect-square md:aspect-video lg:rounded-3xl overflow-hidden group lg:border">
           <Swiper
             ref={swiperRef}
             modules={[Navigation, Autoplay]}
@@ -66,16 +70,19 @@ function PosterAdds({ location, store }) {
                   prefetch={false}
                   className="relative h-full w-full block"
                 >
-                  <Nextimage
-                    className="h-full w-full object-cover rounded-3xl lg:rounded-none p-2 lg:p-0"
-                    src={item?.img}
-                    alt={item?.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 70vw"
-                    priority={i == 0 ? true : false}
-                    quality={100}
-                    loading={i != 0 ? "lazy" : "eager"}
-                  />
+                  <picture className="w-full h-full">
+                    <source media="(min-width: 768px)" srcSet={item?.img[1]} />
+                    <Nextimage
+                      className="h-full w-full object-cover rounded-3xl lg:rounded-none p-2 lg:p-0"
+                      src={item?.img[0]}
+                      alt={item?.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 70vw"
+                      priority={i == 0 ? true : false}
+                      quality={100}
+                      loading={i != 0 ? "lazy" : "eager"}
+                    />
+                  </picture>
                 </Link>
               </SwiperSlide>
             ))}
@@ -111,7 +118,7 @@ function PosterAdds({ location, store }) {
               >
                 <span
                   className={`block h-1 rounded-full bg-gray-400 duration-150 ${
-                    i === activeIndex ? "bg-theme w-8" : "w-1"
+                    i === activeIndex ? "w-8" : "w-1"
                   }`}
                 ></span>
               </button>
