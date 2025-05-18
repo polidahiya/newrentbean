@@ -7,16 +7,16 @@ import Searchbox from "./_comps/Searchbox";
 import Link from "next/link";
 
 export default async function Adminhome({ searchParams }) {
+  const { order, page, search, filter } = await searchParams;
   // refresh orders
   const Refreshorders = async (link) => {
     "use server";
     revalidatePath(link);
   };
-
-  const ordertype = Number(searchParams?.order) || 0;
-  const pagenumber = Number(searchParams?.page) || 1;
-  const searchterm = searchParams?.search;
-  const searchfilter = Number(searchParams?.filter) || 0;
+  const ordertype = Number(order) || 0;
+  const pagenumber = Number(page) || 1;
+  const searchterm = search;
+  const searchfilter = Number(filter) || 0;
   const numberoforders = 20;
   const ordersres = await getadminorders(
     ordertype,
