@@ -12,6 +12,8 @@ export const Placeorder = async (
   location
 ) => {
   try {
+    const allcookies = await cookies();
+
     const { orderscollection, sitedata } = await getcollection();
     const tokenres = await Verification("public");
 
@@ -19,7 +21,7 @@ export const Placeorder = async (
       return { status: 500, message: "Please login first" };
     }
     // cookies
-    const userdata = JSON.parse(cookies()?.get("userdata")?.value);
+    const userdata = JSON.parse(allcookies?.get("userdata")?.value);
 
     const updatedsitedata = await sitedata.findOneAndUpdate(
       {},

@@ -94,7 +94,7 @@ function Logininstant() {
         </section>
         {/* backscreen */}
         <button
-          className="absolute inset-0 bg-black bg-opacity-30 -z-10"
+          className="absolute inset-0 bg-black/30 -z-10"
           onClick={() => {
             window.history.back();
           }}

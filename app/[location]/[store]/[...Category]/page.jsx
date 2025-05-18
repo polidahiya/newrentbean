@@ -25,6 +25,8 @@ async function page({ params, searchParams }) {
   const subcat = slug && slug[1] ? decodeURIComponent(slug[1]) : null;
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
 
+  const { query, sort } = await searchParams;
+
   // undefined location
   if (
     (!cities.includes(location) && !citiesAndLocations.includes(location)) ||
@@ -57,7 +59,7 @@ async function page({ params, searchParams }) {
   let allproducts = await Cachedproducts();
 
   let producttorender;
-  const searchQuery = searchParams?.query?.replace(/-/g, " ");
+  const searchQuery = query?.replace(/-/g, " ");
   if (category == "Search") {
     producttorender = searchProducts(allproducts, searchQuery, isrentalstore);
   } else {
@@ -69,7 +71,7 @@ async function page({ params, searchParams }) {
       isrentalstore
     );
   }
-  const sortvalue = searchParams?.sort || 0;
+  const sortvalue = sort || 0;
   const sortedProducts = sortProducts(producttorender, sortvalue || 0);
 
   return (
@@ -174,11 +176,12 @@ const categoriesedproducts = (allproducts, category, subcat, isrentalstore) => {
 };
 
 export const generateMetadata = async ({ params, searchParams }) => {
-  const { Category: slug, location, store } = params;
+  const { Category: slug, location, store } = await params;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
   const subcat = slug && slug[1] ? decodeURIComponent(slug[1]) : null;
   const productid = slug && slug[2] ? decodeURIComponent(slug[2]) : null;
 
+  const { query } = await searchParams;
   // Handle product-specific metadata
   if (productid) {
     const allProducts = await Cachedproducts();
@@ -256,7 +259,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
 
   // search
   if (category == "Search") {
-    const searchQuery = searchParams?.query?.replace(/-/g, " ");
+    const searchQuery = query?.replace(/-/g, " ");
     return {
       title: `${store} ${searchQuery} in ${location} | ${new Date().getFullYear()}`,
       description: `${store} ${searchQuery} and buy at best price in ${location}`,

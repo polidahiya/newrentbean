@@ -53,7 +53,7 @@ const Showtenuremenu = ({ showtenure, setshowtenure }) => {
         </button>
       </div>
       <button
-        className="absolute top-0 left-0 h-full w-full cursor-auto -z-10 bg-black bg-opacity-30"
+        className="absolute top-0 left-0 h-full w-full cursor-auto -z-10 bg-black/30"
         onClick={() => setshowtenure((pre) => ({ ...pre, show: false }))}
         aria-label="Close" title="Close"
       ></button>

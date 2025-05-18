@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import ImagesComp from "./_comps/Imagescomp";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
-import { categorylist ,domain,mail} from "@/app/commondata";
+import { categorylist, domain, mail } from "@/app/commondata";
 import { notFound } from "next/navigation";
 import Promices from "@/app/_components/Homepage/Promices";
 import { cookies } from "next/headers";
@@ -21,8 +21,9 @@ async function Productpage({
   store,
   isrentalstore,
 }) {
-  const token = cookies()?.get("token")?.value;
-  const userdata = cookies()?.get("userdata")?.value;
+  const allcookies = await cookies();
+  const token = allcookies?.get("token")?.value;
+  const userdata = allcookies?.get("userdata")?.value;
   const parsedUserData = userdata ? JSON.parse(userdata) : null;
   const allproducts = await Cachedproducts();
 

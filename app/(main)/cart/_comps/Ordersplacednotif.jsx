@@ -9,7 +9,7 @@ function Ordersplacednotif() {
   const { toggleorderplacedmenu, settoggleorderplacedmenu } = AppContextfn();
   if (toggleorderplacedmenu)
     return (
-      <div className="fixed top-0 left-0 flex items-center justify-center h-full w-full bg-black bg-opacity-[0.5] z-[999]">
+      <div className="fixed top-0 left-0 flex items-center justify-center h-full w-full bg-black/50 z-[999]">
         <div className="flex flex-col items-center justify-center  w-[300px] aspect-[4/3] bg-white rounded-[10px] ">
           <Nextimage
             src={"/orderplaced%20successfully.gif"}

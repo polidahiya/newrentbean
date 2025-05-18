@@ -2,7 +2,8 @@ import React from "react";
 import Productcard from "@/app/_components/Productcard";
 import { AiFillProduct } from "react-icons/ai";
 import Link from "next/link";
-import { LuArrowRightCircle } from "react-icons/lu";
+import { LuCircleArrowRight } from "react-icons/lu";
+
 
 function Similarproducts({
   allproducts,
@@ -60,7 +61,7 @@ function Similarproducts({
                   className="relative group flex items-center justify-center gap-2 px-6 py-3 bg-theme text-white font-semibold rounded-full overflow-hidden"
                 >
                   <span>View all</span>
-                  <LuArrowRightCircle />
+                  <LuCircleArrowRight />
                   <div className="absolute top-0 left-0 w-[200%] h-full bg-bg1 -z-10 group-hover:-translate-x-1/2 duration-200"></div>
                 </Link>
               </div>

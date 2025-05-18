@@ -4,7 +4,8 @@ import Usersvg from "@/app/_svgs/Usersvg";
 import Link from "next/link";
 import Publicpage from "./Publicpage";
 
-function page({ searchParams }) {
+async function page({ searchParams }) {
+  const { token } = await searchParams;
   return (
     <div
       className="relative flex items-center justify-center py-5"
@@ -27,7 +28,7 @@ function page({ searchParams }) {
             Reset Password
           </div>
         </div>
-        <Publicpage token={searchParams?.token} />
+        <Publicpage token={token} />
         <p className="text-sm  text-center mt-5">
           Back to
           <Link

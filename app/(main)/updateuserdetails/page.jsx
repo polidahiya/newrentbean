@@ -3,13 +3,14 @@ import { cookies } from "next/headers";
 import Form from "./Form";
 import { redirect } from "next/navigation";
 
-function page() {
-  let token = cookies().get("token");
+async function page() {
+  const allcookies = await cookies();
+  let token = allcookies.get("token");
   if (!token) redirect("/loginlogout");
 
-  let userdata = cookies().get("userdata")?.value;
+  let userdata = allcookies.get("userdata")?.value;
   if (userdata) {
-    userdata = JSON.parse(cookies().get("userdata")?.value);
+    userdata = JSON.parse(allcookies.get("userdata")?.value);
   }
 
   return (

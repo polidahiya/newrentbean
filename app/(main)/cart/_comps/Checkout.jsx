@@ -65,7 +65,7 @@ function Checkout({ paymentMethod, setpaymentMethod, totalPrice, Order }) {
           </span>
         </label>
         {totalPrice > maxcashpaymentavailable && (
-          <p className="text-sm  opacity-75">
+          <p className="text-xs  opacity-75">
             * COD is available only for orders below ₹{maxcashpaymentavailable}
           </p>
         )}

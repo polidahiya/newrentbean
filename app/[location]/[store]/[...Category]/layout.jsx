@@ -13,26 +13,28 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children, params }) {
-  const { location, store } = await params;
+  const allparams = await params;
+  const { location, store } = allparams;
   const products = await Cachedproducts();
   const productsname = products?.map((item) => item.name);
 
   // cookies
-  const token = cookies()?.get("token")?.value;
-  const userdata = cookies()?.get("userdata")?.value;
+  const allcookies = await cookies();
+  const token = allcookies?.get("token")?.value;
+  const userdata = allcookies?.get("userdata")?.value;
 
   return (
     <div>
       <div className="print:hidden">
         <Navbar
-          params={params}
+          params={allparams}
           productsname={productsname}
           token={token}
           userdata={userdata}
         />
         {children}
         <Footer location={location} store={store} />
-        <Mobilenav store={store} location={location}/>
+        <Mobilenav store={store} location={location} />
       </div>
       <div className="h-[100svh] w-full items-center justify-center hidden print:flex">
         <img

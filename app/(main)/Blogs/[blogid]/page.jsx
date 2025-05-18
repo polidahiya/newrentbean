@@ -7,8 +7,9 @@ import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
 
 async function page({ params }) {
+  const { blogid } = await params;
   const blogs = await Cachedblogs();
-  const blog = blogs?.filter((item) => item._id == params?.blogid)[0];
+  const blog = blogs?.filter((item) => item._id == blogid)[0];
 
   return (
     <div className="flex flex-col md:flex-row gap-6 min-h-screen px-6 md:px-12">
@@ -68,7 +69,7 @@ async function page({ params }) {
           }
         })}
       </div>
-      <Showblogs blogs={blogs?.filter((item) => item._id != params?.blogid)} />
+      <Showblogs blogs={blogs?.filter((item) => item._id != blogid)} />
     </div>
   );
 }
@@ -119,8 +120,9 @@ function Showblogs({ blogs }) {
 }
 
 export const generateMetadata = async ({ params }) => {
+  const { blogid } = await params;
   const blogs = await Cachedblogs();
-  const blog = blogs?.filter((item) => item._id == params?.blogid)[0];
+  const blog = blogs?.filter((item) => item._id == blogid)[0];
   const mainheading = blog?.blogdata?.filter(
     (item) => item?.type == "mainheading"
   );

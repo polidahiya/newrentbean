@@ -249,7 +249,7 @@ const BirthdayPartyService = async ({ params }) => {
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"
                     fetchPriority="high"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300"></div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300"></div>
                 </div>
               ))}
             </div>

@@ -5,17 +5,19 @@ import bcrypt from "bcrypt";
 import { logintime } from "@/app/commondata";
 import { getcollection } from "@/app/Mongodb";
 
-const generateToken = (data, userdata) => {
+const generateToken = async (data, userdata) => {
+  const allcookies = await cookies();
+
   const token = jwt.sign(data, process.env.jwt_secret, {
     expiresIn: logintime,
   });
 
-  cookies().set("token", token, {
+  allcookies.set("token", token, {
     maxAge: logintime,
     httpOnly: true,
     secure: true,
   });
-  cookies().set("userdata", JSON.stringify(userdata), {
+  allcookies.set("userdata", JSON.stringify(userdata), {
     maxAge: logintime,
   });
 };
@@ -41,7 +43,7 @@ export const Userlogin = async (userdata, step) => {
       if (!isPasswordMatch) {
         return { status: 400, message: "Wrong password" };
       }
-      generateToken(
+      await generateToken(
         { email: userdata.email },
         {
           username: user.username,
@@ -67,7 +69,7 @@ export const Userlogin = async (userdata, step) => {
         return { status: 500, message: "Failed to create user" };
       }
 
-      generateToken(
+      await generateToken(
         { email: userdata.email },
         {
           username: userdata.username,
@@ -101,7 +103,7 @@ export const signup = async (userdata) => {
       return { status: 500, message: "Failed to create user" };
     }
 
-    generateToken(
+    await generateToken(
       { email: userdata.email },
       {
         username: userdata.username,
@@ -120,9 +122,11 @@ export const signup = async (userdata) => {
 
 export const logout = async () => {
   try {
-    cookies()?.delete("token");
-    cookies()?.delete("userdata");
-    cookies()?.delete("cart");
+    const allcookies = await cookies();
+
+    allcookies?.delete("token");
+    allcookies?.delete("userdata");
+    allcookies?.delete("cart");
     return { status: 200, message: "Logout successfully" };
   } catch (error) {
     console.error(error);

@@ -3,9 +3,10 @@ import Page from "./_comps/Publicpage";
 import { cookies } from "next/headers";
 import Ordersplacednotif from "./_comps/Ordersplacednotif";
 
-function page() {
-  const token = cookies()?.get("token")?.value;
-  const userdata = cookies()?.get("userdata")?.value;
+async function page() {
+  const allcookies = await cookies();
+  const token = allcookies?.get("token")?.value;
+  const userdata = allcookies?.get("userdata")?.value;
   let parseduserdata;
   if (userdata) {
     parseduserdata = JSON.parse(userdata);
@@ -13,10 +14,7 @@ function page() {
   return (
     <>
       <Ordersplacednotif />
-      <Page
-        userdata={parseduserdata}
-        token={token}
-      />
+      <Page userdata={parseduserdata} token={token} />
     </>
   );
 }

@@ -21,7 +21,7 @@ export async function updateuserdetails(newuserdetails) {
       { returnNewDocument: true }
     );
 
-    addtoken({
+    await addtoken({
       username: newuserdetails.username,
       email: tokenres.email,
       phonenum: newuserdetails.phonenum,
@@ -38,8 +38,9 @@ export async function updateuserdetails(newuserdetails) {
   }
 }
 
-function addtoken(userdata) {
-  cookies().set("userdata", JSON.stringify(userdata), {
+async function addtoken(userdata) {
+  const allcookies = await cookies();
+  allcookies.set("userdata", JSON.stringify(userdata), {
     maxAge: logintime,
   });
 }

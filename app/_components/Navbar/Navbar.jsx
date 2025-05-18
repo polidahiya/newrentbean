@@ -161,7 +161,7 @@ export const Cartlink = () => {
                 }`}
               >
                 {Object.values(cartitems).map((item, i) => {
-                  const finaltenure = selectedtenure(item, location?.location);
+                  const finaltenure = selectedtenure(item, location?.location).selected;
                   const totalprice = finaltenure?.price;
                   return (
                     <Link

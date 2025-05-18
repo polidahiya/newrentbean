@@ -83,7 +83,7 @@ async function Blogscomp() {
       <div className="flex justify-center mt-10">
         <Link
           href="/Blogs"
-          className="bg-theme text-white hover:bg-opacity-90 flex items-center gap-2 py-2 px-6 rounded-full text-sm font-semibold shadow-md transition"
+          className="bg-theme text-white hover:bg-theme/90 flex items-center gap-2 py-2 px-6 rounded-full text-sm font-semibold shadow-md transition"
           prefetch={false}
         >
           View All Blogs

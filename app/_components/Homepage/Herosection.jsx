@@ -36,7 +36,7 @@ function PosterAdds({ location, store }) {
 
   return (
     <div>
-      <div className="flex items-center md:px-10 pt-5 gap-5 overflow-hidden">
+      <div className="flex items-center md:px-10 md:pt-5 gap-5 overflow-hidden">
         {/* Left Portrait Ad */}
         <Link
           href={`/${location}/${store}/Electronic/Entertainment`}

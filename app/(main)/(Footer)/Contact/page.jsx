@@ -4,8 +4,9 @@ import ContactForm from "./Form";
 import { cookies } from "next/headers";
 import Roadmap from "@/app/_components/Homepage/Roadmap";
 
-const page = () => {
-  let userdata = cookies().get("userdata")?.value;
+const page = async () => {
+  const allcookies = await cookies();
+  let userdata = allcookies.get("userdata")?.value;
   if (userdata) userdata = JSON.parse(userdata);
 
   return (

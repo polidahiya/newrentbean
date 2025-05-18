@@ -5,17 +5,19 @@ import Footer from "../_components/footer/Footer";
 import Mobilenav from "../_components/Navbar/_comps/Mobilenav";
 
 export default async function RootLayout({ children, params }) {
+  const allparams=await params
   const products = await Cachedproducts();
   const productsname = products.map((item) => item.name);
 
   // cookies
-  const token = cookies()?.get("token")?.value;
-  const userdata = cookies()?.get("userdata")?.value;
+  const allcookies = await cookies();
+  const token = allcookies?.get("token")?.value;
+  const userdata = allcookies?.get("userdata")?.value;
 
   return (
     <div>
       <Navbar
-        params={params}
+        params={allparams}
         productsname={productsname}
         token={token}
         userdata={userdata}

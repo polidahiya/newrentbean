@@ -141,7 +141,7 @@ const Historyproductcard = ({ item, product, index }) => {
       )}
 
       {canceltag !== 0 && (
-        <span className="absolute top-2 right-2 px-2 py-1 text-xs font-medium text-white bg-gray-800 bg-opacity-75 rounded-full">
+        <span className="absolute top-2 right-2 px-2 py-1 text-xs font-medium text-white bg-gray-800/75 rounded-full">
           {canceltag === 1 ? "Canceled" : "Refunded"}
         </span>
       )}
@@ -216,7 +216,7 @@ const OrderStatus = ({ item }) => {
 
 const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-xl p-6 w-full max-w-[600px] shadow-xl">
         <div className="flex items-center justify-center gap-3 mb-4">
           <LiaExclamationTriangleSolid className="text-2xl text-yellow-500 flex-shrink-0" />

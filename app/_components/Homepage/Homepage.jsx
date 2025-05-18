@@ -22,7 +22,7 @@ export default async function Homepage({
   location = "Delhi",
   store = "Rent",
 }) {
-  const allcookies = cookies();
+  const allcookies = await cookies();
   const token = allcookies.get("token")?.value;
   const userdata = allcookies.get("userdata")?.value;
 

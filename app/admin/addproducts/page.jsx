@@ -72,7 +72,7 @@ function Page() {
   return (
     <div>
       {showeditform && (
-        <div className="fixed h-screen w-full left-0 top-0  flex items-center justify-center bg-black bg-opacity-25 z-30">
+        <div className="fixed h-screen w-full left-0 top-0  flex items-center justify-center bg-black/25 z-30">
           <div className="w-full h-screen overflow-y-scroll">
             <Addandupdateproduct
               data={data}
