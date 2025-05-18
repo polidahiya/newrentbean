@@ -222,11 +222,20 @@ export const generateMetadata = async ({ params, searchParams }) => {
       );
 
       return {
-        title: `${store} ${subcat} in ${location} | ${new Date().getFullYear()}`,
-        description:
-          categoryData.desc || `${store} ${subcat} at the best prices online!`,
+        title: subCategoryData?.meta?.title[store]?.replace(
+          /location/gi,
+          location
+        ),
+        description: subCategoryData?.meta?.desc[store]?.replace(
+          /location/gi,
+          location
+        ),
+        keywords: subCategoryData?.meta?.keywords[store]?.replace(
+          /location/gi,
+          location
+        ),
         openGraph: {
-          images: subCategoryData ? `${domain}${subCategoryData.image}` : null,
+          images: `${domain}${subCategoryData.image}`,
         },
         alternates: {
           canonical: `${domain}/${location}/${store}/${category}/${subcat}`,
@@ -241,12 +250,18 @@ export const generateMetadata = async ({ params, searchParams }) => {
 
     if (categoryData) {
       return {
-        title: `${store} ${
-          categoryData?.name
-        } in ${location} | ${new Date().getFullYear()}`,
-        description:
-          categoryData.desc ||
-          `${store} ${categoryData?.name} and buy ${categoryData?.name} at best price in ${location}`,
+        title: categorylist[category]?.meta?.title[store]?.replace(
+          /location/gi,
+          location
+        ),
+        description: categorylist[category]?.meta?.desc[store]?.replace(
+          /location/gi,
+          location
+        ),
+        keywords: categorylist[category]?.meta?.keywords[store]?.replace(
+          /location/gi,
+          location
+        ),
         openGraph: {
           images: `${domain}${categoryData.image}`,
         },
@@ -275,7 +290,7 @@ export const generateMetadata = async ({ params, searchParams }) => {
   // Default fallback metadata
   return {
     title: `${store} electronics, furniture, party items and more`,
-    description: `${store} now and save money. Renr now for exclusive deals!`,
+    description: `${store} now and save money. Rent now for exclusive deals!`,
     openGraph: {
       images: `${domain}/logo&ui/minlogo.png`,
     },

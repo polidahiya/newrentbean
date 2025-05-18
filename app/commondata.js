@@ -17,128 +17,436 @@ export const categorylist = {
   "Health-&-Fitness": {
     name: "Health & Fitness",
     image: "/logo&ui/categories/fitnessandgym2.svg",
+    meta: {
+      title: {
+        Buy: "Buy Health & Fitness Equipment in location",
+        Rent: "Rent Health & Fitness Equipment in location",
+      },
+      keywords: {
+        Buy: "buy fitness equipment location, gym machines location, medical equipment location",
+        Rent: "rent fitness equipment location, gym machines rental location, medical equipment rental location",
+      },
+      desc: {
+        Buy: "Explore a wide range of health and fitness equipment for purchase in location, including treadmills, gym weights, and medical aids.",
+        Rent: "Rent top-quality health and fitness equipment in location, from treadmills to medical beds, at affordable rates.",
+      },
+    },
     subcat: [
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-09-260.jpg",
         name: "Fitness-Machines",
         subcat: "Treadmills | Recmbent bike | Eliptical Crosstrainers",
+        meta: {
+          title: {
+            Buy: "Buy Fitness Machines in location",
+            Rent: "Rent Fitness Machines in location",
+          },
+          keywords: {
+            Buy: "buy treadmills location, recumbent bike location, elliptical crosstrainers location",
+            Rent: "rent treadmills location, recumbent bike rental location, elliptical crosstrainers rental location",
+          },
+          desc: {
+            Buy: "Purchase high-quality fitness machines like treadmills, recumbent bikes, and elliptical crosstrainers in location.",
+            Rent: "Rent fitness machines such as treadmills, recumbent bikes, and elliptical crosstrainers in location for your workout needs.",
+          },
+        },
       },
       {
         image: "/logo&ui/categories/subcategories/gumequipments.jpg",
         name: "Gym-Equipments",
         subcat: "Weights | Rods",
+        meta: {
+          title: {
+            Buy: "Buy Gym Equipment in location",
+            Rent: "Rent Gym Equipment in location",
+          },
+          keywords: {
+            Buy: "buy gym weights location, gym rods location, fitness equipment location",
+            Rent: "rent gym weights location, gym rods rental location, fitness equipment rental location",
+          },
+          desc: {
+            Buy: "Find durable gym equipment like weights and rods for purchase in location to build your home gym.",
+            Rent: "Rent gym equipment such as weights and rods in location for a flexible fitness solution.",
+          },
+        },
       },
       {
         image: "/logo&ui/categories/subcategories/medicalequipment.jpg",
         name: "Medical-Equipments",
         subcat: "Hospital Beds | Walking Aids",
+        meta: {
+          title: {
+            Buy: "Buy Medical Equipment in location",
+            Rent: "Rent Medical Equipment in location",
+          },
+          keywords: {
+            Buy: "buy hospital beds location, walking aids location, medical equipment location",
+            Rent: "rent hospital beds location, walking aids rental location, medical equipment rental location",
+          },
+          desc: {
+            Buy: "Purchase reliable medical equipment like hospital beds and walking aids in location for healthcare needs.",
+            Rent: "Rent medical equipment such as hospital beds and walking aids in location for short-term or long-term use.",
+          },
+        },
       },
     ],
   },
   Electronic: {
     name: "Home & Electronic Appliance",
     image: "/logo&ui/categories/electronics.svg",
+    meta: {
+      title: {
+        Buy: "Buy Home & Electronic Appliances in location",
+        Rent: "Rent Home & Electronic Appliances in location",
+      },
+      keywords: {
+        Buy: "buy electronics location, home appliances location, laptops location, mobile phones location",
+        Rent: "rent electronics location, home appliances rental location, laptops rental location, mobile phones rental location",
+      },
+      desc: {
+        Buy: "Shop for a variety of home and electronic appliances in location, including laptops, mobile phones, and home appliances.",
+        Rent: "Rent home and electronic appliances in location, from entertainment devices to essential home appliances, at competitive prices.",
+      },
+    },
     subcat: [
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_18-57-12-465.jpg",
         name: "Entertainment",
         subcat: "Ps4 | Hoverboard",
+        meta: {
+          title: {
+            Buy: "Buy Entertainment Devices in location",
+            Rent: "Rent Entertainment Devices in location",
+          },
+          keywords: {
+            Buy: "buy PS4 location, hoverboard location, entertainment devices location",
+            Rent: "rent PS4 location, hoverboard rental location, entertainment devices rental location",
+          },
+          desc: {
+            Buy: "Purchase entertainment devices like PS4 and hoverboards in location for fun and leisure.",
+            Rent: "Rent entertainment devices such as PS4 and hoverboards in location for events or personal use.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-18-23-267.jpg",
         name: "Laptops",
         subcat: "Dell | HP | Lenovo",
+        meta: {
+          title: {
+            Buy: "Buy Laptops in location",
+            Rent: "Rent Laptops in location",
+          },
+          keywords: {
+            Buy: "buy Dell laptops location, HP laptops location, Lenovo laptops location",
+            Rent: "rent Dell laptops location, HP laptops rental location, Lenovo laptops rental location",
+          },
+          desc: {
+            Buy: "Buy high-performance laptops from brands like Dell, HP, and Lenovo in location.",
+            Rent: "Rent laptops from top brands like Dell, HP, and Lenovo in location for work or study.",
+          },
+        },
       },
       {
         image: "/logo&ui/categories/subcategories/phone.jpg",
         name: "Mobile-&-Accessories",
         subcat: "Mobile phones",
+        meta: {
+          title: {
+            Buy: "Buy Mobile Phones & Accessories in location",
+            Rent: "Rent Mobile Phones & Accessories in location",
+          },
+          keywords: {
+            Buy: "buy mobile phones location, phone accessories location, smartphones location",
+            Rent: "rent mobile phones location, phone accessories rental location, smartphones rental location",
+          },
+          desc: {
+            Buy: "Purchase mobile phones and accessories in location for the latest technology and connectivity.",
+            Rent: "Rent mobile phones and accessories in location for temporary or trial use.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-28-036.jpg",
         name: "Home-Appliances",
         subcat: "Fridge | Washing Machine | Air Conditioner | Inverter",
+        meta: {
+          title: {
+            Buy: "Buy Home Appliances in location",
+            Rent: "Rent Home Appliances in location",
+          },
+          keywords: {
+            Buy: "buy fridge location, washing machine location, air conditioner location, inverter location",
+            Rent: "rent fridge location, washing machine rental location, air conditioner rental location, inverter rental location",
+          },
+          desc: {
+            Buy: "Purchase essential home appliances like fridges, washing machines, air conditioners, and inverters in location.",
+            Rent: "Rent home appliances such as fridges, washing machines, air conditioners, and inverters in location for convenience.",
+          },
+        },
       },
     ],
   },
   Furniture: {
     name: "Furniture",
     image: "/logo&ui/categories/furniture.svg",
+    meta: {
+      title: {
+        Buy: "Buy Furniture in location",
+        Rent: "Rent Furniture in location",
+      },
+      keywords: {
+        Buy: "buy furniture location, beds location, sofas location, dining tables location",
+        Rent: "rent furniture location, beds rental location, sofas rental location, dining tables rental location",
+      },
+      desc: {
+        Buy: "Discover a wide range of furniture for purchase in location, including beds, sofas, dining tables, and more.",
+        Rent: "Rent stylish and functional furniture in location, from beds to dining tables, for your home or office.",
+      },
+    },
     subcat: [
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-09-357.jpg",
         name: "Beds",
         subcat: "King size | Queen size | Single size",
+        meta: {
+          title: {
+            Buy: "Buy Beds in location",
+            Rent: "Rent Beds in location",
+          },
+          keywords: {
+            Buy: "buy king size beds location, queen size beds location, single size beds location",
+            Rent: "rent king size beds location, queen size beds rental location, single size beds rental location",
+          },
+          desc: {
+            Buy: "Purchase comfortable beds in king, queen, or single sizes in location for your home.",
+            Rent: "Rent beds in various sizes, including king, queen, and single, in location for temporary needs.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_18-51-44-151.jpg",
         name: "Study-Tables",
         subcat: "",
+        meta: {
+          title: {
+            Buy: "Buy Study Tables in location",
+            Rent: "Rent Study Tables in location",
+          },
+          keywords: {
+            Buy: "buy study tables location, office desks location, study furniture location",
+            Rent: "rent study tables location, office desks rental location, study furniture rental location",
+          },
+          desc: {
+            Buy: "Buy functional study tables in location for productive workspaces at home or office.",
+            Rent: "Rent study tables in location for flexible and affordable workspace solutions.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-19-26-646.jpg",
         name: "Dining",
         subcat: "2 seater | 4 seater | 6 seater",
+        meta: {
+          title: {
+            Buy: "Buy Dining Tables in location",
+            Rent: "Rent Dining Tables in location",
+          },
+          keywords: {
+            Buy: "buy dining tables location, 2 seater dining location, 6 seater dining location",
+            Rent: "rent dining tables location, 2 seater dining rental location, 6 seater dining rental location",
+          },
+          desc: {
+            Buy: "Purchase dining tables in 2, 4, or 6-seater options in location for your dining space.",
+            Rent: "Rent dining tables in various sizes, including 2, 4, and 6-seater, in location for events or home use.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-24-920.jpg",
         name: "Bookshelves",
         subcat: "",
+        meta: {
+          title: {
+            Buy: "Buy Bookshelves in location",
+            Rent: "Rent Bookshelves in location",
+          },
+          keywords: {
+            Buy: "buy bookshelves location, storage shelves location, home furniture location",
+            Rent: "rent bookshelves location, storage shelves rental location, home furniture rental location",
+          },
+          desc: {
+            Buy: "Purchase stylish bookshelves in location for organizing books and decor.",
+            Rent: "Rent bookshelves in location for temporary storage and organization needs.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-03-35-634.jpg",
         name: "Sofas",
         subcat: "",
+        meta: {
+          title: {
+            Buy: "Buy Sofas in location",
+            Rent: "Rent Sofas in location",
+          },
+          keywords: {
+            Buy: "buy sofas location, living room furniture location, couches location",
+            Rent: "rent sofas location, living room furniture rental location, couches rental location",
+          },
+          desc: {
+            Buy: "Buy comfortable and stylish sofas in location to enhance your living space.",
+            Rent: "Rent sofas in location for a cozy and flexible living room setup.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-22-47-889.jpg",
         name: "Center-Tables",
         subcat: "Square center table | Circular center table",
+        meta: {
+          title: {
+            Buy: "Buy Center Tables in location",
+            Rent: "Rent Center Tables in location",
+          },
+          keywords: {
+            Buy: "buy center tables location, square center table location, circular center table location",
+            Rent: "rent center tables location, square center table rental location, circular center table rental location",
+          },
+          desc: {
+            Buy: "Purchase elegant center tables, square or circular, in location for your living room.",
+            Rent: "Rent center tables, square or circular, in location for stylish and temporary decor.",
+          },
+        },
       },
       {
         image: "/logo&ui/categories/subcategories/wardrobe.jpg",
         name: "Wardrobe",
         subcat: "",
+        meta: {
+          title: {
+            Buy: "Buy Wardrobes in location",
+            Rent: "Rent Wardrobes in location",
+          },
+          keywords: {
+            Buy: "buy wardrobes location, storage furniture location, bedroom furniture location",
+            Rent: "rent wardrobes location, storage furniture rental location, bedroom furniture rental location",
+          },
+          desc: {
+            Buy: "Purchase spacious wardrobes in location for efficient bedroom storage.",
+            Rent: "Rent wardrobes in location for flexible and convenient storage solutions.",
+          },
+        },
       },
     ],
   },
   "Event-&-Parties": {
     name: "Event & Parties",
     image: "/logo&ui/categories/eventandparties.svg",
+    meta: {
+      title: {
+        Buy: "Buy Event & Party Supplies in location",
+        Rent: "Rent Event & Party Supplies in location",
+      },
+      keywords: {
+        Buy: "buy party supplies location, event equipment location, DJ lights location",
+        Rent: "rent party supplies location, event equipment rental location, DJ lights rental location",
+      },
+      desc: {
+        Buy: "Purchase event and party supplies in location, including DJ lights, hookahs, and more, for memorable celebrations.",
+        Rent: "Rent event and party supplies in location, from DJ lights to barbecues, for hassle-free events.",
+      },
+    },
     subcat: [
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-07-07-726.jpg",
         name: "Party-Items",
         subcat: "Dj lights | Hookah | Dispensor | Beer tower | Barbaque",
+        meta: {
+          title: {
+            Buy: "Buy Party Items in location",
+            Rent: "Rent Party Items in location",
+          },
+          keywords: {
+            Buy: "buy DJ lights location, hookah location, beer tower location, barbecue location",
+            Rent: "rent DJ lights location, hookah rental location, beer tower rental location, barbecue rental location",
+          },
+          desc: {
+            Buy: "Purchase party items like DJ lights, hookahs, and barbecues in location for vibrant events.",
+            Rent: "Rent party items such as DJ lights, hookahs, and barbecues in location for unforgettable celebrations.",
+          },
+        },
       },
     ],
   },
   Others: {
     name: "Others",
     image: "/logo&ui/categories/campinggear.svg",
+    meta: {
+      title: {
+        Buy: "Buy Miscellaneous Items in location",
+        Rent: "Rent Miscellaneous Items in location",
+      },
+      keywords: {
+        Buy: "buy baby care items location, camping gear location, miscellaneous items location",
+        Rent: "rent baby care items location, camping gear rental location, miscellaneous items rental location",
+      },
+      desc: {
+        Buy: "Explore miscellaneous items for purchase in location, including baby care products and camping gear.",
+        Rent: "Rent miscellaneous items like baby care products and camping gear in location for convenience and affordability.",
+      },
+    },
     subcat: [
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-21-54-509.jpg",
         name: "Baby-Care",
         subcat: "Baby cart seat | Baby carrier | Baby stoller",
+        meta: {
+          title: {
+            Buy: "Buy Baby Care Items in location",
+            Rent: "Rent Baby Care Items in location",
+          },
+          keywords: {
+            Buy: "buy baby cart seat location, baby carrier location, baby stroller location",
+            Rent: "rent baby cart seat location, baby carrier rental location, baby stroller rental location",
+          },
+          desc: {
+            Buy: "Purchase baby care items like cart seats, carriers, and strollers in location for your little ones.",
+            Rent: "Rent baby care items such as cart seats, carriers, and strollers in location for short-term use.",
+          },
+        },
       },
       {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_19-02-30-781.jpg",
         name: "Camping-Gear",
         subcat: "Tent | Sleeping bags | Folding chairs",
+        meta: {
+          title: {
+            Buy: "Buy Camping Gear in location",
+            Rent: "Rent Camping Gear in location",
+          },
+          keywords: {
+            Buy: "buy tents location, sleeping bags location, folding chairs location",
+            Rent: "rent tents location, sleeping bags rental location, folding chairs rental location",
+          },
+          desc: {
+            Buy: "Purchase camping gear like tents, sleeping bags, and folding chairs in location for outdoor adventures.",
+            Rent: "Rent camping gear such as tents, sleeping bags, and folding chairs in location for your next trip.",
+          },
+        },
       },
     ],
   },
