@@ -122,7 +122,7 @@ export const categorylist = {
           },
           keywords: {
             Buy: "buy PS4 location, hoverboard location, entertainment devices location",
-            Rent: "rent PS4 location, hoverboard rental location, entertainment devices rental location",
+            Rent: "rent PS4 location, rent Gta 4 location, rent uncharted 4, rent tekken 7 location, rent the last of us par 3 location, location, rent gta hoverboard rental location, entertainment devices rental location, rent hoverboard location",
           },
           desc: {
             Buy: "Purchase entertainment devices like PS4 and hoverboards in location for fun and leisure.",
@@ -137,11 +137,11 @@ export const categorylist = {
         subcat: "Dell | HP | Lenovo",
         meta: {
           title: {
-            Buy: "Buy Laptops in location",
+            Buy: "Buy New or Refurbished Laptops in location",
             Rent: "Rent Laptops in location",
           },
           keywords: {
-            Buy: "buy Dell laptops location, HP laptops location, Lenovo laptops location",
+            Buy: "buy Dell laptops location, HP laptops location, Lenovo laptops location, buy refurbished Dell laptops location, buy refurbished HP laptops location, buy refurbished Lenovo laptops location",
             Rent: "rent Dell laptops location, HP laptops rental location, Lenovo laptops rental location",
           },
           desc: {

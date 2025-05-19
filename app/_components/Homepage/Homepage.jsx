@@ -26,9 +26,6 @@ export default async function Homepage({
   const token = allcookies.get("token")?.value;
   const userdata = allcookies.get("userdata")?.value;
 
-  let parseduserdata;
-  if (userdata) parseduserdata = JSON.parse(userdata);
-
   const products = await Cachedproducts();
   const instoreproducts = products.filter(
     (item) => item?.availablefor == store || item?.availablefor == "Both"
