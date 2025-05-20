@@ -33,9 +33,11 @@ function Page() {
         { time: "", type: "days", price: "" },
       ],
     },
+    buymrp: "",
     buyprice: "",
     alongwith: [],
     availablefor: "Rent", //"Rent", "Buy", "Both"
+    howtouse: "",
     seotitle: "",
     seodescription: "",
     seokeywords: "Rentbean, Rentmojo, Furlenco, Justdial, olx, Rent",

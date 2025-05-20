@@ -12,6 +12,7 @@ import Details from "./_comps/Details";
 import Productdesc from "./_comps/Productdesc";
 import Alongwith from "./_comps/Alongwith";
 import Breadcrumbs from "../_components/Breadcrumbs";
+import Howtouse from "./_comps/Howtouse";
 
 async function Productpage({
   category,
@@ -126,6 +127,11 @@ async function Productpage({
           store={store}
           isrentalstore={isrentalstore}
         />
+        {filteredProduct?.howtouse && (
+          <Howtouse
+            url={filteredProduct?.howtouse} // Replace with your actual YouTube video ID
+          />
+        )}
         <div className="mt-5">
           <FAQSection
             faqlist={[

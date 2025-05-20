@@ -168,14 +168,23 @@ function Addandupdateproduct({
 
       {/* Buy Price */}
       {(data.availablefor === "Buy" || data.availablefor === "Both") && (
-        <Standardinputfield
-          titlename="Buy Price"
-          type="number"
-          isRequired
-          value={data.buyprice}
-          onchange={(e) => handleChange("buyprice", e.target.value)}
-          clear={() => handleClearField("buyprice")}
-        />
+        <>
+          <Standardinputfield
+            titlename="Buy Mrp"
+            value={data.buymrp || ""}
+            isRequired={false}
+            onchange={(e) => handleChange("buymrp", e.target.value)}
+            clear={() => handleClearField("buymrp")}
+          />
+          <Standardinputfield
+            titlename="Buy Price"
+            type="number"
+            isRequired={false}
+            value={data.buyprice}
+            onchange={(e) => handleChange("buyprice", e.target.value)}
+            clear={() => handleClearField("buyprice")}
+          />
+        </>
       )}
 
       {/* Description */}
@@ -190,6 +199,13 @@ function Addandupdateproduct({
         state={data?.alongwith || []}
         statename="alongwith"
         setState={setdata}
+      />
+      <Standardinputfield
+        titlename="how to use (video link)"
+        value={data.howtouse || ""}
+        isRequired={false}
+        onchange={(e) => handleChange("howtouse", e.target.value)}
+        clear={() => handleClearField("howtouse")}
       />
 
       {/* SEO Fields */}

@@ -11,6 +11,14 @@ import Location from "./_components/Location";
 import FIxedbuttons from "./_components/FIxedbuttons";
 import { cookies } from "next/headers";
 import { cities } from "./commondata";
+import { Mulish } from "next/font/google";
+
+const mulish = Mulish({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"], // choose weights you need
+  style: ["normal", "italic"], // optional
+  display: "swap",
+});
 
 export const metadata = {
   title: "Rentbean - Great for flexible rental options.",
@@ -60,7 +68,8 @@ export default async function RootLayout({ children }) {
               url: "https://rentbean.in",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://rentbean.in/Delhi/Rent/Search?query={search_term_string}",
+                target:
+                  "https://rentbean.in/Delhi/Rent/Search?query={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
               publisher: {
@@ -81,7 +90,9 @@ export default async function RootLayout({ children }) {
         />
         <meta name="theme-color" content="#d68e43" />
       </head>
-      <body className="antialiased max-w-[1900px] mx-auto">
+      <body
+        className={`${mulish.className} antialiased max-w-[1900px] mx-auto`}
+      >
         <Appwrapper
           token={token}
           userdata={userdata}
