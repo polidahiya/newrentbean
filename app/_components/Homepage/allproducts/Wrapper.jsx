@@ -13,12 +13,11 @@ function Wrapper({ children }) {
   return (
     <div className="px-2 py-10 md:p-10 bg-gray-100">
       <div className="flex justify-between items-end p-2 md:p-0">
-        <div className=" text-[25px] font-recline">
-          You&apos;ll love to
+        <div className="text-[25px] font-recline">
+          Fall in love
           <br />
           <div className="opacity-90 font-recline">
-            {" "}
-            take these home
+            With your space
             <div className="h-0.5 w-[100px] bg-theme"></div>
           </div>
         </div>
