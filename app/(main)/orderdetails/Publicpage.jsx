@@ -5,7 +5,7 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { LiaExclamationTriangleSolid } from "react-icons/lia";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import React, { useState } from "react";
-import { orderstages } from "@/app/commondata";
+import { orderstages, months } from "@/app/commondata";
 import { AppContextfn } from "@/app/Context";
 import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
@@ -71,10 +71,10 @@ const Historyproductcard = ({ item, product, index }) => {
   };
 
   // Format start date if available
-  const startDate = product?.tenureStart
-    ? `${product.tenureStart.date}/${product.tenureStart.month}/${product.tenureStart.year}`
-    : new Date(item.createdAt).toLocaleDateString();
-
+  const tenurestart = product?.tenureStart;
+  const startDate = `${tenurestart?.date} ${months[tenurestart?.month]} ${
+    tenurestart?.year
+  }`;
   const tenure = selectedtenure(product, item?.location).selected;
 
   return (

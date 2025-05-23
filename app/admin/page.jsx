@@ -29,13 +29,7 @@ export default async function Adminhome({ searchParams }) {
   if (ordersres.status != 200) {
     return (
       <>
-        <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
-          <Selectordertype
-            ordertype={ordertype}
-            Refreshorders={Refreshorders}
-          />
-          <Searchbox />
-        </div>
+        <Adminnavcomp ordertype={ordertype} Refreshorders={Refreshorders} />
         <div className="h-screen w-full flex items-center justify-center text-red-500">
           {ordersres.message}
         </div>
@@ -50,10 +44,7 @@ export default async function Adminhome({ searchParams }) {
 
   return (
     <div>
-      <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
-        <Selectordertype ordertype={ordertype} Refreshorders={Refreshorders} />
-        <Searchbox />
-      </div>
+      <Adminnavcomp ordertype={ordertype} Refreshorders={Refreshorders} />
       {orders.length == 0 && <Productnotfound />}
       <div className={`p-5`}>
         {orders.map((item, i) => {
@@ -84,3 +75,12 @@ export default async function Adminhome({ searchParams }) {
     </div>
   );
 }
+
+const Adminnavcomp = ({ ordertype, Refreshorders }) => {
+  return (
+    <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
+      <Selectordertype ordertype={ordertype} Refreshorders={Refreshorders} />
+      <Searchbox />
+    </div>
+  );
+};

@@ -12,7 +12,7 @@ export default function ProductCard({
   location,
 }) {
   const [pshowstatus, setpshowstatus] = useState(false);
-  const [localStatus, setLocalStatus] = useState(product?.status); // Local state for status
+  const [localStatus, setLocalStatus] = useState(product?.status);
 
   const {
     name,
@@ -31,40 +31,37 @@ export default function ProductCard({
   const tenure = locationrentprices[selectedtenure];
 
   return (
-    <div
-      className={`relative bg-white shadow-lg rounded-lg p-4 h-full md:max-w-80`}
-    >
-      {localStatus != 0 && <Canceledorrefundedbadge status={localStatus} />}
+    <div className="relative bg-white shadow-md rounded-xl overflow-hidden w-full max-w-md">
+      {/* Canceled or Refunded Badge */}
+      {localStatus !== 0 && <Canceledorrefundedbadge status={localStatus} />}
+
       <Nextimage
-        className="w-full rounded-t-lg aspect-square object-cover object-center"
+        className="w-full aspect-square object-cover object-center"
         src={image}
         alt="product image"
         width={300}
         height={300}
         loading="lazy"
       />
-      <div className="p-4">
+
+      <div className="p-4 space-y-2 text-sm text-gray-800">
         <OrderDetail label="Name" value={name} />
         {isrentalstore && (
           <OrderDetail
-            label="Tenure start date"
-            value={
-              tenureStart?.date +
-              " " +
-              months[tenureStart?.month] +
-              " " +
+            label="Tenure Start"
+            value={`${tenureStart?.date} ${months[tenureStart?.month]} ${
               tenureStart?.year
-            }
+            }`}
           />
         )}
         <OrderDetail
           label="Type"
-          value={isrentalstore ? "For Rent" : "For Sell"}
+          value={isrentalstore ? "For Rent" : "For Sale"}
         />
         {isrentalstore && (
           <OrderDetail
             label="Duration"
-            value={tenure?.time + " " + tenure?.type}
+            value={`${tenure?.time} ${tenure?.type}`}
           />
         )}
         <OrderDetail
@@ -74,7 +71,7 @@ export default function ProductCard({
             10
           ).toLocaleString("en-IN")}/-`}
         />
-        <OrderDetail label="Quantity" value={`${quantity}`} />
+        <OrderDetail label="Quantity" value={quantity} />
         {isrentalstore && (
           <OrderDetail
             label="Security Deposit"
@@ -84,21 +81,20 @@ export default function ProductCard({
           />
         )}
       </div>
-      {/* status button*/}
-      <div className="absolute top-[10px] right-[10px] flex items-center gap-2 z-10">
+
+      {/* Status Button */}
+      <div className="absolute top-3 right-3 z-20">
         <button
-          className="flex items-center gap-2 border border-slate-300 h-[30px] px-5 bg-white"
-          onClick={() => {
-            setpshowstatus((pre) => !pre);
-          }}
+          onClick={() => setpshowstatus((prev) => !prev)}
+          className="flex items-center gap-1 px-3 h-[32px] text-sm bg-white border border-slate-300 rounded-md shadow-sm hover:bg-slate-100 transition"
           aria-label="Change Status"
-          title="Change Status"
         >
-          Status
+          Status{" "}
           <IoMdArrowDropdown className={`${pshowstatus && "rotate-180"}`} />
         </button>
       </div>
-      {/* status options */}
+
+      {/* Dropdown */}
       {pshowstatus && (
         <ProductstatusOption
           orderid={orderid}
@@ -106,14 +102,13 @@ export default function ProductCard({
           setLocalStatus={setLocalStatus}
         />
       )}
-      {/* black screen */}
+
+      {/* Overlay to close dropdown */}
       {pshowstatus && (
         <div
-          className="fixed top-0 left-0 h-screen w-screen z-[9]"
-          onClick={() => {
-            setpshowstatus(false);
-          }}
-        ></div>
+          className="fixed inset-0 z-10"
+          onClick={() => setpshowstatus(false)}
+        />
       )}
     </div>
   );
@@ -130,20 +125,18 @@ const ProductstatusOption = ({ orderid, productindex, setLocalStatus }) => {
   const changestatusfn = async (status) => {
     const res = await changeproductstatus(orderid, productindex, status);
     if (res?.status === 200) {
-      setLocalStatus(status); // Update local status to reflect the change
+      setLocalStatus(status);
       setmessagefn(res?.message);
     }
   };
 
   return (
-    <div className="absolute top-[50px] right-[10px] flex flex-col items-center p-[5px] bg-white rounded-[10px] shadow-md border border-slate-300 z-10">
+    <div className="absolute top-12 right-3 bg-white border border-slate-300 rounded-md shadow-lg z-30 overflow-hidden">
       {statusOptions.map(({ label, status }) => (
         <button
           key={status}
-          className="w-full p-[5px] lg:hover:bg-slate-100 "
           onClick={() => changestatusfn(status)}
-          aria-label={label}
-          title={label}
+          className="w-full px-4 py-2 text-left text-sm hover:bg-slate-100"
         >
           {label}
         </button>
@@ -153,19 +146,20 @@ const ProductstatusOption = ({ orderid, productindex, setLocalStatus }) => {
 };
 
 const OrderDetail = ({ label, value }) => (
-  <p className="text-sm  text-gray-700">
-    <span className="font-bold">{label}:</span> {value}
+  <p>
+    <span className="font-medium">{label}:</span> {value}
   </p>
 );
 
 const Canceledorrefundedbadge = ({ status }) => {
+  const statusText = status === 1 ? "Canceled" : "Refunded";
+  const badgeColor = status === 1 ? "bg-red-500" : "bg-yellow-500";
+
   return (
     <div
-      className={`absolute top-[10px] left-[10px] ${status == 1 && "bg-red-500"}
-      ${status == 2 && "bg-yellow-600"} text-white px-5 py-[5px]`}
+      className={`absolute top-3 left-3 px-3 py-1 text-xs font-semibold text-white rounded-full shadow-md ${badgeColor}`}
     >
-      {status == 1 && "Canceled"}
-      {status == 2 && "Refunded"}
+      {statusText}
     </div>
   );
 };
