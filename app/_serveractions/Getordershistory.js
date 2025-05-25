@@ -29,7 +29,7 @@ export const getordershistory = async () => {
 };
 
 // cancel order
-export const Cancelorder = async (orderid, productindex) => {
+export const Cancelorder = async (orderid) => {
   try {
     const { ObjectId, orderscollection } = await getcollection();
     const tokenres = await Verification("public");
@@ -57,7 +57,7 @@ export const Cancelorder = async (orderid, productindex) => {
 
     // Proceed to update the product status in the array
     const result = await orderscollection.updateOne(filter, {
-      $set: { [`products.${productindex}.status`]: 1 },
+      $set: { status: 4 },
     });
 
     if (result.modifiedCount === 0) {

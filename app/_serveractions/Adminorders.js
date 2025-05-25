@@ -83,46 +83,6 @@ export const changestatus = async (documentId, status) => {
   }
 };
 
-// change product status
-export const changeproductstatus = async (orderId, productIndex, newStatus) => {
-  try {
-    const { orderscollection, ObjectId } = await getcollection();
-    const res = await Verification();
-
-    if (!res?.verified) {
-      return { status: 400, message: "Please login first" };
-    }
-
-    const filter = { _id: new ObjectId(orderId) };
-
-    // Fetch the order to check if the productIndex exists
-    const order = await orderscollection.findOne(filter);
-
-    if (!order) {
-      return { status: 404, message: "Order not found" };
-    }
-
-    // Check if productIndex is valid
-    if (productIndex >= order.products.length || productIndex < 0) {
-      return { status: 400, message: "Invalid product index" };
-    }
-
-    // Proceed to update the product status in the array
-    const result = await orderscollection.updateOne(filter, {
-      $set: { [`products.${productIndex}.status`]: newStatus },
-    });
-
-    if (result.modifiedCount === 0) {
-      return { status: 500, message: "Failed to update status" };
-    }
-
-    return { status: 200, message: "Status updated successfully" };
-  } catch (error) {
-    console.log(error);
-    return { status: 500, message: "Server Error" };
-  }
-};
-
 // delete orders function
 export const deleteorder = async (documentId) => {
   try {

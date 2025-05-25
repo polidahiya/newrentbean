@@ -4,7 +4,7 @@ import crypto from "crypto";
 import Ordercconfirmation from "@/app/_mailtemplates/Ordercconfirmation";
 import sendEmail from "../Sendmail";
 
-async function Verifyrazorpay(razorpaydata, mongoid) {
+async function Verifyrazorpay(razorpaydata, paymentGroupId) {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
       razorpaydata;
@@ -15,18 +15,39 @@ async function Verifyrazorpay(razorpaydata, mongoid) {
       .digest("hex");
 
     if (generatedSignature === razorpay_signature) {
-      const { orderscollection, ObjectId } = await getcollection();
-      const orderdata = await orderscollection.findOneAndUpdate(
-        { _id: new ObjectId(mongoid) },
+      const { orderscollection } = await getcollection();
+
+      // Update all orders with this paymentGroupId
+      await orderscollection.updateMany(
+        { paymentGroupId },
         { $set: { paymentStatus: "success" } }
       );
-      // send mails
-      const mailhtml = Ordercconfirmation(orderdata);
-      sendEmail(
-        "Order confirmation",
-        ["rentbeandotin@gmail.com", orderdata?.userdata?.email],
-        mailhtml
-      );
+
+      // Fetch updated orders for email
+      const updatedOrders = await orderscollection
+        .find({ paymentGroupId })
+        .toArray();
+
+      try {
+        if (updatedOrders?.length > 0) {
+          const firstorder = updatedOrders[0];
+          const products = updatedOrders.map((order) => order.product);
+          const mailhtml = Ordercconfirmation(
+            firstorder?.userdata,
+            firstorder?.paymentGroupId,
+            firstorder?.createdAt,
+            products,
+            firstorder?.paymentMethod,
+            firstorder?.totalPrice
+          );
+          sendEmail(
+            "Order confirmation",
+            ["rentbeandotin@gmail.com", updatedOrders[0]?.userdata?.email],
+            mailhtml
+          );
+        }
+      } catch (error) {}
+
       return {
         status: 200,
         message: "Payment verified successfully",
@@ -35,6 +56,7 @@ async function Verifyrazorpay(razorpaydata, mongoid) {
       return { status: 400, message: "Invalid signature" };
     }
   } catch (error) {
+    console.error(error);
     return { status: 500, message: "Server error" };
   }
 }

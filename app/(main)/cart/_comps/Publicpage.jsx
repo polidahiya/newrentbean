@@ -77,7 +77,7 @@ export default function Page({ userdata, token }) {
         if (res?.status == 200) {
           try {
             event("purchase", {
-              transaction_id: res?.orderNumber,
+              transaction_id: res?.paymentGroupId,
               affiliation: "Online Store",
               value: totalPrice, // total value (excluding tax and shipping if desired)
               tax: 0,
@@ -97,7 +97,7 @@ export default function Page({ userdata, token }) {
           }
 
           if (paymentMethod == "online") {
-            loadRazorpay(userdata, res?.id);
+            loadRazorpay(userdata, res?.paymentGroupId);
           } else {
             setmessagefn(res?.message);
             ordersuccess();
@@ -112,7 +112,7 @@ export default function Page({ userdata, token }) {
     );
   };
   // load razor pay
-  const loadRazorpay = async (userdata, mongoid) => {
+  const loadRazorpay = async (userdata, paymentGroupId) => {
     const res = await Razorpayidcreate(totalPrice, "INR");
     if (res.status !== 200) {
       setmessagefn("Payment Failed!");
@@ -121,7 +121,7 @@ export default function Page({ userdata, token }) {
     const order = res?.order;
 
     const options = {
-      key: process.env.Razortpay_Key,
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount: totalPrice, // Amount in paise
       currency: order.currency || "INR",
       name: "Rentbean",
@@ -129,7 +129,7 @@ export default function Page({ userdata, token }) {
       image: "/logo&ui/minlogo.png",
       order_id: order.id, // Order ID generated from your backend
       handler: async (response) => {
-        const res = await Verifyrazorpay(response, mongoid);
+        const res = await Verifyrazorpay(response, paymentGroupId);
         setmessagefn(res?.message);
         if (res?.status == 200) {
           ordersuccess();

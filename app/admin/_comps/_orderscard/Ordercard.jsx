@@ -94,15 +94,7 @@ function Ordercard({ item }) {
         {open && (
           <>
             <div className="w-full flex flex-wrap gap-2 justify-center">
-              {item?.products?.map((product, i) => (
-                <ProductCard
-                  key={i}
-                  product={product}
-                  orderid={item?._id}
-                  productindex={i}
-                  location={item?.location}
-                />
-              ))}
+              <ProductCard product={item?.product} location={item?.location} />
             </div>
             {/* Note and Invoice Section */}
             <div className="w-full mt-6 space-y-4">

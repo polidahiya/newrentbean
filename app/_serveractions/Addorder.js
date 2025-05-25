@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { getcollection } from "@/app/Mongodb";
 import Ordercconfirmation from "../_mailtemplates/Ordercconfirmation";
 import sendEmail from "./Sendmail";
+import { v4 as uuidv4 } from "uuid";
 
 export const Placeorder = async (
   ordersdata,
@@ -23,55 +24,71 @@ export const Placeorder = async (
     // cookies
     const userdata = JSON.parse(allcookies?.get("userdata")?.value);
 
-    const updatedsitedata = await sitedata.findOneAndUpdate(
-      {},
-      { $inc: { orderNumber: 1 } },
-      { returnDocument: "after", upsert: true }
-    );
+    const paymentGroupId = uuidv4();
+    const createdAt = new Date();
 
-    const orderNumber = `Rb${getYYMMDD()}-${updatedsitedata?.orderNumber}`;
+    for (let [key, product] of ordersdata) {
+      const updatedsitedata = await sitedata.findOneAndUpdate(
+        {},
+        { $inc: { orderNumber: 1 } },
+        { returnDocument: "after", upsert: true }
+      );
+      const orderNumber = `Rb${getYYMMDD()}-${updatedsitedata?.orderNumber}`;
 
-    let order = {
-      orderNumber,
-      paymentMethod,
-      status: 0,
-      userdata,
-      products: Object.values(ordersdata).map((product) => ({
-        ...product[1],
-        status: 0,
-      })),
-      location,
-      totalPrice,
-      note: "",
-      createdAt: new Date(),
-    };
+      // deleting extras from product
+      const selectedtenure = product.prices[product.location]
+        ? product.prices[product.location][product.selectedtenure]
+        : product.prices.Default[product.selectedtenure];
+      const refined_product = { ...product, tenure: selectedtenure };
+      delete refined_product.prices;
+      delete refined_product.added;
+      delete refined_product.sku;
+      delete refined_product.selectedtenure;
+      delete refined_product.maxquantity;
+      delete refined_product.status;
 
-    if (paymentMethod == "online") {
-      order.paymentStatus = "pending";
-    }
-
-    const insertedorder = await orderscollection.insertOne(order);
-
-    if (insertedorder?.insertedCount != 0) {
-      // send mails
-      if (paymentMethod == "cod") {
-        const mailhtml = Ordercconfirmation(order);
-        sendEmail(
-          "Order confirmation",
-          ["rentbeandotin@gmail.com", order?.userdata?.email],
-          mailhtml
-        );
-      }
-
-      return {
-        status: 200,
-        message: "Order Placed Successfully",
-        id: insertedorder.insertedId.toString(),
+      let order = {
+        paymentGroupId,
         orderNumber,
+        paymentMethod,
+        status: 0,
+        userdata,
+        product: refined_product,
+        location,
+        totalPrice,
+        note: "",
+        createdAt: createdAt,
       };
-    } else {
-      return { status: 200, message: "Order Failed" };
+      if (paymentMethod == "online") {
+        order.paymentStatus = "pending";
+      }
+      await orderscollection.insertOne(order);
     }
+
+    // send mail
+    if (paymentMethod == "cod") {
+      const products = ordersdata.map(([key, product]) => product);
+      const mailhtml = Ordercconfirmation(
+        userdata,
+        paymentGroupId,
+        createdAt,
+        products,
+        paymentMethod,
+        totalPrice
+      );
+
+      sendEmail(
+        "Order confirmation",
+        ["rentbeandotin@gmail.com", order?.userdata?.email],
+        mailhtml
+      );
+    }
+
+    return {
+      status: 200,
+      message: "Order Placed Successfully",
+      paymentGroupId,
+    };
   } catch (error) {
     console.log(error);
     return { status: 500, message: "Server Error" };

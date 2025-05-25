@@ -5,7 +5,7 @@ import Ordersrefreshbutton from "./Ordersrefreshbutton";
 function Selectordertype({ ordertype, Refreshorders }) {
   // Define the order types and their labels
   const orderTypes = [
-    { id: 0, label: "All" },
+    { id: 0, label: "Order" },
     { id: 1, label: "Processing" },
     { id: 2, label: "Shipped" },
     { id: 3, label: "Delivered" },

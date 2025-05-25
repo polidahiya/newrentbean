@@ -1,9 +1,14 @@
 import { sociallinks, mobile, domain } from "../commondata";
 import FormattedDate from "../_components/_helperfunctions/Formateddate";
 
-function Ordercconfirmation(order) {
-  const { userdata, orderNumber, createdAt, products, paymentMethod, totalPrice } =
-    order;
+function Ordercconfirmation(
+  userdata,
+  paymentGroupId,
+  createdAt,
+  products,
+  paymentMethod,
+  totalPrice
+) {
   const orderdate = FormattedDate(createdAt);
 
   const productsdetails = products
@@ -153,7 +158,7 @@ function Ordercconfirmation(order) {
       </p>
 
       <h2>Order Summary</h2>
-      <p><strong>Order ID:</strong> ${orderNumber}</p>
+      <p><strong>Order ID:</strong> ${paymentGroupId}</p>
       <p><strong>Order Date:</strong> ${orderdate}</p>
       <h2>Product Details</h2>
       <table>

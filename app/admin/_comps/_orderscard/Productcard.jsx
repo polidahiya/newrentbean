@@ -1,165 +1,94 @@
-import { useState } from "react";
 import Nextimage from "@/app/_components/Nextimage";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { changeproductstatus } from "@/app/_serveractions/Adminorders";
-import { AppContextfn } from "@/app/Context";
 import { months } from "@/app/commondata";
 
-export default function ProductCard({
-  product,
-  orderid,
-  productindex,
-  location,
-}) {
-  const [pshowstatus, setpshowstatus] = useState(false);
-  const [localStatus, setLocalStatus] = useState(product?.status);
-
+export default function ProductCard({ product }) {
+  if (!product) return;
   const {
     name,
     isrentalstore,
     quantity,
-    prices,
+    tenure,
     buyprice,
-    selectedtenure,
     securitydeposit,
     image,
     tenureStart,
   } = product;
 
-  const locationrentprices =
-    location in prices ? prices[location] : prices?.Default;
-  const tenure = locationrentprices[selectedtenure];
+  const formattedDate = tenureStart
+    ? `${tenureStart?.date} ${months[tenureStart?.month]} ${tenureStart?.year}`
+    : "";
+
+  const totalPrice = isrentalstore
+    ? tenure?.price * quantity
+    : buyprice * quantity;
+
+  const formattedPrice = `₹${parseInt(totalPrice, 10).toLocaleString(
+    "en-IN"
+  )}/-`;
+  const formattedDeposit = `₹${parseInt(
+    securitydeposit * quantity,
+    10
+  ).toLocaleString("en-IN")}/-`;
 
   return (
-    <div className="relative bg-white shadow-md rounded-xl overflow-hidden w-full max-w-md">
-      {/* Canceled or Refunded Badge */}
-      {localStatus !== 0 && <Canceledorrefundedbadge status={localStatus} />}
-
-      <Nextimage
-        className="w-full aspect-square object-cover object-center"
-        src={image}
-        alt="product image"
-        width={300}
-        height={300}
-        loading="lazy"
-      />
-
-      <div className="p-4 space-y-2 text-sm text-gray-800">
-        <OrderDetail label="Name" value={name} />
-        {isrentalstore && (
-          <OrderDetail
-            label="Tenure Start"
-            value={`${tenureStart?.date} ${months[tenureStart?.month]} ${
-              tenureStart?.year
-            }`}
-          />
-        )}
-        <OrderDetail
-          label="Type"
-          value={isrentalstore ? "For Rent" : "For Sale"}
+    <div className="w-full flex flex-col md:flex-row md:items-center">
+      {/* Image */}
+      <div className="w-full md:h-40 md:w-40 ">
+        <Nextimage
+          className="w-full h-full object-cover aspect-square"
+          src={image}
+          alt={name}
+          width={400}
+          height={400}
+          loading="lazy"
         />
-        {isrentalstore && (
-          <OrderDetail
-            label="Duration"
-            value={`${tenure?.time} ${tenure?.type}`}
-          />
-        )}
-        <OrderDetail
-          label="Price"
-          value={`₹${parseInt(
-            (isrentalstore ? tenure?.price : buyprice) * quantity,
-            10
-          ).toLocaleString("en-IN")}/-`}
-        />
-        <OrderDetail label="Quantity" value={quantity} />
-        {isrentalstore && (
-          <OrderDetail
-            label="Security Deposit"
-            value={`₹${parseInt(securitydeposit * quantity, 10).toLocaleString(
-              "en-IN"
-            )}/-`}
-          />
-        )}
       </div>
 
-      {/* Status Button */}
-      <div className="absolute top-3 right-3 z-20">
-        <button
-          onClick={() => setpshowstatus((prev) => !prev)}
-          className="flex items-center gap-1 px-3 h-[32px] text-sm bg-white border border-slate-300 rounded-md shadow-sm hover:bg-slate-100 transition"
-          aria-label="Change Status"
-        >
-          Status{" "}
-          <IoMdArrowDropdown className={`${pshowstatus && "rotate-180"}`} />
-        </button>
+      {/* Details */}
+      <div className="sm:w-2/3 w-full p-5 space-y-3 text-gray-800">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">
+          {name}
+        </h2>
+
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm sm:text-base">
+          <div>
+            <span className="font-medium">Type:</span>{" "}
+            {isrentalstore ? "For Rent" : "For Sale"}
+          </div>
+
+          {isrentalstore && (
+            <>
+              <div>
+                <span className="font-medium">Tenure Start:</span>{" "}
+                {formattedDate}
+              </div>
+              <div>
+                <span className="font-medium">Duration:</span> {tenure?.time}{" "}
+                {tenure?.type}
+              </div>
+            </>
+          )}
+
+          <div>
+            <span className="font-medium">Quantity:</span> {quantity}
+          </div>
+          <div>
+            <span className="font-medium">Price:</span>{" "}
+            <span className="text-green-600 font-semibold">
+              {formattedPrice}
+            </span>
+          </div>
+
+          {isrentalstore && (
+            <div>
+              <span className="font-medium">Security Deposit:</span>{" "}
+              <span className="text-blue-600 font-semibold">
+                {formattedDeposit}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
-
-      {/* Dropdown */}
-      {pshowstatus && (
-        <ProductstatusOption
-          orderid={orderid}
-          productindex={productindex}
-          setLocalStatus={setLocalStatus}
-        />
-      )}
-
-      {/* Overlay to close dropdown */}
-      {pshowstatus && (
-        <div
-          className="fixed inset-0 z-10"
-          onClick={() => setpshowstatus(false)}
-        />
-      )}
     </div>
   );
 }
-
-const ProductstatusOption = ({ orderid, productindex, setLocalStatus }) => {
-  const { setmessagefn } = AppContextfn();
-  const statusOptions = [
-    { label: "None", status: 0 },
-    { label: "Canceled", status: 1 },
-    { label: "Refunded", status: 2 },
-  ];
-
-  const changestatusfn = async (status) => {
-    const res = await changeproductstatus(orderid, productindex, status);
-    if (res?.status === 200) {
-      setLocalStatus(status);
-      setmessagefn(res?.message);
-    }
-  };
-
-  return (
-    <div className="absolute top-12 right-3 bg-white border border-slate-300 rounded-md shadow-lg z-30 overflow-hidden">
-      {statusOptions.map(({ label, status }) => (
-        <button
-          key={status}
-          onClick={() => changestatusfn(status)}
-          className="w-full px-4 py-2 text-left text-sm hover:bg-slate-100"
-        >
-          {label}
-        </button>
-      ))}
-    </div>
-  );
-};
-
-const OrderDetail = ({ label, value }) => (
-  <p>
-    <span className="font-medium">{label}:</span> {value}
-  </p>
-);
-
-const Canceledorrefundedbadge = ({ status }) => {
-  const statusText = status === 1 ? "Canceled" : "Refunded";
-  const badgeColor = status === 1 ? "bg-red-500" : "bg-yellow-500";
-
-  return (
-    <div
-      className={`absolute top-3 left-3 px-3 py-1 text-xs font-semibold text-white rounded-full shadow-md ${badgeColor}`}
-    >
-      {statusText}
-    </div>
-  );
-};
