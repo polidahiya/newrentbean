@@ -4,13 +4,12 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { LiaExclamationTriangleSolid } from "react-icons/lia";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import React, { useState } from "react";
-import {  months } from "@/app/commondata";
+import { months } from "@/app/commondata";
 import { AppContextfn } from "@/app/Context";
 import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
-import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 
-export default function Historyproductcard  ({ item, product })  {
+export default function Historyproductcard({ item }) {
   const { setmessagefn } = AppContextfn();
   const [showconfirmation, setshowconfirmation] = useState(false);
   const [moreoptions, setmoreoptions] = useState(false);
@@ -26,11 +25,12 @@ export default function Historyproductcard  ({ item, product })  {
   };
 
   // Format start date if available
+  const product = item?.product;
   const tenurestart = product?.tenureStart;
   const startDate = `${tenurestart?.date} ${months[tenurestart?.month]} ${
     tenurestart?.year
   }`;
-  const tenure = selectedtenure(product, item?.location).selected;
+  const tenure = product?.tenure;
 
   const order_status_bg_color = {
     0: "bg-white",
@@ -46,16 +46,16 @@ export default function Historyproductcard  ({ item, product })  {
 
   return (
     <div
-      className={`relative flex gap-4 p-4 rounded-lg transition-colors duration-200 ${order_status_bg_color[orderstatus]}`}
+      className={`relative flex flex-col md:flex-row gap-4 p-6 rounded-lg transition-colors duration-200 ${order_status_bg_color[orderstatus]}`}
     >
       <div className="flex-shrink-0">
         <Nextimage
           src={product?.image}
           alt={product?.name}
           loading="lazy"
-          height={80}
-          width={80}
-          className="rounded-md object-cover mix-blend-multiply"
+          width={400}
+          height={400}
+          className="rounded-md object-cover md:h-32 md:w-32 mix-blend-multiply"
         />
       </div>
       <div className="flex-1">
@@ -86,7 +86,7 @@ export default function Historyproductcard  ({ item, product })  {
       </div>
 
       {orderstatus === 0 && item.status < 3 && (
-        <div className="relative">
+        <div className="absolute top-5 right-5">
           <button
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => setmoreoptions(!moreoptions)}
@@ -130,9 +130,7 @@ export default function Historyproductcard  ({ item, product })  {
       )}
     </div>
   );
-};
-
-
+}
 
 const Cancleorderconfirmation = ({ confirmfn, setshowconfirmation }) => {
   return (

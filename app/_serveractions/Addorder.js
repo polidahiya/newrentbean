@@ -5,6 +5,7 @@ import { getcollection } from "@/app/Mongodb";
 import Ordercconfirmation from "../_mailtemplates/Ordercconfirmation";
 import sendEmail from "./Sendmail";
 import { v4 as uuidv4 } from "uuid";
+import { selectedtenure } from "../_components/_helperfunctions/selectedtenure";
 
 export const Placeorder = async (
   ordersdata,
@@ -36,14 +37,12 @@ export const Placeorder = async (
       const orderNumber = `Rb${getYYMMDD()}-${updatedsitedata?.orderNumber}`;
 
       // deleting extras from product
-      const selectedtenure = product.prices[product.location]
-        ? product.prices[product.location][product.selectedtenure]
-        : product.prices.Default[product.selectedtenure];
-      const refined_product = { ...product, tenure: selectedtenure };
+      const finaltenure = selectedtenure(product, product.location).selected;
+      const refined_product = { ...product, tenure: finaltenure };
       delete refined_product.prices;
       delete refined_product.added;
       delete refined_product.sku;
-      delete refined_product.selectedtenure;
+      delete refined_product.finaltenure;
       delete refined_product.maxquantity;
       delete refined_product.status;
 
@@ -66,23 +65,25 @@ export const Placeorder = async (
     }
 
     // send mail
-    if (paymentMethod == "cod") {
-      const products = ordersdata.map(([key, product]) => product);
-      const mailhtml = Ordercconfirmation(
-        userdata,
-        paymentGroupId,
-        createdAt,
-        products,
-        paymentMethod,
-        totalPrice
-      );
+    try {
+      if (paymentMethod == "cod") {
+        const products = ordersdata.map(([key, product]) => product);
+        const mailhtml = Ordercconfirmation(
+          userdata,
+          paymentGroupId,
+          createdAt,
+          products,
+          paymentMethod,
+          totalPrice
+        );
 
-      sendEmail(
-        "Order confirmation",
-        ["rentbeandotin@gmail.com", order?.userdata?.email],
-        mailhtml
-      );
-    }
+        sendEmail(
+          "Order confirmation",
+          ["rentbeandotin@gmail.com", order?.userdata?.email],
+          mailhtml
+        );
+      }
+    } catch (error) {}
 
     return {
       status: 200,

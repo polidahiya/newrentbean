@@ -5,7 +5,6 @@ import { orderstages } from "@/app/commondata";
 import Productnotfound from "@/app/_components/Productnotfound";
 import Historyproductcard from "./Publicpage";
 
-
 async function page() {
   const allcookies = await cookies();
   let token = allcookies.get("token");
@@ -28,20 +27,14 @@ async function page() {
         Orders Details
       </h2>
       <div className="w-full min-h-[calc(100vh-60px)] lg:min-h-[calc(100vh-110px)] py-8 px-4 md:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto space-y-2 md:space-y-5">
           {ordershistory.map((item, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 mb-6 overflow-hidden hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
             >
-              <div className="p-6">
-                <div className="flex flex-col gap-6">
-                  {item?.product && (
-                    <Historyproductcard item={item} product={item?.product} />
-                  )}
-                </div>
-                <OrderStatus item={item} />
-              </div>
+              {item?.product && <Historyproductcard item={item} />}
+              <OrderStatus item={item} />
             </div>
           ))}
           <p className="text-center text-sm  text-gray-500 mt-6 italic">
@@ -56,9 +49,9 @@ async function page() {
 
 const OrderStatus = ({ item }) => {
   return (
-    <div className="flex justify-center mt-6">
+    <div className="flex justify-center">
       {![4, 5].includes(item.status) && (
-        <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px]">
+        <div className="bg-white rounded-lg lg:rounded-b-none pt-3 w-full md:w-[600px] py-6">
           <div className="flex items-center w-full mt-2 px-10 md:px-[60px]">
             {orderstages.slice(0, 4).map((_, i) => (
               <div
