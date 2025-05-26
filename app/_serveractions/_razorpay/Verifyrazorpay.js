@@ -1,8 +1,7 @@
 "use server";
 import { getcollection } from "@/app/Mongodb";
 import crypto from "crypto";
-import Ordercconfirmation from "@/app/_mailtemplates/Ordercconfirmation";
-import sendEmail from "../Sendmail";
+import { Send_mail_to_payment_group_id } from "../Addorder";
 
 async function Verifyrazorpay(razorpaydata, paymentGroupId) {
   try {
@@ -23,30 +22,8 @@ async function Verifyrazorpay(razorpaydata, paymentGroupId) {
         { $set: { paymentStatus: "success" } }
       );
 
-      // Fetch updated orders for email
-      const updatedOrders = await orderscollection
-        .find({ paymentGroupId })
-        .toArray();
-
-      try {
-        if (updatedOrders?.length > 0) {
-          const firstorder = updatedOrders[0];
-          const products = updatedOrders.map((order) => order.product);
-          const mailhtml = Ordercconfirmation(
-            firstorder?.userdata,
-            firstorder?.paymentGroupId,
-            firstorder?.createdAt,
-            products,
-            firstorder?.paymentMethod,
-            firstorder?.totalPrice
-          );
-          sendEmail(
-            "Order confirmation",
-            ["rentbeandotin@gmail.com", updatedOrders[0]?.userdata?.email],
-            mailhtml
-          );
-        }
-      } catch (error) {}
+      // Send mail
+      await Send_mail_to_payment_group_id(paymentGroupId);
 
       return {
         status: 200,

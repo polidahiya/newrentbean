@@ -44,7 +44,7 @@ function Ordercard({ item }) {
       <div className="flex flex-col items-start gap-2 w-full">
         <table className="text-sm text-gray-700 w-full border-collapse">
           <tbody>
-            <InfoRow label="Order ID" value={item?._id} />
+            <InfoRow label="Order Number" value={item?.orderNumber} />
             <InfoRow label="Order Status" value={orderstages[status]} />
             {item?.paymentMethod === "online" && (
               <tr>
@@ -62,6 +62,9 @@ function Ordercard({ item }) {
               </tr>
             )}
             <InfoRow label="Payment Method" value={item?.paymentMethod} />
+            {item?.paymentMethod == "Online" && (
+              <InfoRow label="Payment Group ID" value={item?.paymentGroupId} />
+            )}
             <InfoRow label="User Name" value={item?.userdata?.username} />
             <InfoRow label="User Email" value={item?.userdata?.email} />
             <InfoRow

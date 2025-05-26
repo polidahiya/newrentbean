@@ -65,25 +65,9 @@ export const Placeorder = async (
     }
 
     // send mail
-    try {
-      if (paymentMethod == "cod") {
-        const products = ordersdata.map(([key, product]) => product);
-        const mailhtml = Ordercconfirmation(
-          userdata,
-          paymentGroupId,
-          createdAt,
-          products,
-          paymentMethod,
-          totalPrice
-        );
-
-        sendEmail(
-          "Order confirmation",
-          ["rentbeandotin@gmail.com", order?.userdata?.email],
-          mailhtml
-        );
-      }
-    } catch (error) {}
+    if (paymentMethod == "cod") {
+      await Send_mail_to_payment_group_id(paymentGroupId);
+    }
 
     return {
       status: 200,
@@ -103,4 +87,33 @@ function getYYMMDD() {
   const dd = String(date.getDate()).padStart(2, "0"); // Day (01-31)
 
   return `${yy}${mm}${dd}`;
+}
+
+export async function Send_mail_to_payment_group_id(paymentGroupId) {
+  try {
+    const { orderscollection } = await getcollection();
+    const updatedOrders = await orderscollection
+      .find({ paymentGroupId })
+      .toArray();
+
+    if (updatedOrders?.length > 0) {
+      const firstorder = updatedOrders[0];
+      const products = updatedOrders.map((order) => order.product);
+      const mailhtml = Ordercconfirmation(
+        firstorder?.userdata,
+        firstorder?.paymentGroupId,
+        firstorder?.createdAt,
+        products,
+        firstorder?.paymentMethod,
+        firstorder?.totalPrice
+      );
+      sendEmail(
+        "Order confirmation",
+        ["rentbeandotin@gmail.com", updatedOrders[0]?.userdata?.email],
+        mailhtml
+      );
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }

@@ -18,8 +18,8 @@ function Searchbox() {
   };
 
   const options = [
-    "Order id",
-    "Transection ID",
+    "Order Number",
+    "Pay Group ID",
     "User Name",
     "User Email",
     "User Phone",

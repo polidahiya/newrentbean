@@ -22,9 +22,9 @@ export const getadminorders = async (
 
     const searchFilters = {
       0: {
-        _id: ObjectId.isValid(searchterm) ? new ObjectId(searchterm) : null,
+        orderNumber: searchterm,
       },
-      1: { mihpayid: { $regex: `^${searchterm}$`, $options: "i" } },
+      1: { paymentGroupId: { $regex: `^${searchterm}$`, $options: "i" } },
       2: { "userdata.username": { $regex: searchterm, $options: "i" } },
       3: { "userdata.email": { $regex: `^${searchterm}$`, $options: "i" } },
       4: { "userdata.phonenum": searchterm },
@@ -41,8 +41,14 @@ export const getadminorders = async (
     const totalposts = await orderscollection.countDocuments(query);
 
     // Fetch the orders with pagination
-    const result = await orderscollection
-      .find(query)
+    const cursor = orderscollection.find(query);
+
+    // Sort by latest first if status is 3, 4, 5, or 6
+    if ([3, 4, 5, 6].includes(status)) {
+      cursor.sort({ createdAt: -1 }); // -1 for descending (latest first)
+    }
+
+    const result = await cursor
       .limit(numberoforders)
       .skip((page - 1) * numberoforders)
       .toArray();

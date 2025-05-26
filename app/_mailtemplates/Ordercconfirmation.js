@@ -17,15 +17,11 @@ function Ordercconfirmation(
         name,
         isrentalstore,
         quantity,
-        prices,
         buyprice,
-        location,
-        selectedtenure,
         securitydeposit,
+        tenure,
       } = product;
-      const locationrentprices =
-        location in prices ? prices[location] : prices?.Default;
-      const tenure = locationrentprices[selectedtenure];
+
       return `<tr>
                  <td>${name}</td>
                  <td> ${isrentalstore ? "Rent" : "Buy"}</td>
@@ -158,7 +154,7 @@ function Ordercconfirmation(
       </p>
 
       <h2>Order Summary</h2>
-      <p><strong>Order ID:</strong> ${paymentGroupId}</p>
+      <p><strong>Order Group ID:</strong> ${paymentGroupId}</p>
       <p><strong>Order Date:</strong> ${orderdate}</p>
       <h2>Product Details</h2>
       <table>
