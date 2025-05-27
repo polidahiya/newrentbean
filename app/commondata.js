@@ -8,8 +8,8 @@ export const domain = "https://rentbean.in";
 
 export const sociallinks = {
   insta: "https://www.instagram.com/rentbean.in",
-  facebook: "https://www.facebook.com/share/1JFXEV9Uds/?mibextid=qi2Omg",
-  twitter: "https://x.com/Rentbean?t=VQWPT4ltjY2cAcHw40xLmw&s=09",
+  facebook: "https://www.facebook.com/share/165VU3kC5f/",
+  twitter: "https://x.com/rentbean_in",
   pinterest: "https://in.pinterest.com/rentbean099/",
 };
 
