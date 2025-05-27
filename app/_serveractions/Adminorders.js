@@ -10,10 +10,9 @@ export const getadminorders = async (
   searchfilter = 0
 ) => {
   try {
-    const { orderscollection } = await getcollection();
+    const { orderscollection, ObjectId } = await getcollection();
     const res = await Verification();
 
-    // Check if user is authenticated
     if (!res?.verified) {
       return { status: 401, message: "Please login first" };
     }
@@ -21,9 +20,7 @@ export const getadminorders = async (
     let query = {};
 
     const searchFilters = {
-      0: {
-        orderNumber: searchterm,
-      },
+      0: { orderNumber: searchterm },
       1: { paymentGroupId: { $regex: `^${searchterm}$`, $options: "i" } },
       2: { "userdata.username": { $regex: searchterm, $options: "i" } },
       3: { "userdata.email": { $regex: `^${searchterm}$`, $options: "i" } },
@@ -37,23 +34,56 @@ export const getadminorders = async (
       query = { status: status };
     }
 
-    // Get total number of posts for pagination
     const totalposts = await orderscollection.countDocuments(query);
 
-    // Fetch the orders with pagination
-    const cursor = orderscollection.find(query);
+    let result;
 
-    // Sort by latest first if status is 3, 4, 5, or 6
-    if ([3, 4, 5, 6].includes(status)) {
-      cursor.sort({ createdAt: -1 }); // -1 for descending (latest first)
+    if (status === 3 && !searchterm) {
+      // Fetch all and sort by return date on server
+      result = await orderscollection.find(query).toArray();
+
+      // Compute return date and sort
+      const getDurationInMs = (time, type) => {
+        const t = parseInt(time);
+        const unit = type.toLowerCase();
+        if (["day", "days"].includes(unit)) return t * 86400000;
+        if (["week", "weeks"].includes(unit)) return t * 7 * 86400000;
+        if (["month", "months"].includes(unit)) return t * 30 * 86400000;
+        if (unit === "season") return t * 180 * 86400000;
+        return 0;
+      };
+
+      result.forEach((item) => {
+        try {
+          const { date, month, year } = item.product.tenureStart;
+          const { time, type } = item.product.tenure;
+          const startDate = new Date(year, month - 1, date);
+          const returnDate = new Date(
+            startDate.getTime() + getDurationInMs(time, type)
+          );
+          item.returnDate = returnDate;
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+      result.sort((a, b) => new Date(a.returnDate) - new Date(b.returnDate));
+
+      // Paginate after sorting
+      result = result.slice((page - 1) * numberoforders, page * numberoforders);
+    } else {
+      const cursor = orderscollection.find(query);
+
+      if ([4, 5, 6].includes(status)) {
+        cursor.sort({ createdAt: -1 });
+      }
+
+      result = await cursor
+        .limit(numberoforders)
+        .skip((page - 1) * numberoforders)
+        .toArray();
     }
 
-    const result = await cursor
-      .limit(numberoforders)
-      .skip((page - 1) * numberoforders)
-      .toArray();
-
-    // Convert _id to string to avoid issues with MongoDB ObjectId
     result.forEach((item) => (item._id = item._id.toString()));
 
     return { status: 200, result, totalposts };
@@ -144,7 +174,6 @@ export const updatenote = async (documentId, note) => {
     return { message: "Server Error" };
   }
 };
-
 
 // export const getadminorders = async (
 //   status = 0,
