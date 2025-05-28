@@ -35,7 +35,7 @@ function Switchstore() {
       <Link
         href={`/Delhi/Buy${queryString}`}
         className={`w-full flex items-center justify-center gap-1 border px-5 py-1 rounded-lg ${
-          !isrentalstore ? "text-white bg-cyan-600" : "bg-bg1"
+          !isrentalstore ? "text-white bg-theme" : "bg-bg1"
         }`}
         onClick={(e) => {
           e.preventDefault();

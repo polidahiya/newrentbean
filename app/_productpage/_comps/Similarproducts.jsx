@@ -4,7 +4,6 @@ import { AiFillProduct } from "react-icons/ai";
 import Link from "next/link";
 import { LuCircleArrowRight } from "react-icons/lu";
 
-
 function Similarproducts({
   allproducts,
   category,
@@ -39,7 +38,7 @@ function Similarproducts({
             <AiFillProduct className="text-theme text-3xl" />
             <span className="font-recline">Similar Products</span>
           </h2>
-          <div className="flex items-stretch gap-5   mt-5 max-w-full overflow-x-scroll pb-5">
+          <div className="flex items-stretch gap-2 md:gap-5 mt-5 max-w-full overflow-x-scroll pb-5">
             {similarproducts.map((item, i) => {
               return (
                 <Productcard
@@ -55,14 +54,35 @@ function Similarproducts({
               );
             })}
             {similarproducts.length == maxproducts && (
-              <div className="relative flex items-center z-20 whitespace-nowrap px-5">
+              <div className="flex justify-center items-center px-20">
                 <Link
                   href={`/${location}/${store}/${category}/${subcat}`}
-                  className="relative group flex items-center justify-center gap-2 px-6 py-3 bg-theme text-white font-semibold rounded-full overflow-hidden"
+                  className="relative group w-40 lg:w-56 aspect-[3/4] cursor-pointer"
                 >
-                  <span>View all</span>
-                  <LuCircleArrowRight />
-                  <div className="absolute top-0 left-0 w-[200%] h-full bg-bg1 -z-10 group-hover:-translate-x-1/2 duration-200"></div>
+                  {/* Card 3 (Bottom) */}
+                  <div
+                    className="absolute top-0 left-0 w-full h-full bg-white rounded-2xl shadow-lg transform transition-all duration-500 z-10 
+          group-hover:-translate-x-6 group-hover:-rotate-6"
+                  />
+
+                  {/* Card 2 (Middle) */}
+                  <div
+                    className="absolute top-0 left-0 w-full h-full bg-white rounded-2xl shadow-xl transform transition-all duration-500 z-20 
+          group-hover:translate-x-6 group-hover:rotate-6"
+                  />
+
+                  {/* Card 1 (Top) */}
+                  <div
+                    className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white rounded-2xl shadow-2xl transform 
+          group-hover:-translate-y-2 transition-all duration-500 z-30 flex flex-col justify-center items-center"
+                  >
+                    <h2 className="text-2xl font-bold text-center">
+                      More Like These
+                    </h2>
+                    <p className="mt-2 text-sm opacity-80 text-center">
+                      Explore More
+                    </p>
+                  </div>
                 </Link>
               </div>
             )}

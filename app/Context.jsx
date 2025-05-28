@@ -117,6 +117,10 @@ export function Appwrapper({
   // store type
   useEffect(() => {
     Cookies.set("storetype", isrentalstore), { expires: 7 };
+    document.documentElement.setAttribute(
+      "store",
+      isrentalstore ? "Rent" : "Buy"
+    );
   }, [isrentalstore]);
 
   // location

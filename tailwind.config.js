@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        theme: "#d68e43",
+        theme: "var(--theme)",
         bg1: "#f7f7fa",
         text: "var(--text)",
         eventtheme: "var(--eventtheme)",

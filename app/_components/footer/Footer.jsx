@@ -144,7 +144,7 @@ function Links({ name, link }) {
 
 const Protectedbygoogle = () => (
   <div className="group relative flex items-center gap-1 cursor-pointer">
-    <IoShieldHalf className="text-yellow-500" />
+    <IoShieldHalf className="text-theme" />
     Protected by Google
     <p className="w-56 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full bg-white rounded-lg p-2 text-black text-center hidden group-hover:block">
       This site is protected by reCAPTCHA and the Google{" "}

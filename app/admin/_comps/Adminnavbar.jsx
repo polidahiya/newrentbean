@@ -8,11 +8,13 @@ import { IoBagAdd } from "react-icons/io5";
 import { AiFillMessage } from "react-icons/ai";
 import { IoSettingsSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
+import { HiUserGroup } from "react-icons/hi2";
 
 function Adminnavbar() {
   const path = usePathname();
   const navLinks = [
     { href: "/admin/", label: "Orders", logo: <FaDollyFlatbed /> },
+    { href: "/admin/Users", label: "Users", logo: <HiUserGroup /> },
     { href: "/admin/Blogs", label: "Add Blogs", logo: <RiBloggerFill /> },
     { href: "/admin/addproducts", label: "Add Products", logo: <IoBagAdd /> },
     {

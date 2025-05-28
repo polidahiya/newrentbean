@@ -79,7 +79,6 @@ function Page() {
             <Addandupdateproduct
               data={data}
               setdata={setdata}
-              initialState={initialState}
               resetState={resetState}
               deletedimages={deletedimages}
               setdeletedimages={setdeletedimages}
@@ -108,3 +107,26 @@ function Page() {
 }
 
 export default Page;
+
+// variants: [
+//   {
+//     name: "Ram",
+//     values: [
+//       {
+//         value: "8GB",
+//         increaseprice: true,
+//         price: 500,
+//         imageindex: 5,
+//         available: true,
+//       },
+//       {
+//         value: "16GB",
+//         increaseprice: true,
+//         price: 1000,
+//         imageindex: 3,
+//         available: true,
+//       },
+//     ],
+//     affectprice: true,
+//   },
+// ];

@@ -10,12 +10,12 @@ export const getadminorders = async (
   searchfilter = 0
 ) => {
   try {
-    const { orderscollection, ObjectId } = await getcollection();
     const res = await Verification();
 
     if (!res?.verified) {
       return { status: 401, message: "Please login first" };
     }
+    const { orderscollection } = await getcollection();
 
     let query = {};
 

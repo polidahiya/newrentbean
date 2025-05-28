@@ -15,7 +15,6 @@ import Multiselecttags from "./_comps/Multiselecttags";
 function Addandupdateproduct({
   data,
   setdata,
-  initialState,
   resetState,
   deletedimages,
   setdeletedimages,

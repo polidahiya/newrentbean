@@ -8,7 +8,7 @@ function Sitemapbutton({ store, location }) {
       className="flex items-center gap-1"
       prefetch={false}
     >
-      <FaSitemap className="text-yellow-500" />
+      <FaSitemap className="text-theme" />
       Site map
     </Link>
   );

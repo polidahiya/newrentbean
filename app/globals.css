@@ -16,6 +16,12 @@
   --background-end-rgb: 255, 255, 255;
   --text: #525252;
   --eventtheme: #e82e77;
+  --theme: #d68e43;
+}
+:root[store="Buy"] {
+  /* --theme: #948979; */
+  --theme: #4E6688;
+  /* --theme: #6e7bc0; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,7 +38,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d68e43;
+  background-color: var(--theme);
 }
 
 html {
@@ -41,9 +47,6 @@ html {
 
 body {
   color: var(--text);
-  --theme: #d68e43;
-  /* --theme: rgb(0, 153, 255); */
-  /* background-image: url(/public/categoriesimages/homedecoreandmore.webp); */
 }
 
 /* inuput fields */
