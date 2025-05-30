@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 function Searchbox() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedOption, setSelectedOption] = useState("option1");
+  const [selectedOption, setSelectedOption] = useState(0);
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
@@ -26,7 +26,7 @@ function Searchbox() {
     "User Address",
   ];
 
-  const searchlink = `/admin?search=${searchTerm.trim()}&filter=${selectedOption}`;
+  const searchlink = `/admin/Orders/search?query=${searchTerm.trim()}&filter=${selectedOption}`;
 
   return (
     <div className="h-[40px] mt-3">
@@ -63,7 +63,7 @@ function Searchbox() {
           className="flex items-center gap-2 px-5 h-full bg-theme text-white border border-slate-300 rounded-[5px] ml-auto"
         >
           <IoSearchOutline />
-         <span className="hidden md:inline-block">Search</span>
+          <span className="hidden md:inline-block">Search</span>
         </Link>
       </div>
     </div>

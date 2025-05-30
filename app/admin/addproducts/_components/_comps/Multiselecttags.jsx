@@ -18,7 +18,9 @@ function Multiselecttags({ state, setState, statename, options, title }) {
 
   return (
     <div>
-      <label className="block text-sm  font-medium text-gray-600">{title}</label>
+      <label className="block text-sm  font-medium text-gray-600">
+        {title}
+      </label>
       <div className="flex items-center gap-1 my-2 flex-wrap">
         {state.map((item, i) => (
           <div
@@ -28,8 +30,10 @@ function Multiselecttags({ state, setState, statename, options, title }) {
             {item}
             <button
               onClick={() => Handleremove(item)}
+              type="button"
               className="bg-white h-full aspect-square rounded-sm"
-              aria-label="Cancel" title="Cancel"
+              aria-label="Cancel"
+              title="Cancel"
             >
               X
             </button>

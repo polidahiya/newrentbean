@@ -9,48 +9,33 @@ function InvoiceComponent() {
     orderNumber,
     paymentMethod,
     userdata,
-    products,
+    product,
     totalPrice,
     createdAt,
   } = invoicedata;
 
   const testproduct = {
-    added: true,
     quantity: 1,
-    sku: "Zigzag 2-rental-Gurgaon",
-    prices: {
-      Default: [
-        {
-          time: "1",
-          type: "month",
-          price: "500",
-        },
-        {
-          time: "3",
-          type: "months",
-          price: "1350",
-        },
-        {
-          time: "6",
-          type: "months",
-          price: "2500",
-        },
-      ],
-    },
-    selectedtenure: 0,
     buyprice: "",
-    name: "Zig-Zag Ceramica Solid Sheesham Wood Bookshelf",
+    name: "Kids Stroller Smart nova Age group 0-3 years ",
     image:
-      "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1740020919/Rentbean/mpifqlxuac6hprdhikjm.jpg",
-    securitydeposit: "1000",
-    maxquantity: "1",
+      "https://res.cloudinary.com/dmn8xdsq4/image/upload/v1739040589/Rentbean/kuaf6hr2vhcpqhqegyg5.jpg",
+    securitydeposit: "1500",
     isrentalstore: true,
-    location: "Gurgaon",
-    productlink: "/Furniture/Bookshelves/67b69cb89efe30928f64a25f",
-    status: 0,
+    productlink: "/Gurgaon/Rent/Others/Baby-Care/67a7a74e316b0c4e8b5b5da9",
+    tenureStart: {
+      date: 30,
+      month: 4,
+      year: 2025,
+    },
+    tenure: {
+      time: "30",
+      type: "days",
+      price: "3000",
+    },
   };
 
-  const [prostate, setprostate] = useState(products || [testproduct]);
+  const [prostate, setprostate] = useState([product] || [testproduct]);
 
   return (
     <div
@@ -131,11 +116,7 @@ function InvoiceComponent() {
           </thead>
           <tbody>
             {prostate.map((item, index) => {
-              const finaltenure =
-                item?.location in item?.prices
-                  ? item?.prices[item?.location]
-                  : item?.prices.Default;
-              const totalprice = finaltenure[item?.selectedtenure]?.price;
+              const totalprice = item?.tenure?.price;
               return (
                 <tr key={index} className="relative bg-white">
                   <td className="border px-4 py-3 text-gray-700">

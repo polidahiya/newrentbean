@@ -30,12 +30,18 @@ function ALongwithbox({ state, setState, statename }) {
             key={i}
             className="relative flex flex-col items-center justify-center w-32 border overflow-hidden rounded-md"
           >
-            <img src={boxoptions[item]?.img} alt={item} className="backdrop-hue-rotate-60" />
+            <img
+              src={boxoptions[item]?.img}
+              alt={item}
+              className="backdrop-hue-rotate-60"
+            />
             <p className="text-sm  text-center pb-1">{item}</p>
             <button
               onClick={() => Handleremove(item)}
+              type="button"
               className="absolute top-0 right-0 bg-red-500 text-white w-5 h-5 flex items-center justify-center hover:bg-red-600 transition-colors"
-              aria-label="Cancel" title="Cancel"
+              aria-label="Cancel"
+              title="Cancel"
             >
               ×
             </button>

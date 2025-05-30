@@ -12,8 +12,12 @@ import { HiUserGroup } from "react-icons/hi2";
 
 function Adminnavbar() {
   const path = usePathname();
+
+  // Hide navbar on invoice page
+  if (path === "/admin/invoice") return null;
+
   const navLinks = [
-    { href: "/admin/", label: "Orders", logo: <FaDollyFlatbed /> },
+    { href: "/admin/Orders/0", label: "Orders", logo: <FaDollyFlatbed /> },
     { href: "/admin/Users", label: "Users", logo: <HiUserGroup /> },
     { href: "/admin/Blogs", label: "Add Blogs", logo: <RiBloggerFill /> },
     { href: "/admin/addproducts", label: "Add Products", logo: <IoBagAdd /> },
@@ -24,32 +28,48 @@ function Adminnavbar() {
     },
     { href: "/admin/settings", label: "Settings", logo: <IoSettingsSharp /> },
   ];
-  if (path == "/admin/invoice") return;
 
   return (
-    <nav className="sticky top-0 flex items-center gap-1 md:gap-2 h-[50px] shadow-md p-[7px] px-[10px] lg:px-10 z-20 bg-bg1">
-      <Link href="/Delhi">
-        <Nextimage src="/logo&ui/3dlogo.png" alt="logo" height={40} width={150} />
+    <nav className="sticky top-0 z-20 flex items-center gap-2 h-[50px] px-4 md:px-10 bg-white shadow-sm border-b">
+      {/* Logo */}
+      <Link href="/Delhi" className="flex items-center">
+        <Nextimage
+          src="/logo&ui/3dlogo.png"
+          alt="logo"
+          height={40}
+          width={120}
+        />
       </Link>
-      {navLinks.map(({ href, label, logo }, index) => (
-        <NavLink key={href} href={href} isFirst={index === 0}>
+
+      {/* Spacer to push links right */}
+      <div className="flex-grow" />
+
+      {/* Navigation links */}
+      {navLinks.map(({ href, label, logo }) => (
+        <NavLink key={href} href={href} active={path === href}>
           {logo}
-          <span className="hidden md:block">{label}</span>
+          <span className="hidden md:inline">{label}</span>
         </NavLink>
       ))}
     </nav>
   );
 }
 
-const NavLink = ({ href, children, isFirst }) => (
-  <Link
-    className={`flex items-center gap-2 h-full rounded-[5px] px-[10px] bg-white ${
-      isFirst && "ml-auto"
-    }`}
-    href={href}
-  >
-    {children}
-  </Link>
-);
+const NavLink = ({ href, children, active }) => {
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-2 h-[38px] px-3 rounded-md text-sm font-medium transition-all
+        ${
+          active
+            ? "bg-theme text-white"
+            : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+        }
+      `}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default Adminnavbar;
