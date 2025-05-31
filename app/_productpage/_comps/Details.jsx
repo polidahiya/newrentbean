@@ -132,7 +132,16 @@ const PriceDisplay = ({ filteredProduct }) => {
         itemScope
         itemType="http://schema.org/Offer"
       >
-        ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
+        {filteredProduct?.buymrp && (
+          <span className="line-through text-gray-500 mr-2 text-base">
+            ₹{parseInt(filteredProduct?.buymrp, 10).toLocaleString("en-IN")}
+            {"/-"}
+          </span>
+        )}
+        <span>
+          ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
+          {"/-"}
+        </span>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import Navbar from "@/app/_components/Navbar/Navbar";
-import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import { cookies } from "next/headers";
 import Footer from "@/app/_components/footer/Footer";
 import Mobilenav from "@/app/_components/Navbar/_comps/Mobilenav";
@@ -17,8 +16,6 @@ export default async function RootLayout({ children, params }) {
   const Device = await DeviceDetector();
   const allparams = await params;
   const { location, store } = allparams;
-  const products = await Cachedproducts();
-  const productsname = products?.map((item) => item.name);
 
   // cookies
   const allcookies = await cookies();
@@ -30,7 +27,6 @@ export default async function RootLayout({ children, params }) {
       <div className="print:hidden">
         <Navbar
           params={allparams}
-          productsname={productsname}
           token={token}
           userdata={userdata}
           Device={Device}

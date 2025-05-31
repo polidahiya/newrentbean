@@ -17,13 +17,22 @@ export const Cachedproducts = unstable_cache(
       _id: item._id.toString(),
     }));
   },
-  ["posts"],
-  { revalidate: CACHE_TIME, tags: ["posts"] }
+  ["products"],
+  { revalidate: CACHE_TIME, tags: ["products"] }
+);
+
+export const Cachedproductsname = unstable_cache(
+  async () => {
+    const products = await Cachedproducts();
+    return products.map((item) => item?.name);
+  },
+  ["product-names"],
+  { revalidate: CACHE_TIME, tags: ["products"] }
 );
 
 export async function refreshproductsnow() {
   try {
-    revalidateTag("posts");
+    revalidateTag("products");
     return { status: 200, message: "Products Refreshed on site" };
   } catch (error) {
     console.log(error);

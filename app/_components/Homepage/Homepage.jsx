@@ -32,13 +32,11 @@ export default async function Homepage({
   const instoreproducts = products.filter(
     (item) => item?.availablefor == store || item?.availablefor == "Both"
   );
-  const productsname = products?.map((item) => item?.name);
 
   return (
     <>
       <Navbar
         params={params}
-        productsname={productsname}
         token={token}
         userdata={userdata}
       />
