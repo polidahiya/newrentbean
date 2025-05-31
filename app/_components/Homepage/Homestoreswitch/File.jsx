@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Nextimage from "../../Nextimage";
 
-export default function Homestoreswitch({ location, store }) {
+export default function Homestoreswitch({ location, store, Device }) {
   return (
     <div className="md:px-10">
       <div className="relative w-full flex flex-col items-center justify-center md:py-12 px-4 md:bg-gray-50 rounded-3xl overflow-hidden">
@@ -39,32 +39,36 @@ export default function Homestoreswitch({ location, store }) {
         </div>
 
         {/* Rent Side Fading Image */}
-        <div className="hidden md:flex absolute left-0 top-0  h-full w-full pointer-events-none">
-          <Nextimage
-            src="/logo&ui/saleorbuybackground.jpg"
-            alt="Rent"
-            width={900}
-            height={400}
-            className="object-cover saturate-200"
-            style={{
-              maskImage: "linear-gradient(to right, black 0%, transparent 70%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, black 0%, transparent 70%)",
-            }}
-          />
-          <Nextimage
-            src="/logo&ui/saleorbuybackground.jpg"
-            alt="Buy"
-            width={900}
-            height={400}
-            className="object-cover saturate-200"
-            style={{
-              maskImage: "linear-gradient(to left, black 0%, transparent 70%)",
-              WebkitMaskImage:
-                "linear-gradient(to left, black 0%, transparent 70%)",
-            }}
-          />
-        </div>
+        {Device != "mobile" && (
+          <div className="hidden md:flex absolute left-0 top-0  h-full w-full pointer-events-none">
+            <Nextimage
+              src="/logo&ui/saleorbuybackground.jpg"
+              alt="Rent"
+              width={900}
+              height={400}
+              className="object-cover saturate-200"
+              style={{
+                maskImage:
+                  "linear-gradient(to right, black 0%, transparent 70%)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, black 0%, transparent 70%)",
+              }}
+            />
+            <Nextimage
+              src="/logo&ui/saleorbuybackground.jpg"
+              alt="Buy"
+              width={900}
+              height={400}
+              className="object-cover saturate-200"
+              style={{
+                maskImage:
+                  "linear-gradient(to left, black 0%, transparent 70%)",
+                WebkitMaskImage:
+                  "linear-gradient(to left, black 0%, transparent 70%)",
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

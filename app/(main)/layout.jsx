@@ -3,9 +3,11 @@ import { Cachedproducts } from "../_serveractions/Getcachedata";
 import { cookies } from "next/headers";
 import Footer from "../_components/footer/Footer";
 import Mobilenav from "../_components/Navbar/_comps/Mobilenav";
+import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 
 export default async function RootLayout({ children, params }) {
-  const allparams=await params
+  const Device = await DeviceDetector();
+  const allparams = await params;
   const products = await Cachedproducts();
   const productsname = products.map((item) => item.name);
 
@@ -21,10 +23,11 @@ export default async function RootLayout({ children, params }) {
         productsname={productsname}
         token={token}
         userdata={userdata}
+        Device={Device}
       />
       {children}
       <Footer />
-      <Mobilenav />
+      {(Device === "mobile" || Device === "tablet") && <Mobilenav />}
     </div>
   );
 }

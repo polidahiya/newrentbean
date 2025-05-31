@@ -4,7 +4,7 @@ import ImagesComp from "./_comps/Imagescomp";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import { categorylist, domain, mail } from "@/app/commondata";
 import { notFound } from "next/navigation";
-import Promices from "@/app/_components/Homepage/Promices";
+import Promices from "@/app/_components/Homepage/Promices/Promices";
 import { cookies } from "next/headers";
 import Similarproducts from "./_comps/Similarproducts";
 import FAQSection from "@/app/_components/Faq";

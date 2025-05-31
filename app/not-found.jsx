@@ -4,11 +4,13 @@ import Nextimage from "@/app/_components/Nextimage";
 import Footer from "./_components/footer/Footer";
 import Navbar from "./_components/Navbar/Navbar";
 import Mobilenav from "./_components/Navbar/_comps/Mobilenav";
+import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 
-function page() {
+async function page() {
+  const Device = await DeviceDetector();
   return (
     <div>
-      <Navbar />
+      <Navbar Device={Device} />
       <div className="m-0 min-h-[calc(100dvh-60px)] lg:min-h-[calc(100dvh-120px)] overflow-hidden flex items-center justify-center pb-10">
         <section>
           <h1 className="m-0 p-0 translate-y-[50px] text-3xl font-extrabold text-center">
@@ -37,7 +39,7 @@ function page() {
         </section>
       </div>
       <Footer />
-      <Mobilenav />
+      {(Device === "mobile" || Device === "tablet") && <Mobilenav />}
     </div>
   );
 }

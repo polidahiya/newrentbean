@@ -1,115 +1,9 @@
-"use client";
-import React, { useRef, useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { SiComma } from "react-icons/si";
 import { HiOutlineThumbUp } from "react-icons/hi";
-import { FaAngleLeft } from "react-icons/fa6";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
 import Nextimage from "@/app/_components/Nextimage";
 
-function Customerreviews() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
-  const allreviews = [
-    Review3,
-    Review1,
-    Review2,
-    Review4,
-    Review5,
-    Review6,
-    Review7,
-    Review8,
-    Review9,
-  ];
-
-  return (
-    <div className="relative lg:bg-bg1">
-      <h2 className="text-center font-bold text-2xl md:text-4xl  font-recline pt-10">
-        Customer Reviews
-      </h2>
-      <div className="relative lg:p-20 lg:hidden">
-        <Swiper
-          ref={swiperRef}
-          modules={[Navigation, Autoplay]}
-          spaceBetween={10}
-          slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          loop
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          className="w-full h-full"
-        >
-          {allreviews.map((Item, i) => (
-            <SwiperSlide key={i} className="min-h-[600px] px-5 py-10">
-              <Item />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        {/* buttons */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-10 z-10 flex gap-2">
-          <button
-            className="h-full aspect-square flex items-center justify-center bg-white rounded-full"
-            onClick={() => swiperRef.current.swiper.slidePrev()}
-            aria-label="Scroll left" title="Scroll left"
-          >
-            <FaAngleLeft />
-          </button>
-          <button
-            className="h-full aspect-square flex items-center justify-center bg-white rounded-full rotate-180"
-            onClick={() => swiperRef.current.swiper.slideNext()}
-            aria-label="Scroll Right" title="Scroll Right"
-          >
-            <FaAngleLeft />
-          </button>
-        </div>
-        {/* dots */}
-        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-          {allreviews.map((_, i) => (
-            <button
-              key={i}
-              className={`h-[5px] rounded-full transition-all ${
-                i === activeIndex ? "bg-theme w-8" : "bg-white w-[5px]"
-              }`}
-              onClick={() => swiperRef.current.swiper.slideTo(i)}
-              aria-label="Index of slides" title="Index of slides"
-            ></button>
-          ))}
-        </div>
-      </div>
-      {/* lg devices */}
-      <div className="p-20 hidden lg:block">
-        {/* first */}
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full aspect-square">
-            <Review1 />
-            <Review2 />
-          </div>
-          <div className="w-full aspect-square">
-            <Review3 />
-          </div>
-          <div className="w-full aspect-square">
-            <Review4 />
-            <Review5 />
-          </div>
-        </div>
-        {/* second */}
-        <div className="flex flex-col lg:flex-row gap-5 -translate-y-10">
-          <Review6 />
-          <Review7 />
-          <Review8 />
-          <Review9 />
-        </div>
-      </div>
-      <img
-        src="/logo&ui/reviewbg.jpg"
-        alt="reviewbg"
-        className="absolute -z-10 inset-0 h-full w-full lg:hidden"
-      />
-    </div>
-  );
-}
-const Review1 = () => {
+export function Review1() {
   return (
     <div className="pl-10 drop-shadow-md">
       <div className="relative p-5 pl-12 rounded-xl space-y-1 bg-white">
@@ -136,8 +30,8 @@ const Review1 = () => {
       </div>
     </div>
   );
-};
-const Review2 = () => {
+}
+export function Review2() {
   return (
     <div className="pr-10 mt-7 drop-shadow-md">
       <div className="relative p-5 pr-12 rounded-xl space-y-1 bg-white">
@@ -165,8 +59,8 @@ const Review2 = () => {
       </div>
     </div>
   );
-};
-const Review3 = () => {
+}
+export function Review3() {
   return (
     <div className="p-7 pt-16 mt-2">
       <div className="relative p-5 pt-20 rounded-3xl shadow-md space-y-2 bg-white">
@@ -200,8 +94,8 @@ const Review3 = () => {
       </div>
     </div>
   );
-};
-const Review4 = () => {
+}
+export function Review4() {
   return (
     <div className="pr-10">
       <div className="relative p-5 pr-12 rounded-xl drop-shadow-md space-y-1 bg-white">
@@ -230,8 +124,8 @@ const Review4 = () => {
       </div>
     </div>
   );
-};
-const Review5 = () => {
+}
+export function Review5() {
   return (
     <div className="relative flex gap-1 mt-7 p-3 rounded-full bg-white shadow-md">
       <Nextimage
@@ -254,8 +148,8 @@ const Review5 = () => {
       <HiOutlineThumbUp className="absolute top-0 right-[10%] -translate-y-1/2 aspect-square p-2 text-xl box-content block bg-theme text-white rounded-full" />
     </div>
   );
-};
-const Review6 = () => {
+}
+export function Review6() {
   return (
     <div className="flex flex-col bg-white rounded-xl shadow-md overflow-hidden">
       <div className="p-5 space-y-1">
@@ -286,8 +180,8 @@ const Review6 = () => {
       </div>
     </div>
   );
-};
-const Review7 = () => {
+}
+export function Review7() {
   return (
     <div className="pt-14 pl-5 drop-shadow-md">
       <div className="relative p-5 pl-20 bg-white rounded-3xl ">
@@ -315,8 +209,8 @@ const Review7 = () => {
       </div>
     </div>
   );
-};
-const Review8 = () => {
+}
+export function Review8() {
   return (
     <div className="relative mt-14 flex flex-col bg-white rounded-3xl drop-shadow-md">
       <Nextimage
@@ -353,8 +247,8 @@ const Review8 = () => {
       </div>
     </div>
   );
-};
-const Review9 = () => {
+}
+export function Review9() {
   return (
     <div className="drop-shadow-md">
       <div className="relative p-4 bg-white rounded-3xl">
@@ -393,6 +287,4 @@ const Review9 = () => {
       </div>
     </div>
   );
-};
-
-export default Customerreviews;
+}

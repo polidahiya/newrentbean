@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 
-function PosterAdds({ location, store }) {
+function PosterAdds({ location, store, Device }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
@@ -38,18 +38,20 @@ function PosterAdds({ location, store }) {
     <div>
       <div className="flex items-center md:px-10 md:pt-5 gap-5 overflow-hidden">
         {/* Left Portrait Ad */}
-        <Link
-          href={`/${location}/${store}/Electronic/Entertainment`}
-          prefetch={false}
-          className="hidden lg:block w-[30%] aspect-[9/16] rounded-2xl overflow-hidden border"
-        >
-          <img
-            className="h-full w-full object-cover"
-            src="https://polidahiya.github.io/rentbeanimages/portraitad1.png"
-            alt="PS4 on Rent"
-            loading="lazy"
-          />
-        </Link>
+        {Device == "desktop" && (
+          <Link
+            href={`/${location}/${store}/Electronic/Entertainment`}
+            prefetch={false}
+            className="hidden lg:block w-[30%] aspect-[9/16] rounded-2xl overflow-hidden border"
+          >
+            <img
+              className="h-full w-full object-cover"
+              src="https://polidahiya.github.io/rentbeanimages/portraitad1.png"
+              alt="PS4 on Rent"
+              loading="lazy"
+            />
+          </Link>
+        )}
 
         {/* Main Poster Carousel */}
         <div className="relative w-full aspect-square md:aspect-video lg:rounded-3xl overflow-hidden group lg:border">
@@ -87,7 +89,7 @@ function PosterAdds({ location, store }) {
               </SwiperSlide>
             ))}
           </Swiper>
-          
+
           {/* Custom Navigation Buttons */}
           <button
             className="absolute left-5 top-1/2 transform -translate-y-1/2 w-12 aspect-square flex items-center justify-center bg-white lg:bg-gray-300 rounded-full opacity-0 lg:group-hover:opacity-80 transition hover:bg-white z-10"
@@ -127,19 +129,21 @@ function PosterAdds({ location, store }) {
         </div>
 
         {/* Right Portrait Video Ad */}
-        <Link
-          href={`/${location}/${store}/Furniture`}
-          prefetch={false}
-          className="hidden lg:block w-[30%] aspect-[9/16] rounded-2xl overflow-hidden border"
-        >
-          <video
-            className="h-full w-full object-cover"
-            src="https://polidahiya.github.io/rentbeanimages/portraitad2.mp4"
-            autoPlay
-            muted
-            loop
-          ></video>
-        </Link>
+        {Device == "desktop" && (
+          <Link
+            href={`/${location}/${store}/Furniture`}
+            prefetch={false}
+            className="hidden lg:block w-[30%] aspect-[9/16] rounded-2xl overflow-hidden border"
+          >
+            <video
+              className="h-full w-full object-cover"
+              src="https://polidahiya.github.io/rentbeanimages/portraitad2.mp4"
+              autoPlay
+              muted
+              loop
+            ></video>
+          </Link>
+        )}
       </div>
     </div>
   );

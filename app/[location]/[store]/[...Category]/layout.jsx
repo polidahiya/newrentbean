@@ -3,6 +3,7 @@ import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import { cookies } from "next/headers";
 import Footer from "@/app/_components/footer/Footer";
 import Mobilenav from "@/app/_components/Navbar/_comps/Mobilenav";
+import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 
 export const metadata = {
   title: "Rentbean - Great for flexible rental options.",
@@ -13,6 +14,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children, params }) {
+  const Device = await DeviceDetector();
   const allparams = await params;
   const { location, store } = allparams;
   const products = await Cachedproducts();
@@ -31,10 +33,13 @@ export default async function RootLayout({ children, params }) {
           productsname={productsname}
           token={token}
           userdata={userdata}
+          Device={Device}
         />
         {children}
         <Footer location={location} store={store} />
-        <Mobilenav store={store} location={location} />
+        {(Device === "mobile" || Device === "tablet") && (
+          <Mobilenav store={store} location={location} />
+        )}
       </div>
       <div className="h-[100svh] w-full items-center justify-center hidden print:flex">
         <img
