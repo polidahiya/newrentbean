@@ -1,5 +1,4 @@
 "use client";
-
 import Cookies from "js-cookie";
 import { createContext, useContext, useState, useRef, useEffect } from "react";
 
@@ -43,8 +42,6 @@ export function Appwrapper({
     show: false,
     location: rblocation || null,
   });
-  const [scrolltop, setscrolltop] = useState(false);
-  const [shownavbottom, setshownavbottom] = useState(false);
   const [moredesc, setmoredesc] = useState(false);
   const [isopenstoremenu, setisopenstoremenu] = useState({
     show: false,
@@ -129,27 +126,7 @@ export function Appwrapper({
       Cookies.set("rblocation", location?.location, { expires: 7 });
   }, [location]);
 
-  // scroll check
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 1000) {
-        if (!scrolltop) setscrolltop(true);
-      } else {
-        if (scrolltop) setscrolltop(false);
-      }
-      if (window.scrollY > 50) {
-        if (!shownavbottom) setshownavbottom(true);
-      } else {
-        if (shownavbottom) setshownavbottom(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolltop, shownavbottom]);
+ 
 
   return (
     <AppContext.Provider
@@ -192,8 +169,6 @@ export function Appwrapper({
         setisrentalstore,
         location,
         setlocation,
-        scrolltop,
-        shownavbottom,
         invoicedata,
         setinvoicedata,
       }}

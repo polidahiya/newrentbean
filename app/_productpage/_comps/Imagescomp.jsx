@@ -8,8 +8,7 @@ import { AppContextfn } from "@/app/Context";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
 import { IoLinkOutline } from "react-icons/io5";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-
-const fallbackImage = "/default-fallback-image.png";
+import Breadcrumbs from "@/app/_components/Breadcrumbs";
 
 function ImagesComp({ filteredproducts, token }) {
   const { setmessagefn } = AppContextfn();
@@ -76,7 +75,7 @@ function ImagesComp({ filteredproducts, token }) {
   }, []);
 
   return (
-    <div className="flex w-full lg:flex-[2] lg:sticky lg:top-[130px] flex-col-reverse lg:flex-row lg:items-center gap-2">
+    <div className="relative flex w-full flex-col-reverse lg:flex-row lg:items-center gap-2">
       {/* mini images */}
       <div
         className={`flex  lg:w-[70px] lg:h-full lg:flex-col flex-wrap lg:flex-nowrap gap-2 lg:max-h-[400px] ${

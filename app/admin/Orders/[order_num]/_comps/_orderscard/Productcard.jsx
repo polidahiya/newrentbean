@@ -31,7 +31,7 @@ export default function ProductCard({ product }) {
   ).toLocaleString("en-IN")}/-`;
 
   return (
-    <div className="w-full flex flex-col md:flex-row md:items-center">
+    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-center">
       {/* Image */}
       <div className="w-full md:h-40 md:w-40 ">
         <Nextimage

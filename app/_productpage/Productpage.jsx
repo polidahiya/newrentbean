@@ -92,21 +92,23 @@ async function Productpage({
   return (
     <>
       <article>
-        <div className="pl-16 md:pl-24 lg:pl-10 mt-2 md:mt-4 bg-white text-theme text-sm ">
-          <Breadcrumbs
-            list={[
-              { name: category, link: `/${location}/${store}/${category}` },
-              {
-                name: subcat,
-                link: `/${location}/${store}/${category}/${subcat}`,
-              },
-            ]}
-            currentroute={filteredProduct?.name}
-            location={location}
-          />
-        </div>
-        <header className="flex flex-col lg:flex-row items-start px-1 md:px-10 py-2  gap-5">
-          <ImagesComp filteredproducts={filteredProduct} token={token} />
+        <header className="relative flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 lg:pt-5  gap-5">
+          <div className="w-full lg:flex-[2] lg:sticky lg:top-[120px]">
+            <ImagesComp filteredproducts={filteredProduct} token={token} />
+            <div className="pt-10 opacity-70 px-2 lg:px-0 line-clamp-2">
+              <Breadcrumbs
+                list={[
+                  { name: category, link: `/${location}/${store}/${category}` },
+                  {
+                    name: subcat,
+                    link: `/${location}/${store}/${category}/${subcat}`,
+                  },
+                ]}
+                currentroute={filteredProduct?.name}
+                location={location}
+              />
+            </div>
+          </div>
           <Details
             filteredProduct={filteredProduct}
             location={location}

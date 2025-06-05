@@ -94,6 +94,7 @@ async function page({ params, searchParams }) {
             searchQuery={searchQuery}
             category={category}
           />
+          {/* breadcrumbs */}
           <div className="flex items-center">
             <div className="opacity-70">
               <Breadcrumbs

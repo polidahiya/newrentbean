@@ -6,6 +6,7 @@ import Ordercconfirmation from "../_mailtemplates/Ordercconfirmation";
 import sendEmail from "./Sendmail";
 import { v4 as uuidv4 } from "uuid";
 import { selectedtenure } from "../_components/_helperfunctions/selectedtenure";
+import {getYYMMDD} from "@/app/_components/_helperfunctions/Yymmdd";
 
 export const Placeorder = async (
   ordersdata,
@@ -19,7 +20,7 @@ export const Placeorder = async (
     const { orderscollection, sitedata } = await getcollection();
     const tokenres = await Verification("public");
 
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return { status: 500, message: "Please login first" };
     }
     // cookies
@@ -80,15 +81,6 @@ export const Placeorder = async (
   }
 };
 
-function getYYMMDD() {
-  const date = new Date();
-  const yy = date.getFullYear().toString().slice(-2); // Last 2 digits of year
-  const mm = String(date.getMonth() + 1).padStart(2, "0"); // Month (01-12)
-  const dd = String(date.getDate()).padStart(2, "0"); // Day (01-31)
-
-  return `${yy}${mm}${dd}`;
-}
-
 export async function Send_mail_to_payment_group_id(paymentGroupId) {
   try {
     const { orderscollection } = await getcollection();
@@ -117,3 +109,4 @@ export async function Send_mail_to_payment_group_id(paymentGroupId) {
     console.log(error);
   }
 }
+

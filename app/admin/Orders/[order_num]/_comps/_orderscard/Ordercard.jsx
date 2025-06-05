@@ -11,6 +11,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import ProductCard from "./Productcard";
 import FormattedDate from "@/app/_components/_helperfunctions/Formateddate";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { MdModeEditOutline } from "react-icons/md";
 
 function Ordercard({ item }) {
   const router = useRouter();
@@ -54,6 +56,12 @@ function Ordercard({ item }) {
             </option>
           ))}
         </select>
+        <Link
+          href={`/admin/Orders/Add?edit=${item._id}`}
+          className="border border-gray-300 rounded-md p-1 hover:bg-gray-100"
+        >
+          <MdModeEditOutline size={18} />
+        </Link>
         <button
           className="text-red-600 border border-gray-300 rounded-md p-1 hover:bg-red-100"
           onClick={() =>

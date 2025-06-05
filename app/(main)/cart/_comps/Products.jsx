@@ -63,7 +63,7 @@ export default function Products({ cartproductid, item, i, setshowtenure }) {
         >
           <Nextimage
             src={item?.image}
-            alt={item.name}
+            alt={item?.name}
             height={100}
             width={100}
             className="h-full w-full aspect-[2/1] md:aspect-square object-contain md:object-cover object-center"

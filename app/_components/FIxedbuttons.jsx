@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { mobile } from "../commondata";
 import { FaWhatsapp } from "react-icons/fa";
@@ -74,7 +74,18 @@ const Helpbutton = ({ iseventmanager }) => (
 );
 
 const Gotopbutton = ({ iseventmanager }) => {
-  const { scrolltop } = AppContextfn();
+  const [scrolltop, setscrolltop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldShow = window.scrollY > 1000;
+      setscrolltop((prev) => (prev !== shouldShow ? shouldShow : prev));
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <button

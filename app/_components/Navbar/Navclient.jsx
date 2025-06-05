@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
 import Navcategories from "./Navcategories";
@@ -18,14 +18,21 @@ function Navclient({ params, productsname, token, userdata, Device }) {
   const slug = params?.Category;
   const category = slug && slug[0] ? decodeURIComponent(slug[0]) : null;
 
-  const {
-    showsearch,
-    showcat,
-    location,
-    setlocation,
-    isrentalstore,
-    shownavbottom,
-  } = AppContextfn();
+  const { showsearch, showcat, location, setlocation, isrentalstore } =
+    AppContextfn();
+
+  const [shownavbottom, setshownavbottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldShow = window.scrollY > 50;
+      setshownavbottom((prev) => (prev !== shouldShow ? shouldShow : prev));
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav

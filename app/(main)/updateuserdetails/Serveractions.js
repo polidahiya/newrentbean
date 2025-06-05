@@ -9,7 +9,7 @@ export async function updateuserdetails(newuserdetails) {
   try {
     const { userscollection } = await getcollection();
     const tokenres = await Verification("public");
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return { status: 400, message: "Please login" };
     }
 

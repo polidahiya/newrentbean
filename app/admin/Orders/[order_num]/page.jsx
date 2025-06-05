@@ -46,17 +46,11 @@ async function page({ params, searchParams }) {
 
   return (
     <div>
-      <Adminnavcomp ordertype={ordertype} Refreshorders={Refreshorders} />
-      <div className="pt-4 px-4 md:px-10">
-        <div className="bg-white shadow-md rounded-2xl p-6">
-          <ul className="text-gray-800 text-lg font-medium">
-            <li>
-              <span className="text-gray-500">Total Orders:</span>{" "}
-              {ordersres?.totalposts}
-            </li>
-          </ul>
-        </div>
-      </div>
+      <Adminnavcomp
+        ordertype={ordertype}
+        Refreshorders={Refreshorders}
+        totalorders={ordersres?.totalposts}
+      />
 
       {orders.length == 0 && <Productnotfound />}
 
@@ -75,10 +69,14 @@ async function page({ params, searchParams }) {
     </div>
   );
 }
-const Adminnavcomp = ({ ordertype, Refreshorders }) => {
+const Adminnavcomp = ({ ordertype, Refreshorders, totalorders }) => {
   return (
     <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
-      <Selectordertype ordertype={ordertype} Refreshorders={Refreshorders} />
+      <Selectordertype
+        ordertype={ordertype}
+        Refreshorders={Refreshorders}
+        totalorders={totalorders}
+      />
       <Searchbox />
     </div>
   );

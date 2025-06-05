@@ -44,7 +44,7 @@ function Mobilenav({ store = "Rent", location = "Delhi" }) {
   return (
     <>
       {isopenstoremenu?.show && <Storemenu />}
-      <div className="h-16 w-full flex items-center justify-around px-2 border-t sticky bottom-0 lg:hidden bg-white rounded-t-3xl z-20">
+      <div className="h-16 w-full flex items-center justify-around px-2 border-t sticky bottom-0 bg-white rounded-t-3xl z-20">
         <Link
           href={`/${location}/${store}`}
           prefetch={false}

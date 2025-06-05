@@ -54,7 +54,7 @@ function Logedinusermenu({ token, userdata }) {
         {/* Menu */}
         {toggleusermenu.show && (
           <div
-            className={`absolute top-[calc(100%+10px)] right-0 w-[250px] bg-white border border-slate-300 rounded-[10px] p-[10px] shadow-lg duration-300 z-30 ${
+            className={`absolute top-[calc(100%+10px)] right-0 w-64 bg-white border border-slate-300 rounded-[10px] p-[10px] shadow-lg duration-300 z-30 ${
               toggleusermenu.effect
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-[20px]"

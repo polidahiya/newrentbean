@@ -4,13 +4,13 @@ import { getcollection } from "@/app/Mongodb";
 
 export const Getliveproducts = async (categorystate, searchmode) => {
   try {
-    const { Productscollection, ObjectId } = await getcollection(
-      "Edit-Products"
-    );
     const res = await Verification();
     if (!res?.verified) {
       return { status: 400, message: "Invalid user" };
     }
+    const { Productscollection, ObjectId } = await getcollection(
+      "Edit-Products"
+    );
 
     const queries = {
       category: {

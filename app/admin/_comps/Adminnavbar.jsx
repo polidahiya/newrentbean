@@ -19,8 +19,8 @@ function Adminnavbar() {
   const navLinks = [
     { href: "/admin/Orders/0", label: "Orders", logo: <FaDollyFlatbed /> },
     { href: "/admin/Users", label: "Users", logo: <HiUserGroup /> },
-    { href: "/admin/Blogs", label: "Add Blogs", logo: <RiBloggerFill /> },
-    { href: "/admin/addproducts", label: "Add Products", logo: <IoBagAdd /> },
+    { href: "/admin/Blogs", label: "Blogs", logo: <RiBloggerFill /> },
+    { href: "/admin/addproducts", label: "Products", logo: <IoBagAdd /> },
     {
       href: "/admin/contactmessages",
       label: "Messages",

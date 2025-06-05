@@ -1,19 +1,12 @@
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Adminnavbar from "./_comps/Adminnavbar";
+import Verification from "@/app/Verifytoken";
 
 export default async function RootLayout({ children }) {
-  const allcookies = await cookies();
-  const userdata = allcookies.get("userdata")?.value;
-
-  if (!userdata) notFound();
-
-  try {
-    const parseduserdata = JSON.parse(userdata);
-    if (parseduserdata?.usertype !== "admin") notFound();
-  } catch (error) {
-    notFound();
-  }
+  const res=await Verification()
+  console.log(res);
+  
+  if (!res.verified) notFound();
 
   return (
     <div>

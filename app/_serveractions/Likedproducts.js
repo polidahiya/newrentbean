@@ -8,7 +8,7 @@ export const getLikedProducts = async () => {
     const { userscollection } = await getcollection();
     const tokenres = await Verification("public");
 
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return { status: 400, message: "Please login first" };
     }
 
@@ -30,7 +30,7 @@ export async function isliked(productid) {
     const { userscollection } = await getcollection();
     const tokenres = await Verification("public");
 
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return false;
     }
 
@@ -52,7 +52,7 @@ export async function likeproduct(productid, liked) {
     const { userscollection } = await getcollection();
     const tokenres = await Verification("public");
 
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return { status: 400, message: "Please login first" };
     }
     if (liked) {

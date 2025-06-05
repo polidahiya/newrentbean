@@ -6,7 +6,7 @@ import { getcollection } from "@/app/Mongodb";
 export const getordershistory = async () => {
   try {
     const tokenres = await Verification("public");
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return { status: 400, message: "Please login first" };
     }
 
@@ -34,7 +34,7 @@ export const Cancelorder = async (orderid) => {
     const { ObjectId, orderscollection } = await getcollection();
     const tokenres = await Verification("public");
 
-    if (!tokenres) {
+    if (!tokenres?.verified) {
       return { status: 400, message: "Please login first" };
     }
 
