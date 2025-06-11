@@ -4,8 +4,6 @@ import Verification from "@/app/Verifytoken";
 
 export default async function RootLayout({ children }) {
   const res=await Verification()
-  console.log(res);
-  
   if (!res.verified) notFound();
 
   return (

@@ -4,12 +4,11 @@ import Promices from "./Promices/Promices";
 import Categories from "./Categories";
 import { Cachedproducts } from "@/app/_serveractions/Getcachedata";
 import Footer from "../footer/Footer";
-import { cookies } from "next/headers";
 import Allproducts from "./allproducts/Allproducts";
 import Description from "./homedesc/Description";
 import Herosection from "./Herosection";
 import Navbar from "../Navbar/Navbar";
-import Mobilenav from "../Navbar/_comps/Mobilenav";
+import Mobilenav from "../Navbar/bottomnav/Mobilenav";
 import Customerreviews from "./customerreview/Customerreviews";
 import Roadmap from "./Roadmap";
 import DirectSearchcomps from "./DirectSearchcomps";
@@ -18,15 +17,8 @@ import Homestoreswitch from "./Homestoreswitch/File";
 import Epbanner from "../Epfloatingbanner/Banner";
 import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 
-export default async function Homepage({
-  params,
-  location = "Delhi",
-  store = "Rent",
-}) {
+export default async function Homepage({ location = "Delhi", store = "Rent" }) {
   const Device = await DeviceDetector();
-  const allcookies = await cookies();
-  const token = allcookies.get("token")?.value;
-  const userdata = allcookies.get("userdata")?.value;
 
   const products = await Cachedproducts();
   const instoreproducts = products.filter(
@@ -35,15 +27,11 @@ export default async function Homepage({
 
   return (
     <>
-      <Navbar
-        params={params}
-        token={token}
-        userdata={userdata}
-      />
+      <Navbar />
       <div>
-        <Herosection location={location} store={store} Device={Device}/>
+        <Herosection location={location} store={store} Device={Device} />
         <Spaceadder>
-          <Homestoreswitch location={location} store={store} Device={Device}/>
+          <Homestoreswitch location={location} store={store} Device={Device} />
         </Spaceadder>
         <Spaceadder>
           <Categories location={location} store={store} />
@@ -87,9 +75,7 @@ export default async function Homepage({
           <Footer store={store} location={location} />
         </Spaceadder>
       </div>
-      {(Device === "mobile" || Device === "tablet") && (
-        <Mobilenav store={store} location={location} />
-      )}
+      <Mobilenav />
     </>
   );
 }

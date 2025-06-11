@@ -7,10 +7,10 @@ import Selectcategory from "../../addproducts/_components/_comps/Selectcategory"
 import Nextimage from "@/app/_components/Nextimage";
 import ProductCard from "@/app/admin/Orders/[order_num]/_comps/_orderscard/Productcard";
 import Productselectmenu from "./Productselectmenu";
-import Link from "next/link";
 import { AddOrder } from "./Serveraction";
 import { AppContextfn } from "@/app/Context";
 import { MdModeEdit } from "react-icons/md";
+import Togglebuttons from "@/app/admin/addproducts/_components/_comps/Togglebuttons";
 
 function Wrapper({ getproducts, order }) {
   const { setmessagefn } = AppContextfn();
@@ -60,6 +60,8 @@ function Wrapper({ getproducts, order }) {
     show: false,
   });
   const [loading, setloading] = useState(false);
+  const [sendmail, setsendmail] = useState(true);
+  const [customtotal, setcustomtotal] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -88,10 +90,10 @@ function Wrapper({ getproducts, order }) {
     e.preventDefault();
     setloading(true);
     //
-    if (orderdata.totalPrice == 0) {
+    if (!customtotal) {
       orderdata.totalPrice = calculateTotalPrice();
     }
-    const res = await AddOrder(orderdata);
+    const res = await AddOrder(orderdata, sendmail);
     setmessagefn(res.message || "Something went wrong");
     setloading(false);
   };
@@ -222,6 +224,7 @@ function Wrapper({ getproducts, order }) {
         <p className="text-center font-bold font-serif text-xl my-5">
           Product Details
         </p>
+        {/* show selected product */}
         <div className="relative border rounded-md">
           <button
             className="absolute top-0 right-0 bg-gray-100 w-10 aspect-square grid place-content-center"
@@ -237,6 +240,7 @@ function Wrapper({ getproducts, order }) {
           </button>
           <ProductCard product={orderdata?.product} />
         </div>
+        {/* select product */}
         <div className="space-y-4">
           <Selectcategory data={categories} setdata={setcategories} />
           {/* store button */}
@@ -269,7 +273,7 @@ function Wrapper({ getproducts, order }) {
             </button>
           </div>
           {/* products */}
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-5 mb-10">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-5 mb-10 max-h-screen overflow-y-scroll">
             {products.map((product) => (
               <div
                 key={product._id}
@@ -300,6 +304,7 @@ function Wrapper({ getproducts, order }) {
                   alt={product?.name}
                   height={100}
                   width={100}
+                  loading="lazy"
                   className="h-24 w-24 md:h-32 md:w-32 object-contain rounded-md mb-2 mix-blend-multiply"
                 />
                 <span className="text-center text-sm font-medium mt-2">
@@ -309,14 +314,24 @@ function Wrapper({ getproducts, order }) {
             ))}
           </div>
         </div>
+        {/* customtotal toggle*/}
+        <Togglebuttons
+          titlename="Custom Total Price?"
+          value={customtotal}
+          positive={() => setcustomtotal(true)}
+          negative={() => setcustomtotal(false)}
+          positiveText="Custom"
+          negativeText="Auto"
+          colors={{ positive: "text-gray-500", negative: "text-gray-500" }}
+        />
+        {/* total price */}
         <Standardinputfield
-          titlename={
-            orderdata.totalPrice == "" ? "Total (Auto)" : "Total (Custom)"
-          }
+          titlename={customtotal ? "Total (Custom)" : "Total (Auto)"}
           isRequired={false}
           type="number"
-          value={orderdata.totalPrice}
-          placeholder={orderdata.totalPrice == "" ? calculateTotalPrice() : ""}
+          value={customtotal ? orderdata.totalPrice : ""}
+          placeholder={customtotal ? "" : calculateTotalPrice()}
+          disabled={!customtotal}
           onchange={(e) =>
             setorderdata((prev) => ({
               ...prev,
@@ -330,7 +345,6 @@ function Wrapper({ getproducts, order }) {
             }))
           }
         />
-
         {/* Note */}
         <Standardinputfield
           titlename="Note"
@@ -349,7 +363,15 @@ function Wrapper({ getproducts, order }) {
             }))
           }
         />
-
+        {/* Send mail */}
+        <Togglebuttons
+          titlename="Send mail?"
+          value={sendmail}
+          positive={() => setsendmail(true)}
+          negative={() => setsendmail(false)}
+          positiveText="Yes"
+          negativeText="No"
+        />
         {/* Buttons */}
         <div className="sticky bottom-0 flex items-center justify-center gap-5 py-5">
           <button

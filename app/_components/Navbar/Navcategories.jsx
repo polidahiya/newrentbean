@@ -4,8 +4,11 @@ import { categorylist } from "@/app/commondata";
 import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa";
 import Nextimage from "@/app/_components/Nextimage";
+import { AppContextfn } from "@/app/Context";
 
-function Navcategories({ category, location, isrentalstore }) {
+function Navcategories({ category }) {
+  const { location, isrentalstore } = AppContextfn();
+  const locationval = location?.location;
   return (
     <div className={`hidden lg:flex items-center justify-center gap-5 py-2 `}>
       {Object.entries(categorylist).map(([key, item], i) => {
@@ -14,11 +17,11 @@ function Navcategories({ category, location, isrentalstore }) {
             <Link
               key={i}
               prefetch={false}
-              href={`/${location}/${isrentalstore ? "Rent" : "Buy"}/${key}`}
+              href={`/${locationval}/${isrentalstore ? "Rent" : "Buy"}/${key}`}
               className={`w-full flex items-center justify-center gap-2 text-sm  px-5 py-1 rounded-full relative z-10 ${
                 category == key
                   ? "lg:bg-theme lg:text-white"
-                  : "lg:group-hover:bg-slate-100"
+                  : "lg:group-hover:bg-bg1"
               }`}
             >
               <Nextimage
@@ -44,7 +47,7 @@ function Navcategories({ category, location, isrentalstore }) {
                   return (
                     <Link
                       key={j}
-                      href={`/${location}/${
+                      href={`/${locationval}/${
                         isrentalstore ? "Rent" : "Buy"
                       }/${key}/${subcat.name}`}
                       prefetch={false}

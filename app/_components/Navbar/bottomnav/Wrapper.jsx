@@ -8,9 +8,9 @@ import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
 import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
-import Switchstore from "./Switchstore";
+import Switchstore from "@/app/_productpage/_comps/Switchstore";
 
-function Mobilenav({ store = "Rent", location = "Delhi" }) {
+function Wrapper({ store = "Rent", location = "Delhi" }) {
   const path = usePathname();
   const {
     showsearch,
@@ -40,7 +40,6 @@ function Mobilenav({ store = "Rent", location = "Delhi" }) {
     "/Ghaziabad/Buy",
   ];
   const isHighlighted = highlightedPaths.includes(path);
-
   return (
     <>
       {isopenstoremenu?.show && <Storemenu />}
@@ -175,4 +174,4 @@ const Storemenu = () => {
   );
 };
 
-export default Mobilenav;
+export default Wrapper;

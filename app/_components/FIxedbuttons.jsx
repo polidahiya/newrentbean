@@ -79,13 +79,13 @@ const Gotopbutton = ({ iseventmanager }) => {
   useEffect(() => {
     const handleScroll = () => {
       const shouldShow = window.scrollY > 1000;
-      setscrolltop((prev) => (prev !== shouldShow ? shouldShow : prev));
+      if (shouldShow != scrolltop) setscrolltop(shouldShow);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrolltop]);
 
   return (
     <button

@@ -37,7 +37,7 @@ export default function Productselectmenu({
 
   return (
     <div className="fixed top-0 left-0 h-screen w-full flex items-center justify-center bg-black/50 z-40">
-      <div className="relative bg-white rounded-2xl flex flex-col h-[calc(100%-100px)] w-[calc(100%-100px)] p-5 overflow-hidden">
+      <div className="relative bg-white md:rounded-2xl flex flex-col h-full w-full md:h-[calc(100%-100px)] md:w-[calc(100%-100px)] p-5 overflow-hidden">
         <p className="text-xl text-center my-5">Select Product Details</p>
         <div className="overflow-y-auto">
           {orderdata?.product?.isrentalstore && (
@@ -74,9 +74,9 @@ export default function Productselectmenu({
                   ))}
               </div>
               {/* custom tenure */}
-              <div className="border rounded-md py-2 mt-5">
+              <div className="border rounded-md py-2 mt-5  px-2 w-full">
                 <p className="text-center py-2">Custome tenure</p>
-                <div className="flex justify-center gap-2 overflow-x-scroll min-w-96">
+                <div className="flex flex-col md:flex-row justify-center gap-2 w-full md:min-w-96">
                   <Standardinputfield
                     titlename="Time"
                     type="number"
@@ -230,6 +230,35 @@ export default function Productselectmenu({
               }
             />
           </div>
+          {/* buy price*/}
+          {!orderdata?.product?.isrentalstore && (
+            <div className="mt-5">
+              <Standardinputfield
+                titlename="Buy Price"
+                type="number"
+                isRequired
+                value={orderdata.product.buyprice}
+                onchange={(e) =>
+                  setorderdata((prev) => ({
+                    ...prev,
+                    product: {
+                      ...prev.product,
+                      buyprice: e.target.value,
+                    },
+                  }))
+                }
+                clear={() =>
+                  setorderdata((prev) => ({
+                    ...prev,
+                    product: {
+                      ...prev.product,
+                      buyprice: "",
+                    },
+                  }))
+                }
+              />
+            </div>
+          )}
         </div>
         <button
           className="absolute top-0 right-0 text-gray-500 hover:text-gray-700 w-10 aspect-square"
