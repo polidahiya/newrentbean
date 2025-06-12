@@ -4,7 +4,6 @@ import { FiClock } from "react-icons/fi";
 import Scrolldetector from "./Scrolldetector";
 
 function Productcard({
-  index,
   id,
   category,
   subcat,
@@ -42,10 +41,6 @@ function Productcard({
               }/${category}/${subcat}/${id}`
         }
         className="h-full w-full"
-        // className={`group relative w-full shadow-md min-w-44 md:min-w-60 bg-white rounded-3xl overflow-hidden opacity-0 scale-75 ${
-        //   maxwidth && "max-w-72 md:max-w-80"
-        // }`}
-        // style={{ animation: `productfadeout 0.3s ${0.1 * index}s forwards` }}
         prefetch={false}
       >
         <div className="relative aspect-square w-full overflow-hidden">

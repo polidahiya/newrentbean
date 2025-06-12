@@ -92,10 +92,10 @@ async function Productpage({
   return (
     <>
       <article>
-        <header className="relative flex flex-col lg:flex-row items-start px-1 md:px-10 py-2 lg:pt-5  gap-5">
+        <header className="relative flex flex-col lg:flex-row items-start px-1 md:px-10 lg:py-2 lg:pt-5  gap-5">
           <div className="w-full lg:flex-[2] lg:sticky lg:top-[120px]">
             <ImagesComp filteredproducts={filteredProduct} token={token} />
-            <div className="pt-10 opacity-70 px-2 lg:px-0 line-clamp-2 text-center">
+            <div className="pt-10 opacity-70 px-2 lg:px-0 line-clamp-2 text-center lg:text-start">
               <Breadcrumbs
                 list={[
                   { name: category, link: `/${location}/${store}/${category}` },

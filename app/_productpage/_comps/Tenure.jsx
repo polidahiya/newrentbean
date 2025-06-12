@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AppContextfn } from "@/app/Context";
+import pricemaker from "@/app/_components/_helperfunctions/pricemaker";
 
 function Tenure({ filteredProduct, cartproductid }) {
   const { cart, setcart, location } = AppContextfn();
@@ -65,7 +66,8 @@ function Tenure({ filteredProduct, cartproductid }) {
               cart[cartproductid]?.selectedtenure == i && "text-theme "
             }`}
             onClick={() => setinputvalue(i)}
-            aria-label="Tenure" title="Tenure"
+            aria-label="Tenure"
+            title="Tenure"
           >
             {item?.time} {item?.type}
           </button>
@@ -86,17 +88,17 @@ function Tenure({ filteredProduct, cartproductid }) {
       </div>
       <div className="flex w-full py-3 mt-10 rounded-2xl shadow-[5px_5px_7px_rgba(0,0,0,0.123)_inset,-5px_-5px_7px_rgba(255,255,255)_inset]">
         <div className="flex-1 text-center flex flex-col items-center justify-center">
-          <p>₹{parseInt(instancerent, 10).toLocaleString("en-IN")}</p>
+          <p>{pricemaker(instancerent)}</p>
           <p className="text-[10px]"> {alltypes[tenure?.type]} Rent</p>
         </div>
         <div className="min-h-8 w-px bg-slate-300" />
         <div className="flex-1 text-center flex flex-col items-center justify-center">
-          <p>₹{parseInt(tenure?.price, 10).toLocaleString("en-IN")}</p>
+          <p>{pricemaker(tenure?.price)}</p>
           <p className="text-[10px]"> Total Rent</p>
         </div>
         <div className="min-h-8 w-px bg-slate-300" />
         <div className="flex-1 text-center flex flex-col items-center justify-center">
-          <p>₹{parseInt(securitydeposit, 10).toLocaleString("en-IN")}</p>{" "}
+          <p>{pricemaker(securitydeposit)}</p>{" "}
           <p className="text-[10px]">Security Deposit (*Refundable)</p>
         </div>
       </div>

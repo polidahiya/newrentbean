@@ -2,7 +2,6 @@ import React from "react";
 import Productcard from "@/app/_components/Productcard";
 import { AiFillProduct } from "react-icons/ai";
 import Link from "next/link";
-import { LuCircleArrowRight } from "react-icons/lu";
 
 function Similarproducts({
   allproducts,

@@ -100,7 +100,7 @@ function ImagesComp({ filteredproducts, token }) {
       {/* main */}
       <div className="relative group/main overflow-hidden  w-full h-full md:h-96">
         <div
-          className="h-full w-full flex items-center overflow-x-scroll snap-x snap-mandatory scroll-smooth"
+          className="h-full w-full flex items-start overflow-x-scroll snap-x snap-mandatory scroll-smooth"
           onScroll={handleImageScroll}
           ref={imagesScrollRef}
         >
@@ -193,7 +193,7 @@ const MainImage = ({ image, name }) => {
   return (
     <div className="relative  min-w-[100%] h-full w-full p-px snap-start snap-always overflow-hidden">
       <Nextimage
-        className="min-w-full w-full h-full object-contain"
+        className="min-w-full w-full h-full object-contain object-top"
         src={image}
         alt={name}
         height={754}

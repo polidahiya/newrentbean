@@ -6,6 +6,7 @@ import Tenure from "./Tenure";
 import Dateselector from "./Dateselector";
 import Nextimage from "@/app/_components/Nextimage";
 import Switchstore from "./Switchstore";
+import pricemaker from "@/app/_components/_helperfunctions/pricemaker";
 
 function Details({ filteredProduct, store, location, isrentalstore }) {
   const { cart, setcart } = AppContextfn();
@@ -134,12 +135,12 @@ const PriceDisplay = ({ filteredProduct }) => {
       >
         {filteredProduct?.buymrp && (
           <span className="line-through text-gray-500 mr-2 text-base">
-            ₹{parseInt(filteredProduct?.buymrp, 10).toLocaleString("en-IN")}
+            {pricemaker(filteredProduct?.buymrp)}
             {"/-"}
           </span>
         )}
         <span>
-          ₹{parseInt(filteredProduct?.buyprice, 10).toLocaleString("en-IN")}
+          {pricemaker(filteredProduct?.buyprice)}
           {"/-"}
         </span>
       </div>
