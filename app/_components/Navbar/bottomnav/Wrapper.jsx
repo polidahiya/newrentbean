@@ -8,7 +8,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
 import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
-import Switchstore from "@/app/_productpage/_comps/Switchstore";
+import Switchstore from "../_comps/Switchstore";
 
 function Wrapper({ store = "Rent", location = "Delhi" }) {
   const path = usePathname();

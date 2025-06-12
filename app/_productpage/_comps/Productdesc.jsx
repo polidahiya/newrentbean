@@ -11,11 +11,11 @@ function Productdesc({ description }) {
       </h2>
 
       {/* List of product details */}
-      <ul className="space-y-3 pl-5">
+      <ul className="space-y-3 md:pl-5">
         {description?.map((desc, i) => (
           <li
             key={i}
-            className="flex items-start text-gray-700 leading-relaxed transition-all duration-200 hover:text-gray-900"
+            className="text-gray-700 leading-relaxed text-justify"
           >
             <span className="text-theme mr-2 text-lg -translate-y-1">→</span>
             {desc}
