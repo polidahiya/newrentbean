@@ -8,7 +8,6 @@ import { AppContextfn } from "@/app/Context";
 import copytoclipboard from "@/app/_components/_helperfunctions/copytoclipboard";
 import { IoLinkOutline } from "react-icons/io5";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import Breadcrumbs from "@/app/_components/Breadcrumbs";
 
 function ImagesComp({ filteredproducts, token }) {
   const { setmessagefn } = AppContextfn();
@@ -109,8 +108,6 @@ function ImagesComp({ filteredproducts, token }) {
               key={index}
               image={image}
               name={filteredproducts.name}
-              pid={filteredproducts?._id}
-              index={index}
             />
           ))}
         </div>

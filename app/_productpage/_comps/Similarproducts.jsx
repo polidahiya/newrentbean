@@ -1,7 +1,10 @@
 import React from "react";
-import Productcard from "@/app/_components/Productcard";
+// import Productcard from "@/app/_components/Productcard";
 import { AiFillProduct } from "react-icons/ai";
 import Link from "next/link";
+import Nextimage from "@/app/_components/Nextimage";
+import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
+import pricemaker from "@/app/_components/_helperfunctions/pricemaker";
 
 function Similarproducts({
   allproducts,
@@ -39,17 +42,59 @@ function Similarproducts({
           </h2>
           <div className="flex items-stretch gap-2 md:gap-5 mt-5 max-w-full overflow-x-scroll pb-5">
             {similarproducts.map((item, i) => {
+              const tenure = selectedtenure(item, location).all;
+              const lastprice = tenure[tenure.length - 1];
+              const rentprice = Math.floor(lastprice.price / lastprice.time);
+
               return (
-                <Productcard
+                <div
                   key={i}
-                  index={i}
-                  id={item._id}
-                  image={item?.images[0]}
-                  location={location}
-                  isrentalstore={isrentalstore}
-                  {...item}
-                  maxwidth={true}
-                />
+                  className={`min-w-64 w-full md:max-w-64 p-2 flex flex-col justify-between gap-2 bg-white snap-always snap-center md:snap-start`}
+                >
+                  <Link
+                    href={`/${location}/${store}/${category}/${subcat}/${item._id}`}
+                    prefetch={false}
+                  >
+                    <div className="relative w-full aspect-square overflow-hidden">
+                      <Nextimage
+                        src={item.images[0]}
+                        alt={item.name}
+                        width={230}
+                        height={230}
+                        loading="lazy"
+                        className="absolute h-full w-full object-contain"
+                      />
+                    </div>
+                    <h2 className="text-center text-sm  md:text-base mt-5 truncate">
+                      {item.name}
+                    </h2>
+                  </Link>
+                  <div className="px-1 py-1 text-center text-theme">
+                    {isrentalstore ? (
+                      <>
+                        Starting at {pricemaker(rentprice)}/
+                        {tenure[0]?.type.replace(/s$/, "")}
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-xs line-through mr-2">
+                          {pricemaker(item.buymrp)}/-
+                        </span>
+                        {pricemaker(item.buyprice)}/-
+                      </>
+                    )}
+                  </div>
+                </div>
+                // <Productcard
+                //   key={i}
+                //   index={i}
+                //   id={item._id}
+                //   image={item?.images[0]}
+                //   location={location}
+                //   isrentalstore={isrentalstore}
+                //   {...item}
+                //   maxwidth={true}
+                // />
               );
             })}
             {similarproducts.length == maxproducts && (
