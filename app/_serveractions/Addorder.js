@@ -6,7 +6,7 @@ import Ordercconfirmation from "../_mailtemplates/Ordercconfirmation";
 import sendEmail from "./Sendmail";
 import { v4 as uuidv4 } from "uuid";
 import { selectedtenure } from "../_components/_helperfunctions/selectedtenure";
-import {getYYMMDD} from "@/app/_components/_helperfunctions/Yymmdd";
+import { getYYMMDD } from "@/app/_components/_helperfunctions/Yymmdd";
 
 export const Placeorder = async (
   ordersdata,
@@ -21,7 +21,7 @@ export const Placeorder = async (
     const tokenres = await Verification("public");
 
     if (!tokenres?.verified) {
-      return { status: 500, message: "Please login first" };
+      return { status: 400, message: "Please login first" };
     }
     // cookies
     const userdata = JSON.parse(allcookies?.get("userdata")?.value);
@@ -83,25 +83,24 @@ export const Placeorder = async (
 
 export async function Send_mail_to_payment_group_id(paymentGroupId) {
   try {
+    if (!paymentGroupId) return;
     const { orderscollection } = await getcollection();
-    const updatedOrders = await orderscollection
-      .find({ paymentGroupId })
-      .toArray();
+    const res = await orderscollection.find({ paymentGroupId }).toArray();
 
-    if (updatedOrders?.length > 0) {
-      const firstorder = updatedOrders[0];
-      const products = updatedOrders.map((order) => order.product);
+    if (res?.length > 0) {
+      const firstorder = res[0];
+      const products = res.map((order) => order.product);
       const mailhtml = Ordercconfirmation(
-        firstorder?.userdata,
-        firstorder?.paymentGroupId,
-        firstorder?.createdAt,
+        firstorder.userdata,
+        firstorder.paymentGroupId,
+        firstorder.createdAt,
         products,
-        firstorder?.paymentMethod,
-        firstorder?.totalPrice
+        firstorder.paymentMethod,
+        firstorder.totalPrice
       );
       sendEmail(
         "Order confirmation",
-        ["rentbeandotin@gmail.com", updatedOrders[0]?.userdata?.email],
+        ["rentbeandotin@gmail.com", res[0]?.userdata?.email],
         mailhtml
       );
     }
@@ -109,4 +108,3 @@ export async function Send_mail_to_payment_group_id(paymentGroupId) {
     console.log(error);
   }
 }
-

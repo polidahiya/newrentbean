@@ -74,6 +74,11 @@ const redirects = {
 };
 
 const nextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "5mb",
+    },
+  },
   images: {
     remotePatterns: [
       {
@@ -90,7 +95,6 @@ const nextConfig = {
       },
     ],
   },
-
   async headers() {
     return [
       {
