@@ -1,5 +1,4 @@
 import React from "react";
-// import Productcard from "@/app/_components/Productcard";
 import { AiFillProduct } from "react-icons/ai";
 import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
@@ -85,16 +84,6 @@ function Similarproducts({
                     )}
                   </div>
                 </div>
-                // <Productcard
-                //   key={i}
-                //   index={i}
-                //   id={item._id}
-                //   image={item?.images[0]}
-                //   location={location}
-                //   isrentalstore={isrentalstore}
-                //   {...item}
-                //   maxwidth={true}
-                // />
               );
             })}
             {similarproducts.length == maxproducts && (

@@ -12,6 +12,8 @@ import FIxedbuttons from "./_components/FIxedbuttons";
 import { cookies } from "next/headers";
 import { cities } from "./commondata";
 import { Mulish } from "next/font/google";
+import LenisWrapper from "./_components/Lensiscroll";
+import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -42,6 +44,7 @@ export default async function RootLayout({ children }) {
   const cookiecart = allcookies.get("rentbeancart2")?.value;
   const parsedCart = cookiecart ? JSON.parse(cookiecart) : {};
   const storetype = allcookies.get("storetype")?.value;
+  const device = await DeviceDetector();
 
   return (
     <html lang="en">
@@ -88,11 +91,12 @@ export default async function RootLayout({ children }) {
             }),
           }}
         />
-        <meta name="theme-color" content="#d68e43" />
+        {/* <meta name="theme-color" content="#d68e43" /> */}
       </head>
       <body
         className={`${mulish.className} antialiased max-w-[1900px] mx-auto`}
       >
+        {device == "desktop" && <LenisWrapper />}
         <Appwrapper
           token={token}
           userdata={userdata}
