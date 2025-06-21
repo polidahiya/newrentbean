@@ -1,6 +1,5 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import Productcard from "@/app/_components/Productcard";
 import {
   categorylist,
   domain,
@@ -18,6 +17,8 @@ import Wrapper from "../Wrapper";
 import Sort from "./_Components/Sort";
 import { searchProducts } from "./_Components/Searchproducts";
 import Heading from "./_Components/Heading";
+import Productgrid from "./_Components/Productgrid";
+import Productcard from "@/app/_components/Productcard";
 
 async function page({ params, searchParams }) {
   const { Category: slug, location, store } = await params;
@@ -119,7 +120,7 @@ async function page({ params, searchParams }) {
           </div>
         </div>
         {sortedProducts.length > 0 ? (
-          <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-2 md:gap-5 mt-5 mb-10">
+          <Productgrid>
             {sortedProducts.map((item, i) => (
               <Productcard
                 key={i}
@@ -132,7 +133,7 @@ async function page({ params, searchParams }) {
                 {...item}
               />
             ))}
-          </div>
+          </Productgrid>
         ) : (
           <Productnotfound
             location={location}

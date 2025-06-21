@@ -10,14 +10,14 @@ export const metadata = {
     "rent treadmill, rent cycle, rent gym bike, rent laptop, rent phone, rent iPhone, rent gaming console, rent PS4, rent PS5, rent home appliances, rent party items, rent hookah, rent baby car seat, rent beer tower, rent tent, rent camping gear, rent baby carrier, rent electronics, rent fitness equipment, rent gadgets, rent event items, rent furniture, online rental store, affordable rentals, flexible rental plans, rent near me.",
 };
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
   return (
     <div>
       <div className="print:hidden">
-        <Navbar />
+        <Navbar params={params} />
         {children}
         <Footer />
-        <Mobilenav />
+        <Mobilenav params={params} />
       </div>
       <div className="h-[100svh] w-full items-center justify-center hidden print:flex">
         <img

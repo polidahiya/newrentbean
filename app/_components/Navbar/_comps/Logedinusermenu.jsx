@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Usersvg from "@/app/_svgs/Usersvg";
 import Link from "next/link";
 import { AppContextfn } from "@/app/Context";
@@ -13,8 +13,13 @@ import { RiAdminFill } from "react-icons/ri";
 
 function Logedinusermenu({ token, userdata }) {
   const router = useRouter();
-  const { toggleusermenu, setmessagefn, setredirectloginlink, showusermenu,hideusermenu } =
-    AppContextfn();
+  const {
+    toggleusermenu,
+    setmessagefn,
+    setredirectloginlink,
+    showusermenu,
+    hideusermenu,
+  } = AppContextfn();
 
   const parsedUserData = userdata ? JSON.parse(userdata) : null;
 

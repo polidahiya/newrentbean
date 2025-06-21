@@ -17,7 +17,11 @@ import Homestoreswitch from "./Homestoreswitch/File";
 import Epbanner from "../Epfloatingbanner/Banner";
 import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 
-export default async function Homepage({ location = "Delhi", store = "Rent" }) {
+export default async function Homepage({
+  location = "Delhi",
+  store = "Rent",
+  params,
+}) {
   const Device = await DeviceDetector();
 
   const products = await Cachedproducts();
@@ -27,7 +31,7 @@ export default async function Homepage({ location = "Delhi", store = "Rent" }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar params={params} />
       <div>
         <Herosection location={location} store={store} Device={Device} />
         <Spaceadder>
