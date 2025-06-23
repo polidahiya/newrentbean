@@ -11,8 +11,10 @@ import { AddOrder } from "./Serveraction";
 import { AppContextfn } from "@/app/Context";
 import { MdModeEdit } from "react-icons/md";
 import Togglebuttons from "@/app/admin/addproducts/_components/_comps/Togglebuttons";
+import Dateselector from "../../_comps/formcomps/Dateselector";
+import Getproducts from "./Getcachedproducts";
 
-function Wrapper({ getproducts, order }) {
+function Wrapper({ order }) {
   const { setmessagefn } = AppContextfn();
   const today = new Date();
   const initialorderdata = {
@@ -65,7 +67,7 @@ function Wrapper({ getproducts, order }) {
 
   useEffect(() => {
     (async () => {
-      const res = await getproducts(categories);
+      const res = await Getproducts(categories);
       if (!res || res.status !== 200) {
         setproducts([]);
       } else {
@@ -144,7 +146,15 @@ function Wrapper({ getproducts, order }) {
         />
         {/* Delivered Date */}
         {orderdata.status > 2 && (
-          <DeliveredDate orderdata={orderdata} setorderdata={setorderdata} />
+          <Dateselector
+            state={orderdata?.delivered_date}
+            setstate={(isoDate) => {
+              setorderdata((prev) => ({
+                ...prev,
+                delivered_date: isoDate,
+              }));
+            }}
+          />
         )}
 
         {/* User Details */}
@@ -417,54 +427,5 @@ function Wrapper({ getproducts, order }) {
     </div>
   );
 }
-
-const DeliveredDate = ({ orderdata, setorderdata }) => {
-  const [dateValue, setDateValue] = useState("");
-
-  // Sync initial ISO date to datetime-local format
-  useEffect(() => {
-    if (orderdata?.delivered_date) {
-      const date = new Date(orderdata.delivered_date);
-      const local = date.toISOString().slice(0, 16); // "YYYY-MM-DDTHH:mm"
-      setDateValue(local);
-    }
-  }, [orderdata?.delivered_date]);
-
-  const handleChange = (e) => {
-    const localDate = new Date(e.target.value);
-    const isoDate = localDate.toISOString();
-    setDateValue(e.target.value);
-    setorderdata((prev) => ({
-      ...prev,
-      delivered_date: isoDate,
-    }));
-  };
-
-  const formattedDisplayDate = orderdata?.delivered_date
-    ? new Date(orderdata.delivered_date).toLocaleString("en-IN", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      })
-    : "Not set";
-
-  return (
-    <div className="flex flex-col gap-2 max-w-xs">
-      <label className="text-sm font-medium">Delivered Date</label>
-      <input
-        type="datetime-local"
-        value={dateValue}
-        onChange={handleChange}
-        className="border rounded p-2"
-      />
-      <span className="text-sm text-gray-600">
-        Display: {formattedDisplayDate}
-      </span>
-    </div>
-  );
-};
 
 export default Wrapper;

@@ -3,7 +3,6 @@ import { getadminorders } from "@/app/_serveractions/Adminorders";
 import Selectordertype from "./_comps/Selectordertype";
 import Ordercard from "./_comps/_orderscard/Ordercard";
 import Productnotfound from "@/app/_components/Productnotfound";
-import { revalidatePath } from "next/cache";
 import Searchbox from "./_comps/Searchbox";
 import Pagenation from "../../_comps/Pagenation";
 
@@ -25,15 +24,10 @@ async function page({ params, searchParams }) {
     searchfilter
   );
 
-  // refresh orders
-  const Refreshorders = async (link) => {
-    "use server";
-    revalidatePath(link);
-  };
   if (ordersres.status != 200) {
     return (
       <>
-        <Adminnavcomp ordertype={ordertype} Refreshorders={Refreshorders} />
+        <Adminnavcomp ordertype={ordertype} />
         <div className="h-screen w-full flex items-center justify-center text-red-500">
           {ordersres.message}
         </div>
@@ -46,11 +40,7 @@ async function page({ params, searchParams }) {
 
   return (
     <div>
-      <Adminnavcomp
-        ordertype={ordertype}
-        Refreshorders={Refreshorders}
-        totalorders={ordersres?.totalposts}
-      />
+      <Adminnavcomp ordertype={ordertype} totalorders={ordersres?.totalposts} />
 
       {orders.length == 0 && <Productnotfound />}
 
@@ -69,14 +59,10 @@ async function page({ params, searchParams }) {
     </div>
   );
 }
-const Adminnavcomp = ({ ordertype, Refreshorders, totalorders }) => {
+const Adminnavcomp = ({ ordertype, totalorders }) => {
   return (
     <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
-      <Selectordertype
-        ordertype={ordertype}
-        Refreshorders={Refreshorders}
-        totalorders={totalorders}
-      />
+      <Selectordertype ordertype={ordertype} totalorders={totalorders} />
       <Searchbox />
     </div>
   );

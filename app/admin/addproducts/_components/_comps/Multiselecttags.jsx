@@ -42,7 +42,10 @@ function Multiselecttags({ state, setState, statename, options, title }) {
       </div>
       <div className="mt-1 block w-full px-2 border rounded-md">
         <select
-          onChange={(e) => Handleadd(e.target.value)}
+          onChange={(e) => {
+            Handleadd(e.target.value);
+            e.target.value = "";
+          }}
           className="block w-full py-2  outline-none"
           defaultValue=""
         >

@@ -1,15 +1,17 @@
 "use client";
 import { MdOutlineRefresh } from "react-icons/md";
 import React, { useState } from "react";
+import Revalidatepathfn from "./Serveraction";
 
-function Ordersrefreshbutton({ Refreshorders }) {
+function Refresher() {
   const [loading, setLoading] = useState(false);
 
   const handleRefresh = async () => {
     if (loading) return;
     setLoading(true);
     const url = new URL(window.location);
-    await Refreshorders(url.pathname);
+    await Revalidatepathfn(url.pathname);
+
     setLoading(false);
   };
 
@@ -31,4 +33,4 @@ function Ordersrefreshbutton({ Refreshorders }) {
   );
 }
 
-export default Ordersrefreshbutton;
+export default Refresher;

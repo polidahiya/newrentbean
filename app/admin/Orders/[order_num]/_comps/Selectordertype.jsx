@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import Ordersrefreshbutton from "./Ordersrefreshbutton";
 import { IoIosArrowDown } from "react-icons/io";
+import Refresher from "@/app/admin/_comps/refresher/Refresher";
 
-function Selectordertype({ ordertype, Refreshorders, totalorders }) {
+function Selectordertype({ ordertype, totalorders }) {
   const orderTypes = [
     "Orders",
     "Processing",
@@ -43,11 +43,14 @@ function Selectordertype({ ordertype, Refreshorders, totalorders }) {
       <div className="px-2 md:px-5 py-1 rounded-md border ">
         <span className="text-gray-500">Total Orders:</span> {totalorders}
       </div>
-      <Link href="/admin/Orders/Add" className="px-2 md:px-5 py-1 rounded-md border">
+      <Link
+        href="/admin/Orders/Add"
+        className="px-2 md:px-5 py-1 rounded-md border"
+      >
         Add Order
       </Link>
       <div className="ml-auto">
-        <Ordersrefreshbutton Refreshorders={Refreshorders} />
+        <Refresher />
       </div>
     </div>
   );

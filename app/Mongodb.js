@@ -14,11 +14,11 @@ async function connectToDatabase() {
     collections = {
       sitedata: db.collection("data"),
       blogscollection: db.collection("blogs"),
-      Admindatacollection: db.collection("Admindata"),
       Productscollection: db.collection("Products"),
       userscollection: db.collection("users"),
       orderscollection: db.collection("orders"),
       contactmessages: db.collection("contactmessages"),
+      coupons: db.collection("coupons"),
     };
   }
 

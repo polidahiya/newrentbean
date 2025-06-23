@@ -49,7 +49,7 @@ async function Productpage({
     "@context": "https://schema.org",
     "@type": "Product",
     name: filteredProduct.name,
-    image: filteredProduct.images?.[0] || "",
+    image: filteredProduct.images,
 
     description: filteredProduct.desc?.[0] || "Rent flexibly with - @Rentbean",
 

@@ -22,3 +22,6 @@ export default function LenisWrapper() {
 
   return null;
 }
+// import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
+//  const device = await DeviceDetector();
+//  {device == "desktop" && <LenisWrapper />}
