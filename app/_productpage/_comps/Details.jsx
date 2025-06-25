@@ -64,53 +64,55 @@ function Details({ filteredProduct, store, location, isrentalstore }) {
   }, []);
 
   return (
-    <section className="flex-1 w-full lg:min-w-[400px] p-5 bg-bg1 md:rounded-3xl md:shadow-lg ">
-      <h1 className="text-xl md:text-2xl font-recline tracking-wider text-center mt-5">
-        {filteredProduct?.name}
-      </h1>
-      {isrentalstore ? (
-        ["Both", "Rent"].includes(filteredProduct?.availablefor) ? (
-          <>
-            <Dateselector
-              cart={cart}
-              setcart={setcart}
-              cartproductid={cartproductid}
-              isPastDate={isPastDate}
-            />
-            <Tenure
-              filteredProduct={filteredProduct}
-              cartproductid={cartproductid}
-            />
-          </>
+    <div className="flex-1 w-full lg:min-w-[400px]">
+      <section className="w-full p-5 bg-bg1 md:rounded-3xl md:shadow-lg">
+        <h1 className="text-xl md:text-2xl font-recline tracking-wider text-center mt-5">
+          {filteredProduct?.name}
+        </h1>
+        {isrentalstore ? (
+          ["Both", "Rent"].includes(filteredProduct?.availablefor) ? (
+            <>
+              <Dateselector
+                cart={cart}
+                setcart={setcart}
+                cartproductid={cartproductid}
+                isPastDate={isPastDate}
+              />
+              <Tenure
+                filteredProduct={filteredProduct}
+                cartproductid={cartproductid}
+              />
+            </>
+          ) : (
+            <Notavailableforstore title="This Product is not available for Rent" />
+          )
+        ) : ["Both", "Buy"].includes(filteredProduct?.availablefor) ? (
+          <PriceDisplay
+            filteredProduct={filteredProduct}
+            cartproductid={cartproductid}
+          />
         ) : (
-          <Notavailableforstore title="This Product is not available for Rent" />
-        )
-      ) : ["Both", "Buy"].includes(filteredProduct?.availablefor) ? (
-        <PriceDisplay
-          filteredProduct={filteredProduct}
-          cartproductid={cartproductid}
-        />
-      ) : (
-        <Notavailableforstore title="This product is not available for purchase" />
-      )}
+          <Notavailableforstore title="This product is not available for purchase" />
+        )}
 
-      <Addtocartbuttons
-        filteredproducts={filteredProduct}
-        cartproductid={cartproductid}
-        isPastDate={isPastDate}
-      />
-      <Switchstore
-        filteredProduct={filteredProduct}
-        location={location}
-        store={store}
-      />
-      <div className="flex items-center justify-center gap-2  mt-5">
-        <Deliverytrucksvg />
-        <span className="text-[10px]">
-          Delivery in 1 or 2 days {isrentalstore && "post KYC"}
-        </span>
-      </div>
-    </section>
+        <Addtocartbuttons
+          filteredproducts={filteredProduct}
+          cartproductid={cartproductid}
+          isPastDate={isPastDate}
+        />
+        <Switchstore
+          filteredProduct={filteredProduct}
+          location={location}
+          store={store}
+        />
+        <div className="flex items-center justify-center gap-2  mt-5">
+          <Deliverytrucksvg />
+          <span className="text-[10px]">
+            Delivery in 1 or 2 days {isrentalstore && "post KYC"}
+          </span>
+        </div>
+      </section>
+    </div>
   );
 }
 

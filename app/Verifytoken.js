@@ -15,7 +15,11 @@ const Verification = async (permission) => {
       decoded?.permission?.includes(permission) ||
       permission == "public"
     ) {
-      return { verified: true, email: decoded.email };
+      return {
+        verified: true,
+        email: decoded.email,
+        usertype: decoded.usertype,
+      };
     }
     return { verified: false };
   } catch (error) {

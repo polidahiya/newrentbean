@@ -6,15 +6,13 @@ import Ordersplacednotif from "./_comps/Ordersplacednotif";
 async function page() {
   const allcookies = await cookies();
   const token = allcookies?.get("token")?.value;
-  const userdata = allcookies?.get("userdata")?.value;
-  let parseduserdata;
-  if (userdata) {
-    parseduserdata = JSON.parse(userdata);
-  }
+  const rawuserdata = allcookies?.get("userdata")?.value;
+  const userdata = rawuserdata ? JSON.parse(rawuserdata) : null;
+  
   return (
     <>
       <Ordersplacednotif />
-      <Page userdata={parseduserdata} token={token} />
+      <Page userdata={userdata} token={token} />
     </>
   );
 }

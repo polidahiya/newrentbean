@@ -197,6 +197,7 @@ export default function Page({ userdata, token }) {
           ))}
         </div>
         <Checkout
+          cart={cart}
           paymentMethod={paymentMethod}
           setpaymentMethod={setpaymentMethod}
           totalPrice={totalPrice}

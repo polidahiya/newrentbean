@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MdOutlineEditNote } from "react-icons/md";
 
-function UserAddress({ userdata }) {
+function Useraddress({ userdata }) {
   return (
     <div className="bg-white p-2 pl-5">
       <Link
@@ -22,4 +22,4 @@ function UserAddress({ userdata }) {
   );
 }
 
-export default UserAddress;
+export default Useraddress;
