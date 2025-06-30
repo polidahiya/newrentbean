@@ -24,10 +24,11 @@ async function Verifyrazorpay(razorpaydata, paymentGroupId) {
       );
 
       // update coupon usage
-      await Updatecouponusage(
-        orderdata?.userdata?.email,
-        orderdata?.coupondata?.code
-      );
+      if (orderdata?.coupondata)
+        await Updatecouponusage(
+          orderdata?.userdata?.email,
+          orderdata?.coupondata?.code
+        );
       // Send mail
       await Send_mail_to_payment_group_id(paymentGroupId);
       // clear cart and coupon

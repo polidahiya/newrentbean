@@ -50,27 +50,30 @@ export const Placeorder = async (paymentMethod) => {
         status: 0,
         userdata,
         product: finalproductdata,
-        coupondata: {
-          code: coupondata?.code,
-          discountType: coupondata?.discountType,
-          discountValue: coupondata?.discountValue,
-          share: cartitems.length,
-        },
         location,
         totalPrice,
         note: "",
         createdAt: createdAt,
       };
+      // add coupon data
+      if (coupondata)
+        order.coupondata = {
+          code: coupondata?.code,
+          discountType: coupondata?.discountType,
+          discountValue: coupondata?.discountValue,
+          share: cartitems.length,
+        };
+      // add payment status for online
       if (paymentMethod == "online") {
         order.paymentStatus = "pending";
       }
-
       await orderscollection.insertOne(order);
     }
 
     if (paymentMethod == "cod") {
       // update coupon usage
-      await Updatecouponusage(userdata?.email, coupondata?.code);
+      if (coupondata)
+        await Updatecouponusage(userdata?.email, coupondata?.code);
       // send mail
       await Send_mail_to_payment_group_id(paymentGroupId);
       // clear cart and coupon

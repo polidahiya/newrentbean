@@ -31,7 +31,35 @@ export default function Historyproductcard({ item }) {
     tenurestart?.year
   }`;
   const tenure = product?.tenure;
+  const totalPrice = product?.isrentalstore
+    ? tenure?.price * product?.quantity
+    : product?.buyprice * product?.quantity;
 
+  // --- Coupon calculation ---
+  let discountedPrice = totalPrice;
+  const coupon = item?.coupondata;
+  if (coupon) {
+    const discountValue = parseFloat(coupon?.discountValue || 0);
+    if (coupon?.discountType === "percentage") {
+      discountedPrice = totalPrice - (totalPrice * discountValue) / 100;
+    } else if (coupon?.discountType === "fixed") {
+      discountedPrice = totalPrice - discountValue / coupon?.share;
+    }
+  }
+
+  const formattedPrice = `₹${parseInt(discountedPrice, 10).toLocaleString(
+    "en-IN"
+  )}/-`;
+  const originalPriceFormatted = `₹${parseInt(totalPrice, 10).toLocaleString(
+    "en-IN"
+  )}/-`;
+
+  const formattedDeposit = `₹${parseInt(
+    product?.securitydeposit * product?.quantity,
+    10
+  ).toLocaleString("en-IN")}/-`;
+
+  //
   const order_status_bg_color = {
     0: "bg-white",
     4: "bg-red-50",
@@ -64,14 +92,25 @@ export default function Historyproductcard({ item }) {
           <p>
             <span className="font-medium">Order #:</span> {item.orderNumber}
           </p>
-          <p>{product?.isrentalstore ? "For Rent" : "For Buy"}</p>
+          <p>
+            <span>{product?.isrentalstore ? "For Rent" : "For Buy"}</span> |{" "}
+            <span className="font-medium">Quantity:</span> {product?.quantity}
+          </p>
           {product?.isrentalstore ? (
             <>
               <p>
-                <span className="font-medium">Price:</span> ₹{tenure?.price} for{" "}
-                {tenure?.time} {tenure?.type} |
-                <span className="font-medium"> Security:</span> ₹
-                {product?.securitydeposit}
+                <span className="font-medium">
+                  Price:
+                  {coupon && (
+                    <span className="ml-2 text-gray-500 line-through text-sm">
+                      {originalPriceFormatted}
+                    </span>
+                  )}
+                </span>{" "}
+                {formattedPrice} for {tenure?.time} {tenure?.type} |
+                <span className="font-medium"> Security : </span>
+                {formattedDeposit} |{" "}
+                {coupon && <span className="text-theme">Coupon applied</span>}
               </p>
               <p>
                 <span className="font-medium">Start Date:</span> {startDate}
@@ -79,7 +118,7 @@ export default function Historyproductcard({ item }) {
             </>
           ) : (
             <p>
-              <span className="font-medium">Price:</span> ₹{product?.buyprice}
+              <span className="font-medium">Price:</span> {formattedPrice}
             </p>
           )}
         </div>

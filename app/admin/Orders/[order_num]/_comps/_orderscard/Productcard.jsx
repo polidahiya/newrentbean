@@ -26,11 +26,11 @@ export default function ProductCard({ product, coupon }) {
   // --- Coupon calculation ---
   let discountedPrice = totalPrice;
   if (coupon) {
-    const discountValue = parseFloat(coupon.discountValue || 0);
-    if (coupon.discountType === "percentage") {
+    const discountValue = parseFloat(coupon?.discountValue || 0);
+    if (coupon?.discountType === "percentage") {
       discountedPrice = totalPrice - (totalPrice * discountValue) / 100;
-    } else if (coupon.discountType === "fixed") {
-      discountedPrice = totalPrice - discountValue / coupon.share;
+    } else if (coupon?.discountType === "fixed") {
+      discountedPrice = totalPrice - discountValue / coupon?.share;
     }
   }
 
@@ -114,10 +114,14 @@ export default function ProductCard({ product, coupon }) {
         {/* Applied Coupon Display */}
         {coupon && (
           <div className="text-sm text-orange-600 font-medium mt-2">
-            Coupon <span className="font-bold">{coupon.code}</span> applied:{" "}
-            {coupon.discountType === "percentage"
-              ? `${coupon.discountValue}% off`
-              : `Total ₹${coupon.discountValue} off in ${coupon.share} products @ ₹${coupon.discountValue / coupon.share} per product`}
+            Coupon <span className="font-bold">{coupon?.code}</span> applied:{" "}
+            {coupon?.discountType === "percentage"
+              ? `${coupon?.discountValue}% off`
+              : `Total ₹${coupon?.discountValue} off in ${
+                  coupon?.share
+                } products @ ₹${
+                  coupon?.discountValue / coupon?.share
+                } per product`}
           </div>
         )}
       </div>
