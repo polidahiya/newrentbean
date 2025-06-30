@@ -4,6 +4,11 @@ import { unstable_cache } from "next/cache";
 import { revalidateTag } from "next/cache";
 import { CACHE_TIME } from "../commondata";
 
+// const productMap = new Map(products.map(product => [product._id, product]));
+// const filtered = [...productMap.values()].filter(
+//   (product) => product.category === "Electronics"
+// );
+
 export const Cachedproducts = unstable_cache(
   async () => {
     const { Productscollection } = await getcollection();
@@ -12,10 +17,12 @@ export const Cachedproducts = unstable_cache(
     })
       .sort({ sortOrder: 1 })
       .toArray();
-    return productsList.map((item) => ({
-      ...item,
-      _id: item._id.toString(),
-    }));
+
+    productsList.forEach((item) => {
+      item._id = item._id.toString();
+    });
+
+    return productsList;
   },
   ["products"],
   { revalidate: CACHE_TIME, tags: ["products"] }

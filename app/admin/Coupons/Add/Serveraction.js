@@ -52,6 +52,22 @@ export async function Addcoupon(coupondata) {
   }
 }
 
+export async function Deletecoupon(id) {
+  try {
+    const tokenres = await Verification();
+    if (!tokenres?.verified) {
+      return { status: 400, message: "Please login first" };
+    }
+    const { coupons, ObjectId } = await getcollection();
+    const filter = { _id: new ObjectId(id) };
+    await coupons.deleteOne(filter);
+    return { status: 200, message: "Deleted successfully" };
+  } catch (error) {
+    console.log(error);
+    return { status: 500, message: "Server Error" };
+  }
+}
+
 export async function Applycoupon(coupon, totalPrice, cart) {
   try {
     const tokenres = await Verification("public");
@@ -59,23 +75,9 @@ export async function Applycoupon(coupon, totalPrice, cart) {
       return { status: 400, message: "Please login to apply coupon" };
     }
 
-    // const { coupons } = await getcollection();
+    const { coupons, userscollection } = await getcollection();
 
-    // if (tokenres?.usertype === "admin") {
-    // } else {
-    // const coupondata = await coupons.findOne({ code: coupon });
-    const coupondata = {
-      _id: "6858d74bc6f606a792b39045",
-      code: "RB00R1",
-      discountType: "percentage",
-      discountValue: "5",
-      validFrom: "2025-06-23T04:24:00.000Z",
-      validTo: "2030-12-31T04:24:00.000Z",
-      usageLimit: "10",
-      applicableList: ["Entertainment", "Furniture"],
-      isActive: true,
-      minAmount: "0",
-    };
+    const coupondata = await coupons.findOne({ code: coupon });
 
     if (!coupondata) return { status: 400, message: "Invalid coupon code" };
     else if (!coupondata.isActive)
@@ -93,40 +95,62 @@ export async function Applycoupon(coupon, totalPrice, cart) {
         message: "Coupon usage limit exceeded",
       };
     else {
-      const isCouponApplicable = (
-        coupondata,
-        { store, category, subcat, pid }
-      ) => {
-        const list = coupondata.applicableList;
+      const user = await userscollection.findOne({ email: tokenres.email });
+      const usercoupondata = user.couponusage;
+      const timesUsed = usercoupondata ? usercoupondata[coupondata?.code] : 0;
 
-        // Applies to entire cart
-        if (list.includes("Cart")) return true;
-
-        // Applies specifically
-        const storeMatch = list.includes(store);
-        const itemMatch =
-          list.includes(category) ||
-          list.includes(subcat) ||
-          list.includes(pid);
-
-        return storeMatch && itemMatch;
-      };
-      const isCouponApplicableToAll = Object.values(cart).every((item) => {
-        const [_, location, store, category, subcat, pid] =
-          item.productlink.split("/");
-        console.log(store, category, subcat, pid);
-
-        return isCouponApplicable(coupondata, { store, category, subcat, pid });
-      });
-
-      if (isCouponApplicableToAll)
+      if (timesUsed >= coupondata?.usageLimitperuser) {
         return {
           status: 400,
-          message: "Coupon applied successfully",
-          coupondata,
+          message: "Coupon usage limit exceeded",
         };
-      else
-        return { status: 400, message: "Not applicable on these categories" };
+      } else {
+        const isCouponApplicable = (
+          coupondata,
+          { store, category, subcat, pid }
+        ) => {
+          const list = coupondata.applicableList;
+
+          // Applies to entire cart
+          if (list.includes("Cart")) return true;
+
+          // Applies specifically
+          const storeMatch = list.includes(store);
+          const itemMatch =
+            list.includes(category) ||
+            list.includes(subcat) ||
+            list.includes(pid);
+
+          return storeMatch && itemMatch;
+        };
+
+        const isCouponApplicableToAll = cart.every(([key, item]) => {
+          const store = key.split("-")[1];
+          const { category, subcat, _id } = item;
+          return isCouponApplicable(coupondata, {
+            store,
+            category,
+            subcat,
+            _id,
+          });
+        });
+
+        if (isCouponApplicableToAll) {
+          const allcookies = await cookies();
+          allcookies.set("coupon", coupondata._id.toString(), {
+            maxAge: 60 * 60 * 24,
+            path: "/",
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax",
+          });
+          return {
+            status: 200,
+            message: "Coupon applied successfully",
+          };
+        } else
+          return { status: 400, message: "Not applicable on these categories" };
+      }
     }
     // }
   } catch (error) {
@@ -141,4 +165,19 @@ const Checkcoupondate = (validFrom, validTo) => {
   const end = new Date(validTo);
   return now >= start && now <= end;
 };
+
+export async function Removecoupon() {
+  try {
+    const tokenres = await Verification("public");
+    if (!tokenres?.verified) {
+      return { status: 400, message: "Please login to apply coupon" };
+    }
+    const allcookies = await cookies();
+    allcookies.delete("coupon");
+    return { status: 200, message: "Removed successfully" };
+  } catch (error) {
+    console.log(error);
+    return { status: 500, message: "Server Error" };
+  }
+}
 // test1,RB00R1

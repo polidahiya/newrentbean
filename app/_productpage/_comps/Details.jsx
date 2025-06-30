@@ -10,8 +10,8 @@ import pricemaker from "@/app/_components/_helperfunctions/pricemaker";
 
 function Details({ filteredProduct, store, location, isrentalstore }) {
   const { cart, setcart } = AppContextfn();
-  const cartproductid = `${filteredProduct?.sku}-${
-    isrentalstore ? "rental" : "buy"
+  const cartproductid = `${filteredProduct?._id}-${
+    isrentalstore ? "Rent" : "Buy"
   }`;
 
   // Function to check if a selected date is in the past
@@ -42,16 +42,7 @@ function Details({ filteredProduct, store, location, isrentalstore }) {
           [cartproductid]: {
             added: false,
             quantity: 1,
-            sku: cartproductid,
-            prices: filteredProduct?.prices,
             selectedtenure: 0,
-            buyprice: filteredProduct?.buyprice,
-            name: filteredProduct?.name,
-            image: filteredProduct?.images[0],
-            securitydeposit: filteredProduct?.securitydeposit,
-            maxquantity: filteredProduct?.maxquantity,
-            isrentalstore,
-            productlink: `/${location}/${store}/${filteredProduct?.category}/${filteredProduct?.subcat}/${filteredProduct?._id}`,
             tenureStart: {
               date: defaultDate.getDate(),
               month: defaultDate.getMonth(),

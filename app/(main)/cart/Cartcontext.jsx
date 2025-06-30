@@ -1,54 +1,38 @@
 "use client";
-import { Placeorder } from "@/app/_serveractions/Addorder";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AppContextfn } from "@/app/Context";
-import React, { useState, useEffect } from "react";
-import Products from "./Products";
-import Emptycart from "./Emptycart";
-import Useraddress from "./Useraddress";
-import { FaOpencart } from "react-icons/fa6";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { Placeorder } from "@/app/_serveractions/Addorder";
 import Recaptcha from "@/app/_components/_helperfunctions/Recaptcha";
 import { event } from "nextjs-google-analytics";
-import Showtenuremenu from "./Showtenuremenu";
-import Checkout from "./Checkout";
 import Razorpayidcreate from "@/app/_serveractions/_razorpay/Razorpayidcreate";
-import Verifyrazorpay from "@/app/_serveractions/_razorpay/Verifyrazorpay";
+import { useRouter } from "next/navigation";
 import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
+import Verifyrazorpay from "@/app/_serveractions/_razorpay/Verifyrazorpay";
 
-export default function Page({ userdata, token }) {
+const Cartcontext = createContext({});
+export function Cartcontextwrapper({
+  maxcashpaymentavailable,
+  location,
+  verified,
+  userdata,
+  cartitems,
+  totalPrice,
+  children,
+}) {
   const router = useRouter();
-  const {
-    cart,
-    setcart,
-    settoggleorderplacedmenu,
-    setmessagefn,
-    setredirectloginlink,
-    location,
-    // setinstantlogin,
-  } = AppContextfn();
+  const { setcart, setmessagefn, setredirectloginlink } = AppContextfn();
+  const [toggleorderplacedmenu, settoggleorderplacedmenu] = useState(false);
   const [showtenure, setshowtenure] = useState({ show: false, data: {} });
   const [paymentMethod, setpaymentMethod] = useState("online");
 
-  const cartitems = Object.entries(cart).filter(([key, item]) => item.added);
-
-  const totalPrice = cartitems.reduce((total, [key, value]) => {
-    if (value.isrentalstore) {
-      const securitydeposit = value?.securitydeposit * value.quantity;
-      const price = selectedtenure(value, location?.location);
-      const totalprice = price?.selected?.price * value.quantity;
-      return Number(total) + Number(totalprice) + Number(securitydeposit);
-    } else {
-      const totalprice = value?.buyprice * value?.quantity;
-      return total + totalprice;
-    }
-  }, 0);
+  useEffect(() => {
+    if (paymentMethod === "cod" && totalPrice >= maxcashpaymentavailable)
+      setpaymentMethod("online");
+  }, [totalPrice]);
 
   // place order fucntion
   const Order = () => {
-    const usercookie = Cookies.get("userdata");
-
-    if (!token || !usercookie) {
+    if (!verified || !userdata) {
       setmessagefn("Please Login");
       setredirectloginlink("/cart");
       router.push("/loginlogout");
@@ -68,12 +52,7 @@ export default function Page({ userdata, token }) {
 
     Recaptcha(
       async () => {
-        const res = await Placeorder(
-          cartitems,
-          paymentMethod,
-          totalPrice,
-          location?.location || "Default"
-        );
+        const res = await Placeorder(paymentMethod);
         if (res?.status == 200) {
           try {
             event("purchase", {
@@ -87,9 +66,10 @@ export default function Page({ userdata, token }) {
                 item_id: key,
                 item_name: item?.name,
                 quantity: item?.quantity,
-                price: item?.isrentalstore
-                  ? selectedtenure(item, location?.location)?.selected?.price
-                  : item?.buyprice,
+                price:
+                  key.split("-")[1] == "Rent"
+                    ? selectedtenure(item, location)?.selected?.price
+                    : item?.buyprice,
               })),
             });
           } catch (error) {
@@ -156,9 +136,6 @@ export default function Page({ userdata, token }) {
 
   const ordersuccess = () => {
     settoggleorderplacedmenu(true);
-    Cookies.set("rentbeancart2", JSON.stringify({}), {
-      expires: 7,
-    });
     setcart({});
   };
 
@@ -169,41 +146,23 @@ export default function Page({ userdata, token }) {
     document.body.appendChild(script);
   }, []);
 
-  if (cartitems.length == 0) {
-    return <Emptycart />;
-  }
-
   return (
-    <>
-      {showtenure?.show && (
-        <Showtenuremenu showtenure={showtenure} setshowtenure={setshowtenure} />
-      )}
-      <div className="p-2 md:px-10 bg-bg1">
-        <div className="flex items-center justify-center gap-2 text-xl md:text-2xl font-bold font-recline py-5">
-          Cart
-          <FaOpencart />
-        </div>
-        {userdata && <Useraddress userdata={userdata} />}
-        {/* products */}
-        <div className={`bg-white  ${userdata && "mt-5"}`}>
-          {cartitems.map(([key, item], i) => (
-            <Products
-              key={i + new Date().getMilliseconds()}
-              item={item}
-              cartproductid={key}
-              i={i}
-              setshowtenure={setshowtenure}
-            />
-          ))}
-        </div>
-        <Checkout
-          cart={cart}
-          paymentMethod={paymentMethod}
-          setpaymentMethod={setpaymentMethod}
-          totalPrice={totalPrice}
-          Order={Order}
-        />
-      </div>
-    </>
+    <Cartcontext.Provider
+      value={{
+        paymentMethod,
+        setpaymentMethod,
+        Order,
+        showtenure,
+        setshowtenure,
+        toggleorderplacedmenu,
+        settoggleorderplacedmenu,
+      }}
+    >
+      {children}
+    </Cartcontext.Provider>
   );
+}
+
+export function Usecartcontext() {
+  return useContext(Cartcontext);
 }

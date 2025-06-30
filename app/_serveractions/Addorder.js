@@ -1,59 +1,61 @@
 "use server";
 import Verification from "@/app/Verifytoken";
-import { cookies } from "next/headers";
 import { getcollection } from "@/app/Mongodb";
 import Ordercconfirmation from "../_mailtemplates/Ordercconfirmation";
 import sendEmail from "./Sendmail";
 import { v4 as uuidv4 } from "uuid";
 import { selectedtenure } from "../_components/_helperfunctions/selectedtenure";
 import { getYYMMDD } from "@/app/_components/_helperfunctions/Yymmdd";
+import Getcart from "./Getcart";
+import { cookies } from "next/headers";
 
-export const Placeorder = async (
-  ordersdata,
-  paymentMethod,
-  totalPrice,
-  location
-) => {
+export const Placeorder = async (paymentMethod) => {
   try {
-    const allcookies = await cookies();
-
     const { orderscollection, sitedata } = await getcollection();
     const tokenres = await Verification("public");
 
     if (!tokenres?.verified) {
       return { status: 400, message: "Please login first" };
     }
-    // cookies
-    const userdata = JSON.parse(allcookies?.get("userdata")?.value);
+
+    const { cartitems, userdata, totalPrice, location, coupondata } =
+      await Getcart();
 
     const paymentGroupId = uuidv4();
     const createdAt = new Date();
 
-    for (let [key, product] of ordersdata) {
+    for (let [key, product] of cartitems) {
       const updatedsitedata = await sitedata.findOneAndUpdate(
         {},
         { $inc: { orderNumber: 1 } },
         { returnDocument: "after", upsert: true }
       );
-      const orderNumber = `Rb${getYYMMDD()}-${updatedsitedata?.orderNumber}`;
 
-      // deleting extras from product
-      const finaltenure = selectedtenure(product, product.location).selected;
-      const refined_product = { ...product, tenure: finaltenure };
-      delete refined_product.prices;
-      delete refined_product.added;
-      delete refined_product.sku;
-      delete refined_product.finaltenure;
-      delete refined_product.maxquantity;
-      delete refined_product.status;
+      const finalproductdata = {
+        quantity: product.quantity,
+        selectedtenure: product.selectedtenure,
+        buyprice: product.buyprice,
+        name: product.name,
+        image: product.images[0],
+        securitydeposit: product.securitydeposit,
+        isrentalstore: key.split("-")[1] == "Rent",
+        tenureStart: product.tenureStart,
+        tenure: selectedtenure(product, location).selected,
+      };
 
       let order = {
         paymentGroupId,
-        orderNumber,
+        orderNumber: `Rb${getYYMMDD()}-${updatedsitedata?.orderNumber}`,
         paymentMethod,
         status: 0,
         userdata,
-        product: refined_product,
+        product: finalproductdata,
+        coupondata: {
+          code: coupondata?.code,
+          discountType: coupondata?.discountType,
+          discountValue: coupondata?.discountValue,
+          share: cartitems.length,
+        },
         location,
         totalPrice,
         note: "",
@@ -62,12 +64,17 @@ export const Placeorder = async (
       if (paymentMethod == "online") {
         order.paymentStatus = "pending";
       }
+
       await orderscollection.insertOne(order);
     }
 
-    // send mail
     if (paymentMethod == "cod") {
+      // update coupon usage
+      await Updatecouponusage(userdata?.email, coupondata?.code);
+      // send mail
       await Send_mail_to_payment_group_id(paymentGroupId);
+      // clear cart and coupon
+      await Clearcookies();
     }
 
     return {
@@ -107,4 +114,20 @@ export async function Send_mail_to_payment_group_id(paymentGroupId) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function Clearcookies() {
+  const allcookies = await cookies();
+  allcookies.set("rentbeancart2", JSON.stringify({}));
+  allcookies.delete("coupon");
+}
+
+export async function Updatecouponusage(email, couponCode) {
+  const { userscollection } = await getcollection();
+  await userscollection.updateOne(
+    { email },
+    {
+      $inc: { [`couponusage.${couponCode}`]: 1 }, // increment the count
+    }
+  );
 }

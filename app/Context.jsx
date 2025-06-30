@@ -22,7 +22,7 @@ export function Appwrapper({
   });
   const searchinputref = useRef();
   const [redirectloginlink, setredirectloginlink] = useState("/");
-  const [toggleorderplacedmenu, settoggleorderplacedmenu] = useState(false);
+
   const [messagearray, setmessagearray] = useState([]);
   const [instantlogin, setinstantlogin] = useState({
     show: false,
@@ -126,8 +126,6 @@ export function Appwrapper({
       Cookies.set("rblocation", location?.location, { expires: 7 });
   }, [location]);
 
- 
-
   return (
     <AppContext.Provider
       value={{
@@ -150,8 +148,6 @@ export function Appwrapper({
         searchinputref,
         redirectloginlink,
         setredirectloginlink,
-        toggleorderplacedmenu,
-        settoggleorderplacedmenu,
         messagearray,
         setmessagearray,
         setmessagefn,

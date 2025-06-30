@@ -1,8 +1,9 @@
 import React from "react";
 import { Showcoupon } from "./Add/Serveraction";
-import Coupondatawrapper from "./Add/_comps/Coupondatawrapper";
 import Link from "next/link";
 import Refresher from "../_comps/refresher/Refresher";
+import Deletebutton from "./_comps/Deletebutton";
+import Editcouponbutton from "./_comps/Editcouponbutton";
 
 async function page() {
   const res = await Showcoupon();
@@ -17,8 +18,8 @@ async function page() {
   const coupons = res?.coupon;
 
   return (
-    <div>
-      <div className="flex items-center justify-end py-1 px-2 md:px-10">
+    <div className="relative flex flex-col h-[calc(100vh-50px)]">
+      <div className="bg-white flex items-center justify-end py-1 z-10 px-[10px] md:px-10">
         <Link
           href="/admin/Coupons/Add"
           className="h-full bg-theme text-white rounded-md px-5 py-1"
@@ -29,9 +30,9 @@ async function page() {
           <Refresher />
         </div>
       </div>
-      <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
-          <thead className="bg-gray-100 text-sm text-gray-700">
+      <div className="relative h-full overflow-y-scroll px-[10px] md:px-10">
+        <table className="table-auto min-w-full border border-gray-200  text-center">
+          <thead className="sticky top-0 bg-gray-100 text-sm text-gray-700">
             <tr>
               <th className="px-4 py-2 text-left">Code</th>
               <th className="px-4 py-2 text-left">Type</th>
@@ -39,9 +40,11 @@ async function page() {
               <th className="px-4 py-2 text-left">Valid From</th>
               <th className="px-4 py-2 text-left">Valid To</th>
               <th className="px-4 py-2 text-left">Usage Limit</th>
+              <th className="px-4 py-2 text-left">Usage Limit / User</th>
               <th className="px-4 py-2 text-left">Min Amount</th>
               <th className="px-4 py-2 text-left">Applies To</th>
               <th className="px-4 py-2 text-left">Status</th>
+              <th className="px-4 py-2 text-left"></th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -49,7 +52,12 @@ async function page() {
               coupons.map((coupon, i) => {
                 const isExpired = new Date(coupon?.validTo) < new Date();
                 return (
-                  <Coupondatawrapper key={i} coupon={coupon} index={i}>
+                  <tr
+                    key={i}
+                    className={`border-t cursor-pointer ${
+                      i % 2 != 0 && "bg-gray-50"
+                    }`}
+                  >
                     <td className="px-4 py-2">{coupon?.code}</td>
                     <td className="px-4 py-2 capitalize">
                       {coupon?.discountType}
@@ -70,6 +78,11 @@ async function page() {
                         ? "Unlimited"
                         : coupon?.usageLimit}
                     </td>
+                    <td className="px-4 py-2">
+                      {coupon?.usageLimitperuser == -1
+                        ? "Unlimited"
+                        : coupon?.usageLimitperuser}
+                    </td>
                     <td className="px-4 py-2">{coupon?.minAmount}</td>
                     <td className="px-4 py-2">
                       {coupon?.applicableList.join(", ")}
@@ -85,7 +98,13 @@ async function page() {
                         {coupon?.isActive ? "Active" : "Inactive"}
                       </span>
                     </td>
-                  </Coupondatawrapper>
+                    <td>
+                      <div className="flex gap-2">
+                        <Editcouponbutton coupon={coupon} />
+                        <Deletebutton couponid={coupon?._id} />
+                      </div>
+                    </td>
+                  </tr>
                 );
               })}
           </tbody>

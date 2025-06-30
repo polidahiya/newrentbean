@@ -20,7 +20,7 @@
 }
 :root[store="Buy"] {
   /* --theme: #948979; */
-  --theme: #4E6688;
+  --theme: #4e6688;
   /* --theme: #6e7bc0; */
 }
 
@@ -360,4 +360,19 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .text em {
   font-style: italic;
+}
+
+/* reveal from left */
+.revealfromleft {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  animation: revealFromLeft 1s ease-out forwards;
+}
+
+@keyframes revealFromLeft {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
 }

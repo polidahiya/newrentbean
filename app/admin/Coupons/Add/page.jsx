@@ -131,6 +131,18 @@ export default function Page() {
           }
           clear={() => setdata((prev) => ({ ...prev, usageLimit: "" }))}
         />
+        {/* Usage limit per user*/}
+        <Standardinputfield
+          titlename={`Usage Limit per User : ${
+            data.usageLimitperuser == -1 ? "unlimited " : data.usageLimitperuser
+          } (use -1 for unlimited)`}
+          type="number"
+          value={data.usageLimitperuser}
+          onchange={(e) =>
+            setdata((prev) => ({ ...prev, usageLimitperuser: e.target.value }))
+          }
+          clear={() => setdata((prev) => ({ ...prev, usageLimitperuser: "" }))}
+        />
         {/* categoreies */}
         <Multiselecttags
           title="Applicatble on (Cart - all, category or subcat or productid + store(Rent/Buy))"

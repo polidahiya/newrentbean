@@ -10,6 +10,7 @@ export function Couponcontextwrapper({ children }) {
     validFrom: "",
     validTo: "",
     usageLimit: 1,
+    usageLimitperuser: 1,
     applicableList: ["Cart", "Rent"],
     minAmount: 0,
     isActive: true,

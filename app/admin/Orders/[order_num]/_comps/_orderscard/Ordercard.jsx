@@ -141,7 +141,11 @@ function Ordercard({ item }) {
       {open && (
         <div className="mt-4 space-y-6">
           <div className="flex flex-wrap gap-3 justify-center">
-            <ProductCard product={item?.product} location={item?.location} />
+            <ProductCard
+              product={item?.product}
+              location={item?.location}
+              coupon={item?.coupondata}
+            />
           </div>
 
           {/* Notes & Invoice Section */}

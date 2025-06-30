@@ -3,10 +3,11 @@ import React from "react";
 import Nextimage from "@/app/_components/Nextimage";
 import { AppContextfn } from "@/app/Context";
 import { useRouter } from "next/navigation";
+import { Usecartcontext } from "../Cartcontext";
 
 function Ordersplacednotif() {
   const router = useRouter();
-  const { toggleorderplacedmenu, settoggleorderplacedmenu } = AppContextfn();
+  const { toggleorderplacedmenu, settoggleorderplacedmenu } = Usecartcontext();
   if (toggleorderplacedmenu)
     return (
       <div className="fixed top-0 left-0 flex items-center justify-center h-full w-full bg-black/50 z-[999]">

@@ -1,8 +1,9 @@
 import Nextimage from "@/app/_components/Nextimage";
 import { months } from "@/app/commondata";
 
-export default function ProductCard({ product }) {
-  if (!product) return;
+export default function ProductCard({ product, coupon }) {
+  if (!product) return null;
+
   const {
     name,
     isrentalstore,
@@ -22,18 +23,33 @@ export default function ProductCard({ product }) {
     ? tenure?.price * quantity
     : buyprice * quantity;
 
-  const formattedPrice = `₹${parseInt(totalPrice, 10).toLocaleString(
+  // --- Coupon calculation ---
+  let discountedPrice = totalPrice;
+  if (coupon) {
+    const discountValue = parseFloat(coupon.discountValue || 0);
+    if (coupon.discountType === "percentage") {
+      discountedPrice = totalPrice - (totalPrice * discountValue) / 100;
+    } else if (coupon.discountType === "fixed") {
+      discountedPrice = totalPrice - discountValue / coupon.share;
+    }
+  }
+
+  const formattedPrice = `₹${parseInt(discountedPrice, 10).toLocaleString(
     "en-IN"
   )}/-`;
+  const originalPriceFormatted = `₹${parseInt(totalPrice, 10).toLocaleString(
+    "en-IN"
+  )}/-`;
+
   const formattedDeposit = `₹${parseInt(
     securitydeposit * quantity,
     10
   ).toLocaleString("en-IN")}/-`;
 
   return (
-    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-center">
+    <div className="w-full flex flex-col md:flex-row md:items-center md:justify-center border border-gray-100 rounded-lg overflow-hidden shadow-sm">
       {/* Image */}
-      <div className="w-full md:h-40 md:w-40 ">
+      <div className="w-full md:h-40 md:w-40">
         <Nextimage
           className="w-full h-full object-cover aspect-square"
           src={image}
@@ -72,11 +88,17 @@ export default function ProductCard({ product }) {
           <div>
             <span className="font-medium">Quantity:</span> {quantity}
           </div>
+
           <div>
             <span className="font-medium">Price:</span>{" "}
             <span className="text-green-600 font-semibold">
               {formattedPrice}
             </span>
+            {coupon && (
+              <span className="ml-2 text-gray-500 line-through text-sm">
+                {originalPriceFormatted}
+              </span>
+            )}
           </div>
 
           {isrentalstore && (
@@ -88,6 +110,16 @@ export default function ProductCard({ product }) {
             </div>
           )}
         </div>
+
+        {/* Applied Coupon Display */}
+        {coupon && (
+          <div className="text-sm text-orange-600 font-medium mt-2">
+            Coupon <span className="font-bold">{coupon.code}</span> applied:{" "}
+            {coupon.discountType === "percentage"
+              ? `${coupon.discountValue}% off`
+              : `Total ₹${coupon.discountValue} off in ${coupon.share} products @ ₹${coupon.discountValue / coupon.share} per product`}
+          </div>
+        )}
       </div>
     </div>
   );
