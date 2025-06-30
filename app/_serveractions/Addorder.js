@@ -118,7 +118,7 @@ export async function Send_mail_to_payment_group_id(paymentGroupId) {
 
 export async function Clearcookies() {
   const allcookies = await cookies();
-  allcookies.set("rentbeancart2", JSON.stringify({}));
+  allcookies.set("rentbeancart3", JSON.stringify({}));
   allcookies.delete("coupon");
 }
 

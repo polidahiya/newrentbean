@@ -104,10 +104,10 @@ export function Appwrapper({
   //  update cookies when cart change
   useEffect(() => {
     if (cart && Object.keys(cart).length > 0) {
-      Cookies.set("rentbeancart2", JSON.stringify(cart), { expires: 1 });
+      Cookies.set("rentbeancart3", JSON.stringify(cart), { expires: 1 });
     } else {
       // Remove the cookie if the cart is empty
-      Cookies.remove("rentbeancart2");
+      Cookies.remove("rentbeancart3");
     }
   }, [cart]);
 

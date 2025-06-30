@@ -13,7 +13,7 @@ export default async function Getcart() {
     const location = allcookies?.get("rblocation")?.value;
     const store = allcookies?.get("storetype")?.value;
     const coupon = allcookies?.get("coupon")?.value;
-    const rawcart = allcookies?.get("rentbeancart2")?.value;
+    const rawcart = allcookies?.get("rentbeancart3")?.value;
     const cart = rawcart ? JSON.parse(rawcart) : null;
     const filteredcart = Object.entries(cart).filter(
       ([key, item]) => item.added
