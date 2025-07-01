@@ -63,7 +63,7 @@ function Page() {
 
 const Switchmessages = ({ messagetype, setmessagetype, setresfresh }) => {
   return (
-    <div className="sticky top-[50px] bg-white w-full flex items-center gap-2  p-[10px] px-10 shadow-md z-20 border-t border-t-slate-300">
+    <div className="sticky top-[50px] bg-white w-full flex items-center gap-2  p-[10px] px-10 shadow-md z-10 border-t border-t-slate-300">
       <button
         className={`border border-slate-300 px-[10px] py-[5px] rounded-[5px] ${
           messagetype == "all" && "bg-theme text-white"

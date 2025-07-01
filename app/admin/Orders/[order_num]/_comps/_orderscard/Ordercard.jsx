@@ -44,7 +44,7 @@ function Ordercard({ item }) {
   return (
     <div className="relative bg-white rounded-xl shadow-lg p-6 my-6 w-full">
       {/* Action Buttons */}
-      <div className="absolute top-4 right-4 flex gap-2 z-10">
+      <div className="absolute top-4 right-4 flex gap-2">
         <select
           className="border border-gray-300 text-sm rounded-md px-2 py-1"
           value={status}

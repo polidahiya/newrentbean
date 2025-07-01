@@ -49,7 +49,7 @@ function Pagination({ pages, currentPage }) {
   const nextPage = currentPage < pages ? currentPage + 1 : null;
 
   return (
-    <div className="sticky bottom-0 z-30 flex items-center justify-center gap-2 bg-white py-4 shadow-[0_-5px_10px_-2px_rgb(0_0_0_/_0.1)]">
+    <div className="sticky bottom-0 z-10 flex items-center justify-center gap-2 bg-white py-4 shadow-[0_-5px_10px_-2px_rgb(0_0_0_/_0.1)]">
       {/* Previous Button */}
       <Link
         href={prevPage ? buildQuery(prevPage) : "#"}

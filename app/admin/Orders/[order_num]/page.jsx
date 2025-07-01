@@ -61,7 +61,7 @@ async function page({ params, searchParams }) {
 }
 const Adminnavcomp = ({ ordertype, totalorders }) => {
   return (
-    <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-30">
+    <div className="sticky top-[50px] bg-white py-[5px] px-2 md:px-10  shadow-md z-10">
       <Selectordertype ordertype={ordertype} totalorders={totalorders} />
       <Searchbox />
     </div>

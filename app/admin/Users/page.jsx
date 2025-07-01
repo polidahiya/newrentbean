@@ -32,7 +32,7 @@ export default async function page({ searchParams }) {
 }
 const Adminnavcomp = () => {
   return (
-    <div className="sticky top-0 bg-white pb-2 px-2 md:px-10  shadow-md z-30">
+    <div className="sticky top-0 bg-white pb-2 px-2 md:px-10  shadow-md z-10">
       <Searchbox />
     </div>
   );
@@ -48,6 +48,7 @@ const UserTable = ({ users }) => {
             <th className="p-2 border">Email</th>
             <th className="p-2 border">Phone</th>
             <th className="p-2 border">Address</th>
+            <th className="p-2 border">Coupons Usage</th>
             <th className="p-2 border whitespace-nowrap">User Type</th>
           </tr>
         </thead>
@@ -58,6 +59,19 @@ const UserTable = ({ users }) => {
               <td className="p-2 border whitespace-nowrap">{user?.email}</td>
               <td className="p-2 border">{user?.phonenum}</td>
               <td className="p-2 border">{user?.address}</td>
+              <td className="p-2 border">
+                <div>
+                  {user?.couponusage
+                    ? Object.entries(user?.couponusage).map(
+                        ([key, item], i) => (
+                          <div key={i}>
+                            {key}-{item}
+                          </div>
+                        )
+                      )
+                    : ""}
+                </div>
+              </td>
               <td className="p-2 border capitalize">{user?.usertype}</td>
             </tr>
           ))}
