@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { AppContextfn } from "../Context";
+import { motion, useAnimation } from "framer-motion";
 
 function Message() {
   const { messagearray } = AppContextfn();
@@ -8,62 +9,88 @@ function Message() {
   return (
     <>
       {messagearray?.map((item) => (
-        <Notif key={item.id} item={item} />
+        <Rentbeannotif key={item.id} item={item} />
       ))}
     </>
   );
 }
 
-function Notif({ item }) {
+function Rentbeannotif({ item }) {
+  const container = useAnimation();
+  const text = useAnimation();
   const { setmessagearray } = AppContextfn();
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Remove the notification
-  const removemessage = () => {
-    setIsVisible(false);
-    setTimeout(() => {
-      setmessagearray((pre) =>
-        pre.filter((notification) => notification.id !== item.id)
-      );
-    }, 300); // Match this timeout with the fade-out transition duration
-  };
 
   useEffect(() => {
-    setIsVisible(true); // Show the notification
-
+    const Openanimation = async () => {
+      await container.start({
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        transition: { duration: 0.1, type: "spring", mass: 0.2, damping: 5 },
+      });
+      await container.start({
+        width: "400px",
+        transition: { duration: 0.2, type: "spring", mass: 0.2, damping: 5 },
+      });
+      await text.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.3 },
+      });
+    };
+    Openanimation();
     const timer = setTimeout(() => {
-      removemessage(); // Auto-remove after 3 seconds
-    }, 3000);
+      Closeanimtion(); // Auto-remove after 5 seconds
+    }, 5000);
 
-    return () => clearTimeout(timer); // Cleanup timer on unmount
+    return () => clearTimeout(timer);
   }, []);
 
+  const Closeanimtion = async () => {
+    await text.start({
+      opacity: 0,
+      y: 10,
+      transition: { duration: 0.3 },
+    });
+    await container.start({
+      width: "40px",
+      transition: { duration: 0.3 },
+    });
+    await container.start({
+      y: 70,
+      scale: 0,
+      opacity: 0,
+      transition: { duration: 0.3 },
+    });
+
+    // remove message
+    setmessagearray((pre) =>
+      pre.filter((notification) => notification.id !== item.id)
+    );
+  };
   return (
-    <div
-      className={`fixed top-20 left-1/2 transform -translate-x-1/2 
-        w-10 h-10 bg-white border border-slate-300 shadow-md 
-        rounded-full flex items-center justify-center 
-        z-50 transition-all duration-300 ease-in-out
-        ${
-          isVisible
-            ? "opacity-100 translate-y-0 w-96 max-w-[90%]"
-            : "opacity-0 translate-y-5"
-        }`}
-    >
-      <span
-        className={`transition-opacity duration-300 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        } font-semibold`}
+    <div className="fixed top-20 left-1/2 -translate-x-1/2 flex items-center justify-center z-50">
+      <motion.div
+        initial={{ width: "40px", y: 70, scale: 0, opacity: 0 }}
+        animate={container}
+        className="relative max-w-[90%] h-10 bg-white rounded-full flex items-center border border-slate-300 shadow-md"
       >
-        {item.message}
-      </span>
-      <button
-        className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-theme text-white rounded-full flex items-center justify-center"
-        onClick={removemessage}
-        aria-label="Close" title="Close"
-      >
-        X
-      </button>
+        <motion.div
+          className="w-full text-center overflow-hidden"
+          initial={{ opacity: 0, y: 10 }}
+          animate={text}
+        >
+          {item?.message}
+        </motion.div>
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 h-full aspect-square rounded-full overflow-hidden p-0.5 bg-white">
+          <button
+            className="h-full w-full rounded-full bg-theme text-white"
+            onClick={() => Closeanimtion()}
+          >
+            X
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 }

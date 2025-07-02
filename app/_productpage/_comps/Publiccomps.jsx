@@ -14,24 +14,16 @@ export function Addtocartbuttons({
   const { cart, setcart, setmessagefn, isrentalstore } = AppContextfn();
   const MAX_QUANTITY = filteredproducts?.maxquantity; // Define the maximum quantity
 
-  const handleIncrement = () => {
-    if (cart[cartproductid]?.quantity < MAX_QUANTITY)
+  const handleQuantityChange = (delta) => {
+    if (
+      cart[cartproductid]?.quantity + delta >= 1 &&
+      cart[cartproductid]?.quantity + delta <= MAX_QUANTITY
+    )
       setcart((pre) => {
         const updatedcart = { ...pre };
         updatedcart[cartproductid] = {
           ...updatedcart[cartproductid],
-          quantity: updatedcart[cartproductid].quantity + 1,
-        };
-        return updatedcart;
-      });
-  };
-  const handleDecrement = () => {
-    if (cart[cartproductid]?.quantity > 1)
-      setcart((pre) => {
-        const updatedcart = { ...pre };
-        updatedcart[cartproductid] = {
-          ...updatedcart[cartproductid],
-          quantity: updatedcart[cartproductid].quantity - 1,
+          quantity: updatedcart[cartproductid].quantity + delta,
         };
         return updatedcart;
       });
@@ -82,12 +74,13 @@ export function Addtocartbuttons({
       <div className="flex items-stretch h-full w-fit rounded-full shadow-[5px_5px_7px_rgba(0,0,0,0.123)_inset,-5px_-5px_7px_rgba(255,255,255)_inset]">
         {/* Decrement Button */}
         <button
-          onClick={handleDecrement}
+          onClick={() => handleQuantityChange(-1)}
           disabled={cart[cartproductid]?.quantity <= 1}
           className={`flex items-center justify-center h-full aspect-square text-xl ${
             cart[cartproductid]?.quantity <= 1 && "opacity-50"
           }`}
-          aria-label="Decrease" title="Decrease"
+          aria-label="Decrease"
+          title="Decrease"
         >
           -
         </button>
@@ -97,12 +90,13 @@ export function Addtocartbuttons({
         </p>
         {/* Increment Button */}
         <button
-          onClick={handleIncrement}
+          onClick={() => handleQuantityChange(1)}
           disabled={cart[cartproductid]?.quantity >= MAX_QUANTITY}
           className={`flex items-center justify-center h-full aspect-square text-xl ${
             cart[cartproductid]?.quantity >= MAX_QUANTITY && "opacity-50"
           }`}
-          aria-label="Increase" title="Increase"
+          aria-label="Increase"
+          title="Increase"
         >
           +
         </button>
@@ -111,7 +105,8 @@ export function Addtocartbuttons({
       <button
         className="w-full h-full text-theme border border-theme text-sm  rounded-full"
         onClick={handleAddToCart}
-        aria-label="Add to Cart" title="Add to Cart"
+        aria-label="Add to Cart"
+        title="Add to Cart"
       >
         {filteredproducts?.available ? (
           cart[cartproductid]?.added ? (

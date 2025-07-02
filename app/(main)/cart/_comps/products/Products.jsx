@@ -16,7 +16,9 @@ export default function Products({ cartproductid, item, i, location, store }) {
       {i !== 0 && <hr />}
       <div className="flex flex-col md:flex-row gap-5 md:h-60">
         <Link
-          href={`/${location}/${store}/${item?.category}/${item?.subcat}/${item?._id}`}
+          href={`/${location}/${store ? "Rent" : "Buy"}/${item?.category}/${
+            item?.subcat
+          }/${item?._id}`}
           className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
         >
           <Nextimage

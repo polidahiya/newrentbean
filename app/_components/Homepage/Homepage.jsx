@@ -25,9 +25,11 @@ export default async function Homepage({
   const Device = await DeviceDetector();
 
   const products = await Cachedproducts();
-  const instoreproducts = products.filter(
-    (item) => item?.availablefor == store || item?.availablefor == "Both"
-  );
+  const instoreproducts = products
+    .filter(
+      (item) => item?.availablefor == store || item?.availablefor == "Both"
+    )
+    .slice(0, 20);
 
   return (
     <>

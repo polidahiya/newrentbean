@@ -25,7 +25,7 @@ function Controls({ item, finaltenure, selectedt, cartproductid }) {
           ...currentItem,
           quantity: newquantity,
         };
-      } else if (newquantity > currentItem.maxquantity) {
+      } else if (newquantity > item?.maxquantity) {
         setmessagefn("Maximum quantity reached");
       }
 
