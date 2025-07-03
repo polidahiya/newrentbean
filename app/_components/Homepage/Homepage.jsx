@@ -16,6 +16,7 @@ import DirectSearchcomps from "./DirectSearchcomps";
 import Homestoreswitch from "./Homestoreswitch/File";
 import Epbanner from "../Epfloatingbanner/Banner";
 import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
+import Firstorder from "../Promocodes/Firstorder";
 
 export default async function Homepage({
   location = "Delhi",
@@ -39,9 +40,13 @@ export default async function Homepage({
         <Spaceadder>
           <Homestoreswitch location={location} store={store} Device={Device} />
         </Spaceadder>
+        <div className="px-2 md:px-10 pt-5">
+          <Firstorder />
+        </div>
         <Spaceadder>
           <Categories location={location} store={store} />
         </Spaceadder>
+
         <Spaceadder>
           <Allproducts
             products={instoreproducts.sort(() => Math.random() - 0.5)}
@@ -49,6 +54,7 @@ export default async function Homepage({
             store={store}
           />
         </Spaceadder>
+
         <Spaceadder>
           <DirectSearchcomps location={location} store={store} />
         </Spaceadder>

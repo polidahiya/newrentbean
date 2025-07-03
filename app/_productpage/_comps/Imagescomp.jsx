@@ -104,11 +104,7 @@ function ImagesComp({ filteredproducts, token }) {
           ref={imagesScrollRef}
         >
           {images.map((image, index) => (
-            <MainImage
-              key={index}
-              image={image}
-              name={filteredproducts.name}
-            />
+            <MainImage key={index} image={image} name={filteredproducts.name} />
           ))}
         </div>
         {/* buttons */}

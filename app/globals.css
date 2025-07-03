@@ -376,3 +376,17 @@ input[type="range"]::-webkit-slider-runnable-track {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
+
+/* loading blocks */
+@keyframes shimmer {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: calc(100% + 100px);
+  }
+}
+
+.shimmer {
+  animation: shimmer 1.5s infinite linear;
+}

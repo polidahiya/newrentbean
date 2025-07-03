@@ -10,7 +10,11 @@ import { MdOutlineStoreMallDirectory } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import Switchstore from "../_comps/Switchstore";
 
-function Wrapper({ store = "Rent", location = "Delhi" }) {
+function Wrapper({
+  store = "Rent",
+  location = "Delhi",
+  highlightedPaths = [],
+}) {
   const path = usePathname();
   const {
     showsearch,
@@ -27,18 +31,6 @@ function Wrapper({ store = "Rent", location = "Delhi" }) {
     0
   );
 
-  const highlightedPaths = [
-    "/Delhi/Rent",
-    "/Delhi/Buy",
-    "/Gurgaon/Rent",
-    "/Gurgaon/Buy",
-    "/Faridabad/Rent",
-    "/Faridabad/Buy",
-    "/Noida/Rent",
-    "/Noida/Buy",
-    "/Ghaziabad/Rent",
-    "/Ghaziabad/Buy",
-  ];
   const isHighlighted = highlightedPaths.includes(path);
   return (
     <>
