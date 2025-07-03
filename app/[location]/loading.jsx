@@ -9,7 +9,7 @@ import Productgrid from "@/app/[location]/[store]/[...Category]/_Components/Prod
 export default function Loading() {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
-  const names = {
+  const Loadinglist = {
     0: <Homeui />,
     1: <Homeui />,
     2: <Homeui />,
@@ -20,7 +20,7 @@ export default function Loading() {
   return (
     <div className="px-2 md:px-10 max-h-screen overflow-hidden">
       <Loadingnav />
-      {names[segments.length] || names[0]}
+      {Loadinglist[segments.length] || Loadinglist[0]}
       <Loadingmobilebottomnav />
     </div>
   );

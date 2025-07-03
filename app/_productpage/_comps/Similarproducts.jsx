@@ -76,9 +76,11 @@ function Similarproducts({
                       </>
                     ) : (
                       <>
-                        <span className="text-xs line-through mr-2">
-                          {pricemaker(item.buymrp)}/-
-                        </span>
+                        {item.buymrp && (
+                          <span className="text-xs line-through mr-2">
+                            {pricemaker(item.buymrp)}/-
+                          </span>
+                        )}
                         {pricemaker(item.buyprice)}/-
                       </>
                     )}

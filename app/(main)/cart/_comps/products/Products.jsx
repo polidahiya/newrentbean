@@ -5,20 +5,19 @@ import { months } from "@/app/commondata";
 import { selectedtenure } from "@/app/_components/_helperfunctions/selectedtenure";
 import Controls from "./comps/Controls";
 
-export default function Products({ cartproductid, item, i, location, store }) {
+export default function Products({ cartproductid, item, i, location }) {
   const tenure = selectedtenure(item, location);
   const finaltenure = tenure?.all;
   const selectedt = tenure?.selected;
   const totalprice = selectedt?.price;
+  const store = cartproductid.split("-")[1];
 
   return (
     <div className="flex flex-col gap-5 w-full p-2">
       {i !== 0 && <hr />}
       <div className="flex flex-col md:flex-row gap-5 md:h-60">
         <Link
-          href={`/${location}/${store ? "Rent" : "Buy"}/${item?.category}/${
-            item?.subcat
-          }/${item?._id}`}
+          href={`/${location}/${store}/${item?.category}/${item?.subcat}/${item?._id}`}
           className="w-full md:w-auto aspect-[2/1] md:h-full md:aspect-square"
         >
           <Nextimage
@@ -40,15 +39,15 @@ export default function Products({ cartproductid, item, i, location, store }) {
             </span>
           </p>
           <p className="font-bold text-gray-500 font-recline mt-auto">
-            {cartproductid.split("-")[1] == "Rent" ? "On Rent" : "For Buy"}
+            {store == "Rent" ? "On Rent" : "For Buy"}
           </p>
-          {cartproductid.split("-")[1] == "Rent" && (
+          {store == "Rent" && (
             <p>
               Tenure Start Date: {item?.tenureStart?.date}{" "}
               {months[item?.tenureStart?.month]} {item?.tenureStart?.year}
             </p>
           )}
-          {cartproductid.split("-")[1] == "Rent" ? (
+          {store == "Rent" ? (
             <>
               <p className="text-sm ">
                 Rent: ₹{(totalprice * item?.quantity).toLocaleString("en-IN")}

@@ -20,6 +20,9 @@ export const Placeorder = async (paymentMethod) => {
 
     const { cartitems, userdata, totalPrice, location, coupondata } =
       await Getcart();
+    if (!coupondata) {
+      return { status: 400, message: "Coupon limit Reached" };
+    }
 
     const paymentGroupId = uuidv4();
     const createdAt = new Date();

@@ -60,7 +60,7 @@ export default async function Getcart() {
 
     return {
       userdata,
-      store,
+      isrentalstore: store == "true",
       location,
       cartitems,
       filteredcart,

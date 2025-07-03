@@ -14,7 +14,6 @@ async function page() {
   const { verified } = await Verification("public");
   const {
     userdata,
-    store,
     location,
     cartitems,
     valuebeforecoupon,
@@ -51,7 +50,6 @@ async function page() {
               item={item}
               cartproductid={key}
               location={location}
-              store={store}
               i={i}
             />
           ))}
