@@ -6,7 +6,7 @@ import Loadingmobilebottomnav from "@/app/_components/Loading/Loadingmobilebotto
 import Loadingnav from "@/app/_components/Loading/Loadingnav";
 import Productgrid from "@/app/[location]/[store]/[...Category]/_Components/Productgrid";
 
-function loading() {
+export default function Loading() {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
   const names = {
@@ -160,5 +160,3 @@ const Prodcutui = () => {
     </div>
   );
 };
-
-export default loading;
