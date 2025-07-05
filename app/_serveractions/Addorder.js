@@ -20,9 +20,6 @@ export const Placeorder = async (paymentMethod) => {
 
     const { cartitems, userdata, totalPrice, location, coupondata } =
       await Getcart();
-    if (!coupondata) {
-      return { status: 400, message: "Coupon limit Reached" };
-    }
 
     const paymentGroupId = uuidv4();
     const createdAt = new Date();
@@ -78,7 +75,7 @@ export const Placeorder = async (paymentMethod) => {
       if (coupondata)
         await Updatecouponusage(userdata?.email, coupondata?.code);
       // send mail
-      await Send_mail_to_payment_group_id(paymentGroupId);
+      // await Send_mail_to_payment_group_id(paymentGroupId);
       // clear cart and coupon
       await Clearcookies();
     }

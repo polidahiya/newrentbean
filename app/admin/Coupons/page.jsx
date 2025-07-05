@@ -4,6 +4,7 @@ import Link from "next/link";
 import Refresher from "../_comps/refresher/Refresher";
 import Deletebutton from "./_comps/Deletebutton";
 import Editcouponbutton from "./_comps/Editcouponbutton";
+import FormattedDate from "@/app/_components/_helperfunctions/Formateddate";
 
 async function page() {
   const res = await Showcoupon();
@@ -68,10 +69,10 @@ async function page() {
                         : `${coupon?.discountValue}%`}
                     </td>
                     <td className="px-4 py-2">
-                      {new Date(coupon?.validFrom).toLocaleDateString()}
+                      {FormattedDate(coupon?.validFrom, false)}
                     </td>
                     <td className={`px-4 py-2 ${isExpired && "text-red-600"}`}>
-                      {new Date(coupon?.validTo).toLocaleDateString()}
+                      {FormattedDate(coupon?.validTo, false)}
                     </td>
                     <td className="px-4 py-2">
                       {coupon?.usageLimit == -1

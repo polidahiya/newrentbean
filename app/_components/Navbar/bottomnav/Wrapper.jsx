@@ -25,7 +25,7 @@ function Wrapper({
     openstoremenu,
   } = AppContextfn();
 
-  const cartitems = Object.values(cart).filter((item) => item.added);
+  const cartitems = Object.values(cart || {}).filter((item) => item.added);
   const totalQuantity = cartitems.reduce(
     (total, value) => total + value.quantity,
     0
