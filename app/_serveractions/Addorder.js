@@ -75,7 +75,7 @@ export const Placeorder = async (paymentMethod) => {
       if (coupondata)
         await Updatecouponusage(userdata?.email, coupondata?.code);
       // send mail
-      // await Send_mail_to_payment_group_id(paymentGroupId);
+      await Send_mail_to_payment_group_id(paymentGroupId);
       // clear cart and coupon
       await Clearcookies();
     }

@@ -12,6 +12,7 @@ import FIxedbuttons from "./_components/FIxedbuttons";
 import { cookies } from "next/headers";
 import { cities } from "./commondata";
 import { Mulish } from "next/font/google";
+import Clienterror from "./_serveractions/Errorsender/Clienterror";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -93,6 +94,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${mulish.className} antialiased max-w-[1900px] mx-auto`}
       >
+        <Clienterror />
         <Appwrapper
           token={token}
           userdata={userdata}
