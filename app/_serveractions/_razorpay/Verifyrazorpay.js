@@ -2,7 +2,7 @@
 import { getcollection } from "@/app/Mongodb";
 import crypto from "crypto";
 import { Send_mail_to_payment_group_id } from "../Addorder";
-import { Clearcookies, Updatecouponusage } from "../Addorder";
+import { Updatecouponusage } from "../Addorder";
 
 async function Verifyrazorpay(razorpaydata, paymentGroupId) {
   try {
@@ -31,8 +31,6 @@ async function Verifyrazorpay(razorpaydata, paymentGroupId) {
         );
       // Send mail
       await Send_mail_to_payment_group_id(paymentGroupId);
-      // clear cart and coupon
-      await Clearcookies();
 
       return {
         status: 200,

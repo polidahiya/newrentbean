@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import Nextimage from "@/app/_components/Nextimage";
-import { AppContextfn } from "@/app/Context";
 import { useRouter } from "next/navigation";
 import { Usecartcontext } from "../Cartcontext";
+import { Clear_cart_coupon_cookies } from "@/app/_serveractions/Addorder";
 
 function Ordersplacednotif() {
   const router = useRouter();
@@ -23,11 +23,13 @@ function Ordersplacednotif() {
           <p>Order placed Successfully</p>
           <button
             className="bg-green-500 px-[30px] py-[5px] text-white rounded-[5px] my-[20px]"
-            onClick={() => {
+            onClick={async () => {
+              await Clear_cart_coupon_cookies();
               settoggleorderplacedmenu(false);
               router.replace("/");
             }}
-            aria-label="ok" title="ok"
+            aria-label="ok"
+            title="ok"
           >
             Ok
           </button>

@@ -3,7 +3,8 @@ import { cookies } from "next/headers";
 import Form from "./Form";
 import { redirect } from "next/navigation";
 
-async function page() {
+async function page({ searchParams }) {
+  const { redirect = null } = await searchParams;
   const allcookies = await cookies();
   let token = allcookies.get("token");
   if (!token) redirect("/loginlogout");
@@ -21,7 +22,7 @@ async function page() {
         minHeight: "calc(100vh - 60px)",
       }}
     >
-      <Form userdata={userdata} />
+      <Form userdata={userdata} redirect={redirect} />
     </div>
   );
 }

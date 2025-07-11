@@ -76,8 +76,6 @@ export const Placeorder = async (paymentMethod) => {
         await Updatecouponusage(userdata?.email, coupondata?.code);
       // send mail
       await Send_mail_to_payment_group_id(paymentGroupId);
-      // clear cart and coupon
-      await Clearcookies();
     }
 
     return {
@@ -119,7 +117,7 @@ export async function Send_mail_to_payment_group_id(paymentGroupId) {
   }
 }
 
-export async function Clearcookies() {
+export async function Clear_cart_coupon_cookies() {
   const allcookies = await cookies();
   allcookies.set("rentbeancart3", JSON.stringify({}));
   allcookies.delete("coupon");

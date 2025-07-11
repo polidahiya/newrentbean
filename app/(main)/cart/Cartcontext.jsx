@@ -46,7 +46,7 @@ export function Cartcontextwrapper({
     ) {
       setmessagefn("Update Your Details");
       setredirectloginlink("/cart");
-      router.push("/updateuserdetails");
+      router.push("/updateuserdetails?redirect=/cart");
       return;
     }
 

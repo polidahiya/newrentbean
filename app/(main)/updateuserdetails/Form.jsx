@@ -5,8 +5,10 @@ import { AppContextfn } from "@/app/Context";
 import { updateuserdetails } from "./Serveractions";
 import Updateusersvg from "@/app/_svgs/Updateusersvg";
 import Recaptcha from "@/app/_components/_helperfunctions/Recaptcha";
+import { useRouter } from "next/navigation";
 
-function Form({ userdata }) {
+function Form({ userdata, redirect }) {
+  const router = useRouter();
   const { setmessagefn } = AppContextfn();
   const [showloading, setshowloading] = useState(false);
 
@@ -42,6 +44,7 @@ function Form({ userdata }) {
         const res = await updateuserdetails(userdetails);
         setshowloading(false);
         setmessagefn(res?.message);
+        if (redirect && res?.status == 200) router.push(redirect);
       },
       () => {
         setmessagefn("Something went wrong!");
@@ -111,7 +114,8 @@ function Form({ userdata }) {
         <button
           className="flex items-center justify-center gap-2 px-[100px] py-[5px] bg-theme text-white rounded-full  mt-5 "
           onClick={updateuserfn}
-          aria-label="Update Details" title="Update Details"
+          aria-label="Update Details"
+          title="Update Details"
         >
           {showloading && (
             <div className="h-[20px] aspect-square rounded-full  border-r-2 border-l-2 border-white animate-spin"></div>
