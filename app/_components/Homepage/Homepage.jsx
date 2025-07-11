@@ -26,11 +26,9 @@ export default async function Homepage({
   const Device = await DeviceDetector();
 
   const products = await Cachedproducts();
-  const instoreproducts = products
-    .filter(
-      (item) => item?.availablefor == store || item?.availablefor == "Both"
-    )
-    .slice(0, 20);
+  const instoreproducts = products.filter(
+    (item) => item?.availablefor == store || item?.availablefor == "Both"
+  );
 
   return (
     <>
@@ -49,7 +47,9 @@ export default async function Homepage({
 
         <Spaceadder>
           <Allproducts
-            products={instoreproducts.sort(() => Math.random() - 0.5)}
+            products={instoreproducts
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 20)}
             location={location}
             store={store}
           />
