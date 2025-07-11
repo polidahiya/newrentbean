@@ -9,6 +9,7 @@ async function page({ searchParams }) {
       "@/app/admin/Orders/Add/Serveraction"
     );
     const res = await GetOrderById(edit);
+    
     if (res.status == 200) {
       return <Wrapper order={res?.order}></Wrapper>;
     }

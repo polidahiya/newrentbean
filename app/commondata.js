@@ -36,7 +36,7 @@ export const categorylist = {
         image:
           "/logo&ui/categories/subcategories/Picsart_25-02-11_18-52-09-260.jpg",
         name: "Fitness-Machines",
-        subcat: "Treadmills | Recmbent bike | Eliptical Crosstrainers",
+        subcat: "Treadmills | Recmbent bike | Elliptical Crosstrainers",
         meta: {
           title: {
             Buy: "Buy Fitness Machines in location",

@@ -19,6 +19,7 @@ function Wrapper({ order }) {
   const today = new Date();
   const initialorderdata = {
     paymentMethod: "cod",
+    paymentStatus: "pending",
     status: 0,
     userdata: {
       username: "",
@@ -51,6 +52,7 @@ function Wrapper({ order }) {
     },
   };
   const [orderdata, setorderdata] = useState(order || initialorderdata);
+
   const [categories, setcategories] = useState({
     category: "Health-&-Fitness",
     subcat: "Fitness-Machines",
@@ -62,7 +64,7 @@ function Wrapper({ order }) {
     show: false,
   });
   const [loading, setloading] = useState(false);
-  const [sendmail, setsendmail] = useState(true);
+  const [sendmail, setsendmail] = useState(orderdata._id ? false : true);
   const [customtotal, setcustomtotal] = useState(true);
 
   useEffect(() => {
@@ -122,6 +124,19 @@ function Wrapper({ order }) {
           onchange={handleDropdownChange}
           options={["online", "cod"]}
         />
+        {orderdata.paymentMethod == "online" && (
+          <Dropdownmenu
+            title="Payment Status"
+            state={orderdata.paymentStatus}
+            onchange={(value) =>
+              setorderdata((prev) => ({
+                ...prev,
+                paymentStatus: value,
+              }))
+            }
+            options={["pending", "success"]}
+          />
+        )}
         <Dropdownmenu
           title="Order Status"
           state={orderstages[orderdata.status]}
