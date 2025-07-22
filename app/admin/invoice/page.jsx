@@ -5,6 +5,8 @@ import { AppContextfn } from "@/app/Context";
 
 function InvoiceComponent() {
   const { invoicedata } = AppContextfn();
+  console.log(invoicedata);
+
   const {
     orderNumber,
     paymentMethod,
@@ -172,6 +174,7 @@ function InvoiceComponent() {
           Add more
         </button>
       </div>
+      <p className="text-gray-600 my-5">Coupon not applied</p>
 
       {/* Totals & Tax */}
       <div className="flex justify-between items-end mb-8">
