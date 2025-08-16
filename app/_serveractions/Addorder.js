@@ -124,7 +124,16 @@ export async function Clear_cart_coupon_cookies() {
 }
 
 export async function Updatecouponusage(email, couponCode) {
-  const { userscollection } = await getcollection();
+  const { userscollection, couponscollection } = await getcollection();
+  const coupondata = await couponscollection.findOne({ code: couponCode });
+  if (coupondata) {
+    if (coupondata.usageLimit > 0) {
+      await couponscollection.updateOne(
+        { code: couponCode },
+        { $set: { usageLimit: coupondata.usageLimit - 1 } }
+      );
+    }
+  }
   await userscollection.updateOne(
     { email },
     {

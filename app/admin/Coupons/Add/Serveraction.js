@@ -89,7 +89,7 @@ export async function Applycoupon(coupon, totalPrice, cart) {
         status: 400,
         message: `Min amount not met - Rs ${coupondata.minAmount}`,
       };
-    else if (coupondata.usageLimit == 0 || coupondata.usageLimit < -1)
+    else if (coupondata.usageLimit <= 0 && coupondata.usageLimit != -1)
       return {
         status: 400,
         message: "Coupon usage limit exceeded",
@@ -99,7 +99,10 @@ export async function Applycoupon(coupon, totalPrice, cart) {
       const usercoupondata = user.couponusage;
       const timesUsed = usercoupondata ? usercoupondata[coupondata?.code] : 0;
 
-      if (timesUsed >= coupondata?.usageLimitperuser) {
+      if (
+        timesUsed >= coupondata?.usageLimitperuser &&
+        coupondata?.usageLimitperuser != -1
+      ) {
         return {
           status: 400,
           message: "Coupon usage limit exceeded",

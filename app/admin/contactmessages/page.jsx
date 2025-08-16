@@ -12,6 +12,7 @@ import { FaClipboard } from "react-icons/fa";
 import { AppContextfn } from "@/app/Context";
 import { MdDelete } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
+import FormattedDate from "@/app/_components/_helperfunctions/Formateddate";
 
 function Page() {
   const [messages, setmessages] = useState([]);
@@ -174,6 +175,7 @@ const Card = ({ item }) => {
           <div className="text-sm  text-gray-700 mb-4">
             <strong className="text-gray-900">Subject:</strong> {subject}
           </div>
+          <p className="mb-4">📆 {FormattedDate(item?.createdAt, false)}</p>
           <div className="text-gray-800">{message}</div>
         </div>
       </div>

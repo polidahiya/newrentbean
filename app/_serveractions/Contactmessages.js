@@ -9,13 +9,14 @@ export async function Sendmessage(data) {
     if (!name || !email || !message || !subject) {
       return { status: 400, message: "Missing required fields" };
     }
-
+    const createdAt = new Date();
     await contactmessages.insertOne({
       name,
       email,
       message,
       subject,
       viewed: false,
+      createdAt,
     });
 
     return { status: 200, message: "Message sent!" };
