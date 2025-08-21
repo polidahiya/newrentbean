@@ -1,0 +1,68 @@
+"use server";
+import Verification from "../Verifytoken";
+import { getcollection } from "../Mongodb";
+import { Deleteiamgefromurl } from "../Cloudinary";
+import { revalidateTag } from "next/cache";
+
+export async function Addtravelpackage(data, deletedimages) {
+  try {
+    const res = await Verification();
+    if (!res?.verified) {
+      return { status: 400, message: "Invalid user" };
+    }
+
+    const { travelpackages, ObjectId } = await getcollection();
+
+    // delete previous images
+    deletedimages.forEach(async (image) => {
+      await Deleteiamgefromurl(image, "Rentbean/Travel");
+    });
+
+    const date = new Date().getTime();
+
+    // Add to MongoDB
+    if (data._id) {
+      // to update a post
+      const { _id, ...updateFields } = data;
+      await travelpackages.updateOne(
+        { _id: new ObjectId(data._id) },
+        { $set: { ...updateFields, lastupdated: date } }
+      );
+      revalidateTag(`travelpackages-${data?.id}`);
+      revalidateTag(`travelpackages`);
+      return { status: 200, message: "Updated successfully" };
+    } else {
+      // to add a post
+      await travelpackages.insertOne({ ...data, lastupdated: date });
+      revalidateTag(`travelpackages-${data?.id}`);
+      revalidateTag(`travelpackages`);
+      return { status: 200, message: "Added successfully" };
+    }
+  } catch (error) {
+    console.log(error);
+    return { status: 500, message: "Server Error!" };
+  }
+}
+
+export const Deletetravelpackage = async (data) => {
+  try {
+    const res = await Verification();
+    if (!res?.verified) {
+      return { status: 400, message: "Invalid user" };
+    }
+    const { travelpackages, ObjectId } = await getcollection();
+
+    data.images.forEach(async (image) => {
+      await Deleteiamgefromurl(image, "Rentbean/Travel");
+    });
+
+    // delete form mongodb
+    await travelpackages.findOneAndDelete({ _id: new ObjectId(data._id) });
+    revalidateTag(`travelpackages-${data?.id}`);
+    revalidateTag(`travelpackages`);
+    return { status: 200, message: "Deleted successfully" };
+  } catch (error) {
+    console.log(error);
+    return { status: 500, message: "Server Error" };
+  }
+};

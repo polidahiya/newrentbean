@@ -35,10 +35,16 @@ export async function Getmessage(type) {
     let messages;
     switch (type) {
       case "all":
-        messages = await contactmessages.find({ viewed: false }).toArray();
+        messages = await contactmessages
+          .find({ viewed: false })
+          .sort({ createdAt: -1 })
+          .toArray();
         break;
       case "viewed":
-        messages = await contactmessages.find({ viewed: true }).toArray();
+        messages = await contactmessages
+          .find({ viewed: true })
+          .sort({ createdAt: -1 })
+          .toArray();
         break;
 
       default:

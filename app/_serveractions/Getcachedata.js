@@ -67,3 +67,22 @@ export async function refreshblogsnow() {
     return { status: 500, message: "Server Error!" };
   }
 }
+
+// travel
+export const Cachedtravelpackages = unstable_cache(
+  async () => {
+    try {
+      const { travelpackages } = await getcollection();
+      const posts = await travelpackages
+        .find({}, { delta: 0, timeline: 0, included: 0, excluded: 0, hotel: 0 })
+        .sort({ lastupdated: -1 })
+        .toArray();
+      posts.forEach((item) => (item._id = item._id.toString()));
+      return posts;
+    } catch (error) {
+      return [];
+    }
+  },
+  [`travelpackages`],
+  { revalidate: CACHE_TIME, tags: ["travelpackages"] }
+);

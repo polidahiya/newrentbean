@@ -23,10 +23,10 @@ export const uploadImage = (buffer, folder = "Rentbean") => {
 };
 
 // delete image from url
-export const Deleteiamgefromurl = (url, folder = "Rentbean") => {
+export const Deleteiamgefromurl = async (url, folder = "Rentbean") => {
   const parts = url.split("/");
   const fileName = parts[parts.length - 1];
   const publicId = fileName.split(".")[0];
   const file = folder + "/" + publicId;
-  cloudinary.uploader.destroy(file);
+  await cloudinary.uploader.destroy(file);
 };
