@@ -21,7 +21,7 @@ async function page() {
     totalPrice,
   } = await Getcart();
 
-  const maxcashpaymentavailable = 25000;
+  const maxcashpaymentavailable = 5000;
 
   if (cartitems.length == 0) {
     return <Emptycart />;
