@@ -28,13 +28,12 @@ export async function Addtravelpackage(data, deletedimages) {
         { _id: new ObjectId(data._id) },
         { $set: { ...updateFields, lastupdated: date } }
       );
-      revalidateTag(`travelpackages-${data?.id}`);
+      revalidateTag(`travelpackages-${data._id}`);
       revalidateTag(`travelpackages`);
       return { status: 200, message: "Updated successfully" };
     } else {
       // to add a post
       await travelpackages.insertOne({ ...data, lastupdated: date });
-      revalidateTag(`travelpackages-${data?.id}`);
       revalidateTag(`travelpackages`);
       return { status: 200, message: "Added successfully" };
     }
@@ -58,7 +57,7 @@ export const Deletetravelpackage = async (data) => {
 
     // delete form mongodb
     await travelpackages.findOneAndDelete({ _id: new ObjectId(data._id) });
-    revalidateTag(`travelpackages-${data?.id}`);
+    revalidateTag(`travelpackages-${data._id}`);
     revalidateTag(`travelpackages`);
     return { status: 200, message: "Deleted successfully" };
   } catch (error) {

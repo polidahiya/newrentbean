@@ -9,6 +9,7 @@ export const locations = [
   "Corbett-National-Park",
   "Dalhousie",
   "Dehradun",
+  "Delhi",
   "Dharamshala",
   "Haridwar",
   "Jaipur",

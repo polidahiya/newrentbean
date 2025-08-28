@@ -114,15 +114,17 @@ async function page({ searchParams }) {
                     </div>
                   </div>
                 </Link>
-                <div className="absolute top-2 right-2 flex gap-2">
-                  <Link
-                    href={`/Travel/Add?edit=${item._id}`}
-                    className="px-3 py-2 text-white bg-blue-500 rounded-md"
-                  >
-                    Edit
-                  </Link>
-                  <Deletebutton item={item} />
-                </div>
+                {isadmin && (
+                  <div className="absolute top-2 right-2 flex gap-2">
+                    <Link
+                      href={`/Travel/Add?edit=${item._id}`}
+                      className="px-3 py-2 text-white bg-blue-500 rounded-md"
+                    >
+                      Edit
+                    </Link>
+                    <Deletebutton item={item} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
