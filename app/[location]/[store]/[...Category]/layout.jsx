@@ -13,19 +13,10 @@ export const metadata = {
 export default async function RootLayout({ children, params }) {
   return (
     <div>
-      <div className="print:hidden">
-        <Navbar params={params} />
-        {children}
-        <Footer />
-        <Mobilenav params={params} />
-      </div>
-      <div className="h-[100svh] w-full items-center justify-center hidden print:flex">
-        <img
-          src="/logo&ui/funpart.jpg"
-          alt="wtf"
-          className="h-full w-full object-contain"
-        />
-      </div>
+      <Navbar params={params} />
+      {children}
+      <Footer />
+      <Mobilenav params={params} />
     </div>
   );
 }
