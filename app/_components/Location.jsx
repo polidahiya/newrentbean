@@ -11,6 +11,7 @@ function Location() {
   const Locationimages = {
     Delhi: "/logo&ui/locationimages/Delhi.jpg",
     Noida: "/logo&ui/locationimages/Noida.jpg",
+    Greater_Noida: "/logo&ui/locationimages/Greaternoida.jpg",
     Gurgaon: "/logo&ui/locationimages/Gurgaon.jpg",
     Ghaziabad: "/logo&ui/locationimages/Ghaziabad.jpg",
     Faridabad: "/logo&ui/locationimages/Faridabad.jpg",
@@ -116,14 +117,16 @@ function Location() {
             </p>
             {/* close button */}
 
-            <button
-              className="absolute right-0 top-0 h-[50px] aspect-square  bg-white z-10 lg:hover:bg-theme lg:hover:text-white"
-              onClick={() => setlocation((pre) => ({ ...pre, show: false }))}
-              aria-label="Close"
-              title="Close"
-            >
-              X
-            </button>
+            {location?.location != null && (
+              <button
+                className="absolute right-0 top-0 h-[50px] aspect-square  bg-white z-10 lg:hover:bg-theme lg:hover:text-white"
+                onClick={() => setlocation((pre) => ({ ...pre, show: false }))}
+                aria-label="Close"
+                title="Close"
+              >
+                X
+              </button>
+            )}
           </motion.div>
           <button
             className="absolute top-0 left-0 h-full w-full cursor-auto -z-10 bg-black/30"

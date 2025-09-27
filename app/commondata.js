@@ -500,7 +500,14 @@ export const orderstages = [
 ];
 
 // list of cities
-export const cities = ["Delhi", "Noida", "Gurgaon", "Ghaziabad", "Faridabad"];
+export const cities = [
+  "Delhi",
+  "Greater_Noida",
+  "Noida",
+  "Gurgaon",
+  "Ghaziabad",
+  "Faridabad",
+];
 
 export const citiesAndLocations = [
   "Gurgaon",
