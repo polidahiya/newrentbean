@@ -58,6 +58,13 @@ export default async function RootLayout({ children }) {
           name="p:domain_verify"
           content="9e98018f71cfced9ea0ff9df1dd5ebd6"
         />
+        {/* google adsense */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7398670337880164`}
+          crossOrigin="anonymous"
+        ></script>
+        <meta name="google-adsense-account" content={Googleadsid} />
         {/* ld json */}
         <script
           type="application/ld+json"
