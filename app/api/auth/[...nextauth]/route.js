@@ -1,35 +1,36 @@
-import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import NextAuth from "@auth/core";
+import Google from "@auth/core/providers/google";
 import { getcollection } from "@/app/Mongodb";
 import { generateToken } from "@/app/(main)/loginlogout/Serveractions";
 import { logintime } from "@/app/commondata";
 
-export const authOptions = {
+const handler = NextAuth({
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+
   callbacks: {
     async signIn({ profile }) {
       try {
         const email = profile.email;
-
         const { userscollection } = await getcollection();
+
         let user = await userscollection.findOne({ email });
 
         if (user) {
-          // login
+          // Login flow
           await generateToken({
-            username: user?.username,
-            email: user?.email,
-            phonenum: user?.phonenum,
-            usertype: user?.usertype,
-            address: user?.address,
+            username: user.username,
+            email: user.email,
+            phonenum: user.phonenum,
+            usertype: user.usertype,
+            address: user.address,
           });
         } else {
-          // signup
+          // Signup flow
           const userdata = {
             username: profile.name || "",
             email,
@@ -37,26 +38,30 @@ export const authOptions = {
             address: "",
             usertype: "user",
           };
+
           await userscollection.insertOne(userdata);
           await generateToken(userdata);
         }
+
         return true;
-      } catch (error) {
-        console.error("Google SignIn Error:", error);
+      } catch (err) {
+        console.error("Google SignIn Error:", err);
         return false;
       }
     },
+
     async session({ session }) {
-      // Since we're storing auth data in cookies, NextAuth's session is not needed.
+      // You don't use Auth.js session, so just return it empty
       return session;
     },
   },
+
   session: {
     strategy: "jwt",
     maxAge: logintime,
   },
-  secret: process.env.jwt_secret,
-};
 
-const handler = NextAuth(authOptions);
+  secret: process.env.jwt_secret,
+});
+
 export { handler as GET, handler as POST };

@@ -9,7 +9,7 @@ import Usersvg from "@/app/_svgs/Usersvg";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn } from "@auth/nextjs";
 import Recaptcha from "@/app/_components/_helperfunctions/Recaptcha";
 import { event } from "nextjs-google-analytics";
 
