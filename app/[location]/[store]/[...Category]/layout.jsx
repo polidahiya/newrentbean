@@ -16,7 +16,9 @@ export default async function RootLayout({ children, params }) {
     <div>
       <Navbar params={params} />
       {children}
-      <Googleads type={2} />
+      <div className="flex items-center justify-center">
+        <Googleads type={2} />
+      </div>
       <Footer />
       <Mobilenav params={params} />
     </div>

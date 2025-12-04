@@ -84,7 +84,9 @@ export default async function Homepage({
         <Spaceadder>
           <Description location={location.replace(/-/g, " ")} store={store} />
         </Spaceadder>
-        <Googleads type={2} />
+        <div className="flex items-center justify-center">
+          <Googleads type={2} />
+        </div>
         <Spaceadder>
           <Footer store={store} location={location} />
         </Spaceadder>

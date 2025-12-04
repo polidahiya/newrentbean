@@ -5,6 +5,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 import Link from "next/link";
 import Nextimage from "@/app/_components/Nextimage";
+import Googleads from "@/app/_components/_ads/Googleads";
 
 async function page({ params }) {
   const { blogid } = await params;
@@ -12,65 +13,73 @@ async function page({ params }) {
   const blog = blogs?.filter((item) => item._id == blogid)[0];
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 min-h-screen px-6 md:px-12">
-      <div className="flex-[2] mb-5 mt-9 lg:mt-0">
-        {blog.blogdata.map((item, i) => {
-          switch (item?.type) {
-            case "mainheading":
-              return (
-                <h1
-                  key={i}
-                  className="text-[32px] font-extrabold my-4 font-recline  tracking-wide "
-                >
-                  {item?.content}
-                  {i == 0 && (
-                    <span className="flex items-center gap-2 text-sm  font-normal mt-3 ml-3 text-gray-500">
-                      <SlCalender />
-                      <span>{blog?.date}</span>
-                    </span>
-                  )}
-                </h1>
-              );
-            case "heading":
-            case "paragraph":
-            case "list":
-              return (
-                <div
-                  key={i}
-                  className={`my-2 text-justify ${
-                    item?.type == "heading"
-                      ? "text-[22px] font-semibold"
-                      : "text-base"
-                  }`}
-                >
-                  {item?.type == "list" && (
-                    <MdOutlineArrowRightAlt className="inline-block text-indigo-500" />
-                  )}
-                  {item?.content}
-                </div>
-              );
-            case "image":
-              let image;
-              if (item?.content instanceof File) image = item?.preview;
-              else image = item?.content;
-              return (
-                <Nextimage
-                  key={i}
-                  src={image}
-                  height={300}
-                  width={400}
-                  loading="lazy"
-                  alt="furniture blog"
-                  className="w-full md:w-2/3 object-cover  rounded-lg shadow-md mb-4 bg-bg1"
-                />
-              );
-            default:
-              return null;
-          }
-        })}
+    <>
+      <div className="flex flex-col md:flex-row gap-6 min-h-screen px-6 md:px-12">
+        <div className="flex-[2] mb-5 mt-9 lg:mt-0">
+          {blog.blogdata.map((item, i) => {
+            switch (item?.type) {
+              case "mainheading":
+                return (
+                  <h1
+                    key={i}
+                    className="text-[32px] font-extrabold my-4 font-recline  tracking-wide "
+                  >
+                    {item?.content}
+                    {i == 0 && (
+                      <span className="flex items-center gap-2 text-sm  font-normal mt-3 ml-3 text-gray-500">
+                        <SlCalender />
+                        <span>{blog?.date}</span>
+                      </span>
+                    )}
+                  </h1>
+                );
+              case "heading":
+              case "paragraph":
+              case "list":
+                return (
+                  <div
+                    key={i}
+                    className={`my-2 text-justify ${
+                      item?.type == "heading"
+                        ? "text-[22px] font-semibold"
+                        : "text-base"
+                    }`}
+                  >
+                    {item?.type == "list" && (
+                      <MdOutlineArrowRightAlt className="inline-block text-indigo-500" />
+                    )}
+                    {item?.content}
+                  </div>
+                );
+              case "image":
+                let image;
+                if (item?.content instanceof File) image = item?.preview;
+                else image = item?.content;
+                return (
+                  <Nextimage
+                    key={i}
+                    src={image}
+                    height={300}
+                    width={400}
+                    loading="lazy"
+                    alt="furniture blog"
+                    className="w-full md:w-2/3 object-cover  rounded-lg shadow-md mb-4 bg-bg1"
+                  />
+                );
+              default:
+                return null;
+            }
+          })}
+          <div className="flex items-center justify-center">
+            <Googleads type={2} />
+          </div>
+        </div>
+        <Showblogs blogs={blogs?.filter((item) => item._id != blogid)} />
       </div>
-      <Showblogs blogs={blogs?.filter((item) => item._id != blogid)} />
-    </div>
+      <div className="flex items-center justify-center">
+        <Googleads type={2} />
+      </div>
+    </>
   );
 }
 
