@@ -13,6 +13,7 @@ import { cookies } from "next/headers";
 import { cities } from "./commondata";
 import { Mulish } from "next/font/google";
 import Clienterror from "./_serveractions/Errorsender/Clienterror";
+import { Googleadsid } from "./commondata";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -64,38 +65,40 @@ export default async function RootLayout({ children }) {
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7398670337880164`}
           crossOrigin="anonymous"
         ></script>
-        <meta name="google-adsense-account" content="ca-pub-7398670337880164" />
+        <meta name="google-adsense-account" content={Googleadsid} />
         {/* ld json */}
-        <script
+        <Script
+          id="website-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Rentbean India",
+          strategy="beforeInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Rentbean India",
+            url: "https://rentbean.in",
+            potentialAction: {
+              "@type": "SearchAction",
+              target:
+                "https://rentbean.in/Delhi/Rent/Search?query={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "RentBean",
               url: "https://rentbean.in",
-              potentialAction: {
-                "@type": "SearchAction",
-                target:
-                  "https://rentbean.in/Delhi/Rent/Search?query={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "RentBean",
-                url: "https://rentbean.in",
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "India",
-              },
-              areaServed: cities.map((item) => ({
-                "@type": "City",
-                name: item,
-              })),
-            }),
-          }}
-        />
+            },
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "India",
+            },
+            areaServed: cities.map((item) => ({
+              "@type": "City",
+              name: item,
+            })),
+          })}
+        </Script>
+
         {/* <meta name="theme-color" content="#d68e43" /> */}
       </head>
       <body

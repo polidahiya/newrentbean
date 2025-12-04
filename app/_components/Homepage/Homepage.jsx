@@ -17,6 +17,7 @@ import Homestoreswitch from "./Homestoreswitch/File";
 import Epbanner from "../Epfloatingbanner/Banner";
 import DeviceDetector from "@/app/_components/_helperfunctions/Devicedetector";
 import Firstorder from "../Promocodes/Firstorder";
+import Googleads from "@/app/_components/_ads/Googleads";
 
 export default async function Homepage({
   location = "Delhi",
@@ -83,6 +84,7 @@ export default async function Homepage({
         <Spaceadder>
           <Description location={location.replace(/-/g, " ")} store={store} />
         </Spaceadder>
+        <Googleads type={2} />
         <Spaceadder>
           <Footer store={store} location={location} />
         </Spaceadder>

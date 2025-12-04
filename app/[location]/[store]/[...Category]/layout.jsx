@@ -1,6 +1,7 @@
 import Navbar from "@/app/_components/Navbar/Navbar";
 import Footer from "@/app/_components/footer/Footer";
 import Mobilenav from "@/app/_components/Navbar/bottomnav/Mobilenav";
+import Googleads from "@/app/_components/_ads/Googleads";
 
 export const metadata = {
   title: "Rentbean - Great for flexible rental options.",
@@ -15,6 +16,7 @@ export default async function RootLayout({ children, params }) {
     <div>
       <Navbar params={params} />
       {children}
+      <Googleads type={2} />
       <Footer />
       <Mobilenav params={params} />
     </div>

@@ -6,6 +6,9 @@ export const address =
 // export const domain = "http://localhost:3000";
 export const domain = "https://rentbean.in";
 
+// google ads id
+export const Googleadsid = "ca-pub-7398670337880164";
+
 export const sociallinks = {
   insta: "https://www.instagram.com/rentbean.in",
   facebook: "https://www.facebook.com/share/165VU3kC5f/",
